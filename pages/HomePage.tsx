@@ -70,29 +70,26 @@ const HomePage: React.FC = () => {
             ))}
           </div>
 
-        <AnimatedSection className="mt-24 md:mt-40">
+        <section id="philosophy" className="mt-24 md:mt-40">
           <div className="text-center">
             <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Robust. Modular. Fundamentfrei.</h2>
             <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Unsere Design-Philosophie basiert auf drei Säulen, die Langlebigkeit, Flexibilität und Ästhetik garantieren.</p>
           </div>
-          <div className="mt-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16 text-left">
-            <div className="relative p-2">
-               <span className="absolute -top-4 -left-4 text-8xl font-black text-brand-surface opacity-50 select-none">01</span>
-               <h3 className="relative text-2xl font-bold font-heading text-brand-heading">Einfacher Aufbau ohne Fundamente</h3>
-               <p className="mt-3 text-brand-muted">Unsere Elemente werden auf verdichteten Schotterbetten platziert. Das spart Zeit, Kosten und aufwendige Erdarbeiten.</p>
+          <div className="mt-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-brand-surface rounded-xl p-8">
+               <h3 className="text-2xl font-bold font-heading text-brand-heading">Einfacher Aufbau ohne Fundamente</h3>
+               <p className="mt-4 text-brand-muted">Unsere Elemente werden auf verdichteten Schotterbetten platziert. Das spart Zeit, Kosten und aufwendige Erdarbeiten.</p>
             </div>
-            <div className="relative p-2">
-                <span className="absolute -top-4 -left-4 text-8xl font-black text-brand-surface opacity-50 select-none">02</span>
-               <h3 className="relative text-2xl font-bold font-heading text-brand-heading">Witterungsbeständige Materialien</h3>
-               <p className="mt-3 text-brand-muted">Wir verwenden ausschließlich hochwertigen Beton, Edelstahl und verzinkten Stahl, um maximale Langlebigkeit bei jeder Witterung zu sichern.</p>
+            <div className="bg-brand-surface rounded-xl p-8">
+               <h3 className="text-2xl font-bold font-heading text-brand-heading">Witterungsbeständige Materialien</h3>
+               <p className="mt-4 text-brand-muted">Wir verwenden ausschließlich hochwertigen Beton, Edelstahl und verzinkten Stahl, um maximale Langlebigkeit bei jeder Witterung zu sichern.</p>
             </div>
-            <div className="relative p-2">
-                <span className="absolute -top-4 -left-4 text-8xl font-black text-brand-surface opacity-50 select-none">03</span>
-               <h3 className="relative text-2xl font-bold font-heading text-brand-heading">Hohe Vandalismussicherheit</h3>
-               <p className="mt-3 text-brand-muted">Die massive Bauweise und die robusten Materialien machen unsere Produkte extrem widerstandsfähig gegen Vandalismus, Feuer und Verrottung.</p>
+            <div className="bg-brand-surface rounded-xl p-8">
+               <h3 className="text-2xl font-bold font-heading text-brand-heading">Hohe Vandalismussicherheit</h3>
+               <p className="mt-4 text-brand-muted">Die massive Bauweise und die robusten Materialien machen unsere Produkte extrem widerstandsfähig gegen Vandalismus, Feuer und Verrottung.</p>
             </div>
           </div>
-        </AnimatedSection>
+        </section>
       </div>
       
       <section id="cta" className="bg-brand-surface">

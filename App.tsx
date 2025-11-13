@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -30,7 +29,7 @@ const App: React.FC = () => {
   return (
     <HashRouter>
       <ScrollToTop />
-      <div className="bg-white text-brand-anthracite font-sans flex flex-col min-h-screen">
+      <div className="bg-brand-bg text-brand-text font-sans flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
           <Routes>

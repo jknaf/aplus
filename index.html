@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
   <head>
@@ -10,24 +9,46 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'brand-gray-light': '#EAEAEA',
-              'brand-anthracite': '#333333',
-              'brand-orange': '#FF5F00',
+              'brand-bg': '#121212',
+              'brand-surface': '#1E1E1E',
+              'brand-text': '#EAEAEA',
+              'brand-heading': '#FFFFFF',
+              'brand-orange': '#F97316',
+              'brand-muted': '#A1A1AA',
             },
             fontFamily: {
               'sans': ['Lato', 'sans-serif'],
               'heading': ['Montserrat', 'sans-serif'],
-            }
+            },
+            fontSize: {
+              '7xl': '5rem',
+              '8xl': '6.5rem',
+              '9xl': '8rem',
+            },
+            keyframes: {
+              'fade-in-up': {
+                '0%': { opacity: '0', transform: 'translateY(2rem)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            },
+            animation: {
+              'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+            },
           }
         }
       }
     </script>
+     <style>
+      .animated-section {
+        opacity: 0;
+      }
+    </style>
   <script type="importmap">
 {
   "imports": {
@@ -39,7 +60,7 @@
 }
 </script>
 </head>
-  <body>
+  <body class="bg-brand-bg text-brand-text">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

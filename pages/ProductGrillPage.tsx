@@ -5,7 +5,11 @@ import PageShell from '../components/PageShell';
 const ProductGrillPage: React.FC = () => {
   return (
     <PageShell title="Öffentliche Grillstelle aus Beton">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+       <div className="text-center mb-12">
+           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Robuste Grillstelle</h1>
+           <p className="mt-2 text-lg text-brand-muted">Für den öffentlichen Raum</p>
+        </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
           <img src="https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Öffentliche Grillstelle aus Beton mit Edelstahlrost" className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
@@ -15,24 +19,23 @@ const ProductGrillPage: React.FC = () => {
           </div>
         </div>
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold font-heading">Robuste Grillstelle für den öffentlichen Raum</h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-xl text-brand-muted leading-relaxed">
             Unser Grillplatz aus Betonfertigteilen ist ideal für öffentliche Räume wie Freibäder, Campingplätze und Sportanlagen. Die Konstruktion ist für einfache Bedienung und Langlebigkeit konzipiert.
           </p>
-          <div className="mt-8">
-            <h2 className="text-2xl font-bold font-heading">Eigenschaften & Vorteile unserer Betongrillstelle</h2>
-            <ul className="mt-4 space-y-3 list-disc list-inside text-gray-700">
-              <li><span className="font-bold">Materialien:</span> Beton, Edelstahl und verzinkter Stahl</li>
-              <li>Extrem robust und witterungsbeständig</li>
-              <li>Höhenverstellbarer Grillrost aus Edelstahl (diebstahlsicher)</li>
-              <li>Keine Fundamente notwendig (Aufbau auf verdichtetem Schotterbett)</li>
-              <li>Integrierte Bodenplatte (keine Pflasterarbeiten nötig)</li>
-              <li>Recycelbare Materialien</li>
-              <li><span className="font-bold">Technische Daten:</span> Durchmesser 4,20 m, Höhe 2,40 m</li>
+          <div className="mt-10">
+            <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Eigenschaften & Vorteile</h2>
+            <ul className="mt-6 space-y-4 text-brand-muted">
+              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> <span className="font-bold mr-2">Materialien:</span> Beton, Edelstahl und verzinkter Stahl</li>
+              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Extrem robust und witterungsbeständig</li>
+              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Höhenverstellbarer Grillrost aus Edelstahl (diebstahlsicher)</li>
+              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Keine Fundamente notwendig (Aufbau auf verdichtetem Schotterbett)</li>
+              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Integrierte Bodenplatte (keine Pflasterarbeiten nötig)</li>
+              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Recycelbare Materialien</li>
+              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> <span className="font-bold mr-2">Technische Daten:</span> Durchmesser 4,20 m, Höhe 2,40 m</li>
             </ul>
           </div>
-          <Link to="/kontakt" className="mt-10 inline-block bg-brand-orange text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">
-            Angebot für Grillstelle anfordern
+          <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">
+            Angebot anfordern
           </Link>
         </div>
       </div>

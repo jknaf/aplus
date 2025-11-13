@@ -13,7 +13,7 @@ const AboutPage: React.FC = () => {
 
       <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div >
-            <img src="https://images.unsplash.com/photo-1616469692323-1718c2378a52?auto=format&q=80&w=600&h=450&fit=crop" alt="Architekten-Team bei der Planung eines urbanen Skateparks über Bauplänen." className="rounded-lg shadow-xl w-full"/>
+            <img src="https://images.pexels.com/photos/848612/pexels-photo-848612.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="Architekten-Team bei der Planung eines urbanen Skateparks über Bauplänen." className="rounded-lg shadow-xl w-full"/>
         </div>
         <div>
           <h2 className="text-2xl font-bold font-heading">Unsere Philosophie</h2>

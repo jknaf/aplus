@@ -7,11 +7,11 @@ const ProductPumptrackPage: React.FC = () => {
     <PageShell title="Pumptrack aus Beton planen & bauen">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
-          <img src="https://images.unsplash.com/photo-1621379998858-a734d7425176?auto=format&q=80&w=800&h=600&fit=crop" alt="Jugendliche auf einem Beton-Pumptrack von A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img src="https://images.pexels.com/photos/848612/pexels-photo-848612.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Jugendliche auf einem Beton-Pumptrack von A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
-            <img src="https://images.unsplash.com/photo-1562625243-5ca7393433a8?auto=format&q=80&w=300&h=200&fit=crop" alt="Ein Mountainbiker in einer Steilkurve des Pumptracks" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img src="https://images.unsplash.com/photo-1620242228960-911634989327?auto=format&q=80&w=300&h=200&fit=crop" alt="Modulare Betonelemente für einen langlebigen BMX Pumptrack" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img src="https://images.unsplash.com/photo-1504814120235-37a541a87795?auto=format&q=80&w=300&h=200&fit=crop" alt="Luftaufnahme eines fertigen und TÜV-zertifizierten Pumptrack-Parcours" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Ein Mountainbiker in einer Steilkurve des Pumptracks" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/2241144/pexels-photo-2241144.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Modulare Betonelemente für einen langlebigen BMX Pumptrack" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Luftaufnahme eines fertigen und TÜV-zertifizierten Pumptrack-Parcours" className="w-full h-auto object-cover rounded-lg shadow-md" />
           </div>
         </div>
         <div>

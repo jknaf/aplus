@@ -7,11 +7,11 @@ const ProductGrillPage: React.FC = () => {
     <PageShell title="Öffentliche Grillstelle aus Beton">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
-          <img src="https://images.unsplash.com/photo-1587133999960-3913054f19b2?auto=format&q=80&w=800&h=600&fit=crop" alt="Öffentliche Grillstelle aus Beton mit Edelstahlrost" className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img src="https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Öffentliche Grillstelle aus Beton mit Edelstahlrost" className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
-            <img src="https://images.unsplash.com/photo-1594997880552-323387693ab8?auto=format&q=80&w=300&h=200&fit=crop" alt="Detailaufnahme des diebstahlsicheren Grillrosts aus Edelstahl" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img src="https://images.unsplash.com/photo-1558034011-7386a3449e7b?auto=format&q=80&w=300&h=200&fit=crop" alt="Grillplatz im Einsatz bei einem Fest im Park neben einem Skatepark" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img src="https://images.unsplash.com/photo-1603986514725-b824b2a4a755?auto=format&q=80&w=300&h=200&fit=crop" alt="Aufbau der fundamentfreien Grillstelle auf einem Schotterbett" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Detailaufnahme des diebstahlsicheren Grillrosts aus Edelstahl" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/4167333/pexels-photo-4167333.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Grillplatz im Einsatz bei einem Fest im Park neben einem Skatepark" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/18449733/pexels-photo-18449733.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Aufbau der fundamentfreien Grillstelle auf einem Schotterbett" className="w-full h-auto object-cover rounded-lg shadow-md" />
           </div>
         </div>
         <div>

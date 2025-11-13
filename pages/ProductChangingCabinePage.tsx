@@ -7,11 +7,11 @@ const ProductChangingCabinePage: React.FC = () => {
     <PageShell title="Vandalismussichere Umkleidekabine 'Die Schnecke'">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
-          <img src="https://images.unsplash.com/photo-1561021799-a413d3a435c2?auto=format&q=80&w=800&h=600&fit=crop" alt="Architektonische Beton-Umkleidekabine in Schneckenform." className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img src="https://images.pexels.com/photos/18449733/pexels-photo-18449733.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Architektonische Beton-Umkleidekabine in Schneckenform." className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
-            <img src="https://images.unsplash.com/photo-1621008943566-b93915830207?auto=format&q=80&w=300&h=200&fit=crop" alt="Innenansicht der fugenlosen und leicht zu reinigenden Bodenplatte aus Beton" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img src="https://images.unsplash.com/photo-1617966224373-d53b1b659c2b?auto=format&q=80&w=300&h=200&fit=crop" alt="Die Umkleidekabine 'Schnecke' fügt sich harmonisch in die urbane Landschaft ein" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img src="https://images.unsplash.com/photo-1599432247738-9a4b3b190a28?auto=format&q=80&w=300&h=200&fit=crop" alt="Detail der robusten und vandalismusresistenten Betonoberfläche" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/2241144/pexels-photo-2241144.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Innenansicht der fugenlosen und leicht zu reinigenden Bodenplatte aus Beton" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Die Umkleidekabine 'Schnecke' fügt sich harmonisch in die urbane Landschaft ein" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Detail der robusten und vandalismusresistenten Betonoberfläche" className="w-full h-auto object-cover rounded-lg shadow-md" />
           </div>
         </div>
         <div>

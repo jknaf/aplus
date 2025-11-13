@@ -1,10 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { NAV_LINKS } from '../constants';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(prev => !prev);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
+  
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        closeDropdown();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
@@ -19,8 +41,8 @@ const Header: React.FC = () => {
             <div className="ml-10 flex items-baseline space-x-4">
               {NAV_LINKS.map((link) =>
                 link.subLinks ? (
-                  <div key={link.name} className="relative" onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
-                    <button className="text-brand-anthracite hover:text-brand-orange px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200">
+                  <div key={link.name} className="relative" ref={dropdownRef}>
+                    <button onClick={toggleDropdown} className="text-brand-anthracite hover:text-brand-orange px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 flex items-center">
                       {link.name}
                       <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 inline-block ml-1 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -33,7 +55,7 @@ const Header: React.FC = () => {
                              <Link 
                                 key={subLink.name} 
                                 to={subLink.href} 
-                                onClick={() => setIsDropdownOpen(false)}
+                                onClick={closeDropdown}
                                 className="block px-4 py-2 text-sm text-brand-anthracite hover:bg-brand-gray-light hover:text-brand-orange" 
                                 role="menuitem"
                               >

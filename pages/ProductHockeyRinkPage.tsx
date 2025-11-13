@@ -7,11 +7,11 @@ const ProductHockeyRinkPage: React.FC = () => {
     <PageShell title="Modulare Hockey-Banden (fundamentfrei)">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
-          <img src="https://images.unsplash.com/photo-1599587121037-a27902a7b8fb?auto=format&q=80&w=800&h=600&fit=crop" alt="Rote Inlinehockey-Bande aus Beton und Edelstahl" className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Rote Inlinehockey-Bande aus Beton und Edelstahl" className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
-            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&q=80&w=300&h=200&fit=crop" alt="Eishockey-Feld, das die Vielseitigkeit der Banden zeigt" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img src="https://images.unsplash.com/photo-1544299994-3d7bdbf5eb0d?auto=format&q=80&w=300&h=200&fit=crop" alt="Kinder spielen Rollhockey auf einem Feld mit den witterungsbeständigen Banden" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img src="https://images.unsplash.com/photo-1517153336986-c3bee99d5e1e?auto=format&q=80&w=300&h=200&fit=crop" alt="Modulare Elemente der Hockey-Bande, integriert in einen Skatepark" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Eishockey-Feld, das die Vielseitigkeit der Banden zeigt" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/4167333/pexels-photo-4167333.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Kinder spielen Rollhockey auf einem Feld mit den witterungsbeständigen Banden" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img src="https://images.pexels.com/photos/848612/pexels-photo-848612.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Modulare Elemente der Hockey-Bande, integriert in einen Skatepark" className="w-full h-auto object-cover rounded-lg shadow-md" />
           </div>
         </div>
         <div>

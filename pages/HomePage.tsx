@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
     <>
       <div className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-white text-center">
         <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-        <img src="https://images.unsplash.com/photo-1520024443642-752c56a3c613?auto=format&q=80&w=1920&h=1080&fit=crop" alt="Ein Skater springt bei Sonnenuntergang in einem weitläufigen Beton-Skatepark." className="absolute inset-0 w-full h-full object-cover"/>
+        <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Ein Skater springt bei Sonnenuntergang in einem weitläufigen Beton-Skatepark." className="absolute inset-0 w-full h-full object-cover"/>
         <div className="relative z-20 px-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold font-heading uppercase tracking-tighter leading-tight">
             Modulare Architektur für <br />

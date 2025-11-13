@@ -33,19 +33,9 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           <Link to="/" className="flex-shrink-0">
-            <div className="flex items-center text-2xl font-black font-heading text-brand-heading tracking-tighter">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 140 100"
-                className="h-8 w-auto"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M0 100 L40 0 L55 0 L15 100 H0 Z" />
-                <path d="M80 40 H140 V60 H80 Z" />
-                <path d="M100 20 H120 V80 H100 Z" />
-              </svg>
-              <span className="ml-2 text-brand-orange">Urban Design</span>
+            <div className="flex items-center font-black font-heading tracking-tighter">
+              <span className="text-3xl text-white">A+</span>
+              <span className="ml-2 text-2xl text-brand-orange">Urban Design</span>
             </div>
           </Link>
           <div className="hidden md:block">

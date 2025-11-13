@@ -8,19 +8,9 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block">
-              <div className="flex items-center text-4xl font-black font-heading tracking-tighter text-brand-heading">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 140 100"
-                  className="h-10 w-auto"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M0 100 L40 0 L55 0 L15 100 H0 Z" />
-                  <path d="M80 40 H140 V60 H80 Z" />
-                  <path d="M100 20 H120 V80 H100 Z" />
-                </svg>
-                <span className="ml-3 text-brand-orange">Urban Design</span>
+               <div className="flex items-center font-black font-heading tracking-tighter text-brand-heading">
+                <span className="text-5xl text-white">A+</span>
+                <span className="ml-3 text-4xl text-brand-orange">Urban Design</span>
               </div>
             </Link>
             <p className="mt-4 max-w-sm text-brand-muted">

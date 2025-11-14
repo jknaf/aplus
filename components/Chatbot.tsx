@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { GoogleGenAI } from '@google/genai';
 
 type Message = {
   text: string;
@@ -37,13 +36,6 @@ const Chatbot: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // WICHTIG: API-Schlüssel erst hier prüfen und Client initialisieren
-      const apiKey = process.env.API_KEY;
-      if (!apiKey) {
-        throw new Error("API key is not configured.");
-      }
-      const ai = new GoogleGenAI({ apiKey });
-
       const systemInstruction = `You are a friendly and professional chatbot assistant for "A+ Urban Design", a company specializing in modular, high-quality concrete and steel elements for public spaces like skateparks, pumptracks, and more. Your name is 'A+ Bot'. You communicate exclusively in German. Your primary goal is to answer questions about the company's products (Grillstelle, Umkleidekabine, Hockey-Banden, Pumptrack), past projects, and the company's philosophy (robust, modular, foundation-free). CRITICAL RULE: Under no circumstances should you invent, discuss, or speculate about prices, costs, or specific contractual details. You are not authorized for sales. If a user asks about prices or contracts, you MUST politely decline and immediately offer to help draft an email to the sales team. Use a phrase like this: "Ich kann Ihnen leider keine Auskunft zu Preisen oder vertraglichen Details geben. Ich kann aber gerne eine E-Mail-Anfrage für Sie an unser Team vorbereiten. Sollen wir das machen?"`;
       
       const contents = messages.map(msg => ({
@@ -52,21 +44,27 @@ const Chatbot: React.FC = () => {
       }));
       contents.push({ role: 'user', parts: [{ text: inputValue }] });
 
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents,
-        config: {
-          systemInstruction,
-        }
+      const apiResponse = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ contents, systemInstruction }),
       });
-      
-      const botResponse: Message = { text: response.text, sender: 'bot' };
+
+      if (!apiResponse.ok) {
+        const errorData = await apiResponse.json();
+        throw new Error(errorData.error || 'Network response was not ok');
+      }
+
+      const data = await apiResponse.json();
+      const botResponse: Message = { text: data.text, sender: 'bot' };
       setMessages((prev) => [...prev, botResponse]);
 
     } catch (error) {
-      console.error('Error communicating with Gemini:', error);
+      console.error('Error communicating with the backend:', error);
       const errorMessage: Message = {
-        text: 'Entschuldigung, es ist ein Fehler aufgetreten. Bitte stellen Sie sicher, dass die Konfiguration korrekt ist oder versuchen Sie es später erneut.',
+        text: 'Entschuldigung, es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
         sender: 'bot',
       };
       setMessages((prev) => [...prev, errorMessage]);

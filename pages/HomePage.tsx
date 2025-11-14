@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../constants';
+import BrochureRequestForm from '../components/BrochureRequestForm';
 
 const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}> = ({ children, className }) => {
     const ref = useRef<HTMLDivElement>(null);
@@ -209,6 +210,8 @@ const HomePage: React.FC = () => {
           </div>
         </section>
       </div>
+
+      <BrochureRequestForm context="homepage" />
       
       <section id="cta" className="bg-brand-surface">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">

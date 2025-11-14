@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
+import BrochureRequestForm from '../components/BrochureRequestForm';
 
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'bmx-anlagen' && p.id !== 'skate-anlagen').slice(0, 3);
@@ -82,6 +83,7 @@ const ProductBmxPage: React.FC = () => {
           </Link>
         </div>
       </div>
+      <BrochureRequestForm context="productpage" />
       <OtherProducts />
     </PageShell>
   );

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
+import BrochureRequestForm from '../components/BrochureRequestForm';
 
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'umkleide' && p.id !== 'grillstelle').slice(0, 3);
@@ -73,7 +74,8 @@ const ProductChangingCabinePage: React.FC = () => {
           </Link>
         </div>
       </div>
-       <OtherProducts />
+      <BrochureRequestForm context="productpage" />
+      <OtherProducts />
     </PageShell>
   );
 };

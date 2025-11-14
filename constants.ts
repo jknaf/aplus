@@ -82,7 +82,7 @@ export const PROJECTS: Project[] = [
         title: "Skatepark Neustadt",
         category: "Skatepark",
         year: 2023,
-        imageUrl: "https://images.pexels.com/photos/18449733/pexels-photo-18449733.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+        imageUrl: "https://images.pexels.com/photos/4167333/pexels-photo-4167333.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
         images: [
             "https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
             "https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
@@ -116,7 +116,7 @@ export const PROJECTS: Project[] = [
         title: "Grillplatz im Stadtpark",
         category: "Grillstelle",
         year: 2023,
-        imageUrl: "https://images.pexels.com/photos/4167333/pexels-photo-4167333.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+        imageUrl: "https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
         images: [
             "https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
             "https://images.pexels.com/photos/18449733/pexels-photo-18449733.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",

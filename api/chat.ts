@@ -3,25 +3,25 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 // This is a Vercel Serverless Function, which acts as a secure backend proxy.
 // It will be accessible at the endpoint /api/chat when deployed.
-// IMPORTANT: For this to work on Vercel, a package.json with "@google/genai" as a dependency is usually required.
 
 export default async function handler(request: VercelRequest, response: VercelResponse) {
-  // Only allow POST requests
+  // CORS Headers to allow requests from your own domain
+  // For production, you should restrict this to your actual domain: e.g., 'https://your-site.vercel.app'
+  response.setHeader('Access-Control-Allow-Origin', '*'); 
+  response.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight requests for CORS. This must come before other method checks.
+  if (request.method === 'OPTIONS') {
+    return response.status(200).end();
+  }
+
+  // After handling OPTIONS, only allow POST requests for the main logic
   if (request.method !== 'POST') {
     response.setHeader('Allow', ['POST']);
     return response.status(405).json({ error: 'Method Not Allowed' });
   }
   
-  // CORS Headers to allow requests from your own domain
-  response.setHeader('Access-Control-Allow-Origin', '*'); // For development. For production, restrict to your domain: e.g., 'https://your-site.vercel.app'
-  response.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  // Handle preflight requests for CORS
-  if (request.method === 'OPTIONS') {
-    return response.status(200).end();
-  }
-
   // Retrieve the API key securely from environment variables on the server
   const apiKey = process.env.API_KEY;
 

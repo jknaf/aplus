@@ -98,11 +98,23 @@ const HomePage: React.FC = () => {
           <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {PRODUCTS.slice(0, 7).map((product, index) => (
               <AnimatedSection key={product.id} className={`[animation-delay:${index * 150}ms]`}>
-                  <Link to={product.path} className="group relative block overflow-hidden rounded-xl shadow-lg hover:shadow-brand-orange/20 transition-shadow duration-300 aspect-[4/5] bg-brand-surface">
-                    <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100"/>
+                  <Link to={product.path} className="group/card relative block overflow-hidden rounded-xl shadow-lg hover:shadow-brand-orange/20 transition-shadow duration-300 aspect-[4/5] bg-brand-surface">
+                    <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300 opacity-80 group-hover/card:opacity-100"/>
+                    
+                    {product.tuvCertified && (
+                        <div className="group/siegel absolute top-3 right-3 z-10">
+                            <div className="bg-white text-brand-bg font-bold text-xs px-2 py-1 rounded-sm shadow-lg cursor-help">
+                                TÜV-GEPRÜFT
+                            </div>
+                            <div className="absolute top-full right-0 mt-1 w-max bg-brand-bg text-white text-xs px-2 py-1 rounded opacity-0 group-hover/siegel:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                                Geprüfte Sicherheit nach DIN EN 14974
+                            </div>
+                        </div>
+                    )}
+
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                     <div className="relative h-full flex flex-col justify-end p-6">
-                      <h3 className="text-2xl font-bold font-heading text-brand-heading transform group-hover:-translate-y-2 transition-transform duration-300">{product.title}</h3>
+                      <h3 className="text-2xl font-bold font-heading text-brand-heading transform group-hover/card:-translate-y-2 transition-transform duration-300">{product.title}</h3>
                     </div>
                   </Link>
               </AnimatedSection>
@@ -116,27 +128,45 @@ const HomePage: React.FC = () => {
           </div>
           <div className="mt-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading">Ohne Fundament möglich</h3>
+               <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange">foundation</span>
+                  Ohne Fundament möglich
+               </h3>
                <p className="mt-4 text-brand-muted">Unsere Elemente werden auf verdichteten Schotterbetten platziert. Das spart Zeit, Kosten und aufwendige Erdarbeiten und schont den Untergrund.</p>
             </div>
             <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading">Witterungsbeständige Materialien</h3>
+               <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange">shield</span>
+                  Witterungsbeständige Materialien
+                </h3>
                <p className="mt-4 text-brand-muted">Wir verwenden ausschließlich hochwertigen Beton, Edelstahl und verzinkten Stahl, um maximale Langlebigkeit bei jeder Witterung zu sichern.</p>
             </div>
             <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading">Hohe Vandalismussicherheit</h3>
+               <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange">security</span>
+                  Hohe Vandalismussicherheit
+                </h3>
                <p className="mt-4 text-brand-muted">Die massive Bauweise und die robusten Materialien machen unsere Produkte extrem widerstandsfähig gegen Vandalismus, Feuer und Verrottung.</p>
             </div>
              <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading">TÜV-geprüft & Sicher</h3>
+                <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange">verified_user</span>
+                  TÜV-geprüft & Sicher
+                </h3>
                <p className="mt-4 text-brand-muted">Alle unsere Sportgeräte und Skate-Elemente sind nach DIN EN 14974 TÜV-geprüft und GS-zertifiziert für höchste Sicherheitsstandards.</p>
             </div>
              <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading">Modular kombinierbar</h3>
+               <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange">widgets</span>
+                  Modular kombinierbar
+                </h3>
                <p className="mt-4 text-brand-muted">Dank des modularen Aufbaus können Anlagen jederzeit erweitert, umgestaltet oder sogar an einen anderen Ort versetzt werden.</p>
             </div>
              <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading">Recycelbare Materialien</h3>
+               <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange">recycling</span>
+                  Recycelbare Materialien
+                </h3>
                <p className="mt-4 text-brand-muted">Wir setzen auf Nachhaltigkeit. Unsere Hauptmaterialien Beton und Stahl sind vollständig recycelbar und umweltschonend.</p>
             </div>
           </div>

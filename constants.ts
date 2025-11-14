@@ -26,28 +26,32 @@ export const PRODUCTS: Product[] = [
     title: 'Beton Skate-Anlagen',
     imageUrl: 'https://images.pexels.com/photos/4167333/pexels-photo-4167333.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
     path: '/produkte/skate-anlagen',
-    altText: 'Ein Skater in Aktion in einem modernen Beton-Skatepark von A+ Urban Design.'
+    altText: 'Ein Skater in Aktion in einem modernen Beton-Skatepark von A+ Urban Design.',
+    tuvCertified: true,
   },
   {
     id: 'pumptrack',
     title: 'Pumptrack aus Beton',
     imageUrl: 'https://images.pexels.com/photos/848612/pexels-photo-848612.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
     path: '/produkte/pumptrack-beton',
-    altText: 'Ein Fahrer auf einer geschwungenen Betonbahn, einem Pumptrack von A+ Urban Design.'
+    altText: 'Ein Fahrer auf einer geschwungenen Betonbahn, einem Pumptrack von A+ Urban Design.',
+    tuvCertified: true,
   },
   {
     id: 'bmx-anlagen',
     title: 'BMX-Anlagen',
     imageUrl: 'https://images.pexels.com/photos/248559/pexels-photo-248559.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
     path: '/produkte/bmx-anlagen',
-    altText: 'Ein BMX-Fahrer springt in einer professionellen BMX-Anlage aus Beton.'
+    altText: 'Ein BMX-Fahrer springt in einer professionellen BMX-Anlage aus Beton.',
+    tuvCertified: true,
   },
   {
     id: 'hockey',
     title: 'Hockey-Banden',
     imageUrl: 'https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
     path: '/produkte/hockey-banden',
-    altText: 'Robuste Inline-Hockey-Banden für ein professionelles Spielfeld.'
+    altText: 'Robuste Inline-Hockey-Banden für ein professionelles Spielfeld.',
+    tuvCertified: true,
   },
   {
     id: 'grillstelle',

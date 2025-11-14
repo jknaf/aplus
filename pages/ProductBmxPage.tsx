@@ -40,7 +40,17 @@ const ProductBmxPage: React.FC = () => {
   return (
     <PageShell title="Planung & Bau von BMX-Anlagen">
        <div className="text-center mb-12">
-           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">BMX-Anlagen aus Beton</h1>
+            <div className="flex justify-center items-center gap-4 flex-wrap">
+                <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">BMX-Anlagen aus Beton</h1>
+                <div className="group relative">
+                    <div className="bg-white text-brand-bg font-bold px-3 py-1.5 rounded-md shadow-lg text-sm cursor-help">
+                        TÜV-GEPRÜFT
+                    </div>
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max bg-brand-bg text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                        Geprüfte Sicherheit nach DIN EN 14974
+                    </div>
+                </div>
+            </div>
            <p className="mt-2 text-lg text-brand-muted">Für Dirt, Park und Street</p>
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

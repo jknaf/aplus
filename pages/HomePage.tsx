@@ -144,7 +144,7 @@ const HomePage: React.FC = () => {
             <div className="bg-brand-surface rounded-xl p-8 grid grid-rows-[auto_1fr] h-full">
                <div className="flex items-start gap-4">
                   <span className="material-symbols-outlined text-4xl text-brand-orange flex-shrink-0 mt-1">security</span>
-                  <h3 className="text-2xl font-bold font-heading text-brand-heading">Vandalismus-sicher</h3>
+                  <h3 className="text-2xl font-bold font-heading text-brand-heading">Vandalismussicher</h3>
                 </div>
                <p className="mt-4 text-brand-muted">Die massive Bauweise und die robusten Materialien machen unsere Produkte extrem widerstandsfähig gegen Vandalismus, Feuer und Verrottung.</p>
             </div>

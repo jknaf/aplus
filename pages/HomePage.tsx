@@ -127,46 +127,46 @@ const HomePage: React.FC = () => {
             <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Unsere Design-Philosophie basiert auf Säulen, die Langlebigkeit, Flexibilität und Wirtschaftlichkeit garantieren.</p>
           </div>
           <div className="mt-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
-                  <span className="material-symbols-outlined text-4xl text-brand-orange">foundation</span>
-                  Ohne Fundament möglich
-               </h3>
+            <div className="bg-brand-surface rounded-xl p-8 grid grid-rows-[auto_1fr] h-full">
+               <div className="flex items-start gap-4">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange flex-shrink-0 mt-1">foundation</span>
+                  <h3 className="text-2xl font-bold font-heading text-brand-heading">Ohne Fundament möglich</h3>
+               </div>
                <p className="mt-4 text-brand-muted">Unsere Elemente werden auf verdichteten Schotterbetten platziert. Das spart Zeit, Kosten und aufwendige Erdarbeiten und schont den Untergrund.</p>
             </div>
-            <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
-                  <span className="material-symbols-outlined text-4xl text-brand-orange">shield</span>
-                  Witterungsbeständige Materialien
-                </h3>
+            <div className="bg-brand-surface rounded-xl p-8 grid grid-rows-[auto_1fr] h-full">
+               <div className="flex items-start gap-4">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange flex-shrink-0 mt-1">shield</span>
+                  <h3 className="text-2xl font-bold font-heading text-brand-heading">Witterungsbeständig</h3>
+                </div>
                <p className="mt-4 text-brand-muted">Wir verwenden ausschließlich hochwertigen Beton, Edelstahl und verzinkten Stahl, um maximale Langlebigkeit bei jeder Witterung zu sichern.</p>
             </div>
-            <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
-                  <span className="material-symbols-outlined text-4xl text-brand-orange">security</span>
-                  Hohe Vandalismussicherheit
-                </h3>
+            <div className="bg-brand-surface rounded-xl p-8 grid grid-rows-[auto_1fr] h-full">
+               <div className="flex items-start gap-4">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange flex-shrink-0 mt-1">security</span>
+                  <h3 className="text-2xl font-bold font-heading text-brand-heading">Vandalismus-sicher</h3>
+                </div>
                <p className="mt-4 text-brand-muted">Die massive Bauweise und die robusten Materialien machen unsere Produkte extrem widerstandsfähig gegen Vandalismus, Feuer und Verrottung.</p>
             </div>
-             <div className="bg-brand-surface rounded-xl p-8">
-                <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
-                  <span className="material-symbols-outlined text-4xl text-brand-orange">verified_user</span>
-                  TÜV-geprüft & Sicher
-                </h3>
+             <div className="bg-brand-surface rounded-xl p-8 grid grid-rows-[auto_1fr] h-full">
+                <div className="flex items-start gap-4">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange flex-shrink-0 mt-1">verified_user</span>
+                  <h3 className="text-2xl font-bold font-heading text-brand-heading">TÜV-geprüft & Sicher</h3>
+                </div>
                <p className="mt-4 text-brand-muted">Alle unsere Sportgeräte und Skate-Elemente sind nach DIN EN 14974 TÜV-geprüft und GS-zertifiziert für höchste Sicherheitsstandards.</p>
             </div>
-             <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
-                  <span className="material-symbols-outlined text-4xl text-brand-orange">widgets</span>
-                  Modular kombinierbar
-                </h3>
+             <div className="bg-brand-surface rounded-xl p-8 grid grid-rows-[auto_1fr] h-full">
+               <div className="flex items-start gap-4">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange flex-shrink-0 mt-1">widgets</span>
+                  <h3 className="text-2xl font-bold font-heading text-brand-heading">Modular kombinierbar</h3>
+                </div>
                <p className="mt-4 text-brand-muted">Dank des modularen Aufbaus können Anlagen jederzeit erweitert, umgestaltet oder sogar an einen anderen Ort versetzt werden.</p>
             </div>
-             <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading flex items-center gap-3">
-                  <span className="material-symbols-outlined text-4xl text-brand-orange">recycling</span>
-                  Recycelbare Materialien
-                </h3>
+             <div className="bg-brand-surface rounded-xl p-8 grid grid-rows-[auto_1fr] h-full">
+               <div className="flex items-start gap-4">
+                  <span className="material-symbols-outlined text-4xl text-brand-orange flex-shrink-0 mt-1">recycling</span>
+                  <h3 className="text-2xl font-bold font-heading text-brand-heading">Recycelbare Materialien</h3>
+                </div>
                <p className="mt-4 text-brand-muted">Wir setzen auf Nachhaltigkeit. Unsere Hauptmaterialien Beton und Stahl sind vollständig recycelbar und umweltschonend.</p>
             </div>
           </div>

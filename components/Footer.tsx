@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
               <p>&copy; {new Date().getFullYear()} A+ Urban Design</p>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-start">
             <div>
               <h3 className="text-sm font-bold uppercase tracking-wider text-brand-heading">Navigation</h3>
               <ul className="mt-4 space-y-3">

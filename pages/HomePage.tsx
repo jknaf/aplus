@@ -82,7 +82,7 @@ const HomePage: React.FC = () => {
         <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="max-w-4xl">
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter leading-none animate-fade-in-up">
-              Architektur & Betonmodule für <span className="text-brand-orange">Skateparks</span> und <span className="text-brand-orange">Pumptracks</span>
+              Architektur für <span className="text-brand-orange">Freiräume</span>
             </h1>
           </div>
         </div>
@@ -91,8 +91,8 @@ const HomePage: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
         <AnimatedSection>
             <div className="text-center">
-              <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Produkte für den öffentlichen Raum</h2>
-              <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Vandalismusresistent, fundamentfrei und modular – entdecken Sie unsere TÜV-geprüften Lösungen für moderne Freiräume, die Bewegung und Begegnung fördern.</p>
+              <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Unsere Produktwelten</h2>
+              <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Ein Auszug unserer modularen Lösungen aus Beton und Stahl: Vandalismusresistent, fundamentfrei und TÜV-geprüft für moderne Freiräume, die Bewegung und Begegnung fördern.</p>
             </div>
         </AnimatedSection>
           <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

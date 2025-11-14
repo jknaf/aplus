@@ -52,7 +52,7 @@ const ProjectsPage: React.FC = () => {
         {filteredProjects.map(project => (
           <Link to={`/projekte/${project.id}`} key={project.id} className="group block bg-brand-surface rounded-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2">
             <div className="relative">
-              <img src={project.imageUrl} alt={project.altText} className="w-full h-56 object-cover" />
+              <img loading="lazy" decoding="async" src={project.imageUrl} alt={project.altText} className="w-full h-56 object-cover" />
             </div>
             <div className="p-6">
               <p className="text-sm font-bold text-brand-orange uppercase tracking-wider">{project.category.replace('-', ' ')}</p>

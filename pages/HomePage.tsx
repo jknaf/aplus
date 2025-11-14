@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
     <>
       <div className="relative h-screen flex items-end justify-start text-white">
         <div className="absolute inset-0 bg-black/60 z-10"></div>
-        <img src="https://images.pexels.com/photos/9523600/pexels-photo-9523600.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80" alt="Eine Person sitzt nachdenklich inmitten von alten, steinernen Tempelruinen." className="absolute inset-0 w-full h-full object-cover"/>
+        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/9523600/pexels-photo-9523600.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80" alt="Eine Person sitzt nachdenklich inmitten von alten, steinernen Tempelruinen." className="absolute inset-0 w-full h-full object-cover"/>
         <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="max-w-4xl">
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter leading-none animate-fade-in-up">
@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
             {PRODUCTS.map((product, index) => (
               <AnimatedSection key={product.id} className={`[animation-delay:${index * 150}ms]`}>
                   <Link to={product.path} className="group relative block overflow-hidden rounded-xl shadow-lg hover:shadow-brand-orange/20 transition-shadow duration-300 aspect-[4/5] bg-brand-surface">
-                    <img src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100"/>
+                    <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100"/>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                     <div className="relative h-full flex flex-col justify-end p-8">
                       <h3 className="text-3xl font-bold font-heading text-brand-heading transform group-hover:-translate-y-2 transition-transform duration-300">{product.title}</h3>

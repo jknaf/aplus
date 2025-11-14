@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 
 const ProductHockeyRinkPage: React.FC = () => {
+  useEffect(() => {
+    const descriptionTag = document.querySelector('meta[name="description"]');
+    if (descriptionTag) {
+      descriptionTag.setAttribute('content', 'Modulare Hockey-Banden für Roll-, Inline- und Eishockey. Unser fundamentfreies System ist witterungsbeständig, langlebig und schnell montiert. Planen Sie Ihr Hockeyfeld mit uns.');
+    }
+
+    const keywordsTag = document.querySelector('meta[name="keywords"]');
+    if (keywordsTag) {
+      keywordsTag.setAttribute('content', 'Hockey-Banden, Inlinehockey Bande, Rollhockey, Eishockey, fundamentfrei, modulares System, Sportanlagen, Hockeyfeld bauen');
+    }
+  }, []);
+
   return (
     <PageShell title="Modulare Hockey-Banden (fundamentfrei)">
        <div className="text-center mb-12">
@@ -11,11 +23,11 @@ const ProductHockeyRinkPage: React.FC = () => {
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <img src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Rote Inlinehockey-Bande aus Beton und Edelstahl" className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Rote Inlinehockey-Bande aus Beton und Edelstahl" className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
-            <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Eishockey-Feld, das die Vielseitigkeit der Banden zeigt" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img src="https://images.pexels.com/photos/4167333/pexels-photo-4167333.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Kinder spielen Rollhockey auf einem Feld mit den witterungsbeständigen Banden" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img src="https://images.pexels.com/photos/848612/pexels-photo-848612.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Modulare Elemente der Hockey-Bande, integriert in einen Skatepark" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Eishockey-Feld, das die Vielseitigkeit der Banden zeigt" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/4167333/pexels-photo-4167333.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Kinder spielen Rollhockey auf einem Feld mit den witterungsbeständigen Banden" className="w-full h-auto object-cover rounded-lg shadow-md" />
+            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/848612/pexels-photo-848612.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Modulare Elemente der Hockey-Bande, integriert in einen Skatepark" className="w-full h-auto object-cover rounded-lg shadow-md" />
           </div>
         </div>
         <div>

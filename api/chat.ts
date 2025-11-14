@@ -1,10 +1,11 @@
 import { GoogleGenAI } from '@google/genai';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 // This is a Vercel Serverless Function, which acts as a secure backend proxy.
 // It will be accessible at the endpoint /api/chat when deployed.
 // IMPORTANT: For this to work on Vercel, a package.json with "@google/genai" as a dependency is usually required.
 
-export default async function handler(request, response) {
+export default async function handler(request: VercelRequest, response: VercelResponse) {
   // Only allow POST requests
   if (request.method !== 'POST') {
     response.setHeader('Allow', ['POST']);

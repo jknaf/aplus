@@ -38,9 +38,24 @@
                 '0%': { opacity: '0', transform: 'translateY(2rem)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
               },
+              'kenburns-1': {
+                  '0%': { transform: 'scale(1.0) translate(0,0)', 'transform-origin': 'center' },
+                  '100%': { transform: 'scale(1.1) translate(-2%, 2%)', 'transform-origin': 'center' }
+              },
+              'kenburns-2': {
+                  '0%': { transform: 'scale(1.0) translate(0,0)', 'transform-origin': 'top right' },
+                  '100%': { transform: 'scale(1.1) translate(3%, -3%)', 'transform-origin': 'top right' }
+              },
+              'kenburns-3': {
+                  '0%': { transform: 'scale(1.0) translate(0,0)', 'transform-origin': 'bottom left' },
+                  '100%': { transform: 'scale(1.1) translate(-3%, 3%)', 'transform-origin': 'bottom left' }
+              },
             },
             animation: {
               'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+              'kenburns-1': 'kenburns-1 15s ease-in-out infinite alternate',
+              'kenburns-2': 'kenburns-2 18s ease-in-out infinite alternate',
+              'kenburns-3': 'kenburns-3 20s ease-in-out infinite alternate',
             },
           }
         }

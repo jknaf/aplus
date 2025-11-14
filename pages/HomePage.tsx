@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../constants';
 
@@ -33,13 +33,52 @@ const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}>
     return <div ref={ref} className={`animated-section ${className}`}>{children}</div>;
 };
 
+const HERO_IMAGES = [
+  {
+    src: 'https://images.pexels.com/photos/9523600/pexels-photo-9523600.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80',
+    alt: 'Eine Person sitzt nachdenklich inmitten von alten, steinernen Tempelruinen.'
+  },
+  {
+    src: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80',
+    alt: 'Ein Skater in einem modernen Beton-Skatepark bei Sonnenuntergang.'
+  },
+  {
+    src: 'https://images.pexels.com/photos/2422256/pexels-photo-2422256.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80',
+    alt: 'Architektonische Betonelemente bilden eine interessante Struktur in einem urbanen Raum.'
+  }
+];
+
+const KENBURNS_CLASSES = ['animate-kenburns-1', 'animate-kenburns-2', 'animate-kenburns-3'];
+
 
 const HomePage: React.FC = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex(prevIndex => (prevIndex + 1) % HERO_IMAGES.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <>
-      <div className="relative h-screen flex items-end justify-start text-white">
+      <div className="relative h-screen flex items-end justify-start text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/60 z-10"></div>
-        <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/9523600/pexels-photo-9523600.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80" alt="Eine Person sitzt nachdenklich inmitten von alten, steinernen Tempelruinen." className="absolute inset-0 w-full h-full object-cover"/>
+         {HERO_IMAGES.map((image, index) => (
+          <img 
+            key={index}
+            loading="lazy" 
+            decoding="async" 
+            src={image.src} 
+            alt={image.alt} 
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out 
+              ${KENBURNS_CLASSES[index % KENBURNS_CLASSES.length]}
+              ${index === currentImageIndex ? 'opacity-100 blur-0' : 'opacity-0 blur-md'}
+            `}
+          />
+        ))}
         <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="max-w-4xl">
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter leading-none animate-fade-in-up">

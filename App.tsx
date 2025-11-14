@@ -8,6 +8,9 @@ import ProductGrillPage from './pages/ProductGrillPage';
 import ProductChangingCabinePage from './pages/ProductChangingCabinePage';
 import ProductHockeyRinkPage from './pages/ProductHockeyRinkPage';
 import ProductPumptrackPage from './pages/ProductPumptrackPage';
+import ProductSkateAnlagenPage from './pages/ProductSkateAnlagenPage';
+import ProductBmxPage from './pages/ProductBmxPage';
+import ProductPavilionPage from './pages/ProductPavilionPage';
 import ProjectsPage from './pages/ProjectsPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import AboutPage from './pages/AboutPage';
@@ -36,10 +39,13 @@ const App: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/produkte/skate-anlagen" element={<ProductSkateAnlagenPage />} />
+            <Route path="/produkte/pumptrack-beton" element={<ProductPumptrackPage />} />
+            <Route path="/produkte/bmx-anlagen" element={<ProductBmxPage />} />
+            <Route path="/produkte/hockey-banden" element={<ProductHockeyRinkPage />} />
             <Route path="/produkte/grillstelle-beton" element={<ProductGrillPage />} />
             <Route path="/produkte/umkleidekabine-beton" element={<ProductChangingCabinePage />} />
-            <Route path="/produkte/hockey-banden" element={<ProductHockeyRinkPage />} />
-            <Route path="/produkte/pumptrack-beton" element={<ProductPumptrackPage />} />
+            <Route path="/produkte/ueberdachung-beton" element={<ProductPavilionPage />} />
             <Route path="/projekte" element={<ProjectsPage />} />
             <Route path="/projekte/:projectId" element={<ProjectDetailPage />} />
             <Route path="/ueber-uns" element={<AboutPage />} />

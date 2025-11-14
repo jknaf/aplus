@@ -1,9 +1,31 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
+import { PRODUCTS } from '../constants';
+
+const OtherProducts: React.FC = () => {
+  const otherProducts = PRODUCTS.filter(p => p.id !== 'umkleide' && p.id !== 'grillstelle').slice(0, 3);
+  return (
+    <div className="mt-24">
+      <h2 className="text-3xl font-bold font-heading text-center mb-10">Entdecken Sie weitere Produkte</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {otherProducts.map(product => (
+          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-xl shadow-lg hover:shadow-brand-orange/20 transition-shadow duration-300 aspect-[4/5] bg-brand-surface">
+            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100"/>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div className="relative h-full flex flex-col justify-end p-8">
+              <h3 className="text-3xl font-bold font-heading text-brand-heading transform group-hover:-translate-y-2 transition-transform duration-300">{product.title}</h3>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const ProductChangingCabinePage: React.FC = () => {
   useEffect(() => {
+    document.title = "Umkleidekabine aus Beton 'Die Schnecke' | A+ Urban Design";
     const descriptionTag = document.querySelector('meta[name="description"]');
     if (descriptionTag) {
       descriptionTag.setAttribute('content', "Die architektonische Umkleidekabine 'Die Schnecke' aus Beton: Vandalismussicher, fundamentfrei und wartungsarm. Perfekt für Freibäder, Sportanlagen und öffentliche Plätze.");
@@ -19,11 +41,11 @@ const ProductChangingCabinePage: React.FC = () => {
     <PageShell title="Vandalismussichere Umkleidekabine 'Die Schnecke'">
       <div className="text-center mb-12">
            <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Die Schnecke</h1>
-           <p className="mt-2 text-lg text-brand-muted">Fundamentfreie Umkleidekabine für Freibäder</p>
+           <p className="mt-2 text-lg text-brand-muted">Fundamentfreie Umkleidekabine für Freibäder & Sportanlagen</p>
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/18449733/pexels-photo-18449733.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Architektonische Beton-Umkleidekabine in Schneckenform." className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/18449733/pexels-photo-18449733.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Architektonische Beton-Umkleidekabine 'Die Schnecke'." className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/2241144/pexels-photo-2241144.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Innenansicht der fugenlosen und leicht zu reinigenden Bodenplatte aus Beton" className="w-full h-auto object-cover rounded-lg shadow-md" />
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Die Umkleidekabine 'Schnecke' fügt sich harmonisch in die urbane Landschaft ein" className="w-full h-auto object-cover rounded-lg shadow-md" />
@@ -51,6 +73,7 @@ const ProductChangingCabinePage: React.FC = () => {
           </Link>
         </div>
       </div>
+       <OtherProducts />
     </PageShell>
   );
 };

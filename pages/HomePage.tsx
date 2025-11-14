@@ -36,15 +36,15 @@ const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}>
 const HERO_IMAGES = [
   {
     src: 'https://images.pexels.com/photos/9523600/pexels-photo-9523600.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80',
-    alt: 'Eine Person sitzt nachdenklich inmitten von alten, steinernen Tempelruinen.'
+    alt: 'Architektonische Betonmodule für den urbanen Raum.'
   },
   {
     src: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80',
-    alt: 'Ein Skater in einem modernen Beton-Skatepark bei Sonnenuntergang.'
+    alt: 'Professioneller Skater in einem Beton-Skatepark bei Sonnenuntergang.'
   },
   {
     src: 'https://images.pexels.com/photos/2422256/pexels-photo-2422256.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80',
-    alt: 'Architektonische Betonelemente bilden eine interessante Struktur in einem urbanen Raum.'
+    alt: 'Modulare Betonelemente bilden eine interessante Struktur für Skate-Anlagen.'
   }
 ];
 
@@ -82,7 +82,7 @@ const HomePage: React.FC = () => {
         <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="max-w-4xl">
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter leading-none animate-fade-in-up">
-              Modulare <br />Architektur für <span className="text-brand-orange">Freiräume</span>
+              Architektur & Betonmodule für <span className="text-brand-orange">Skateparks</span> und <span className="text-brand-orange">Pumptracks</span>
             </h1>
           </div>
         </div>
@@ -92,17 +92,17 @@ const HomePage: React.FC = () => {
         <AnimatedSection>
             <div className="text-center">
               <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Produkte für den öffentlichen Raum</h2>
-              <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Vandalismusresistent, fundamentfrei und modular – entdecken Sie unsere Lösungen für moderne Freiräume, die Bewegung und Begegnung fördern.</p>
+              <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Vandalismusresistent, fundamentfrei und modular – entdecken Sie unsere TÜV-geprüften Lösungen für moderne Freiräume, die Bewegung und Begegnung fördern.</p>
             </div>
         </AnimatedSection>
-          <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PRODUCTS.map((product, index) => (
+          <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {PRODUCTS.slice(0, 7).map((product, index) => (
               <AnimatedSection key={product.id} className={`[animation-delay:${index * 150}ms]`}>
                   <Link to={product.path} className="group relative block overflow-hidden rounded-xl shadow-lg hover:shadow-brand-orange/20 transition-shadow duration-300 aspect-[4/5] bg-brand-surface">
                     <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100"/>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                    <div className="relative h-full flex flex-col justify-end p-8">
-                      <h3 className="text-3xl font-bold font-heading text-brand-heading transform group-hover:-translate-y-2 transition-transform duration-300">{product.title}</h3>
+                    <div className="relative h-full flex flex-col justify-end p-6">
+                      <h3 className="text-2xl font-bold font-heading text-brand-heading transform group-hover:-translate-y-2 transition-transform duration-300">{product.title}</h3>
                     </div>
                   </Link>
               </AnimatedSection>
@@ -111,13 +111,13 @@ const HomePage: React.FC = () => {
 
         <section id="philosophy" className="mt-24 md:mt-40">
           <div className="text-center">
-            <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Robust. Modular. Fundamentfrei.</h2>
-            <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Unsere Design-Philosophie basiert auf drei Säulen, die Langlebigkeit, Flexibilität und Ästhetik garantieren.</p>
+            <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Robust. Modular. Langlebig.</h2>
+            <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Unsere Design-Philosophie basiert auf Säulen, die Langlebigkeit, Flexibilität und Wirtschaftlichkeit garantieren.</p>
           </div>
           <div className="mt-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-brand-surface rounded-xl p-8">
-               <h3 className="text-2xl font-bold font-heading text-brand-heading">Einfacher Aufbau ohne Fundamente</h3>
-               <p className="mt-4 text-brand-muted">Unsere Elemente werden auf verdichteten Schotterbetten platziert. Das spart Zeit, Kosten und aufwendige Erdarbeiten.</p>
+               <h3 className="text-2xl font-bold font-heading text-brand-heading">Ohne Fundament möglich</h3>
+               <p className="mt-4 text-brand-muted">Unsere Elemente werden auf verdichteten Schotterbetten platziert. Das spart Zeit, Kosten und aufwendige Erdarbeiten und schont den Untergrund.</p>
             </div>
             <div className="bg-brand-surface rounded-xl p-8">
                <h3 className="text-2xl font-bold font-heading text-brand-heading">Witterungsbeständige Materialien</h3>
@@ -127,6 +127,55 @@ const HomePage: React.FC = () => {
                <h3 className="text-2xl font-bold font-heading text-brand-heading">Hohe Vandalismussicherheit</h3>
                <p className="mt-4 text-brand-muted">Die massive Bauweise und die robusten Materialien machen unsere Produkte extrem widerstandsfähig gegen Vandalismus, Feuer und Verrottung.</p>
             </div>
+             <div className="bg-brand-surface rounded-xl p-8">
+               <h3 className="text-2xl font-bold font-heading text-brand-heading">TÜV-geprüft & Sicher</h3>
+               <p className="mt-4 text-brand-muted">Alle unsere Sportgeräte und Skate-Elemente sind nach DIN EN 14974 TÜV-geprüft und GS-zertifiziert für höchste Sicherheitsstandards.</p>
+            </div>
+             <div className="bg-brand-surface rounded-xl p-8">
+               <h3 className="text-2xl font-bold font-heading text-brand-heading">Modular kombinierbar</h3>
+               <p className="mt-4 text-brand-muted">Dank des modularen Aufbaus können Anlagen jederzeit erweitert, umgestaltet oder sogar an einen anderen Ort versetzt werden.</p>
+            </div>
+             <div className="bg-brand-surface rounded-xl p-8">
+               <h3 className="text-2xl font-bold font-heading text-brand-heading">Recycelbare Materialien</h3>
+               <p className="mt-4 text-brand-muted">Wir setzen auf Nachhaltigkeit. Unsere Hauptmaterialien Beton und Stahl sind vollständig recycelbar und umweltschonend.</p>
+            </div>
+          </div>
+        </section>
+
+         <section id="faq" className="mt-24 md:mt-40">
+          <div className="text-center">
+            <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Häufig gestellte Fragen (FAQ)</h2>
+            <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Kurze Antworten auf die wichtigsten Fragen zu unseren Produkten und Leistungen.</p>
+          </div>
+          <div className="mt-20 max-w-4xl mx-auto space-y-6">
+            <details className="p-6 bg-brand-surface rounded-lg group">
+              <summary className="flex items-center justify-between cursor-pointer">
+                <h3 className="text-xl font-heading font-bold text-brand-heading">Was kostet eine Skate-Anlage?</h3>
+                 <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+              </summary>
+              <p className="mt-4 text-brand-muted">Die Kosten für eine Skate-Anlage sind sehr individuell und hängen von der Größe, den gewählten Elementen und den Gegebenheiten vor Ort ab. Gerne erstellen wir Ihnen ein unverbindliches Angebot, das genau auf Ihr Budget und Ihre Wünsche zugeschnitten ist. Kontaktieren Sie uns für eine kostenlose Erstberatung.</p>
+            </details>
+             <details className="p-6 bg-brand-surface rounded-lg group">
+              <summary className="flex items-center justify-between cursor-pointer">
+                <h3 className="text-xl font-heading font-bold text-brand-heading">Wie lange dauert der Aufbau?</h3>
+                 <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+              </summary>
+              <p className="mt-4 text-brand-muted">Dank unseres fundamentfreien, modularen Systems ist der Aufbau extrem schnell. Kleinere Anlagen können oft innerhalb weniger Tage montiert werden. Die genaue Dauer hängt von der Projektgröße ab, ist aber deutlich kürzer als bei herkömmlichen Ortbeton-Bauten.</p>
+            </details>
+             <details className="p-6 bg-brand-surface rounded-lg group">
+              <summary className="flex items-center justify-between cursor-pointer">
+                <h3 className="text-xl font-heading font-bold text-brand-heading">Sind die Elemente TÜV-geprüft?</h3>
+                 <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+              </summary>
+              <p className="mt-4 text-brand-muted">Ja, absolut. Sicherheit hat für uns höchste Priorität. Alle unsere Skate- und Sportelemente sind nach der aktuellen Norm DIN EN 14974 TÜV-geprüft und tragen das GS-Zeichen für "Geprüfte Sicherheit".</p>
+            </details>
+             <details className="p-6 bg-brand-surface rounded-lg group">
+              <summary className="flex items-center justify-between cursor-pointer">
+                <h3 className="text-xl font-heading font-bold text-brand-heading">Kann man die Module später versetzen oder erweitern?</h3>
+                 <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+              </summary>
+              <p className="mt-4 text-brand-muted">Ja, das ist einer der größten Vorteile unseres Systems. Die modularen Elemente sind nicht fest im Boden verankert und können bei Bedarf problemlos versetzt, neu angeordnet oder durch weitere Module ergänzt werden. Das bietet maximale Flexibilität für die Zukunft.</p>
+            </details>
           </div>
         </section>
       </div>
@@ -135,7 +184,7 @@ const HomePage: React.FC = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
             <AnimatedSection>
               <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Planen Sie Ihr nächstes Projekt mit uns.</h2>
-              <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Wir beraten Sie von der ersten Idee bis zur finalen Montage. Fordern Sie jetzt eine unverbindliche Beratung an.</p>
+              <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Wir beraten Sie von der ersten 3D-Planung bis zur finalen Montage. Fordern Sie jetzt eine unverbindliche Beratung für Ihren Skatepark, Pumptrack oder Ihre Freizeitanlage an.</p>
               <Link to="/kontakt" className="mt-10 inline-block bg-brand-orange text-white font-bold py-4 px-12 rounded-md shadow-lg shadow-brand-orange/30 hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300 text-lg">
                 Jetzt Beratung anfordern
               </Link>

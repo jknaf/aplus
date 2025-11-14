@@ -44,27 +44,31 @@ const Chatbot: React.FC = () => {
       }));
       contents.push({ role: 'user', parts: [{ text: inputValue }] });
 
+      // FIX: The development-only logic that used import.meta.env was causing a TypeScript error and is not a secure practice.
+      // All requests now go through the serverless function.
       const apiResponse = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ contents, systemInstruction }),
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ contents, systemInstruction }),
       });
 
       if (!apiResponse.ok) {
-        const errorData = await apiResponse.json();
-        throw new Error(errorData.error || 'Network response was not ok');
+          const errorData = await apiResponse.json();
+          throw new Error(errorData.error || 'Network response was not ok');
       }
-
       const data = await apiResponse.json();
-      const botResponse: Message = { text: data.text, sender: 'bot' };
+      const botResponseText = data.text;
+      
+      const botResponse: Message = { text: botResponseText, sender: 'bot' };
       setMessages((prev) => [...prev, botResponse]);
 
     } catch (error) {
-      console.error('Error communicating with the backend:', error);
+      console.error('Error communicating with AI:', error);
+      // FIX: Removed development-specific error message about missing API key.
+      const errorMessageText = 'Entschuldigung, es ist ein technischer Fehler aufgetreten. Bitte versuchen Sie es später erneut.';
+      
       const errorMessage: Message = {
-        text: 'Entschuldigung, es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
+        text: errorMessageText,
         sender: 'bot',
       };
       setMessages((prev) => [...prev, errorMessage]);

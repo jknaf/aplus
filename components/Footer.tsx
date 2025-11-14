@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { NAV_LINKS } from '../constants';
 
 const Footer: React.FC = () => {
+  const productLinks = NAV_LINKS.find(link => link.name === 'Produkte')?.subLinks || [];
 
   const handlePrivacySettingsClick = () => {
     // This will cause the PrivacyBanner to reappear on reload
@@ -27,7 +29,7 @@ const Footer: React.FC = () => {
               <p>&copy; {new Date().getFullYear()} A+ Urban Design</p>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
               <h3 className="text-sm font-bold uppercase tracking-wider text-brand-heading">Navigation</h3>
               <ul className="mt-4 space-y-3">
@@ -35,6 +37,14 @@ const Footer: React.FC = () => {
                 <li><Link to="/projekte" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Projekte</Link></li>
                 <li><Link to="/ueber-uns" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Über Uns</Link></li>
                 <li><Link to="/kontakt" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Kontakt</Link></li>
+              </ul>
+            </div>
+             <div>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-brand-heading">Produkte</h3>
+              <ul className="mt-4 space-y-3">
+                {productLinks.map(link => (
+                    <li key={link.name}><Link to={link.href} className="text-base text-brand-muted hover:text-brand-orange transition-colors">{link.name}</Link></li>
+                ))}
               </ul>
             </div>
             <div>

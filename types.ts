@@ -7,7 +7,7 @@ export interface Product {
   altText: string;
 }
 
-export type ProjectCategory = 'Skatepark' | 'Pumptrack' | 'Hockey-Bande' | 'Grillstelle' | 'Umkleidekabine';
+export type ProjectCategory = 'Skatepark' | 'Pumptrack' | 'Hockey-Bande' | 'Grillstelle' | 'Umkleidekabine' | 'BMX-Anlage' | 'Spezialbau';
 
 export interface Project {
   id: string;
@@ -21,4 +21,5 @@ export interface Project {
     name: string;
     path: string;
   }[];
+  year?: number;
 }

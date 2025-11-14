@@ -25,7 +25,7 @@ const ProjectDetailPage: React.FC = () => {
     <PageShell title={project.title}>
       <div className="max-w-5xl mx-auto">
         <div className="text-center">
-          <p className="text-sm font-bold text-brand-orange uppercase tracking-wider">{project.category.replace('-', ' ')}</p>
+          <p className="text-sm font-bold text-brand-orange uppercase tracking-wider">{project.category.replace('-', ' ')} {project.year && `(${project.year})`}</p>
           <h1 className="text-4xl md:text-6xl font-black font-heading mt-2 uppercase tracking-tighter">{project.title}</h1>
         </div>
         
@@ -54,7 +54,7 @@ const ProjectDetailPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {project.images.map((image, index) => (
                     <div key={index} className="overflow-hidden rounded-lg">
-                        <img loading="lazy" decoding="async" src={image} alt={`${project.title} - Bild ${index + 1}`} className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
+                        <img loading="lazy" decoding="async" src={image} alt={`${project.title} - ${project.category} Bild ${index + 1}`} className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
                     </div>
                 ))}
             </div>

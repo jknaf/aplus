@@ -5,13 +5,13 @@ const AboutPage: React.FC = () => {
   return (
     <PageShell title="Über Uns">
       <div className="text-center">
-        <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Beton und Stahl</h1>
-         <p className="mt-2 text-lg text-brand-muted">Für Freizeit und Sport</p>
+        <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Über A+ Urban Design: Experten für Beton-Skateparks</h1>
+         <p className="mt-2 text-lg text-brand-muted">Beton und Stahl für Freizeit und Sport</p>
       </div>
 
       <div className="mt-20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
         <div className="md:col-span-2">
-            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/848612/pexels-photo-848612.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="Architekten-Team bei der Planung eines urbanen Skateparks über Bauplänen." className="rounded-lg shadow-xl w-full"/>
+            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/848612/pexels-photo-848612.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="Planung eines urbanen Skateparks über Bauplänen durch das A+ Urban Design Team." className="rounded-lg shadow-xl w-full"/>
         </div>
         <div className="md:col-span-3">
           <h2 className="text-3xl font-bold font-heading">Unsere Philosophie</h2>
@@ -29,7 +29,7 @@ const AboutPage: React.FC = () => {
          <div className="mt-12 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-6 bg-brand-surface rounded-lg">
                 <h3 className="font-bold text-xl font-heading">Planung & Beratung</h3>
-                <p className="mt-2 text-brand-muted">Wir unterstützen Architekten, Stadtplaner und Kommunen von der ersten Idee an. Gemeinsam entwickeln wir maßgeschneiderte Konzepte für Ihren Standort.</p>
+                <p className="mt-2 text-brand-muted">Wir unterstützen Architekten, Stadtplaner und Kommunen von der ersten Idee an. Gemeinsam entwickeln wir maßgeschneiderte 3D-Konzepte für Ihren Standort.</p>
             </div>
              <div className="p-6 bg-brand-surface rounded-lg">
                 <h3 className="font-bold text-xl font-heading">Herstellung</h3>

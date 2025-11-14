@@ -15,6 +15,7 @@ import ContactPage from './pages/ContactPage';
 import ImpressumPage from './pages/ImpressumPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import Chatbot from './components/Chatbot';
+import PrivacyBanner from './components/PrivacyBanner';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -49,6 +50,7 @@ const App: React.FC = () => {
         </main>
         <Footer />
         <Chatbot />
+        <PrivacyBanner />
       </div>
     </HashRouter>
   );

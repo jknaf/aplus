@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+
+  const handlePrivacySettingsClick = () => {
+    // This will cause the PrivacyBanner to reappear on reload
+    localStorage.removeItem('a-plus-urban-design-privacy-consent');
+    window.location.reload();
+  };
+
   return (
     <footer className="bg-brand-surface text-brand-text">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -35,6 +42,7 @@ const Footer: React.FC = () => {
               <ul className="mt-4 space-y-3">
                 <li><Link to="/impressum" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Impressum</Link></li>
                 <li><Link to="/datenschutz" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Datenschutz</Link></li>
+                 <li><button onClick={handlePrivacySettingsClick} className="text-base text-brand-muted hover:text-brand-orange transition-colors text-left">Datenschutz-Einstellungen</button></li>
               </ul>
             </div>
             <div>

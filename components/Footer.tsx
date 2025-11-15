@@ -18,8 +18,8 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block">
                <div className="flex items-center font-black font-heading tracking-tighter text-brand-heading">
-                <span className="text-5xl text-white">A+</span>
-                <span className="ml-3 text-4xl text-brand-orange">Urban Design</span>
+                <span className="text-4xl sm:text-5xl text-white">A+</span>
+                <span className="ml-3 text-3xl sm:text-4xl text-brand-orange">Urban Design</span>
               </div>
             </Link>
             <p className="mt-4 max-w-sm text-brand-muted">

@@ -13,28 +13,43 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
         setMessage('');
 
         try {
-            const response = await fetch('/api/brochure', {
+            // Direct call to the n8n webhook as per user's latest instruction.
+            const response = await fetch('https://trkmuc.app.n8n.cloud/webhook/email', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email.trim() }),
             });
 
             if (!response.ok) {
-                const data = await response.json();
-                throw new Error(data.error || 'Ein Fehler ist aufgetreten.');
+                throw new Error('Fehler beim Senden der Anfrage. Bitte versuchen Sie es später erneut.');
             }
 
             setStatus('success');
-            setMessage('Vielen Dank! Die Broschüre ist auf dem Weg zu Ihnen.');
+            setMessage('Vielen Dank! Die Broschüre ist auf dem Weg in Ihr Postfach.');
             setEmail('');
 
         } catch (error) {
             setStatus('error');
-            setMessage(error instanceof Error ? error.message : 'Bitte versuchen Sie es später erneut.');
+            setMessage(error instanceof Error ? error.message : 'Ein unbekannter Fehler ist aufgetreten.');
         }
     };
 
     const isHomepage = context === 'homepage';
+
+    const feedbackContainer = (
+        <div 
+          role="alert" 
+          aria-live="assertive"
+          className={`
+            ${status === 'success' ? 'bg-green-50 border-l-4 border-green-400 text-green-700 p-4 rounded-lg text-left' : ''}
+            ${status === 'error' ? 'mt-4 text-red-500 text-center' : ''}
+          `}
+        >
+          <p>{message}</p>
+        </div>
+    );
 
     if (isHomepage) {
         return (
@@ -46,12 +61,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                             Erhalten Sie einen umfassenden Überblick über all unsere Produkte, realisierten Projekte und unsere Philosophie. Fordern Sie jetzt unsere digitale Broschüre kostenlos an.
                         </p>
                         <div className="mt-10">
-                            {status === 'success' ? (
-                                <div className="bg-green-50 border-l-4 border-green-400 text-green-700 p-4 rounded-lg text-left" role="alert">
-                                    <p className="font-bold">Anfrage erfolgreich!</p>
-                                    <p>{message}</p>
-                                </div>
-                            ) : (
+                            {status === 'success' ? feedbackContainer : (
                                 <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <label htmlFor="brochure-email-home" className="sr-only">E-Mail Adresse</label>
                                     <input
@@ -63,6 +73,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                                         placeholder="Ihre E-Mail-Adresse"
                                         required
                                         className="w-full sm:w-auto flex-grow px-6 py-4 bg-brand-surface border border-white/10 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-orange sm:text-sm"
+                                        aria-describedby="brochure-feedback-home"
                                     />
                                     <button
                                         type="submit"
@@ -73,7 +84,9 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                                     </button>
                                 </form>
                             )}
-                            {status === 'error' && <p className="mt-4 text-red-500">{message}</p>}
+                            <div id="brochure-feedback-home">
+                                {status === 'error' && feedbackContainer}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,12 +101,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
             <p className="text-brand-muted text-center max-w-xl mx-auto mb-8">
                 Erhalten Sie detaillierte Informationen zu all unseren Produkten direkt in Ihr Postfach.
             </p>
-            {status === 'success' ? (
-                <div className="bg-green-50 border-l-4 border-green-400 text-green-700 p-4 rounded-md text-left" role="alert">
-                    <p className="font-bold">Anfrage erfolgreich!</p>
-                    <p>{message}</p>
-                </div>
-            ) : (
+            {status === 'success' ? feedbackContainer : (
                 <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
                      <label htmlFor="brochure-email-product" className="sr-only">E-Mail Adresse</label>
                     <input
@@ -105,6 +113,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                         placeholder="Ihre E-Mail-Adresse"
                         required
                         className="w-full sm:w-auto flex-grow px-4 py-3 bg-brand-bg border border-white/10 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-orange sm:text-sm"
+                        aria-describedby="brochure-feedback-product"
                     />
                     <button
                         type="submit"
@@ -115,7 +124,9 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                     </button>
                 </form>
             )}
-            {status === 'error' && <p className="mt-4 text-red-500 text-center">{message}</p>}
+             <div id="brochure-feedback-product" className="text-center">
+                {status === 'error' && feedbackContainer}
+            </div>
         </div>
     );
 };

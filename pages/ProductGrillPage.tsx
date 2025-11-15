@@ -24,6 +24,13 @@ const OtherProducts: React.FC = () => {
   );
 }
 
+const CheckmarkIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 w-5 h-5 text-brand-orange mr-3 mt-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+    </svg>
+);
+
+
 const ProductGrillPage: React.FC = () => {
   useEffect(() => {
     document.title = "Öffentliche Grillstelle aus Beton | A+ Urban Design";
@@ -60,13 +67,13 @@ const ProductGrillPage: React.FC = () => {
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Eigenschaften & Vorteile</h2>
             <ul className="mt-6 space-y-4 text-brand-muted">
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> <span className="font-bold mr-2">Materialien:</span> Beton, Edelstahl und verzinkter Stahl</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Extrem robust und witterungsbeständig</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Höhenverstellbarer Grillrost aus Edelstahl (diebstahlsicher)</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Keine Fundamente notwendig (Aufbau auf verdichtetem Schotterbett)</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Integrierte Bodenplatte (keine Pflasterarbeiten nötig)</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Recycelbare Materialien</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> <span className="font-bold mr-2">Technische Daten:</span> Durchmesser 4,20 m, Höhe 2,40 m</li>
+              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Materialien:</span> Beton, Edelstahl und verzinkter Stahl</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>Extrem robust und witterungsbeständig</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>Höhenverstellbarer Grillrost aus Edelstahl (diebstahlsicher)</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>Keine Fundamente notwendig (Aufbau auf verdichtetem Schotterbett)</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>Integrierte Bodenplatte (keine Pflasterarbeiten nötig)</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>Recycelbare Materialien</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Technische Daten:</span> Durchmesser 4,20 m, Höhe 2,40 m</div></li>
             </ul>
           </div>
           <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">

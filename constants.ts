@@ -11,7 +11,7 @@ export const NAV_LINKS = [
       { name: 'BMX-Anlagen', href: '/produkte/bmx-anlagen' },
       { name: 'Hockey-Banden', href: '/produkte/hockey-banden' },
       { name: 'Grillstelle Beton', href: '/produkte/grillstelle-beton' },
-      { name: 'Umkleidekabine "Die Schnecke"', href: '/produkte/umkleidekabine-beton' },
+      { name: 'Umkleidekabine', href: '/produkte/umkleidekabine-beton' },
       { name: 'Überdachung / Pavillon', href: '/produkte/ueberdachung-beton' },
     ]
   },
@@ -62,10 +62,10 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'umkleide',
-    title: 'Umkleidekabine "Die Schnecke"',
+    title: 'Umkleidekabine',
     imageUrl: 'https://images.pexels.com/photos/18449733/pexels-photo-18449733.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
     path: '/produkte/umkleidekabine-beton',
-    altText: 'Eine moderne Beton-Umkleidekabine in Schneckenform von A+ Urban Design.'
+    altText: 'Eine moderne Beton-Umkleidekabine von A+ Urban Design.'
   },
   {
     id: 'ueberdachung',
@@ -153,10 +153,10 @@ export const PROJECTS: Project[] = [
             "https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
             "https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
         ],
-        description: "Im Rahmen der Modernisierung des Freibads Süd wurden sechs unserer 'Die Schnecke' Umkleidekabinen installiert. Sie bieten den Badegästen eine moderne, saubere und sichere Umkleidemöglichkeit.",
-        altText: "Reihe von architektonischen Beton-Umkleidekabinen 'Die Schnecke'.",
+        description: "Im Rahmen der Modernisierung des Freibads Süd wurden sechs unserer Umkleidekabinen installiert. Sie bieten den Badegästen eine moderne, saubere und sichere Umkleidemöglichkeit.",
+        altText: "Reihe von architektonischen Beton-Umkleidekabinen.",
         productsUsed: [
-            { name: 'Umkleidekabine "Die Schnecke"', path: "/produkte/umkleidekabine-beton" },
+            { name: 'Umkleidekabine', path: "/produkte/umkleidekabine-beton" },
         ]
     },
     { 

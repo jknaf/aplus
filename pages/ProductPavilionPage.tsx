@@ -24,6 +24,12 @@ const OtherProducts: React.FC = () => {
   );
 }
 
+const CheckmarkIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 w-5 h-5 text-brand-orange mr-3 mt-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+    </svg>
+);
+
 const ProductPavilionPage: React.FC = () => {
   useEffect(() => {
     document.title = "Überdachung & Pavillon aus Beton | A+ Urban Design";
@@ -60,12 +66,12 @@ const ProductPavilionPage: React.FC = () => {
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Vorteile unserer Beton-Überdachungen</h2>
             <ul className="mt-6 space-y-4 text-brand-muted">
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> <span className="font-bold mr-2">Fundamentfreier Aufbau:</span> Spart Zeit, Kosten und Erdarbeiten.</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> <span className="font-bold mr-2">Extrem Vandalismussicher:</span> Massive Bauweise aus Hochleistungsbeton.</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> <span className="font-bold mr-2">Witterungsbeständig:</span> Hält jeder Witterung stand, von starker Sonne bis Frost.</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> <span className="font-bold mr-2">Wartungsfrei:</span> Kein Streichen, kein Verrotten.</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> <span className="font-bold mr-2">Modulares Design:</span> In verschiedenen Größen und Designs erhältlich.</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Recycelbare Materialien für hohe Nachhaltigkeit.</li>
+              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Fundamentfreier Aufbau:</span> Spart Zeit, Kosten und Erdarbeiten.</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Extrem Vandalismussicher:</span> Massive Bauweise aus Hochleistungsbeton.</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Witterungsbeständig:</span> Hält jeder Witterung stand, von starker Sonne bis Frost.</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Wartungsfrei:</span> Kein Streichen, kein Verrotten.</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Modulares Design:</span> In verschiedenen Größen und Designs erhältlich.</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>Recycelbare Materialien für hohe Nachhaltigkeit.</div></li>
             </ul>
           </div>
           <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">

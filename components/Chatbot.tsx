@@ -16,6 +16,7 @@ const Chatbot: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const chatMessagesRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   
   const scrollToBottom = () => {
     if (chatMessagesRef.current) {
@@ -26,6 +27,12 @@ const Chatbot: React.FC = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => inputRef.current?.focus(), 100); // Delay to allow for transition
+    }
+  }, [isOpen]);
 
   const handleSendMessage = async () => {
     if (inputValue.trim() === '' || isLoading) return;
@@ -85,33 +92,40 @@ const Chatbot: React.FC = () => {
 
   return (
     <>
-      <div className={`fixed bottom-8 right-8 z-50 transition-all duration-300 ${isOpen ? 'opacity-0 scale-90' : 'opacity-100 scale-100'}`}>
+      <div className={`fixed bottom-8 right-8 z-50 transition-all duration-300 ${isOpen ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100'}`}>
         <button
           onClick={() => setIsOpen(true)}
           className="bg-brand-orange text-white w-16 h-16 rounded-full shadow-2xl shadow-brand-orange/40 flex items-center justify-center hover:bg-opacity-90 transform hover:-translate-y-1 transition-all"
           aria-label="Chatbot öffnen"
+          aria-controls="chatbot-window"
+          aria-expanded={isOpen}
         >
-          <span className="material-symbols-outlined text-3xl">voice_chat</span>
+          <span className="material-symbols-outlined text-3xl" aria-hidden="true">voice_chat</span>
         </button>
       </div>
 
       <div
+        id="chatbot-window"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="chatbot-header"
+        aria-hidden={!isOpen}
         className={`fixed bottom-8 right-8 z-50 w-[calc(100%-4rem)] max-w-md h-[70vh] bg-brand-surface rounded-2xl shadow-2xl flex flex-col transition-all duration-300 origin-bottom-right ${
           isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-90 pointer-events-none'
         }`}
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-white/10 flex-shrink-0">
-          <div className="flex items-center">
+          <div className="flex items-center" id="chatbot-header">
              <span className="text-xl font-black font-heading text-brand-heading tracking-tighter">A+<span className="text-brand-orange"> Bot</span></span>
           </div>
           <button onClick={() => setIsOpen(false)} className="text-brand-muted hover:text-white" aria-label="Chat schließen">
-             <span className="material-symbols-outlined">close</span>
+             <span className="material-symbols-outlined" aria-hidden="true">close</span>
           </button>
         </div>
 
         {/* Messages */}
-        <div ref={chatMessagesRef} className="flex-grow p-4 space-y-4 overflow-y-auto">
+        <div ref={chatMessagesRef} className="flex-grow p-4 space-y-4 overflow-y-auto" role="log" aria-live="polite">
           {messages.map((msg, index) => (
             <div key={index} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div
@@ -128,7 +142,8 @@ const Chatbot: React.FC = () => {
           {isLoading && (
             <div className="flex justify-start">
                <div className="max-w-[80%] p-3 rounded-2xl bg-brand-bg text-brand-text rounded-bl-lg">
-                   <div className="flex items-center space-x-1">
+                   <div className="flex items-center space-x-1" role="status" aria-label="Bot schreibt...">
+                      <span className="sr-only">Bot schreibt...</span>
                       <span className="h-2 w-2 bg-brand-muted rounded-full animate-bounce [animation-delay:-0.3s]"></span>
                       <span className="h-2 w-2 bg-brand-muted rounded-full animate-bounce [animation-delay:-0.15s]"></span>
                       <span className="h-2 w-2 bg-brand-muted rounded-full animate-bounce"></span>
@@ -141,7 +156,10 @@ const Chatbot: React.FC = () => {
         {/* Input */}
         <div className="p-4 border-t border-white/10 flex-shrink-0">
           <div className="flex items-center space-x-2">
+            <label htmlFor="chat-input" className="sr-only">Stellen Sie eine Frage...</label>
             <input
+              id="chat-input"
+              ref={inputRef}
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
@@ -156,7 +174,7 @@ const Chatbot: React.FC = () => {
               className="bg-brand-orange text-white rounded-full p-2 disabled:bg-brand-muted"
               aria-label="Nachricht senden"
             >
-              <span className="material-symbols-outlined">send</span>
+              <span className="material-symbols-outlined" aria-hidden="true">send</span>
             </button>
           </div>
         </div>

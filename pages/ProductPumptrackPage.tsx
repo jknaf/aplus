@@ -24,6 +24,12 @@ const OtherProducts: React.FC = () => {
   );
 }
 
+const CheckmarkIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 w-5 h-5 text-brand-orange mr-3 mt-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+    </svg>
+);
+
 const ProductPumptrackPage: React.FC = () => {
   useEffect(() => {
     document.title = "Pumptrack aus Beton planen & bauen | A+ Urban Design";
@@ -43,11 +49,11 @@ const ProductPumptrackPage: React.FC = () => {
       <div className="text-center mb-12">
             <div className="flex justify-center items-center gap-4 flex-wrap">
                 <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Pumptracks aus Beton</h1>
-                <div className="group relative">
-                    <div className="bg-white text-brand-bg font-bold px-3 py-1.5 rounded-md shadow-lg text-sm cursor-help">
+                <div className="group/siegel relative">
+                    <button type="button" aria-describedby="tuv-info-pumptrack" className="bg-white text-brand-bg font-bold px-3 py-1.5 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-bg focus:ring-brand-orange">
                         TÜV-GEPRÜFT
-                    </div>
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max bg-brand-bg text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                    </button>
+                    <div id="tuv-info-pumptrack" role="tooltip" className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max bg-brand-bg text-white text-xs px-2 py-1 rounded opacity-0 group-hover/siegel:opacity-100 group-focus-within/siegel:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                         Geprüfte Sicherheit nach DIN EN 14974
                     </div>
                 </div>
@@ -76,11 +82,11 @@ const ProductPumptrackPage: React.FC = () => {
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Vorteile unserer Pumptracks</h2>
             <ul className="mt-6 space-y-4 text-brand-muted">
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> TÜV-zertifiziert nach DIN EN 14974 & GS-geprüft</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Langlebiger Hochleistungsbeton</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Wartungsarm und Vandalismussicher</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Modular und flexibel erweiterbar</li>
-              <li className="flex items-start"><span className="text-brand-orange mr-3 mt-1">&#10003;</span> Schneller Aufbau ohne Fundamente</li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>TÜV-zertifiziert nach DIN EN 14974 & GS-geprüft</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>Langlebiger Hochleistungsbeton</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>Wartungsarm und Vandalismussicher</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>Modular und flexibel erweiterbar</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div>Schneller Aufbau ohne Fundamente</div></li>
             </ul>
           </div>
           <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">

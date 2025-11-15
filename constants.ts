@@ -24,17 +24,17 @@ export const PRODUCTS: Product[] = [
    {
     id: 'skate-anlagen',
     title: 'Beton Skate-Anlagen',
-    imageUrl: 'https://images.pexels.com/photos/4167333/pexels-photo-4167333.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.1-img_2091-756x430.jpg/picture-200',
     path: '/produkte/skate-anlagen',
-    altText: 'Ein Skater in Aktion in einem modernen Beton-Skatepark von A+ Urban Design.',
+    altText: 'BETON-SKATEANLAGE A+ Urban Design',
     tuvCertified: true,
   },
   {
     id: 'pumptrack',
     title: 'Pumptrack aus Beton',
-    imageUrl: 'https://images.pexels.com/photos/848612/pexels-photo-848612.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.p1070529-track1-756x430.jpg/picture-200',
     path: '/produkte/pumptrack-beton',
-    altText: 'Ein Fahrer auf einer geschwungenen Betonbahn, einem Pumptrack von A+ Urban Design.',
+    altText: 'Pump-Track A+ Urban Design',
     tuvCertified: true,
   },
   {
@@ -48,31 +48,31 @@ export const PRODUCTS: Product[] = [
   {
     id: 'hockey',
     title: 'Hockey-Banden',
-    imageUrl: 'https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.2-cimg9951ca%2Bhocke-breitn-756x430.jpg/picture-200',
     path: '/produkte/hockey-banden',
-    altText: 'Robuste Inline-Hockey-Banden für ein professionelles Spielfeld.',
+    altText: 'INLINE-HOCKEY-BANDEN A+ Urban Design',
     tuvCertified: true,
   },
   {
     id: 'grillstelle',
     title: 'Öffentliche Grillstelle',
-    imageUrl: 'https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.3-p1260721-756x430.jpg/picture-200',
     path: '/produkte/grillstelle-beton',
-    altText: 'Eine massive, öffentliche Grillstelle aus Beton in einem Park.'
+    altText: 'GRILL-STELLE MIT SITZFLÄCHEN A+ Urban Design'
   },
   {
     id: 'umkleide',
     title: 'Umkleidekabine',
-    imageUrl: 'https://images.pexels.com/photos/18449733/pexels-photo-18449733.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-092738a-756x430.jpg/picture-200',
     path: '/produkte/umkleidekabine-beton',
-    altText: 'Eine moderne Beton-Umkleidekabine von A+ Urban Design.'
+    altText: 'BETON UMKLEIDE-KABINE A+ Urban Design'
   },
   {
     id: 'ueberdachung',
     title: 'Überdachung / Pavillon',
-    imageUrl: 'https://images.pexels.com/photos/1743165/pexels-photo-1743165.jpeg?auto=compress&cs=tinysrgb&w=500&h=500&fit=crop',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200',
     path: '/produkte/ueberdachung-beton',
-    altText: 'Eine architektonische Überdachung aus Beton als Wetterschutz.'
+    altText: 'ÜBERDACHUNG / PAVILLON AUS BETON A+ Urban Design'
   },
 ];
 

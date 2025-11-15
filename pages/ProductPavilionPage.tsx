@@ -52,7 +52,7 @@ const ProductPavilionPage: React.FC = () => {
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1743165/pexels-photo-1743165.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Architektonische Überdachung aus Beton in einem Park" className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img loading="lazy" decoding="async" src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200?format=auto&width=1200" alt="ÜBERDACHUNG / PAVILLON AUS BETON A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/208801/pexels-photo-208801.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Moderner Beton-Pavillon als Treffpunkt" className="w-full h-auto object-cover rounded-lg shadow-md" />
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/210393/pexels-photo-210393.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Detail der massiven Betonkonstruktion eines Pavillons" className="w-full h-auto object-cover rounded-lg shadow-md" />

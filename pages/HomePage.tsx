@@ -36,10 +36,6 @@ const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}>
 
 const HERO_IMAGES = [
   {
-    src: 'https://images.pexels.com/photos/9523600/pexels-photo-9523600.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80',
-    alt: 'Architektonische Betonmodule für den urbanen Raum.'
-  },
-  {
     src: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop&q=80',
     alt: 'Professioneller Skater in einem Beton-Skatepark bei Sonnenuntergang.'
   },

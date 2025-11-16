@@ -19,6 +19,16 @@ const PrivacyBanner: React.FC = () => {
         if (!consent) {
             setIsVisible(true);
         }
+
+        const showSettingsHandler = () => {
+            setIsVisible(true);
+        };
+        
+        window.addEventListener('showPrivacySettings', showSettingsHandler);
+
+        return () => {
+            window.removeEventListener('showPrivacySettings', showSettingsHandler);
+        };
     }, []);
 
     const handleAcceptAll = () => {

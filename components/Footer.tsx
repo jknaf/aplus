@@ -6,9 +6,8 @@ const Footer: React.FC = () => {
   const productLinks = NAV_LINKS.find(link => link.name === 'Produkte')?.subLinks || [];
 
   const handlePrivacySettingsClick = () => {
-    // This will cause the PrivacyBanner to reappear on reload
-    localStorage.removeItem('a-plus-urban-design-privacy-consent');
-    window.location.reload();
+    // Dispatch a custom event to be caught by the PrivacyBanner component
+    window.dispatchEvent(new CustomEvent('showPrivacySettings'));
   };
 
   return (
@@ -18,11 +17,17 @@ const Footer: React.FC = () => {
           
           {/* Brand Info Column */}
           <div className="sm:col-span-2 md:col-span-4 lg:col-span-2">
-            <Link to="/" className="inline-block">
-               <div className="flex items-center font-black font-heading tracking-tighter text-brand-heading">
-                <span className="text-4xl sm:text-5xl text-white">A+</span>
-                <span className="ml-3 text-3xl sm:text-4xl text-brand-orange">Urban Design</span>
-              </div>
+            <Link to="/" className="flex items-center gap-4 inline-block">
+              <img
+                src="https://i.ibb.co/XfPGVqNK/logoaplus.png"
+                alt="A+ Logo"
+                width={80}
+                height={80}
+                className="inline-block align-middle"
+              />
+              <span className="text-3xl sm:text-4xl text-brand-orange font-black font-heading tracking-tighter">
+                Urban Design
+              </span>
             </Link>
             <p className="mt-6 max-w-xs text-brand-muted">
               ARCHITEKTUR UND URBANES DESIGN – BETON UND STAHL FÜR FREIZEIT UND SPORT.

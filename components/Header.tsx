@@ -41,11 +41,17 @@ const Header: React.FC = () => {
     <header className="bg-brand-bg/80 backdrop-blur-md sticky top-0 z-50 border-b border-white/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
-          <Link to="/" className="flex-shrink-0" aria-label="A+ Urban Design Homepage">
-            <div className="flex items-center font-black font-heading tracking-tighter">
-              <span className="text-2xl sm:text-3xl text-white">A+</span>
-              <span className="ml-2 text-xl sm:text-2xl text-brand-orange">Urban Design</span>
-            </div>
+           <Link to="/" className="flex items-center gap-3 flex-shrink-0" aria-label="A+ Urban Design Homepage">
+            <img
+              src="https://i.ibb.co/XfPGVqNK/logoaplus.png"
+              alt="A+ Logo"
+              width={60}
+              height={60}
+              className="inline-block align-middle"
+            />
+            <span className="text-2xl sm:text-3xl text-brand-orange font-black font-heading tracking-tighter">
+              Urban Design
+            </span>
           </Link>
           <nav className="hidden md:block" aria-label="Hauptnavigation">
             <div className="ml-10 flex items-baseline space-x-8">

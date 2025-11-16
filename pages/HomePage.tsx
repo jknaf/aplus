@@ -78,9 +78,12 @@ const HomePage: React.FC = () => {
         ))}
         <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="max-w-4xl">
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter leading-none animate-fade-in-up">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-heading uppercase tracking-tighter leading-none animate-fade-in-up">
               Architektur für <span className="text-brand-orange">Freiräume</span>
             </h1>
+            <p className="mt-4 text-2xl md:text-3xl text-brand-heading animate-fade-in-up [animation-delay:200ms]">
+                Skateparks, Pumptracks & Betonanlagen
+            </p>
           </div>
         </div>
       </div>

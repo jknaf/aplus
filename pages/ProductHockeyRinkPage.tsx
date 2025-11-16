@@ -56,7 +56,7 @@ const ProductHockeyRinkPage: React.FC = () => {
     <PageShell title="Modulare Hockey-Banden (fundamentfrei)">
        <div className="text-center mb-12">
             <div className="flex justify-center items-center gap-4 flex-wrap">
-                <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Hockey-Banden & Tore</h1>
+                <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Inline-Hockey-Banden & Tore</h1>
                 <div className="group/siegel relative">
                     <button type="button" aria-describedby="tuv-info-hockey" className="bg-white text-brand-bg font-bold px-3 py-1.5 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-bg focus:ring-brand-orange">
                         TÜV-ZERTIFIZIERT

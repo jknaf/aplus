@@ -55,7 +55,7 @@ const ProductPavilionPage: React.FC = () => {
   return (
     <PageShell title="Überdachung & Pavillon aus Beton">
        <div className="text-center mb-12">
-           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Überdachung / Pavillon</h1>
+           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Pavillon & Überdachung aus Beton</h1>
            <p className="mt-2 text-lg text-brand-muted">Robuster Wetterschutz für den öffentlichen Raum</p>
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

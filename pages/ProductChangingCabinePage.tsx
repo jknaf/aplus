@@ -55,7 +55,7 @@ const ProductChangingCabinePage: React.FC = () => {
   return (
     <PageShell title="Vandalismussichere Umkleidekabine">
       <div className="text-center mb-12">
-           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">"Die Schnecke"</h1>
+           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Beton-Umkleidekabine "Die Schnecke"</h1>
            <p className="mt-2 text-lg text-brand-muted">Fundamentfreie Umkleidekabine für Freibäder & Sportanlagen</p>
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

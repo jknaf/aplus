@@ -56,7 +56,7 @@ const ProductGrillPage: React.FC = () => {
   return (
     <PageShell title="Öffentliche Grillstelle aus Beton">
        <div className="text-center mb-12">
-           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Robuste Grillstelle</h1>
+           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Öffentliche Grillstelle aus Beton</h1>
            <p className="mt-2 text-lg text-brand-muted">Für den öffentlichen Raum</p>
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

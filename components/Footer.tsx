@@ -24,6 +24,9 @@ const Footer: React.FC = () => {
                 width={80}
                 height={80}
                 className="inline-block align-middle"
+                loading="eager"
+                decoding="sync"
+                fetchPriority="high"
               />
               <span className="text-3xl sm:text-4xl text-brand-orange font-black font-heading tracking-tighter">
                 Urban Design

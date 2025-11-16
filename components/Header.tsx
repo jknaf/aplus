@@ -48,6 +48,9 @@ const Header: React.FC = () => {
               width={40}
               height={40}
               className="inline-block align-middle"
+              loading="eager"
+              decoding="sync"
+              fetchPriority="high"
             />
             <span className="text-2xl sm:text-3xl text-brand-orange font-black font-heading tracking-tighter">
               Urban Design

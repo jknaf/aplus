@@ -19,8 +19,8 @@ const Footer: React.FC = () => {
           <div className="sm:col-span-2 md:col-span-4 lg:col-span-2">
             <Link to="/" className="flex items-center gap-4 inline-block">
               <img
-                src="https://i.ibb.co/XfPGVqNK/logoaplus.png"
-                alt="A+ Logo"
+                src="https://i.ibb.co/8L4v9mMQ/apluslogo.png"
+                alt="A+ Urban Design Logo"
                 width={80}
                 height={80}
                 className="inline-block align-middle"

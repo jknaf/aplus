@@ -43,10 +43,10 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-24">
            <Link to="/" className="flex items-center gap-3 flex-shrink-0" aria-label="A+ Urban Design Homepage">
             <img
-              src="https://i.ibb.co/XfPGVqNK/logoaplus.png"
-              alt="A+ Logo"
-              width={60}
-              height={60}
+              src="https://i.ibb.co/8L4v9mMQ/apluslogo.png"
+              alt="A+ Urban Design Logo"
+              width={40}
+              height={40}
               className="inline-block align-middle"
             />
             <span className="text-2xl sm:text-3xl text-brand-orange font-black font-heading tracking-tighter">

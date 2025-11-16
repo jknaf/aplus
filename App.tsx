@@ -17,7 +17,6 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ImpressumPage from './pages/ImpressumPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import Chatbot from './components/Chatbot';
 import PrivacyBanner from './components/PrivacyBanner';
 
 const ScrollToTop: React.FC = () => {
@@ -55,7 +54,6 @@ const App: React.FC = () => {
           </Routes>
         </main>
         <Footer />
-        <Chatbot />
         <PrivacyBanner />
       </div>
     </HashRouter>

@@ -89,7 +89,7 @@ const HomePage: React.FC = () => {
         <AnimatedSection>
             <div className="text-center">
               <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Unsere Produktwelten</h2>
-              <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Ein Auszug unserer modularen Lösungen aus Beton und Stahl: Vandalismusresistent, fundamentfrei und TÜV-geprüft für moderne Freiräume, die Bewegung und Begegnung fördern.</p>
+              <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Ein Auszug unserer modularen Lösungen aus Beton und Stahl: Vandalismusresistent, fundamentfrei und TÜV-zertifiziert für moderne Freiräume, die Bewegung und Begegnung fördern.</p>
             </div>
         </AnimatedSection>
           <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -101,7 +101,7 @@ const HomePage: React.FC = () => {
                     {product.tuvCertified && (
                         <div className="group/siegel absolute top-3 right-3 z-10">
                              <button type="button" aria-describedby={`tuv-info-${product.id}`} className="bg-white text-brand-bg font-bold text-xs px-2 py-1 rounded-sm shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-surface focus:ring-brand-orange">
-                                TÜV-GEPRÜFT
+                                TÜV-ZERTIFIZIERT
                             </button>
                             <div id={`tuv-info-${product.id}`} role="tooltip" className="absolute top-full right-0 mt-1 w-max bg-brand-bg text-white text-xs px-2 py-1 rounded opacity-0 group-hover/siegel:opacity-100 group-focus/siegel:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 Geprüfte Sicherheit nach DIN EN 14974
@@ -148,9 +148,9 @@ const HomePage: React.FC = () => {
              <div className="bg-brand-surface rounded-xl p-8 grid grid-rows-[auto_1fr] h-full">
                 <div className="flex items-start gap-4">
                   <span className="material-symbols-outlined text-4xl text-brand-orange flex-shrink-0 mt-1" aria-hidden="true">verified_user</span>
-                  <h3 className="text-2xl font-bold font-heading text-brand-heading">TÜV-geprüft & Sicher</h3>
+                  <h3 className="text-2xl font-bold font-heading text-brand-heading">TÜV-zertifiziert & Sicher</h3>
                 </div>
-               <p className="mt-4 text-brand-muted">Alle unsere Sportgeräte und Skate-Elemente sind nach DIN EN 14974 TÜV-geprüft und GS-zertifiziert für höchste Sicherheitsstandards.</p>
+               <p className="mt-4 text-brand-muted">Alle unsere Sportgeräte und Skate-Elemente sind nach DIN EN 14974 TÜV-zertifiziert und GS-zertifiziert für höchste Sicherheitsstandards.</p>
             </div>
              <div className="bg-brand-surface rounded-xl p-8 grid grid-rows-[auto_1fr] h-full">
                <div className="flex items-start gap-4">
@@ -191,10 +191,10 @@ const HomePage: React.FC = () => {
             </details>
              <details className="p-6 bg-brand-surface rounded-lg group">
               <summary className="flex items-center justify-between cursor-pointer">
-                <h3 className="text-xl font-heading font-bold text-brand-heading">Sind die Elemente TÜV-geprüft?</h3>
+                <h3 className="text-xl font-heading font-bold text-brand-heading">Sind die Elemente TÜV-zertifiziert?</h3>
                  <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180" aria-hidden="true">expand_more</span>
               </summary>
-              <p className="mt-4 text-brand-muted">Ja, absolut. Sicherheit hat für uns höchste Priorität. Alle unsere Skate- und Sportelemente sind nach der aktuellen Norm DIN EN 14974 TÜV-geprüft und tragen das GS-Zeichen für "Geprüfte Sicherheit".</p>
+              <p className="mt-4 text-brand-muted">Ja, absolut. Sicherheit hat für uns höchste Priorität. Alle unsere Skate- und Sportelemente sind nach der aktuellen Norm DIN EN 14974 TÜV-zertifiziert und tragen das GS-Zeichen für "Geprüfte Sicherheit".</p>
             </details>
              <details className="p-6 bg-brand-surface rounded-lg group">
               <summary className="flex items-center justify-between cursor-pointer">

@@ -35,7 +35,7 @@ const ProductBmxPage: React.FC = () => {
     document.title = "BMX-Anlagen & BMX-Parks aus Beton | A+ Urban Design";
     const descriptionTag = document.querySelector('meta[name="description"]');
     if (descriptionTag) {
-      descriptionTag.setAttribute('content', 'Robuste BMX-Anlagen und BMX-Parks aus modularen Betonelementen. TÜV-geprüfte Jump-Ramps, Dirt-Lines und mehr. Vandalismussicher und wartungsarm.');
+      descriptionTag.setAttribute('content', 'Robuste BMX-Anlagen und BMX-Parks aus modularen Betonelementen. TÜV-zertifizierte Jump-Ramps, Dirt-Lines und mehr. Vandalismussicher und wartungsarm.');
     }
 
     const keywordsTag = document.querySelector('meta[name="keywords"]');
@@ -51,7 +51,7 @@ const ProductBmxPage: React.FC = () => {
                 <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">BMX-Anlagen aus Beton</h1>
                  <div className="group/siegel relative">
                     <button type="button" aria-describedby="tuv-info-bmx" className="bg-white text-brand-bg font-bold px-3 py-1.5 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-bg focus:ring-brand-orange">
-                        TÜV-GEPRÜFT
+                        TÜV-ZERTIFIZIERT
                     </button>
                     <div id="tuv-info-bmx" role="tooltip" className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max bg-brand-bg text-white text-xs px-2 py-1 rounded opacity-0 group-hover/siegel:opacity-100 group-focus-within/siegel:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                         Geprüfte Sicherheit nach DIN EN 14974
@@ -78,7 +78,7 @@ const ProductBmxPage: React.FC = () => {
             <ul className="mt-6 space-y-4 text-brand-muted">
               <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Individuelle Planung:</span> Maßgeschneiderte 3D-Layouts für jeden Bedarf.</div></li>
               <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Beton-Elemente:</span> Jump-Ramps, Dirt-Lines, Spines, Bowls und mehr.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Maximale Sicherheit:</span> TÜV-geprüft nach DIN EN 14974.</div></li>
+              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Maximale Sicherheit:</span> TÜV-zertifiziert nach DIN EN 14974.</div></li>
               <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Fundamentfrei:</span> Reduziert Baukosten und -zeit erheblich.</div></li>
               <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Kombinierbar:</span> Ideal in Verbindung mit Pumptracks und Skate-Anlagen.</div></li>
               <li className="flex items-start"><CheckmarkIcon /> <div>Vandalismusresistent und extrem wartungsarm.</div></li>

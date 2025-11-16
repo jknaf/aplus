@@ -56,7 +56,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
             <section id="brochure" className="bg-brand-bg">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
                     <div className="max-w-3xl mx-auto">
-                        <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Unsere Digitale Broschüre</h2>
+                        <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Unsere digitale Broschüre</h2>
                         <p className="mt-4 text-lg text-brand-muted">
                             Erhalten Sie einen umfassenden Überblick über all unsere Produkte, realisierten Projekte und unsere Philosophie. Fordern Sie jetzt unsere digitale Broschüre kostenlos an.
                         </p>

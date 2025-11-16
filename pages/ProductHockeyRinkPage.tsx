@@ -51,7 +51,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                 <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Hockey-Banden</h1>
                 <div className="group/siegel relative">
                     <button type="button" aria-describedby="tuv-info-hockey" className="bg-white text-brand-bg font-bold px-3 py-1.5 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-bg focus:ring-brand-orange">
-                        TÜV-GEPRÜFT
+                        TÜV-ZERTIFIZIERT
                     </button>
                     <div id="tuv-info-hockey" role="tooltip" className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max bg-brand-bg text-white text-xs px-2 py-1 rounded opacity-0 group-hover/siegel:opacity-100 group-focus-within/siegel:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                         Geprüfte Sicherheit nach DIN EN 14974

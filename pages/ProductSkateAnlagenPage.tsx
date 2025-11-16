@@ -36,12 +36,12 @@ const ProductSkateAnlagenPage: React.FC = () => {
     document.title = "Beton-Skateparks & Skate-Anlagen planen | A+ Urban Design";
     const descriptionTag = document.querySelector('meta[name="description"]');
     if (descriptionTag) {
-      descriptionTag.setAttribute('content', 'Planung und Bau von modularen Beton-Skateparks. TÜV-geprüfte Skate-Elemente wie Ramps, Bowls & Rails. Langlebig, fundamentfrei und europaweite Lieferung.');
+      descriptionTag.setAttribute('content', 'Planung und Bau von modularen Beton-Skateparks. TÜV-zertifizierte Skate-Elemente wie Ramps, Bowls & Rails. Langlebig, fundamentfrei und europaweite Lieferung.');
     }
 
     const keywordsTag = document.querySelector('meta[name="keywords"]');
     if (keywordsTag) {
-      keywordsTag.setAttribute('content', 'Skate-Anlagen, Beton-Skatepark, Concrete Skatepark, Skatepark bauen, Skate-Rampen, Quarter-Ramps, Half-Pipe, Skate-Pool, Bowl, TÜV-geprüfte Skate-Elemente');
+      keywordsTag.setAttribute('content', 'Skate-Anlagen, Beton-Skatepark, Concrete Skatepark, Skatepark bauen, Skate-Rampen, Quarter-Ramps, Half-Pipe, Skate-Pool, Bowl, TÜV-zertifizierte Skate-Elemente');
     }
   }, []);
 
@@ -52,14 +52,14 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Skate-Anlagen aus Beton</h1>
                 <div className="group/siegel relative">
                     <button type="button" aria-describedby="tuv-info-skate" className="bg-white text-brand-bg font-bold px-3 py-1.5 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-bg focus:ring-brand-orange">
-                        TÜV-GEPRÜFT
+                        TÜV-ZERTIFIZIERT
                     </button>
                     <div id="tuv-info-skate" role="tooltip" className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max bg-brand-bg text-white text-xs px-2 py-1 rounded opacity-0 group-hover/siegel:opacity-100 group-focus-within/siegel:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                         Geprüfte Sicherheit nach DIN EN 14974
                     </div>
                 </div>
             </div>
-           <p className="mt-2 text-lg text-brand-muted">Modular, langlebig und TÜV-geprüft</p>
+           <p className="mt-2 text-lg text-brand-muted">Modular, langlebig und TÜV-zertifiziert</p>
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
@@ -76,7 +76,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
           </p>
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Unsere Skate-Elemente</h2>
-            <p className="mt-4 text-brand-muted">Wir bieten eine breite Palette an TÜV-geprüften (DIN EN 14974) und GS-zertifizierten Skate-Elementen:</p>
+            <p className="mt-4 text-brand-muted">Wir bieten eine breite Palette an TÜV-zertifizierten (DIN EN 14974) und GS-zertifizierten Skate-Elementen:</p>
             <ul className="mt-4 columns-2 space-y-2 text-brand-muted">
               <li>&raquo; Quarter-Ramps</li>
               <li>&raquo; Half-Pipes & Mini-Ramps</li>

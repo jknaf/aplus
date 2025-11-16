@@ -171,7 +171,7 @@ const HomePage: React.FC = () => {
 
          <section id="faq" className="mt-24 md:mt-40">
           <div className="text-center">
-            <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Häufig gestellte Fragen (FAQ)</h2>
+            <h2 className="text-5xl md:text-6xl font-bold font-heading text-brand-heading">Häufig gestellte Fragen</h2>
             <p className="mt-4 text-lg text-brand-muted max-w-3xl mx-auto">Kurze Antworten auf die wichtigsten Fragen zu unseren Produkten und Leistungen.</p>
           </div>
           <div className="mt-20 max-w-4xl mx-auto space-y-6">

@@ -50,12 +50,18 @@
                   '0%': { transform: 'scale(1.0) translate(0,0)', 'transform-origin': 'bottom left' },
                   '100%': { transform: 'scale(1.1) translate(-3%, 3%)', 'transform-origin': 'bottom left' }
               },
+              'pop-in': {
+                '0%': { transform: 'scale(0)', opacity: '0' },
+                '80%': { transform: 'scale(1.1)', opacity: '1' },
+                '100%': { transform: 'scale(1)' },
+              },
             },
             animation: {
               'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
               'kenburns-1': 'kenburns-1 15s ease-in-out infinite alternate',
               'kenburns-2': 'kenburns-2 18s ease-in-out infinite alternate',
               'kenburns-3': 'kenburns-3 20s ease-in-out infinite alternate',
+              'pop-in': 'pop-in 0.4s ease-out forwards',
             },
           }
         }

@@ -30,6 +30,14 @@ const CheckmarkIcon = () => (
     </svg>
 );
 
+const features = [
+    { bold: "Fundamentfreie Montage:", text: "Keine Bodenbefestigungen nötig, ermöglicht einfachen Umbau ohne Beschädigung des Belags." },
+    { bold: "Ganzjährig einsetzbar:", text: "Geeignet für Roll-, Inline- und sogar Eishockey durch ein spezielles Dichtungsprofil." },
+    { bold: "Robuste Materialien:", text: "Gefertigt aus witterungsbeständigem Beton, Edelstahl, Laminatplatten und Gummi." },
+    { bold: "Minimale Wartung:", text: "Die langlebige Konstruktion reduziert den Instandhaltungsaufwand erheblich." },
+    { bold: "Flexibel & Modular:", text: "In 1,5-Meter-Schritten erweiterbar und in Höhen von 40 cm und 110 cm verfügbar." },
+];
+
 const ProductHockeyRinkPage: React.FC = () => {
   useEffect(() => {
     document.title = "Inline-Hockey-Banden (fundamentfrei) | A+ Urban Design";
@@ -48,7 +56,7 @@ const ProductHockeyRinkPage: React.FC = () => {
     <PageShell title="Modulare Hockey-Banden (fundamentfrei)">
        <div className="text-center mb-12">
             <div className="flex justify-center items-center gap-4 flex-wrap">
-                <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Hockey-Banden</h1>
+                <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Hockey-Banden & Tore</h1>
                 <div className="group/siegel relative">
                     <button type="button" aria-describedby="tuv-info-hockey" className="bg-white text-brand-bg font-bold px-3 py-1.5 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-bg focus:ring-brand-orange">
                         TÜV-ZERTIFIZIERT
@@ -71,17 +79,20 @@ const ProductHockeyRinkPage: React.FC = () => {
         </div>
         <div>
           <p className="mt-4 text-xl text-brand-muted leading-relaxed">
-            Unsere modularen Bandensysteme benötigen keine Fundamente oder Bodenbefestigungen. Sie sind flexibel einsetzbar für diverse Sportarten und können durch ein Dichtungsprofil auch für Eisflächen genutzt werden.
+            Als Original A+ URBAN DESIGN Produkt sind unsere Banden und Tore für eine einfache und flexible Spielfeldbegrenzung konzipiert. Die witterungsbeständigen Materialien garantieren eine lange Lebensdauer bei minimalem Wartungsaufwand.
           </p>
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Vorteile unserer Hockey-Einfassungen</h2>
             <ul className="mt-6 space-y-4 text-brand-muted">
-              <li className="flex items-start"><CheckmarkIcon /> <div>Einfache Montage ohne Fundamente</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Vielseitig einsetzbar für Rollhockey, Inlinehockey und Eishockey</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Witterungsbeständige Materialien:</span> Beton, Edelstahl, Laminat, Gummi</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Geringer Wartungsaufwand</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Modular erweiterbar</span> in 1,5-m-Schritten</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Verschiedene Höhen verfügbar</span> (40 cm und 110 cm)</div></li>
+              {features.map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                      <CheckmarkIcon />
+                      <div>
+                          {feature.bold && <span className="font-bold mr-2">{feature.bold}</span>}
+                          {feature.text}
+                      </div>
+                  </li>
+              ))}
             </ul>
           </div>
           <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">

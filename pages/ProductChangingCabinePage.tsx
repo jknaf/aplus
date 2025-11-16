@@ -30,9 +30,17 @@ const CheckmarkIcon = () => (
     </svg>
 );
 
+const features = [
+    { bold: "Fundamentfrei & Sicher:", text: "Wird auf einem verdichteten Schotterbett aufgestellt, was Zeit und Kosten spart." },
+    { bold: "Extrem Robust:", text: "Gefertigt aus bewehrtem Beton und Edelstahl, absolut witterungsbeständig." },
+    { bold: "Vandalismus- & Missbrauchhemmend:", text: "Die massive Bauweise kann nicht zerschnitten, angezündet oder durchlöchert werden." },
+    { bold: "Wartungsarm & Langlebig:", text: "Kein saisonaler Auf- und Abbau nötig, keine Verrottung." },
+    { bold: "Hygienisch & Sauber:", text: "Die fugenlose Bodenplatte ist leicht zu reinigen und verhindert Unkrautwuchs." },
+];
+
 const ProductChangingCabinePage: React.FC = () => {
   useEffect(() => {
-    document.title = "Umkleidekabine aus Beton | A+ Urban Design";
+    document.title = "Umkleidekabine 'Die Schnecke' aus Beton | A+ Urban Design";
     const descriptionTag = document.querySelector('meta[name="description"]');
     if (descriptionTag) {
       descriptionTag.setAttribute('content', "Die architektonische Umkleidekabine aus Beton: Vandalismussicher, fundamentfrei und wartungsarm. Perfekt für Freibäder, Sportanlagen und öffentliche Plätze.");
@@ -40,14 +48,14 @@ const ProductChangingCabinePage: React.FC = () => {
 
     const keywordsTag = document.querySelector('meta[name="keywords"]');
     if (keywordsTag) {
-      keywordsTag.setAttribute('content', 'Umkleidekabine Beton, vandalismussicher, fundamentfrei, Freibad Umkleide, wartungsarm, öffentlicher Raum, Stadtmobiliar');
+      keywordsTag.setAttribute('content', 'Umkleidekabine Beton, Die Schnecke, vandalismussicher, fundamentfrei, Freibad Umkleide, wartungsarm, öffentlicher Raum, Stadtmobiliar');
     }
   }, []);
 
   return (
     <PageShell title="Vandalismussichere Umkleidekabine">
       <div className="text-center mb-12">
-           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Umkleidekabine</h1>
+           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">"Die Schnecke"</h1>
            <p className="mt-2 text-lg text-brand-muted">Fundamentfreie Umkleidekabine für Freibäder & Sportanlagen</p>
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -61,18 +69,20 @@ const ProductChangingCabinePage: React.FC = () => {
         </div>
         <div>
           <p className="mt-4 text-xl text-brand-muted leading-relaxed">
-            Unsere Umkleidekabine in Schneckenform bietet berührungslosen Zugang und höchste Robustheit. Die fugenlose Bodenplatte wird direkt auf ein Schotterbett gesetzt, ist leicht zu reinigen und verhindert Unkrautwuchs.
+            Unsere freistehende Umkleidekabine, bekannt als "Die Schnecke", ist die ideale Lösung für Freibäder, Seen und Sportanlagen. Das intelligente Design verhindert Kabinenkontakt beim Betreten und Verlassen.
           </p>
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Merkmale der Beton-Umkleidekabine</h2>
             <ul className="mt-6 space-y-4 text-brand-muted">
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Materialien:</span> Bewehrter Beton und Edelstahl</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Fundamentfrei:</span> Aufbau auf verdichtetem Schotterbett</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Witterungsbeständig und ganzjährig einsetzbar</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Extrem robust:</span> Sicher gegen Vandalismus (Schnitt, Feuer)</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Wartungsarm:</span> Keine beweglichen Teile, kein Verrotten</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Missbrauchhemmend:</span> Offenes Design für soziale Kontrolle</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Einfache Montage ohne Fundament- oder Pflasterarbeiten</div></li>
+              {features.map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                      <CheckmarkIcon />
+                      <div>
+                          {feature.bold && <span className="font-bold mr-2">{feature.bold}</span>}
+                          {feature.text}
+                      </div>
+                  </li>
+              ))}
             </ul>
           </div>
           <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">

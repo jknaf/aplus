@@ -30,6 +30,14 @@ const CheckmarkIcon = () => (
     </svg>
 );
 
+const features = [
+    { bold: "Multifunktional:", text: "Einsetzbar als einzelne Sitznische, Haltestellenüberdachung oder in Gruppen als Pavillon." },
+    { bold: "Fundamentfreier Aufbau:", text: "Wird auf einem verdichteten Kies- oder Schotterbett aufgestellt." },
+    { bold: "Extrem Vandalismussicher:", text: "Massive Bauweise aus bewehrtem Hochleistungsbeton (C 35/45)." },
+    { bold: "Wartungsfrei & Witterungsbeständig:", text: "Kein Streichen, kein Verrotten, für den ganzjährigen Einsatz konzipiert." },
+    { bold: "Technische Daten:", text: "Maße pro Element: Länge 240cm, Tiefe 200cm, Höhe 246cm (+16cm)." },
+];
+
 const ProductPavilionPage: React.FC = () => {
   useEffect(() => {
     document.title = "Überdachung & Pavillon aus Beton | A+ Urban Design";
@@ -61,17 +69,20 @@ const ProductPavilionPage: React.FC = () => {
         </div>
         <div>
           <p className="mt-4 text-xl text-brand-muted leading-relaxed">
-            Unsere Überdachungen und Pavillons aus Beton bieten einen langlebigen und ästhetisch ansprechenden Schutz vor Sonne und Regen. Ideal für Bushaltestellen, Parkanlagen, Schulhöfe oder als zentraler Treffpunkt.
+            Unser Überdachungselement aus bewehrtem Beton ist ein multifunktionales Modul, das langlebigen und ästhetischen Schutz vor Sonne und Regen bietet. Ideal für Haltestellen, Parkanlagen, Schulhöfe oder als zentraler Treffpunkt.
           </p>
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Vorteile unserer Beton-Überdachungen</h2>
             <ul className="mt-6 space-y-4 text-brand-muted">
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Fundamentfreier Aufbau:</span> Spart Zeit, Kosten und Erdarbeiten.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Extrem Vandalismussicher:</span> Massive Bauweise aus Hochleistungsbeton.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Witterungsbeständig:</span> Hält jeder Witterung stand, von starker Sonne bis Frost.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Wartungsfrei:</span> Kein Streichen, kein Verrotten.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Modulares Design:</span> In verschiedenen Größen und Designs erhältlich.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Recycelbare Materialien für hohe Nachhaltigkeit.</div></li>
+             {features.map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                      <CheckmarkIcon />
+                      <div>
+                          {feature.bold && <span className="font-bold mr-2">{feature.bold}</span>}
+                          {feature.text}
+                      </div>
+                  </li>
+              ))}
             </ul>
           </div>
           <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">

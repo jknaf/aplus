@@ -30,6 +30,14 @@ const CheckmarkIcon = () => (
     </svg>
 );
 
+const features = [
+    { bold: "Materialien:", text: "Robuster Beton, Edelstahl und verzinkter Stahl für extreme Witterungsbeständigkeit." },
+    { bold: "Montage:", text: "Fundamentfreie Aufstellung auf einem verdichteten Kies- oder Schotterbett." },
+    { bold: "Grillrost:", text: "Aus massivem Edelstahl, höhenverstellbar und diebstahlsicher arretiert." },
+    { bold: "Design:", text: "Besteht aus mehreren Betonfertigteilen, die eine stabile und einladende Einheit bilden." },
+    { bold: "Maße:", text: "Durchmesser ca. 4,20 m, Höhe ca. 2,40 m." },
+];
+
 
 const ProductGrillPage: React.FC = () => {
   useEffect(() => {
@@ -62,18 +70,20 @@ const ProductGrillPage: React.FC = () => {
         </div>
         <div>
           <p className="mt-4 text-xl text-brand-muted leading-relaxed">
-            Unser Grillplatz aus Betonfertigteilen ist ideal für öffentliche Räume wie Freibäder, Campingplätze und Sportanlagen. Die Konstruktion ist für einfache Bedienung und Langlebigkeit konzipiert.
+            Unser Grillplatz ist speziell für den unbeaufsichtigten Einsatz in öffentlichen Räumen wie Freibädern, Campingplätzen und Sportanlagen konzipiert. Er besteht aus mehreren Betonfertigteilen, die eine extrem robuste Einheit bilden.
           </p>
           <div className="mt-10">
-            <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Eigenschaften & Vorteile</h2>
+            <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Technische Details & Vorteile</h2>
             <ul className="mt-6 space-y-4 text-brand-muted">
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Materialien:</span> Beton, Edelstahl und verzinkter Stahl</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Extrem robust und witterungsbeständig</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Höhenverstellbarer Grillrost aus Edelstahl (diebstahlsicher)</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Keine Fundamente notwendig (Aufbau auf verdichtetem Schotterbett)</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Integrierte Bodenplatte (keine Pflasterarbeiten nötig)</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Recycelbare Materialien</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Technische Daten:</span> Durchmesser 4,20 m, Höhe 2,40 m</div></li>
+              {features.map((feature, index) => (
+                <li key={index} className="flex items-start">
+                    <CheckmarkIcon />
+                    <div>
+                        {feature.bold && <span className="font-bold mr-2">{feature.bold}</span>}
+                        {feature.text}
+                    </div>
+                </li>
+              ))}
             </ul>
           </div>
           <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">

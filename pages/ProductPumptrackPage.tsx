@@ -30,6 +30,15 @@ const CheckmarkIcon = () => (
     </svg>
 );
 
+const features = [
+    { bold: "Für alle Rollsportgeräte:", text: "Perfekt geeignet für BMX, Mountainbikes, Skateboards, Scooter und Inliner." },
+    { bold: "Absolut Modular:", text: "Parcours können in jeder Form und Länge realisiert und jederzeit erweitert werden." },
+    { bold: "Vielseitige Hindernisse:", text: "Kombinierbar mit Elementen wie Wave, Bank to Bank, Jump-Ramp, Doppelwelle und Spine." },
+    { bold: "Geprüfte Sicherheit:", text: "Alle Elemente sind TÜV-zertifiziert nach DIN EN 14974 und tragen das GS-Zeichen." },
+    { bold: "Langlebig & Wartungsarm:", text: "Gefertigt aus robustem Hochleistungsbeton für minimalen Unterhalt." },
+    { bold: "Fundamentfreier Aufbau:", text: "Schnelle und kostengünstige Montage auf verdichtetem Untergrund." },
+];
+
 const ProductPumptrackPage: React.FC = () => {
   useEffect(() => {
     document.title = "Pumptrack aus Beton planen & bauen | A+ Urban Design";
@@ -71,7 +80,7 @@ const ProductPumptrackPage: React.FC = () => {
         </div>
         <div>
           <p className="mt-4 text-xl text-brand-muted leading-relaxed">
-            Ein Pumptrack ist ein Rundkurs für Mountainbikes, BMX, Skateboards und Scooter. Unsere TÜV-zertifizierten und GS-geprüften Elemente aus Beton ermöglichen den Bau langlebiger und wartungsarmer Pumptrack-Parcours in jeder Form und Länge.
+            Ein Pumptrack ist ein künstlich angelegter Rundkurs mit Wellen und Steilkurven. Ursprünglich für Mountainbiker konzipiert, erlauben unsere modularen Betonelemente die Nutzung durch eine Vielzahl von Sportgeräten.
           </p>
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Planung und Aufbau</h2>
@@ -82,11 +91,15 @@ const ProductPumptrackPage: React.FC = () => {
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Vorteile unserer Pumptracks</h2>
             <ul className="mt-6 space-y-4 text-brand-muted">
-              <li className="flex items-start"><CheckmarkIcon /> <div>TÜV-zertifiziert nach DIN EN 14974 & GS-geprüft</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Langlebiger Hochleistungsbeton</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Wartungsarm und Vandalismussicher</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Modular und flexibel erweiterbar</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Schneller Aufbau ohne Fundamente</div></li>
+              {features.map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                      <CheckmarkIcon />
+                      <div>
+                        {feature.bold && <span className="font-bold mr-2">{feature.bold}</span>}
+                        {feature.text}
+                      </div>
+                  </li>
+              ))}
             </ul>
           </div>
           <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">

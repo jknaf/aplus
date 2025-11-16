@@ -30,6 +30,15 @@ const CheckmarkIcon = () => (
     </svg>
 );
 
+const features = [
+    { bold: "Sicherheit & Zertifizierung:", text: "Alle Elemente sind TÜV-zertifiziert nach DIN EN 14974 und tragen das GS-Zeichen für Geprüfte Sicherheit." },
+    { bold: "Individuelle 3D-Planung:", text: "Wir erstellen maßgeschneiderte Layouts für BMX-Parks, die Dirt, Park und Street-Elemente kombinieren." },
+    { bold: "Robuste Beton-Elemente:", text: "Unser Sortiment umfasst Jump-Ramps, Dirt-Lines, Spines, Bowls und vieles mehr." },
+    { bold: "Optimale Fahrfläche:", text: "Die rutschfeste, unversiegelte Betonoberfläche bietet auch bei Nässe hervorragenden Grip." },
+    { bold: "Fundamentfrei & Modular:", text: "Reduziert Baukosten, beschleunigt die Montage und ermöglicht zukünftige Erweiterungen." },
+    { bold: "Minimale Lärmbelästigung:", text: "Deutlich leiser als herkömmliche Holz- oder Metallkonstruktionen." },
+];
+
 const ProductBmxPage: React.FC = () => {
   useEffect(() => {
     document.title = "BMX-Anlagen & BMX-Parks aus Beton | A+ Urban Design";
@@ -76,12 +85,15 @@ const ProductBmxPage: React.FC = () => {
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Features unserer BMX-Parks</h2>
             <ul className="mt-6 space-y-4 text-brand-muted">
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Individuelle Planung:</span> Maßgeschneiderte 3D-Layouts für jeden Bedarf.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Beton-Elemente:</span> Jump-Ramps, Dirt-Lines, Spines, Bowls und mehr.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Maximale Sicherheit:</span> TÜV-zertifiziert nach DIN EN 14974.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Fundamentfrei:</span> Reduziert Baukosten und -zeit erheblich.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Kombinierbar:</span> Ideal in Verbindung mit Pumptracks und Skate-Anlagen.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div>Vandalismusresistent und extrem wartungsarm.</div></li>
+              {features.map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                      <CheckmarkIcon />
+                      <div>
+                          {feature.bold && <span className="font-bold mr-2">{feature.bold}</span>}
+                          {feature.text}
+                      </div>
+                  </li>
+              ))}
             </ul>
           </div>
           <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">

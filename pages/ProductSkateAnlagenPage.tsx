@@ -30,6 +30,13 @@ const CheckmarkIcon = () => (
     </svg>
 );
 
+const features = [
+    { bold: "Sicherheit an erster Stelle:", text: "Als weltweit erste modulare Betonelemente sind unsere Produkte TÜV-zertifiziert nach DIN EN 14974 und tragen das GS-Zeichen. Ein Hartgummikantenschutz sorgt für zusätzliche Sicherheit." },
+    { bold: "Hochwertige Materialien:", text: "Wir verwenden ausschließlich bewehrten Beton, Edelstahl, verzinkten Stahl und Hartgummi für maximale Langlebigkeit." },
+    { bold: "Fundamentfreie Montage:", text: "Einfaches Aufstellen auf verdichteten Flächen spart Zeit, Kosten und schont den Untergrund. Ideal auch für Erdeinbau und Modellierungen." },
+    { bold: "Perfekte Fahrfläche:", text: "Die unversiegelte, rutschfeste Betonoberfläche wird bei Feuchtigkeit nicht glitschig und bietet optimalen Grip." },
+    { bold: "Minimale Wartung & Lärm:", text: "Extrem wartungsarm und deutlich leiser als Holz- oder Stahlkonstruktionen, was die Akzeptanz bei Anwohnern erhöht." },
+];
 
 const ProductSkateAnlagenPage: React.FC = () => {
   useEffect(() => {
@@ -59,7 +66,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     </div>
                 </div>
             </div>
-           <p className="mt-2 text-lg text-brand-muted">Modular, langlebig und TÜV-zertifiziert</p>
+           <p className="mt-2 text-lg text-brand-muted">Das Original seit den 90er Jahren</p>
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
@@ -72,7 +79,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
         </div>
         <div>
           <p className="mt-4 text-xl text-brand-muted leading-relaxed">
-            Wir sind Ihr Spezialist für die 3D-Planung und den Bau von hochwertigen, modularen Skate-Anlagen aus Beton. Unsere Produkte sind für den öffentlichen Raum konzipiert und garantieren maximale Langlebigkeit und Fahrspaß für alle Niveaus.
+            Unsere modularen Skate-Elemente sind ein Original A+ URBAN DESIGN Produkt, das bereits in den 90er Jahren entwickelt wurde. Sie ermöglichen eine riesige Vielfalt an Kombinationen und eignen sich perfekt für Skate-, Inline- und BMX-Anlagen.
           </p>
           <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Unsere Skate-Elemente</h2>
@@ -91,10 +98,15 @@ const ProductSkateAnlagenPage: React.FC = () => {
            <div className="mt-10">
             <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Vorteile unserer Beton-Skateparks</h2>
             <ul className="mt-6 space-y-4 text-brand-muted">
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Fundamentfrei:</span> Schneller, kostengünstiger Aufbau.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Modular:</span> Jederzeit erweiter- und versetzbar.</div></li>
-              <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Vandalismussicher:</span> Extrem robust gegen Beschädigung und Feuer.</div></li>
-               <li className="flex items-start"><CheckmarkIcon /> <div><span className="font-bold mr-2">Wartungsarm:</span> Kein Verrotten, keine losen Schrauben.</div></li>
+              {features.map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                      <CheckmarkIcon />
+                      <div>
+                          {feature.bold && <span className="font-bold mr-2">{feature.bold}</span>}
+                          {feature.text}
+                      </div>
+                  </li>
+              ))}
             </ul>
           </div>
           <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">

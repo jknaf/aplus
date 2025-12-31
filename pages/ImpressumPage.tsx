@@ -11,7 +11,7 @@ const ImpressumPage: React.FC = () => {
               <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">A+ URBAN DESIGN</h2>
               <p>
                 Cüneyit Akcakoca<br />
-                Dipl. Ing. Freier Architekt<br />
+                Dipl. Ing., Freier Architekt<br />
                 Talstrasse 41<br />
                 70188 Stuttgart
               </p>

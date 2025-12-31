@@ -71,7 +71,18 @@ const ProductBmxPage: React.FC = () => {
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/248559/pexels-photo-248559.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="BMX-Fahrer in einer professionellen BMX-Anlage aus Beton" className="w-full h-auto object-cover rounded-lg shadow-lg" />
+           {/* Replaced Image with Video */}
+          <div className="rounded-lg shadow-lg overflow-hidden w-full h-auto relative bg-black/20">
+              <video 
+                src="https://videos.pexels.com/video-files/5445275/5445275-hd_1920_1080_25fps.mp4" 
+                poster="https://images.pexels.com/videos/5445275/free-video-5445275.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+                className="w-full h-full object-cover"
+              />
+          </div>
           <div className="grid grid-cols-3 gap-4 mt-4">
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/165438/pexels-photo-165438.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Jump-Ramps für eine BMX-Anlage" className="w-full h-auto object-cover rounded-lg shadow-md" />
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/34521/bmx-rider-dramatic-lighting-action.jpg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Beton-Bowl in einem BMX-Park" className="w-full h-auto object-cover rounded-lg shadow-md" />

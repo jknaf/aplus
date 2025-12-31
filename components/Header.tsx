@@ -1,12 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { NAV_LINKS } from '../constants';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownButtonRef = useRef<HTMLButtonElement>(null);
+  const location = useLocation();
+
+  // Handle scroll effect for floating navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
+  }, [location]);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(prev => !prev);
@@ -16,146 +33,182 @@ const Header: React.FC = () => {
     setIsDropdownOpen(false);
   };
   
+  // Click outside handler
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) && !dropdownButtonRef.current?.contains(event.target as Node)) {
         closeDropdown();
       }
     };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        closeDropdown();
-      }
-    };
-
     document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMenuOpen]);
+
   return (
-    <header className="bg-brand-bg/80 backdrop-blur-md sticky top-0 z-50 border-b border-white/10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
-           <Link to="/" className="flex items-center gap-3 flex-shrink-0" aria-label="A+ Urban Design Homepage">
-            <img
-              src="https://i.ibb.co/whMmCDk9/apluslogo.png"
-              alt="A+ Urban Design Logo"
-              width={40}
-              height={40}
-              className="inline-block align-middle"
-              loading="eager"
-              decoding="sync"
-              fetchPriority="high"
-            />
-            <span className="text-2xl sm:text-3xl text-brand-orange font-black font-heading tracking-tighter">
-              Urban Design
-            </span>
-          </Link>
-          <nav className="hidden md:block" aria-label="Hauptnavigation">
-            <div className="ml-10 flex items-baseline space-x-8">
+    <>
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out px-4 md:px-6 ${
+          scrolled ? 'py-2' : 'py-4 md:py-6'
+        }`}
+      >
+        <div 
+          className={`mx-auto max-w-7xl rounded-2xl border transition-all duration-500 ${
+            scrolled 
+              ? 'bg-brand-bg/80 border-white/10 backdrop-blur-xl shadow-lg shadow-black/50' 
+              : 'bg-transparent border-transparent md:bg-brand-bg/60 md:border-white/5 md:backdrop-blur-md'
+          }`}
+        >
+          <div className="flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-3 flex-shrink-0 z-50 group">
+              <img
+                src="https://i.ibb.co/whMmCDk9/apluslogo.png"
+                alt="A+ Urban Design Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:rotate-90"
+              />
+              <div className="flex flex-col">
+                <span className="text-lg md:text-xl text-white font-black font-heading leading-none tracking-tighter">A+ URBAN</span>
+                <span className="text-xs md:text-sm text-brand-orange font-bold font-heading leading-none tracking-widest">DESIGN</span>
+              </div>
+            </Link>
+
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-8">
               {NAV_LINKS.map((link) =>
                 link.subLinks ? (
-                  <div key={link.name} className="relative">
+                  <div key={link.name} className="relative group">
                     <button 
                       ref={dropdownButtonRef}
-                      onClick={toggleDropdown} 
-                      className="text-brand-heading hover:text-brand-orange px-1 py-2 text-sm font-bold uppercase tracking-wider transition-colors duration-200 flex items-center"
-                      aria-haspopup="true"
-                      aria-expanded={isDropdownOpen}
-                      aria-controls="product-dropdown"
+                      onClick={toggleDropdown}
+                      onMouseEnter={() => setIsDropdownOpen(true)}
+                      className="text-gray-300 hover:text-white py-2 text-xs font-bold uppercase tracking-widest transition-colors duration-200 flex items-center gap-1"
                     >
                       {link.name}
-                      <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 inline-block ml-1 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
+                      <span className={`bg-brand-orange h-1 w-1 rounded-full transition-opacity ${isDropdownOpen ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></span>
                     </button>
-                    {isDropdownOpen && (
-                      <div id="product-dropdown" ref={dropdownRef} className="absolute left-0 mt-2 w-64 rounded-md shadow-2xl bg-brand-surface ring-1 ring-white/5 origin-top-left animate-[fade-in-up_0.3s_ease-out]">
-                        <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                          {link.subLinks.map(subLink => (
-                             <Link 
-                                key={subLink.name} 
-                                to={subLink.href} 
-                                onClick={closeDropdown}
-                                className="block px-4 py-3 text-sm text-brand-text hover:bg-brand-bg hover:text-brand-orange transition-colors duration-200" 
-                                role="menuitem"
-                              >
-                                {subLink.name}
-                              </Link>
-                          ))}
-                        </div>
+                    
+                    {/* Modern Dropdown */}
+                    <div 
+                      ref={dropdownRef}
+                      onMouseLeave={() => setIsDropdownOpen(false)}
+                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 p-2 bg-[#121212] border border-white/10 rounded-xl shadow-2xl backdrop-blur-2xl transition-all duration-300 origin-top transform ${
+                        isDropdownOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                      }`}
+                    >
+                      <div className="flex flex-col gap-1">
+                        {link.subLinks.map(subLink => (
+                           <Link 
+                              key={subLink.name} 
+                              to={subLink.href} 
+                              className="block px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 group/item" 
+                            >
+                              <span className="block font-bold text-white group-hover/item:text-brand-orange transition-colors">{subLink.name}</span>
+                              <span className="text-xs opacity-50">Betonfertigteile</span>
+                            </Link>
+                        ))}
                       </div>
-                    )}
+                    </div>
                   </div>
                 ) : (
-                  <Link key={link.name} to={link.href} className="text-brand-heading hover:text-brand-orange px-1 py-2 text-sm font-bold uppercase tracking-wider transition-colors duration-200">
+                  <Link 
+                    key={link.name} 
+                    to={link.href} 
+                    className="relative text-gray-300 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors duration-200 group"
+                  >
                     {link.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-orange transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 )
               )}
+            </nav>
+
+            {/* CTA & Mobile Toggle */}
+            <div className="flex items-center gap-4">
+              <Link to="/kontakt" className="hidden md:inline-flex items-center justify-center px-6 py-2 text-xs font-black uppercase tracking-widest bg-white text-black hover:bg-brand-orange hover:text-white transition-all duration-300 rounded-full">
+                Kontakt
+              </Link>
+              
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="md:hidden relative z-50 p-2 text-white hover:text-brand-orange transition-colors"
+                aria-label="Menu"
+              >
+                <div className="w-6 flex flex-col items-end gap-1.5">
+                  <span className={`block h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'w-6 rotate-45 translate-y-2' : 'w-6'}`}></span>
+                  <span className={`block h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'w-4'}`}></span>
+                  <span className={`block h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'w-6 -rotate-45 -translate-y-2' : 'w-2'}`}></span>
+                </div>
+              </button>
             </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Full Screen Mobile Menu - Hidden on Desktop */}
+      <div 
+        className={`fixed inset-0 z-40 bg-brand-bg/95 backdrop-blur-xl transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden ${
+          isMenuOpen ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
+        <div className="container mx-auto h-full flex flex-col justify-center px-6 pb-20 pt-32">
+          <nav className="flex flex-col gap-6">
+            {NAV_LINKS.map((link, idx) => (
+              <div key={link.name} className="overflow-hidden">
+                {link.subLinks ? (
+                   <div className="flex flex-col gap-4">
+                      <span className="text-sm font-bold text-brand-muted uppercase tracking-widest border-b border-white/10 pb-2">{link.name}</span>
+                      <div className="pl-4 border-l border-white/10 flex flex-col gap-4">
+                        {link.subLinks.map((sub, subIdx) => (
+                           <Link 
+                            key={sub.name}
+                            to={sub.href}
+                            className={`text-2xl font-black uppercase tracking-tighter text-transparent text-outline hover:text-brand-orange hover:text-outline-none transition-all duration-300 translate-y-full animate-[fade-in-up_0.5s_forwards]`}
+                            style={{ animationDelay: `${100 + (subIdx * 50)}ms` }}
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                   </div>
+                ) : (
+                  <Link 
+                    to={link.href}
+                    className={`block text-5xl sm:text-7xl font-black uppercase tracking-tighter text-transparent text-outline-bold hover:text-white hover:text-outline-none transition-all duration-300 translate-y-full ${isMenuOpen ? 'animate-[fade-in-up_0.5s_forwards]' : ''}`}
+                    style={{ animationDelay: `${idx * 100}ms` }}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </div>
+            ))}
           </nav>
-          <div className="-mr-2 flex md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              type="button"
-              className="bg-brand-surface inline-flex items-center justify-center p-2 rounded-md text-brand-heading hover:bg-brand-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-bg focus:ring-white"
-              aria-controls="mobile-menu"
-              aria-expanded={isMenuOpen}
-            >
-              <span className="sr-only">Hauptmenü öffnen</span>
-              {!isMenuOpen ? (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              ) : (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              )}
-            </button>
+          
+          <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 gap-8 animate-fade-in-up [animation-delay:600ms]">
+            <div>
+              <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Kontakt</span>
+              <a href="mailto:post@aplusurbandesign.com" className="block text-white font-bold">post@aplusurbandesign.com</a>
+            </div>
+            <div>
+              <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Social</span>
+              <div className="flex gap-4">
+                <a href="#" className="text-white hover:text-brand-orange">LinkedIn</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      {isMenuOpen && (
-        <nav className="md:hidden" id="mobile-menu" aria-label="Mobiles Hauptmenü">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {NAV_LINKS.map((link) => (
-                link.subLinks ? (
-                    <div key={link.name}>
-                        <p className="text-brand-heading block px-3 py-2 rounded-md text-base font-bold uppercase" aria-hidden="true">{link.name}</p>
-                        {link.subLinks.map(subLink => (
-                            <Link 
-                              key={subLink.name} 
-                              to={subLink.href} 
-                              onClick={() => setIsMenuOpen(false)}
-                              className="text-brand-muted hover:text-brand-orange block pl-6 pr-3 py-2 rounded-md text-base font-medium"
-                            >
-                              {subLink.name}
-                            </Link>
-                        ))}
-                    </div>
-                ) : (
-                    <Link 
-                      key={link.name} 
-                      to={link.href} 
-                      onClick={() => setIsMenuOpen(false)}
-                      className="text-brand-heading hover:text-brand-orange block px-3 py-2 rounded-md text-base font-bold uppercase"
-                    >
-                        {link.name}
-                    </Link>
-                )
-            ))}
-          </div>
-        </nav>
-      )}
-    </header>
+    </>
   );
 };
 

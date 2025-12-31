@@ -33,7 +33,10 @@ const App: React.FC = () => {
   return (
     <HashRouter>
       <ScrollToTop />
-      <div className="bg-brand-bg text-brand-text font-sans flex flex-col min-h-screen">
+      {/* Global Noise Overlay for Texture */}
+      <div className="bg-noise-overlay fixed inset-0 z-50 pointer-events-none"></div>
+      
+      <div className="bg-brand-bg text-brand-text font-sans flex flex-col min-h-screen relative z-0">
         <Header />
         <main className="flex-grow">
           <Routes>

@@ -34,7 +34,7 @@ const ContactPage: React.FC = () => {
                             </span>
                             <span>
                                 Cüneyit Akcakoca<br />
-                                Dipl. Ing. Freier Architekt<br />
+                                Dipl. Ing., Freier Architekt<br />
                                 Talstrasse 41, 70188 Stuttgart
                             </span>
                         </li>

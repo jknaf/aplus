@@ -6,91 +6,126 @@ const Footer: React.FC = () => {
   const productLinks = NAV_LINKS.find(link => link.name === 'Produkte')?.subLinks || [];
 
   const handlePrivacySettingsClick = () => {
-    // Dispatch a custom event to be caught by the PrivacyBanner component
     window.dispatchEvent(new CustomEvent('showPrivacySettings'));
   };
 
   return (
-    <footer className="bg-brand-surface text-brand-text">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8">
+    <footer className="bg-brand-surface text-brand-text relative z-10 border-t border-white/10">
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           
-          {/* Brand Info Column */}
-          <div className="sm:col-span-2 md:col-span-4">
-            <Link to="/" className="flex items-center gap-4 inline-block">
-              <img
-                src="https://i.ibb.co/whMmCDk9/apluslogo.png"
-                alt="A+ Urban Design Logo"
-                width={80}
-                height={80}
-                className="inline-block align-middle"
-                loading="eager"
-                decoding="sync"
-                fetchPriority="high"
-              />
-              <span className="text-3xl sm:text-4xl text-brand-orange font-black font-heading tracking-tighter">
-                Urban Design
-              </span>
-            </Link>
-            <p className="mt-6 max-w-xs text-brand-muted">
-              ARCHITEKTUR UND URBANES DESIGN – BETON UND STAHL FÜR FREIZEIT UND SPORT.
-            </p>
-             <div className="mt-8 text-sm text-brand-muted">
-              <p>&copy; {new Date().getFullYear()} A+ Urban Design</p>
+          {/* Brand Column (Left) */}
+          <div className="md:col-span-4 flex flex-col justify-between h-full">
+            <div>
+                <Link to="/" className="block mb-8 group">
+                   <div className="flex items-center gap-3">
+                        <img
+                            src="https://i.ibb.co/whMmCDk9/apluslogo.png"
+                            alt="A+ Urban Design Logo"
+                            width={48}
+                            height={48}
+                            className="w-12 h-12 transition-transform duration-500 group-hover:rotate-180"
+                        />
+                         <div className="flex flex-col">
+                            <span className="text-2xl text-white font-black font-heading leading-none tracking-tighter">A+ URBAN</span>
+                            <span className="text-sm text-brand-orange font-bold font-heading leading-none tracking-widest">DESIGN</span>
+                        </div>
+                   </div>
+                </Link>
+                <p className="text-brand-muted leading-relaxed mb-8 max-w-sm">
+                  Spezialisten für modulare Betonelemente im öffentlichen Raum. Robust, ästhetisch und für die Ewigkeit gebaut.
+                </p>
+            </div>
+             <div className="flex gap-4">
+                 <a href="#" className="text-sm font-bold text-white hover:text-brand-orange transition-colors uppercase tracking-wider">
+                    LinkedIn &rarr;
+                 </a>
+             </div>
+          </div>
+
+          {/* Spacer */}
+          <div className="hidden md:block md:col-span-1"></div>
+
+          {/* Links Grid (Right) */}
+          <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            
+            {/* Navigation */}
+            <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">Menu</h3>
+                <ul className="space-y-4">
+                    {NAV_LINKS.filter(l => !l.subLinks).map(link => (
+                        <li key={link.name}>
+                            <Link to={link.href} className="text-sm font-bold text-gray-400 hover:text-white transition-colors uppercase tracking-wider block hover:translate-x-2 transition-transform duration-300">
+                                {link.name}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            {/* Products */}
+             <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">Produkte</h3>
+                <ul className="space-y-4">
+                    {productLinks.slice(0, 5).map(link => (
+                         <li key={link.name}>
+                            <Link to={link.href} className="text-sm font-bold text-gray-400 hover:text-white transition-colors uppercase tracking-wider block hover:translate-x-2 transition-transform duration-300">
+                                {link.name}
+                            </Link>
+                        </li>
+                    ))}
+                     <li>
+                        <Link to="/produkte/skate-anlagen" className="text-sm font-bold text-brand-orange hover:text-white transition-colors uppercase tracking-wider block hover:translate-x-2 transition-transform duration-300">
+                            Alle ansehen &rarr;
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+
+             {/* Contact Info */}
+            <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">Kontakt</h3>
+                <ul className="space-y-6">
+                     <li>
+                        <p className="text-xs text-brand-muted uppercase mb-1">Adresse</p>
+                        <p className="text-sm text-white font-medium">Talstrasse 41<br/>70188 Stuttgart</p>
+                    </li>
+                    <li>
+                         <p className="text-xs text-brand-muted uppercase mb-1">Telefon</p>
+                         <a href="tel:+4915560090966" className="text-sm text-white font-medium hover:text-brand-orange transition-colors block">
+                            +49 155 600 909 66
+                         </a>
+                    </li>
+                    <li>
+                         <p className="text-xs text-brand-muted uppercase mb-1">Email</p>
+                         <a href="mailto:post@aplusurbandesign.com" className="text-sm text-white font-medium hover:text-brand-orange transition-colors block">
+                            post@aplusurbandesign.com
+                         </a>
+                    </li>
+                </ul>
             </div>
           </div>
-
-          {/* Navigation Links Column */}
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-brand-heading">Navigation</h3>
-            <ul className="mt-6 space-y-4">
-              <li><Link to="/" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Home</Link></li>
-              <li><Link to="/projekte" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Projekte</Link></li>
-              <li><Link to="/ueber-uns" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Über Uns</Link></li>
-              <li><Link to="/kontakt" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Kontakt</Link></li>
-            </ul>
-          </div>
-
-          {/* Product Links Column */}
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-brand-heading">Produkte</h3>
-            <ul className="mt-6 space-y-4">
-              {productLinks.map(link => (
-                  <li key={link.name}><Link to={link.href} className="text-base text-brand-muted hover:text-brand-orange transition-colors">{link.name}</Link></li>
-              ))}
-            </ul>
-          </div>
-          
-          {/* Contact Column */}
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-brand-heading">Kontakt</h3>
-            <ul className="mt-6 space-y-4">
-              <li className="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 w-5 h-5 mr-3 text-white mt-1" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
-                <a href="tel:+4915560090966" className="text-brand-muted hover:text-brand-orange transition-colors">+49 155 600 909 66</a>
-              </li>
-              <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 w-5 h-5 mr-3 text-white mt-1" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
-                <a href="mailto:post@aplusurbandesign.com" className="text-brand-muted hover:text-brand-orange transition-colors">post@aplusurbandesign.com</a>
-              </li>
-              <li className="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 w-5 h-5 mr-3 text-white mt-1" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>
-                <span className="text-brand-muted">Talstrasse 41, 70188 Stuttgart</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Legal Column */}
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-brand-heading">Rechtliches</h3>
-            <ul className="mt-6 space-y-4">
-              <li><Link to="/impressum" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Impressum</Link></li>
-              <li><Link to="/datenschutz" className="text-base text-brand-muted hover:text-brand-orange transition-colors">Datenschutz</Link></li>
-              <li><button onClick={handlePrivacySettingsClick} className="text-base text-brand-muted hover:text-brand-orange transition-colors">Cookie-Einstellungen</button></li>
-            </ul>
-          </div>
-          
         </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+             <p className="text-xs text-brand-muted">
+                &copy; {new Date().getFullYear()} A+ Urban Design. All rights reserved. Made in Stuttgart.
+            </p>
+            <div className="flex gap-6">
+                <Link to="/impressum" className="text-xs text-brand-muted hover:text-brand-orange transition-colors uppercase tracking-wider">Impressum</Link>
+                <Link to="/datenschutz" className="text-xs text-brand-muted hover:text-brand-orange transition-colors uppercase tracking-wider">Datenschutz</Link>
+                <button onClick={handlePrivacySettingsClick} className="text-xs text-brand-muted hover:text-brand-orange transition-colors uppercase tracking-wider">Cookies</button>
+            </div>
+        </div>
+      </div>
+      
+      {/* Massive Background Text Decoration */}
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none opacity-[0.03] select-none leading-none">
+          <span className="text-[18vw] font-black uppercase text-white whitespace-nowrap block translate-y-[20%]">
+              Urban Design
+          </span>
       </div>
     </footer>
   );

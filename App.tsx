@@ -33,10 +33,30 @@ const App: React.FC = () => {
   return (
     <HashRouter>
       <ScrollToTop />
-      {/* Global Noise Overlay for Texture */}
+      
+      {/* --- MODERN BACKGROUND SYSTEM --- */}
+      <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        
+        {/* 1. Base Dark Color */}
+        <div className="absolute inset-0 bg-brand-bg"></div>
+        
+        {/* 2. Technical Engineering Grid */}
+        <div className="absolute inset-0 bg-grid-pattern bg-[length:60px_60px] opacity-[0.07]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-transparent to-brand-bg"></div>
+
+        {/* 3. Ambient Lighting / Glows */}
+        {/* Top Left: Subtle warm brand glow (Sunlight on concrete feel) */}
+        <div className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-brand-orange/5 rounded-full blur-[120px] opacity-60"></div>
+        
+        {/* Bottom Right: Cool industrial/steel glow for depth */}
+        <div className="absolute -bottom-[20%] -right-[10%] w-[60vw] h-[60vw] bg-blue-900/10 rounded-full blur-[120px] opacity-40"></div>
+
+      </div>
+
+      {/* 4. Global Noise Overlay (Texture) - Kept on top but z-index adjusted in CSS */}
       <div className="bg-noise-overlay fixed inset-0 z-50 pointer-events-none"></div>
       
-      <div className="bg-brand-bg text-brand-text font-sans flex flex-col min-h-screen relative z-0">
+      <div className="text-brand-text font-sans flex flex-col min-h-screen relative z-0">
         <Header />
         <main className="flex-grow">
           <Routes>

@@ -70,15 +70,18 @@ const ProductSkateAnlagenPage: React.FC = () => {
     >
        
        {/* 1. IMMERSIVE HERO */}
-       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl">
+       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-white/10">
             <div className="absolute inset-0">
                 <img 
                     src="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg" 
                     alt="Hero Beton Skatepark" 
                     className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#0a0a0a]"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
+                {/* Changed to transparent at bottom to reveal global grid */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
+                {/* Additional fade at bottom edge only */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
             </div>
             
             <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
@@ -89,6 +92,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             <span className="material-symbols-outlined text-base">verified_user</span> DIN EN 14974
                          </span>
                     </div>
+                    {/* INDUSTRIAL HEADER UPDATE */}
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms] drop-shadow-2xl">
                         Beton<br/>
                         <span className="text-transparent text-outline-bold">Skateparks</span>
@@ -108,10 +112,11 @@ const ProductSkateAnlagenPage: React.FC = () => {
                          <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
                             Das Original
                         </span>
+                        {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-none mb-8">
                             Seit den <span className="text-transparent text-outline-bold">90ern.</span>
                         </h2>
-                        <p className="text-xl text-gray-400 leading-relaxed mb-8">
+                        <p className="text-xl text-gray-300 leading-relaxed mb-8">
                             Unsere modularen Skate-Elemente haben den öffentlichen Raum revolutioniert. Sie bieten die perfekte Symbiose aus der Haltbarkeit von Beton und der Flexibilität eines Baukastensystems.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
@@ -169,8 +174,9 @@ const ProductSkateAnlagenPage: React.FC = () => {
             {/* 3. TECHNICAL SPECS GRID */}
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
+                    {/* INDUSTRIAL HEADER UPDATE */}
                     <h2 className="text-5xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-none">
-                        Technische<span className="text-transparent text-outline-bold">Daten</span>
+                        Tech<span className="text-transparent text-outline-bold">Specs</span>
                     </h2>
                     <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: SKATE-SYSTEME</span>
                 </div>

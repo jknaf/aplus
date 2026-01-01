@@ -63,13 +63,17 @@ const PrivacyBanner: React.FC = () => {
     return (
         <>
             {/* Main Banner */}
-            <div role="region" aria-label="Cookie Consent Banner" className="fixed bottom-0 left-0 right-0 bg-brand-surface/95 backdrop-blur-md p-6 border-t border-white/10 z-50 animate-[fade-in-up_0.5s_ease-out]">
+            <div role="region" aria-label="Cookie Consent Banner" className="fixed bottom-0 left-0 right-0 bg-brand-surface/95 backdrop-blur-md p-6 border-t border-white/10 z-[100] animate-[fade-in-up_0.5s_ease-out] shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
                     <div className="text-center md:text-left">
                         <h3 className="text-lg font-bold text-brand-heading">Datenschutzeinstellungen</h3>
-                        <p className="text-sm text-brand-muted mt-1 max-w-2xl">
-                            Wir nutzen Cookies und externe Dienste. Einige sind essenziell, andere helfen uns, die Website zu verbessern. 
-                            <Link to="/datenschutz" className="underline hover:text-brand-orange ml-1">Datenschutzerklärung</Link>.
+                        <p className="text-sm text-brand-muted mt-2 max-w-2xl leading-relaxed">
+                            Wir nutzen Cookies und externe Dienste, um unsere Website für Sie zu optimieren.
+                            <br className="hidden md:block" />
+                            Rechtliche Informationen finden Sie in unserem 
+                            <Link to="/impressum" className="text-brand-orange hover:text-white underline mx-1 font-bold">Impressum</Link> 
+                            und der 
+                            <Link to="/datenschutz" className="text-brand-orange hover:text-white underline ml-1 font-bold">Datenschutzerklärung</Link>.
                         </p>
                     </div>
                     {/* Unified Button Styles: rounded-lg */}
@@ -89,7 +93,7 @@ const PrivacyBanner: React.FC = () => {
 
             {/* Preferences Modal */}
             {isModalOpen && (
-                 <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[60] animate-[fade-in-up_0.3s_ease-out]">
+                 <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[110] animate-[fade-in-up_0.3s_ease-out]">
                     <div role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" className="bg-brand-surface rounded-xl shadow-2xl w-full max-w-lg m-4 border border-white/10">
                         <div className="p-6 border-b border-white/10">
                             <h2 id="privacy-modal-title" className="text-xl font-bold text-brand-heading">Datenschutz-Einstellungen anpassen</h2>

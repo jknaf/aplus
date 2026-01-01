@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../constants';
 import BrochureRequestForm from '../components/BrochureRequestForm';
-import PageShell from '../components/PageShell'; // Import PageShell for SEO logic
+import PageShell from '../components/PageShell';
 
 // --- Animated Section Utility ---
 const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}> = ({ children, className }) => {
@@ -28,10 +28,8 @@ const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}>
     return <div ref={ref} className={`animated-section ${className}`}>{children}</div>;
 };
 
-// --- FAQ Section (SEO POWERHOUSE) ---
+// --- FAQ Section ---
 const FAQSection: React.FC = () => {
-    // SEO STRATEGY: Answer specific questions users type into Google.
-    // Keywords: Beton Pumptrack, BMX Anlage, Skatepark Kosten, Lärmschutz, Baugenehmigung.
     const faqs = [
         {
             q: "Was kostet ein Beton-Skatepark oder Pumptrack?",
@@ -55,7 +53,6 @@ const FAQSection: React.FC = () => {
         }
     ];
 
-    // Structured Data for Google (FAQPage)
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -70,13 +67,10 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        // REMOVED SOLID BG COLOR
         <section className="py-24 border-t border-white/5 relative overflow-hidden bg-transparent">
-             {/* SEO Schema Injection */}
              <script type="application/ld+json">
                 {JSON.stringify(faqSchema)}
             </script>
-            
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                  <AnimatedSection className="mb-16 text-center">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
@@ -89,7 +83,6 @@ const FAQSection: React.FC = () => {
                         Alles über Planung, Kosten und Bau von Skateparks, Pumptracks und BMX-Anlagen.
                     </p>
                 </AnimatedSection>
-
                 <div className="max-w-4xl mx-auto space-y-4">
                     {faqs.map((faq, index) => (
                         <details key={index} className="group bg-[#121212]/80 backdrop-blur-md border border-white/10 rounded-lg overflow-hidden transition-all duration-300 open:border-brand-orange/50 open:bg-[#1a1a1a]/90">
@@ -112,8 +105,7 @@ const FAQSection: React.FC = () => {
     );
 };
 
-
-// --- Scrollytelling Product Component (REDESIGNED: HUD STYLE) ---
+// --- Scrollytelling Product Component ---
 const ProductScrollytelling: React.FC = () => {
     const [activeId, setActiveId] = useState<string>(PRODUCTS[0].id);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -128,21 +120,15 @@ const ProductScrollytelling: React.FC = () => {
                     }
                 });
             },
-            {
-                rootMargin: "-40% 0px -40% 0px", 
-                threshold: 0
-            }
+            { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
         );
-
         itemRefs.current.forEach((el) => { if (el) observer.observe(el); });
         return () => { itemRefs.current.forEach((el) => { if (el) observer.unobserve(el); }); };
     }, []);
 
     return (
-        // REMOVED SOLID BG COLOR
         <section id="produkte" className="relative z-10 py-24 border-y border-white/5 bg-transparent">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                
                 <AnimatedSection className="mb-24 text-center">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                         Unser Portfolio
@@ -154,14 +140,10 @@ const ProductScrollytelling: React.FC = () => {
                 </AnimatedSection>
 
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
-                    
-                    {/* LEFT COLUMN: Sticky HUD Image Viewport */}
+                    {/* Sticky HUD */}
                     <div className="hidden lg:block lg:w-1/2 sticky top-32">
                         <div className="relative aspect-square w-full rounded-lg overflow-hidden border border-white/10 bg-[#121212]/50 backdrop-blur-md group">
-                            
-                            {/* Technical HUD Overlay */}
                             <div className="absolute inset-0 z-20 pointer-events-none p-6 flex flex-col justify-between">
-                                {/* Top Bar */}
                                 <div className="flex justify-between items-start">
                                     <div className="flex gap-2">
                                         <div className="w-2 h-2 bg-brand-orange animate-pulse"></div>
@@ -171,16 +153,10 @@ const ProductScrollytelling: React.FC = () => {
                                         KAMERA-0{PRODUCTS.findIndex(p => p.id === activeId) + 1}
                                     </div>
                                 </div>
-                                
-                                {/* Crosshairs */}
                                 <div className="absolute top-1/2 left-1/2 w-12 h-12 border border-white/20 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-50"></div>
                                 <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-white -translate-x-1/2 -translate-y-1/2 rounded-full"></div>
-
-                                {/* Bottom Bar */}
                                 <div className="flex justify-between items-end">
-                                    <div className="text-[10px] font-mono text-gray-500">
-                                        ISO 800<br/>F/2.8
-                                    </div>
+                                    <div className="text-[10px] font-mono text-gray-500">ISO 800<br/>F/2.8</div>
                                     <div className="border border-white/20 px-2 py-1 bg-black/50 backdrop-blur-md rounded-sm">
                                         <span className="text-xs font-bold text-white uppercase tracking-wider">
                                             {PRODUCTS.find(p => p.id === activeId)?.tuvCertified ? 'TÜV GEPRÜFT' : 'A+ STANDARD'}
@@ -188,8 +164,6 @@ const ProductScrollytelling: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Images */}
                             {PRODUCTS.map((product) => (
                                 <div 
                                     key={product.id}
@@ -203,21 +177,16 @@ const ProductScrollytelling: React.FC = () => {
                                         loading="lazy"
                                         className="w-full h-full object-cover filter brightness-75 contrast-110"
                                     />
-                                    {/* Scanline Effect */}
                                     <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-20"></div>
                                 </div>
                             ))}
                         </div>
-                        
-                        {/* Decorative HUD Lines outside */}
                         <div className="absolute -bottom-4 -right-4 w-16 h-16 border-b-2 border-r-2 border-brand-orange opacity-50"></div>
                     </div>
 
-                    {/* RIGHT COLUMN: Interactive Timeline */}
+                    {/* Timeline */}
                     <div className="lg:w-1/2 relative">
-                        {/* Vertical Timeline Line */}
                         <div className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent hidden md:block"></div>
-
                         <div className="flex flex-col gap-2 pb-[30vh]">
                             {PRODUCTS.map((product, index) => {
                                 const isActive = activeId === product.id;
@@ -228,47 +197,25 @@ const ProductScrollytelling: React.FC = () => {
                                         ref={(el) => (itemRefs.current[index] = el)}
                                         className={`group relative pl-0 md:pl-12 transition-all duration-500 ${isActive ? 'py-8' : 'py-6 opacity-40 hover:opacity-70'}`}
                                     >
-                                        {/* Timeline Dot */}
                                         <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange shadow-[0_0_15px_rgba(249,115,22,0.6)] scale-125' : 'bg-[#080808] border-white/30'}`}></div>
-
-                                        {/* Card Container */}
-                                        <div className={`
-                                            relative rounded-xl border transition-all duration-500 overflow-hidden backdrop-blur-sm
-                                            ${isActive 
-                                                ? 'bg-[#121212]/80 border-brand-orange/50 shadow-2xl scale-100' 
-                                                : 'bg-transparent border-white/5 scale-[0.98]'
-                                            }
-                                        `}>
-                                            {/* Mobile Image (Accordion) */}
+                                        <div className={`relative rounded-xl border transition-all duration-500 overflow-hidden backdrop-blur-sm ${isActive ? 'bg-[#121212]/80 border-brand-orange/50 shadow-2xl scale-100' : 'bg-transparent border-white/5 scale-[0.98]'}`}>
                                             <div className="lg:hidden h-48 relative overflow-hidden border-b border-white/10">
                                                 <img src={product.imageUrl} alt="" className="w-full h-full object-cover opacity-60" loading="lazy" />
                                                 <div className="absolute inset-0 bg-black/40"></div>
                                             </div>
-
                                             <Link to={product.path} className="block p-6 md:p-8">
                                                 <div className="flex justify-between items-start mb-4">
                                                     <span className={`font-mono text-xs tracking-widest uppercase mb-1 block transition-colors ${isActive ? 'text-brand-orange' : 'text-gray-500'}`}>
                                                         Modul 0{index + 1}
                                                     </span>
-                                                    {isActive && (
-                                                        <span className="material-symbols-outlined text-brand-orange animate-pulse">
-                                                            arrow_outward
-                                                        </span>
-                                                    )}
+                                                    {isActive && <span className="material-symbols-outlined text-brand-orange animate-pulse">arrow_outward</span>}
                                                 </div>
-
                                                 <h3 className={`text-3xl md:text-4xl font-black font-heading uppercase tracking-tight mb-4 transition-colors ${isActive ? 'text-white' : 'text-gray-400'}`}>
                                                     {product.title}
                                                 </h3>
-
-                                                {/* Expanded Details */}
                                                 <div className={`grid transition-all duration-500 ease-in-out ${isActive ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
                                                     <div className="overflow-hidden">
-                                                        <p className="text-gray-400 leading-relaxed mb-6 border-l-2 border-white/10 pl-4">
-                                                            {product.usp}
-                                                        </p>
-                                                        
-                                                        {/* Mini Specs Grid */}
+                                                        <p className="text-gray-400 leading-relaxed mb-6 border-l-2 border-white/10 pl-4">{product.usp}</p>
                                                         <div className="grid grid-cols-2 gap-4 mb-6">
                                                             <div className="bg-white/5 p-3 rounded-lg border border-white/5">
                                                                 <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Material</div>
@@ -279,18 +226,13 @@ const ProductScrollytelling: React.FC = () => {
                                                                 <div className="text-sm font-bold text-white">5 Jahre</div>
                                                             </div>
                                                         </div>
-
                                                         <span className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-white hover:text-brand-orange transition-colors group/link">
                                                             Technische Daten <span className="material-symbols-outlined text-sm ml-1 group-hover/link:translate-x-1 transition-transform">chevron_right</span>
                                                         </span>
                                                     </div>
                                                 </div>
                                             </Link>
-                                            
-                                            {/* Active Glow Effect */}
-                                            {isActive && (
-                                                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 blur-[40px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-                                            )}
+                                            {isActive && <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 blur-[40px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>}
                                         </div>
                                     </div>
                                 );
@@ -303,8 +245,7 @@ const ProductScrollytelling: React.FC = () => {
     );
 };
 
-// --- Scrollytelling Feature Components ---
-
+// --- ScrollyFeature Component ---
 const ScrollyFeature: React.FC<{
     icon: string;
     title: string;
@@ -321,12 +262,8 @@ const ScrollyFeature: React.FC<{
                     setIsActive(entry.isIntersecting);
                 });
             },
-            {
-                rootMargin: "-40% 0px -40% 0px",
-                threshold: 0
-            }
+            { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
         );
-
         if (ref.current) observer.observe(ref.current);
         return () => { if (ref.current) observer.unobserve(ref.current); };
     }, []);
@@ -335,7 +272,6 @@ const ScrollyFeature: React.FC<{
         ? "border-brand-orange bg-[#1a1a1a]/80 shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] scale-100 opacity-100 backdrop-blur-sm" 
         : "border-white/5 bg-transparent opacity-30 scale-95";
     
-    // FIX: Using the prop to generate animation classes properly
     const animationClass = {
         'float': 'animate-float',
         'glow-pulse': 'animate-glow-pulse',
@@ -344,13 +280,8 @@ const ScrollyFeature: React.FC<{
     }[animationType];
     
     return (
-        <div 
-            ref={ref}
-            className={`transition-all duration-700 ease-out p-8 md:p-10 rounded-2xl border mb-24 last:mb-0 relative overflow-hidden group ${containerClass}`}
-        >
-            {/* Background noise for texture */}
+        <div ref={ref} className={`transition-all duration-700 ease-out p-8 md:p-10 rounded-2xl border mb-24 last:mb-0 relative overflow-hidden group ${containerClass}`}>
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05]"></div>
-
             <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
                 <div className={`p-4 rounded-xl bg-black/50 border border-white/10 transition-all duration-500 ${isActive ? `text-brand-orange border-brand-orange/30 ${animationClass}` : 'text-gray-600'}`}>
                     <span className="material-symbols-outlined text-4xl">{icon}</span>
@@ -359,75 +290,80 @@ const ScrollyFeature: React.FC<{
                     <h3 className={`text-2xl font-black font-heading uppercase mb-3 transition-colors ${isActive ? 'text-white' : 'text-gray-500'}`}>
                         {title}
                     </h3>
-                    <p className="text-base text-gray-400 leading-relaxed">
-                        {desc}
-                    </p>
+                    <p className="text-base text-gray-400 leading-relaxed">{desc}</p>
                 </div>
             </div>
         </div>
     );
 };
 
-
-// --- Hero Component ---
+// --- ROBUST HERO COMPONENT ---
+// Re-implemented to be simple and bulletproof for video autoplay
 const HERO_ITEMS = [
-  { type: 'video', src: 'https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4' },
-  { type: 'image', src: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=1600' },
-  { type: 'image', src: 'https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600' }
+  { 
+    id: 1,
+    type: 'video', 
+    src: 'https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4',
+    poster: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=800' 
+  },
+  { 
+    id: 2,
+    type: 'image', 
+    src: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=1600' 
+  },
+  { 
+    id: 3,
+    type: 'image', 
+    src: 'https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600' 
+  }
 ];
 
 const Hero: React.FC = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
+    // Auto-advance logic
     useEffect(() => {
-        const interval = setInterval(() => {
-            setActiveIndex((prev) => (prev + 1) % HERO_ITEMS.length);
-        }, 8000); 
-        return () => clearInterval(interval);
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % HERO_ITEMS.length);
+        }, 7000); // 7 seconds per slide
+        return () => clearInterval(timer);
     }, []);
 
-    const renderMedia = (item: typeof HERO_ITEMS[0]) => {
-        if (item.type === 'video') {
-            return (
-                <video 
-                    src={item.src} 
-                    autoPlay 
-                    muted 
-                    loop 
-                    playsInline 
-                    preload="auto"
-                    // Important: Reset muted status on mounting to ensure browser allows autoplay
-                    ref={(el) => { if(el) { el.defaultMuted = true; el.muted = true; el.play().catch(() => {}); }}}
-                    poster="https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    className="w-full h-full object-cover" 
-                />
-            );
-        }
-        return <img src={item.src} alt="" className="w-full h-full object-cover animate-[kenburns-1_10s_infinite_alternate]" loading="eager" />;
-    };
-
     return (
-        // REMOVED BG-BLACK to ensure transparency
-        <div className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden bg-transparent">
-            {/* CROSSFADE IMPLEMENTATION - Smoother than slide-up for videos */}
-            {HERO_ITEMS.map((item, index) => (
-                <div 
-                    key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                >
-                    {renderMedia(item)}
-                    <div className="absolute inset-0 bg-black/40"></div>
-                </div>
-            ))}
-            
+        <div className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden bg-black">
+            {/* Slide Renderer */}
+            {HERO_ITEMS.map((item, index) => {
+                const isActive = index === currentIndex;
+                
+                return (
+                    <div
+                        key={item.id}
+                        className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                        // Optimize rendering: only render content if near active state to save memory, 
+                        // BUT keep some overlap for transitions.
+                        style={{ display: Math.abs(index - currentIndex) <= 1 || (index === 0 && currentIndex === HERO_ITEMS.length - 1) || (index === HERO_ITEMS.length - 1 && currentIndex === 0) ? 'block' : 'none' }}
+                    >
+                        {item.type === 'video' ? (
+                            <VideoSlide src={item.src} poster={item.poster || ''} isActive={isActive} />
+                        ) : (
+                            <div className="w-full h-full overflow-hidden">
+                                <img 
+                                    src={item.src} 
+                                    alt="" 
+                                    className={`w-full h-full object-cover transition-transform duration-[10000ms] ease-out ${isActive ? 'scale-110' : 'scale-100'}`} 
+                                    loading={index === 0 ? "eager" : "lazy"}
+                                />
+                            </div>
+                        )}
+                        <div className="absolute inset-0 bg-black/40"></div>
+                    </div>
+                );
+            })}
+
+            {/* Content Layer */}
             <div className="absolute inset-0 z-20 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-end pointer-events-none">
                  <div className="max-w-7xl">
-                    <div key={activeIndex} className="animate-fade-in-up">
-                        {/* TYPOGRAPHY FIX: 
-                            1. Removed mix-blend-overlay on "Architektur" to ensure visibility against dark video.
-                            2. Changed leading to `leading-none` to prevent overlap.
-                            3. Used `text-[clamp]` for fluid typography that prevents breaks on small screens.
-                        */}
+                    <div key={currentIndex} className="animate-fade-in-up">
                         <h1 className="flex flex-col font-black font-heading uppercase tracking-tighter leading-none md:leading-[0.85]">
                             <span className="text-[clamp(2.5rem,10vw,9rem)] text-white opacity-90 animate-fade-in-up">Architektur</span>
                             <span className="text-[clamp(2.5rem,10vw,9rem)] text-outline-bold animate-fade-in-up [animation-delay:100ms]">für</span>
@@ -442,6 +378,46 @@ const Hero: React.FC = () => {
         </div>
     );
 };
+
+// Isolated Video Component for reliability
+const VideoSlide: React.FC<{ src: string; poster: string; isActive: boolean }> = ({ src, poster, isActive }) => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        // Force mute state for autoplay policy
+        video.muted = true;
+        video.defaultMuted = true;
+        
+        // If active, ensure it plays. If inactive, pause to save resources.
+        if (isActive) {
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Auto-play prevented:", error);
+                });
+            }
+        } else {
+            video.pause();
+            video.currentTime = 0; // Reset for next loop
+        }
+    }, [isActive]);
+
+    return (
+        <video 
+            ref={videoRef}
+            className="w-full h-full object-cover"
+            src={src}
+            poster={poster}
+            muted
+            playsInline
+            loop
+            preload="auto"
+        />
+    );
+}
 
 const InfiniteMarquee: React.FC = () => {
     const items = ["SKATEPARKS", "PUMPTRACKS", "URBAN DESIGN", "BETONFERTIGTEILE", "FUNDAMENTFREI", "MODULAR"];
@@ -459,7 +435,6 @@ const InfiniteMarquee: React.FC = () => {
 };
 
 const HomePage: React.FC = () => {
-  // Use PageShell to inject metadata instead of raw markup
   return (
     <PageShell 
         title="Beton-Skateparks, Pumptracks & Skate-Anlagen"
@@ -504,34 +479,26 @@ const HomePage: React.FC = () => {
       
       <FAQSection />
       
-      {/* REDESIGNED CONTACT AREA */}
       <section id="contact-area" className="py-24 md:py-32 relative overflow-hidden border-t border-white/10">
-          {/* Ambient Background */}
           <div className="absolute inset-0 bg-brand-orange/5"></div>
           <div className="absolute -top-1/2 left-1/2 -translate-x-1/2 w-[100vw] h-[100vw] bg-brand-orange/10 blur-[120px] rounded-full pointer-events-none"></div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <AnimatedSection>
-              {/* Technical Badge */}
               <div className="inline-flex items-center gap-3 py-1 px-4 border border-brand-orange/30 bg-brand-orange/10 rounded-full mb-12 backdrop-blur-md">
                  <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
                  <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">
                     Ready for Takeoff
                  </span>
               </div>
-              
-              {/* Massive Typography */}
               <h2 className="text-6xl md:text-[10rem] font-black font-heading uppercase tracking-tighter mb-12 leading-[0.85]">
                 Start<br/>
                 <span className="text-transparent" style={{ WebkitTextStroke: '1px #fff' }}>Klar?</span>
               </h2>
-              
               <p className="text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto mb-16 font-light">
                   Lassen Sie uns gemeinsam etwas Großartiges schaffen. <br/>
                   <span className="text-white font-bold">Von der ersten Skizze bis zur Eröffnung.</span>
               </p>
-              
-              {/* Massive Button */}
               <Link 
                 to="/kontakt" 
                 className="inline-flex items-center gap-4 bg-white text-black font-black uppercase tracking-widest text-base md:text-lg py-5 px-10 md:py-6 md:px-12 rounded hover:bg-brand-orange hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-[0_20px_50px_-10px_rgba(255,255,255,0.2)] hover:shadow-[0_20px_50px_-10px_rgba(249,115,22,0.4)] group"

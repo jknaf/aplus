@@ -82,8 +82,8 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                     {/* Header Tech Details */}
                     <div className="flex justify-between items-start">
                         <div className="flex flex-col gap-1">
-                            <span className="text-[10px] font-mono text-brand-orange tracking-widest border border-brand-orange/30 px-1 rounded-sm">CONFIDENTIAL</span>
-                            <span className="text-[10px] font-mono text-gray-500">REF: A-PLUS-CAT-V4</span>
+                            <span className="text-[10px] font-mono text-brand-orange tracking-widest border border-brand-orange/30 px-1 rounded-sm">Katalog</span>
+                            <span className="text-[10px] font-mono text-gray-500">REF: A-PLUS-URBAN_DESIGN</span>
                         </div>
                         <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center">
                             <span className="material-symbols-outlined text-white text-sm">qr_code_2</span>

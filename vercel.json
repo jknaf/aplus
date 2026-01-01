@@ -13,7 +13,12 @@
     { "source": "/skate-pipes-standard-html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
     { "source": "/skate-pipes-standard.html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
     { "source": "/skate-pipes.html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
-    { "source": "/skate-park.html", "destination": "/#/produkte/skate-anlagen", "permanent": true }
+    { "source": "/skate-park.html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
+    
+    { "source": "/de/skate-pipes-standard-html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
+    { "source": "/de/skate-pipes-standard.html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
+    { "source": "/de/skate-pipes.html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
+    { "source": "/de/skate-park.html", "destination": "/#/produkte/skate-anlagen", "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

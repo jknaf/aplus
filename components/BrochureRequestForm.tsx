@@ -64,84 +64,75 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
         </div>
     );
 
-    // Modern "Digital Slate / Tech Tablet" Mockup
-    const CatalogMockup = () => (
-        <div className="relative group w-64 h-80 md:w-72 md:h-96 mx-auto lg:mx-0 perspective-1000">
-            {/* Main Floating Slab */}
-            <div className="relative w-full h-full bg-[#121212]/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,1)] transition-transform duration-500 ease-out transform group-hover:rotate-y-6 group-hover:rotate-x-6 group-hover:scale-105">
-                
-                {/* Tech Grid Background */}
-                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
-                
-                {/* Scanline Animation */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-orange/10 to-transparent h-[150%] w-full animate-scan pointer-events-none"></div>
+    // NEW: "Digital Tech / Blueprint" Visualization
+    // Focuses on "Data", "Planning" and "Technical Precision" instead of a physical book.
+    const TechCatalogVisual = () => (
+        <div className="relative w-72 h-96 mx-auto lg:mx-0 mt-12 lg:mt-0 perspective-1000 group">
+            
+            {/* 1. Abstract 3D Wireframe Background (Rotating Cube) */}
+            {/* This represents the "3D Planning" aspect behind the catalog */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 pointer-events-none z-0">
+                <div className="relative w-full h-full animate-[spin_10s_linear_infinite] transform-style-3d opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform translate-z-[32px]"></div>
+                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform translate-z-[-32px]"></div>
+                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-x-90 translate-z-[32px]"></div>
+                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-x-90 translate-z-[-32px]"></div>
+                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-y-90 translate-z-[32px]"></div>
+                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-y-90 translate-z-[-32px]"></div>
+                </div>
+            </div>
 
-                {/* Content Layout */}
-                <div className="relative h-full flex flex-col justify-between p-6 z-10">
+            {/* 2. The Main "Digital File" Card */}
+            <div className="relative z-10 w-full h-full bg-[#0a0a0a] border border-white/20 p-2 shadow-2xl transition-transform duration-500 transform group-hover:rotate-y-6 group-hover:rotate-x-6 overflow-hidden rounded-sm">
+                
+                {/* HUD Elements (Corners) */}
+                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-brand-orange z-20"></div>
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-brand-orange z-20"></div>
+
+                {/* Inner Content Container */}
+                <div className="relative w-full h-full bg-[#151515] overflow-hidden group-hover:bg-[#1a1a1a] transition-colors">
                     
-                    {/* Header Tech Details */}
-                    <div className="flex justify-between items-start">
-                        <div className="flex flex-col gap-1">
-                            <span className="text-[10px] font-mono text-brand-orange tracking-widest border border-brand-orange/30 px-1 rounded-sm">Katalog</span>
-                            <span className="text-[10px] font-mono text-gray-500">REF: A-PLUS-URBAN_DESIGN</span>
-                        </div>
-                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center">
-                            <span className="material-symbols-outlined text-white text-sm">qr_code_2</span>
-                        </div>
-                    </div>
+                    {/* The Catalog Cover Image */}
+                    <img 
+                        src="https://img.yumpu.com/1909210/1/500x640/skatepark-a-urban-design.jpg" 
+                        alt="A+ Urban Design Catalog Cover" 
+                        className="w-full h-full object-cover opacity-80 mix-blend-normal filter contrast-125 grayscale group-hover:grayscale-0 transition-all duration-700"
+                    />
 
-                    {/* Main Title Area */}
-                    <div>
-                        <div className="w-12 h-12 mb-4 bg-brand-orange flex items-center justify-center rounded-lg shadow-lg shadow-brand-orange/20">
-                            <span className="material-symbols-outlined text-black font-bold text-2xl">folder_open</span>
+                    {/* Scanning Line Animation */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-orange/20 to-transparent h-[20%] w-full animate-[scan_3s_linear_infinite] pointer-events-none mix-blend-screen border-b border-brand-orange/50"></div>
+                    
+                    {/* Data Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 border-t border-white/10 flex justify-between items-center">
+                        <div className="flex flex-col">
+                            <span className="text-[10px] font-mono text-brand-orange tracking-widest uppercase">Datei</span>
+                            <span className="text-white font-bold text-xs">PDF DOCUMENT</span>
                         </div>
-                        <h3 className="text-3xl font-black font-heading text-white leading-none tracking-tighter uppercase mb-1">
-                            Produkt
-                        </h3>
-                        <h3 className="text-3xl font-black font-heading text-transparent text-outline-bold leading-none tracking-tighter uppercase">
-                            Katalog
-                        </h3>
-                    </div>
-
-                    {/* Footer Stats */}
-                    <div className="space-y-3">
-                         <div className="h-px w-full bg-gradient-to-r from-brand-orange/50 to-transparent"></div>
-                         <div className="grid grid-cols-2 gap-2 text-[10px] font-mono text-gray-400">
-                             <div>
-                                 <span className="block text-gray-600">FORMAT</span>
-                                 <span className="text-white">PDF / DIGITAL</span>
-                             </div>
-                             <div>
-                                 <span className="block text-gray-600">SIZE</span>
-                                 <span className="text-white">24.5 MB</span>
-                             </div>
-                             <div>
-                                 <span className="block text-gray-600">UPDATED</span>
-                                 <span className="text-white">{new Date().getFullYear()}</span>
-                             </div>
-                             <div>
-                                 <span className="block text-gray-600">ACCESS</span>
-                                 <span className="text-brand-orange">UNRESTRICTED</span>
-                             </div>
-                         </div>
+                         <div className="flex flex-col text-right">
+                            <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase">Größe</span>
+                            <span className="text-white font-bold text-xs">~12 MB</span>
+                        </div>
                     </div>
                 </div>
 
-                {/* Decorative Corners */}
-                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-brand-orange opacity-50"></div>
-                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-brand-orange opacity-50"></div>
+                {/* Status Indicator */}
+                <div className="absolute top-4 right-4 flex items-center gap-2 z-30 bg-black/60 px-2 py-1 rounded backdrop-blur-md border border-white/10">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <span className="text-[10px] font-mono text-white uppercase tracking-wider">Available</span>
+                </div>
             </div>
 
-            {/* Glowing Backlight Blob */}
-            <div className="absolute -top-10 -right-10 w-48 h-48 bg-brand-orange/20 rounded-full blur-[60px] -z-10 animate-pulse-slow pointer-events-none"></div>
-            
-             <style>{`
+            {/* Reflection/Glow */}
+            <div className="absolute -bottom-8 left-0 right-0 h-4 bg-brand-orange/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[100%]"></div>
+
+            <style>{`
+                .perspective-1000 { perspective: 1000px; }
+                .transform-style-3d { transform-style: preserve-3d; }
                 @keyframes scan {
-                    0% { transform: translateY(-100%); }
-                    100% { transform: translateY(100%); }
-                }
-                .animate-scan {
-                    animation: scan 4s linear infinite;
+                    0% { top: -20%; opacity: 0; }
+                    10% { opacity: 1; }
+                    90% { opacity: 1; }
+                    100% { top: 120%; opacity: 0; }
                 }
             `}</style>
         </div>
@@ -158,14 +149,17 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                     <div className="grid lg:grid-cols-12 gap-12 items-center">
                         
                         {/* Text & Form Column */}
-                        <div className="lg:col-span-7 text-left">
+                        <div className="lg:col-span-7 text-left order-2 lg:order-1">
                             <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                                 Kostenloser Download
                             </span>
-                            <h2 className="text-5xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9] mb-6">
-                                Unser <br/>
-                                <span className="text-outline-orange">Katalog.</span>
+                            
+                            {/* TYPOGRAPHY SWAP: Outline 'Unser' (Industrial), Solid 'Katalog' (Readable) */}
+                            <h2 className="text-5xl md:text-7xl font-black font-heading uppercase tracking-tighter leading-[0.9] mb-6">
+                                <span className="text-transparent text-outline-bold">Unser</span> <br/>
+                                <span className="text-white">Katalog.</span>
                             </h2>
+                            
                             <p className="text-lg text-gray-400 mb-8 max-w-xl leading-relaxed">
                                 Planen Sie Ihr nächstes Projekt mit allen Details zur Hand. Unser Katalog enthält technische Zeichnungen, Ausschreibungstexte und inspirierende Case Studies unserer Beton-Skateparks und Stadtmöbel.
                             </p>
@@ -210,8 +204,8 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                         </div>
 
                         {/* Visual Column */}
-                        <div className="lg:col-span-5 flex justify-center lg:justify-end relative">
-                            <CatalogMockup />
+                        <div className="lg:col-span-5 flex justify-center lg:justify-end relative order-1 lg:order-2">
+                            <TechCatalogVisual />
                         </div>
                     </div>
                 </div>

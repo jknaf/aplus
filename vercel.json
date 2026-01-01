@@ -1,0 +1,21 @@
+{
+  "redirects": [
+    { "source": "/skatepark-fotos.html", "destination": "/#/projekte", "permanent": true },
+    { "source": "/ueberdachung-pavillon.html", "destination": "/#/produkte/ueberdachung-beton", "permanent": true },
+    { "source": "/kontakt.html", "destination": "/#/kontakt", "permanent": true },
+    { "source": "/pumptrack.html", "destination": "/#/produkte/pumptrack-beton", "permanent": true },
+    { "source": "/impressum.html", "destination": "/#/impressum", "permanent": true },
+    { "source": "/session-2.html", "destination": "/#/projekte", "permanent": true },
+    { "source": "/info.html", "destination": "/#/ueber-uns", "permanent": true },
+    { "source": "/standard-skate-bowl.html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
+    { "source": "/funcourt-bolzplatz.html", "destination": "/#/produkte/hockey-banden", "permanent": true },
+    { "source": "/skate-anlagen.html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-pipes-standard-html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-pipes-standard.html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-pipes.html", "destination": "/#/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-park.html", "destination": "/#/produkte/skate-anlagen", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

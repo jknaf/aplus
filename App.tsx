@@ -19,6 +19,7 @@ import ImpressumPage from './pages/ImpressumPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import NotFoundPage from './pages/NotFoundPage';
 import PrivacyBanner from './components/PrivacyBanner';
+import LegacyRedirectHandler from './components/LegacyRedirectHandler';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -34,6 +35,7 @@ const App: React.FC = () => {
   return (
     // Fallback to HashRouter for maximum compatibility without server-side rewrites
     <HashRouter>
+      <LegacyRedirectHandler />
       <ScrollToTop />
       
       {/* --- OPTIMIZED BACKGROUND SYSTEM (Safari Friendly) --- */}

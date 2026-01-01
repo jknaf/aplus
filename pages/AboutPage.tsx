@@ -46,7 +46,7 @@ const StatCounter: React.FC<{ end: number; suffix?: string; label: string }> = (
 
 // --- Redesigned "Das Prinzip" Card ---
 const PrincipleCard: React.FC<{ number: string; title: string; desc: string }> = ({ number, title, desc }) => (
-    <div className="relative p-8 md:p-12 border border-white/10 bg-black/40 backdrop-blur-md group hover:border-brand-orange/50 transition-all duration-500 overflow-hidden rounded-xl">
+    <div className="relative p-8 md:p-12 border border-white/10 bg-white/5 backdrop-blur-md group hover:border-brand-orange/50 transition-all duration-500 overflow-hidden rounded-xl">
         {/* Large Background Number */}
         <div className="absolute -top-6 -right-6 text-[10rem] font-black font-heading text-white/5 group-hover:text-brand-orange/10 transition-colors duration-500 select-none leading-none z-0">
             {number}
@@ -79,7 +79,7 @@ const AboutPage: React.FC = () => {
                 alt="Architecture Texture" 
                 className="w-full h-full object-cover grayscale opacity-40 scale-105 animate-[kenburns-1_30s_infinite_alternate]"
              />
-             <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent"></div>
              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
         </div>
 
@@ -89,7 +89,7 @@ const AboutPage: React.FC = () => {
             </span>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] mb-8 animate-fade-in-up [animation-delay:200ms]">
                 Beton<br/>
-                <span className="text-outline-bold">in</span>
+                <span className="text-transparent text-outline-bold">in</span>
                 <span className="text-brand-orange">Bestform</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto animate-fade-in-up [animation-delay:400ms]">
@@ -123,7 +123,7 @@ const AboutPage: React.FC = () => {
                         Vision
                    </span>
                   <h2 className="text-5xl font-black font-heading text-white uppercase tracking-tighter mb-8 leading-none">
-                      Unsere <span className="text-outline-orange">Philosophie.</span>
+                      Unsere <span className="text-transparent text-outline-bold">Philosophie.</span>
                   </h2>
                   <div className="space-y-8">
                       <p className="text-lg text-gray-400 leading-relaxed border-l-2 border-brand-orange pl-6">
@@ -157,7 +157,7 @@ const AboutPage: React.FC = () => {
                         Der A+ Standard
                   </span>
                   <h2 className="text-6xl md:text-8xl font-black font-heading text-white uppercase tracking-tighter leading-none">
-                      Das <span className="text-outline-orange">Prinzip.</span>
+                      Das <span className="text-transparent text-outline-bold">Prinzip.</span>
                   </h2>
               </div>
               
@@ -183,7 +183,7 @@ const AboutPage: React.FC = () => {
 
       {/* 5. TEAM / LEADERSHIP */}
       <div className="container mx-auto px-4 mb-32">
-           <div className="max-w-4xl mx-auto bg-black/40 backdrop-blur-md border border-white/10 p-8 md:p-12 relative group overflow-hidden rounded-2xl">
+           <div className="max-w-4xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 p-8 md:p-12 relative group overflow-hidden rounded-2xl">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-brand-orange/20 transition-colors duration-500"></div>
                 
                 <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">

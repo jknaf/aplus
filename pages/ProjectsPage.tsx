@@ -14,7 +14,7 @@ const ProjectsPage: React.FC = () => {
   return (
     <PageShell title="Referenzen & Projekte">
       
-      {/* 1. HEADER SECTION */}
+      {/* 1. HEADER SECTION - Updated Typography */}
       <div className="relative pt-12 pb-24 text-center">
         <div className="inline-flex items-center gap-3 py-1 px-4 border border-brand-orange/30 bg-brand-orange/10 rounded-full mb-8 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
@@ -23,12 +23,12 @@ const ProjectsPage: React.FC = () => {
             </span>
         </div>
         <h1 className="text-6xl md:text-9xl font-black font-heading text-white uppercase tracking-tighter leading-[0.85] mb-8 drop-shadow-2xl">
-            Work<br/><span className="text-outline-bold text-transparent" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)' }}>Selection.</span>
+            Work<br/><span className="text-transparent text-outline-bold">Selection.</span>
         </h1>
       </div>
 
       {/* 2. FILTER CONTROL PANEL - Transparent with Blur */}
-      <div className="sticky top-20 z-40 mb-16 backdrop-blur-xl border-y border-white/10 bg-black/40">
+      <div className="sticky top-20 z-40 mb-16 backdrop-blur-xl border-y border-white/10 bg-black/20">
         <div className="container mx-auto overflow-x-auto">
              <div className="flex justify-start md:justify-center min-w-max px-4">
                 <button

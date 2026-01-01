@@ -36,12 +36,12 @@ const ContactPage: React.FC = () => {
         <PageShell title="Kontakt & Anfrage">
             <div className="relative w-full min-h-[80vh] flex flex-col justify-center">
                 
-                {/* Header Text */}
+                {/* Header Text - UPDATED TYPOGRAPHY */}
                 <div className="text-center mb-16 animate-fade-in-up">
-                    <h1 className="text-6xl md:text-8xl font-black font-heading uppercase tracking-tighter text-white">
-                        Gemeinsam<br/><span className="text-brand-orange">Planen.</span>
+                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85]">
+                        Gemeinsam<br/><span className="text-transparent text-outline-bold">Planen.</span>
                     </h1>
-                    <p className="mt-6 text-xl text-gray-400 max-w-2xl mx-auto font-light">
+                    <p className="mt-8 text-xl text-gray-400 max-w-2xl mx-auto font-light">
                         Bereit für das nächste Projekt? Erzählen Sie uns von Ihrer Vision. <br/>
                         Wir liefern die passende Beton-Lösung.
                     </p>
@@ -52,8 +52,8 @@ const ContactPage: React.FC = () => {
                     
                     {/* LEFT COLUMN: CONTACT INFO & MAP PLACEHOLDER */}
                     <div className="lg:col-span-5 order-2 lg:order-1 animate-fade-in-up [animation-delay:200ms]">
-                        {/* CHANGED: bg-brand-surface -> bg-black/40 with blur */}
-                        <div className="bg-black/40 backdrop-blur-md border border-white/10 p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden group rounded-lg shadow-2xl">
+                        {/* CHANGED: Transparent background to show grid */}
+                        <div className="bg-white/5 backdrop-blur-md border border-white/10 p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden group rounded-lg shadow-2xl">
                              {/* Decorative Glow */}
                              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-orange/10 rounded-full blur-[80px] pointer-events-none"></div>
 
@@ -86,7 +86,7 @@ const ContactPage: React.FC = () => {
                     {/* RIGHT COLUMN: INTERACTIVE FORM */}
                     <div className="lg:col-span-7 order-1 lg:order-2 animate-fade-in-up [animation-delay:400ms]">
                         {status === 'success' ? (
-                            <div className="h-full min-h-[400px] flex flex-col items-center justify-center bg-black/40 backdrop-blur-md border border-white/10 p-12 text-center animate-pop-in rounded-lg">
+                            <div className="h-full min-h-[400px] flex flex-col items-center justify-center bg-white/5 backdrop-blur-md border border-white/10 p-12 text-center animate-pop-in rounded-lg">
                                 <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
                                     <span className="material-symbols-outlined text-4xl text-green-500">check</span>
                                 </div>
@@ -102,7 +102,7 @@ const ContactPage: React.FC = () => {
                                 </button>
                             </div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-8 bg-black/40 backdrop-blur-md p-8 md:p-12 border border-white/5 rounded-lg shadow-2xl">
+                            <form onSubmit={handleSubmit} className="space-y-8 bg-white/5 backdrop-blur-md p-8 md:p-12 border border-white/5 rounded-lg shadow-2xl">
                                 
                                 {/* Project Type Selector */}
                                 <div>

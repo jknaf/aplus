@@ -13,7 +13,7 @@ const OtherProducts: React.FC = () => {
               Portfolio
           </span>
           <h2 className="text-4xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
-              Weitere <span className="text-outline-orange">Lösungen.</span>
+              Weitere <span className="text-transparent text-outline-bold">Lösungen.</span>
           </h2>
       </div>
 
@@ -77,7 +77,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     alt="Hero Beton Skatepark" 
                     className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#050505]"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#0a0a0a]"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
             </div>
             
@@ -91,7 +91,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     </div>
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms] drop-shadow-2xl">
                         Beton<br/>
-                        <span className="text-outline-bold">Skateparks</span>
+                        <span className="text-transparent text-outline-bold">Skateparks</span>
                     </h1>
                 </div>
             </div>
@@ -109,7 +109,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Das Original
                         </span>
                         <h2 className="text-5xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-none mb-8">
-                            Seit den <span className="text-outline-orange">90ern.</span>
+                            Seit den <span className="text-transparent text-outline-bold">90ern.</span>
                         </h2>
                         <p className="text-xl text-gray-400 leading-relaxed mb-8">
                             Unsere modularen Skate-Elemente haben den öffentlichen Raum revolutioniert. Sie bieten die perfekte Symbiose aus der Haltbarkeit von Beton und der Flexibilität eines Baukastensystems.
@@ -170,7 +170,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
                     <h2 className="text-5xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-none">
-                        Technische<span className="text-brand-orange">Daten</span>
+                        Technische<span className="text-transparent text-outline-bold">Daten</span>
                     </h2>
                     <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: SKATE-SYSTEME</span>
                 </div>

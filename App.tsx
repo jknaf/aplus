@@ -39,23 +39,23 @@ const App: React.FC = () => {
       <ScrollToTop />
       
       {/* --- OPTIMIZED BACKGROUND SYSTEM (Safari Friendly) --- */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[#050505]">
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[#0a0a0a]">
         
-        {/* 1. Base Gradient - Slightly lighter at bottom to reveal grid */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020202] via-[#080808] to-[#121212]"></div>
+        {/* 1. Base Gradient - REDUCED OPACITY to let grid show */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020202]/80 via-[#080808]/80 to-[#121212]/80"></div>
         
-        {/* 2. Technical Grid - Increased Opacity for Visibility */}
-        <div className="absolute inset-0 bg-grid-pattern bg-[length:60px_60px] opacity-[0.25]"></div>
+        {/* 2. Technical Grid - INCREASED OPACITY & LIGHTER COLOR */}
+        <div className="absolute inset-0 bg-grid-pattern bg-[length:60px_60px] opacity-[0.4]"></div>
 
-        {/* 3. Static Glows - Increased Intensity */}
+        {/* 3. Static Glows - High Intensity */}
         {/* Top Left Orange Glow */}
-        <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.2)_0%,transparent_60%)] blur-3xl"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.25)_0%,transparent_60%)] blur-[100px]"></div>
         
         {/* Bottom Right White/Blueish Glow */}
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_60%)] blur-3xl"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_60%)] blur-[100px]"></div>
 
         {/* Center Accent */}
-        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[40vw] h-[40vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.05)_0%,transparent_70%)] blur-3xl"></div>
+        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[40vw] h-[40vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.08)_0%,transparent_70%)] blur-[80px]"></div>
 
       </div>
 

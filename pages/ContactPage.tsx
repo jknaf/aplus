@@ -29,7 +29,7 @@ const ContactPage: React.FC = () => {
         }, 1500);
     };
 
-    const inputClasses = "w-full bg-transparent border-b border-gray-700 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-brand-orange focus:placeholder-gray-500 transition-all duration-300 font-sans";
+    const inputClasses = "w-full bg-black/30 border-b border-gray-700 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-brand-orange focus:placeholder-gray-500 transition-all duration-300 font-sans backdrop-blur-sm rounded-t px-2";
     const labelClasses = "block text-xs font-mono text-brand-orange uppercase tracking-widest mb-1";
 
     return (
@@ -52,7 +52,8 @@ const ContactPage: React.FC = () => {
                     
                     {/* LEFT COLUMN: CONTACT INFO & MAP PLACEHOLDER */}
                     <div className="lg:col-span-5 order-2 lg:order-1 animate-fade-in-up [animation-delay:200ms]">
-                        <div className="bg-brand-surface border border-white/10 p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden group rounded-lg">
+                        {/* CHANGED: bg-brand-surface -> bg-black/40 with blur */}
+                        <div className="bg-black/40 backdrop-blur-md border border-white/10 p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden group rounded-lg shadow-2xl">
                              {/* Decorative Glow */}
                              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-orange/10 rounded-full blur-[80px] pointer-events-none"></div>
 
@@ -85,7 +86,7 @@ const ContactPage: React.FC = () => {
                     {/* RIGHT COLUMN: INTERACTIVE FORM */}
                     <div className="lg:col-span-7 order-1 lg:order-2 animate-fade-in-up [animation-delay:400ms]">
                         {status === 'success' ? (
-                            <div className="h-full min-h-[400px] flex flex-col items-center justify-center bg-brand-surface border border-white/10 p-12 text-center animate-pop-in rounded-lg">
+                            <div className="h-full min-h-[400px] flex flex-col items-center justify-center bg-black/40 backdrop-blur-md border border-white/10 p-12 text-center animate-pop-in rounded-lg">
                                 <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
                                     <span className="material-symbols-outlined text-4xl text-green-500">check</span>
                                 </div>
@@ -101,7 +102,7 @@ const ContactPage: React.FC = () => {
                                 </button>
                             </div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-8 bg-black/40 backdrop-blur-md p-8 md:p-12 border border-white/5 rounded-lg">
+                            <form onSubmit={handleSubmit} className="space-y-8 bg-black/40 backdrop-blur-md p-8 md:p-12 border border-white/5 rounded-lg shadow-2xl">
                                 
                                 {/* Project Type Selector */}
                                 <div>
@@ -115,7 +116,7 @@ const ContactPage: React.FC = () => {
                                                 className={`px-6 py-2 rounded-lg text-sm font-bold uppercase tracking-wide transition-all duration-300 border ${
                                                     projectType === type 
                                                     ? 'bg-brand-orange border-brand-orange text-black shadow-[0_0_20px_rgba(249,115,22,0.4)]' 
-                                                    : 'bg-transparent border-white/20 text-gray-400 hover:border-white hover:text-white'
+                                                    : 'bg-transparent border-white/20 text-gray-400 hover:border-white hover:text-white hover:bg-white/5'
                                                 }`}
                                             >
                                                 {type}

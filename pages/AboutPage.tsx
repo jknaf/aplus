@@ -35,7 +35,7 @@ const StatCounter: React.FC<{ end: number; suffix?: string; label: string }> = (
     }, [end]);
 
     return (
-        <div ref={ref} className="text-center p-8 border border-white/5 bg-brand-surface/50 backdrop-blur-sm group hover:border-brand-orange/30 transition-colors duration-500 rounded-lg">
+        <div ref={ref} className="text-center p-8 border border-white/5 bg-white/5 backdrop-blur-sm group hover:border-brand-orange/30 transition-colors duration-500 rounded-lg">
             <div className="text-5xl md:text-6xl font-black font-heading text-white mb-2 group-hover:text-brand-orange transition-colors duration-300">
                 {count}{suffix}
             </div>
@@ -46,7 +46,7 @@ const StatCounter: React.FC<{ end: number; suffix?: string; label: string }> = (
 
 // --- Redesigned "Das Prinzip" Card ---
 const PrincipleCard: React.FC<{ number: string; title: string; desc: string }> = ({ number, title, desc }) => (
-    <div className="relative p-8 md:p-12 border border-white/10 bg-[#0a0a0a] group hover:border-brand-orange/50 transition-all duration-500 overflow-hidden rounded-xl">
+    <div className="relative p-8 md:p-12 border border-white/10 bg-black/40 backdrop-blur-md group hover:border-brand-orange/50 transition-all duration-500 overflow-hidden rounded-xl">
         {/* Large Background Number */}
         <div className="absolute -top-6 -right-6 text-[10rem] font-black font-heading text-white/5 group-hover:text-brand-orange/10 transition-colors duration-500 select-none leading-none z-0">
             {number}
@@ -79,12 +79,12 @@ const AboutPage: React.FC = () => {
                 alt="Architecture Texture" 
                 className="w-full h-full object-cover grayscale opacity-40 scale-105 animate-[kenburns-1_30s_infinite_alternate]"
              />
-             <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/80 to-transparent"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-6xl">
-            <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-8 uppercase tracking-widest bg-brand-orange/5 rounded-md animate-fade-in-up">
+            <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-8 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md animate-fade-in-up">
                 SEIT 2005 • STUTTGART
             </span>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] mb-8 animate-fade-in-up [animation-delay:200ms]">
@@ -119,7 +119,7 @@ const AboutPage: React.FC = () => {
                   </div>
               </div>
               <div className="lg:w-1/2">
-                   <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                   <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
                         Vision
                    </span>
                   <h2 className="text-5xl font-black font-heading text-white uppercase tracking-tighter mb-8 leading-none">
@@ -133,12 +133,12 @@ const AboutPage: React.FC = () => {
                           Wir haben uns vom klassischen Tiefbau verabschiedet. Unsere Antwort auf teure Baustellen und lange Sperrzeiten ist <strong>Modularität</strong>. Wir fertigen im Werk unter perfekten Bedingungen und montieren vor Ort in Rekordzeit.
                       </p>
                       <div className="grid grid-cols-2 gap-4 mt-8">
-                          <div className="bg-white/5 p-6 rounded-lg border border-white/5">
+                          <div className="bg-white/5 p-6 rounded-lg border border-white/5 backdrop-blur-sm">
                               <span className="material-symbols-outlined text-brand-orange mb-2 text-3xl">eco</span>
                               <h4 className="font-bold text-white uppercase text-sm mb-1">Nachhaltig</h4>
                               <p className="text-xs text-gray-500">Recycelbar & Langlebig</p>
                           </div>
-                          <div className="bg-white/5 p-6 rounded-lg border border-white/5">
+                          <div className="bg-white/5 p-6 rounded-lg border border-white/5 backdrop-blur-sm">
                               <span className="material-symbols-outlined text-brand-orange mb-2 text-3xl">engineering</span>
                               <h4 className="font-bold text-white uppercase text-sm mb-1">Präzise</h4>
                               <p className="text-xs text-gray-500">Millimetergenaue Fertigung</p>
@@ -149,11 +149,11 @@ const AboutPage: React.FC = () => {
           </div>
       </div>
 
-      {/* 4. DAS PRINZIP (Redesigned) */}
-      <div className="bg-[#050505] border-y border-white/10 py-32 mb-32 relative overflow-hidden">
+      {/* 4. DAS PRINZIP (Redesigned - Transparent Background) */}
+      <div className="border-y border-white/10 py-32 mb-32 relative overflow-hidden bg-white/5 backdrop-blur-sm">
           <div className="container mx-auto px-4 relative z-10">
               <div className="text-center mb-20">
-                  <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                  <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
                         Der A+ Standard
                   </span>
                   <h2 className="text-6xl md:text-8xl font-black font-heading text-white uppercase tracking-tighter leading-none">
@@ -183,11 +183,11 @@ const AboutPage: React.FC = () => {
 
       {/* 5. TEAM / LEADERSHIP */}
       <div className="container mx-auto px-4 mb-32">
-           <div className="max-w-4xl mx-auto bg-[#0a0a0a] border border-white/10 p-8 md:p-12 relative group overflow-hidden rounded-2xl">
+           <div className="max-w-4xl mx-auto bg-black/40 backdrop-blur-md border border-white/10 p-8 md:p-12 relative group overflow-hidden rounded-2xl">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-brand-orange/20 transition-colors duration-500"></div>
                 
                 <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
-                    <div className="w-40 h-40 md:w-56 md:h-56 flex-shrink-0 bg-brand-surface border border-white/20 rounded-full overflow-hidden relative shadow-2xl">
+                    <div className="w-40 h-40 md:w-56 md:h-56 flex-shrink-0 bg-white/5 border border-white/20 rounded-full overflow-hidden relative shadow-2xl">
                          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" alt="Cüneyit Akcakoca" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"/>
                     </div>
                     <div className="text-center md:text-left">

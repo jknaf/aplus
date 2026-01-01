@@ -41,21 +41,26 @@ const App: React.FC = () => {
       {/* --- OPTIMIZED BACKGROUND SYSTEM (Safari Friendly) --- */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[#050505]">
         
-        {/* 1. Base Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] to-[#121212]"></div>
+        {/* 1. Base Gradient - Slightly lighter at bottom to reveal grid */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020202] via-[#080808] to-[#121212]"></div>
         
-        {/* 2. Technical Grid (Static, low cost) */}
-        <div className="absolute inset-0 bg-grid-pattern bg-[length:40px_40px] opacity-[0.15]"></div>
+        {/* 2. Technical Grid - Increased Opacity for Visibility */}
+        <div className="absolute inset-0 bg-grid-pattern bg-[length:60px_60px] opacity-[0.25]"></div>
 
-        {/* 3. Static Glows (Performance optimized) */}
-        {/* We use radial gradients instead of CSS blur filters for better performance on Safari */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15)_0%,transparent_70%)]"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)]"></div>
+        {/* 3. Static Glows - Increased Intensity */}
+        {/* Top Left Orange Glow */}
+        <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.2)_0%,transparent_60%)] blur-3xl"></div>
+        
+        {/* Bottom Right White/Blueish Glow */}
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_60%)] blur-3xl"></div>
+
+        {/* Center Accent */}
+        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[40vw] h-[40vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.05)_0%,transparent_70%)] blur-3xl"></div>
 
       </div>
 
       {/* Layer 1: Noise Overlay (Static image, no filters) */}
-      <div className="bg-noise-overlay fixed inset-0 z-[1] pointer-events-none opacity-30 mix-blend-overlay"></div>
+      <div className="bg-noise-overlay fixed inset-0 z-[1] pointer-events-none opacity-40 mix-blend-overlay"></div>
       
       {/* Layer 2: Main Content */}
       <div className="text-brand-text font-sans flex flex-col min-h-screen relative z-[10]">

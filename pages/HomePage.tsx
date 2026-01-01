@@ -403,7 +403,8 @@ const VideoSlide: React.FC<{ src: string; poster: string; isActive: boolean }> =
         if (isActive) {
             const playPromise = video.play();
             if (playPromise !== undefined) {
-                playPromise.catch(error => {
+                // CHANGED: Removed unused 'error' parameter to fix TypeScript build error (TS6133)
+                playPromise.catch(() => {
                     // Fail silently, just means the poster will show
                 });
             }

@@ -1,6 +1,5 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PrivacyBanner from './components/PrivacyBanner';
@@ -8,15 +7,14 @@ import LegacyRedirectHandler from './components/LegacyRedirectHandler';
 import SuspenseFallback from './components/SuspenseFallback';
 
 // --- CORE PAGES (Direct Import for INSTANT Navigation) ---
-// Kept direct to ensure the main menu feels like a native app.
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 
-// --- PRODUCT & DETAIL PAGES (Lazy Load for Mobile Performance) ---
-// Switched back to Lazy Loading to drastically reduce the initial bundle size for iPhone/Mobile users.
-// This fixes the "slow load" issue and prevents memory spikes on mobile devices.
+// --- LAZY LOADED PAGES ---
+// We keep them lazy to make the INITIAL load fast (iPhone doesn't crash).
+// BUT: We preload them in the useEffect below so navigation is instant later.
 const ProductGrillPage = React.lazy(() => import('./pages/ProductGrillPage'));
 const ProductChangingCabinePage = React.lazy(() => import('./pages/ProductChangingCabinePage'));
 const ProductHockeyRinkPage = React.lazy(() => import('./pages/ProductHockeyRinkPage'));
@@ -26,29 +24,52 @@ const ProductBmxPage = React.lazy(() => import('./pages/ProductBmxPage'));
 const ProductPavilionPage = React.lazy(() => import('./pages/ProductPavilionPage'));
 const ProjectDetailPage = React.lazy(() => import('./pages/ProjectDetailPage'));
 
-// --- LEGAL PAGES (Keep Lazy) ---
 const ImpressumPage = React.lazy(() => import('./pages/ImpressumPage'));
 const PrivacyPolicyPage = React.lazy(() => import('./pages/PrivacyPolicyPage'));
 const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage'));
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
   return null;
 };
 
 const App: React.FC = () => {
+  
+  // --- ARCHITECTURE FIX: BACKGROUND PRELOADING ---
+  // Waits 2.5s after main load (so we don't slow down the start),
+  // then silently fetches all other pages in the background.
+  // Result: No "Loading..." spinners when clicking links.
+  useEffect(() => {
+    const preloadRoutes = () => {
+        const routes = [
+            import('./pages/ProductSkateAnlagenPage'),
+            import('./pages/ProductPumptrackPage'),
+            import('./pages/ProductHockeyRinkPage'),
+            import('./pages/ProductBmxPage'),
+            import('./pages/ProductGrillPage'),
+            import('./pages/ProductChangingCabinePage'),
+            import('./pages/ProductPavilionPage'),
+            import('./pages/ProjectDetailPage')
+        ];
+    };
+
+    if (document.readyState === 'complete') {
+        setTimeout(preloadRoutes, 2500);
+    } else {
+        window.addEventListener('load', () => setTimeout(preloadRoutes, 2500));
+    }
+  }, []);
+
   return (
     <HashRouter>
       <LegacyRedirectHandler />
       <ScrollToTop />
       
       {/* --- GLOBAL ATMOSPHERE LAYER --- */}
-      <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none transform-gpu">
           {/* Main Orange Glow (Top Left) */}
           <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-brand-orange/30 rounded-full blur-[120px] opacity-80 mix-blend-screen animate-pulse-slow"></div>
           
@@ -73,7 +94,7 @@ const App: React.FC = () => {
             <Route path="/ueber-uns" element={<AboutPage />} />
             <Route path="/kontakt" element={<ContactPage />} />
 
-            {/* Product Pages (Lazy Loaded with Suspense) */}
+            {/* Product Pages (Lazy Loaded but Preloaded) */}
             <Route path="/produkte/skate-anlagen" element={
                 <Suspense fallback={<SuspenseFallback />}><ProductSkateAnlagenPage /></Suspense>
             } />
@@ -96,12 +117,12 @@ const App: React.FC = () => {
                 <Suspense fallback={<SuspenseFallback />}><ProductPavilionPage /></Suspense>
             } />
             
-            {/* Detail Page (Lazy Loaded) */}
+            {/* Detail Page */}
             <Route path="/projekte/:projectId" element={
                 <Suspense fallback={<SuspenseFallback />}><ProjectDetailPage /></Suspense>
             } />
             
-            {/* Legal / System Pages (Lazy Loaded) */}
+            {/* Legal / System Pages */}
             <Route path="/impressum" element={
                 <Suspense fallback={<SuspenseFallback />}><ImpressumPage /></Suspense>
             } />

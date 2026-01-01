@@ -200,7 +200,14 @@ const ProductScrollytelling: React.FC = () => {
                                         <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange shadow-[0_0_15px_rgba(249,115,22,0.6)] scale-125' : 'bg-[#080808] border-white/30'}`}></div>
                                         <div className={`relative rounded-xl border transition-all duration-500 overflow-hidden backdrop-blur-sm ${isActive ? 'bg-[#121212]/80 border-brand-orange/50 shadow-2xl scale-100' : 'bg-transparent border-white/5 scale-[0.98]'}`}>
                                             <div className="lg:hidden h-48 relative overflow-hidden border-b border-white/10">
-                                                <img src={product.imageUrl} alt="" className="w-full h-full object-cover opacity-60" loading="lazy" />
+                                                <img 
+                                                    src={product.imageUrl} 
+                                                    alt="" 
+                                                    className="w-full h-full object-cover opacity-60" 
+                                                    loading="lazy"
+                                                    srcSet={`${product.imageUrl}?auto=compress&cs=tinysrgb&w=400 400w, ${product.imageUrl}?auto=compress&cs=tinysrgb&w=800 800w`}
+                                                    sizes="(max-width: 600px) 100vw, 800px" 
+                                                />
                                                 <div className="absolute inset-0 bg-black/40"></div>
                                             </div>
                                             <Link to={product.path} className="block p-6 md:p-8">
@@ -321,16 +328,26 @@ const Hero: React.FC = () => {
         <div className="relative h-[85svh] md:h-[90vh] w-full overflow-hidden bg-black">
             
             {/* LAYER 1: RESPONSIVE IMAGE (Instant Load) */}
+            {/* CRITICAL UPDATE: Using <picture> for proper art direction and mobile speed */}
             <div className="absolute inset-0 z-0">
-                 <img 
-                    src="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                    srcSet="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w"
-                    sizes="100vw"
-                    alt="Architecture" 
-                    className="w-full h-full object-cover"
-                    loading="eager" 
-                    decoding="sync"
-                />
+                 <picture>
+                    <source 
+                        media="(max-width: 600px)" 
+                        srcSet="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=600&q=75" 
+                    />
+                    <source 
+                        media="(max-width: 1200px)" 
+                        srcSet="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80" 
+                    />
+                    <img 
+                        src="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                        alt="Architecture" 
+                        className="w-full h-full object-cover"
+                        loading="eager" 
+                        decoding="sync"
+                        fetchPriority="high"
+                    />
+                 </picture>
             </div>
 
             {/* LAYER 2: VIDEO OVERLAY (Lazy Loaded, Faster Fade) */}

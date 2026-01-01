@@ -73,11 +73,25 @@ const ProductSkateAnlagenPage: React.FC = () => {
        {/* 1. IMMERSIVE HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-white/10">
             <div className="absolute inset-0">
-                <img 
-                    src="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg" 
-                    alt="Hero Beton Skatepark" 
-                    className="w-full h-full object-cover"
-                />
+                {/* OPTIMIZED HERO IMAGE for Mobile Speed */}
+                 <picture>
+                    <source 
+                        media="(max-width: 600px)" 
+                        srcSet="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg?w=600&q=75" 
+                    />
+                    <source 
+                        media="(max-width: 1200px)" 
+                        srcSet="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg?w=1200&q=80" 
+                    />
+                    <img 
+                        src="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg" 
+                        alt="Hero Beton Skatepark" 
+                        className="w-full h-full object-cover"
+                        loading="eager"
+                        fetchPriority="high"
+                    />
+                 </picture>
+                
                 {/* Center area clears for image, edges fade to black/transparent */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
                 {/* BOTTOM FADE: Must fade to TRANSPARENT to show the global grid below */}

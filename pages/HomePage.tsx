@@ -194,7 +194,7 @@ const ProductScrollytelling: React.FC = () => {
                                     <div 
                                         key={product.id}
                                         data-id={product.id}
-                                        ref={(el) => (itemRefs.current[index] = el)}
+                                        ref={(el) => { itemRefs.current[index] = el; }}
                                         className={`group relative pl-0 md:pl-12 transition-all duration-500 ${isActive ? 'py-8' : 'py-6 opacity-40 hover:opacity-70'}`}
                                     >
                                         <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange shadow-[0_0_15px_rgba(249,115,22,0.6)] scale-125' : 'bg-[#080808] border-white/30'}`}></div>

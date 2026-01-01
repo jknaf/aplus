@@ -175,14 +175,15 @@ const Header: React.FC = () => {
               <div key={link.name} className="overflow-hidden">
                 {link.subLinks ? (
                    <div className="flex flex-col gap-4">
-                      <span className="text-sm font-bold text-brand-muted uppercase tracking-widest border-b border-white/10 pb-2">{link.name}</span>
+                      <span className="text-sm font-bold text-brand-orange uppercase tracking-widest border-b border-white/10 pb-2">{link.name}</span>
                       <div className="pl-4 border-l border-white/10 flex flex-col gap-4">
                         {link.subLinks.map((sub, subIdx) => (
                            <Link 
                             key={sub.name}
                             to={sub.href}
                             onClick={() => setIsMenuOpen(false)}
-                            className={`text-2xl font-black uppercase tracking-tighter text-transparent text-outline hover:text-brand-orange hover:text-outline-none transition-all duration-300 translate-y-full animate-[fade-in-up_0.5s_forwards]`}
+                            // UPDATED: Removed text-outline/transparent, added solid text-gray-400 and hover white
+                            className={`text-xl font-bold uppercase tracking-wide text-gray-400 hover:text-white transition-all duration-300 translate-y-full animate-[fade-in-up_0.5s_forwards]`}
                             style={{ animationDelay: `${100 + (subIdx * 50)}ms` }}
                           >
                             {sub.name}
@@ -194,7 +195,8 @@ const Header: React.FC = () => {
                   <Link 
                     to={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`block text-5xl sm:text-7xl font-black uppercase tracking-tighter text-transparent text-outline-bold hover:text-white hover:text-outline-none transition-all duration-300 translate-y-full ${isMenuOpen ? 'animate-[fade-in-up_0.5s_forwards]' : ''}`}
+                    // UPDATED: Removed text-outline/transparent, added solid text-white and hover orange. Size adjusted to fit better.
+                    className={`block text-4xl sm:text-6xl font-black uppercase tracking-tighter text-white hover:text-brand-orange transition-all duration-300 translate-y-full ${isMenuOpen ? 'animate-[fade-in-up_0.5s_forwards]' : ''}`}
                     style={{ animationDelay: `${idx * 100}ms` }}
                   >
                     {link.name}

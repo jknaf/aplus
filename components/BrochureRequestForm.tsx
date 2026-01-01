@@ -64,43 +64,86 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
         </div>
     );
 
-    // CSS-only 3D Book Mockup Component
+    // Modern "Digital Slate / Tech Tablet" Mockup
     const CatalogMockup = () => (
-        <div className="relative group perspective-1000 w-48 h-64 md:w-64 md:h-80 mx-auto lg:mx-0 transform rotate-y-[-15deg] hover:rotate-y-[-5deg] transition-transform duration-500 ease-out">
-            {/* Book Cover */}
-            <div className="absolute inset-0 bg-[#1a1a1a] rounded-r-md shadow-2xl border-l-4 border-l-gray-800 flex flex-col items-center justify-between py-8 px-4 z-10 overflow-hidden border-t border-r border-b border-white/10">
-                {/* Texture Overlay */}
-                <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-                <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+        <div className="relative group w-64 h-80 md:w-72 md:h-96 mx-auto lg:mx-0 perspective-1000">
+            {/* Main Floating Slab */}
+            <div className="relative w-full h-full bg-[#121212]/90 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,1)] transition-transform duration-500 ease-out transform group-hover:rotate-y-6 group-hover:rotate-x-6 group-hover:scale-105">
                 
-                {/* Content */}
-                <div className="w-full relative z-10">
-                    <div className="flex items-center gap-2 mb-4 opacity-70">
-                        <div className="w-4 h-4 bg-brand-orange rounded-sm"></div>
-                        <span className="text-[10px] font-bold tracking-[0.2em] text-white">A+ URBAN DESIGN</span>
-                    </div>
-                    <h3 className="text-3xl font-black font-heading text-white leading-none tracking-tighter uppercase">
-                        Produkt<br/><span className="text-brand-orange">Katalog</span>
-                    </h3>
-                </div>
+                {/* Tech Grid Background */}
+                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
                 
-                <div className="w-full relative z-10">
-                    <div className="h-px w-full bg-gradient-to-r from-transparent via-brand-orange to-transparent mb-4"></div>
-                    <div className="flex justify-between items-end text-xs text-gray-400 font-mono">
-                        <span>EDITION 04</span>
-                        <span>DE / EN</span>
+                {/* Scanline Animation */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-orange/10 to-transparent h-[150%] w-full animate-scan pointer-events-none"></div>
+
+                {/* Content Layout */}
+                <div className="relative h-full flex flex-col justify-between p-6 z-10">
+                    
+                    {/* Header Tech Details */}
+                    <div className="flex justify-between items-start">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-[10px] font-mono text-brand-orange tracking-widest border border-brand-orange/30 px-1 rounded-sm">CONFIDENTIAL</span>
+                            <span className="text-[10px] font-mono text-gray-500">REF: A-PLUS-CAT-V4</span>
+                        </div>
+                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center">
+                            <span className="material-symbols-outlined text-white text-sm">qr_code_2</span>
+                        </div>
+                    </div>
+
+                    {/* Main Title Area */}
+                    <div>
+                        <div className="w-12 h-12 mb-4 bg-brand-orange flex items-center justify-center rounded-lg shadow-lg shadow-brand-orange/20">
+                            <span className="material-symbols-outlined text-black font-bold text-2xl">folder_open</span>
+                        </div>
+                        <h3 className="text-3xl font-black font-heading text-white leading-none tracking-tighter uppercase mb-1">
+                            Produkt
+                        </h3>
+                        <h3 className="text-3xl font-black font-heading text-transparent text-outline-bold leading-none tracking-tighter uppercase">
+                            Katalog
+                        </h3>
+                    </div>
+
+                    {/* Footer Stats */}
+                    <div className="space-y-3">
+                         <div className="h-px w-full bg-gradient-to-r from-brand-orange/50 to-transparent"></div>
+                         <div className="grid grid-cols-2 gap-2 text-[10px] font-mono text-gray-400">
+                             <div>
+                                 <span className="block text-gray-600">FORMAT</span>
+                                 <span className="text-white">PDF / DIGITAL</span>
+                             </div>
+                             <div>
+                                 <span className="block text-gray-600">SIZE</span>
+                                 <span className="text-white">24.5 MB</span>
+                             </div>
+                             <div>
+                                 <span className="block text-gray-600">UPDATED</span>
+                                 <span className="text-white">{new Date().getFullYear()}</span>
+                             </div>
+                             <div>
+                                 <span className="block text-gray-600">ACCESS</span>
+                                 <span className="text-brand-orange">UNRESTRICTED</span>
+                             </div>
+                         </div>
                     </div>
                 </div>
+
+                {/* Decorative Corners */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-brand-orange opacity-50"></div>
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-brand-orange opacity-50"></div>
             </div>
+
+            {/* Glowing Backlight Blob */}
+            <div className="absolute -top-10 -right-10 w-48 h-48 bg-brand-orange/20 rounded-full blur-[60px] -z-10 animate-pulse-slow pointer-events-none"></div>
             
-            {/* Book Pages (Thickness) */}
-            <div className="absolute top-1 bottom-1 right-2 w-12 bg-gray-200 rounded-r-sm transform translate-z-[-20px] translate-x-[20px] shadow-lg"></div>
-            <div className="absolute top-2 bottom-2 right-2.5 w-11 bg-white rounded-r-sm transform translate-z-[-20px] translate-x-[20px]">
-                <div className="h-full w-full bg-[repeating-linear-gradient(90deg,transparent,transparent_1px,#e5e5e5_2px)] opacity-50"></div>
-            </div>
-            
-            {/* Back Glow */}
-            <div className="absolute top-10 left-10 w-full h-full bg-brand-orange/20 blur-[60px] -z-10 rounded-full"></div>
+             <style>{`
+                @keyframes scan {
+                    0% { transform: translateY(-100%); }
+                    100% { transform: translateY(100%); }
+                }
+                .animate-scan {
+                    animation: scan 4s linear infinite;
+                }
+            `}</style>
         </div>
     );
 

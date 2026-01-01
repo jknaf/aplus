@@ -378,93 +378,51 @@ const HERO_ITEMS = [
 
 const Hero: React.FC = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [nextIndex, setNextIndex] = useState(1);
-    const [isAnimating, setIsAnimating] = useState(false);
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const nextVideoRef = useRef<HTMLVideoElement>(null);
-
-    // PERFORMANCE FIX: Preload next image to avoid blink
-    useEffect(() => {
-        const nextItem = HERO_ITEMS[(activeIndex + 1) % HERO_ITEMS.length];
-        if (nextItem.type === 'image') {
-            const img = new Image();
-            img.src = nextItem.src;
-        }
-    }, [activeIndex]);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (!isAnimating) triggerTransition((activeIndex + 1) % HERO_ITEMS.length);
+            setActiveIndex((prev) => (prev + 1) % HERO_ITEMS.length);
         }, 8000); 
         return () => clearInterval(interval);
-    }, [activeIndex, isAnimating]);
+    }, []);
 
-    const triggerTransition = (targetIndex: number) => {
-        if (isAnimating || targetIndex === activeIndex) return;
-        setNextIndex(targetIndex);
-        setIsAnimating(true);
-        if (HERO_ITEMS[targetIndex].type === 'video' && nextVideoRef.current) {
-             const vid = nextVideoRef.current;
-             vid.defaultMuted = true;
-             vid.muted = true;
-             vid.play().catch(() => {});
-        }
-        setTimeout(() => {
-            setActiveIndex(targetIndex);
-            setIsAnimating(false);
-        }, 1400); 
-    };
-
-    const renderMedia = (item: typeof HERO_ITEMS[0], ref: React.RefObject<HTMLVideoElement>) => {
+    const renderMedia = (item: typeof HERO_ITEMS[0]) => {
         if (item.type === 'video') {
-            // FIX FOR BRAVE/SAFARI:
-            // 1. Force playback via callback ref to capture the element immediately on mount.
-            // 2. Set defaultMuted = true directly on the DOM node.
             return (
                 <video 
-                    ref={(el) => {
-                        // Handle React ref forwarding
-                        if (typeof ref === 'function') ref(el);
-                        else if (ref) ref.current = el;
-
-                        // Force mute and play immediately when element mounts
-                        if (el) {
-                            el.defaultMuted = true;
-                            el.muted = true;
-                            // Attempt play, catch potential errors (e.g. low power mode)
-                            el.play().catch(() => {});
-                        }
-                    }}
                     src={item.src} 
                     autoPlay 
                     muted 
                     loop 
                     playsInline 
                     preload="auto"
+                    // Important: Reset muted status on mounting to ensure browser allows autoplay
+                    ref={(el) => { if(el) { el.defaultMuted = true; el.muted = true; el.play().catch(() => {}); }}}
                     poster="https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=800"
                     className="w-full h-full object-cover" 
-                    // Fallback play attempt
-                    onCanPlay={(e) => {
-                        e.currentTarget.play().catch(() => {});
-                    }}
                 />
             );
         }
-        return <img src={item.src} alt="" className="w-full h-full object-cover" loading="eager" />;
+        return <img src={item.src} alt="" className="w-full h-full object-cover animate-[kenburns-1_10s_infinite_alternate]" loading="eager" />;
     };
 
     return (
         // REMOVED BG-BLACK to ensure transparency
         <div className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden bg-transparent">
-            <div className="absolute inset-0 z-0">{renderMedia(HERO_ITEMS[activeIndex], videoRef)}<div className="absolute inset-0 bg-black/40"></div></div>
-            {isAnimating && (
-                <div className="absolute inset-0 z-10 animate-[slideUpReveal_1.4s_cubic-bezier(0.83,0,0.17,1)_forwards]">
-                    <div className="w-full h-full relative">{renderMedia(HERO_ITEMS[nextIndex], nextVideoRef)}<div className="absolute inset-0 bg-black/40"></div></div>
+            {/* CROSSFADE IMPLEMENTATION - Smoother than slide-up for videos */}
+            {HERO_ITEMS.map((item, index) => (
+                <div 
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                >
+                    {renderMedia(item)}
+                    <div className="absolute inset-0 bg-black/40"></div>
                 </div>
-            )}
+            ))}
+            
             <div className="absolute inset-0 z-20 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-end pointer-events-none">
                  <div className="max-w-7xl">
-                    <div key={activeIndex} className={isAnimating ? 'opacity-0 translate-y-[-20px] blur-sm transition-all duration-500' : 'opacity-100 transition-all duration-500'}>
+                    <div key={activeIndex} className="animate-fade-in-up">
                         {/* TYPOGRAPHY FIX: 
                             1. Removed mix-blend-overlay on "Architektur" to ensure visibility against dark video.
                             2. Changed leading to `leading-none` to prevent overlap.
@@ -481,7 +439,6 @@ const Hero: React.FC = () => {
                     </div>
                  </div>
             </div>
-            <style>{`@keyframes slideUpReveal { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }`}</style>
         </div>
     );
 };

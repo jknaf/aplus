@@ -333,7 +333,8 @@ const Hero: React.FC = () => {
     }, []);
 
     return (
-        <div className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden bg-black">
+        // Changed h-[85vh] to h-[85svh] for better mobile viewport stability on iOS
+        <div className="relative h-[85svh] md:h-[90vh] w-full overflow-hidden bg-black">
             {/* Slide Renderer */}
             {HERO_ITEMS.map((item, index) => {
                 const isActive = index === currentIndex;
@@ -403,7 +404,7 @@ const VideoSlide: React.FC<{ src: string; poster: string; isActive: boolean }> =
         if (isActive) {
             const playPromise = video.play();
             if (playPromise !== undefined) {
-                // CHANGED: Removed unused 'error' parameter to fix TypeScript build error (TS6133)
+                // CHANGED: Removed unused 'error' parameter which caused TS6133 build failure
                 playPromise.catch(() => {
                     // Fail silently, just means the poster will show
                 });

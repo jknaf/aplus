@@ -60,9 +60,9 @@ const ProductScrollytelling: React.FC = () => {
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded">
                         Unser Portfolio
                     </span>
-                    <h2 className="text-5xl md:text-7xl font-black font-heading text-white uppercase tracking-tight">
+                    <h2 className="text-5xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
                         Technische<br/>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-white">Perfektion</span>
+                        <span className="text-outline-orange">Perfektion.</span>
                     </h2>
                 </AnimatedSection>
 

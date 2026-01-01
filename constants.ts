@@ -28,6 +28,7 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/skate-anlagen',
     altText: 'Hochwertige Beton-Skateanlage mit Bowl und Street-Bereich bei Sonnenuntergang.',
     tuvCertified: true,
+    usp: 'Das Original: TÜV-zertifiziert, flüsterleise und modular gebaut für die Ewigkeit.'
   },
   {
     id: 'pumptrack',
@@ -36,6 +37,7 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/pumptrack-beton',
     altText: 'Geschwungener Pumptrack aus Beton, ideal für Bikes und Boards.',
     tuvCertified: true,
+    usp: 'Endloser Flow für alle Rollsportarten – wartungsarm, griffig und modular erweiterbar.'
   },
   {
     id: 'bmx-anlagen',
@@ -44,6 +46,7 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/bmx-anlagen',
     altText: 'BMX-Fahrer in der Luft über einer Rampe in einer Outdoor-Anlage.',
     tuvCertified: true,
+    usp: 'Professionelle Dirt- & Park-Setups aus unverwüstlichem Hochleistungsbeton.'
   },
   {
     id: 'hockey',
@@ -52,27 +55,31 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/hockey-banden',
     altText: 'Outdoor Hockey-Spielfeld mit robusten Banden.',
     tuvCertified: true,
+    usp: 'Fundamentfreies, patentiertes Bandensystem für den ganzjährigen Profi-Einsatz.'
   },
   {
     id: 'grillstelle',
     title: 'Öffentliche Grillstelle',
     imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750',
     path: '/produkte/grillstelle-beton',
-    altText: 'Robuste Feuerstelle und Grillbereich aus Beton im öffentlichen Park.'
+    altText: 'Robuste Feuerstelle und Grillbereich aus Beton im öffentlichen Park.',
+    usp: 'Der vandalismussichere Begegnungsort mit diebstahlgeschütztem Edelstahlrost.'
   },
   {
     id: 'umkleide',
     title: 'Umkleidekabine',
     imageUrl: 'https://www.freiraum-gestalten.info/vorlagen/webapp/cache/cms/1-20210618-092959auss2b_g43tkojwg4zq-1700x1131.webp',
     path: '/produkte/umkleidekabine-beton',
-    altText: 'Moderne Architektur mit Sichtbetonwänden.'
+    altText: 'Moderne Architektur mit Sichtbetonwänden.',
+    usp: 'Die „Schnecke“: Hygienisch, türlos und absolut missbrauchssicher konstruiert.'
   },
   {
     id: 'ueberdachung',
     title: 'Überdachung / Pavillon',
     imageUrl: 'https://images.unsplash.com/photo-1619983081563-430f63602796?q=80&w=1000&auto=format&fit=crop',
     path: '/produkte/ueberdachung-beton',
-    altText: 'Minimalistische Betonüberdachung im urbanen Raum.'
+    altText: 'Minimalistische Betonüberdachung im urbanen Raum.',
+    usp: 'Massiver, architektonischer Wetterschutz in zeitloser Sichtbeton-Ästhetik.'
   },
 ];
 

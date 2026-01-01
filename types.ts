@@ -6,6 +6,7 @@ export interface Product {
   path: string;
   altText: string;
   tuvCertified?: boolean;
+  usp?: string;
 }
 
 export type ProjectCategory = 'Skatepark' | 'Pumptrack' | 'Hockey-Bande' | 'Grillstelle' | 'Umkleidekabine' | 'BMX-Anlage' | 'Spezialbau';

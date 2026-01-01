@@ -2,13 +2,17 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="robots" content="index, follow" />
     <title>Beton-Skateparks, Pumptracks & Skate-Anlagen | A+ Urban Design</title>
     <meta name="description" content="TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig. Fordern Sie jetzt Ihr individuelles Angebot an." />
-    <meta name="keywords" content="Beton Skatepark, Pumptrack aus Beton, Skate-Anlagen Hersteller, Hockey-Banden, Vandalismussichere Umkleidekabinen, Öffentliche Grillstelle Beton, Urban Design, modulare Skate-Elemente, BMX-Anlagen" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000000' stroke-width='14' stroke-linecap='square'%3E%3Cpath d='M44 10 L18 90' /%3E%3Cpath d='M44 10 L44 90' /%3E%3Cpath d='M28 52 H88' /%3E%3Cpath d='M72 34 V70' /%3E%3C/svg%3E" />
+    
+    <!-- 1. CRITICAL ASSET PRELOADING (STATE OF THE ART) -->
+    <!-- Tells browser to download this IMMEDIATELY, parallel to JS parsing -->
+    <link rel="preload" as="image" href="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600" fetchpriority="high">
     <link rel="preload" href="https://i.ibb.co/whMmCDk9/apluslogo.png" as="image" crossorigin="anonymous">
+    
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000000' stroke-width='14' stroke-linecap='square'%3E%3Cpath d='M44 10 L18 90' /%3E%3Cpath d='M44 10 L44 90' /%3E%3Cpath d='M28 52 H88' /%3E%3Cpath d='M72 34 V70' /%3E%3C/svg%3E" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,11 +26,8 @@
         theme: {
           extend: {
             colors: {
-              'brand-bg': '#020202', /* Even Darker Black */
+              'brand-bg': '#020202',
               'brand-surface': '#121212',
-              'brand-surface-light': '#262626',
-              'brand-text': '#EAEAEA',
-              'brand-heading': '#FFFFFF',
               'brand-orange': '#F97316',
               'brand-muted': '#A3A3A3',
             },
@@ -34,12 +35,9 @@
               'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
               'heading': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
             },
-            fontSize: {
-              '7xl': '5rem',
-              '8xl': '6rem',
-              '9xl': '8rem',
-              '10xl': '10rem',
-              'huge': '12rem',
+            animation: {
+              'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'marquee': 'marquee 25s linear infinite',
             },
             keyframes: {
               'fade-in-up': {
@@ -50,151 +48,129 @@
                 '0%': { transform: 'translateX(0%)' },
                 '100%': { transform: 'translateX(-100%)' },
               },
-              'kenburns-1': {
-                  '0%': { transform: 'scale(1.0) translate(0,0)', 'transform-origin': 'center' },
-                  '100%': { transform: 'scale(1.1) translate(-2%, 2%)', 'transform-origin': 'center' }
-              },
-              'pop-in': {
-                '0%': { transform: 'scale(0)', opacity: '0' },
-                '80%': { transform: 'scale(1.1)', opacity: '1' },
-                '100%': { transform: 'scale(1)' },
-              },
-              'pulse-slow': {
-                '0%, 100%': { opacity: '0.4' },
-                '50%': { opacity: '0.7' },
-              },
-              'float': {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-6px)' },
-              },
-              'stamp': {
-                '0%': { transform: 'scale(2)', opacity: '0' },
-                '50%': { transform: 'scale(0.9)', opacity: '1' },
-                '100%': { transform: 'scale(1)', opacity: '1' },
-              },
-              'spin-slow': {
-                '0%': { transform: 'rotate(0deg)' },
-                '100%': { transform: 'rotate(360deg)' },
-              },
-              'glow-pulse': {
-                '0%, 100%': { textShadow: '0 0 10px rgba(249,115,22,0)' },
-                '50%': { textShadow: '0 0 25px rgba(249,115,22,0.8)' },
-              }
-            },
-            animation: {
-              'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-              'marquee': 'marquee 25s linear infinite',
-              'kenburns-1': 'kenburns-1 15s ease-in-out infinite alternate',
-              'pop-in': 'pop-in 0.4s ease-out forwards',
-              'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
-              'float': 'float 4s ease-in-out infinite',
-              'stamp': 'stamp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
-              'spin-slow': 'spin-slow 12s linear infinite',
-              'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-            },
+            }
           }
         }
       }
     </script>
-     <style>
-      .animated-section {
-        opacity: 0;
-      }
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #020202;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 5px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #F97316;
-      }
-      
-      /* GLOBAL BACKGROUND STRATEGY: PURE CSS */
+    
+    <!-- 2. CRITICAL CSS (INLINE) -->
+    <!-- Ensures the layout is black and structured before Tailwind/React loads -->
+    <style>
       body {
-        background-color: #020202; /* Deepest Black */
-        /* Technical Grid Pattern - Subtler Visibility (0.03 opacity) */
-        background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 80px 80px; /* Large grid cells */
-        background-attachment: fixed; /* Grid stays in place during scroll */
-        background-position: center top;
+        background-color: #020202;
         color: #EAEAEA;
+        margin: 0;
+        padding: 0;
         min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
       }
-
-      /* Outline Text - BOLDER AND BRIGHTER */
-      .text-outline {
-        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
-        color: transparent;
+      /* App Shell Styles (Instant Load) */
+      #app-shell-hero {
+        position: relative;
+        height: 85vh; /* Fallback */
+        height: 85svh; /* Mobile Modern */
+        width: 100%;
+        overflow: hidden;
+        background-color: #000;
+        z-index: 0;
       }
-      .text-outline-bold {
-        /* Massively increased stroke width and opacity for Industrial Look */
-        -webkit-text-stroke: 2px #ffffff; 
-        color: transparent;
-        paint-order: stroke fill;
+      #app-shell-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+        transition: opacity 0.5s ease;
       }
-      .text-outline-orange {
-        -webkit-text-stroke: 2px #F97316;
-        color: transparent;
-      }
-      
-      .bg-noise-overlay {
-        position: fixed;
-        top: 0;
+      .shell-content {
+        position: absolute;
+        bottom: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        padding-bottom: 6rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        z-index: 10;
         pointer-events: none;
-        z-index: 50;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-        opacity: 0.4;
       }
+      .shell-container {
+        max-width: 80rem;
+        margin: 0 auto;
+      }
+      .shell-title {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 0.85;
+        color: white;
+        font-size: clamp(2.5rem, 10vw, 9rem);
+        display: flex;
+        flex-direction: column;
+      }
+      .text-outline-shell {
+        -webkit-text-stroke: 1px #fff; 
+        color: transparent;
+      }
+      .text-orange-shell {
+        color: #F97316;
+      }
+      /* Hide React Root initially if we use overlay strategy, but here we put content INSIDE root */
     </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "A+ Urban Design",
-  "url": "https://aplus-two.vercel.app/",
-  "logo": "https://i.ibb.co/whMmCDk9/apluslogo.png",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+49-155-600-909-66",
-    "contactType": "sales",
-    "areaServed": "DE",
-    "availableLanguage": "German"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Talstrasse 41",
-    "addressLocality": "Stuttgart",
-    "postalCode": "70188",
-    "addressCountry": "DE"
-  }
-}
-</script>
 <script type="importmap">
 {
   "imports": {
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
     "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
   }
 }
 </script>
 </head>
-  <!-- Removed bg class, handled in CSS -->
-  <body class="text-brand-text selection:bg-brand-orange selection:text-white">
-    <div id="root"></div>
+  <body class="bg-[#020202] text-brand-text">
+    
+    <!-- 3. APP SHELL (SERVER SIDE RENDER SIMULATION) -->
+    <!-- This HTML is visible instantly. React will "hydrate" (replace) this when it's ready. -->
+    <div id="root">
+        <!-- HEADER PLACEHOLDER -->
+        <header class="fixed top-0 left-0 right-0 z-50 py-4 px-4">
+            <div class="flex items-center gap-3">
+                 <img src="https://i.ibb.co/whMmCDk9/apluslogo.png" style="width: 32px; height: 32px;" alt="Logo" />
+                 <div class="flex flex-col leading-none">
+                    <span class="text-white font-black text-sm md:text-xl">A+ URBAN</span>
+                    <span class="text-[#F97316] font-bold text-[10px] md:text-sm">DESIGN</span>
+                 </div>
+            </div>
+        </header>
+
+        <!-- HERO PLACEHOLDER -->
+        <div id="app-shell-hero">
+            <img 
+                id="app-shell-img"
+                src="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+                alt="Architecture" 
+                width="1600" 
+                height="900"
+            />
+            <div style="position: absolute; inset: 0; background-color: rgba(0,0,0,0.4);"></div>
+            
+            <div class="shell-content">
+                <div class="shell-container">
+                     <h1 class="shell-title">
+                        <span>Architektur</span>
+                        <span class="text-outline-shell">für</span>
+                        <span class="text-orange-shell">Freiräume</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>

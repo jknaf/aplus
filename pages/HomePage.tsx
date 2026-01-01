@@ -297,50 +297,47 @@ const ScrollyFeature: React.FC<{
     );
 };
 
-// --- HYBRID HERO COMPONENT (Mobile Friendly) ---
-// Strategy:
-// 1. Layer 1 (Base): High-quality Image. Renders immediately. No JS blocking.
-// 2. Layer 2 (Overlay): Video. Hidden initially. Fades in ONLY when browser confirms it's playing.
-// Result: 0ms black screen. If video fails/blocks (mobile), user sees image.
+// --- INSTANT HERO COMPONENT ---
+// Matches the "App Shell" defined in index.html exactly.
+// React "Hydrates" this markup seamlessly without repainting.
 const Hero: React.FC = () => {
     const [videoReady, setVideoReady] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
 
-    // Static Assets
     const BG_IMAGE = "https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600";
     const VIDEO_SRC = "https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4";
 
     useEffect(() => {
-        // Attempt aggressive autoplay
-        const video = videoRef.current;
-        if (video) {
-            video.muted = true;
-            video.defaultMuted = true;
-            video.play().catch(() => {
-                // Autoplay blocked (Low Power Mode / Data Saver).
-                // Do nothing. The Image Layer is already visible.
-            });
-        }
+        // Only attempt video load after the critical LCP content is settled
+        const timer = setTimeout(() => {
+             const video = videoRef.current;
+             if (video) {
+                 video.muted = true;
+                 video.defaultMuted = true;
+                 video.play().catch(() => {});
+             }
+        }, 1000); // 1s delay to prioritize UI responsiveness
+        return () => clearTimeout(timer);
     }, []);
 
     return (
-        // Use svh (Small Viewport Height) to prevent layout jumps on iOS Safari address bar scroll
         <div className="relative h-[85svh] md:h-[90vh] w-full overflow-hidden bg-black">
             
-            {/* LAYER 1: STATIC IMAGE (FAILSAFE) */}
-            {/* This renders instantly via HTML/CSS. No JS required to show this. */}
+            {/* LAYER 1: BASE IMAGE (Must match index.html PRELOAD & SHELL) */}
             <div className="absolute inset-0 z-0">
                  <img 
                     src={BG_IMAGE}
-                    alt="Hero Background" 
+                    alt="Architecture" 
                     className="w-full h-full object-cover"
-                    loading="eager" // Force priority load
+                    width="1600"
+                    height="900"
+                    // Important: No lazy loading for LCP element
+                    loading="eager" 
                     decoding="sync"
                 />
             </div>
 
-            {/* LAYER 2: VIDEO OVERLAY */}
-            {/* Starts invisible (opacity-0). Fades in (opacity-100) only when 'videoReady' is true. */}
+            {/* LAYER 2: VIDEO OVERLAY (Lazy) */}
             <div className={`absolute inset-0 z-10 transition-opacity duration-[2000ms] ease-in-out ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
                 <video 
                     ref={videoRef}
@@ -348,10 +345,10 @@ const Hero: React.FC = () => {
                     src={VIDEO_SRC}
                     muted
                     loop
-                    playsInline // Critical for iOS
-                    autoPlay
-                    onCanPlay={() => setVideoReady(true)} // Trigger fade-in when enough data
-                    onLoadedData={() => setVideoReady(true)} // Backup trigger
+                    playsInline 
+                    autoPlay={false} // Controlled by effect
+                    preload="none" // Controlled by effect
+                    onCanPlay={() => setVideoReady(true)}
                 />
             </div>
 
@@ -363,9 +360,9 @@ const Hero: React.FC = () => {
                  <div className="max-w-7xl">
                     <div className="animate-fade-in-up">
                         <h1 className="flex flex-col font-black font-heading uppercase tracking-tighter leading-none md:leading-[0.85]">
-                            <span className="text-[clamp(2.5rem,10vw,9rem)] text-white opacity-90 animate-fade-in-up">Architektur</span>
-                            <span className="text-[clamp(2.5rem,10vw,9rem)] text-outline-bold animate-fade-in-up [animation-delay:100ms]">für</span>
-                            <span className="text-[clamp(2.5rem,10vw,9rem)] text-brand-orange animate-fade-in-up [animation-delay:200ms]">Freiräume</span>
+                            <span className="text-[clamp(2.5rem,10vw,9rem)] text-white opacity-90">Architektur</span>
+                            <span className="text-[clamp(2.5rem,10vw,9rem)] text-outline-bold">für</span>
+                            <span className="text-[clamp(2.5rem,10vw,9rem)] text-brand-orange">Freiräume</span>
                         </h1>
                         <p className="mt-6 md:mt-8 text-lg md:text-2xl text-gray-300 max-w-xl md:max-w-2xl font-light border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
                             Wir planen und bauen die Plätze der Zukunft. <span className="text-white font-bold">Robust. Modular. Kompromisslos.</span>

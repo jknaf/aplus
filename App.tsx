@@ -7,21 +7,28 @@ import PrivacyBanner from './components/PrivacyBanner';
 import LegacyRedirectHandler from './components/LegacyRedirectHandler';
 import SuspenseFallback from './components/SuspenseFallback';
 
-// --- LAZY LOADING (CODE SPLITTING) ---
-// Loading these pages only when the user navigates to them, 
-// reducing the initial JavaScript bundle size significantly.
-const HomePage = React.lazy(() => import('./pages/HomePage'));
-const ProductGrillPage = React.lazy(() => import('./pages/ProductGrillPage'));
-const ProductChangingCabinePage = React.lazy(() => import('./pages/ProductChangingCabinePage'));
-const ProductHockeyRinkPage = React.lazy(() => import('./pages/ProductHockeyRinkPage'));
-const ProductPumptrackPage = React.lazy(() => import('./pages/ProductPumptrackPage'));
-const ProductSkateAnlagenPage = React.lazy(() => import('./pages/ProductSkateAnlagenPage'));
-const ProductBmxPage = React.lazy(() => import('./pages/ProductBmxPage'));
-const ProductPavilionPage = React.lazy(() => import('./pages/ProductPavilionPage'));
-const ProjectsPage = React.lazy(() => import('./pages/ProjectsPage'));
-const ProjectDetailPage = React.lazy(() => import('./pages/ProjectDetailPage'));
-const AboutPage = React.lazy(() => import('./pages/AboutPage'));
-const ContactPage = React.lazy(() => import('./pages/ContactPage'));
+// --- CORE PAGES (Direct Import for INSTANT Navigation) ---
+// We removed React.lazy for main pages to prevent the "Loading..." spinner 
+// from appearing on every menu click. This gives a "Native App" feel.
+import HomePage from './pages/HomePage';
+import ProjectsPage from './pages/ProjectsPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+
+// --- PRODUCT PAGES (Keep Lazy or Direct?) ---
+// For a seamless experience, we load these directly too. 
+// The browser handles image lazy-loading efficiently enough.
+import ProductGrillPage from './pages/ProductGrillPage';
+import ProductChangingCabinePage from './pages/ProductChangingCabinePage';
+import ProductHockeyRinkPage from './pages/ProductHockeyRinkPage';
+import ProductPumptrackPage from './pages/ProductPumptrackPage';
+import ProductSkateAnlagenPage from './pages/ProductSkateAnlagenPage';
+import ProductBmxPage from './pages/ProductBmxPage';
+import ProductPavilionPage from './pages/ProductPavilionPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
+
+// --- LEGAL PAGES (Keep Lazy) ---
+// These are rarely visited, so we can save bytes here.
 const ImpressumPage = React.lazy(() => import('./pages/ImpressumPage'));
 const PrivacyPolicyPage = React.lazy(() => import('./pages/PrivacyPolicyPage'));
 const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage'));
@@ -61,26 +68,31 @@ const App: React.FC = () => {
       <div className="flex flex-col min-h-screen relative z-[10]">
         <Header />
         <main className="flex-grow">
-          {/* Suspense wrapper handles the loading state between page transitions */}
-          <Suspense fallback={<SuspenseFallback />}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/produkte/skate-anlagen" element={<ProductSkateAnlagenPage />} />
-              <Route path="/produkte/pumptrack-beton" element={<ProductPumptrackPage />} />
-              <Route path="/produkte/bmx-anlagen" element={<ProductBmxPage />} />
-              <Route path="/produkte/hockey-banden" element={<ProductHockeyRinkPage />} />
-              <Route path="/produkte/grillstelle-beton" element={<ProductGrillPage />} />
-              <Route path="/produkte/umkleidekabine-beton" element={<ProductChangingCabinePage />} />
-              <Route path="/produkte/ueberdachung-beton" element={<ProductPavilionPage />} />
-              <Route path="/projekte" element={<ProjectsPage />} />
-              <Route path="/projekte/:projectId" element={<ProjectDetailPage />} />
-              <Route path="/ueber-uns" element={<AboutPage />} />
-              <Route path="/kontakt" element={<ContactPage />} />
-              <Route path="/impressum" element={<ImpressumPage />} />
-              <Route path="/datenschutz" element={<PrivacyPolicyPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/produkte/skate-anlagen" element={<ProductSkateAnlagenPage />} />
+            <Route path="/produkte/pumptrack-beton" element={<ProductPumptrackPage />} />
+            <Route path="/produkte/bmx-anlagen" element={<ProductBmxPage />} />
+            <Route path="/produkte/hockey-banden" element={<ProductHockeyRinkPage />} />
+            <Route path="/produkte/grillstelle-beton" element={<ProductGrillPage />} />
+            <Route path="/produkte/umkleidekabine-beton" element={<ProductChangingCabinePage />} />
+            <Route path="/produkte/ueberdachung-beton" element={<ProductPavilionPage />} />
+            <Route path="/projekte" element={<ProjectsPage />} />
+            <Route path="/projekte/:projectId" element={<ProjectDetailPage />} />
+            <Route path="/ueber-uns" element={<AboutPage />} />
+            <Route path="/kontakt" element={<ContactPage />} />
+            
+            {/* Lazy Loaded Routes wrapped in Suspense */}
+            <Route path="/impressum" element={
+                <Suspense fallback={<SuspenseFallback />}><ImpressumPage /></Suspense>
+            } />
+            <Route path="/datenschutz" element={
+                <Suspense fallback={<SuspenseFallback />}><PrivacyPolicyPage /></Suspense>
+            } />
+            <Route path="*" element={
+                <Suspense fallback={<SuspenseFallback />}><NotFoundPage /></Suspense>
+            } />
+          </Routes>
         </main>
         <Footer />
         <PrivacyBanner />

@@ -7,9 +7,14 @@
     <title>Beton-Skateparks, Pumptracks & Skate-Anlagen | A+ Urban Design</title>
     <meta name="description" content="TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig. Fordern Sie jetzt Ihr individuelles Angebot an." />
     
-    <!-- 1. CRITICAL ASSET PRELOADING (STATE OF THE ART) -->
-    <!-- Tells browser to download this IMMEDIATELY, parallel to JS parsing -->
-    <link rel="preload" as="image" href="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600" fetchpriority="high">
+    <!-- 1. CRITICAL ASSET PRELOADING (MOBILE OPTIMIZED) -->
+    <!-- Tells browser to download the CORRECT image size based on device width -->
+    <link rel="preload" as="image" 
+          href="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800"
+          imagesrcset="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w"
+          imagesizes="100vw"
+          fetchpriority="high">
+          
     <link rel="preload" href="https://i.ibb.co/whMmCDk9/apluslogo.png" as="image" crossorigin="anonymous">
     
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000000' stroke-width='14' stroke-linecap='square'%3E%3Cpath d='M44 10 L18 90' /%3E%3Cpath d='M44 10 L44 90' /%3E%3Cpath d='M28 52 H88' /%3E%3Cpath d='M72 34 V70' /%3E%3C/svg%3E" />
@@ -117,25 +122,24 @@
       .text-orange-shell {
         color: #F97316;
       }
-      /* Hide React Root initially if we use overlay strategy, but here we put content INSIDE root */
     </style>
 <script type="importmap">
 {
   "imports": {
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
     "vite": "https://esm.sh/vite@^7.3.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
   <body class="bg-[#020202] text-brand-text">
     
-    <!-- 3. APP SHELL (SERVER SIDE RENDER SIMULATION) -->
-    <!-- This HTML is visible instantly. React will "hydrate" (replace) this when it's ready. -->
+    <!-- 3. APP SHELL (Mobile Optimized) -->
+    <!-- Uses srcset to deliver smaller images to mobile devices instantly -->
     <div id="root">
         <!-- HEADER PLACEHOLDER -->
         <header class="fixed top-0 left-0 right-0 z-50 py-4 px-4">
@@ -152,7 +156,9 @@
         <div id="app-shell-hero">
             <img 
                 id="app-shell-img"
-                src="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+                src="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800"
+                srcset="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w"
+                sizes="100vw"
                 alt="Architecture" 
                 width="1600" 
                 height="900"

@@ -34,28 +34,27 @@ const App: React.FC = () => {
     <HashRouter>
       <ScrollToTop />
       
-      {/* --- MODERN BACKGROUND SYSTEM --- */}
-      {/* Layer 0: Deep Background & Glows */}
+      {/* --- OPTIMIZED BACKGROUND SYSTEM (Safari Friendly) --- */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[#050505]">
         
         {/* 1. Base Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] to-[#1a1a1a]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] to-[#121212]"></div>
         
-        {/* 2. Technical Grid */}
-        <div className="absolute inset-0 bg-grid-pattern bg-[length:60px_60px] opacity-[0.25]"></div>
+        {/* 2. Technical Grid (Static, low cost) */}
+        <div className="absolute inset-0 bg-grid-pattern bg-[length:40px_40px] opacity-[0.15]"></div>
 
-        {/* 3. Ambient Lighting / Glows */}
-        <div className="absolute -top-[10%] -left-[10%] w-[80vw] h-[80vw] bg-brand-orange/30 rounded-full blur-[120px] opacity-100 mix-blend-screen animate-pulse-slow"></div>
-        <div className="absolute top-[20%] -right-[20%] w-[90vw] h-[90vw] bg-slate-800/40 rounded-full blur-[150px] opacity-100 mix-blend-screen"></div>
-        <div className="absolute -bottom-[20%] left-[20%] w-[60vw] h-[60vw] bg-brand-orange/20 rounded-full blur-[100px] opacity-80 mix-blend-screen"></div>
+        {/* 3. Static Glows (Removed heavy animations and blurs for Safari performance) */}
+        {/* We use radial gradients instead of CSS blur filters for better performance */}
+        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15)_0%,transparent_70%)]"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)]"></div>
 
       </div>
 
-      {/* Layer 1: Noise Overlay (Moved down to z-20 to sit BEHIND content but above BG) */}
-      <div className="bg-noise-overlay fixed inset-0 z-20 pointer-events-none opacity-40"></div>
+      {/* Layer 1: Noise Overlay (Static image, no filters) */}
+      <div className="bg-noise-overlay fixed inset-0 z-[1] pointer-events-none opacity-30 mix-blend-overlay"></div>
       
-      {/* Layer 2: Main Content (z-30 ensures it is strictly above the noise layer) */}
-      <div className="text-brand-text font-sans flex flex-col min-h-screen relative z-30">
+      {/* Layer 2: Main Content */}
+      <div className="text-brand-text font-sans flex flex-col min-h-screen relative z-[10]">
         <Header />
         <main className="flex-grow">
           <Routes>

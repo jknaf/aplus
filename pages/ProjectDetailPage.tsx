@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PROJECTS } from '../constants';
-import BrochureRequestForm from '../components/BrochureRequestForm';
 
 const ProjectDetailPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
@@ -75,7 +74,6 @@ const ProjectDetailPage: React.FC = () => {
         </div>
 
         {/* Content Container (Transparent/Glass Background to show Grid) */}
-        {/* CHANGED: Removed bg-[#050505], added gradient and glass effect */}
         <div className="bg-gradient-to-b from-black/90 via-black/80 to-black/60 backdrop-blur-xl border-t border-white/10 min-h-screen relative shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
             <div className="container mx-auto px-4 py-24">
                 

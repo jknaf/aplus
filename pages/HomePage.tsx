@@ -492,26 +492,41 @@ const HomePage: React.FC = () => {
 
       <BrochureRequestForm context="homepage" />
       
-      {/* Inserted FAQ Section for SEO and User Info */}
       <FAQSection />
       
-      <section id="contact-area" className="py-32 relative overflow-hidden bg-[#0a0a0a] border-t border-white/5">
+      {/* REDESIGNED CONTACT AREA */}
+      <section id="contact-area" className="py-32 relative overflow-hidden border-t border-white/10">
+          {/* Ambient Background */}
+          <div className="absolute inset-0 bg-brand-orange/5"></div>
+          <div className="absolute -top-1/2 left-1/2 -translate-x-1/2 w-[100vw] h-[100vw] bg-brand-orange/10 blur-[120px] rounded-full pointer-events-none"></div>
+
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <AnimatedSection>
-              <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                  Projektstart
-              </span>
-              <h2 className="text-6xl md:text-9xl font-black font-heading uppercase tracking-tighter mb-8 leading-none">
-                <span className="text-white">Start</span><span className="text-brand-orange">klar?</span>
+              {/* Technical Badge */}
+              <div className="inline-flex items-center gap-3 py-1 px-4 border border-brand-orange/30 bg-brand-orange/10 rounded-full mb-12 backdrop-blur-md">
+                 <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+                 <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">
+                    Ready for Takeoff
+                 </span>
+              </div>
+              
+              {/* Massive Typography */}
+              <h2 className="text-7xl md:text-[10rem] font-black font-heading uppercase tracking-tighter mb-12 leading-[0.8]">
+                Start<br/>
+                <span className="text-transparent" style={{ WebkitTextStroke: '3px #fff' }}>Klar?</span>
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12">
-                  Lassen Sie uns gemeinsam etwas Großartiges schaffen. Von der ersten Skizze bis zur Eröffnung.
+              
+              <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-16 font-light">
+                  Lassen Sie uns gemeinsam etwas Großartiges schaffen. <br/>
+                  <span className="text-white font-bold">Von der ersten Skizze bis zur Eröffnung.</span>
               </p>
+              
+              {/* Massive Button */}
               <Link 
                 to="/kontakt" 
-                className="inline-flex items-center gap-2 bg-brand-orange text-black font-black uppercase tracking-widest text-xl py-5 px-12 rounded-lg hover:bg-white hover:text-brand-orange transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
+                className="inline-flex items-center gap-4 bg-white text-black font-black uppercase tracking-widest text-lg py-6 px-12 rounded hover:bg-brand-orange hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-[0_20px_50px_-10px_rgba(255,255,255,0.2)] hover:shadow-[0_20px_50px_-10px_rgba(249,115,22,0.4)] group"
               >
-                Projekt starten <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                Projekt starten <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform text-2xl">arrow_forward</span>
               </Link>
             </AnimatedSection>
           </div>

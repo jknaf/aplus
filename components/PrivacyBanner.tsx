@@ -63,22 +63,24 @@ const PrivacyBanner: React.FC = () => {
     return (
         <>
             {/* Main Banner */}
-            <div role="region" aria-label="Cookie Consent Banner" className="fixed bottom-0 left-0 right-0 bg-brand-surface/95 backdrop-blur-sm p-6 border-t border-white/10 z-50 animate-[fade-in-up_0.5s_ease-out]">
+            <div role="region" aria-label="Cookie Consent Banner" className="fixed bottom-0 left-0 right-0 bg-brand-surface/95 backdrop-blur-md p-6 border-t border-white/10 z-50 animate-[fade-in-up_0.5s_ease-out]">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
                     <div className="text-center md:text-left">
-                        <h3 className="text-lg font-bold text-brand-heading">Ihre Privatsphäre ist uns wichtig</h3>
+                        <h3 className="text-lg font-bold text-brand-heading">Datenschutzeinstellungen</h3>
                         <p className="text-sm text-brand-muted mt-1 max-w-2xl">
-                            Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern. Einige Cookies sind für den Betrieb der Website unerlässlich. Mit Ihrer Zustimmung verwenden wir auch Cookies für Analyse- und Marketingzwecke. Weitere Informationen finden Sie in unserer <Link to="/datenschutz" className="underline hover:text-brand-orange">Datenschutzerklärung</Link>.
+                            Wir nutzen Cookies und externe Dienste. Einige sind essenziell, andere helfen uns, die Website zu verbessern. 
+                            <Link to="/datenschutz" className="underline hover:text-brand-orange ml-1">Datenschutzerklärung</Link>.
                         </p>
                     </div>
-                    <div className="flex-shrink-0 flex items-center gap-3">
-                        <button onClick={() => setIsModalOpen(true)} className="px-4 py-2 text-sm font-bold bg-brand-bg hover:bg-white/10 rounded-md transition-colors">
-                            Anpassen
+                    {/* RECHTS-UPDATE: Buttons visuell gleichwertiger gestalten, um "Dark Patterns" zu vermeiden */}
+                    <div className="flex-shrink-0 flex flex-wrap items-center gap-3 justify-center">
+                        <button onClick={() => setIsModalOpen(true)} className="px-4 py-2 text-sm font-bold border border-white/20 hover:bg-white/10 rounded-md transition-colors text-gray-300">
+                            Einstellungen
                         </button>
-                        <button onClick={handleDeclineAll} className="px-4 py-2 text-sm font-bold bg-brand-bg hover:bg-white/10 rounded-md transition-colors">
-                            Nur notwendige
+                        <button onClick={handleDeclineAll} className="px-4 py-2 text-sm font-bold border border-white/20 hover:bg-white/10 rounded-md transition-colors text-white">
+                            Nur Essenzielle
                         </button>
-                        <button onClick={handleAcceptAll} className="px-6 py-2 text-sm font-bold bg-brand-orange text-white rounded-md hover:bg-opacity-90 transition-colors">
+                        <button onClick={handleAcceptAll} className="px-6 py-2 text-sm font-bold bg-brand-orange text-white rounded-md hover:bg-opacity-90 transition-colors shadow-lg shadow-brand-orange/20">
                             Alle akzeptieren
                         </button>
                     </div>
@@ -87,49 +89,50 @@ const PrivacyBanner: React.FC = () => {
 
             {/* Preferences Modal */}
             {isModalOpen && (
-                 <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[60] animate-[fade-in-up_0.3s_ease-out]">
-                    <div role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" className="bg-brand-surface rounded-lg shadow-2xl w-full max-w-lg m-4">
+                 <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[60] animate-[fade-in-up_0.3s_ease-out]">
+                    <div role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" className="bg-brand-surface rounded-lg shadow-2xl w-full max-w-lg m-4 border border-white/10">
                         <div className="p-6 border-b border-white/10">
-                            <h2 id="privacy-modal-title" className="text-xl font-bold text-brand-heading">Datenschutz-Einstellungen</h2>
-                            <p className="text-sm text-brand-muted mt-1">Passen Sie hier Ihre Cookie-Einstellungen an. Sie können Ihre Auswahl jederzeit im Footer ändern.</p>
+                            <h2 id="privacy-modal-title" className="text-xl font-bold text-brand-heading">Datenschutz-Einstellungen anpassen</h2>
+                            <p className="text-sm text-brand-muted mt-1">Entscheiden Sie selbst, welche Daten wir nutzen dürfen.</p>
                         </div>
-                        <div className="p-6 space-y-4">
+                        <div className="p-6 space-y-4 max-h-[60vh] overflow-y-auto custom-scrollbar">
                             {/* Necessary Cookies */}
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center p-3 rounded-lg bg-white/5">
                                 <div>
-                                    <h3 className="font-bold text-brand-text">Notwendige Cookies</h3>
-                                    <p className="text-xs text-brand-muted">Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.</p>
+                                    <h3 className="font-bold text-brand-text">Technisch notwendig</h3>
+                                    <p className="text-xs text-brand-muted mt-1">Essenziell für die Grundfunktionen (z.B. diese Einwilligung).</p>
                                 </div>
                                 <div className="relative inline-block w-10 ml-2 align-middle select-none">
-                                    <input type="checkbox" checked readOnly disabled className="checked:bg-brand-orange outline-none focus:outline-none right-4 checked:right-0 duration-200 ease-in absolute block w-6 h-6 rounded-full bg-gray-600 border-4 appearance-none cursor-not-allowed"/>
-                                    <label className="block overflow-hidden h-6 rounded-full bg-gray-800 cursor-not-allowed"></label>
+                                    <input type="checkbox" checked readOnly disabled className="appearance-none"/>
+                                    <div className="block overflow-hidden h-6 rounded-full bg-brand-orange/50 cursor-not-allowed w-10 relative">
+                                        <div className="absolute right-0 top-0 w-6 h-6 bg-brand-orange rounded-full border-2 border-brand-surface"></div>
+                                    </div>
                                 </div>
                             </div>
                             
                             {/* Analytics Cookies */}
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center p-3 rounded-lg hover:bg-white/5 transition-colors">
                                  <div>
-                                    <h3 className="font-bold text-brand-text">Analyse-Cookies</h3>
-                                    <p className="text-xs text-brand-muted">Helfen uns zu verstehen, wie Besucher mit der Website interagieren, indem sie anonym Informationen sammeln.</p>
+                                    <h3 className="font-bold text-brand-text">Statistik & Analyse</h3>
+                                    <p className="text-xs text-brand-muted mt-1">Helfen uns zu verstehen, wie die Seite genutzt wird (anonym).</p>
                                 </div>
-                                <button
+                                 <button
                                     type="button"
                                     role="switch"
                                     aria-checked={preferences.analytics}
                                     onClick={() => togglePreference('analytics')}
                                     className="relative inline-block w-10 ml-2 align-middle select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-surface focus:ring-brand-orange rounded-full"
                                 >
-                                    <span className="block overflow-hidden h-6 rounded-full bg-gray-800"></span>
-                                    <span className={`${preferences.analytics ? 'right-0 bg-brand-orange' : 'right-4 bg-gray-600'} pointer-events-none absolute block w-6 h-6 rounded-full border-4 border-brand-surface top-0 transform transition-all duration-200 ease-in`}></span>
-                                    <span className="sr-only">Analyse-Cookies an/aus schalten</span>
+                                    <span className="block overflow-hidden h-6 rounded-full bg-gray-700"></span>
+                                    <span className={`${preferences.analytics ? 'right-0 bg-brand-orange' : 'right-4 bg-gray-400'} pointer-events-none absolute block w-6 h-6 rounded-full border-4 border-brand-surface top-0 transform transition-all duration-200 ease-in`}></span>
                                 </button>
                             </div>
 
                             {/* Marketing Cookies */}
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center p-3 rounded-lg hover:bg-white/5 transition-colors">
                                  <div>
-                                    <h3 className="font-bold text-brand-text">Marketing-Cookies</h3>
-                                    <p className="text-xs text-brand-muted">Werden verwendet, um Besuchern relevante Anzeigen und Marketingkampagnen zu präsentieren.</p>
+                                    <h3 className="font-bold text-brand-text">Marketing & Externe Medien</h3>
+                                    <p className="text-xs text-brand-muted mt-1">Ermöglicht das Laden externer Inhalte (z.B. Videos) und Anzeigen.</p>
                                 </div>
                                  <button
                                     type="button"
@@ -138,18 +141,17 @@ const PrivacyBanner: React.FC = () => {
                                     onClick={() => togglePreference('marketing')}
                                     className="relative inline-block w-10 ml-2 align-middle select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-surface focus:ring-brand-orange rounded-full"
                                 >
-                                    <span className="block overflow-hidden h-6 rounded-full bg-gray-800"></span>
-                                    <span className={`${preferences.marketing ? 'right-0 bg-brand-orange' : 'right-4 bg-gray-600'} pointer-events-none absolute block w-6 h-6 rounded-full border-4 border-brand-surface top-0 transform transition-all duration-200 ease-in`}></span>
-                                    <span className="sr-only">Marketing-Cookies an/aus schalten</span>
+                                    <span className="block overflow-hidden h-6 rounded-full bg-gray-700"></span>
+                                    <span className={`${preferences.marketing ? 'right-0 bg-brand-orange' : 'right-4 bg-gray-400'} pointer-events-none absolute block w-6 h-6 rounded-full border-4 border-brand-surface top-0 transform transition-all duration-200 ease-in`}></span>
                                 </button>
                             </div>
                         </div>
-                        <div className="p-4 bg-brand-bg/50 border-t border-white/10 flex justify-end gap-3">
-                            <button onClick={handleDeclineAll} className="px-4 py-2 text-sm font-bold bg-brand-bg hover:bg-white/10 rounded-md transition-colors">
+                        <div className="p-4 bg-brand-bg/50 border-t border-white/10 flex justify-end gap-3 rounded-b-lg">
+                            <button onClick={handleDeclineAll} className="px-4 py-2 text-sm font-bold border border-white/10 hover:bg-white/10 rounded-md transition-colors text-gray-300">
                                 Alle ablehnen
                             </button>
                             <button onClick={handleSavePreferences} className="px-6 py-2 text-sm font-bold bg-brand-orange text-white rounded-md hover:bg-opacity-90 transition-colors">
-                                Einstellungen speichern
+                                Auswahl speichern
                             </button>
                         </div>
                     </div>

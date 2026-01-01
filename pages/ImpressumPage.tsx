@@ -36,7 +36,21 @@ const ImpressumPage: React.FC = () => {
             <div>
               <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Verantwortlich für den Inhalt</h2>
               <p>
-                Inhaltlich verantwortlich: Cüneyit Akcakoca
+                Verantwortlich im Sinne des § 18 Abs. 2 MStV:<br />
+                Cüneyit Akcakoca<br />
+                Talstrasse 41<br />
+                70188 Stuttgart
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">EU-Streitschlichtung</h2>
+              <p>
+                Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <br/>
+                <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-brand-orange hover:underline">
+                    https://ec.europa.eu/consumers/odr/
+                </a>.<br/>
+                Unsere E-Mail-Adresse finden Sie oben im Impressum.
               </p>
             </div>
 

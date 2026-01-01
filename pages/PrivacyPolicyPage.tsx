@@ -26,71 +26,44 @@ const PrivacyPolicyPage: React.FC = () => {
                 Tel.: +49 (0) 155 600 909 66<br />
                 E-Mail: post@aplusurbandesign.com
                 </p>
-                <p className="mt-4">
-                Unseren Datenschutzbeauftragten können Sie unter info@aplusurbandesign.com erreichen.
+            </div>
+
+            <div>
+                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Hosting & Serverlogs</h2>
+                <p>
+                Unser Hoster erhebt in sogenannten Logfiles Daten, die Ihr Browser übermittelt (IP-Adresse, Datum, Uhrzeit, abgerufene Datei). Diese Speicherung dient lediglich der Sicherheit und Fehlerbehebung (Art. 6 Abs. 1 lit. f DSGVO). Die Daten werden nach 7 Tagen gelöscht.
                 </p>
             </div>
 
             <div>
-                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Verschlüsselung</h2>
+                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Kontaktformular & Kataloganforderung</h2>
                 <p>
-                Um die Sicherheit Ihrer Daten bei der Übertragung zu schützen, verwenden wir dem aktuellen Stand der Technik entsprechende Verschlüsselungsverfahren wie SSL über HTTPS.
+                Wenn Sie uns per Kontaktformular oder E-Mail Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+                </p>
+                <p className="mt-2 font-bold text-white">Verarbeitung durch n8n (Automatisierung)</p>
+                <p>
+                Zur technischen Abwicklung der Katalogversendung und Kontaktanfragen nutzen wir den Automatisierungsdienst <strong>n8n.cloud</strong> (n8n GmbH). Die von Ihnen eingegebenen Daten (E-Mail-Adresse) werden an Server von n8n übermittelt, um den automatisierten E-Mail-Versand auszulösen. Dies erfolgt auf Grundlage unseres berechtigten Interesses an einer effizienten Kundenkommunikation (Art. 6 Abs. 1 lit. f DSGVO) sowie zur Erfüllung vorvertraglicher Maßnahmen (Zusendung des angeforderten Angebots/Katalogs) gemäß Art. 6 Abs. 1 lit. b DSGVO. Wir haben mit dem Anbieter einen Vertrag zur Auftragsverarbeitung (AVV) geschlossen.
                 </p>
             </div>
 
             <div>
-                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Kontaktaufnahme</h2>
+                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Lokale Schriftarten (Google Fonts Alternative)</h2>
                 <p>
-                Unsere Website ermöglicht Ihnen eine Kontaktaufnahme mit uns per E-Mail oder durch Kontaktformulare. Die dafür von Ihnen bereitgestellten Informationen werden zum Zweck der Bearbeitung der jeweiligen Anfrage sowie für mögliche Anschlussfragen gem. Art. 6 Abs. 1 lit. b) DSGVO verarbeitet. Eine Weitergabe der Informationen an Dritte findet nicht statt, ausgenommen bei Auftragserteilung gegebenenfalls die Lieferadresse als Referenzliste und zur Organisation der Fracht.
-                </p>
-            </div>
-
-            <div>
-                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Links und Inhalte von Drittanbietern</h2>
-                <p>
-                Auf unseren Webseiten können Links zu externen Webseiten enthalten sein. Diese Datenschutzerklärung erstreckt sich nicht auf externe Webseiten, da wir für deren Inhalte und deren Umsetzung des Datenschutzes keine Verantwortung übernehmen können. Innerhalb unseres Onlineangebotes können außerdem in einigen Teilbereichen Inhalte von Dritt-Anbietern, wie zum Beispiel YouTube-Videos oder Grafiken eingebunden sein. Zur Auslieferung der Inhalte erlangen die jeweiligen Dienstanbieter Kenntnis von der IP-Adresse des Nutzers. Wir haben keinen Einfluss darauf, ob diese Dritt-Anbieter die IP-Adressen speichern, und/oder für statistische Zwecke auswerten.
-                </p>
-            </div>
-
-            <div>
-                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Serverlogs</h2>
-                <p>
-                Aus Sicherheitsgründen (z.B. zur Aufklärung von Missbrauchs- oder Betrugshandlungen) speichern wir auf Grundlage unserer berechtigten Interessen im Sinne des Art. 6 Abs. 1 lit. f) DSGVO bei jedem Zugriff auf unsere Webseite unter anderem die IP-Adresse des Nutzers sowie einen Zeitstempel des Zugriffs in sogenannten Serverlogfiles. Diese Informationen werden für sieben Tage aufbewahrt und anschließend gelöscht. Von der Löschung ausgenommen sind lediglich Informationen, deren Aufbewahrung für die Beweisführung zu einem konkreten Vorfall erforderlich ist, bis der Vorfall endgültig geklärt ist.
-                </p>
-            </div>
-
-            <div>
-                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Eingebettete YouTube Videos</h2>
-                <p>
-                Innerhalb unseres Onlineangebotes sind vereinzelt Videos eingebettet. Betreiber der entsprechenden Plugins ist die YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, USA. Die YouTube, LLC ist eine Tochtergesellschaft der Google Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043-1351, USA. Die Videos werden durch die Firma YouTube LLC bereitgestellt, welche zur Auslieferung der Inhalte Kenntnis über Ihre IP-Adresse erlangt. Wenn Sie diese Videos abspielen, setzt YouTube außerdem seinerseits Cookies. Auf die Verwendung Ihrer IP-Adresse und der dabei gesetzten Cookies durch YouTube haben wir keinen Einfluss. Die von YouTube veröffentlichten Datenschutzbestimmungen, die unter https://www.google.de/intl/de/policies/privacy/ abrufbar sind, geben Aufschluss über die Erhebung, Verarbeitung und Nutzung personenbezogener Daten durch YouTube und Google.
+                Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten lokale Systemschriften oder lokal eingebundene Schriften. Beim Aufruf der Seite baut Ihr Browser <strong>keine</strong> Verbindung zu Servern von Google auf. Es findet keine Übertragung Ihrer IP-Adresse an Google Font-Server statt.
                 </p>
             </div>
 
             <div>
                 <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Cookies</h2>
                 <p>
-                Auf Grundlage unserer berechtigten Interessen (Analyse, Optimierung und wirtschaftlicher Betrieb unseres Onlineangebotes) im Sinne von Art. 6 Abs. 1 lit. f) DSGVO verwenden wir auf unserer Website sogenannte Cookies. Dabei handelt es sich um kleine Dateien, die auf Ihrem Computer abgelegt werden, um spezifische Einstellungen zur Nutzung unseres Internetauftritts zu speichern. Hierdurch erhalten wir automatisch bestimmte Daten (z.B. IP-Adresse, verwendeter Browser, Betriebssystem) über Ihren Computer und Ihre Verbindung zum Internet. Sie können unsere Website auch ohne Cookies nutzen, indem Sie die Verwendung von Cookies in Ihrem Browser deaktivieren. Der Komfort und der Funktionsumfang unseres Angebots kann jedoch durch die Deaktivierung von Cookies eingeschränkt werden. Um zu erfahren, wie Sie Cookies in Ihrem Browser deaktivieren, verwenden Sie bitte dessen Hilfefunktion.
+                Auf Grundlage unserer berechtigten Interessen verwenden wir auf unserer Website Cookies. Sie können unsere Website auch ohne Cookies nutzen, indem Sie die Verwendung von Cookies in Ihrem Browser deaktivieren oder im Cookie-Banner ablehnen. Technisch notwendige Cookies sind für den Betrieb der Seite erforderlich.
                 </p>
             </div>
 
             <div>
-                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Verwendung von Scriptbibliotheken und Webfonts</h2>
+                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Ihre Rechte</h2>
                 <p>
-                Um unsere Inhalte browserübergreifend korrekt und grafisch ansprechend darzustellen, verwenden wir auf dieser Website Scriptbibliotheken und Schriftbibliotheken. Der Aufruf von Scriptbibliotheken oder Schriftbibliotheken löst automatisch eine Verbindung zum Betreiber der Bibliothek aus. Dabei ist es möglich, dass Betreiber entsprechender Bibliotheken Daten zu Aufrufen erheben und auswerten.
-                </p>
-            </div>
-
-            <div>
-                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Vorbehalt von Änderungen</h2>
-                <p>
-                Wir behalten uns vor, in Zukunft Änderungen an dieser Datenschutzerklärung vorzunehmen, um diese stets an unser Webangebot sowie an sich verändernde rechtliche Anforderungen anpassen zu können.
-                </p>
-            </div>
-
-            <div>
-                <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Ihre Rechte auf Auskunft, Berichtigung, Sperre, Widerspruch, Löschung</h2>
-                <p>
-                Sie haben jederzeit das Recht, Auskunft über Ihre bei uns gespeicherten Daten zu erhalten. Außerdem haben Sie einen Anspruch auf Berichtigung, Sperrung oder auch Löschung der Daten, soweit dem keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Bitte wenden Sie sich dazu gegebenenfalls an unseren Datenschutzbeauftragten.
+                Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.
                 </p>
             </div>
         </div>

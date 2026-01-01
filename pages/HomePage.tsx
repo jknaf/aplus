@@ -36,208 +36,105 @@ const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}>
     return <div ref={ref} className={`animated-section ${className}`}>{children}</div>;
 };
 
-// --- Scrollytelling Section Component ---
-const TECH_FEATURES = [
-    {
-        id: 'material',
-        title: "High Performance Concrete",
-        subtitle: "C35/45 XF4",
-        desc: "Unser Beton ist kein Standard. Er ist eine Wissenschaft. Porenarm, frosttausalzbeständig und extrem verdichtet. Er absorbiert Vibrationen und bietet gleichzeitig die Härte, die für Jahrzehnte überdauert.",
-        img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop" // Abstract concrete texture
-    },
-    {
-        id: 'surface',
-        title: "The Perfect Grip",
-        subtitle: "Hand-Finished",
-        desc: "Nicht zu glatt, nicht zu rau. Unsere Oberflächen werden maschinell geglättet und handveredelt. Das Ergebnis: Ein Fahrgefühl wie auf Samt, aber mit genug Grip für aggressive Manöver. Rutschfest nach R11.",
-        img: "https://images.unsplash.com/photo-1565259164223-10d659e93b33?q=80&w=1600&auto=format&fit=crop" // Smooth skate surface detail
-    },
-    {
-        id: 'precision',
-        title: "Modular Precision",
-        subtitle: "Zero Tolerance",
-        desc: "Schluss mit stolpernden Kanten. Unsere patentierte Fugen-Technologie sorgt für übergangslose Verbindungen zwischen den Modulen. Schnell montiert, jederzeit erweiterbar und präzise wie ein Uhrwerk.",
-        img: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=1600&auto=format&fit=crop" // Architectural detail / joint
-    },
-    {
-        id: 'impact',
-        title: "Impact Ready",
-        subtitle: "Reinforced Steel",
-        desc: "Unter der Haut liegt ein Skelett aus Bewehrungsstahl. Entwickelt, um massiven Belastungen standzuhalten – sei es durch BMX-Pegs, Skateboards oder Witterungsextreme.",
-        img: "https://images.unsplash.com/photo-1535968168968-3e2840c83a79?q=80&w=1600&auto=format&fit=crop" // Construction/Steel vibe
-    }
-];
+// --- Scrollytelling Components ---
 
-const ScrollyTellingSection: React.FC = () => {
-    const [activeFeature, setActiveFeature] = useState(0);
-    const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+const ScrollyFeature: React.FC<{
+    icon: string;
+    title: string;
+    desc: string;
+    index: number;
+    animationType: 'float' | 'glow-pulse' | 'spin-slow' | 'stamp';
+}> = ({ icon, title, desc, index, animationType }) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
+                    // Activate when element is roughly in the center of the viewport
                     if (entry.isIntersecting) {
-                        const index = Number(entry.target.getAttribute('data-index'));
-                        setActiveFeature(index);
+                        setIsActive(true);
+                    } else {
+                        setIsActive(false);
                     }
                 });
             },
             {
-                rootMargin: '-50% 0px -50% 0px', // Trigger when element is in the middle of viewport
+                rootMargin: "-40% 0px -40% 0px", // Trigger when element is in the middle 20% of screen
                 threshold: 0
             }
         );
 
-        stepRefs.current.forEach((ref) => {
-            if (ref) observer.observe(ref);
-        });
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
 
-        return () => observer.disconnect();
+        return () => {
+            if (ref.current) observer.unobserve(ref.current);
+        };
     }, []);
 
-    return (
-        <section className="relative text-white">
-            <div className="flex flex-col lg:flex-row">
-                {/* Sticky Visual Column */}
-                <div className="lg:w-1/2 h-[50vh] lg:h-screen sticky top-0 z-0 overflow-hidden">
-                    {TECH_FEATURES.map((feature, index) => (
-                        <div 
-                            key={feature.id}
-                            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-                                activeFeature === index ? 'opacity-100' : 'opacity-0'
-                            }`}
-                        >
-                             <div className="absolute inset-0 bg-black/40 z-10"></div>
-                             <img 
-                                src={feature.img} 
-                                alt={feature.title} 
-                                className="w-full h-full object-cover scale-105"
-                             />
-                             <div className="absolute bottom-8 left-8 z-20">
-                                 <span className="text-brand-orange text-xs font-bold tracking-widest uppercase mb-2 block">
-                                     0{index + 1} / 0{TECH_FEATURES.length}
-                                 </span>
-                                 <h3 className="text-4xl lg:text-5xl font-black font-heading uppercase text-white tracking-tighter">
-                                     {feature.title}
-                                 </h3>
-                             </div>
-                        </div>
-                    ))}
-                    {/* Progress Bar for Mobile */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-white/10 lg:hidden z-30">
-                         <div 
-                            className="h-full bg-brand-orange transition-all duration-300"
-                            style={{ width: `${((activeFeature + 1) / TECH_FEATURES.length) * 100}%` }}
-                         ></div>
-                    </div>
-                </div>
-
-                {/* Scrollable Text Column - Light Glass */}
-                <div className="lg:w-1/2 relative z-10 bg-white/5 lg:bg-transparent backdrop-blur-xl -mt-[10vh] lg:mt-0 rounded-t-3xl lg:rounded-none">
-                    {TECH_FEATURES.map((feature, index) => (
-                        <div 
-                            key={feature.id}
-                            ref={(el) => { stepRefs.current[index] = el; }}
-                            data-index={index}
-                            className="min-h-[80vh] lg:min-h-screen flex items-center justify-center p-8 lg:p-24 border-l border-white/10"
-                        >
-                            <div className={`transition-all duration-700 transform ${activeFeature === index ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-30 blur-sm'}`}>
-                                <span className="text-8xl font-black text-white/5 absolute -top-12 -left-4 font-heading select-none">
-                                    0{index + 1}
-                                </span>
-                                <h4 className="text-brand-orange font-bold uppercase tracking-widest mb-4 relative z-10">
-                                    {feature.subtitle}
-                                </h4>
-                                <h2 className="text-4xl md:text-5xl font-bold font-heading mb-8 relative z-10">
-                                    {feature.title}
-                                </h2>
-                                <p className="text-xl text-gray-400 leading-relaxed relative z-10 border-l-2 border-brand-orange pl-6">
-                                    {feature.desc}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
-// --- Spotlight Effect Component ---
-const SpotlightCard: React.FC<{
-  title: string;
-  desc: string;
-  icon: string;
-  className?: string;
-}> = ({ title, desc, icon, className }) => {
-    return (
-        // Lighter Glass Effect for better background visibility
-        <div className={`relative h-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden group/spotlight ${className}`}>
-            {/* Spotlight Gradient */}
-            <div 
-                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 group-hover/spotlight:opacity-100 transition duration-300"
-                style={{
-                    background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(249, 115, 22, 0.15), transparent 40%)`,
-                }}
-            />
-             <div 
-                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 group-hover/spotlight:opacity-100 transition duration-300"
-                style={{
-                    background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(249, 115, 22, 0.4), transparent 40%)`,
-                     maskImage: 'linear-gradient(black, black), content-box',
-                     maskComposite: 'exclude',
-                     WebkitMaskComposite: 'xor',
-                     padding: '1px'
-                }}
-            >
-                <div className="w-full h-full bg-brand-orange/50"></div>
-            </div>
-
-            <div className="relative h-full p-8 flex flex-col z-10">
-                <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-6 group-hover/spotlight:bg-brand-orange/20 transition-colors duration-300">
-                     <span className="material-symbols-outlined text-3xl text-brand-orange">{icon}</span>
-                </div>
-                <h4 className="text-xl font-bold font-heading text-white mb-3 group-hover/spotlight:text-brand-orange transition-colors duration-300">{title}</h4>
-                <p className="text-sm text-gray-400 leading-relaxed">{desc}</p>
-            </div>
-        </div>
-    );
-};
-
-const SpotlightGrid: React.FC<{children: React.ReactNode}> = ({ children }) => {
-    const divRef = useRef<HTMLDivElement>(null);
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!divRef.current) return;
-
-        for (const child of divRef.current.children) {
-            const childElement = child as HTMLElement;
-            const rect = childElement.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            childElement.style.setProperty('--mouse-x', `${x}px`);
-            childElement.style.setProperty('--mouse-y', `${y}px`);
+    // Dynamic classes based on active state
+    const containerClass = isActive 
+        ? "border-brand-orange bg-brand-surface/80 shadow-[0_0_30px_-5px_rgba(249,115,22,0.3)] scale-105" 
+        : "border-white/5 bg-brand-surface/30 opacity-50 scale-100";
+    
+    const iconColorClass = isActive ? "text-brand-orange" : "text-gray-600";
+    const titleColorClass = isActive ? "text-white" : "text-gray-500";
+    
+    // Animation classes for the icon when active
+    const getAnimationClass = () => {
+        if (!isActive) return "";
+        switch (animationType) {
+            case 'float': return "animate-float";
+            case 'glow-pulse': return "animate-glow-pulse";
+            case 'spin-slow': return "animate-spin-slow";
+            case 'stamp': return "animate-stamp";
+            default: return "";
         }
     };
 
     return (
         <div 
-            ref={divRef} 
-            onMouseMove={handleMouseMove} 
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full"
+            ref={ref}
+            className={`transition-all duration-700 ease-out p-8 md:p-12 rounded-3xl border backdrop-blur-sm mb-24 last:mb-0 ${containerClass}`}
         >
-            {children}
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
+                {/* Icon Container */}
+                <div className={`relative flex-shrink-0 w-24 h-24 rounded-2xl border border-white/10 flex items-center justify-center bg-black/50 transition-colors duration-500 ${isActive ? 'border-brand-orange/50' : ''}`}>
+                    {/* Glowing background blob behind icon - only for active */}
+                    <div className={`absolute inset-0 bg-brand-orange/10 blur-xl rounded-full transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-0'}`}></div>
+                    
+                    <span className={`material-symbols-outlined text-5xl relative z-10 transition-colors duration-500 ${iconColorClass} ${getAnimationClass()}`}>
+                        {icon}
+                    </span>
+                </div>
+
+                {/* Text Content */}
+                <div>
+                    <h3 className={`text-3xl md:text-4xl font-black font-heading uppercase mb-3 transition-colors duration-500 ${titleColorClass}`}>
+                        {title}
+                    </h3>
+                    <p className="text-lg text-gray-400 leading-relaxed max-w-lg">
+                        {desc}
+                    </p>
+                </div>
+            </div>
+            
+            {/* Tech Decoration Lines */}
+            <div className={`mt-8 h-px w-full bg-gradient-to-r from-transparent via-brand-orange/50 to-transparent transition-transform duration-700 origin-left ${isActive ? 'scale-x-100' : 'scale-x-0'}`}></div>
         </div>
     );
 };
 
-// --- Shutter Hero Component (Mixed Media) ---
+
+// --- Updated Hero Component (Clean Slide Transition) ---
 const HERO_ITEMS = [
   {
     type: 'video',
     src: 'https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4',
-    poster: 'https://images.pexels.com/videos/5464945/free-video-5464945.jpg?auto=compress&cs=tinysrgb&dpr=1&w=1200'
+    // Poster removed as requested
   },
   {
     type: 'image',
@@ -249,7 +146,7 @@ const HERO_ITEMS = [
   }
 ];
 
-const ShutterHero: React.FC = () => {
+const Hero: React.FC = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [nextIndex, setNextIndex] = useState(1);
     const [isAnimating, setIsAnimating] = useState(false);
@@ -267,10 +164,12 @@ const ShutterHero: React.FC = () => {
         return () => clearInterval(interval);
     }, [activeIndex, isAnimating]);
 
+    // Handle Video Autoplay
     useEffect(() => {
-        if(videoRef.current && HERO_ITEMS[activeIndex].type === 'video') {
-            videoRef.current.load();
-            videoRef.current.play().catch(e => console.log("Auto-play prevented:", e));
+        // We need to handle video play for both active and next if they are videos
+        const activeItem = HERO_ITEMS[activeIndex];
+        if (activeItem.type === 'video' && videoRef.current) {
+             videoRef.current.play().catch(() => {});
         }
     }, [activeIndex]);
 
@@ -282,7 +181,7 @@ const ShutterHero: React.FC = () => {
         setTimeout(() => {
             setActiveIndex(targetIndex);
             setIsAnimating(false);
-        }, 1500); 
+        }, 1200); // Matches animation duration
     };
 
     const handleMouseMove = (e: React.MouseEvent) => {
@@ -293,75 +192,68 @@ const ShutterHero: React.FC = () => {
         setMousePos({ x, y });
     };
 
-    const activeItem = HERO_ITEMS[activeIndex];
-    const nextItem = HERO_ITEMS[nextIndex];
-
-    const getPoster = (item: typeof HERO_ITEMS[0]) => item.type === 'video' ? item.poster! : item.src;
+    const renderMedia = (item: typeof HERO_ITEMS[0], isBackground: boolean = false) => {
+        if (item.type === 'video') {
+            return (
+                <video 
+                    ref={isBackground ? undefined : videoRef}
+                    src={item.src}
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline
+                    className="w-full h-full object-cover"
+                />
+            );
+        }
+        return (
+            <img 
+                src={item.src}
+                alt=""
+                className={`w-full h-full object-cover ${!isBackground ? 'animate-kenburns-1' : ''}`}
+            />
+        );
+    };
 
     return (
         <div 
             ref={heroRef}
-            className="relative h-[90vh] w-full overflow-hidden group"
+            className="relative h-[90vh] w-full overflow-hidden bg-black"
             onMouseMove={handleMouseMove}
         >
+            {/* Current Item (Background) */}
             <div 
-                className="absolute inset-0 w-full h-full transition-transform duration-200 ease-out"
+                className="absolute inset-0 w-full h-full"
                 style={{ 
-                    transform: `scale(1.05) translate(${mousePos.x * -10}px, ${mousePos.y * -10}px)` 
+                    transform: `scale(1.05) translate(${mousePos.x * -10}px, ${mousePos.y * -10}px)`,
+                    transition: 'transform 0.2s ease-out'
                 }}
             >
-                {activeItem.type === 'video' ? (
-                    <video 
-                        ref={videoRef}
-                        key={`bg-media-${activeIndex}`}
-                        src={activeItem.src}
-                        poster={activeItem.poster}
-                        autoPlay 
-                        muted 
-                        loop 
-                        playsInline
-                        preload="auto"
-                        className="w-full h-full object-cover"
-                    />
-                ) : (
-                    <img 
-                        key={`bg-media-${activeIndex}`}
-                        src={activeItem.src}
-                        alt=""
-                        className={`w-full h-full object-cover ${activeIndex % 2 === 0 ? 'animate-kenburns-1' : 'animate-kenburns-2'}`}
-                    />
-                )}
-                <div className="absolute inset-0 bg-black/50"></div>
+                {renderMedia(HERO_ITEMS[activeIndex])}
+                <div className="absolute inset-0 bg-black/40"></div>
             </div>
 
+            {/* Next Item (Slide Up Overlay) */}
             {isAnimating && (
-                <div className="absolute inset-0 z-10 flex w-full h-full pointer-events-none">
-                    {[0, 1, 2, 3, 4].map((i) => (
-                        <div 
-                            key={i} 
-                            className="relative h-full w-[20%] overflow-hidden"
-                        >
-                            <div 
-                                className={`absolute inset-0 w-full h-full bg-[#050505] transition-transform duration-700 ease-[cubic-bezier(0.87,0,0.13,1)]`}
-                                style={{
-                                    transform: `translateY(${i % 2 === 0 ? '100%' : '-100%'})`,
-                                    animation: `shutterSlide 0.8s cubic-bezier(0.87, 0, 0.13, 1) forwards`,
-                                    animationDelay: `${i * 100}ms`
-                                }}
-                            >
-                                <img 
-                                    src={getPoster(nextItem)}
-                                    alt=""
-                                    className="absolute top-0 h-full w-[500vw] max-w-none object-cover"
-                                    style={{ left: `-${i * 100}%` }}
-                                />
-                                <div className="absolute inset-0 bg-black/50"></div>
-                            </div>
-                        </div>
-                    ))}
+                <div 
+                    className="absolute inset-0 z-10 w-full h-full overflow-hidden"
+                    style={{
+                        animation: 'slideUpReveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards'
+                    }}
+                >
+                     {/* 
+                       Inner container to counteract the slide movement if we wanted a "reveal" 
+                       effect (parallax), but here we want a solid block moving up, 
+                       so we just render the image normally inside the moving container.
+                     */}
+                    <div className="w-full h-full relative">
+                         {renderMedia(HERO_ITEMS[nextIndex], true)}
+                         <div className="absolute inset-0 bg-black/40"></div>
+                    </div>
                 </div>
             )}
 
+            {/* Content Layer */}
             <div className="absolute inset-0 z-20 container mx-auto px-4 sm:px-6 lg:px-8 pb-32 pt-32 flex flex-col justify-end pointer-events-none">
                  <div className="max-w-7xl">
                     <div key={activeIndex} className="overflow-hidden">
@@ -380,10 +272,11 @@ const ShutterHero: React.FC = () => {
                  </div>
             </div>
             
-            <div className="absolute inset-0 z-10 pointer-events-none opacity-[0.07] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+            {/* Grain Overlay */}
+            <div className="absolute inset-0 z-30 pointer-events-none opacity-[0.07] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
             <style>{`
-                @keyframes shutterSlide {
+                @keyframes slideUpReveal {
                     0% { transform: translateY(100%); }
                     100% { transform: translateY(0); }
                 }
@@ -417,7 +310,7 @@ const InfiniteMarquee: React.FC = () => {
 const HomePage: React.FC = () => {
   return (
     <>
-      <ShutterHero />
+      <Hero />
 
       <InfiniteMarquee />
       
@@ -500,57 +393,72 @@ const HomePage: React.FC = () => {
             ))}
         </div>
       </div>
-      
-      {/* Engineering / Scrollytelling Section */}
-      <div className="relative z-20">
-           <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-               <span className="text-brand-orange font-bold tracking-widest uppercase text-sm">Technology</span>
-               <h2 className="text-5xl md:text-7xl font-black font-heading text-white mt-2">ENGINEERING <span className="text-outline">THE FLOW</span></h2>
-           </div>
-           <ScrollyTellingSection />
-      </div>
 
-        {/* Updated Philosophy / Features Section (Spotlight & Sticky) - Transparent background */}
-        <section className="relative py-32 overflow-hidden">
-            {/* Background elements */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+        {/* --- Scrollytelling Philosophy Section --- */}
+        <section className="relative py-24 lg:py-48 overflow-visible">
+            {/* Ambient Background Glow for this section */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
             
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
                     
-                    {/* Left Column - Sticky Content */}
-                    <div className="lg:sticky lg:top-32 h-fit">
-                         <span className="text-brand-orange font-bold tracking-widest uppercase text-sm mb-4 block animate-fade-in-up">Unsere DNA</span>
-                         <h2 className="text-6xl md:text-8xl font-black font-heading text-white leading-[0.85] mb-8 animate-fade-in-up [animation-delay:100ms] uppercase">
-                            Built<br/>
-                            to<br/>
-                            <span className="text-outline-orange">Last.</span>
-                         </h2>
-                         <p className="text-xl text-gray-400 leading-relaxed mb-8 max-w-lg animate-fade-in-up [animation-delay:200ms]">
-                             Wir schaffen urbane Landschaften aus Beton und Stahl, die jeder Belastung standhalten. Vandalismusresistent, wartungsfrei und bereit für die nächste Generation.
-                         </p>
-                         <Link to="/ueber-uns" className="inline-flex items-center gap-2 text-white font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider animate-fade-in-up [animation-delay:300ms]">
-                             Mehr über unsere Philosophie <span className="text-xl">&rarr;</span>
-                         </Link>
+                    {/* Left Column - Sticky Content (The Narrative Anchor) */}
+                    <div className="lg:w-5/12">
+                        <div className="lg:sticky lg:top-32 h-fit">
+                             <span className="text-brand-orange font-bold tracking-widest uppercase text-sm mb-4 block animate-fade-in-up">Unsere DNA</span>
+                             <h2 className="text-6xl md:text-8xl font-black font-heading text-white leading-[0.85] mb-8 animate-fade-in-up [animation-delay:100ms] uppercase">
+                                Built<br/>
+                                to<br/>
+                                <span className="text-outline-orange">Last.</span>
+                             </h2>
+                             <p className="text-xl text-gray-400 leading-relaxed mb-8 animate-fade-in-up [animation-delay:200ms]">
+                                 Wir schaffen urbane Landschaften aus Beton und Stahl, die jeder Belastung standhalten. Scrollen Sie, um zu sehen, was uns anders macht.
+                             </p>
+                             <Link to="/ueber-uns" className="inline-flex items-center gap-2 text-white font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider animate-fade-in-up [animation-delay:300ms]">
+                                 Mehr über unsere Philosophie <span className="text-xl">&rarr;</span>
+                             </Link>
+                        </div>
                     </div>
                     
-                    {/* Right Column - Spotlight Grid */}
-                    <div className="animate-fade-in-up [animation-delay:400ms]">
-                        <SpotlightGrid>
-                            {[
-                                { icon: "foundation", title: "Fundamentfrei", desc: "Kein Betonieren vor Ort nötig. Unser modulares System erlaubt die Aufstellung auf einem einfachen Schotterbett. Spart Zeit, Geld und CO2." },
-                                { icon: "shield", title: "Unzerstörbar", desc: "Massiver C35/45 Hochleistungsbeton. Feuerfest, schnittfest und resistent gegen rohe Gewalt. Gebaut für den harten urbanen Einsatz." },
-                                { icon: "verified_user", title: "TÜV Zertifiziert", desc: "Sicherheit ohne Kompromisse. Alle unsere Anlagen sind nach DIN EN 14974 zertifiziert und entsprechen höchsten Standards." },
-                                { icon: "recycling", title: "100% Recycelbar", desc: "Nachhaltigkeit zu Ende gedacht. Unsere Module können am Ende ihrer Lebensdauer vollständig recycelt oder an einem neuen Ort wiederaufgebaut werden." }
-                            ].map((item, idx) => (
-                                <SpotlightCard 
-                                    key={idx}
-                                    icon={item.icon}
-                                    title={item.title}
-                                    desc={item.desc}
-                                />
-                            ))}
-                        </SpotlightGrid>
+                    {/* Right Column - Scrolling Features with Animated Icons */}
+                    <div className="lg:w-7/12 pt-12 lg:pt-0">
+                        <div className="flex flex-col">
+                            {/* Feature 1: Layers (Fundamentfrei) */}
+                            <ScrollyFeature 
+                                index={0}
+                                icon="layers" 
+                                animationType="float"
+                                title="Fundamentfrei"
+                                desc="Kein Betonieren vor Ort nötig. Unser modulares System erlaubt die Aufstellung auf einem einfachen Schotterbett. Das spart Zeit, Geld und reduziert CO2-Emissionen massiv."
+                            />
+                            
+                            {/* Feature 2: Shield (Unzerstörbar) */}
+                            <ScrollyFeature 
+                                index={1}
+                                icon="shield"
+                                animationType="glow-pulse"
+                                title="Unzerstörbar"
+                                desc="Massiver C35/45 Hochleistungsbeton. Feuerfest, schnittfest und resistent gegen rohe Gewalt. Gebaut für den harten urbanen Einsatz, wo Vandalismus leider oft zum Alltag gehört."
+                            />
+
+                            {/* Feature 3: Verified (TÜV) */}
+                            <ScrollyFeature 
+                                index={2}
+                                icon="verified"
+                                animationType="stamp"
+                                title="TÜV Zertifiziert"
+                                desc="Sicherheit ohne Kompromisse. Alle unsere Anlagen sind nach DIN EN 14974 zertifiziert und entsprechen höchsten Standards. Haftungsrisiken für Kommunen werden so minimiert."
+                            />
+
+                            {/* Feature 4: Recycling (Recyclable) */}
+                            <ScrollyFeature 
+                                index={3}
+                                icon="recycling"
+                                animationType="spin-slow"
+                                title="100% Recycelbar"
+                                desc="Nachhaltigkeit zu Ende gedacht. Unsere Module können am Ende ihrer Lebensdauer vollständig recycelt oder – noch besser – an einem neuen Ort wiederaufgebaut werden."
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

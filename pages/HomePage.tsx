@@ -82,7 +82,7 @@ const FAQSection: React.FC = () => {
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                         Wissen & Technik
                     </span>
-                    <h2 className="text-5xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
+                    <h2 className="text-4xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
                         Häufige <span className="text-outline-orange">Fragen.</span>
                     </h2>
                     <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
@@ -94,14 +94,14 @@ const FAQSection: React.FC = () => {
                     {faqs.map((faq, index) => (
                         <details key={index} className="group bg-[#121212]/80 backdrop-blur-md border border-white/10 rounded-lg overflow-hidden transition-all duration-300 open:border-brand-orange/50 open:bg-[#1a1a1a]/90">
                             <summary className="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/5 transition-colors">
-                                <span className="font-bold text-lg md:text-xl text-white group-hover:text-brand-orange transition-colors pr-8">
+                                <span className="font-bold text-base md:text-xl text-white group-hover:text-brand-orange transition-colors pr-8">
                                     {faq.q}
                                 </span>
                                 <span className="material-symbols-outlined text-gray-500 transition-transform duration-300 group-open:rotate-180 group-open:text-brand-orange">
                                     expand_more
                                 </span>
                             </summary>
-                            <div className="px-6 pb-6 pt-0 text-gray-400 leading-relaxed border-t border-white/5 mt-2 animate-fade-in-up">
+                            <div className="px-6 pb-6 pt-0 text-gray-400 leading-relaxed border-t border-white/5 mt-2 animate-fade-in-up text-sm md:text-base">
                                 {faq.a}
                             </div>
                         </details>
@@ -147,7 +147,7 @@ const ProductScrollytelling: React.FC = () => {
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                         Unser Portfolio
                     </span>
-                    <h2 className="text-5xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
+                    <h2 className="text-4xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
                         Technische<br/>
                         <span className="text-outline-orange">Perfektion.</span>
                     </h2>
@@ -383,6 +383,15 @@ const Hero: React.FC = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const nextVideoRef = useRef<HTMLVideoElement>(null);
 
+    // PERFORMANCE FIX: Preload next image to avoid blink
+    useEffect(() => {
+        const nextItem = HERO_ITEMS[(activeIndex + 1) % HERO_ITEMS.length];
+        if (nextItem.type === 'image') {
+            const img = new Image();
+            img.src = nextItem.src;
+        }
+    }, [activeIndex]);
+
     useEffect(() => {
         const interval = setInterval(() => {
             if (!isAnimating) triggerTransition((activeIndex + 1) % HERO_ITEMS.length);
@@ -403,29 +412,48 @@ const Hero: React.FC = () => {
 
     const renderMedia = (item: typeof HERO_ITEMS[0], ref: React.RefObject<HTMLVideoElement>) => {
         if (item.type === 'video') {
-            return <video ref={ref} src={item.src} autoPlay muted loop playsInline className="w-full h-full object-cover" />;
+            // OPTIMIZATION: Added poster image to prevent black screen on load
+            // Added preload="auto" and playsInline for better mobile support
+            return (
+                <video 
+                    ref={ref} 
+                    src={item.src} 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    preload="auto"
+                    poster="https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    className="w-full h-full object-cover" 
+                />
+            );
         }
-        return <img src={item.src} alt="" className="w-full h-full object-cover" />;
+        return <img src={item.src} alt="" className="w-full h-full object-cover" loading="eager" />;
     };
 
     return (
         // REMOVED BG-BLACK to ensure transparency
-        <div className="relative h-[90vh] w-full overflow-hidden bg-transparent">
+        <div className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden bg-transparent">
             <div className="absolute inset-0 z-0">{renderMedia(HERO_ITEMS[activeIndex], videoRef)}<div className="absolute inset-0 bg-black/40"></div></div>
             {isAnimating && (
                 <div className="absolute inset-0 z-10 animate-[slideUpReveal_1.4s_cubic-bezier(0.83,0,0.17,1)_forwards]">
                     <div className="w-full h-full relative">{renderMedia(HERO_ITEMS[nextIndex], nextVideoRef)}<div className="absolute inset-0 bg-black/40"></div></div>
                 </div>
             )}
-            <div className="absolute inset-0 z-20 container mx-auto px-4 pb-32 pt-32 flex flex-col justify-end pointer-events-none">
+            <div className="absolute inset-0 z-20 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-end pointer-events-none">
                  <div className="max-w-7xl">
                     <div key={activeIndex} className={isAnimating ? 'opacity-0 translate-y-[-20px] blur-sm transition-all duration-500' : 'opacity-100 transition-all duration-500'}>
-                        <h1 className="flex flex-col font-black font-heading uppercase tracking-tighter leading-[0.85]">
-                            <span className="text-5xl sm:text-7xl md:text-9xl text-white mix-blend-overlay opacity-90 animate-fade-in-up">Architektur</span>
-                            <span className="text-5xl sm:text-7xl md:text-9xl text-outline-bold animate-fade-in-up [animation-delay:100ms]">für</span>
-                            <span className="text-5xl sm:text-7xl md:text-9xl text-brand-orange animate-fade-in-up [animation-delay:200ms]">Freiräume</span>
+                        {/* TYPOGRAPHY FIX: 
+                            1. Removed mix-blend-overlay on "Architektur" to ensure visibility against dark video.
+                            2. Changed leading to `leading-none` to prevent overlap.
+                            3. Used `text-[clamp]` for fluid typography that prevents breaks on small screens.
+                        */}
+                        <h1 className="flex flex-col font-black font-heading uppercase tracking-tighter leading-none md:leading-[0.85]">
+                            <span className="text-[clamp(2.5rem,10vw,9rem)] text-white opacity-90 animate-fade-in-up">Architektur</span>
+                            <span className="text-[clamp(2.5rem,10vw,9rem)] text-outline-bold animate-fade-in-up [animation-delay:100ms]">für</span>
+                            <span className="text-[clamp(2.5rem,10vw,9rem)] text-brand-orange animate-fade-in-up [animation-delay:200ms]">Freiräume</span>
                         </h1>
-                        <p className="mt-8 text-xl md:text-2xl text-gray-300 max-w-2xl font-light border-l-4 border-brand-orange pl-6 animate-fade-in-up [animation-delay:300ms]">
+                        <p className="mt-6 md:mt-8 text-lg md:text-2xl text-gray-300 max-w-xl md:max-w-2xl font-light border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
                             Wir planen und bauen die Plätze der Zukunft. <span className="text-white font-bold">Robust. Modular. Kompromisslos.</span>
                         </p>
                     </div>
@@ -439,11 +467,11 @@ const Hero: React.FC = () => {
 const InfiniteMarquee: React.FC = () => {
     const items = ["SKATEPARKS", "PUMPTRACKS", "URBAN DESIGN", "BETONFERTIGTEILE", "FUNDAMENTFREI", "MODULAR"];
     return (
-        <div className="relative overflow-hidden bg-brand-orange py-4 rotate-1 scale-105 border-y-4 border-black z-20">
+        <div className="relative overflow-hidden bg-brand-orange py-3 md:py-4 rotate-1 scale-105 border-y-4 border-black z-20">
             <div className="flex animate-marquee whitespace-nowrap">
                 {[...items, ...items, ...items].map((item, index) => (
-                    <span key={index} className="mx-8 text-4xl font-black font-heading text-black uppercase tracking-tighter">
-                        {item} <span className="text-white ml-8">•</span>
+                    <span key={index} className="mx-4 md:mx-8 text-2xl md:text-4xl font-black font-heading text-black uppercase tracking-tighter">
+                        {item} <span className="text-white ml-4 md:ml-8">•</span>
                     </span>
                 ))}
             </div>
@@ -470,10 +498,10 @@ const HomePage: React.FC = () => {
                              <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                                 Unsere DNA
                              </span>
-                             <h2 className="text-5xl md:text-7xl font-black font-heading text-white leading-[0.9] mb-8 uppercase tracking-tighter">
+                             <h2 className="text-4xl md:text-7xl font-black font-heading text-white leading-[0.9] mb-8 uppercase tracking-tighter">
                                 Gebaut<br/>für die<br/><span className="text-outline-orange">Ewigkeit.</span>
                              </h2>
-                             <p className="text-xl text-gray-400 leading-relaxed mb-8">
+                             <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-8">
                                  Wir schaffen urbane Landschaften aus Beton und Stahl, die jeder Belastung standhalten.
                              </p>
                              <Link to="/ueber-uns" className="inline-flex items-center gap-2 text-white font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider group">
@@ -498,7 +526,7 @@ const HomePage: React.FC = () => {
       <FAQSection />
       
       {/* REDESIGNED CONTACT AREA */}
-      <section id="contact-area" className="py-32 relative overflow-hidden border-t border-white/10">
+      <section id="contact-area" className="py-24 md:py-32 relative overflow-hidden border-t border-white/10">
           {/* Ambient Background */}
           <div className="absolute inset-0 bg-brand-orange/5"></div>
           <div className="absolute -top-1/2 left-1/2 -translate-x-1/2 w-[100vw] h-[100vw] bg-brand-orange/10 blur-[120px] rounded-full pointer-events-none"></div>
@@ -514,12 +542,12 @@ const HomePage: React.FC = () => {
               </div>
               
               {/* Massive Typography */}
-              <h2 className="text-7xl md:text-[10rem] font-black font-heading uppercase tracking-tighter mb-12 leading-[0.8]">
+              <h2 className="text-6xl md:text-[10rem] font-black font-heading uppercase tracking-tighter mb-12 leading-[0.85]">
                 Start<br/>
-                <span className="text-transparent" style={{ WebkitTextStroke: '3px #fff' }}>Klar?</span>
+                <span className="text-transparent" style={{ WebkitTextStroke: '1px #fff' }}>Klar?</span>
               </h2>
               
-              <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-16 font-light">
+              <p className="text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto mb-16 font-light">
                   Lassen Sie uns gemeinsam etwas Großartiges schaffen. <br/>
                   <span className="text-white font-bold">Von der ersten Skizze bis zur Eröffnung.</span>
               </p>
@@ -527,7 +555,7 @@ const HomePage: React.FC = () => {
               {/* Massive Button */}
               <Link 
                 to="/kontakt" 
-                className="inline-flex items-center gap-4 bg-white text-black font-black uppercase tracking-widest text-lg py-6 px-12 rounded hover:bg-brand-orange hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-[0_20px_50px_-10px_rgba(255,255,255,0.2)] hover:shadow-[0_20px_50px_-10px_rgba(249,115,22,0.4)] group"
+                className="inline-flex items-center gap-4 bg-white text-black font-black uppercase tracking-widest text-base md:text-lg py-5 px-10 md:py-6 md:px-12 rounded hover:bg-brand-orange hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-[0_20px_50px_-10px_rgba(255,255,255,0.2)] hover:shadow-[0_20px_50px_-10px_rgba(249,115,22,0.4)] group"
               >
                 Projekt starten <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform text-2xl">arrow_forward</span>
               </Link>

@@ -22,7 +22,7 @@
         theme: {
           extend: {
             colors: {
-              'brand-bg': '#050505',
+              'brand-bg': '#020202', /* Even Darker Black */
               'brand-surface': '#121212',
               'brand-surface-light': '#262626',
               'brand-text': '#EAEAEA',
@@ -104,7 +104,7 @@
         width: 10px;
       }
       ::-webkit-scrollbar-track {
-        background: #050505;
+        background: #020202;
       }
       ::-webkit-scrollbar-thumb {
         background: #333;
@@ -116,11 +116,11 @@
       
       /* GLOBAL BACKGROUND STRATEGY: PURE CSS */
       body {
-        background-color: #050505;
-        /* Technical Grid Pattern - High Visibility */
+        background-color: #020202; /* Deepest Black */
+        /* Technical Grid Pattern - Subtler Visibility (0.03 opacity) */
         background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         background-size: 80px 80px; /* Large grid cells */
         background-attachment: fixed; /* Grid stays in place during scroll */
         background-position: center top;
@@ -135,7 +135,7 @@
       }
       .text-outline-bold {
         /* Massively increased stroke width and opacity for Industrial Look */
-        -webkit-text-stroke: 3px #ffffff; 
+        -webkit-text-stroke: 2px #ffffff; 
         color: transparent;
         paint-order: stroke fill;
       }

@@ -57,7 +57,7 @@ const Header: React.FC = () => {
     <>
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out px-4 md:px-6 ${
-          scrolled ? 'py-2' : 'py-4 md:py-6'
+          scrolled ? 'py-2' : 'py-3 md:py-6'
         }`}
       >
         <div 
@@ -67,7 +67,7 @@ const Header: React.FC = () => {
               : 'bg-transparent border-transparent md:bg-brand-bg/60 md:border-white/5 md:backdrop-blur-sm'
           }`}
         >
-          <div className="flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
+          <div className="flex items-center justify-between h-14 md:h-20 px-4 md:px-8">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 flex-shrink-0 z-50 group" aria-label="A+ Urban Design Home">
               <img
@@ -78,8 +78,8 @@ const Header: React.FC = () => {
                 className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-700 ease-in-out group-hover:[transform:rotateY(360deg)]"
               />
               <div className="flex flex-col">
-                <span className="text-lg md:text-xl text-white font-black font-heading leading-none tracking-tighter">A+ URBAN</span>
-                <span className="text-xs md:text-sm text-brand-orange font-bold font-heading leading-none tracking-widest">DESIGN</span>
+                <span className="text-base md:text-xl text-white font-black font-heading leading-none tracking-tighter">A+ URBAN</span>
+                <span className="text-[10px] md:text-sm text-brand-orange font-bold font-heading leading-none tracking-widest">DESIGN</span>
               </div>
             </Link>
 
@@ -165,11 +165,11 @@ const Header: React.FC = () => {
 
       {/* Full Screen Mobile Menu - Hidden on Desktop */}
       <div 
-        className={`fixed inset-0 z-40 bg-brand-bg/95 backdrop-blur-xl transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden ${
+        className={`fixed inset-0 z-40 bg-brand-bg transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden ${
           isMenuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="container mx-auto h-full flex flex-col justify-center px-6 pb-20 pt-32">
+        <div className="container mx-auto h-full flex flex-col justify-center px-6 pb-20 pt-32 overflow-y-auto">
           <nav className="flex flex-col gap-6" aria-label="Mobile Navigation">
             {NAV_LINKS.map((link, idx) => (
               <div key={link.name} className="overflow-hidden">
@@ -181,6 +181,7 @@ const Header: React.FC = () => {
                            <Link 
                             key={sub.name}
                             to={sub.href}
+                            onClick={() => setIsMenuOpen(false)}
                             className={`text-2xl font-black uppercase tracking-tighter text-transparent text-outline hover:text-brand-orange hover:text-outline-none transition-all duration-300 translate-y-full animate-[fade-in-up_0.5s_forwards]`}
                             style={{ animationDelay: `${100 + (subIdx * 50)}ms` }}
                           >
@@ -192,6 +193,7 @@ const Header: React.FC = () => {
                 ) : (
                   <Link 
                     to={link.href}
+                    onClick={() => setIsMenuOpen(false)}
                     className={`block text-5xl sm:text-7xl font-black uppercase tracking-tighter text-transparent text-outline-bold hover:text-white hover:text-outline-none transition-all duration-300 translate-y-full ${isMenuOpen ? 'animate-[fade-in-up_0.5s_forwards]' : ''}`}
                     style={{ animationDelay: `${idx * 100}ms` }}
                   >
@@ -202,15 +204,15 @@ const Header: React.FC = () => {
             ))}
           </nav>
           
-          <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 gap-8 animate-fade-in-up [animation-delay:600ms]">
+          <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 gap-8 animate-fade-in-up [animation-delay:600ms]">
             <div>
               <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Kontakt</span>
-              <a href="mailto:post@aplusurbandesign.com" className="block text-white font-bold">post@aplusurbandesign.com</a>
+              <a href="mailto:post@aplusurbandesign.com" className="block text-white font-bold text-lg">post@aplusurbandesign.com</a>
             </div>
             <div>
               <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Social</span>
               <div className="flex gap-4">
-                <a href="#" className="text-white hover:text-brand-orange">LinkedIn</a>
+                <a href="#" className="text-white hover:text-brand-orange text-lg font-bold">LinkedIn</a>
               </div>
             </div>
           </div>

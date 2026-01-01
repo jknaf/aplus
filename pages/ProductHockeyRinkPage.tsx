@@ -70,7 +70,7 @@ const ProductHockeyRinkPage: React.FC = () => {
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <img loading="lazy" decoding="async" src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.2-cimg9951ca%2Bhocke-breitn-756x430.jpg/picture-200?format=auto&width=1200" alt="INLINE-HOCKEY-BANDEN A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img loading="lazy" decoding="async" src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.Roll-Hockey-Bande_A%2B.jpg/picture-2600?_=1938211b1d0" alt="INLINE-HOCKEY-BANDEN A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Eishockey-Feld, das die Vielseitigkeit der Hockey-Banden zeigt" className="w-full h-auto object-cover rounded-lg shadow-md" />
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/4167333/pexels-photo-4167333.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Kinder spielen Rollhockey auf einem Feld mit den witterungsbeständigen Banden" className="w-full h-auto object-cover rounded-lg shadow-md" />

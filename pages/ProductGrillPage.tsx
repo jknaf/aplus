@@ -61,7 +61,7 @@ const ProductGrillPage: React.FC = () => {
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <img loading="lazy" decoding="async" src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.3-p1260721-756x430.jpg/picture-200?format=auto&width=1200" alt="GRILL-STELLE MIT SITZFLÄCHEN A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img loading="lazy" decoding="async" src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750" alt="GRILL-STELLE MIT SITZFLÄCHEN A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Detailaufnahme des diebstahlsicheren Grillrosts aus Edelstahl der Betongrillstelle" className="w-full h-auto object-cover rounded-lg shadow-md" />
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/4167333/pexels-photo-4167333.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Grillplatz im Einsatz bei einem Fest im Park neben einem Skatepark" className="w-full h-auto object-cover rounded-lg shadow-md" />

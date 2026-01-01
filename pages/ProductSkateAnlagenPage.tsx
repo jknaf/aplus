@@ -70,7 +70,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <img loading="lazy" decoding="async" src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.1-img_2091-756x430.jpg/picture-200?format=auto&width=1200" alt="BETON-SKATEANLAGE A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img loading="lazy" decoding="async" src="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg" alt="BETON-SKATEANLAGE A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Detailaufnahme einer Skate-Bowl aus Beton" className="w-full h-auto object-cover rounded-lg shadow-md" />
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Eine Quarter-Ramp in einem Concrete Skatepark" className="w-full h-auto object-cover rounded-lg shadow-md" />

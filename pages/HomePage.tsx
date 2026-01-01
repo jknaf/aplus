@@ -96,7 +96,7 @@ const ScrollyTellingSection: React.FC = () => {
     }, []);
 
     return (
-        <section className="relative bg-black text-white">
+        <section className="relative text-white">
             <div className="flex flex-col lg:flex-row">
                 {/* Sticky Visual Column */}
                 <div className="lg:w-1/2 h-[50vh] lg:h-screen sticky top-0 z-0 overflow-hidden">
@@ -132,14 +132,14 @@ const ScrollyTellingSection: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Scrollable Text Column */}
-                <div className="lg:w-1/2 relative z-10 bg-brand-bg/90 lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none -mt-[10vh] lg:mt-0 rounded-t-3xl lg:rounded-none">
+                {/* Scrollable Text Column - Light Glass */}
+                <div className="lg:w-1/2 relative z-10 bg-white/5 lg:bg-transparent backdrop-blur-xl -mt-[10vh] lg:mt-0 rounded-t-3xl lg:rounded-none">
                     {TECH_FEATURES.map((feature, index) => (
                         <div 
                             key={feature.id}
                             ref={(el) => { stepRefs.current[index] = el; }}
                             data-index={index}
-                            className="min-h-[80vh] lg:min-h-screen flex items-center justify-center p-8 lg:p-24 border-l border-white/5"
+                            className="min-h-[80vh] lg:min-h-screen flex items-center justify-center p-8 lg:p-24 border-l border-white/10"
                         >
                             <div className={`transition-all duration-700 transform ${activeFeature === index ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-30 blur-sm'}`}>
                                 <span className="text-8xl font-black text-white/5 absolute -top-12 -left-4 font-heading select-none">
@@ -171,8 +171,9 @@ const SpotlightCard: React.FC<{
   className?: string;
 }> = ({ title, desc, icon, className }) => {
     return (
-        <div className={`relative h-full bg-brand-surface border border-white/10 rounded-xl overflow-hidden group/spotlight ${className}`}>
-            {/* Spotlight Gradient - Controlled by parent JS but we use hover for fallback */}
+        // Lighter Glass Effect for better background visibility
+        <div className={`relative h-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden group/spotlight ${className}`}>
+            {/* Spotlight Gradient */}
             <div 
                 className="pointer-events-none absolute -inset-px rounded-xl opacity-0 group-hover/spotlight:opacity-100 transition duration-300"
                 style={{
@@ -186,7 +187,7 @@ const SpotlightCard: React.FC<{
                      maskImage: 'linear-gradient(black, black), content-box',
                      maskComposite: 'exclude',
                      WebkitMaskComposite: 'xor',
-                     padding: '1px' // Width of the border
+                     padding: '1px'
                 }}
             >
                 <div className="w-full h-full bg-brand-orange/50"></div>
@@ -235,18 +236,15 @@ const SpotlightGrid: React.FC<{children: React.ReactNode}> = ({ children }) => {
 const HERO_ITEMS = [
   {
     type: 'video',
-    // Man Bicycle Cyclist (The one you wanted to keep)
     src: 'https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4',
     poster: 'https://images.pexels.com/videos/5464945/free-video-5464945.jpg?auto=compress&cs=tinysrgb&dpr=1&w=1200'
   },
   {
     type: 'image',
-    // Zachary DeBottis - Skateboard Trick
     src: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   {
     type: 'image',
-    // Jan Kopřiva - People Skateboarding
     src: 'https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600'
   }
 ];
@@ -269,7 +267,6 @@ const ShutterHero: React.FC = () => {
         return () => clearInterval(interval);
     }, [activeIndex, isAnimating]);
 
-    // Ensure the main video plays when index changes AND it is a video
     useEffect(() => {
         if(videoRef.current && HERO_ITEMS[activeIndex].type === 'video') {
             videoRef.current.load();
@@ -282,17 +279,15 @@ const ShutterHero: React.FC = () => {
         setNextIndex(targetIndex);
         setIsAnimating(true);
         
-        // Reset animation state after duration
         setTimeout(() => {
             setActiveIndex(targetIndex);
             setIsAnimating(false);
-        }, 1500); // 1.5s total transition time matches CSS animation
+        }, 1500); 
     };
 
     const handleMouseMove = (e: React.MouseEvent) => {
         if (!heroRef.current) return;
         const { width, height } = heroRef.current.getBoundingClientRect();
-        // Calculate normalized position (-1 to 1)
         const x = (e.clientX / width) * 2 - 1;
         const y = (e.clientY / height) * 2 - 1;
         setMousePos({ x, y });
@@ -301,20 +296,17 @@ const ShutterHero: React.FC = () => {
     const activeItem = HERO_ITEMS[activeIndex];
     const nextItem = HERO_ITEMS[nextIndex];
 
-    // Helper to get the image source for the shutter slices (poster for video, src for image)
     const getPoster = (item: typeof HERO_ITEMS[0]) => item.type === 'video' ? item.poster! : item.src;
 
     return (
         <div 
             ref={heroRef}
-            className="relative h-[90vh] w-full overflow-hidden bg-brand-bg group"
+            className="relative h-[90vh] w-full overflow-hidden group"
             onMouseMove={handleMouseMove}
         >
-            {/* 1. Active Media (Background) */}
             <div 
                 className="absolute inset-0 w-full h-full transition-transform duration-200 ease-out"
                 style={{ 
-                    // Mouse parallax effect
                     transform: `scale(1.05) translate(${mousePos.x * -10}px, ${mousePos.y * -10}px)` 
                 }}
             >
@@ -336,14 +328,12 @@ const ShutterHero: React.FC = () => {
                         key={`bg-media-${activeIndex}`}
                         src={activeItem.src}
                         alt=""
-                        // Cycle animations: odd items get kenburns-1, even get kenburns-2 for variety
                         className={`w-full h-full object-cover ${activeIndex % 2 === 0 ? 'animate-kenburns-1' : 'animate-kenburns-2'}`}
                     />
                 )}
                 <div className="absolute inset-0 bg-black/50"></div>
             </div>
 
-            {/* 2. Shutter Transition Overlay (The "Slices") */}
             {isAnimating && (
                 <div className="absolute inset-0 z-10 flex w-full h-full pointer-events-none">
                     {[0, 1, 2, 3, 4].map((i) => (
@@ -352,15 +342,13 @@ const ShutterHero: React.FC = () => {
                             className="relative h-full w-[20%] overflow-hidden"
                         >
                             <div 
-                                className={`absolute inset-0 w-full h-full bg-brand-bg transition-transform duration-700 ease-[cubic-bezier(0.87,0,0.13,1)]`}
+                                className={`absolute inset-0 w-full h-full bg-[#050505] transition-transform duration-700 ease-[cubic-bezier(0.87,0,0.13,1)]`}
                                 style={{
-                                    // Start from bottom or top alternating
                                     transform: `translateY(${i % 2 === 0 ? '100%' : '-100%'})`,
                                     animation: `shutterSlide 0.8s cubic-bezier(0.87, 0, 0.13, 1) forwards`,
                                     animationDelay: `${i * 100}ms`
                                 }}
                             >
-                                {/* Slide in the NEXT item's static image (poster or src) */}
                                 <img 
                                     src={getPoster(nextItem)}
                                     alt=""
@@ -374,7 +362,6 @@ const ShutterHero: React.FC = () => {
                 </div>
             )}
 
-            {/* 3. Text Content */}
             <div className="absolute inset-0 z-20 container mx-auto px-4 sm:px-6 lg:px-8 pb-32 pt-32 flex flex-col justify-end pointer-events-none">
                  <div className="max-w-7xl">
                     <div key={activeIndex} className="overflow-hidden">
@@ -393,10 +380,8 @@ const ShutterHero: React.FC = () => {
                  </div>
             </div>
             
-            {/* 4. Global Noise Overlay (Ensures it stays on top of images) */}
             <div className="absolute inset-0 z-10 pointer-events-none opacity-[0.07] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
-            {/* 5. Custom Keyframes Style Injection for the Shutter */}
             <style>{`
                 @keyframes shutterSlide {
                     0% { transform: translateY(100%); }
@@ -432,7 +417,6 @@ const InfiniteMarquee: React.FC = () => {
 const HomePage: React.FC = () => {
   return (
     <>
-      {/* State of the Art Hero Section */}
       <ShutterHero />
 
       <InfiniteMarquee />
@@ -441,7 +425,7 @@ const HomePage: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <AnimatedSection>
             <div className="mb-16">
-              <span className="text-brand-orange font-bold tracking-widest uppercase text-sm">Unser Arsenal</span>
+              <span className="text-brand-orange font-bold tracking-widest uppercase text-sm">Unsere Highlights</span>
               <h2 className="text-5xl md:text-7xl font-black font-heading text-white mt-2">PRODUKT<span className="text-outline">WELTEN</span></h2>
             </div>
         </AnimatedSection>
@@ -450,9 +434,11 @@ const HomePage: React.FC = () => {
             {/* 1. Skate Anlagen - Featured Big */}
             <AnimatedSection className="md:col-span-2 md:row-span-2 h-full">
                  <Link to={PRODUCTS[0].path} className="group relative block w-full h-full rounded-2xl overflow-hidden border border-white/10 hover:border-brand-orange/50 transition-colors duration-500">
-                     <div className="absolute inset-0 bg-brand-surface group-hover:bg-brand-surface-light transition-colors duration-500"></div>
+                     {/* LIGHTER GLASS EFFECT - bg-white/5 */}
+                     <div className="absolute inset-0 bg-white/5 backdrop-blur-md group-hover:bg-white/10 transition-colors duration-500"></div>
                      <img src={PRODUCTS[0].imageUrl} alt="" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                     {/* REDUCED GRADIENT OPACITY to see background */}
+                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
                      <div className="absolute bottom-0 left-0 p-8 md:p-12">
                          <span className="inline-block px-3 py-1 mb-4 text-xs font-bold text-black bg-brand-orange rounded-full uppercase tracking-wider">Flagship</span>
                          <h3 className="text-4xl md:text-6xl font-black font-heading text-white uppercase leading-none mb-2">{PRODUCTS[0].title}</h3>
@@ -464,9 +450,9 @@ const HomePage: React.FC = () => {
             {/* 2. Pumptrack - Tall */}
             <AnimatedSection className="md:col-span-1 md:row-span-2 h-full">
                 <Link to={PRODUCTS[1].path} className="group relative block w-full h-full rounded-2xl overflow-hidden border border-white/10 hover:border-brand-orange/50 transition-colors duration-500">
-                     <div className="absolute inset-0 bg-brand-surface"></div>
+                     <div className="absolute inset-0 bg-white/5 backdrop-blur-md"></div>
                      <img src={PRODUCTS[1].imageUrl} alt="" className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-90"></div>
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-70"></div>
                      <div className="absolute bottom-0 left-0 p-8">
                          <h3 className="text-3xl font-black font-heading text-white uppercase leading-none mb-2 break-words">Pump<br/>track</h3>
                          <span className="text-brand-orange font-bold text-sm tracking-widest group-hover:underline">JETZT ENTDECKEN &rarr;</span>
@@ -477,8 +463,9 @@ const HomePage: React.FC = () => {
             {/* 3. BMX - Standard */}
             <AnimatedSection className="md:col-span-1 md:row-span-1 h-full">
                 <Link to={PRODUCTS[2].path} className="group relative block w-full h-full rounded-2xl overflow-hidden border border-white/10 hover:border-brand-orange/50 transition-colors duration-500">
+                     <div className="absolute inset-0 bg-white/5 backdrop-blur-md"></div>
                      <img src={PRODUCTS[2].imageUrl} alt="" className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
-                     <div className="absolute inset-0 bg-black/40 hover:bg-black/20 transition-colors"></div>
+                     <div className="absolute inset-0 bg-black/30 hover:bg-black/10 transition-colors"></div>
                      <div className="absolute bottom-6 left-6">
                          <h3 className="text-2xl font-bold font-heading text-white uppercase">BMX & Dirt</h3>
                      </div>
@@ -488,8 +475,9 @@ const HomePage: React.FC = () => {
             {/* 4. Hockey - Wide */}
             <AnimatedSection className="md:col-span-2 md:row-span-1 h-full">
                  <Link to={PRODUCTS[3].path} className="group relative block w-full h-full rounded-2xl overflow-hidden border border-white/10 hover:border-brand-orange/50 transition-colors duration-500">
+                     <div className="absolute inset-0 bg-white/5 backdrop-blur-md"></div>
                      <img src={PRODUCTS[3].imageUrl} alt="" className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
-                     <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+                     <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
                      <div className="absolute bottom-6 left-8">
                          <h3 className="text-3xl font-bold font-heading text-white uppercase">Hockey Arenas</h3>
                          <p className="text-gray-400 text-sm mt-1">Fundamentfrei & Ganzjährig</p>
@@ -501,8 +489,9 @@ const HomePage: React.FC = () => {
             {PRODUCTS.slice(4, 7).map((product) => (
                 <AnimatedSection key={product.id} className="h-full">
                      <Link to={product.path} className="group relative block w-full h-full rounded-2xl overflow-hidden border border-white/10 hover:border-brand-orange/50 transition-colors duration-500 flex flex-col justify-end">
+                         <div className="absolute inset-0 bg-white/5 backdrop-blur-md"></div>
                          <img src={product.imageUrl} alt="" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
                          <div className="relative p-6 z-10">
                              <h3 className="text-xl font-bold font-heading text-white uppercase">{product.title}</h3>
                          </div>
@@ -521,13 +510,10 @@ const HomePage: React.FC = () => {
            <ScrollyTellingSection />
       </div>
 
-        {/* Updated Philosophy / Features Section (Spotlight & Sticky) */}
-        <section className="relative py-32 bg-brand-surface overflow-hidden">
+        {/* Updated Philosophy / Features Section (Spotlight & Sticky) - Transparent background */}
+        <section className="relative py-32 overflow-hidden">
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
-            
-            {/* Grid Pattern overlay for tech feel */}
-            <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
             
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">

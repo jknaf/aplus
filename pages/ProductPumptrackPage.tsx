@@ -71,7 +71,7 @@ const ProductPumptrackPage: React.FC = () => {
         </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <img loading="lazy" decoding="async" src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.p1070529-track1-756x430.jpg/picture-200?format=auto&width=1200" alt="Pump-Track A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img loading="lazy" decoding="async" src="https://www.kommunaldirekt.de/wp-content/uploads/2024/09/kd424_aplus-urbandesign1.jpg.webp" alt="Pump-Track A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
           <div className="grid grid-cols-3 gap-4 mt-4">
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Ein Mountainbiker in einer Steilkurve des Pumptracks aus Beton" className="w-full h-auto object-cover rounded-lg shadow-md" />
             <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/2241144/pexels-photo-2241144.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Modulare Betonelemente für einen langlebigen BMX Pumptrack" className="w-full h-auto object-cover rounded-lg shadow-md" />

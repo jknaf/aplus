@@ -35,28 +35,30 @@ const App: React.FC = () => {
       <ScrollToTop />
       
       {/* --- MODERN BACKGROUND SYSTEM --- */}
-      <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[#050505]">
         
-        {/* 1. Base Dark Color */}
-        <div className="absolute inset-0 bg-brand-bg"></div>
+        {/* 1. Base Gradient - Lighter bottom to suggest ground/depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] to-[#1a1a1a]"></div>
         
-        {/* 2. Technical Engineering Grid */}
-        <div className="absolute inset-0 bg-grid-pattern bg-[length:60px_60px] opacity-[0.07]"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-bg via-transparent to-brand-bg"></div>
+        {/* 2. Technical Engineering Grid - Increased Opacity for Visibility */}
+        <div className="absolute inset-0 bg-grid-pattern bg-[length:60px_60px] opacity-[0.25]"></div>
 
-        {/* 3. Ambient Lighting / Glows */}
-        {/* Top Left: Subtle warm brand glow (Sunlight on concrete feel) */}
-        <div className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-brand-orange/5 rounded-full blur-[120px] opacity-60"></div>
+        {/* 3. Ambient Lighting / Glows - Much Stronger Opacity */}
+        {/* Top Left: Warm brand glow - Boosted intensity */}
+        <div className="absolute -top-[10%] -left-[10%] w-[80vw] h-[80vw] bg-brand-orange/30 rounded-full blur-[120px] opacity-100 mix-blend-screen animate-pulse-slow"></div>
         
-        {/* Bottom Right: Cool industrial/steel glow for depth */}
-        <div className="absolute -bottom-[20%] -right-[10%] w-[60vw] h-[60vw] bg-blue-900/10 rounded-full blur-[120px] opacity-40"></div>
+        {/* Center Right: Architectural Blue/Gray glow */}
+        <div className="absolute top-[20%] -right-[20%] w-[90vw] h-[90vw] bg-slate-800/40 rounded-full blur-[150px] opacity-100 mix-blend-screen"></div>
+
+        {/* Bottom Left: Secondary Orange */}
+        <div className="absolute -bottom-[20%] left-[20%] w-[60vw] h-[60vw] bg-brand-orange/20 rounded-full blur-[100px] opacity-80 mix-blend-screen"></div>
 
       </div>
 
-      {/* 4. Global Noise Overlay (Texture) - Kept on top but z-index adjusted in CSS */}
-      <div className="bg-noise-overlay fixed inset-0 z-50 pointer-events-none"></div>
+      {/* 4. Global Noise Overlay (Texture) */}
+      <div className="bg-noise-overlay fixed inset-0 z-50 pointer-events-none opacity-40"></div>
       
-      <div className="text-brand-text font-sans flex flex-col min-h-screen relative z-0">
+      <div className="text-brand-text font-sans flex flex-col min-h-screen relative z-10">
         <Header />
         <main className="flex-grow">
           <Routes>

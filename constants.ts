@@ -24,7 +24,7 @@ export const PRODUCTS: Product[] = [
    {
     id: 'skate-anlagen',
     title: 'Beton Skate-Anlagen',
-    imageUrl: 'https://images.unsplash.com/photo-1520045864985-b002128507e4?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: 'https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg',
     path: '/produkte/skate-anlagen',
     altText: 'Hochwertige Beton-Skateanlage mit Bowl und Street-Bereich bei Sonnenuntergang.',
     tuvCertified: true,
@@ -32,7 +32,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'pumptrack',
     title: 'Pumptrack aus Beton',
-    imageUrl: 'https://images.unsplash.com/photo-1627402633008-8fbff809a473?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: 'https://www.kommunaldirekt.de/wp-content/uploads/2024/09/kd424_aplus-urbandesign1.jpg.webp',
     path: '/produkte/pumptrack-beton',
     altText: 'Geschwungener Pumptrack aus Beton, ideal für Bikes und Boards.',
     tuvCertified: true,
@@ -48,7 +48,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'hockey',
     title: 'Hockey-Banden',
-    imageUrl: 'https://images.unsplash.com/photo-1580748141549-71748dbe0bdc?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.Roll-Hockey-Bande_A%2B.jpg/picture-2600?_=1938211b1d0',
     path: '/produkte/hockey-banden',
     altText: 'Outdoor Hockey-Spielfeld mit robusten Banden.',
     tuvCertified: true,
@@ -56,14 +56,14 @@ export const PRODUCTS: Product[] = [
   {
     id: 'grillstelle',
     title: 'Öffentliche Grillstelle',
-    imageUrl: 'https://images.unsplash.com/photo-1555685812-4b943f3e99a0?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750',
     path: '/produkte/grillstelle-beton',
     altText: 'Robuste Feuerstelle und Grillbereich aus Beton im öffentlichen Park.'
   },
   {
     id: 'umkleide',
     title: 'Umkleidekabine',
-    imageUrl: 'https://images.unsplash.com/photo-1621252179027-94459d27d3ee?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: 'https://www.freiraum-gestalten.info/vorlagen/webapp/cache/cms/1-20210618-092959auss2b_g43tkojwg4zq-1700x1131.webp',
     path: '/produkte/umkleidekabine-beton',
     altText: 'Moderne Architektur mit Sichtbetonwänden.'
   },
@@ -116,7 +116,7 @@ export const PROJECTS: Project[] = [
         title: "Grillplatz im Stadtpark",
         category: "Grillstelle",
         year: 2023,
-        imageUrl: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=1000&auto=format&fit=crop",
+        imageUrl: "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750",
         images: [
              "https://images.unsplash.com/photo-1555685812-4b943f3e99a0?q=80&w=1200&auto=format&fit=crop",
              "https://images.unsplash.com/photo-1523472721958-978152f4d69b?q=80&w=1200&auto=format&fit=crop",
@@ -132,7 +132,7 @@ export const PROJECTS: Project[] = [
         title: "Inlinehockey-Feld Berlin",
         category: "Hockey-Bande",
         year: 2021,
-        imageUrl: "https://images.unsplash.com/photo-1580748141549-71748dbe0bdc?q=80&w=1000&auto=format&fit=crop",
+        imageUrl: "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.Roll-Hockey-Bande_A%2B.jpg/picture-2600?_=1938211b1d0",
         images: [
             "https://images.unsplash.com/photo-1515233453752-9653a1a9e9a4?q=80&w=1200&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1558365849-6a8dd17297d3?q=80&w=1200&auto=format&fit=crop",
@@ -148,7 +148,7 @@ export const PROJECTS: Project[] = [
         title: "Umkleidekabinen Freibad Süd",
         category: "Umkleidekabine",
         year: 2022,
-        imageUrl: "https://images.unsplash.com/photo-1621252179027-94459d27d3ee?q=80&w=1000&auto=format&fit=crop",
+        imageUrl: "https://www.freiraum-gestalten.info/vorlagen/webapp/cache/cms/1-20210618-092959auss2b_g43tkojwg4zq-1700x1131.webp",
         images: [
             "https://images.unsplash.com/photo-1481026469463-66327c86e544?q=80&w=1200&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",

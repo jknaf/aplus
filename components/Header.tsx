@@ -63,8 +63,8 @@ const Header: React.FC = () => {
         <div 
           className={`mx-auto max-w-7xl rounded-2xl border transition-all duration-500 ${
             scrolled 
-              ? 'bg-brand-bg/80 border-white/10 backdrop-blur-xl shadow-lg shadow-black/50' 
-              : 'bg-transparent border-transparent md:bg-brand-bg/60 md:border-white/5 md:backdrop-blur-md'
+              ? 'bg-brand-bg/80 border-white/10 backdrop-blur-md shadow-lg shadow-black/50' 
+              : 'bg-transparent border-transparent md:bg-brand-bg/60 md:border-white/5 md:backdrop-blur-sm'
           }`}
         >
           <div className="flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
@@ -102,7 +102,7 @@ const Header: React.FC = () => {
                     <div 
                       ref={dropdownRef}
                       onMouseLeave={() => setIsDropdownOpen(false)}
-                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 p-2 bg-[#121212] border border-white/10 rounded-xl shadow-2xl backdrop-blur-2xl transition-all duration-300 origin-top transform ${
+                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 p-2 bg-[#121212] border border-white/10 rounded-xl shadow-2xl backdrop-blur-md transition-all duration-300 origin-top transform ${
                         isDropdownOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                       }`}
                     >

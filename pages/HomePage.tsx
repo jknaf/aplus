@@ -27,7 +27,7 @@ const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}>
     return <div ref={ref} className={`animated-section ${className}`}>{children}</div>;
 };
 
-// --- Scrollytelling Product Component (REDESIGNED) ---
+// --- Scrollytelling Product Component (REDESIGNED: HUD STYLE) ---
 const ProductScrollytelling: React.FC = () => {
     const [activeId, setActiveId] = useState<string>(PRODUCTS[0].id);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -245,7 +245,7 @@ const ScrollyFeature: React.FC<{
         ? "border-brand-orange bg-[#1a1a1a] shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] scale-100 opacity-100" 
         : "border-white/5 bg-transparent opacity-30 scale-95";
     
-    // Define animation classes based on type
+    // FIX: Using the prop to generate animation classes properly
     const animationClass = {
         'float': 'animate-float',
         'glow-pulse': 'animate-glow-pulse',

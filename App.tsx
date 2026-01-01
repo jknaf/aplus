@@ -43,8 +43,8 @@ const App: React.FC = () => {
         {/* 2. Technical Grid (Static, low cost) */}
         <div className="absolute inset-0 bg-grid-pattern bg-[length:40px_40px] opacity-[0.15]"></div>
 
-        {/* 3. Static Glows (Removed heavy animations and blurs for Safari performance) */}
-        {/* We use radial gradients instead of CSS blur filters for better performance */}
+        {/* 3. Static Glows (Performance optimized) */}
+        {/* We use radial gradients instead of CSS blur filters for better performance on Safari */}
         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15)_0%,transparent_70%)]"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)]"></div>
 

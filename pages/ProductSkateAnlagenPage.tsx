@@ -67,6 +67,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
         title="Planung & Bau von Beton-Skateanlagen" 
         description="Planung und Bau von modularen Beton-Skateparks. TÜV-zertifizierte Skate-Elemente wie Ramps, Bowls & Rails. Langlebig, fundamentfrei und europaweite Lieferung."
         schema={productSchema}
+        fullWidth={true}
     >
        
        {/* 1. IMMERSIVE HERO */}

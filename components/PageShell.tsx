@@ -7,9 +7,10 @@ interface PageShellProps {
   children: React.ReactNode;
   schema?: object; // For JSON-LD Structured Data
   noIndex?: boolean;
+  fullWidth?: boolean; // NEW: Opt-out of the default container constraint
 }
 
-const PageShell: React.FC<PageShellProps> = ({ title, description, children, schema, noIndex = false }) => {
+const PageShell: React.FC<PageShellProps> = ({ title, description, children, schema, noIndex = false, fullWidth = false }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -101,6 +102,14 @@ const PageShell: React.FC<PageShellProps> = ({ title, description, children, sch
 
 
   }, [title, description, location, schema, noIndex]);
+
+  if (fullWidth) {
+      return (
+          <div className="relative z-30 w-full">
+              {children}
+          </div>
+      );
+  }
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-30">

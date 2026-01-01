@@ -390,6 +390,7 @@ const HomePage: React.FC = () => {
     <PageShell 
         title="Beton-Skateparks, Pumptracks & Skate-Anlagen"
         description="A+ Urban Design plant und baut TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig."
+        fullWidth={true}
     >
       <Hero />
       <InfiniteMarquee />

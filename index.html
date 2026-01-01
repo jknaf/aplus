@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="de-DE">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
     <title>Beton-Skateparks, Pumptracks & Skate-Anlagen | A+ Urban Design</title>
+    <!-- Description is managed by PageShell, generic fallback here -->
     <meta name="description" content="TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig. Fordern Sie jetzt Ihr individuelles Angebot an." />
     <meta name="keywords" content="Beton Skatepark, Pumptrack aus Beton, Skate-Anlagen Hersteller, Hockey-Banden, Vandalismussichere Umkleidekabinen, Öffentliche Grillstelle Beton, Urban Design, modulare Skate-Elemente, BMX-Anlagen" />
     <!-- Updated Favicon: Stylized A+ Logo in Black (#000000) -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000000' stroke-width='14' stroke-linecap='square'%3E%3Cpath d='M44 10 L18 90' /%3E%3Cpath d='M44 10 L44 90' /%3E%3Cpath d='M28 52 H88' /%3E%3Cpath d='M72 34 V70' /%3E%3C/svg%3E" />
     <link rel="preload" href="https://i.ibb.co/whMmCDk9/apluslogo.png" as="image" crossorigin="anonymous">
+    
+    <!-- Performance: Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- Performance: font-display: swap added -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
+    
     <script>
       tailwind.config = {
         theme: {
@@ -159,11 +169,13 @@
   "@type": "Organization",
   "name": "A+ Urban Design",
   "url": "https://aplus-two.vercel.app/",
+  "logo": "https://i.ibb.co/whMmCDk9/apluslogo.png",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+49-155-600-909-66",
-    "contactType": "customer service",
-    "email": "post@aplusurbandesign.com"
+    "contactType": "sales",
+    "areaServed": "DE",
+    "availableLanguage": "German"
   },
   "address": {
     "@type": "PostalAddress",
@@ -174,25 +186,15 @@
   }
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "A+ Urban Design",
-  "url": "https://aplus-two.vercel.app/"
-}
-</script>
 <script type="importmap">
 {
   "imports": {
-    "@vercel/node": "https://aistudiocdn.com/@vercel/node@^5.5.6",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "vite": "https://aistudiocdn.com/vite@^7.2.2",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6"
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>

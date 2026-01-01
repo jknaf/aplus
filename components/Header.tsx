@@ -69,7 +69,7 @@ const Header: React.FC = () => {
         >
           <div className="flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 flex-shrink-0 z-50 group">
+            <Link to="/" className="flex items-center gap-3 flex-shrink-0 z-50 group" aria-label="A+ Urban Design Home">
               <img
                 src="https://i.ibb.co/whMmCDk9/apluslogo.png"
                 alt="A+ Urban Design Logo"
@@ -83,16 +83,18 @@ const Header: React.FC = () => {
               </div>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-8">
+            {/* Desktop Nav - Semantic HTML Upgrade */}
+            <nav className="hidden md:block" aria-label="Main Navigation">
+              <ul className="flex items-center gap-8">
               {NAV_LINKS.map((link) =>
                 link.subLinks ? (
-                  <div key={link.name} className="relative group">
+                  <li key={link.name} className="relative group">
                     <button 
                       ref={dropdownButtonRef}
                       onClick={toggleDropdown}
                       onMouseEnter={() => setIsDropdownOpen(true)}
                       className="text-gray-300 hover:text-white py-2 text-xs font-bold uppercase tracking-widest transition-colors duration-200 flex items-center gap-1"
+                      aria-expanded={isDropdownOpen}
                     >
                       {link.name}
                       <span className={`bg-brand-orange h-1 w-1 rounded-full transition-opacity ${isDropdownOpen ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></span>
@@ -106,36 +108,42 @@ const Header: React.FC = () => {
                         isDropdownOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                       }`}
                     >
-                      <div className="flex flex-col gap-1">
+                      <ul className="flex flex-col gap-1">
                         {link.subLinks.map(subLink => (
-                           <Link 
-                              key={subLink.name} 
-                              to={subLink.href} 
-                              className="block px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 group/item" 
-                            >
-                              <span className="block font-bold text-white group-hover/item:text-brand-orange transition-colors">{subLink.name}</span>
-                              <span className="text-xs opacity-50">Betonfertigteile</span>
-                            </Link>
+                           <li key={subLink.name}>
+                             <Link 
+                                to={subLink.href} 
+                                className="block px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 group/item" 
+                              >
+                                <span className="block font-bold text-white group-hover/item:text-brand-orange transition-colors">{subLink.name}</span>
+                                <span className="text-xs opacity-50">Betonfertigteile</span>
+                              </Link>
+                           </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
-                  </div>
+                  </li>
                 ) : (
-                  <Link 
-                    key={link.name} 
-                    to={link.href} 
-                    className="relative text-gray-300 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors duration-200 group"
-                  >
-                    {link.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-orange transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
+                  <li key={link.name}>
+                    <Link 
+                      to={link.href} 
+                      className="relative text-gray-300 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors duration-200 group"
+                    >
+                      {link.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-orange transition-all duration-300 group-hover:w-full"></span>
+                    </Link>
+                  </li>
                 )
               )}
+              </ul>
             </nav>
 
             {/* CTA & Mobile Toggle */}
             <div className="flex items-center gap-4">
-              <Link to="/kontakt" className="hidden md:inline-flex items-center justify-center px-6 py-2 text-xs font-black uppercase tracking-widest bg-white text-black hover:bg-brand-orange hover:text-white transition-all duration-300 rounded-full">
+              <Link 
+                to="/kontakt" 
+                className="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-xs font-black uppercase tracking-widest bg-white text-black hover:bg-brand-orange hover:text-white transition-all duration-300 rounded-lg transform hover:-translate-y-0.5 shadow-lg hover:shadow-brand-orange/20"
+              >
                 Kontakt
               </Link>
               
@@ -162,7 +170,7 @@ const Header: React.FC = () => {
         }`}
       >
         <div className="container mx-auto h-full flex flex-col justify-center px-6 pb-20 pt-32">
-          <nav className="flex flex-col gap-6">
+          <nav className="flex flex-col gap-6" aria-label="Mobile Navigation">
             {NAV_LINKS.map((link, idx) => (
               <div key={link.name} className="overflow-hidden">
                 {link.subLinks ? (

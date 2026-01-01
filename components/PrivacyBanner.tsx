@@ -72,15 +72,15 @@ const PrivacyBanner: React.FC = () => {
                             <Link to="/datenschutz" className="underline hover:text-brand-orange ml-1">Datenschutzerklärung</Link>.
                         </p>
                     </div>
-                    {/* RECHTS-UPDATE: Buttons visuell gleichwertiger gestalten, um "Dark Patterns" zu vermeiden */}
+                    {/* Unified Button Styles: rounded-lg */}
                     <div className="flex-shrink-0 flex flex-wrap items-center gap-3 justify-center">
-                        <button onClick={() => setIsModalOpen(true)} className="px-4 py-2 text-sm font-bold border border-white/20 hover:bg-white/10 rounded-md transition-colors text-gray-300">
+                        <button onClick={() => setIsModalOpen(true)} className="px-4 py-2 text-sm font-bold border border-white/20 hover:bg-white/10 rounded-lg transition-colors text-gray-300 uppercase tracking-wide">
                             Einstellungen
                         </button>
-                        <button onClick={handleDeclineAll} className="px-4 py-2 text-sm font-bold border border-white/20 hover:bg-white/10 rounded-md transition-colors text-white">
+                        <button onClick={handleDeclineAll} className="px-4 py-2 text-sm font-bold border border-white/20 hover:bg-white/10 rounded-lg transition-colors text-white uppercase tracking-wide">
                             Nur Essenzielle
                         </button>
-                        <button onClick={handleAcceptAll} className="px-6 py-2 text-sm font-bold bg-brand-orange text-white rounded-md hover:bg-opacity-90 transition-colors shadow-lg shadow-brand-orange/20">
+                        <button onClick={handleAcceptAll} className="px-6 py-2 text-sm font-bold bg-brand-orange text-white rounded-lg hover:bg-opacity-90 transition-colors shadow-lg shadow-brand-orange/20 uppercase tracking-wide">
                             Alle akzeptieren
                         </button>
                     </div>
@@ -90,7 +90,7 @@ const PrivacyBanner: React.FC = () => {
             {/* Preferences Modal */}
             {isModalOpen && (
                  <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[60] animate-[fade-in-up_0.3s_ease-out]">
-                    <div role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" className="bg-brand-surface rounded-lg shadow-2xl w-full max-w-lg m-4 border border-white/10">
+                    <div role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" className="bg-brand-surface rounded-xl shadow-2xl w-full max-w-lg m-4 border border-white/10">
                         <div className="p-6 border-b border-white/10">
                             <h2 id="privacy-modal-title" className="text-xl font-bold text-brand-heading">Datenschutz-Einstellungen anpassen</h2>
                             <p className="text-sm text-brand-muted mt-1">Entscheiden Sie selbst, welche Daten wir nutzen dürfen.</p>
@@ -146,11 +146,11 @@ const PrivacyBanner: React.FC = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className="p-4 bg-brand-bg/50 border-t border-white/10 flex justify-end gap-3 rounded-b-lg">
-                            <button onClick={handleDeclineAll} className="px-4 py-2 text-sm font-bold border border-white/10 hover:bg-white/10 rounded-md transition-colors text-gray-300">
+                        <div className="p-4 bg-brand-bg/50 border-t border-white/10 flex justify-end gap-3 rounded-b-xl">
+                            <button onClick={handleDeclineAll} className="px-4 py-2 text-sm font-bold border border-white/10 hover:bg-white/10 rounded-lg transition-colors text-gray-300 uppercase tracking-wide">
                                 Alle ablehnen
                             </button>
-                            <button onClick={handleSavePreferences} className="px-6 py-2 text-sm font-bold bg-brand-orange text-white rounded-md hover:bg-opacity-90 transition-colors">
+                            <button onClick={handleSavePreferences} className="px-6 py-2 text-sm font-bold bg-brand-orange text-white rounded-lg hover:bg-opacity-90 transition-colors uppercase tracking-wide">
                                 Auswahl speichern
                             </button>
                         </div>

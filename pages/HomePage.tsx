@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../constants';
 import BrochureRequestForm from '../components/BrochureRequestForm';
+import PageShell from '../components/PageShell'; // Import PageShell for SEO logic
 
 // --- Animated Section Utility ---
 const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}> = ({ children, className }) => {
@@ -53,11 +54,11 @@ const ProductScrollytelling: React.FC = () => {
     }, []);
 
     return (
-        <section className="relative z-10 py-24 bg-[#080808] border-y border-white/5">
+        <section id="produkte" className="relative z-10 py-24 bg-[#080808] border-y border-white/5">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <AnimatedSection className="mb-24 text-center">
-                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                         Unser Portfolio
                     </span>
                     <h2 className="text-5xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
@@ -94,7 +95,7 @@ const ProductScrollytelling: React.FC = () => {
                                     <div className="text-[10px] font-mono text-gray-500">
                                         ISO 800<br/>F/2.8
                                     </div>
-                                    <div className="border border-white/20 px-2 py-1 bg-black/50 backdrop-blur-md">
+                                    <div className="border border-white/20 px-2 py-1 bg-black/50 backdrop-blur-md rounded-sm">
                                         <span className="text-xs font-bold text-white uppercase tracking-wider">
                                             {PRODUCTS.find(p => p.id === activeId)?.tuvCertified ? 'TÜV GEPRÜFT' : 'A+ STANDARD'}
                                         </span>
@@ -111,6 +112,9 @@ const ProductScrollytelling: React.FC = () => {
                                     <img 
                                         src={product.imageUrl} 
                                         alt={product.altText} 
+                                        width="800"
+                                        height="800"
+                                        loading="lazy"
                                         className="w-full h-full object-cover filter brightness-75 contrast-110"
                                     />
                                     {/* Scanline Effect */}
@@ -151,7 +155,7 @@ const ProductScrollytelling: React.FC = () => {
                                         `}>
                                             {/* Mobile Image (Accordion) */}
                                             <div className="lg:hidden h-48 relative overflow-hidden border-b border-white/10">
-                                                <img src={product.imageUrl} alt="" className="w-full h-full object-cover opacity-60" />
+                                                <img src={product.imageUrl} alt="" className="w-full h-full object-cover opacity-60" loading="lazy" />
                                                 <div className="absolute inset-0 bg-black/40"></div>
                                             </div>
 
@@ -180,11 +184,11 @@ const ProductScrollytelling: React.FC = () => {
                                                         
                                                         {/* Mini Specs Grid */}
                                                         <div className="grid grid-cols-2 gap-4 mb-6">
-                                                            <div className="bg-white/5 p-3 rounded border border-white/5">
+                                                            <div className="bg-white/5 p-3 rounded-lg border border-white/5">
                                                                 <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Material</div>
                                                                 <div className="text-sm font-bold text-white">C35/45 Beton</div>
                                                             </div>
-                                                            <div className="bg-white/5 p-3 rounded border border-white/5">
+                                                            <div className="bg-white/5 p-3 rounded-lg border border-white/5">
                                                                 <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Garantie</div>
                                                                 <div className="text-sm font-bold text-white">5 Jahre</div>
                                                             </div>
@@ -361,13 +365,17 @@ const InfiniteMarquee: React.FC = () => {
 };
 
 const HomePage: React.FC = () => {
+  // Use PageShell to inject metadata instead of raw markup
   return (
-    <>
+    <PageShell 
+        title="Beton-Skateparks, Pumptracks & Skate-Anlagen"
+        description="A+ Urban Design plant und baut TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig."
+    >
       <Hero />
       <InfiniteMarquee />
       <ProductScrollytelling />
 
-      <section className="relative py-24 lg:py-48">
+      <section id="philosophie" className="relative py-24 lg:py-48">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
                     <div className="lg:w-5/12">
@@ -379,8 +387,8 @@ const HomePage: React.FC = () => {
                              <p className="text-xl text-gray-400 leading-relaxed mb-8">
                                  Wir schaffen urbane Landschaften aus Beton und Stahl, die jeder Belastung standhalten.
                              </p>
-                             <Link to="/ueber-uns" className="inline-flex items-center gap-2 text-white font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider">
-                                 Mehr über unsere Philosophie <span className="text-xl">&rarr;</span>
+                             <Link to="/ueber-uns" className="inline-flex items-center gap-2 text-white font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider group">
+                                 Mehr über unsere Philosophie <span className="text-xl group-hover:translate-x-1 transition-transform">&rarr;</span>
                              </Link>
                         </div>
                     </div>
@@ -398,7 +406,7 @@ const HomePage: React.FC = () => {
 
       <BrochureRequestForm context="homepage" />
       
-      <section className="py-32 relative overflow-hidden bg-[#0a0a0a] border-t border-white/5">
+      <section id="contact-area" className="py-32 relative overflow-hidden bg-[#0a0a0a] border-t border-white/5">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <AnimatedSection>
               <h2 className="text-6xl md:text-8xl font-black font-heading text-white uppercase tracking-tighter mb-8">
@@ -407,13 +415,16 @@ const HomePage: React.FC = () => {
               <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12">
                   Lassen Sie uns gemeinsam etwas Großartiges schaffen. Von der ersten Skizze bis zur Eröffnung.
               </p>
-              <Link to="/kontakt" className="inline-block bg-brand-orange text-black font-black uppercase text-xl py-5 px-12 hover:bg-white hover:text-brand-orange transition-all duration-300 transform hover:-translate-y-2 shadow-xl">
-                Projekt starten
+              <Link 
+                to="/kontakt" 
+                className="inline-flex items-center gap-2 bg-brand-orange text-black font-black uppercase tracking-widest text-xl py-5 px-12 rounded-lg hover:bg-white hover:text-brand-orange transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
+              >
+                Projekt starten <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
               </Link>
             </AnimatedSection>
           </div>
         </section>
-    </>
+    </PageShell>
   );
 };
 

@@ -150,16 +150,16 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                                                 {privacyAccepted && <span className="material-symbols-outlined text-black text-sm font-bold">check</span>}
                                             </div>
                                             <p className="text-xs text-gray-500 leading-snug">
-                                                Ich stimme zu, dass meine Angaben zur Kontaktaufnahme gespeichert werden. Sie können Ihre Einwilligung jederzeit für die Zukunft per E-Mail widerrufen. Mehr Infos in der <Link to="/datenschutz" className="underline hover:text-brand-orange" onClick={(e) => e.stopPropagation()}>Datenschutzerklärung</Link>.
+                                                Ich stimme zu, dass meine Angaben zur Kontaktaufnahme gespeichert werden. Sie können unsere <Link to="/datenschutz" className="underline hover:text-brand-orange" onClick={(e) => e.stopPropagation()}>Datenschutzerklärung</Link> hier einsehen.
                                             </p>
                                         </div>
 
                                         <button
                                             type="submit"
                                             disabled={status === 'loading'}
-                                            className="w-full py-4 px-8 bg-brand-orange hover:bg-white text-black font-black uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(249,115,22,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                            className="w-full py-4 px-8 bg-brand-orange hover:bg-white text-black font-black uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(249,115,22,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex justify-center items-center gap-2 group"
                                         >
-                                            {status === 'loading' ? 'Wird verarbeitet...' : 'Katalog jetzt anfordern'}
+                                            {status === 'loading' ? 'Wird verarbeitet...' : 'Katalog jetzt anfordern'} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">download</span>
                                         </button>
                                     </div>
                                 </form>
@@ -215,9 +215,9 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                         <button
                             type="submit"
                             disabled={status === 'loading'}
-                            className="w-full py-3 bg-white hover:bg-brand-orange text-black hover:text-white font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300"
+                            className="w-full py-3 bg-white hover:bg-brand-orange text-black hover:text-white font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group"
                         >
-                            {status === 'loading' ? '...' : 'Jetzt herunterladen'}
+                            {status === 'loading' ? '...' : 'Jetzt herunterladen'} <span className="material-symbols-outlined text-sm group-hover:translate-y-0.5 transition-transform">download</span>
                         </button>
                     </form>
                 )}

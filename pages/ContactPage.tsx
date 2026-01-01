@@ -52,7 +52,7 @@ const ContactPage: React.FC = () => {
                     
                     {/* LEFT COLUMN: CONTACT INFO & MAP PLACEHOLDER */}
                     <div className="lg:col-span-5 order-2 lg:order-1 animate-fade-in-up [animation-delay:200ms]">
-                        <div className="bg-brand-surface border border-white/10 p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden group">
+                        <div className="bg-brand-surface border border-white/10 p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden group rounded-lg">
                              {/* Decorative Glow */}
                              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-orange/10 rounded-full blur-[80px] pointer-events-none"></div>
 
@@ -79,16 +79,13 @@ const ContactPage: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                            
-                            {/* Availability Section Removed as requested */}
-
                         </div>
                     </div>
 
                     {/* RIGHT COLUMN: INTERACTIVE FORM */}
                     <div className="lg:col-span-7 order-1 lg:order-2 animate-fade-in-up [animation-delay:400ms]">
                         {status === 'success' ? (
-                            <div className="h-full min-h-[400px] flex flex-col items-center justify-center bg-brand-surface border border-white/10 p-12 text-center animate-pop-in">
+                            <div className="h-full min-h-[400px] flex flex-col items-center justify-center bg-brand-surface border border-white/10 p-12 text-center animate-pop-in rounded-lg">
                                 <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
                                     <span className="material-symbols-outlined text-4xl text-green-500">check</span>
                                 </div>
@@ -104,7 +101,7 @@ const ContactPage: React.FC = () => {
                                 </button>
                             </div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-8 bg-black/40 backdrop-blur-md p-8 md:p-12 border border-white/5 rounded-sm">
+                            <form onSubmit={handleSubmit} className="space-y-8 bg-black/40 backdrop-blur-md p-8 md:p-12 border border-white/5 rounded-lg">
                                 
                                 {/* Project Type Selector */}
                                 <div>
@@ -115,7 +112,7 @@ const ContactPage: React.FC = () => {
                                                 key={type}
                                                 type="button"
                                                 onClick={() => setProjectType(type)}
-                                                className={`px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide transition-all duration-300 border ${
+                                                className={`px-6 py-2 rounded-lg text-sm font-bold uppercase tracking-wide transition-all duration-300 border ${
                                                     projectType === type 
                                                     ? 'bg-brand-orange border-brand-orange text-black shadow-[0_0_20px_rgba(249,115,22,0.4)]' 
                                                     : 'bg-transparent border-white/20 text-gray-400 hover:border-white hover:text-white'
@@ -152,7 +149,7 @@ const ContactPage: React.FC = () => {
                                     <button 
                                         type="submit" 
                                         disabled={status === 'loading'}
-                                        className="w-full md:w-auto px-12 py-4 bg-white hover:bg-brand-orange text-black font-black uppercase tracking-widest text-sm transition-all duration-300 hover:scale-[1.02] shadow-xl disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-2 group"
+                                        className="w-full md:w-auto px-12 py-4 bg-white hover:bg-brand-orange text-black font-black uppercase tracking-widest text-sm rounded-lg transition-all duration-300 hover:scale-[1.02] shadow-xl disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-2 group"
                                     >
                                         {status === 'loading' ? (
                                             <>

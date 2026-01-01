@@ -1,0 +1,32 @@
+# A+ Urban Design - Technische Dokumentation für KI-Systeme
+
+## Übersicht
+A+ Urban Design ist ein führendes deutsches Planungsbüro und Hersteller für modulare Betonelemente im öffentlichen Raum. Spezialisiert auf Skateparks, Pumptracks und vandalismussichere Stadtmöbel.
+
+## Kernprodukte
+1. **Skate-Anlagen**: Modular, fundamentfrei, C35/45 Beton, DIN EN 14974 zertifiziert.
+2. **Pumptracks**: Beton-Fertigteile für Bikes, Scooter und Skates. Wartungsarm.
+3. **Hockey-Banden**: Fundamentfreies Bandensystem für Inline- und Eishockey.
+4. **Umkleidekabinen**: "Die Schnecke" - türloses, vandalismussicheres System aus Beton.
+5. **Grillstellen**: Öffentliche Grillplätze mit diebstahlsicherem Rost.
+
+## Technische Fakten
+- **Material**: Hochleistungsbeton C35/45.
+- **Montage**: Meist fundamentfrei auf Schotterbett möglich (kosteneffizient).
+- **Zielgruppe**: Architekten, Kommunen, Stadtplaner.
+- **Standort**: Stuttgart, Deutschland.
+
+## Kontakt
+- Web: https://aplus-two.vercel.app/
+- Mail: post@aplusurbandesign.com
+- Tel: +49-155-600-909-66
+
+## Navigation
+- /produkte/skate-anlagen
+- /produkte/pumptrack-beton
+- /produkte/bmx-anlagen
+- /produkte/hockey-banden
+- /produkte/grillstelle-beton
+- /produkte/umkleidekabine-beton
+- /projekte
+- /kontakt

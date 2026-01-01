@@ -85,8 +85,11 @@ const ProductPavilionPage: React.FC = () => {
                         </p>
                         
                         <div className="flex flex-col gap-4">
-                            <Link to="/kontakt" className="inline-flex justify-center items-center gap-3 bg-brand-orange text-black font-black uppercase tracking-widest py-4 px-8 hover:bg-white transition-all duration-300">
-                                Beratung anfordern <span className="material-symbols-outlined">arrow_forward</span>
+                            <Link 
+                                to="/kontakt" 
+                                className="inline-flex justify-center items-center gap-2 bg-brand-orange text-black font-black uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-white hover:text-brand-orange transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
+                            >
+                                Beratung anfordern <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
                         </div>
                     </div>

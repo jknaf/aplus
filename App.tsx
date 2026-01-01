@@ -17,6 +17,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ImpressumPage from './pages/ImpressumPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import NotFoundPage from './pages/NotFoundPage';
 import PrivacyBanner from './components/PrivacyBanner';
 
 const ScrollToTop: React.FC = () => {
@@ -31,6 +32,7 @@ const ScrollToTop: React.FC = () => {
 
 const App: React.FC = () => {
   return (
+    // Fallback to HashRouter for maximum compatibility without server-side rewrites
     <HashRouter>
       <ScrollToTop />
       
@@ -72,6 +74,7 @@ const App: React.FC = () => {
             <Route path="/kontakt" element={<ContactPage />} />
             <Route path="/impressum" element={<ImpressumPage />} />
             <Route path="/datenschutz" element={<PrivacyPolicyPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer />

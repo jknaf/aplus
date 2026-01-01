@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
@@ -12,7 +12,7 @@ const OtherProducts: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
           <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface border border-white/5 z-20">
-            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
+            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} width="600" height="800" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="relative h-full flex flex-col justify-end p-8 z-30">
                <span className="text-brand-orange font-mono text-xs mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
@@ -34,16 +34,32 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 );
 
 const ProductSkateAnlagenPage: React.FC = () => {
-  useEffect(() => {
-    document.title = "Beton-Skateparks & Skate-Anlagen planen | A+ Urban Design";
-    const descriptionTag = document.querySelector('meta[name="description"]');
-    if (descriptionTag) {
-      descriptionTag.setAttribute('content', 'Planung und Bau von modularen Beton-Skateparks. TÜV-zertifizierte Skate-Elemente wie Ramps, Bowls & Rails. Langlebig, fundamentfrei und europaweite Lieferung.');
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Beton Skate-Anlagen",
+    "description": "Modulare Skate-Anlagen aus Beton. TÜV-zertifiziert, fundamentfrei und extrem langlebig für den öffentlichen Raum.",
+    "brand": {
+      "@type": "Brand",
+      "name": "A+ Urban Design"
+    },
+    "category": "Urban Furniture",
+    "image": "https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg",
+    "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "EUR",
+        "price": "0", // Price upon request
+        "url": window.location.href
     }
-  }, []);
+  };
 
   return (
-    <PageShell title="Planung & Bau von Beton-Skateanlagen">
+    <PageShell 
+        title="Planung & Bau von Beton-Skateanlagen" 
+        description="Planung und Bau von modularen Beton-Skateparks. TÜV-zertifizierte Skate-Elemente wie Ramps, Bowls & Rails. Langlebig, fundamentfrei und europaweite Lieferung."
+        schema={productSchema}
+    >
        
        {/* 1. IMMERSIVE HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10">
@@ -90,8 +106,11 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         </p>
                         
                         <div className="flex flex-col gap-4">
-                            <Link to="/kontakt" className="inline-flex justify-center items-center gap-3 bg-brand-orange text-black font-black uppercase tracking-widest py-4 px-8 hover:bg-white transition-all duration-300 relative z-30">
-                                3D-Planung anfragen <span className="material-symbols-outlined">arrow_forward</span>
+                            <Link 
+                                to="/kontakt" 
+                                className="inline-flex justify-center items-center gap-2 bg-brand-orange text-black font-black uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-white hover:text-brand-orange transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group"
+                            >
+                                3D-Planung anfragen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
                             <span className="text-xs text-gray-500 font-mono text-center">Inklusive Kostenschätzung & Layout</span>
                         </div>
@@ -101,7 +120,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 {/* Right: Scrolling Gallery & Features */}
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group relative z-10">
-                         <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Skate Bowl Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Skate Bowl Detail" width="800" height="500" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 01. BOWL ELEMENT</div>
                     </div>
                     
@@ -128,7 +147,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group relative z-10">
-                         <img src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Street Skateboarding" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Street Skateboarding" width="800" height="500" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 02. STREET PLAZA</div>
                     </div>
                 </div>

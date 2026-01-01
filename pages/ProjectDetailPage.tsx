@@ -14,7 +14,7 @@ const ProjectDetailPage: React.FC = () => {
         <div className="text-center">
           <h1 className="text-4xl font-bold font-heading">Projekt nicht gefunden</h1>
           <p className="mt-4 text-lg text-brand-muted">Das von Ihnen gesuchte Projekt konnte leider nicht gefunden werden.</p>
-          <Link to="/projekte" className="mt-8 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">
+          <Link to="/projekte" className="mt-8 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">
             Zurück zur Projektübersicht
           </Link>
         </div>
@@ -45,6 +45,15 @@ const ProjectDetailPage: React.FC = () => {
   return (
     <PageShell title={project.title}>
       <div className="max-w-5xl mx-auto">
+        
+        {/* Back Link */}
+        <div className="mb-8">
+            <Link to="/projekte" className="inline-flex items-center gap-2 text-brand-muted hover:text-brand-orange transition-colors uppercase text-xs font-bold tracking-widest group">
+                <span className="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                Zurück zur Übersicht
+            </Link>
+        </div>
+
         <div className="text-center">
           <p className="text-sm font-bold text-brand-orange uppercase tracking-wider">{project.category.replace('-', ' ')} {project.year && `(${project.year})`}</p>
           <h1 className="text-4xl md:text-6xl font-black font-heading mt-2 uppercase tracking-tighter">{project.title}</h1>
@@ -82,7 +91,11 @@ const ProjectDetailPage: React.FC = () => {
             <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label="Auf Facebook teilen" className="text-brand-muted hover:text-brand-orange transition-colors" title="Auf Facebook teilen">
                <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd"/></svg>
             </a>
-            <button onClick={handleCopyLink} className="flex items-center gap-2 px-4 py-2 bg-brand-surface text-brand-text rounded-md hover:bg-white/10 transition-colors text-sm font-bold" aria-live="polite">
+            <button 
+                onClick={handleCopyLink} 
+                className="flex items-center gap-2 px-6 py-3 bg-brand-surface text-brand-text rounded-lg hover:bg-white/10 transition-colors text-sm font-bold uppercase tracking-wider border border-white/5" 
+                aria-live="polite"
+            >
               <span className="material-symbols-outlined text-base" aria-hidden="true">{isCopied ? 'check' : 'link'}</span>
               <span>{isCopied ? 'Link kopiert!' : 'Link kopieren'}</span>
             </button>

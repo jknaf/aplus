@@ -403,7 +403,12 @@ const Hero: React.FC = () => {
         if (isAnimating || targetIndex === activeIndex) return;
         setNextIndex(targetIndex);
         setIsAnimating(true);
-        if (HERO_ITEMS[targetIndex].type === 'video' && nextVideoRef.current) nextVideoRef.current.play().catch(() => {});
+        if (HERO_ITEMS[targetIndex].type === 'video' && nextVideoRef.current) {
+             const vid = nextVideoRef.current;
+             vid.defaultMuted = true;
+             vid.muted = true;
+             vid.play().catch(() => {});
+        }
         setTimeout(() => {
             setActiveIndex(targetIndex);
             setIsAnimating(false);
@@ -412,11 +417,24 @@ const Hero: React.FC = () => {
 
     const renderMedia = (item: typeof HERO_ITEMS[0], ref: React.RefObject<HTMLVideoElement>) => {
         if (item.type === 'video') {
-            // OPTIMIZATION: Added poster image to prevent black screen on load
-            // Added preload="auto" and playsInline for better mobile support
+            // FIX FOR BRAVE/SAFARI:
+            // 1. Force playback via callback ref to capture the element immediately on mount.
+            // 2. Set defaultMuted = true directly on the DOM node.
             return (
                 <video 
-                    ref={ref} 
+                    ref={(el) => {
+                        // Handle React ref forwarding
+                        if (typeof ref === 'function') ref(el);
+                        else if (ref) ref.current = el;
+
+                        // Force mute and play immediately when element mounts
+                        if (el) {
+                            el.defaultMuted = true;
+                            el.muted = true;
+                            // Attempt play, catch potential errors (e.g. low power mode)
+                            el.play().catch(() => {});
+                        }
+                    }}
                     src={item.src} 
                     autoPlay 
                     muted 
@@ -425,6 +443,10 @@ const Hero: React.FC = () => {
                     preload="auto"
                     poster="https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=800"
                     className="w-full h-full object-cover" 
+                    // Fallback play attempt
+                    onCanPlay={(e) => {
+                        e.currentTarget.play().catch(() => {});
+                    }}
                 />
             );
         }

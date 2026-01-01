@@ -28,6 +28,90 @@ const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}>
     return <div ref={ref} className={`animated-section ${className}`}>{children}</div>;
 };
 
+// --- FAQ Section (SEO POWERHOUSE) ---
+const FAQSection: React.FC = () => {
+    // SEO STRATEGY: Answer specific questions users type into Google.
+    // Keywords: Beton Pumptrack, BMX Anlage, Skatepark Kosten, Lärmschutz, Baugenehmigung.
+    const faqs = [
+        {
+            q: "Was kostet ein Beton-Skatepark oder Pumptrack?",
+            a: "Die Kosten hängen stark von der Fläche und den gewählten Modulen ab. Da wir fundamentfrei bauen, entfallen teure Erdarbeiten und Bodenplatten, was unsere Systeme oft 30-40% günstiger macht als Ortbeton-Anlagen. Für eine genaue Kostenschätzung bieten wir eine kostenlose Erstberatung an."
+        },
+        {
+            q: "Sind die Anlagen auch für BMX und Scooter geeignet?",
+            a: "Absolut. Unsere Betonoberflächen sind extrem widerstandsfähig und halten den hohen Punktbelastungen von BMX-Pegs und Scooter-Decks problemlos stand. Im Gegensatz zu Holzrampen splittert unser Beton nicht und bietet perfekten Grip für alle Rollsportarten."
+        },
+        {
+            q: "Warum Beton statt Asphalt für einen Pumptrack?",
+            a: "Asphalt wird im Sommer weich und verformt sich unter Belastung. Beton bleibt formstabil, ist nahezu wartungsfrei und bietet ein deutlich schnelleres Fahrgefühl ('Flow'). Zudem lassen sich mit unseren Betonmodulen Radien formen, die mit Asphaltfertigern technisch unmöglich sind."
+        },
+        {
+            q: "Wie steht es um Lärmschutz und Baugenehmigung?",
+            a: "Beton ist ein massiver Schallschlucker. Unsere Elemente minimieren den Dröhn-Effekt, den man von Hohlkörper-Rampen kennt. Wir unterstützen Sie zudem im Genehmigungsverfahren mit Schallgutachten-Vorlagen und statischen Berechnungen nach DIN EN 14974."
+        },
+        {
+            q: "Können wir klein anfangen und die Anlage später erweitern?",
+            a: "Ja, das ist der Kern unseres 'A+ Modulsystems'. Viele Kommunen starten mit einem 'Starter-Kit' (z.B. Quarter, Bank, Rail) und erweitern den Skatepark über Jahre hinweg. Da keine Fundamente gegossen werden müssen, bleibt die Fläche flexibel."
+        }
+    ];
+
+    // Structured Data for Google (FAQPage)
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(item => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.a
+            }
+        }))
+    };
+
+    return (
+        <section className="py-24 bg-[#050505] border-t border-white/5 relative overflow-hidden">
+             {/* SEO Schema Injection */}
+             <script type="application/ld+json">
+                {JSON.stringify(faqSchema)}
+            </script>
+            
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                 <AnimatedSection className="mb-16 text-center">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                        Wissen & Technik
+                    </span>
+                    <h2 className="text-5xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
+                        Häufige <span className="text-outline-orange">Fragen.</span>
+                    </h2>
+                    <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
+                        Alles über Planung, Kosten und Bau von Skateparks, Pumptracks und BMX-Anlagen.
+                    </p>
+                </AnimatedSection>
+
+                <div className="max-w-4xl mx-auto space-y-4">
+                    {faqs.map((faq, index) => (
+                        <details key={index} className="group bg-[#121212] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 open:border-brand-orange/50 open:bg-[#1a1a1a]">
+                            <summary className="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/5 transition-colors">
+                                <span className="font-bold text-lg md:text-xl text-white group-hover:text-brand-orange transition-colors pr-8">
+                                    {faq.q}
+                                </span>
+                                <span className="material-symbols-outlined text-gray-500 transition-transform duration-300 group-open:rotate-180 group-open:text-brand-orange">
+                                    expand_more
+                                </span>
+                            </summary>
+                            <div className="px-6 pb-6 pt-0 text-gray-400 leading-relaxed border-t border-white/5 mt-2 animate-fade-in-up">
+                                {faq.a}
+                            </div>
+                        </details>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+
 // --- Scrollytelling Product Component (REDESIGNED: HUD STYLE) ---
 const ProductScrollytelling: React.FC = () => {
     const [activeId, setActiveId] = useState<string>(PRODUCTS[0].id);
@@ -380,8 +464,10 @@ const HomePage: React.FC = () => {
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
                     <div className="lg:w-5/12">
                         <div className="lg:sticky lg:top-32 h-fit">
-                             <span className="text-brand-orange font-bold tracking-widest uppercase text-sm mb-4 block">Unsere DNA</span>
-                             <h2 className="text-6xl md:text-8xl font-black font-heading text-white leading-[0.85] mb-8 uppercase">
+                             <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                                Unsere DNA
+                             </span>
+                             <h2 className="text-5xl md:text-7xl font-black font-heading text-white leading-[0.9] mb-8 uppercase tracking-tighter">
                                 Gebaut<br/>für die<br/><span className="text-outline-orange">Ewigkeit.</span>
                              </h2>
                              <p className="text-xl text-gray-400 leading-relaxed mb-8">
@@ -406,11 +492,17 @@ const HomePage: React.FC = () => {
 
       <BrochureRequestForm context="homepage" />
       
+      {/* Inserted FAQ Section for SEO and User Info */}
+      <FAQSection />
+      
       <section id="contact-area" className="py-32 relative overflow-hidden bg-[#0a0a0a] border-t border-white/5">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <AnimatedSection>
-              <h2 className="text-6xl md:text-8xl font-black font-heading text-white uppercase tracking-tighter mb-8">
-                Start<span className="text-brand-orange">klar?</span>
+              <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                  Projektstart
+              </span>
+              <h2 className="text-6xl md:text-9xl font-black font-heading uppercase tracking-tighter mb-8 leading-none">
+                <span className="text-white">Start</span><span className="text-brand-orange">klar?</span>
               </h2>
               <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12">
                   Lassen Sie uns gemeinsam etwas Großartiges schaffen. Von der ersten Skizze bis zur Eröffnung.

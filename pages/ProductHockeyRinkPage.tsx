@@ -8,7 +8,14 @@ const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'hockey' && p.id !== 'pumptrack').slice(0, 3);
   return (
     <div className="mt-32 border-t border-white/10 pt-24">
-      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest">Alternativen</h2>
+      <div className="text-center mb-16">
+          <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+              Portfolio
+          </span>
+          <h2 className="text-4xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
+              Weitere <span className="text-outline-orange">Lösungen.</span>
+          </h2>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
           <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface border border-white/5">
@@ -76,7 +83,12 @@ const ProductHockeyRinkPage: React.FC = () => {
                 
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
-                        <h2 className="text-3xl font-bold font-heading text-white mb-8">Game On. All Year.</h2>
+                        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                            Flexibilität
+                        </span>
+                        <h2 className="text-5xl font-black font-heading text-white uppercase tracking-tighter leading-none mb-8">
+                            Game On. <span className="text-outline-orange">All Year.</span>
+                        </h2>
                         <p className="text-xl text-gray-400 leading-relaxed mb-8">
                             Ein Feld, alle Möglichkeiten. Unser patentiertes Bandensystem verwandelt jeden Platz in eine Arena für Inline-Hockey, Rollhockey und im Winter sogar für Eishockey.
                         </p>
@@ -102,7 +114,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                     </div>
                     
                     <div className="bg-brand-surface border border-white/10 p-8 my-8">
-                        <h3 className="text-2xl font-bold font-heading text-white uppercase mb-4">Construction</h3>
+                        <h3 className="text-2xl font-bold font-heading text-white uppercase mb-4">Konstruktion</h3>
                         <p className="text-gray-400 mb-4 font-mono text-sm border-l-2 border-brand-orange pl-4">
                             Kombination aus Stahlrahmen, Beton-Gewichten und hochschlagfesten HPL-Platten.
                         </p>
@@ -123,7 +135,10 @@ const ProductHockeyRinkPage: React.FC = () => {
             {/* 3. TECH SPECS */}
             <div className="mb-32">
                 <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
-                    <h2 className="text-4xl font-black font-heading text-white uppercase tracking-tighter">Tech<span className="text-brand-orange">Data</span></h2>
+                    <h2 className="text-5xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-none">
+                        Tech<span className="text-brand-orange">Specs</span>
+                    </h2>
+                    <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: BANDENSYSTEME</span>
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

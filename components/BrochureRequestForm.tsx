@@ -116,12 +116,12 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                         
                         {/* Text & Form Column */}
                         <div className="lg:col-span-7 text-left">
-                            <span className="inline-block py-1 px-3 rounded-full bg-brand-orange/10 text-brand-orange text-xs font-bold tracking-widest uppercase mb-6 border border-brand-orange/20">
+                            <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                                 Kostenloser Download
                             </span>
-                            <h2 className="text-5xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter mb-6 leading-tight">
+                            <h2 className="text-5xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9] mb-6">
                                 Unser <br/>
-                                <span className="text-brand-orange">Produktkatalog.</span>
+                                <span className="text-outline-orange">Katalog.</span>
                             </h2>
                             <p className="text-lg text-gray-400 mb-8 max-w-xl leading-relaxed">
                                 Planen Sie Ihr nächstes Projekt mit allen Details zur Hand. Unser Katalog enthält technische Zeichnungen, Ausschreibungstexte und inspirierende Case Studies unserer Beton-Skateparks und Stadtmöbel.

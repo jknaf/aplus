@@ -8,7 +8,14 @@ const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'grillstelle' && p.id !== 'ueberdachung').slice(0, 3);
   return (
     <div className="mt-32 border-t border-white/10 pt-24">
-      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest">More Urban Furniture</h2>
+      <div className="text-center mb-16">
+          <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+              Portfolio
+          </span>
+          <h2 className="text-4xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
+              Weitere <span className="text-outline-orange">Lösungen.</span>
+          </h2>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
           <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface border border-white/5">
@@ -76,7 +83,12 @@ const ProductGrillPage: React.FC = () => {
                 
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
-                        <h2 className="text-3xl font-bold font-heading text-white mb-8">Feuer & Beton.</h2>
+                        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                            Begegnungsstätte
+                        </span>
+                        <h2 className="text-5xl font-black font-heading text-white uppercase tracking-tighter leading-none mb-8">
+                            Feuer & <span className="text-outline-orange">Beton.</span>
+                        </h2>
                         <p className="text-xl text-gray-400 leading-relaxed mb-8">
                             Öffentliche Grillplätze müssen extremen Bedingungen standhalten. Unser Betongrill ist ein monolithischer Treffpunkt, der Vandalismus keine Chance lässt.
                         </p>
@@ -121,8 +133,11 @@ const ProductGrillPage: React.FC = () => {
 
             {/* 3. TECH SPECS */}
             <div className="mb-32">
-                <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
-                    <h2 className="text-4xl font-black font-heading text-white uppercase tracking-tighter">Hard<span className="text-brand-orange">Facts</span></h2>
+                 <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
+                    <h2 className="text-5xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-none">
+                        Tech<span className="text-brand-orange">Specs</span>
+                    </h2>
+                    <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: GRILLSTELLE</span>
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

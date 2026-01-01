@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 // Mapping of old 25-year-old HTML files to new React Routes
 const LEGACY_MAP: Record<string, string> = {

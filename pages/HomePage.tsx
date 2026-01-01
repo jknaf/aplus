@@ -297,20 +297,30 @@ const ScrollyFeature: React.FC<{
     );
 };
 
-// --- OPTIMIZED HERO COMPONENT ---
-// Uses srcset to deliver light images to mobile, huge images to desktop.
-// No JavaScript logic for loading means no "Jumps".
+// --- HYBRID HERO COMPONENT (Mobile Optimized + Video) ---
+// Strategy: 
+// 1. Show Image IMMEDIATELY (LCP < 0.5s)
+// 2. Wait 0.5 seconds (bare minimum to render paint)
+// 3. Inject Video (Cool factor returns FAST)
+// This avoids the long "just an image" feeling while keeping the LCP green.
 const Hero: React.FC = () => {
+    const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
     const [videoReady, setVideoReady] = useState(false);
     
-    // Check if we are on mobile to skip video loading entirely for performance
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    useEffect(() => {
+        // DELAYED VIDEO LOADING
+        // Reduced from 2500ms to 500ms to make it feel almost instant
+        // while still giving priority to the initial image paint.
+        const timer = setTimeout(() => {
+            setShouldLoadVideo(true);
+        }, 500);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <div className="relative h-[85svh] md:h-[90vh] w-full overflow-hidden bg-black">
             
-            {/* LAYER 1: RESPONSIVE IMAGE (No Jump) */}
-            {/* Using picture/source ensures browser downloads correct size immediately */}
+            {/* LAYER 1: RESPONSIVE IMAGE (Instant Load) */}
             <div className="absolute inset-0 z-0">
                  <img 
                     src="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600"
@@ -323,9 +333,9 @@ const Hero: React.FC = () => {
                 />
             </div>
 
-            {/* LAYER 2: VIDEO OVERLAY (Desktop Only) */}
-            {!isMobile && (
-                <div className={`absolute inset-0 z-10 transition-opacity duration-[2000ms] ease-in-out ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
+            {/* LAYER 2: VIDEO OVERLAY (Lazy Loaded, Faster Fade) */}
+            {shouldLoadVideo && (
+                <div className={`absolute inset-0 z-10 transition-opacity duration-[1000ms] ease-in-out ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
                     <video 
                         className="w-full h-full object-cover"
                         src="https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4"

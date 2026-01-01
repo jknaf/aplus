@@ -297,82 +297,71 @@ const ScrollyFeature: React.FC<{
     );
 };
 
-// --- ROBUST HERO COMPONENT ---
-// UPDATED FOR IPHONE PERFORMANCE:
-// 1. First slide is now an IMAGE (fast LCP).
-// 2. Video is second slide.
-// 3. Removed 'display: none', using 'opacity' and 'visibility' to prevent layout trashing.
-const HERO_ITEMS = [
-  { 
-    id: 1,
-    type: 'image', // CHANGED: Image first for instant load on mobile
-    src: 'https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600' 
-  },
-  { 
-    id: 2,
-    type: 'video', 
-    src: 'https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4',
-    poster: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=800' 
-  },
-  { 
-    id: 3,
-    type: 'image', 
-    src: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=1600' 
-  }
-];
-
+// --- HYBRID HERO COMPONENT (Mobile Friendly) ---
+// Strategy:
+// 1. Layer 1 (Base): High-quality Image. Renders immediately. No JS blocking.
+// 2. Layer 2 (Overlay): Video. Hidden initially. Fades in ONLY when browser confirms it's playing.
+// Result: 0ms black screen. If video fails/blocks (mobile), user sees image.
 const Hero: React.FC = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [videoReady, setVideoReady] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
-    // Auto-advance logic
+    // Static Assets
+    const BG_IMAGE = "https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600";
+    const VIDEO_SRC = "https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4";
+
     useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % HERO_ITEMS.length);
-        }, 7000); // 7 seconds per slide
-        return () => clearInterval(timer);
+        // Attempt aggressive autoplay
+        const video = videoRef.current;
+        if (video) {
+            video.muted = true;
+            video.defaultMuted = true;
+            video.play().catch(() => {
+                // Autoplay blocked (Low Power Mode / Data Saver).
+                // Do nothing. The Image Layer is already visible.
+            });
+        }
     }, []);
 
     return (
-        // Changed h-[85vh] to h-[85svh] for better mobile viewport stability on iOS
+        // Use svh (Small Viewport Height) to prevent layout jumps on iOS Safari address bar scroll
         <div className="relative h-[85svh] md:h-[90vh] w-full overflow-hidden bg-black">
-            {/* Slide Renderer */}
-            {HERO_ITEMS.map((item, index) => {
-                const isActive = index === currentIndex;
-                // Force visibility for the first item instantly via CSS if JS fails or delays
-                const isFirst = index === 0;
-                
-                return (
-                    <div
-                        key={item.id}
-                        className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'} ${isFirst && currentIndex === 0 ? 'opacity-100' : ''}`}
-                        // Optimization: Use visibility to hide from screen readers/clicks but keep DOM mostly active to prevent reflow
-                        style={{ 
-                            visibility: isActive || index === (currentIndex + 1) % HERO_ITEMS.length ? 'visible' : 'hidden',
-                            // Fail-safe: If JS crashes, first item stays visible
-                            opacity: (isFirst && currentIndex === 0) ? 1 : (isActive ? 1 : 0)
-                        }}
-                    >
-                        {item.type === 'video' ? (
-                            <VideoSlide src={item.src} poster={item.poster || ''} isActive={isActive} />
-                        ) : (
-                            <div className="w-full h-full overflow-hidden">
-                                <img 
-                                    src={item.src} 
-                                    alt="" 
-                                    className={`w-full h-full object-cover transition-transform duration-[10000ms] ease-out ${isActive ? 'scale-110' : 'scale-100'}`} 
-                                    loading={index === 0 ? "eager" : "lazy"}
-                                />
-                            </div>
-                        )}
-                        <div className="absolute inset-0 bg-black/40"></div>
-                    </div>
-                );
-            })}
+            
+            {/* LAYER 1: STATIC IMAGE (FAILSAFE) */}
+            {/* This renders instantly via HTML/CSS. No JS required to show this. */}
+            <div className="absolute inset-0 z-0">
+                 <img 
+                    src={BG_IMAGE}
+                    alt="Hero Background" 
+                    className="w-full h-full object-cover"
+                    loading="eager" // Force priority load
+                    decoding="sync"
+                />
+            </div>
 
-            {/* Content Layer */}
-            <div className="absolute inset-0 z-20 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-end pointer-events-none">
+            {/* LAYER 2: VIDEO OVERLAY */}
+            {/* Starts invisible (opacity-0). Fades in (opacity-100) only when 'videoReady' is true. */}
+            <div className={`absolute inset-0 z-10 transition-opacity duration-[2000ms] ease-in-out ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
+                <video 
+                    ref={videoRef}
+                    className="w-full h-full object-cover"
+                    src={VIDEO_SRC}
+                    muted
+                    loop
+                    playsInline // Critical for iOS
+                    autoPlay
+                    onCanPlay={() => setVideoReady(true)} // Trigger fade-in when enough data
+                    onLoadedData={() => setVideoReady(true)} // Backup trigger
+                />
+            </div>
+
+            {/* LAYER 3: DARKNESS OVERLAY */}
+            <div className="absolute inset-0 z-20 bg-black/40"></div>
+
+            {/* LAYER 4: CONTENT */}
+            <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-end pointer-events-none">
                  <div className="max-w-7xl">
-                    <div key={currentIndex} className="animate-fade-in-up">
+                    <div className="animate-fade-in-up">
                         <h1 className="flex flex-col font-black font-heading uppercase tracking-tighter leading-none md:leading-[0.85]">
                             <span className="text-[clamp(2.5rem,10vw,9rem)] text-white opacity-90 animate-fade-in-up">Architektur</span>
                             <span className="text-[clamp(2.5rem,10vw,9rem)] text-outline-bold animate-fade-in-up [animation-delay:100ms]">für</span>
@@ -387,46 +376,6 @@ const Hero: React.FC = () => {
         </div>
     );
 };
-
-// Isolated Video Component for reliability
-const VideoSlide: React.FC<{ src: string; poster: string; isActive: boolean }> = ({ src, poster, isActive }) => {
-    const videoRef = useRef<HTMLVideoElement>(null);
-
-    useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        // Force mute state for autoplay policy
-        video.muted = true;
-        video.defaultMuted = true;
-        
-        // If active, ensure it plays. If inactive, pause to save resources.
-        if (isActive) {
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-                // CHANGED: Removed unused 'error' parameter which caused TS6133 build failure
-                playPromise.catch(() => {
-                    // Fail silently, just means the poster will show
-                });
-            }
-        } else {
-            video.pause();
-        }
-    }, [isActive]);
-
-    return (
-        <video 
-            ref={videoRef}
-            className="w-full h-full object-cover"
-            src={src}
-            poster={poster}
-            muted
-            playsInline
-            loop
-            preload="metadata" // Only load metadata initially to save bandwidth
-        />
-    );
-}
 
 const InfiniteMarquee: React.FC = () => {
     const items = ["SKATEPARKS", "PUMPTRACKS", "URBAN DESIGN", "BETONFERTIGTEILE", "FUNDAMENTFREI", "MODULAR"];

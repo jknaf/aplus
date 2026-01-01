@@ -4,17 +4,16 @@ import { Link } from 'react-router-dom';
 const CONSENT_KEY = 'a-plus-urban-design-privacy-consent';
 
 // --- SAFE STORAGE HELPER ---
-// This prevents the "White Screen of Death" on iOS Private Mode
+// CRITICAL FIX: iOS Safari in Private Mode throws an error when accessing localStorage.
+// This wrapper catches the error and prevents the white screen of death.
 const safeStorage = {
     getItem: (key: string): string | null => {
         try {
-            // Test if storage is actually available
             if (typeof window !== 'undefined' && window.localStorage) {
                 return window.localStorage.getItem(key);
             }
         } catch (e) {
-            // Storage is blocked (Private Mode / Security Settings)
-            // Return null to simulate "new user" behavior without crashing
+            // Storage is blocked/restricted. Return null to fail gracefully.
             return null;
         }
         return null;
@@ -25,9 +24,7 @@ const safeStorage = {
                 window.localStorage.setItem(key, value);
             }
         } catch (e) {
-            // If write fails, we just ignore it. User preferences won't be saved 
-            // across sessions, but the site keeps working.
-            console.warn('Privacy Mode: Could not save consent.');
+            // Write failed (likely Private Mode). Ignore silently.
         }
     }
 };
@@ -36,7 +33,6 @@ const PrivacyBanner: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     
-    // Default preferences
     const [preferences, setPreferences] = useState({
         necessary: true,
         analytics: false,
@@ -44,7 +40,7 @@ const PrivacyBanner: React.FC = () => {
     });
 
     useEffect(() => {
-        // We use a small timeout to let the main LCP (Largest Contentful Paint) happen first
+        // Check consent after mount to ensure UI doesn't block LCP
         const timer = setTimeout(() => {
             const consent = safeStorage.getItem(CONSENT_KEY);
             if (!consent) {
@@ -95,7 +91,7 @@ const PrivacyBanner: React.FC = () => {
 
     return (
         <>
-            {/* Main Banner - Mobile Optimized Layout */}
+            {/* Banner */}
             <div role="region" aria-label="Cookie Consent Banner" className="fixed bottom-0 left-0 right-0 bg-[#121212]/95 backdrop-blur-xl border-t border-white/10 z-[100] animate-[fade-in-up_0.5s_ease-out] shadow-[0_-10px_40px_rgba(0,0,0,0.8)]">
                 <div className="container mx-auto p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
                     <div className="text-center md:text-left w-full md:w-auto">
@@ -109,7 +105,6 @@ const PrivacyBanner: React.FC = () => {
                             <Link to="/datenschutz" className="text-brand-orange hover:text-white underline ml-1">Datenschutz</Link>
                         </p>
                     </div>
-                    {/* Buttons - Stacked on very small screens, row on larger */}
                     <div className="flex-shrink-0 flex flex-wrap items-center gap-3 justify-center w-full md:w-auto">
                         <button onClick={() => setIsModalOpen(true)} className="flex-1 md:flex-none px-4 py-3 md:py-2 text-xs font-bold border border-white/20 hover:bg-white/10 rounded bg-transparent transition-colors text-gray-300 uppercase tracking-widest whitespace-nowrap">
                             Optionen
@@ -121,17 +116,16 @@ const PrivacyBanner: React.FC = () => {
                 </div>
             </div>
 
-            {/* Preferences Modal */}
+            {/* Modal */}
             {isModalOpen && (
                  <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-end md:items-center justify-center z-[110] animate-[fade-in-up_0.2s_ease-out] md:animate-none">
-                    <div role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" className="bg-[#181818] w-full md:rounded-xl shadow-2xl md:max-w-lg md:m-4 border-t md:border border-white/10 max-h-[90vh] flex flex-col">
+                    <div className="bg-[#181818] w-full md:rounded-xl shadow-2xl md:max-w-lg md:m-4 border-t md:border border-white/10 max-h-[90vh] flex flex-col">
                         <div className="p-6 border-b border-white/10">
-                            <h2 id="privacy-modal-title" className="text-xl font-bold text-white font-heading uppercase tracking-wide">Privatsphäre</h2>
+                            <h2 className="text-xl font-bold text-white font-heading uppercase tracking-wide">Privatsphäre</h2>
                             <p className="text-sm text-gray-500 mt-1">Entscheiden Sie selbst, welche Daten wir nutzen dürfen.</p>
                         </div>
                         
                         <div className="p-6 space-y-4 overflow-y-auto custom-scrollbar flex-grow">
-                            {/* Necessary Cookies */}
                             <div className="flex justify-between items-center p-4 rounded-lg bg-white/5 border border-white/5">
                                 <div>
                                     <h3 className="font-bold text-white text-sm uppercase tracking-wider">Technisch notwendig</h3>
@@ -145,7 +139,6 @@ const PrivacyBanner: React.FC = () => {
                                 </div>
                             </div>
                             
-                            {/* Analytics Cookies */}
                             <div className="flex justify-between items-center p-4 rounded-lg bg-black/20 border border-white/5 hover:border-white/20 transition-colors">
                                  <div>
                                     <h3 className="font-bold text-white text-sm uppercase tracking-wider">Statistik</h3>
@@ -163,7 +156,6 @@ const PrivacyBanner: React.FC = () => {
                                 </button>
                             </div>
 
-                            {/* Marketing Cookies */}
                             <div className="flex justify-between items-center p-4 rounded-lg bg-black/20 border border-white/5 hover:border-white/20 transition-colors">
                                  <div>
                                     <h3 className="font-bold text-white text-sm uppercase tracking-wider">Externe Medien</h3>

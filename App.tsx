@@ -44,16 +44,15 @@ const App: React.FC = () => {
   // Result: No "Loading..." spinners when clicking links.
   useEffect(() => {
     const preloadRoutes = () => {
-        const routes = [
-            import('./pages/ProductSkateAnlagenPage'),
-            import('./pages/ProductPumptrackPage'),
-            import('./pages/ProductHockeyRinkPage'),
-            import('./pages/ProductBmxPage'),
-            import('./pages/ProductGrillPage'),
-            import('./pages/ProductChangingCabinePage'),
-            import('./pages/ProductPavilionPage'),
-            import('./pages/ProjectDetailPage')
-        ];
+        // Execute imports directly to start fetching chunks
+        import('./pages/ProductSkateAnlagenPage');
+        import('./pages/ProductPumptrackPage');
+        import('./pages/ProductHockeyRinkPage');
+        import('./pages/ProductBmxPage');
+        import('./pages/ProductGrillPage');
+        import('./pages/ProductChangingCabinePage');
+        import('./pages/ProductPavilionPage');
+        import('./pages/ProjectDetailPage');
     };
 
     if (document.readyState === 'complete') {
@@ -72,8 +71,8 @@ const App: React.FC = () => {
       {/* Z-Index changed to 0 to sit ON TOP of body bg, but BEHIND content (z-10) */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
           
-          {/* 1. The Grid Pattern (Technical Look) */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_40%,transparent_100%)]"></div>
+          {/* 1. The Grid Pattern (Technical Look) - Opacity increased to 0.05 */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_40%,transparent_100%)]"></div>
 
           {/* 2. Main Orange Glow (Top Left) */}
           <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-brand-orange/20 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow"></div>

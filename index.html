@@ -7,8 +7,8 @@
     <title>Beton-Skateparks, Pumptracks & Skate-Anlagen | A+ Urban Design</title>
     <meta name="description" content="TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig. Fordern Sie jetzt Ihr individuelles Angebot an." />
     
-    <!-- 1. CRITICAL ASSET PRELOADING (MOBILE OPTIMIZED) -->
-    <!-- Tells browser to download the CORRECT image size based on device width -->
+    <!-- 1. CRITICAL ASSET PRELOADING -->
+    <!-- Preload the mobile image variant for fastest LCP on phones -->
     <link rel="preload" as="image" 
           href="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800"
           imagesrcset="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w"
@@ -43,6 +43,7 @@
             animation: {
               'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
               'marquee': 'marquee 25s linear infinite',
+              'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
             keyframes: {
               'fade-in-up': {
@@ -59,8 +60,6 @@
       }
     </script>
     
-    <!-- 2. CRITICAL CSS (INLINE) -->
-    <!-- Ensures the layout is black and structured before Tailwind/React loads -->
     <style>
       body {
         background-color: #020202;
@@ -71,56 +70,26 @@
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
       }
-      /* App Shell Styles (Instant Load) */
-      #app-shell-hero {
-        position: relative;
-        height: 85vh; /* Fallback */
-        height: 85svh; /* Mobile Modern */
-        width: 100%;
-        overflow: hidden;
-        background-color: #000;
-        z-index: 0;
-      }
-      #app-shell-img {
-        position: absolute;
+      /* Minimal Loading State (No Glitchy Images) */
+      #initial-loader {
+        position: fixed;
         inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 1;
-        transition: opacity 0.5s ease;
-      }
-      .shell-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding-bottom: 6rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        z-index: 10;
-        pointer-events: none;
-      }
-      .shell-container {
-        max-width: 80rem;
-        margin: 0 auto;
-      }
-      .shell-title {
-        font-family: system-ui, -apple-system, sans-serif;
-        font-weight: 900;
-        text-transform: uppercase;
-        line-height: 0.85;
-        color: white;
-        font-size: clamp(2.5rem, 10vw, 9rem);
+        background-color: #020202;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
       }
-      .text-outline-shell {
-        -webkit-text-stroke: 1px #fff; 
-        color: transparent;
+      .loader-logo {
+        width: 64px;
+        height: 64px;
+        animation: pulseLogo 2s infinite ease-in-out;
       }
-      .text-orange-shell {
-        color: #F97316;
+      @keyframes pulseLogo {
+        0% { opacity: 0.3; transform: scale(0.95); }
+        50% { opacity: 1; transform: scale(1.05); }
+        100% { opacity: 0.3; transform: scale(0.95); }
       }
     </style>
 <script type="importmap">
@@ -138,42 +107,10 @@
 </head>
   <body class="bg-[#020202] text-brand-text">
     
-    <!-- 3. APP SHELL (Mobile Optimized) -->
-    <!-- Uses srcset to deliver smaller images to mobile devices instantly -->
+    <!-- Minimal Loader (Disappears when React mounts) -->
     <div id="root">
-        <!-- HEADER PLACEHOLDER -->
-        <header class="fixed top-0 left-0 right-0 z-50 py-4 px-4">
-            <div class="flex items-center gap-3">
-                 <img src="https://i.ibb.co/whMmCDk9/apluslogo.png" style="width: 32px; height: 32px;" alt="Logo" />
-                 <div class="flex flex-col leading-none">
-                    <span class="text-white font-black text-sm md:text-xl">A+ URBAN</span>
-                    <span class="text-[#F97316] font-bold text-[10px] md:text-sm">DESIGN</span>
-                 </div>
-            </div>
-        </header>
-
-        <!-- HERO PLACEHOLDER -->
-        <div id="app-shell-hero">
-            <img 
-                id="app-shell-img"
-                src="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800"
-                srcset="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w"
-                sizes="100vw"
-                alt="Architecture" 
-                width="1600" 
-                height="900"
-            />
-            <div style="position: absolute; inset: 0; background-color: rgba(0,0,0,0.4);"></div>
-            
-            <div class="shell-content">
-                <div class="shell-container">
-                     <h1 class="shell-title">
-                        <span>Architektur</span>
-                        <span class="text-outline-shell">für</span>
-                        <span class="text-orange-shell">Freiräume</span>
-                    </h1>
-                </div>
-            </div>
+        <div id="initial-loader">
+             <img class="loader-logo" src="https://i.ibb.co/whMmCDk9/apluslogo.png" alt="Loading..." />
         </div>
     </div>
 

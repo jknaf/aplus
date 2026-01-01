@@ -1,20 +1,23 @@
-import { defineConfig } from 'vite'
+import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), splitVendorChunkPlugin()],
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Separate huge React libraries into a stable 'vendor' chunk
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          // Separate UI utilities
-          ui: ['@google/genai'] // Keep AI stuff separate if used, so it doesn't block main load
+        manualChunks: (id) => {
+           // Separate huge React libraries into a stable 'vendor' chunk
+           if (id.includes('node_modules')) {
+             if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+               return 'vendor-react';
+             }
+             return 'vendor';
+           }
         }
       }
     },
-    chunkSizeWarningLimit: 1000 // Increase warning limit slightly for vendor chunk
+    chunkSizeWarningLimit: 600
   }
 })

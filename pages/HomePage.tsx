@@ -297,60 +297,46 @@ const ScrollyFeature: React.FC<{
     );
 };
 
-// --- INSTANT HERO COMPONENT ---
-// Matches the "App Shell" defined in index.html exactly.
-// React "Hydrates" this markup seamlessly without repainting.
+// --- OPTIMIZED HERO COMPONENT ---
+// Uses srcset to deliver light images to mobile, huge images to desktop.
+// No JavaScript logic for loading means no "Jumps".
 const Hero: React.FC = () => {
     const [videoReady, setVideoReady] = useState(false);
-    const videoRef = useRef<HTMLVideoElement>(null);
-
-    const BG_IMAGE = "https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600";
-    const VIDEO_SRC = "https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4";
-
-    useEffect(() => {
-        // Only attempt video load after the critical LCP content is settled
-        const timer = setTimeout(() => {
-             const video = videoRef.current;
-             if (video) {
-                 video.muted = true;
-                 video.defaultMuted = true;
-                 video.play().catch(() => {});
-             }
-        }, 1000); // 1s delay to prioritize UI responsiveness
-        return () => clearTimeout(timer);
-    }, []);
+    
+    // Check if we are on mobile to skip video loading entirely for performance
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
     return (
         <div className="relative h-[85svh] md:h-[90vh] w-full overflow-hidden bg-black">
             
-            {/* LAYER 1: BASE IMAGE (Must match index.html PRELOAD & SHELL) */}
+            {/* LAYER 1: RESPONSIVE IMAGE (No Jump) */}
+            {/* Using picture/source ensures browser downloads correct size immediately */}
             <div className="absolute inset-0 z-0">
                  <img 
-                    src={BG_IMAGE}
+                    src="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    srcSet="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w"
+                    sizes="100vw"
                     alt="Architecture" 
                     className="w-full h-full object-cover"
-                    width="1600"
-                    height="900"
-                    // Important: No lazy loading for LCP element
                     loading="eager" 
                     decoding="sync"
                 />
             </div>
 
-            {/* LAYER 2: VIDEO OVERLAY (Lazy) */}
-            <div className={`absolute inset-0 z-10 transition-opacity duration-[2000ms] ease-in-out ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
-                <video 
-                    ref={videoRef}
-                    className="w-full h-full object-cover"
-                    src={VIDEO_SRC}
-                    muted
-                    loop
-                    playsInline 
-                    autoPlay={false} // Controlled by effect
-                    preload="none" // Controlled by effect
-                    onCanPlay={() => setVideoReady(true)}
-                />
-            </div>
+            {/* LAYER 2: VIDEO OVERLAY (Desktop Only) */}
+            {!isMobile && (
+                <div className={`absolute inset-0 z-10 transition-opacity duration-[2000ms] ease-in-out ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
+                    <video 
+                        className="w-full h-full object-cover"
+                        src="https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4"
+                        muted
+                        loop
+                        playsInline 
+                        autoPlay
+                        onCanPlay={() => setVideoReady(true)}
+                    />
+                </div>
+            )}
 
             {/* LAYER 3: DARKNESS OVERLAY */}
             <div className="absolute inset-0 z-20 bg-black/40"></div>

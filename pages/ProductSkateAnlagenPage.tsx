@@ -8,7 +8,7 @@ const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'skate-anlagen' && p.id !== 'pumptrack').slice(0, 3);
   return (
     <div className="mt-32 border-t border-white/10 pt-24 relative z-20">
-      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest">More Engineered Solutions</h2>
+      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest">Weitere Systemlösungen</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
           <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface border border-white/5 z-20">
@@ -102,7 +102,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group relative z-10">
                          <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Skate Bowl Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. BOWL SECTION</div>
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 01. BOWL ELEMENT</div>
                     </div>
                     
                     {/* Feature Highlight Box */}
@@ -129,7 +129,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
 
                     <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group relative z-10">
                          <img src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Street Skateboarding" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. STREET PLAZA</div>
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 02. STREET PLAZA</div>
                     </div>
                 </div>
             </div>
@@ -137,8 +137,8 @@ const ProductSkateAnlagenPage: React.FC = () => {
             {/* 3. TECHNICAL SPECS GRID */}
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
-                    <h2 className="text-4xl font-black font-heading text-white uppercase tracking-tighter">Tech<span className="text-brand-orange">Specs</span></h2>
-                    <span className="font-mono text-brand-muted text-xs hidden sm:block">DATASHEET: SKATE-SYSTEMS</span>
+                    <h2 className="text-4xl font-black font-heading text-white uppercase tracking-tighter">Technische<span className="text-brand-orange">Daten</span></h2>
+                    <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: SKATE-SYSTEME</span>
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

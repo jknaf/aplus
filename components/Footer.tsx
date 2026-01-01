@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
              <p className="text-xs text-brand-muted">
-                &copy; {new Date().getFullYear()} A+ Urban Design. All rights reserved. Made in Stuttgart.
+                &copy; {new Date().getFullYear()} A+ Urban Design. Alle Rechte vorbehalten. Aus Stuttgart.
             </p>
             <div className="flex gap-6">
                 <Link to="/impressum" className="text-xs text-brand-muted hover:text-brand-orange transition-colors uppercase tracking-wider">Impressum</Link>

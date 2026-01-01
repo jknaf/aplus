@@ -8,7 +8,7 @@ const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'pumptrack' && p.id !== 'skate-anlagen').slice(0, 3);
   return (
     <div className="mt-32 border-t border-white/10 pt-24">
-      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest">Passende Alternativen</h2>
+      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest">Weitere Systemlösungen</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
           <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface border border-white/5">
@@ -60,13 +60,13 @@ const ProductPumptrackPage: React.FC = () => {
             <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
-                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em]">Flow Motion</span>
+                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em]">Flow & Dynamik</span>
                          <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider">
                             <span className="material-symbols-outlined text-base">verified_user</span> DIN EN 14974
                          </span>
                     </div>
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
-                        Concrete<br/>
+                        Beton<br/>
                         <span className="text-outline-bold">Pumptracks</span>
                     </h1>
                 </div>
@@ -101,14 +101,14 @@ const ProductPumptrackPage: React.FC = () => {
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group">
                          <img src="https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pumptrack Curve" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. BERMED CORNER</div>
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 01. STEILKURVE</div>
                     </div>
                     
                     <div className="bg-brand-surface border border-white/10 p-8 my-8">
                         <h3 className="text-2xl font-bold font-heading text-white uppercase mb-4">Track Features</h3>
                         <div className="grid grid-cols-2 gap-4 text-sm text-gray-400 font-mono uppercase">
-                             <div className="flex items-center gap-2"><div className="w-2 h-2 bg-brand-orange"></div>Rollers</div>
-                             <div className="flex items-center gap-2"><div className="w-2 h-2 bg-brand-orange"></div>Bermed Corners</div>
+                             <div className="flex items-center gap-2"><div className="w-2 h-2 bg-brand-orange"></div>Rollers (Wellen)</div>
+                             <div className="flex items-center gap-2"><div className="w-2 h-2 bg-brand-orange"></div>Steilkurven</div>
                              <div className="flex items-center gap-2"><div className="w-2 h-2 bg-brand-orange"></div>Doubles</div>
                              <div className="flex items-center gap-2"><div className="w-2 h-2 bg-brand-orange"></div>Tabletops</div>
                         </div>
@@ -116,7 +116,7 @@ const ProductPumptrackPage: React.FC = () => {
 
                     <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group">
                          <img src="https://images.pexels.com/photos/2241144/pexels-photo-2241144.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pumptrack Overview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. MODULAR SYSTEM</div>
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 02. MODULARES SYSTEM</div>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@ const ProductPumptrackPage: React.FC = () => {
             {/* 3. TECHNICAL SPECS */}
             <div className="mb-32">
                 <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
-                    <h2 className="text-4xl font-black font-heading text-white uppercase tracking-tighter">System<span className="text-brand-orange">Data</span></h2>
+                    <h2 className="text-4xl font-black font-heading text-white uppercase tracking-tighter">System<span className="text-brand-orange">Daten</span></h2>
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

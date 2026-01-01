@@ -58,11 +58,11 @@ const ProductScrollytelling: React.FC = () => {
                 
                 <AnimatedSection className="mb-24 text-center">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded">
-                        Product Portfolio
+                        Unser Portfolio
                     </span>
                     <h2 className="text-5xl md:text-7xl font-black font-heading text-white uppercase tracking-tight">
-                        Engineered<br/>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-white">Solutions</span>
+                        Technische<br/>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-white">Perfektion</span>
                     </h2>
                 </AnimatedSection>
 
@@ -78,10 +78,10 @@ const ProductScrollytelling: React.FC = () => {
                                 <div className="flex justify-between items-start">
                                     <div className="flex gap-2">
                                         <div className="w-2 h-2 bg-brand-orange animate-pulse"></div>
-                                        <span className="text-[10px] font-mono text-brand-orange tracking-widest">LIVE FEED</span>
+                                        <span className="text-[10px] font-mono text-brand-orange tracking-widest">LIVE BILD</span>
                                     </div>
                                     <div className="text-[10px] font-mono text-gray-500 tracking-widest">
-                                        CAM-0{PRODUCTS.findIndex(p => p.id === activeId) + 1}
+                                        KAMERA-0{PRODUCTS.findIndex(p => p.id === activeId) + 1}
                                     </div>
                                 </div>
                                 
@@ -96,7 +96,7 @@ const ProductScrollytelling: React.FC = () => {
                                     </div>
                                     <div className="border border-white/20 px-2 py-1 bg-black/50 backdrop-blur-md">
                                         <span className="text-xs font-bold text-white uppercase tracking-wider">
-                                            {PRODUCTS.find(p => p.id === activeId)?.tuvCertified ? 'TÜV APPROVED' : 'A+ STANDARD'}
+                                            {PRODUCTS.find(p => p.id === activeId)?.tuvCertified ? 'TÜV GEPRÜFT' : 'A+ STANDARD'}
                                         </span>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@ const ProductScrollytelling: React.FC = () => {
                                             <Link to={product.path} className="block p-6 md:p-8">
                                                 <div className="flex justify-between items-start mb-4">
                                                     <span className={`font-mono text-xs tracking-widest uppercase mb-1 block transition-colors ${isActive ? 'text-brand-orange' : 'text-gray-500'}`}>
-                                                        Module 0{index + 1}
+                                                        Modul 0{index + 1}
                                                     </span>
                                                     {isActive && (
                                                         <span className="material-symbols-outlined text-brand-orange animate-pulse">
@@ -374,7 +374,7 @@ const HomePage: React.FC = () => {
                         <div className="lg:sticky lg:top-32 h-fit">
                              <span className="text-brand-orange font-bold tracking-widest uppercase text-sm mb-4 block">Unsere DNA</span>
                              <h2 className="text-6xl md:text-8xl font-black font-heading text-white leading-[0.85] mb-8 uppercase">
-                                Built<br/>to<br/><span className="text-outline-orange">Last.</span>
+                                Gebaut<br/>für die<br/><span className="text-outline-orange">Ewigkeit.</span>
                              </h2>
                              <p className="text-xl text-gray-400 leading-relaxed mb-8">
                                  Wir schaffen urbane Landschaften aus Beton und Stahl, die jeder Belastung standhalten.
@@ -402,7 +402,7 @@ const HomePage: React.FC = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <AnimatedSection>
               <h2 className="text-6xl md:text-8xl font-black font-heading text-white uppercase tracking-tighter mb-8">
-                Ready to <span className="text-brand-orange">Roll?</span>
+                Start<span className="text-brand-orange">klar?</span>
               </h2>
               <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12">
                   Lassen Sie uns gemeinsam etwas Großartiges schaffen. Von der ersten Skizze bis zur Eröffnung.

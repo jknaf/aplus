@@ -39,7 +39,7 @@ const ContactPage: React.FC = () => {
                 {/* Header Text */}
                 <div className="text-center mb-16 animate-fade-in-up">
                     <h1 className="text-6xl md:text-8xl font-black font-heading uppercase tracking-tighter text-white">
-                        Let's<br/><span className="text-brand-orange">Build.</span>
+                        Gemeinsam<br/><span className="text-brand-orange">Planen.</span>
                     </h1>
                     <p className="mt-6 text-xl text-gray-400 max-w-2xl mx-auto font-light">
                         Bereit für das nächste Projekt? Erzählen Sie uns von Ihrer Vision. <br/>
@@ -57,7 +57,7 @@ const ContactPage: React.FC = () => {
                              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-orange/10 rounded-full blur-[80px] pointer-events-none"></div>
 
                             <div>
-                                <h3 className="text-2xl font-bold text-white mb-8 border-b border-white/10 pb-4">Headquarters</h3>
+                                <h3 className="text-2xl font-bold text-white mb-8 border-b border-white/10 pb-4">Planungsbüro</h3>
                                 <div className="space-y-8 font-light text-gray-300">
                                     <div className="flex items-start gap-4">
                                         <span className="material-symbols-outlined text-brand-orange mt-1">location_on</span>

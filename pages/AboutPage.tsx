@@ -78,11 +78,11 @@ const AboutPage: React.FC = () => {
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-5xl">
-            <span className="inline-block py-1 px-3 border border-brand-orange text-brand-orange font-mono text-xs mb-8 animate-fade-in-up">EST. 2005 • STUTTGART</span>
+            <span className="inline-block py-1 px-3 border border-brand-orange text-brand-orange font-mono text-xs mb-8 animate-fade-in-up">SEIT 2005 • STUTTGART</span>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] mb-8 animate-fade-in-up [animation-delay:200ms]">
-                Shaping<br/>
-                <span className="text-outline-bold">Concrete</span><br/>
-                Culture
+                Beton<br/>
+                <span className="text-outline-bold">in</span><br/>
+                Bestform
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto animate-fade-in-up [animation-delay:400ms]">
                 Wir verwandeln graue Flächen in lebendige Begegnungsorte. 
@@ -142,7 +142,7 @@ const AboutPage: React.FC = () => {
           <div className="container mx-auto px-4 relative z-10">
               <div className="text-center mb-16">
                   <span className="text-brand-orange font-mono text-xs tracking-widest uppercase">Der A+ Standard</span>
-                  <h2 className="text-4xl md:text-6xl font-black font-heading text-white uppercase mt-4">The Blueprint</h2>
+                  <h2 className="text-4xl md:text-6xl font-black font-heading text-white uppercase mt-4">Das Prinzip</h2>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 border-t border-b border-white/10 divide-y md:divide-y-0 md:divide-x divide-white/10">
@@ -175,7 +175,7 @@ const AboutPage: React.FC = () => {
                          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" alt="Cüneyit Akcakoca" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"/>
                     </div>
                     <div className="text-center md:text-left">
-                        <div className="inline-block px-2 py-1 bg-white/10 text-xs font-mono text-white mb-4 rounded">FOUNDER & LEAD ARCHITECT</div>
+                        <div className="inline-block px-2 py-1 bg-white/10 text-xs font-mono text-white mb-4 rounded">GRÜNDER & ARCHITEKT</div>
                         <h3 className="text-3xl font-black font-heading text-white uppercase mb-2">Dipl.-Ing. Cüneyit Akcakoca</h3>
                         <p className="text-brand-orange font-bold mb-4">Freier Architekt</p>
                         <p className="text-gray-400 leading-relaxed max-w-lg">

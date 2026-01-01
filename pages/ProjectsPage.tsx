@@ -12,62 +12,109 @@ const ProjectsPage: React.FC = () => {
   const filteredProjects = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
 
   return (
-    <PageShell title="Projekte">
-      <div className="text-center pt-12 pb-16">
-        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-            Referenzen
-        </span>
-        <h1 className="text-5xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter leading-[0.9]">
-            Unsere <span className="text-outline-orange">Projekte.</span>
+    <PageShell title="Referenzen & Projekte">
+      
+      {/* 1. HEADER SECTION */}
+      <div className="relative pt-12 pb-24 text-center">
+        <div className="inline-flex items-center gap-3 py-1 px-4 border border-brand-orange/30 bg-brand-orange/5 rounded-full mb-8 backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+            <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">
+                Portfolio 2005 - 2024
+            </span>
+        </div>
+        <h1 className="text-6xl md:text-9xl font-black font-heading text-white uppercase tracking-tighter leading-[0.85] mb-8">
+            Work<br/><span className="text-outline-bold text-transparent" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.2)' }}>Selection.</span>
         </h1>
-        <p className="mt-8 text-lg text-brand-muted max-w-2xl mx-auto leading-relaxed">
-          Ein Einblick in unsere realisierten Projekte. Sehen Sie, wie unsere modularen Systeme aus Beton und Stahl öffentliche Räume in ganz Europa verwandeln.
-        </p>
       </div>
 
-      <div className="mb-12 border-b border-white/10">
-        <div className="-mb-px flex justify-center flex-wrap gap-x-4 sm:gap-x-8" aria-label="Tabs">
-          <button
-            onClick={() => setFilter('all')}
-            className={`whitespace-nowrap py-4 px-1 border-b-2 font-bold text-sm uppercase tracking-wider transition-colors ${
-              filter === 'all'
-                ? 'border-brand-orange text-brand-orange'
-                : 'border-transparent text-brand-muted hover:text-brand-heading hover:border-gray-300'
-            }`}
-          >
-            Alle
-          </button>
-          {CATEGORIES.map(category => (
-            <button
-              key={category}
-              onClick={() => setFilter(category)}
-              className={`whitespace-nowrap py-4 px-1 border-b-2 font-bold text-sm uppercase tracking-wider capitalize transition-colors ${
-                filter === category
-                  ? 'border-brand-orange text-brand-orange'
-                  : 'border-transparent text-brand-muted hover:text-brand-heading hover:border-gray-300'
-              }`}
-            >
-              {category.replace('-', ' ')}
-            </button>
-          ))}
+      {/* 2. FILTER CONTROL PANEL */}
+      <div className="sticky top-20 z-40 mb-16 backdrop-blur-xl border-y border-white/10 bg-[#050505]/80">
+        <div className="container mx-auto overflow-x-auto">
+             <div className="flex justify-start md:justify-center min-w-max px-4">
+                <button
+                    onClick={() => setFilter('all')}
+                    className={`relative py-6 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 group ${
+                    filter === 'all' ? 'text-brand-orange' : 'text-gray-500 hover:text-white'
+                    }`}
+                >
+                    <span className="relative z-10">Alle Projekte</span>
+                    {filter === 'all' && (
+                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange shadow-[0_0_15px_rgba(249,115,22,0.8)]"></span>
+                    )}
+                </button>
+                {CATEGORIES.map(category => (
+                    <button
+                    key={category}
+                    onClick={() => setFilter(category)}
+                    className={`relative py-6 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 group ${
+                        filter === category ? 'text-brand-orange' : 'text-gray-500 hover:text-white'
+                    }`}
+                    >
+                    <span className="relative z-10">{category.replace('-', ' ')}</span>
+                    {filter === category && (
+                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange shadow-[0_0_15px_rgba(249,115,22,0.8)]"></span>
+                    )}
+                    </button>
+                ))}
+             </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProjects.map(project => (
-          <Link to={`/projekte/${project.id}`} key={project.id} className="group block bg-brand-surface rounded-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 shadow-lg hover:shadow-brand-orange/20 border border-white/5">
-            <div className="relative overflow-hidden">
-              <img loading="lazy" decoding="async" src={project.imageUrl} alt={project.altText} className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" />
-              <div className="absolute top-4 left-4">
-                  <span className="inline-block py-1 px-2 bg-black/80 text-white text-[10px] font-mono uppercase tracking-widest border border-white/10">
-                      {project.year || '2023'}
-                  </span>
-              </div>
+      {/* 3. PROJECT GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 px-2">
+        {filteredProjects.map((project, index) => (
+          <Link 
+            to={`/projekte/${project.id}`} 
+            key={project.id} 
+            className="group relative block aspect-[4/3] md:aspect-[16/10] overflow-hidden bg-[#121212] border border-white/10 rounded-sm hover:border-brand-orange/50 transition-all duration-500"
+          >
+            {/* Image Layer */}
+            <div className="absolute inset-0 z-0">
+                 <img 
+                    loading="lazy" 
+                    decoding="async" 
+                    src={project.imageUrl} 
+                    alt={project.altText} 
+                    className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 filter grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100" 
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
             </div>
-            <div className="p-6">
-              <p className="text-xs font-bold text-brand-orange uppercase tracking-widest mb-2">{project.category.replace('-', ' ')}</p>
-              <h3 className="text-2xl font-black font-heading text-white uppercase tracking-tighter mb-3">{project.title}</h3>
-              <p className="text-brand-muted line-clamp-3 text-sm leading-relaxed">{project.description}</p>
+
+            {/* HUD Overlay (Corners) */}
+            <div className="absolute inset-4 z-10 border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-brand-orange"></div>
+                <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-brand-orange"></div>
+                <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-brand-orange"></div>
+                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-brand-orange"></div>
+            </div>
+
+            {/* Content Layer */}
+            <div className="absolute inset-0 z-20 p-8 flex flex-col justify-between">
+                
+                {/* Top Label */}
+                <div className="flex justify-between items-start opacity-100 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="inline-block py-1 px-2 bg-black/50 backdrop-blur-md text-[10px] font-mono uppercase tracking-widest text-brand-orange border border-brand-orange/20">
+                        REF-{String(index + 1).padStart(3, '0')}
+                    </span>
+                    <span className="text-[10px] font-mono text-gray-400 uppercase tracking-widest bg-black/50 backdrop-blur-md px-2 py-1 rounded-sm">
+                        {project.year || '2023'}
+                    </span>
+                </div>
+
+                {/* Bottom Info */}
+                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-3xl md:text-5xl font-black font-heading text-white uppercase tracking-tighter mb-2 leading-[0.9]">
+                        {project.title}
+                    </h3>
+                    <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
+                        <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-lg mt-4 border-l-2 border-brand-orange pl-4">
+                            {project.description}
+                        </p>
+                        <div className="mt-4 flex items-center gap-2 text-brand-orange text-xs font-bold uppercase tracking-widest">
+                            Projekt ansehen <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                        </div>
+                    </div>
+                </div>
             </div>
           </Link>
         ))}

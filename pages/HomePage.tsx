@@ -337,13 +337,19 @@ const Hero: React.FC = () => {
             {/* Slide Renderer */}
             {HERO_ITEMS.map((item, index) => {
                 const isActive = index === currentIndex;
+                // Force visibility for the first item instantly via CSS if JS fails or delays
+                const isFirst = index === 0;
                 
                 return (
                     <div
                         key={item.id}
-                        className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                        className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'} ${isFirst && currentIndex === 0 ? 'opacity-100' : ''}`}
                         // Optimization: Use visibility to hide from screen readers/clicks but keep DOM mostly active to prevent reflow
-                        style={{ visibility: isActive || index === (currentIndex + 1) % HERO_ITEMS.length ? 'visible' : 'hidden' }}
+                        style={{ 
+                            visibility: isActive || index === (currentIndex + 1) % HERO_ITEMS.length ? 'visible' : 'hidden',
+                            // Fail-safe: If JS crashes, first item stays visible
+                            opacity: (isFirst && currentIndex === 0) ? 1 : (isActive ? 1 : 0)
+                        }}
                     >
                         {item.type === 'video' ? (
                             <VideoSlide src={item.src} poster={item.poster || ''} isActive={isActive} />

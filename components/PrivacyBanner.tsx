@@ -3,6 +3,35 @@ import { Link } from 'react-router-dom';
 
 const CONSENT_KEY = 'a-plus-urban-design-privacy-consent';
 
+// --- SAFE STORAGE HELPER ---
+// This prevents the "White Screen of Death" on iOS Private Mode
+const safeStorage = {
+    getItem: (key: string): string | null => {
+        try {
+            // Test if storage is actually available
+            if (typeof window !== 'undefined' && window.localStorage) {
+                return window.localStorage.getItem(key);
+            }
+        } catch (e) {
+            // Storage is blocked (Private Mode / Security Settings)
+            // Return null to simulate "new user" behavior without crashing
+            return null;
+        }
+        return null;
+    },
+    setItem: (key: string, value: string) => {
+        try {
+            if (typeof window !== 'undefined' && window.localStorage) {
+                window.localStorage.setItem(key, value);
+            }
+        } catch (e) {
+            // If write fails, we just ignore it. User preferences won't be saved 
+            // across sessions, but the site keeps working.
+            console.warn('Privacy Mode: Could not save consent.');
+        }
+    }
+};
+
 const PrivacyBanner: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,22 +44,13 @@ const PrivacyBanner: React.FC = () => {
     });
 
     useEffect(() => {
-        // CRITICAL FIX FOR IPHONE/SAFARI:
-        // 1. Delay the banner check so the Hero video has priority loading time.
-        // 2. Wrap localStorage in try/catch because Safari Private Mode throws an error if access is denied, crashing the app.
+        // We use a small timeout to let the main LCP (Largest Contentful Paint) happen first
         const timer = setTimeout(() => {
-            try {
-                const consent = localStorage.getItem(CONSENT_KEY);
-                if (!consent) {
-                    setIsVisible(true);
-                }
-            } catch (e) {
-                // If localStorage is blocked (e.g. strict privacy settings), we still show the banner
-                // but we won't be able to save persistent preferences.
-                console.warn('LocalStorage access restricted, showing default banner.');
+            const consent = safeStorage.getItem(CONSENT_KEY);
+            if (!consent) {
                 setIsVisible(true);
             }
-        }, 1500); // 1.5s Delay - Let the site "breathe" first
+        }, 1000);
 
         const showSettingsHandler = () => {
             setIsVisible(true);
@@ -46,12 +66,9 @@ const PrivacyBanner: React.FC = () => {
     }, []);
 
     const saveConsent = (settings: typeof preferences) => {
-        try {
-            const consent = { ...settings, timestamp: new Date().toISOString() };
-            localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
-        } catch (e) {
-            console.warn('Could not save consent to localStorage');
-        }
+        const consent = { ...settings, timestamp: new Date().toISOString() };
+        safeStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+        
         setIsVisible(false);
         setIsModalOpen(false);
     };

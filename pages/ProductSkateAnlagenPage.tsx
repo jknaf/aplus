@@ -7,15 +7,16 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'skate-anlagen' && p.id !== 'pumptrack').slice(0, 3);
   return (
-    <div className="mt-24">
-      <h2 className="text-3xl font-bold font-heading text-center mb-10">Entdecken Sie weitere Produkte</h2>
+    <div className="mt-32 border-t border-white/10 pt-24">
+      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest">More Engineered Solutions</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
-          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-xl shadow-lg hover:shadow-brand-orange/20 transition-shadow duration-300 aspect-[4/5] bg-brand-surface">
-            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100"/>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface border border-white/5">
+            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="relative h-full flex flex-col justify-end p-8">
-              <h3 className="text-3xl font-bold font-heading text-brand-heading transform group-hover:-translate-y-2 transition-transform duration-300">{product.title}</h3>
+               <span className="text-brand-orange font-mono text-xs mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
+              <h3 className="text-2xl font-black font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
           </Link>
         ))}
@@ -24,19 +25,13 @@ const OtherProducts: React.FC = () => {
   );
 }
 
-const CheckmarkIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 w-5 h-5 text-brand-orange mr-3 mt-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-    </svg>
+const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = ({ title, value, icon }) => (
+    <div className="bg-brand-surface/50 border border-white/10 p-6 backdrop-blur-sm hover:border-brand-orange/50 transition-colors duration-300">
+        <span className="material-symbols-outlined text-brand-orange text-3xl mb-4">{icon}</span>
+        <h4 className="text-gray-400 font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
+        <p className="text-white font-bold text-lg leading-tight">{value}</p>
+    </div>
 );
-
-const features = [
-    { bold: "Sicherheit an erster Stelle:", text: "Als weltweit erste modulare Betonelemente sind unsere Produkte TÜV-zertifiziert nach DIN EN 14974 und tragen das GS-Zeichen. Ein Hartgummikantenschutz sorgt für zusätzliche Sicherheit." },
-    { bold: "Hochwertige Materialien:", text: "Wir verwenden ausschließlich bewehrten Beton, Edelstahl, verzinkten Stahl und Hartgummi für maximale Langlebigkeit." },
-    { bold: "Fundamentfreie Montage:", text: "Einfaches Aufstellen auf verdichteten Flächen spart Zeit, Kosten und schont den Untergrund. Ideal auch für Erdeinbau und Modellierungen." },
-    { bold: "Perfekte Fahrfläche:", text: "Die unversiegelte, rutschfeste Betonoberfläche wird bei Feuchtigkeit nicht glitschig und bietet optimalen Grip." },
-    { bold: "Minimale Wartung & Lärm:", text: "Extrem wartungsarm und deutlich leiser als Holz- oder Stahlkonstruktionen, was die Akzeptanz bei Anwohnern erhöht." },
-];
 
 const ProductSkateAnlagenPage: React.FC = () => {
   useEffect(() => {
@@ -45,77 +40,124 @@ const ProductSkateAnlagenPage: React.FC = () => {
     if (descriptionTag) {
       descriptionTag.setAttribute('content', 'Planung und Bau von modularen Beton-Skateparks. TÜV-zertifizierte Skate-Elemente wie Ramps, Bowls & Rails. Langlebig, fundamentfrei und europaweite Lieferung.');
     }
-
-    const keywordsTag = document.querySelector('meta[name="keywords"]');
-    if (keywordsTag) {
-      keywordsTag.setAttribute('content', 'Skate-Anlagen, Beton-Skatepark, Concrete Skatepark, Skatepark bauen, Skate-Rampen, Quarter-Ramps, Half-Pipe, Skate-Pool, Bowl, TÜV-zertifizierte Skate-Elemente');
-    }
   }, []);
 
   return (
     <PageShell title="Planung & Bau von Beton-Skateanlagen">
-       <div className="text-center mb-12">
-            <div className="flex justify-center items-center gap-4 flex-wrap">
-                <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Beton-Skateparks & Skate-Anlagen</h1>
-                <div className="group/siegel relative">
-                    <button type="button" aria-describedby="tuv-info-skate" className="bg-white text-brand-bg font-bold px-3 py-1.5 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-brand-bg focus:ring-brand-orange">
-                        TÜV-ZERTIFIZIERT
-                    </button>
-                    <div id="tuv-info-skate" role="tooltip" className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max bg-brand-bg text-white text-xs px-2 py-1 rounded opacity-0 group-hover/siegel:opacity-100 group-focus-within/siegel:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                        Geprüfte Sicherheit nach DIN EN 14974
+       
+       {/* 1. IMMERSIVE HERO */}
+       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden">
+            <div className="absolute inset-0">
+                <img 
+                    src="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg" 
+                    alt="Hero Beton Skatepark" 
+                    className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-brand-bg"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+            
+            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
+                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em]">Original A+</span>
+                         <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider">
+                            <span className="material-symbols-outlined text-base">verified_user</span> DIN EN 14974
+                         </span>
+                    </div>
+                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
+                        Beton<br/>
+                        <span className="text-outline-bold">Skateparks</span>
+                    </h1>
+                </div>
+            </div>
+       </div>
+
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* 2. SPLIT LAYOUT: STICKY INFO & SCROLLING GALLERY */}
+            <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mb-32">
+                
+                {/* Left: Sticky Narrative */}
+                <div className="lg:w-5/12">
+                    <div className="lg:sticky lg:top-32">
+                        <h2 className="text-3xl font-bold font-heading text-white mb-8">Das Original seit den 90ern.</h2>
+                        <p className="text-xl text-gray-400 leading-relaxed mb-8">
+                            Unsere modularen Skate-Elemente haben den öffentlichen Raum revolutioniert. Sie bieten die perfekte Symbiose aus der Haltbarkeit von Beton und der Flexibilität eines Baukastensystems.
+                        </p>
+                        <p className="text-lg text-brand-muted leading-relaxed mb-12">
+                             Egal ob Street-Plaza oder Flow-Park: Wir liefern TÜV-zertifizierte Module, die einfach auf eine verdichtete Schotterfläche gestellt werden. Kein aufwendiger Tiefbau, keine teuren Fundamente.
+                        </p>
+                        
+                        <div className="flex flex-col gap-4">
+                            <Link to="/kontakt" className="inline-flex justify-center items-center gap-3 bg-brand-orange text-black font-black uppercase tracking-widest py-4 px-8 hover:bg-white transition-all duration-300">
+                                3D-Planung anfragen <span className="material-symbols-outlined">arrow_forward</span>
+                            </Link>
+                            <span className="text-xs text-gray-500 font-mono text-center">Inklusive Kostenschätzung & Layout</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right: Scrolling Gallery & Features */}
+                <div className="lg:w-7/12 flex flex-col gap-8">
+                    <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group">
+                         <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Skate Bowl Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. BOWL SECTION</div>
+                    </div>
+                    
+                    {/* Feature Highlight Box */}
+                    <div className="bg-brand-surface border border-brand-orange/20 p-8 my-8 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-4 opacity-10">
+                            <span className="material-symbols-outlined text-9xl text-brand-orange">engineering</span>
+                        </div>
+                        <h3 className="text-2xl font-bold font-heading text-white uppercase mb-4 relative z-10">Warum Beton?</h3>
+                        <ul className="space-y-4 relative z-10">
+                            <li className="flex gap-4">
+                                <span className="text-brand-orange font-mono">01</span>
+                                <span className="text-gray-300">Flüsterleise: Hohe Masse absorbiert Schall.</span>
+                            </li>
+                            <li className="flex gap-4">
+                                <span className="text-brand-orange font-mono">02</span>
+                                <span className="text-gray-300">Unzerstörbar: Resistent gegen Feuer & Schnitte.</span>
+                            </li>
+                            <li className="flex gap-4">
+                                <span className="text-brand-orange font-mono">03</span>
+                                <span className="text-gray-300">Grip: Perfekte Haftung, trocknet schnell ab.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group">
+                         <img src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Street Skateboarding" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. STREET PLAZA</div>
                     </div>
                 </div>
             </div>
-           <p className="mt-2 text-lg text-brand-muted">Das Original seit den 90er Jahren</p>
-        </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <div>
-          <img loading="lazy" decoding="async" src="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg" alt="BETON-SKATEANLAGE A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
-          <div className="grid grid-cols-3 gap-4 mt-4">
-            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Detailaufnahme einer Skate-Bowl aus Beton" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Eine Quarter-Ramp in einem Concrete Skatepark" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/18449733/pexels-photo-18449733.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Modulare Skate-Elemente für eine individuelle Skate-Anlage" className="w-full h-auto object-cover rounded-lg shadow-md" />
-          </div>
-        </div>
-        <div>
-          <p className="mt-4 text-xl text-brand-muted leading-relaxed">
-            Unsere modularen Skate-Elemente sind ein Original A+ URBAN DESIGN Produkt, das bereits in den 90er Jahren entwickelt wurde. Sie ermöglichen eine riesige Vielfalt an Kombinationen und eignen sich perfekt für Skate-, Inline- und BMX-Anlagen.
-          </p>
-          <div className="mt-10">
-            <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Unsere Skate-Elemente</h2>
-            <p className="mt-4 text-brand-muted">Wir bieten eine breite Palette an TÜV-zertifizierten (DIN EN 14974) und GS-zertifizierten Skate-Elementen:</p>
-            <ul className="mt-4 columns-2 space-y-2 text-brand-muted">
-              <li>&raquo; Quarter-Ramps</li>
-              <li>&raquo; Half-Pipes & Mini-Ramps</li>
-              <li>&raquo; Skate-Pools & Bowls</li>
-              <li>&raquo; Fun-Boxen & Pyramiden</li>
-              <li>&raquo; Ledges & Curbs</li>
-              <li>&raquo; Banks & Waves</li>
-              <li>&raquo; Rails & Manual Pads</li>
-              <li>&raquo; Concrete Stairs</li>
-            </ul>
-          </div>
-           <div className="mt-10">
-            <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Vorteile unserer Beton-Skateparks</h2>
-            <ul className="mt-6 space-y-4 text-brand-muted">
-              {features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                      <CheckmarkIcon />
-                      <div>
-                          {feature.bold && <span className="font-bold mr-2">{feature.bold}</span>}
-                          {feature.text}
-                      </div>
-                  </li>
-              ))}
-            </ul>
-          </div>
-          <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">
-            3D-Planung anfragen
-          </Link>
-        </div>
-      </div>
-      <BrochureRequestForm context="productpage" />
-      <OtherProducts />
+
+            {/* 3. TECHNICAL SPECS GRID */}
+            <div className="mb-32">
+                <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
+                    <h2 className="text-4xl font-black font-heading text-white uppercase tracking-tighter">Tech<span className="text-brand-orange">Specs</span></h2>
+                    <span className="font-mono text-brand-muted text-xs hidden sm:block">DATASHEET: SKATE-SYSTEMS</span>
+                </div>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <TechSpecCard title="Zertifizierung" value="DIN EN 14974" icon="verified" />
+                    <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
+                    <TechSpecCard title="Material" value="C35/45 Beton" icon="architecture" />
+                    <TechSpecCard title="Kantenschutz" value="Verzinkt / Gummi" icon="shield" />
+                    <TechSpecCard title="Lautstärke" value="Lärmmindernd" icon="volume_off" />
+                    <TechSpecCard title="Oberfläche" value="Besenstrich / Glatt" icon="texture" />
+                    <TechSpecCard title="Modularität" value="Erweiterbar" icon="extension" />
+                    <TechSpecCard title="Gewährleistung" value="5 Jahre" icon="security" />
+                </div>
+            </div>
+
+            {/* 4. BROCHURE & CTA */}
+            <BrochureRequestForm context="productpage" />
+            <OtherProducts />
+
+       </div>
     </PageShell>
   );
 };

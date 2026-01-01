@@ -7,15 +7,16 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'ueberdachung' && p.id !== 'grillstelle').slice(0, 3);
   return (
-    <div className="mt-24">
-      <h2 className="text-3xl font-bold font-heading text-center mb-10">Entdecken Sie weitere Produkte</h2>
+    <div className="mt-32 border-t border-white/10 pt-24">
+      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest">More Urban Furniture</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
-          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-xl shadow-lg hover:shadow-brand-orange/20 transition-shadow duration-300 aspect-[4/5] bg-brand-surface">
-            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100"/>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface border border-white/5">
+            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="relative h-full flex flex-col justify-end p-8">
-              <h3 className="text-3xl font-bold font-heading text-brand-heading transform group-hover:-translate-y-2 transition-transform duration-300">{product.title}</h3>
+               <span className="text-brand-orange font-mono text-xs mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
+              <h3 className="text-2xl font-black font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
           </Link>
         ))}
@@ -24,74 +25,118 @@ const OtherProducts: React.FC = () => {
   );
 }
 
-const CheckmarkIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 w-5 h-5 text-brand-orange mr-3 mt-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-    </svg>
+const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = ({ title, value, icon }) => (
+    <div className="bg-brand-surface/50 border border-white/10 p-6 backdrop-blur-sm hover:border-brand-orange/50 transition-colors duration-300">
+        <span className="material-symbols-outlined text-brand-orange text-3xl mb-4">{icon}</span>
+        <h4 className="text-gray-400 font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
+        <p className="text-white font-bold text-lg leading-tight">{value}</p>
+    </div>
 );
-
-const features = [
-    { bold: "Multifunktional:", text: "Einsetzbar als einzelne Sitznische, Haltestellenüberdachung oder in Gruppen als Pavillon." },
-    { bold: "Fundamentfreier Aufbau:", text: "Wird auf einem verdichteten Kies- oder Schotterbett aufgestellt." },
-    { bold: "Extrem Vandalismussicher:", text: "Massive Bauweise aus bewehrtem Hochleistungsbeton (C 35/45)." },
-    { bold: "Wartungsfrei & Witterungsbeständig:", text: "Kein Streichen, kein Verrotten, für den ganzjährigen Einsatz konzipiert." },
-    { bold: "Technische Daten:", text: "Maße pro Element: Länge 240cm, Tiefe 200cm, Höhe 246cm (+16cm)." },
-];
 
 const ProductPavilionPage: React.FC = () => {
   useEffect(() => {
     document.title = "Überdachung & Pavillon aus Beton | A+ Urban Design";
-    const descriptionTag = document.querySelector('meta[name="description"]');
-    if (descriptionTag) {
-      descriptionTag.setAttribute('content', 'Moderne Überdachungen und Pavillons aus Beton. Vandalismussicher, fundamentfrei und witterungsbeständig. Idealer Wetterschutz für öffentliche Plätze und Parks.');
-    }
-
-    const keywordsTag = document.querySelector('meta[name="keywords"]');
-    if (keywordsTag) {
-      keywordsTag.setAttribute('content', 'Überdachung Beton, Pavillon Beton, Wetterschutz, Stadtmobiliar, Parkausstattung, Vandalismussicher, Fundamentfrei');
-    }
   }, []);
 
   return (
     <PageShell title="Überdachung & Pavillon aus Beton">
-       <div className="text-center mb-12">
-           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Pavillon & Überdachung aus Beton</h1>
-           <p className="mt-2 text-lg text-brand-muted">Robuster Wetterschutz für den öffentlichen Raum</p>
-        </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <div>
-          <img loading="lazy" decoding="async" src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200?format=auto&width=1200" alt="ÜBERDACHUNG / PAVILLON AUS BETON A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
-          <div className="grid grid-cols-3 gap-4 mt-4">
-            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/208801/pexels-photo-208801.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Moderner Beton-Pavillon als Treffpunkt" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/210393/pexels-photo-210393.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Detail der massiven Betonkonstruktion eines Pavillons" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/2241144/pexels-photo-2241144.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Fundamentfreier Aufbau eines Wetterschutzes auf Schotter" className="w-full h-auto object-cover rounded-lg shadow-md" />
-          </div>
-        </div>
-        <div>
-          <p className="mt-4 text-xl text-brand-muted leading-relaxed">
-            Unser Überdachungselement aus bewehrtem Beton ist ein multifunktionales Modul, das langlebigen und ästhetischen Schutz vor Sonne und Regen bietet. Ideal für Haltestellen, Parkanlagen, Schulhöfe oder als zentraler Treffpunkt.
-          </p>
-          <div className="mt-10">
-            <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Vorteile unserer Beton-Überdachungen</h2>
-            <ul className="mt-6 space-y-4 text-brand-muted">
-             {features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                      <CheckmarkIcon />
-                      <div>
-                          {feature.bold && <span className="font-bold mr-2">{feature.bold}</span>}
-                          {feature.text}
-                      </div>
-                  </li>
-              ))}
-            </ul>
-          </div>
-          <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">
-            Beratung anfordern
-          </Link>
-        </div>
-      </div>
-      <BrochureRequestForm context="productpage" />
-      <OtherProducts />
+       
+       {/* 1. HERO */}
+       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden">
+            <div className="absolute inset-0">
+                <img 
+                    src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200?format=auto&width=1200" 
+                    alt="Hero Pavillon" 
+                    className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-brand-bg"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+            
+            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
+                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em]">Urban Shelter</span>
+                         <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider">
+                            <span className="material-symbols-outlined text-base">umbrella</span> Wetterschutz
+                         </span>
+                    </div>
+                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
+                        Beton<br/>
+                        <span className="text-outline-bold">Pavillon</span>
+                    </h1>
+                </div>
+            </div>
+       </div>
+
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* 2. SPLIT LAYOUT */}
+            <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mb-32">
+                
+                <div className="lg:w-5/12">
+                    <div className="lg:sticky lg:top-32">
+                        <h2 className="text-3xl font-bold font-heading text-white mb-8">Schutz. Raum. Ästhetik.</h2>
+                        <p className="text-xl text-gray-400 leading-relaxed mb-8">
+                            Unser Überdachungssystem verbindet architektonischen Anspruch mit extremer Funktionalität. Als Bushaltestelle, Jugendtreff oder Schattenspender im Park.
+                        </p>
+                        <p className="text-lg text-brand-muted leading-relaxed mb-12">
+                            Das modulare C-Profil aus Beton kann einzeln stehen oder zu langen Arkaden und Gruppen kombiniert werden. Vandalismus hat an dem massiven Stahlbeton keine Chance.
+                        </p>
+                        
+                        <div className="flex flex-col gap-4">
+                            <Link to="/kontakt" className="inline-flex justify-center items-center gap-3 bg-brand-orange text-black font-black uppercase tracking-widest py-4 px-8 hover:bg-white transition-all duration-300">
+                                Beratung anfordern <span className="material-symbols-outlined">arrow_forward</span>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="lg:w-7/12 flex flex-col gap-8">
+                    <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group">
+                         <img src="https://images.pexels.com/photos/208801/pexels-photo-208801.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pavillon Design" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. MODERN SHELTER</div>
+                    </div>
+                    
+                    <div className="bg-brand-surface border border-white/10 p-8 my-8">
+                        <h3 className="text-2xl font-bold font-heading text-white uppercase mb-4">Anwendungen</h3>
+                        <ul className="grid grid-cols-2 gap-4 list-disc list-inside text-gray-400">
+                            <li>Bushaltestellen</li>
+                            <li>Schulhöfe</li>
+                            <li>Parkanlagen</li>
+                            <li>Fahrradunterstände</li>
+                        </ul>
+                    </div>
+
+                    <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group">
+                         <img src="https://images.pexels.com/photos/210393/pexels-photo-210393.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Massive Bauweise" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. SOLID CONSTRUCTION</div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 3. TECH SPECS */}
+            <div className="mb-32">
+                <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
+                    <h2 className="text-4xl font-black font-heading text-white uppercase tracking-tighter">System<span className="text-brand-orange">Specs</span></h2>
+                </div>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <TechSpecCard title="Länge" value="240 cm" icon="straighten" />
+                    <TechSpecCard title="Tiefe" value="200 cm" icon="square_foot" />
+                    <TechSpecCard title="Höhe" value="246 cm" icon="vertical_align_top" />
+                    <TechSpecCard title="Material" value="Stahlbeton" icon="architecture" />
+                    <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
+                    <TechSpecCard title="Modular" value="Kombinierbar" icon="view_column" />
+                    <TechSpecCard title="Wartung" value="Keine" icon="build_circle" />
+                    <TechSpecCard title="Schutz" value="Wetterfest" icon="umbrella" />
+                </div>
+            </div>
+
+            <BrochureRequestForm context="productpage" />
+            <OtherProducts />
+
+       </div>
     </PageShell>
   );
 };

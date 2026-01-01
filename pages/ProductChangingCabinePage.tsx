@@ -7,15 +7,16 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'umkleide' && p.id !== 'grillstelle').slice(0, 3);
   return (
-    <div className="mt-24">
-      <h2 className="text-3xl font-bold font-heading text-center mb-10">Entdecken Sie weitere Produkte</h2>
+    <div className="mt-32 border-t border-white/10 pt-24">
+      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest">More Urban Furniture</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
-          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-xl shadow-lg hover:shadow-brand-orange/20 transition-shadow duration-300 aspect-[4/5] bg-brand-surface">
-            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100"/>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface border border-white/5">
+            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="relative h-full flex flex-col justify-end p-8">
-              <h3 className="text-3xl font-bold font-heading text-brand-heading transform group-hover:-translate-y-2 transition-transform duration-300">{product.title}</h3>
+               <span className="text-brand-orange font-mono text-xs mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
+              <h3 className="text-2xl font-black font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
           </Link>
         ))}
@@ -24,74 +25,116 @@ const OtherProducts: React.FC = () => {
   );
 }
 
-const CheckmarkIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 w-5 h-5 text-brand-orange mr-3 mt-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-    </svg>
+const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = ({ title, value, icon }) => (
+    <div className="bg-brand-surface/50 border border-white/10 p-6 backdrop-blur-sm hover:border-brand-orange/50 transition-colors duration-300">
+        <span className="material-symbols-outlined text-brand-orange text-3xl mb-4">{icon}</span>
+        <h4 className="text-gray-400 font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
+        <p className="text-white font-bold text-lg leading-tight">{value}</p>
+    </div>
 );
-
-const features = [
-    { bold: "Fundamentfrei & Sicher:", text: "Wird auf einem verdichteten Schotterbett aufgestellt, was Zeit und Kosten spart." },
-    { bold: "Extrem Robust:", text: "Gefertigt aus bewehrtem Beton und Edelstahl, absolut witterungsbeständig." },
-    { bold: "Vandalismus- & Missbrauchhemmend:", text: "Die massive Bauweise kann nicht zerschnitten, angezündet oder durchlöchert werden." },
-    { bold: "Wartungsarm & Langlebig:", text: "Kein saisonaler Auf- und Abbau nötig, keine Verrottung." },
-    { bold: "Hygienisch & Sauber:", text: "Die fugenlose Bodenplatte ist leicht zu reinigen und verhindert Unkrautwuchs." },
-];
 
 const ProductChangingCabinePage: React.FC = () => {
   useEffect(() => {
-    document.title = "Umkleidekabine 'Die Schnecke' aus Beton | A+ Urban Design";
-    const descriptionTag = document.querySelector('meta[name="description"]');
-    if (descriptionTag) {
-      descriptionTag.setAttribute('content', "Die architektonische Umkleidekabine aus Beton: Vandalismussicher, fundamentfrei und wartungsarm. Perfekt für Freibäder, Sportanlagen und öffentliche Plätze.");
-    }
-
-    const keywordsTag = document.querySelector('meta[name="keywords"]');
-    if (keywordsTag) {
-      keywordsTag.setAttribute('content', 'Umkleidekabine Beton, Die Schnecke, vandalismussicher, fundamentfrei, Freibad Umkleide, wartungsarm, öffentlicher Raum, Stadtmobiliar');
-    }
+    document.title = "Umkleidekabine 'Die Schnecke' | A+ Urban Design";
   }, []);
 
   return (
     <PageShell title="Vandalismussichere Umkleidekabine">
-      <div className="text-center mb-12">
-           <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Beton-Umkleidekabine "Die Schnecke"</h1>
-           <p className="mt-2 text-lg text-brand-muted">Fundamentfreie Umkleidekabine für Freibäder & Sportanlagen</p>
-        </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <div>
-          <img loading="lazy" decoding="async" src="https://www.freiraum-gestalten.info/vorlagen/webapp/cache/cms/1-20210618-092959auss2b_g43tkojwg4zq-1700x1131.webp" alt="BETON UMKLEIDE-KABINE A+ Urban Design" className="w-full h-auto object-cover rounded-lg shadow-lg" />
-          <div className="grid grid-cols-3 gap-4 mt-4">
-            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/2241144/pexels-photo-2241144.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Innenansicht der fugenlosen und leicht zu reinigenden Bodenplatte aus Beton" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Die Umkleidekabine fügt sich harmonisch in die urbane Landschaft ein" className="w-full h-auto object-cover rounded-lg shadow-md" />
-            <img loading="lazy" decoding="async" src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Detail der robusten und vandalismusresistenten Betonoberfläche" className="w-full h-auto object-cover rounded-lg shadow-md" />
-          </div>
-        </div>
-        <div>
-          <p className="mt-4 text-xl text-brand-muted leading-relaxed">
-            Unsere freistehende Umkleidekabine, bekannt als "Die Schnecke", ist die ideale Lösung für Freibäder, Seen und Sportanlagen. Das intelligente Design verhindert Kabinenkontakt beim Betreten und Verlassen.
-          </p>
-          <div className="mt-10">
-            <h2 className="text-2xl font-bold font-heading border-b-2 border-brand-orange pb-2">Merkmale der Beton-Umkleidekabine</h2>
-            <ul className="mt-6 space-y-4 text-brand-muted">
-              {features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                      <CheckmarkIcon />
-                      <div>
-                          {feature.bold && <span className="font-bold mr-2">{feature.bold}</span>}
-                          {feature.text}
-                      </div>
-                  </li>
-              ))}
-            </ul>
-          </div>
-          <Link to="/kontakt" className="mt-12 inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-md shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300">
-            Angebot anfordern
-          </Link>
-        </div>
-      </div>
-      <BrochureRequestForm context="productpage" />
-      <OtherProducts />
+       
+       {/* 1. HERO */}
+       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden">
+            <div className="absolute inset-0">
+                <img 
+                    src="https://www.freiraum-gestalten.info/vorlagen/webapp/cache/cms/1-20210618-092959auss2b_g43tkojwg4zq-1700x1131.webp" 
+                    alt="Hero Umkleidekabine" 
+                    className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-brand-bg"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+            
+            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
+                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em]">Sanitary Solution</span>
+                         <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider">
+                            <span className="material-symbols-outlined text-base">privacy_tip</span> Sichtschutz
+                         </span>
+                    </div>
+                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
+                        Die<br/>
+                        <span className="text-outline-bold">Schnecke</span>
+                    </h1>
+                </div>
+            </div>
+       </div>
+
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* 2. SPLIT LAYOUT */}
+            <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mb-32">
+                
+                <div className="lg:w-5/12">
+                    <div className="lg:sticky lg:top-32">
+                        <h2 className="text-3xl font-bold font-heading text-white mb-8">Privatsphäre ohne Türen.</h2>
+                        <p className="text-xl text-gray-400 leading-relaxed mb-8">
+                            In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung: "Die Schnecke". 
+                        </p>
+                        <p className="text-lg text-brand-muted leading-relaxed mb-12">
+                            Die spiralförmige Betonkonstruktion garantiert absoluten Sichtschutz ganz ohne bewegliche Teile. Das bedeutet: Keine Reparaturen, keine Wartung, keine hygienischen Schwachstellen.
+                        </p>
+                        
+                        <div className="flex flex-col gap-4">
+                            <Link to="/kontakt" className="inline-flex justify-center items-center gap-3 bg-brand-orange text-black font-black uppercase tracking-widest py-4 px-8 hover:bg-white transition-all duration-300">
+                                Angebot anfordern <span className="material-symbols-outlined">arrow_forward</span>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="lg:w-7/12 flex flex-col gap-8">
+                    <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group">
+                         <img src="https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Umkleide Architektur" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. EXTERIOR</div>
+                    </div>
+                    
+                    <div className="bg-brand-surface border border-white/10 p-8 my-8 relative">
+                        <div className="absolute top-4 right-4 text-brand-orange opacity-20 text-6xl font-black font-heading">0%</div>
+                        <h3 className="text-2xl font-bold font-heading text-white uppercase mb-4">Zero Maintenance</h3>
+                        <p className="text-gray-400">
+                            Keine Scharniere. Keine Schlösser. Keine Holzteile. Diese Kabine muss im Winter nicht abgebaut werden und verrottet nicht.
+                        </p>
+                    </div>
+
+                    <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group">
+                         <img src="https://images.pexels.com/photos/2241144/pexels-photo-2241144.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bodenplatte Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. CLEAN SURFACE</div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 3. TECH SPECS */}
+            <div className="mb-32">
+                <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
+                    <h2 className="text-4xl font-black font-heading text-white uppercase tracking-tighter">Tech<span className="text-brand-orange">Data</span></h2>
+                </div>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <TechSpecCard title="Konstruktion" value="Monolithisch" icon="view_in_ar" />
+                    <TechSpecCard title="Tür" value="Keine (Spirale)" icon="no_meeting_room" />
+                    <TechSpecCard title="Boden" value="Fugenlos" icon="check_box_outline_blank" />
+                    <TechSpecCard title="Material" value="Sichtbeton" icon="wallpaper" />
+                    <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
+                    <TechSpecCard title="Einsatz" value="Freibad / See" icon="water_drop" />
+                    <TechSpecCard title="Sicherheit" value="Vandalismusfest" icon="shield" />
+                    <TechSpecCard title="Reinigung" value="Hochdruck" icon="cleaning_services" />
+                </div>
+            </div>
+
+            <BrochureRequestForm context="productpage" />
+            <OtherProducts />
+
+       </div>
     </PageShell>
   );
 };

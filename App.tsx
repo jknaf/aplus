@@ -8,27 +8,25 @@ import LegacyRedirectHandler from './components/LegacyRedirectHandler';
 import SuspenseFallback from './components/SuspenseFallback';
 
 // --- CORE PAGES (Direct Import for INSTANT Navigation) ---
-// We removed React.lazy for main pages to prevent the "Loading..." spinner 
-// from appearing on every menu click. This gives a "Native App" feel.
+// Kept direct to ensure the main menu feels like a native app.
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 
-// --- PRODUCT PAGES (Keep Lazy or Direct?) ---
-// For a seamless experience, we load these directly too. 
-// The browser handles image lazy-loading efficiently enough.
-import ProductGrillPage from './pages/ProductGrillPage';
-import ProductChangingCabinePage from './pages/ProductChangingCabinePage';
-import ProductHockeyRinkPage from './pages/ProductHockeyRinkPage';
-import ProductPumptrackPage from './pages/ProductPumptrackPage';
-import ProductSkateAnlagenPage from './pages/ProductSkateAnlagenPage';
-import ProductBmxPage from './pages/ProductBmxPage';
-import ProductPavilionPage from './pages/ProductPavilionPage';
-import ProjectDetailPage from './pages/ProjectDetailPage';
+// --- PRODUCT & DETAIL PAGES (Lazy Load for Mobile Performance) ---
+// Switched back to Lazy Loading to drastically reduce the initial bundle size for iPhone/Mobile users.
+// This fixes the "slow load" issue and prevents memory spikes on mobile devices.
+const ProductGrillPage = React.lazy(() => import('./pages/ProductGrillPage'));
+const ProductChangingCabinePage = React.lazy(() => import('./pages/ProductChangingCabinePage'));
+const ProductHockeyRinkPage = React.lazy(() => import('./pages/ProductHockeyRinkPage'));
+const ProductPumptrackPage = React.lazy(() => import('./pages/ProductPumptrackPage'));
+const ProductSkateAnlagenPage = React.lazy(() => import('./pages/ProductSkateAnlagenPage'));
+const ProductBmxPage = React.lazy(() => import('./pages/ProductBmxPage'));
+const ProductPavilionPage = React.lazy(() => import('./pages/ProductPavilionPage'));
+const ProjectDetailPage = React.lazy(() => import('./pages/ProjectDetailPage'));
 
 // --- LEGAL PAGES (Keep Lazy) ---
-// These are rarely visited, so we can save bytes here.
 const ImpressumPage = React.lazy(() => import('./pages/ImpressumPage'));
 const PrivacyPolicyPage = React.lazy(() => import('./pages/PrivacyPolicyPage'));
 const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage'));
@@ -69,20 +67,41 @@ const App: React.FC = () => {
         <Header />
         <main className="flex-grow">
           <Routes>
+            {/* Core Pages (Instant) */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/produkte/skate-anlagen" element={<ProductSkateAnlagenPage />} />
-            <Route path="/produkte/pumptrack-beton" element={<ProductPumptrackPage />} />
-            <Route path="/produkte/bmx-anlagen" element={<ProductBmxPage />} />
-            <Route path="/produkte/hockey-banden" element={<ProductHockeyRinkPage />} />
-            <Route path="/produkte/grillstelle-beton" element={<ProductGrillPage />} />
-            <Route path="/produkte/umkleidekabine-beton" element={<ProductChangingCabinePage />} />
-            <Route path="/produkte/ueberdachung-beton" element={<ProductPavilionPage />} />
             <Route path="/projekte" element={<ProjectsPage />} />
-            <Route path="/projekte/:projectId" element={<ProjectDetailPage />} />
             <Route path="/ueber-uns" element={<AboutPage />} />
             <Route path="/kontakt" element={<ContactPage />} />
+
+            {/* Product Pages (Lazy Loaded with Suspense) */}
+            <Route path="/produkte/skate-anlagen" element={
+                <Suspense fallback={<SuspenseFallback />}><ProductSkateAnlagenPage /></Suspense>
+            } />
+            <Route path="/produkte/pumptrack-beton" element={
+                <Suspense fallback={<SuspenseFallback />}><ProductPumptrackPage /></Suspense>
+            } />
+            <Route path="/produkte/bmx-anlagen" element={
+                <Suspense fallback={<SuspenseFallback />}><ProductBmxPage /></Suspense>
+            } />
+            <Route path="/produkte/hockey-banden" element={
+                <Suspense fallback={<SuspenseFallback />}><ProductHockeyRinkPage /></Suspense>
+            } />
+            <Route path="/produkte/grillstelle-beton" element={
+                <Suspense fallback={<SuspenseFallback />}><ProductGrillPage /></Suspense>
+            } />
+            <Route path="/produkte/umkleidekabine-beton" element={
+                <Suspense fallback={<SuspenseFallback />}><ProductChangingCabinePage /></Suspense>
+            } />
+            <Route path="/produkte/ueberdachung-beton" element={
+                <Suspense fallback={<SuspenseFallback />}><ProductPavilionPage /></Suspense>
+            } />
             
-            {/* Lazy Loaded Routes wrapped in Suspense */}
+            {/* Detail Page (Lazy Loaded) */}
+            <Route path="/projekte/:projectId" element={
+                <Suspense fallback={<SuspenseFallback />}><ProjectDetailPage /></Suspense>
+            } />
+            
+            {/* Legal / System Pages (Lazy Loaded) */}
             <Route path="/impressum" element={
                 <Suspense fallback={<SuspenseFallback />}><ImpressumPage /></Suspense>
             } />

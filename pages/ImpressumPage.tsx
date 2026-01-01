@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PageShell from '../components/PageShell';
 
 const ImpressumPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <PageShell title="Impressum">
       <div className="max-w-4xl mx-auto">
@@ -10,8 +14,8 @@ const ImpressumPage: React.FC = () => {
             <div>
               <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">A+ URBAN DESIGN</h2>
               <p>
-                Cüneyit Akcakoca<br />
-                Dipl. Ing., Freier Architekt<br />
+                Dipl.-Ing. Cüneyit Akcakoca<br />
+                Freier Architekt<br />
                 Talstrasse 41<br />
                 70188 Stuttgart
               </p>
@@ -37,7 +41,7 @@ const ImpressumPage: React.FC = () => {
               <h2 className="text-2xl font-bold font-heading text-brand-heading border-b border-white/10 pb-2 mb-4">Verantwortlich für den Inhalt</h2>
               <p>
                 Verantwortlich im Sinne des § 18 Abs. 2 MStV:<br />
-                Cüneyit Akcakoca<br />
+                Dipl.-Ing. Cüneyit Akcakoca<br />
                 Talstrasse 41<br />
                 70188 Stuttgart
               </p>

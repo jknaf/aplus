@@ -1,84 +1,177 @@
 import React, { useState } from 'react';
 import PageShell from '../components/PageShell';
 
+type ProjectType = 'Skatepark' | 'Pumptrack' | 'Möblierung' | 'Sonstiges';
+
 const ContactPage: React.FC = () => {
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [formData, setFormData] = useState({ 
+        name: '', 
+        email: '', 
+        phone: '',
+        message: '' 
+    });
+    const [projectType, setProjectType] = useState<ProjectType>('Skatepark');
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prevState => ({ ...prevState, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        setIsSubmitted(true);
+        setStatus('loading');
+
+        // Simulate API call
+        setTimeout(() => {
+             console.log('Form submitted:', { ...formData, projectType });
+             setStatus('success');
+        }, 1500);
     };
 
+    const inputClasses = "w-full bg-transparent border-b border-gray-700 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-brand-orange focus:placeholder-gray-500 transition-all duration-300 font-sans";
+    const labelClasses = "block text-xs font-mono text-brand-orange uppercase tracking-widest mb-1";
+
     return (
-        <PageShell title="Kontakt">
-            <div className="text-center">
-                <h1 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter">Kontaktieren Sie uns</h1>
-                <p className="mt-4 text-lg text-brand-muted max-w-2xl mx-auto">
-                    Haben Sie Fragen zu unseren Produkten oder möchten Sie ein Projekt besprechen? Wir freuen uns auf Ihre Nachricht.
-                </p>
-            </div>
-            <div className="mt-16 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div className="bg-brand-surface p-8 rounded-lg">
-                    <h2 className="text-2xl font-bold font-heading">A+ Urban Design</h2>
-                    <ul className="mt-6 space-y-4 text-brand-muted">
-                        <li className="flex items-start">
-                            <span className="mt-1 mr-4 h-5 w-5 text-brand-orange flex-shrink-0" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>
-                            </span>
-                            <span>
-                                Cüneyit Akcakoca<br />
-                                Dipl. Ing., Freier Architekt<br />
-                                Talstrasse 41, 70188 Stuttgart
-                            </span>
-                        </li>
-                        <li className="flex items-center">
-                            <span className="mr-4 h-5 w-5 text-brand-orange flex-shrink-0" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
-                            </span>
-                             <a href="tel:+4915560090966" className="hover:text-brand-orange">+49 155 600 909 66</a>
-                        </li>
-                         <li className="flex items-center">
-                            <span className="mr-4 h-5 w-5 text-brand-orange flex-shrink-0" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
-                            </span>
-                             <a href="mailto:post@aplusurbandesign.com" className="hover:text-brand-orange">post@aplusurbandesign.com</a>
-                        </li>
-                    </ul>
+        <PageShell title="Kontakt & Anfrage">
+            <div className="relative w-full min-h-[80vh] flex flex-col justify-center">
+                
+                {/* Header Text */}
+                <div className="text-center mb-16 animate-fade-in-up">
+                    <h1 className="text-6xl md:text-8xl font-black font-heading uppercase tracking-tighter text-white">
+                        Let's<br/><span className="text-brand-orange">Build.</span>
+                    </h1>
+                    <p className="mt-6 text-xl text-gray-400 max-w-2xl mx-auto font-light">
+                        Bereit für das nächste Projekt? Erzählen Sie uns von Ihrer Vision. <br/>
+                        Wir liefern die passende Beton-Lösung.
+                    </p>
                 </div>
-                <div>
-                    {isSubmitted ? (
-                        <div className="bg-green-50 border-l-4 border-green-400 text-green-700 p-6 rounded-lg" role="alert">
-                            <p className="font-bold text-lg">Vielen Dank!</p>
-                            <p>Ihre Nachricht wurde erfolgreich gesendet. Wir werden uns in Kürze bei Ihnen melden.</p>
+
+                {/* Main Split Interface */}
+                <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-24">
+                    
+                    {/* LEFT COLUMN: CONTACT INFO & MAP PLACEHOLDER */}
+                    <div className="lg:col-span-5 order-2 lg:order-1 animate-fade-in-up [animation-delay:200ms]">
+                        <div className="bg-brand-surface border border-white/10 p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden group">
+                             {/* Decorative Glow */}
+                             <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-orange/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+                            <div>
+                                <h3 className="text-2xl font-bold text-white mb-8 border-b border-white/10 pb-4">Headquarters</h3>
+                                <div className="space-y-8 font-light text-gray-300">
+                                    <div className="flex items-start gap-4">
+                                        <span className="material-symbols-outlined text-brand-orange mt-1">location_on</span>
+                                        <div>
+                                            <p className="font-bold text-white">A+ Urban Design</p>
+                                            <p>Dipl.-Ing. Cüneyit Akcakoca</p>
+                                            <p className="text-sm">Freier Architekt</p>
+                                            <p className="mt-2">Talstrasse 41</p>
+                                            <p>70188 Stuttgart</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-4 group/link">
+                                        <span className="material-symbols-outlined text-brand-orange group-hover/link:scale-110 transition-transform">call</span>
+                                        <a href="tel:+4915560090966" className="hover:text-white transition-colors">+49 155 600 909 66</a>
+                                    </div>
+                                    <div className="flex items-center gap-4 group/link">
+                                        <span className="material-symbols-outlined text-brand-orange group-hover/link:scale-110 transition-transform">mail</span>
+                                        <a href="mailto:post@aplusurbandesign.com" className="hover:text-white transition-colors">post@aplusurbandesign.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {/* Availability Section Removed as requested */}
+
                         </div>
-                    ) : (
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-brand-muted">Ihr Name</label>
-                                <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className="mt-1 block w-full px-4 py-3 bg-brand-surface border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-orange focus:border-brand-orange sm:text-sm" />
-                            </div>
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-brand-muted">E-Mail-Adresse</label>
-                                <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="mt-1 block w-full px-4 py-3 bg-brand-surface border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-orange focus:border-brand-orange sm:text-sm" />
-                            </div>
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-brand-muted">Ihre Nachricht</label>
-                                <textarea name="message" id="message" rows={5} required value={formData.message} onChange={handleChange} className="mt-1 block w-full px-4 py-3 bg-brand-surface border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-orange focus:border-brand-orange sm:text-sm"></textarea>
-                            </div>
-                            <div>
-                                <button type="submit" className="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-bold rounded-md text-white bg-brand-orange hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-orange transition-all duration-300">
-                                    Nachricht senden
+                    </div>
+
+                    {/* RIGHT COLUMN: INTERACTIVE FORM */}
+                    <div className="lg:col-span-7 order-1 lg:order-2 animate-fade-in-up [animation-delay:400ms]">
+                        {status === 'success' ? (
+                            <div className="h-full min-h-[400px] flex flex-col items-center justify-center bg-brand-surface border border-white/10 p-12 text-center animate-pop-in">
+                                <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
+                                    <span className="material-symbols-outlined text-4xl text-green-500">check</span>
+                                </div>
+                                <h3 className="text-3xl font-black text-white mb-4">Nachricht gesendet!</h3>
+                                <p className="text-gray-400 max-w-md">
+                                    Vielen Dank für Ihre Anfrage. Unser Team wird Ihre Projektdaten analysieren und sich innerhalb von 48 Stunden bei Ihnen melden.
+                                </p>
+                                <button 
+                                    onClick={() => setStatus('idle')}
+                                    className="mt-8 text-sm font-bold text-brand-orange hover:text-white uppercase tracking-widest underline decoration-dotted"
+                                >
+                                    Neue Anfrage senden
                                 </button>
                             </div>
-                        </form>
-                    )}
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-8 bg-black/40 backdrop-blur-md p-8 md:p-12 border border-white/5 rounded-sm">
+                                
+                                {/* Project Type Selector */}
+                                <div>
+                                    <label className={labelClasses}>Worum geht es?</label>
+                                    <div className="flex flex-wrap gap-3 mt-2">
+                                        {(['Skatepark', 'Pumptrack', 'Möblierung', 'Sonstiges'] as ProjectType[]).map((type) => (
+                                            <button
+                                                key={type}
+                                                type="button"
+                                                onClick={() => setProjectType(type)}
+                                                className={`px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide transition-all duration-300 border ${
+                                                    projectType === type 
+                                                    ? 'bg-brand-orange border-brand-orange text-black shadow-[0_0_20px_rgba(249,115,22,0.4)]' 
+                                                    : 'bg-transparent border-white/20 text-gray-400 hover:border-white hover:text-white'
+                                                }`}
+                                            >
+                                                {type}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div className="group">
+                                        <label htmlFor="name" className={labelClasses}>Name / Institution</label>
+                                        <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className={inputClasses} placeholder="Max Mustermann" />
+                                    </div>
+                                    <div className="group">
+                                        <label htmlFor="phone" className={labelClasses}>Telefon (Optional)</label>
+                                        <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className={inputClasses} placeholder="+49 ..." />
+                                    </div>
+                                </div>
+
+                                <div className="group">
+                                    <label htmlFor="email" className={labelClasses}>E-Mail Adresse</label>
+                                    <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className={inputClasses} placeholder="name@firma.de" />
+                                </div>
+
+                                <div className="group">
+                                    <label htmlFor="message" className={labelClasses}>Projektdetails</label>
+                                    <textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleChange} className={`${inputClasses} resize-none`} placeholder="Standort, ungefähre Fläche, Budgetrahmen oder spezielle Wünsche..."></textarea>
+                                </div>
+
+                                <div className="pt-4">
+                                    <button 
+                                        type="submit" 
+                                        disabled={status === 'loading'}
+                                        className="w-full md:w-auto px-12 py-4 bg-white hover:bg-brand-orange text-black font-black uppercase tracking-widest text-sm transition-all duration-300 hover:scale-[1.02] shadow-xl disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-2 group"
+                                    >
+                                        {status === 'loading' ? (
+                                            <>
+                                                <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin"></span>
+                                                Sende...
+                                            </>
+                                        ) : (
+                                            <>
+                                                Anfrage Absenden <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                            </>
+                                        )}
+                                    </button>
+                                    <p className="mt-4 text-[10px] text-gray-500">
+                                        Mit dem Absenden akzeptieren Sie unsere <a href="/datenschutz" className="underline hover:text-brand-orange">Datenschutzerklärung</a>.
+                                    </p>
+                                </div>
+                            </form>
+                        )}
+                    </div>
                 </div>
             </div>
         </PageShell>

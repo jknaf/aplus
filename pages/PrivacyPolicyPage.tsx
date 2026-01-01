@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PageShell from '../components/PageShell';
 
 const PrivacyPolicyPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <PageShell title="Datenschutzerklärung">
        <div className="max-w-4xl mx-auto">
@@ -22,7 +26,7 @@ const PrivacyPolicyPage: React.FC = () => {
                 Talstrasse 41<br />
                 70188 Stuttgart<br />
                 Deutschland<br />
-                Inhaber: Cüneyit Akcakoca<br />
+                Inhaber: Dipl.-Ing. Cüneyit Akcakoca, Freier Architekt<br />
                 Tel.: +49 (0) 155 600 909 66<br />
                 E-Mail: post@aplusurbandesign.com
                 </p>

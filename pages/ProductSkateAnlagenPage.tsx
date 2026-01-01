@@ -7,14 +7,14 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'skate-anlagen' && p.id !== 'pumptrack').slice(0, 3);
   return (
-    <div className="mt-32 border-t border-white/10 pt-24">
+    <div className="mt-32 border-t border-white/10 pt-24 relative z-20">
       <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest">More Engineered Solutions</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
-          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface border border-white/5">
+          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface border border-white/5 z-20">
             <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
-            <div className="relative h-full flex flex-col justify-end p-8">
+            <div className="relative h-full flex flex-col justify-end p-8 z-30">
                <span className="text-brand-orange font-mono text-xs mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
               <h3 className="text-2xl font-black font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
@@ -26,7 +26,7 @@ const OtherProducts: React.FC = () => {
 }
 
 const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = ({ title, value, icon }) => (
-    <div className="bg-brand-surface/50 border border-white/10 p-6 backdrop-blur-sm hover:border-brand-orange/50 transition-colors duration-300">
+    <div className="bg-brand-surface/50 border border-white/10 p-6 backdrop-blur-sm hover:border-brand-orange/50 transition-colors duration-300 relative z-20">
         <span className="material-symbols-outlined text-brand-orange text-3xl mb-4">{icon}</span>
         <h4 className="text-gray-400 font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
         <p className="text-white font-bold text-lg leading-tight">{value}</p>
@@ -46,7 +46,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
     <PageShell title="Planung & Bau von Beton-Skateanlagen">
        
        {/* 1. IMMERSIVE HERO */}
-       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden">
+       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10">
             <div className="absolute inset-0">
                 <img 
                     src="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg" 
@@ -73,14 +73,14 @@ const ProductSkateAnlagenPage: React.FC = () => {
             </div>
        </div>
 
-       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             
             {/* 2. SPLIT LAYOUT: STICKY INFO & SCROLLING GALLERY */}
             <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mb-32">
                 
                 {/* Left: Sticky Narrative */}
                 <div className="lg:w-5/12">
-                    <div className="lg:sticky lg:top-32">
+                    <div className="lg:sticky lg:top-32 relative z-20">
                         <h2 className="text-3xl font-bold font-heading text-white mb-8">Das Original seit den 90ern.</h2>
                         <p className="text-xl text-gray-400 leading-relaxed mb-8">
                             Unsere modularen Skate-Elemente haben den öffentlichen Raum revolutioniert. Sie bieten die perfekte Symbiose aus der Haltbarkeit von Beton und der Flexibilität eines Baukastensystems.
@@ -90,7 +90,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         </p>
                         
                         <div className="flex flex-col gap-4">
-                            <Link to="/kontakt" className="inline-flex justify-center items-center gap-3 bg-brand-orange text-black font-black uppercase tracking-widest py-4 px-8 hover:bg-white transition-all duration-300">
+                            <Link to="/kontakt" className="inline-flex justify-center items-center gap-3 bg-brand-orange text-black font-black uppercase tracking-widest py-4 px-8 hover:bg-white transition-all duration-300 relative z-30">
                                 3D-Planung anfragen <span className="material-symbols-outlined">arrow_forward</span>
                             </Link>
                             <span className="text-xs text-gray-500 font-mono text-center">Inklusive Kostenschätzung & Layout</span>
@@ -100,13 +100,13 @@ const ProductSkateAnlagenPage: React.FC = () => {
 
                 {/* Right: Scrolling Gallery & Features */}
                 <div className="lg:w-7/12 flex flex-col gap-8">
-                    <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group">
+                    <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group relative z-10">
                          <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Skate Bowl Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. BOWL SECTION</div>
                     </div>
                     
                     {/* Feature Highlight Box */}
-                    <div className="bg-brand-surface border border-brand-orange/20 p-8 my-8 relative overflow-hidden">
+                    <div className="bg-brand-surface border border-brand-orange/20 p-8 my-8 relative overflow-hidden z-10">
                         <div className="absolute top-0 right-0 p-4 opacity-10">
                             <span className="material-symbols-outlined text-9xl text-brand-orange">engineering</span>
                         </div>
@@ -127,7 +127,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         </ul>
                     </div>
 
-                    <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group">
+                    <div className="aspect-[16/10] bg-brand-surface rounded-sm overflow-hidden border border-white/10 group relative z-10">
                          <img src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Street Skateboarding" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. STREET PLAZA</div>
                     </div>
@@ -135,7 +135,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
             </div>
 
             {/* 3. TECHNICAL SPECS GRID */}
-            <div className="mb-32">
+            <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
                     <h2 className="text-4xl font-black font-heading text-white uppercase tracking-tighter">Tech<span className="text-brand-orange">Specs</span></h2>
                     <span className="font-mono text-brand-muted text-xs hidden sm:block">DATASHEET: SKATE-SYSTEMS</span>

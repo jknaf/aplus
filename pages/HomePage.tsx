@@ -298,23 +298,26 @@ const ScrollyFeature: React.FC<{
 };
 
 // --- ROBUST HERO COMPONENT ---
-// Re-implemented to be simple and bulletproof for video autoplay
+// UPDATED FOR IPHONE PERFORMANCE:
+// 1. First slide is now an IMAGE (fast LCP).
+// 2. Video is second slide.
+// 3. Removed 'display: none', using 'opacity' and 'visibility' to prevent layout trashing.
 const HERO_ITEMS = [
   { 
     id: 1,
+    type: 'image', // CHANGED: Image first for instant load on mobile
+    src: 'https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600' 
+  },
+  { 
+    id: 2,
     type: 'video', 
     src: 'https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4',
     poster: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=800' 
   },
   { 
-    id: 2,
-    type: 'image', 
-    src: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=1600' 
-  },
-  { 
     id: 3,
     type: 'image', 
-    src: 'https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600' 
+    src: 'https://images.pexels.com/photos/1769553/pexels-photo-1769553.jpeg?auto=compress&cs=tinysrgb&w=1600' 
   }
 ];
 
@@ -339,9 +342,8 @@ const Hero: React.FC = () => {
                     <div
                         key={item.id}
                         className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                        // Optimize rendering: only render content if near active state to save memory, 
-                        // BUT keep some overlap for transitions.
-                        style={{ display: Math.abs(index - currentIndex) <= 1 || (index === 0 && currentIndex === HERO_ITEMS.length - 1) || (index === HERO_ITEMS.length - 1 && currentIndex === 0) ? 'block' : 'none' }}
+                        // Optimization: Use visibility to hide from screen readers/clicks but keep DOM mostly active to prevent reflow
+                        style={{ visibility: isActive || index === (currentIndex + 1) % HERO_ITEMS.length ? 'visible' : 'hidden' }}
                     >
                         {item.type === 'video' ? (
                             <VideoSlide src={item.src} poster={item.poster || ''} isActive={isActive} />
@@ -396,12 +398,11 @@ const VideoSlide: React.FC<{ src: string; poster: string; isActive: boolean }> =
             const playPromise = video.play();
             if (playPromise !== undefined) {
                 playPromise.catch(error => {
-                    console.log("Auto-play prevented:", error);
+                    // Fail silently, just means the poster will show
                 });
             }
         } else {
             video.pause();
-            video.currentTime = 0; // Reset for next loop
         }
     }, [isActive]);
 
@@ -414,7 +415,7 @@ const VideoSlide: React.FC<{ src: string; poster: string; isActive: boolean }> =
             muted
             playsInline
             loop
-            preload="auto"
+            preload="metadata" // Only load metadata initially to save bandwidth
         />
     );
 }

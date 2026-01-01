@@ -33,40 +33,33 @@ const ScrollToTop: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    // Fallback to HashRouter for maximum compatibility without server-side rewrites
     <HashRouter>
       <LegacyRedirectHandler />
       <ScrollToTop />
       
-      {/* --- NEW BACKGROUND STRATEGY --- */}
-      {/* This layer is fixed and sits behind everything. No solid colors on top of it will be allowed. */}
-      <div className="fixed inset-0 z-[-1] bg-[#050505] overflow-hidden pointer-events-none">
+      {/* --- GLOBAL ATMOSPHERE LAYER --- */}
+      {/* 
+          Grid is now in index.html CSS to guarantee it's always there.
+          This layer creates the "Clow" (Glow) and depth.
+          Fixed position z-[-1] puts it behind all content but fixed to viewport.
+      */}
+      <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
           
-          {/* 1. Industrial Grid - Explicit CSS for visibility */}
-          <div 
-            className="absolute inset-0 opacity-20"
-            style={{
-                backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px)',
-                backgroundSize: '80px 80px'
-            }}
-          ></div>
+          {/* Main Orange Glow (Top Left) */}
+          <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-brand-orange/30 rounded-full blur-[120px] opacity-80 mix-blend-screen animate-pulse-slow"></div>
+          
+          {/* Secondary Cool Glow (Bottom Right) */}
+          <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-blue-600/20 rounded-full blur-[120px] opacity-60 mix-blend-screen"></div>
+          
+          {/* Center Ambient Light */}
+          <div className="absolute top-[30%] left-[50%] transform -translate-x-1/2 w-[600px] h-[600px] bg-brand-orange/10 rounded-full blur-[100px] opacity-40"></div>
 
-          {/* 2. Ambient Glows - Behind the grid or blended */}
-          {/* Top Left - Orange */}
-          <div className="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] bg-brand-orange/20 blur-[120px] rounded-full mix-blend-screen"></div>
-          
-          {/* Bottom Right - Blue/White */}
-          <div className="absolute -bottom-[10%] -right-[10%] w-[50vw] h-[50vw] bg-blue-500/10 blur-[120px] rounded-full mix-blend-screen"></div>
-          
-          {/* Center Subtle */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-brand-orange/5 blur-[100px] rounded-full"></div>
-
-          {/* 3. Noise Texture Overlay */}
+          {/* Noise Texture */}
           <div className="absolute inset-0 bg-noise-overlay opacity-30 mix-blend-overlay"></div>
       </div>
       
-      {/* Layer 2: Main Content - Transparent background to let the grid show */}
-      <div className="text-brand-text font-sans flex flex-col min-h-screen relative z-[10] bg-transparent">
+      {/* Main Content Area - Must remain transparent! */}
+      <div className="flex flex-col min-h-screen relative z-[10]">
         <Header />
         <main className="flex-grow">
           <Routes>

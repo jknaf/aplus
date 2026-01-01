@@ -5,20 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
     <title>Beton-Skateparks, Pumptracks & Skate-Anlagen | A+ Urban Design</title>
-    <!-- Description is managed by PageShell, generic fallback here -->
     <meta name="description" content="TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig. Fordern Sie jetzt Ihr individuelles Angebot an." />
     <meta name="keywords" content="Beton Skatepark, Pumptrack aus Beton, Skate-Anlagen Hersteller, Hockey-Banden, Vandalismussichere Umkleidekabinen, Öffentliche Grillstelle Beton, Urban Design, modulare Skate-Elemente, BMX-Anlagen" />
-    <!-- Updated Favicon: Stylized A+ Logo in Black (#000000) -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000000' stroke-width='14' stroke-linecap='square'%3E%3Cpath d='M44 10 L18 90' /%3E%3Cpath d='M44 10 L44 90' /%3E%3Cpath d='M28 52 H88' /%3E%3Cpath d='M72 34 V70' /%3E%3C/svg%3E" />
     <link rel="preload" href="https://i.ibb.co/whMmCDk9/apluslogo.png" as="image" crossorigin="anonymous">
     
-    <!-- Performance: Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Performance: font-display: swap added -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
     
     <script>
@@ -26,7 +22,7 @@
         theme: {
           extend: {
             colors: {
-              'brand-bg': '#050505', /* Darker base for better contrast with glows */
+              'brand-bg': '#050505',
               'brand-surface': '#121212',
               'brand-surface-light': '#262626',
               'brand-text': '#EAEAEA',
@@ -35,7 +31,6 @@
               'brand-muted': '#A3A3A3',
             },
             fontFamily: {
-              /* RECHTS-UPDATE: System Fonts statt Google Fonts um DSGVO-Verstöße zu verhindern */
               'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
               'heading': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
             },
@@ -45,10 +40,6 @@
               '9xl': '8rem',
               '10xl': '10rem',
               'huge': '12rem',
-            },
-            backgroundImage: {
-              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-              'grid-pattern': "linear-gradient(to right, #404040 1px, transparent 1px), linear-gradient(to bottom, #404040 1px, transparent 1px)",
             },
             keyframes: {
               'fade-in-up': {
@@ -63,14 +54,6 @@
                   '0%': { transform: 'scale(1.0) translate(0,0)', 'transform-origin': 'center' },
                   '100%': { transform: 'scale(1.1) translate(-2%, 2%)', 'transform-origin': 'center' }
               },
-              'kenburns-2': {
-                  '0%': { transform: 'scale(1.0) translate(0,0)', 'transform-origin': 'top right' },
-                  '100%': { transform: 'scale(1.1) translate(3%, -3%)', 'transform-origin': 'top right' }
-              },
-              'kenburns-3': {
-                  '0%': { transform: 'scale(1.0) translate(0,0)', 'transform-origin': 'bottom left' },
-                  '100%': { transform: 'scale(1.1) translate(-3%, 3%)', 'transform-origin': 'bottom left' }
-              },
               'pop-in': {
                 '0%': { transform: 'scale(0)', opacity: '0' },
                 '80%': { transform: 'scale(1.1)', opacity: '1' },
@@ -80,10 +63,9 @@
                 '0%, 100%': { opacity: '0.4' },
                 '50%': { opacity: '0.7' },
               },
-              // NEW SEMANTIC ANIMATIONS
               'float': {
                 '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-6px)' }, // Gentle levitation
+                '50%': { transform: 'translateY(-6px)' },
               },
               'stamp': {
                 '0%': { transform: 'scale(2)', opacity: '0' },
@@ -103,11 +85,8 @@
               'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
               'marquee': 'marquee 25s linear infinite',
               'kenburns-1': 'kenburns-1 15s ease-in-out infinite alternate',
-              'kenburns-2': 'kenburns-2 18s ease-in-out infinite alternate',
-              'kenburns-3': 'kenburns-3 20s ease-in-out infinite alternate',
               'pop-in': 'pop-in 0.4s ease-out forwards',
               'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
-              // New animations
               'float': 'float 4s ease-in-out infinite',
               'stamp': 'stamp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
               'spin-slow': 'spin-slow 12s linear infinite',
@@ -121,7 +100,6 @@
       .animated-section {
         opacity: 0;
       }
-      /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 10px;
       }
@@ -136,21 +114,36 @@
         background: #F97316;
       }
       
-      /* Outline Text - THICKER AND BRIGHTER UPDATE */
+      /* GLOBAL BACKGROUND STRATEGY: PURE CSS */
+      body {
+        background-color: #050505;
+        /* Technical Grid Pattern - High Visibility */
+        background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+        background-size: 80px 80px; /* Large grid cells */
+        background-attachment: fixed; /* Grid stays in place during scroll */
+        background-position: center top;
+        color: #EAEAEA;
+        min-height: 100vh;
+      }
+
+      /* Outline Text - BOLDER AND BRIGHTER */
       .text-outline {
         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
         color: transparent;
       }
       .text-outline-bold {
-        -webkit-text-stroke: 3px rgba(255, 255, 255, 0.8); /* Updated: Thicker stroke, higher opacity */
+        /* Massively increased stroke width and opacity for Industrial Look */
+        -webkit-text-stroke: 3px #ffffff; 
         color: transparent;
+        paint-order: stroke fill;
       }
       .text-outline-orange {
         -webkit-text-stroke: 2px #F97316;
         color: transparent;
       }
       
-      /* Noise Texture Class */
       .bg-noise-overlay {
         position: fixed;
         top: 0;
@@ -199,7 +192,8 @@
 }
 </script>
 </head>
-  <body class="bg-brand-bg text-brand-text selection:bg-brand-orange selection:text-white">
+  <!-- Removed bg class, handled in CSS -->
+  <body class="text-brand-text selection:bg-brand-orange selection:text-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

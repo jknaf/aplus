@@ -70,7 +70,8 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        <section className="py-24 bg-[#050505] border-t border-white/5 relative overflow-hidden">
+        // REMOVED SOLID BG COLOR
+        <section className="py-24 border-t border-white/5 relative overflow-hidden bg-transparent">
              {/* SEO Schema Injection */}
              <script type="application/ld+json">
                 {JSON.stringify(faqSchema)}
@@ -91,7 +92,7 @@ const FAQSection: React.FC = () => {
 
                 <div className="max-w-4xl mx-auto space-y-4">
                     {faqs.map((faq, index) => (
-                        <details key={index} className="group bg-[#121212] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 open:border-brand-orange/50 open:bg-[#1a1a1a]">
+                        <details key={index} className="group bg-[#121212]/80 backdrop-blur-md border border-white/10 rounded-lg overflow-hidden transition-all duration-300 open:border-brand-orange/50 open:bg-[#1a1a1a]/90">
                             <summary className="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/5 transition-colors">
                                 <span className="font-bold text-lg md:text-xl text-white group-hover:text-brand-orange transition-colors pr-8">
                                     {faq.q}
@@ -138,7 +139,8 @@ const ProductScrollytelling: React.FC = () => {
     }, []);
 
     return (
-        <section id="produkte" className="relative z-10 py-24 bg-[#080808] border-y border-white/5">
+        // REMOVED SOLID BG COLOR
+        <section id="produkte" className="relative z-10 py-24 border-y border-white/5 bg-transparent">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <AnimatedSection className="mb-24 text-center">
@@ -155,7 +157,7 @@ const ProductScrollytelling: React.FC = () => {
                     
                     {/* LEFT COLUMN: Sticky HUD Image Viewport */}
                     <div className="hidden lg:block lg:w-1/2 sticky top-32">
-                        <div className="relative aspect-square w-full rounded-lg overflow-hidden border border-white/10 bg-[#121212] group">
+                        <div className="relative aspect-square w-full rounded-lg overflow-hidden border border-white/10 bg-[#121212]/50 backdrop-blur-md group">
                             
                             {/* Technical HUD Overlay */}
                             <div className="absolute inset-0 z-20 pointer-events-none p-6 flex flex-col justify-between">
@@ -231,9 +233,9 @@ const ProductScrollytelling: React.FC = () => {
 
                                         {/* Card Container */}
                                         <div className={`
-                                            relative rounded-xl border transition-all duration-500 overflow-hidden
+                                            relative rounded-xl border transition-all duration-500 overflow-hidden backdrop-blur-sm
                                             ${isActive 
-                                                ? 'bg-[#121212] border-brand-orange/50 shadow-2xl scale-100' 
+                                                ? 'bg-[#121212]/80 border-brand-orange/50 shadow-2xl scale-100' 
                                                 : 'bg-transparent border-white/5 scale-[0.98]'
                                             }
                                         `}>
@@ -330,7 +332,7 @@ const ScrollyFeature: React.FC<{
     }, []);
 
     const containerClass = isActive 
-        ? "border-brand-orange bg-[#1a1a1a] shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] scale-100 opacity-100" 
+        ? "border-brand-orange bg-[#1a1a1a]/80 shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] scale-100 opacity-100 backdrop-blur-sm" 
         : "border-white/5 bg-transparent opacity-30 scale-95";
     
     // FIX: Using the prop to generate animation classes properly
@@ -407,7 +409,8 @@ const Hero: React.FC = () => {
     };
 
     return (
-        <div className="relative h-[90vh] w-full overflow-hidden bg-black">
+        // REMOVED BG-BLACK to ensure transparency
+        <div className="relative h-[90vh] w-full overflow-hidden bg-transparent">
             <div className="absolute inset-0 z-0">{renderMedia(HERO_ITEMS[activeIndex], videoRef)}<div className="absolute inset-0 bg-black/40"></div></div>
             {isAnimating && (
                 <div className="absolute inset-0 z-10 animate-[slideUpReveal_1.4s_cubic-bezier(0.83,0,0.17,1)_forwards]">

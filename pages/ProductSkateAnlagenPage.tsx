@@ -46,7 +46,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Beton Skate-Anlagen",
-    "description": "Modulare Skate-Anlagen aus Beton. TÜV-zertifiziert, fundamentfrei und extrem langlebig für den öffentlichen Raum.",
+    "description": "Modulare Skate-Anlagen aus Beton. TÜV-zertifizierte, fundamentfrei und extrem langlebig für den öffentlichen Raum.",
     "brand": {
       "@type": "Brand",
       "name": "A+ Urban Design"
@@ -77,10 +77,10 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     alt="Hero Beton Skatepark" 
                     className="w-full h-full object-cover"
                 />
-                {/* Changed to transparent at bottom to reveal global grid */}
+                {/* Center area clears for image, edges fade to black/transparent */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
-                {/* Additional fade at bottom edge only */}
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent"></div>
+                {/* BOTTOM FADE: Must fade to TRANSPARENT to show the global grid below */}
+                <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#050505] to-transparent opacity-90"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
             </div>
             

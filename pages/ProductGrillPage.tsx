@@ -51,11 +51,24 @@ const ProductGrillPage: React.FC = () => {
        {/* 1. HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-white/10">
             <div className="absolute inset-0">
-                <img 
-                    src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750" 
-                    alt="Hero Grillstelle" 
-                    className="w-full h-full object-cover"
-                />
+                 <picture>
+                    <source 
+                        media="(max-width: 600px)" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750&w=600&q=75" 
+                    />
+                     <source 
+                        media="(max-width: 1200px)" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750&w=1200&q=80" 
+                    />
+                    <img 
+                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750" 
+                        alt="Hero Grillstelle" 
+                        className="w-full h-full object-cover"
+                        loading="eager"
+                        fetchPriority="high"
+                    />
+                 </picture>
+
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>

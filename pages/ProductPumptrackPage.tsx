@@ -50,11 +50,25 @@ const ProductPumptrackPage: React.FC = () => {
        {/* 1. IMMERSIVE HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-white/10">
             <div className="absolute inset-0">
-                <img 
-                    src="https://www.kommunaldirekt.de/wp-content/uploads/2024/09/kd424_aplus-urbandesign1.jpg.webp" 
-                    alt="Hero Pumptrack" 
-                    className="w-full h-full object-cover"
-                />
+                 {/* OPTIMIZED HERO IMAGE for Mobile Speed */}
+                 <picture>
+                    <source 
+                        media="(max-width: 600px)" 
+                        srcSet="https://www.kommunaldirekt.de/wp-content/uploads/2024/09/kd424_aplus-urbandesign1.jpg.webp?w=600&q=75" 
+                    />
+                    <source 
+                        media="(max-width: 1200px)" 
+                        srcSet="https://www.kommunaldirekt.de/wp-content/uploads/2024/09/kd424_aplus-urbandesign1.jpg.webp?w=1200&q=80" 
+                    />
+                    <img 
+                        src="https://www.kommunaldirekt.de/wp-content/uploads/2024/09/kd424_aplus-urbandesign1.jpg.webp" 
+                        alt="Hero Pumptrack" 
+                        className="w-full h-full object-cover"
+                        loading="eager"
+                        fetchPriority="high"
+                    />
+                 </picture>
+
                  {/* Gradient to transparent to show grid */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent"></div>

@@ -51,11 +51,24 @@ const ProductPavilionPage: React.FC = () => {
        {/* 1. HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-white/10 z-10">
             <div className="absolute inset-0">
-                <img 
-                    src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200?format=auto&width=1200" 
-                    alt="Hero Pavillon" 
-                    className="w-full h-full object-cover"
-                />
+                 <picture>
+                    <source 
+                        media="(max-width: 600px)" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200?format=auto&width=600&q=75" 
+                    />
+                     <source 
+                        media="(max-width: 1200px)" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200?format=auto&width=1200&q=80" 
+                    />
+                    <img 
+                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200?format=auto&width=1200" 
+                        alt="Hero Pavillon" 
+                        className="w-full h-full object-cover"
+                        loading="eager"
+                        fetchPriority="high"
+                    />
+                 </picture>
+
                  {/* Gradient to transparent to show grid */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent"></div>

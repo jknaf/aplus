@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
@@ -36,8 +36,17 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 );
 
 const ProductBmxPage: React.FC = () => {
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+
   useEffect(() => {
     document.title = "BMX-Anlagen & Parks | A+ Urban Design";
+    
+    // Delayed video load for performance
+    const timer = setTimeout(() => {
+        setShouldLoadVideo(true);
+    }, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -45,20 +54,46 @@ const ProductBmxPage: React.FC = () => {
        
        {/* 1. IMMERSIVE HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-white/10 z-10">
-             {/* Video Background for BMX */}
-            <div className="absolute inset-0">
-                <video 
-                    src="https://videos.pexels.com/video-files/5445275/5445275-hd_1920_1080_25fps.mp4"
-                    autoPlay muted loop playsInline
-                    className="w-full h-full object-cover grayscale opacity-60"
-                />
-                 {/* Gradient to transparent to show grid */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+             
+             {/* 1. STATIC IMAGE LAYER (Instant Load) */}
+            <div className="absolute inset-0 z-0">
+                 <picture>
+                    <source 
+                        media="(max-width: 600px)" 
+                        srcSet="https://images.unsplash.com/photo-1576435728678-35d016018997?w=600&q=75&auto=format&fit=crop" 
+                    />
+                     <source 
+                        media="(max-width: 1200px)" 
+                        srcSet="https://images.unsplash.com/photo-1576435728678-35d016018997?w=1200&q=80&auto=format&fit=crop" 
+                    />
+                    <img 
+                        src="https://images.unsplash.com/photo-1576435728678-35d016018997?q=80&w=1600&auto=format&fit=crop" 
+                        alt="BMX Action"
+                        className="w-full h-full object-cover grayscale opacity-60"
+                        loading="eager"
+                        fetchPriority="high"
+                    />
+                 </picture>
             </div>
+
+            {/* 2. VIDEO LAYER (Lazy Load) */}
+            {shouldLoadVideo && (
+                <div className={`absolute inset-0 z-10 transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
+                    <video 
+                        src="https://videos.pexels.com/video-files/5445275/5445275-hd_1920_1080_25fps.mp4"
+                        autoPlay muted loop playsInline
+                        className="w-full h-full object-cover grayscale opacity-60"
+                        onCanPlay={() => setVideoReady(true)}
+                    />
+                </div>
+            )}
             
-            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
+             {/* Gradient to transparent to show grid */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-20"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent z-20"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-20"></div>
+            
+            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-30">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
                          <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">Dirt & Street</span>

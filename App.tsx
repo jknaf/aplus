@@ -68,22 +68,28 @@ const App: React.FC = () => {
       <LegacyRedirectHandler />
       <ScrollToTop />
       
-      {/* --- GLOBAL ATMOSPHERE LAYER --- */}
-      <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none transform-gpu">
-          {/* Main Orange Glow (Top Left) */}
-          <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-brand-orange/30 rounded-full blur-[120px] opacity-80 mix-blend-screen animate-pulse-slow"></div>
+      {/* --- GLOBAL ATMOSPHERE LAYER (Restored & Fixed) --- */}
+      {/* Z-Index changed to 0 to sit ON TOP of body bg, but BEHIND content (z-10) */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
           
-          {/* Secondary Cool Glow (Bottom Right) */}
-          <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-blue-600/20 rounded-full blur-[120px] opacity-60 mix-blend-screen"></div>
-          
-          {/* Center Ambient Light */}
-          <div className="absolute top-[30%] left-[50%] transform -translate-x-1/2 w-[600px] h-[600px] bg-brand-orange/10 rounded-full blur-[100px] opacity-40"></div>
+          {/* 1. The Grid Pattern (Technical Look) */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_40%,transparent_100%)]"></div>
 
-          {/* Noise Texture */}
-          <div className="absolute inset-0 bg-noise-overlay opacity-30 mix-blend-overlay"></div>
+          {/* 2. Main Orange Glow (Top Left) */}
+          <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-brand-orange/20 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow"></div>
+          
+          {/* 3. Secondary Cool Glow (Bottom Right) */}
+          <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] mix-blend-screen"></div>
+          
+          {/* 4. Center Ambient Light */}
+          <div className="absolute top-[30%] left-[50%] transform -translate-x-1/2 w-[600px] h-[600px] bg-brand-orange/5 rounded-full blur-[100px]"></div>
+
+          {/* 5. Noise Texture (Film Grain) */}
+          <div className="absolute inset-0 bg-noise-overlay opacity-20 mix-blend-overlay"></div>
       </div>
       
       {/* Main Content Area */}
+      {/* Content needs explicit z-index > 0 to sit above atmosphere */}
       <div className="flex flex-col min-h-screen relative z-[10]">
         <Header />
         <main className="flex-grow">

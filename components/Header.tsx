@@ -75,7 +75,7 @@ const Header: React.FC = () => {
                 alt="A+ Urban Design Logo"
                 width={32}
                 height={32}
-                className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:rotate-90"
+                className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-700 ease-in-out group-hover:[transform:rotateY(360deg)]"
               />
               <div className="flex flex-col">
                 <span className="text-lg md:text-xl text-white font-black font-heading leading-none tracking-tighter">A+ URBAN</span>

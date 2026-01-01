@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
                             alt="A+ Urban Design Logo"
                             width={48}
                             height={48}
-                            className="w-12 h-12 transition-transform duration-500 group-hover:rotate-180"
+                            className="w-12 h-12 transition-transform duration-700 ease-in-out group-hover:[transform:rotateY(360deg)]"
                         />
                          <div className="flex flex-col">
                             <span className="text-2xl text-white font-black font-heading leading-none tracking-tighter">A+ URBAN</span>

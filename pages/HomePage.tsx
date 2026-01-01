@@ -42,9 +42,8 @@ const ScrollyFeature: React.FC<{
     icon: string;
     title: string;
     desc: string;
-    index: number;
     animationType: 'float' | 'glow-pulse' | 'spin-slow' | 'stamp';
-}> = ({ icon, title, desc, index, animationType }) => {
+}> = ({ icon, title, desc, animationType }) => {
     const ref = useRef<HTMLDivElement>(null);
     const [isActive, setIsActive] = useState(false);
 
@@ -425,7 +424,6 @@ const HomePage: React.FC = () => {
                         <div className="flex flex-col">
                             {/* Feature 1: Layers (Fundamentfrei) */}
                             <ScrollyFeature 
-                                index={0}
                                 icon="layers" 
                                 animationType="float"
                                 title="Fundamentfrei"
@@ -434,7 +432,6 @@ const HomePage: React.FC = () => {
                             
                             {/* Feature 2: Shield (Unzerstörbar) */}
                             <ScrollyFeature 
-                                index={1}
                                 icon="shield"
                                 animationType="glow-pulse"
                                 title="Unzerstörbar"
@@ -443,7 +440,6 @@ const HomePage: React.FC = () => {
 
                             {/* Feature 3: Verified (TÜV) */}
                             <ScrollyFeature 
-                                index={2}
                                 icon="verified"
                                 animationType="stamp"
                                 title="TÜV Zertifiziert"
@@ -452,7 +448,6 @@ const HomePage: React.FC = () => {
 
                             {/* Feature 4: Recycling (Recyclable) */}
                             <ScrollyFeature 
-                                index={3}
                                 icon="recycling"
                                 animationType="spin-slow"
                                 title="100% Recycelbar"

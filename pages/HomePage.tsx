@@ -245,6 +245,14 @@ const ScrollyFeature: React.FC<{
         ? "border-brand-orange bg-[#1a1a1a] shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] scale-100 opacity-100" 
         : "border-white/5 bg-transparent opacity-30 scale-95";
     
+    // Define animation classes based on type
+    const animationClass = {
+        'float': 'animate-float',
+        'glow-pulse': 'animate-glow-pulse',
+        'spin-slow': 'animate-spin-slow',
+        'stamp': 'animate-stamp'
+    }[animationType];
+    
     return (
         <div 
             ref={ref}
@@ -254,7 +262,7 @@ const ScrollyFeature: React.FC<{
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05]"></div>
 
             <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
-                <div className={`p-4 rounded-xl bg-black/50 border border-white/10 transition-colors duration-500 ${isActive ? 'text-brand-orange border-brand-orange/30' : 'text-gray-600'}`}>
+                <div className={`p-4 rounded-xl bg-black/50 border border-white/10 transition-all duration-500 ${isActive ? `text-brand-orange border-brand-orange/30 ${animationClass}` : 'text-gray-600'}`}>
                     <span className="material-symbols-outlined text-4xl">{icon}</span>
                 </div>
                 <div>

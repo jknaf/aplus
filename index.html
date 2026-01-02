@@ -2,35 +2,13 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="robots" content="index, follow" />
     <title>Beton-Skateparks, Pumptracks & Skate-Anlagen | A+ Urban Design</title>
     <meta name="description" content="TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig. Fordern Sie jetzt Ihr individuelles Angebot an." />
     
-    <!-- 1. CRITICAL CSS (INSTANT VISUALS NO FLICKER) -->
-    <style>
-      html, body {
-        background-color: #020202; /* Brand Black */
-        color: #EAEAEA;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        -webkit-font-smoothing: antialiased;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      }
-      /* Prevent white flash while hydration happens */
-      #root { opacity: 1; }
-    </style>
-
-    <!-- 2. CRITICAL ASSET PRELOADING -->
-    <link rel="preload" as="image" 
-          href="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800"
-          imagesrcset="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w"
-          imagesizes="100vw"
-          fetchpriority="high">
-          
+    <!-- 1. CRITICAL ASSETS (Preload for Speed) -->
     <link rel="preload" href="https://i.ibb.co/whMmCDk9/apluslogo.png" as="image" crossorigin="anonymous">
-    
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000000' stroke-width='14' stroke-linecap='square'%3E%3Cpath d='M44 10 L18 90' /%3E%3Cpath d='M44 10 L44 90' /%3E%3Cpath d='M28 52 H88' /%3E%3Cpath d='M72 34 V70' /%3E%3C/svg%3E" />
     
     <!-- FONTS -->
@@ -39,10 +17,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
 
-    <!-- 3. FAILSAFE ENGINE: Tailwind CDN -->
+    <!-- 2. TAILWIND RUNTIME ENGINE (The Fix) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        /* Important: Disable preflight sometimes fixes conflicts, but here we keep it for consistency */
         theme: {
           extend: {
             colors: {
@@ -102,7 +81,7 @@
         }
       }
     </script>
-
+    
 <script type="importmap">
 {
   "imports": {
@@ -116,7 +95,8 @@
 }
 </script>
 </head>
-  <body class="bg-[#020202] text-brand-text">
+  <!-- NATIVE CSS CLASS FALLBACKS added to body to prevent flash -->
+  <body class="bg-[#020202] text-white overflow-x-hidden antialiased selection:bg-brand-orange selection:text-black">
     
     <div id="root">
         <div id="initial-loader">

@@ -1,32 +1,28 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PrivacyBanner from './components/PrivacyBanner';
 import LegacyRedirectHandler from './components/LegacyRedirectHandler';
-import SuspenseFallback from './components/SuspenseFallback';
 
-// --- CORE PAGES (Direct Import for INSTANT Navigation) ---
+// --- CORE PAGES (ALL Static Imports for INSTANT Navigation) ---
+// Switching to Eager Loading to eliminate "Loading..." spinners during navigation.
+// This increases initial load slightly but makes the app feel "native" and instant afterwards.
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
-
-// --- LAZY LOADED PAGES ---
-// We keep them lazy to make the INITIAL load fast (iPhone doesn't crash).
-// BUT: We preload them in the useEffect below so navigation is instant later.
-const ProductGrillPage = React.lazy(() => import('./pages/ProductGrillPage'));
-const ProductChangingCabinePage = React.lazy(() => import('./pages/ProductChangingCabinePage'));
-const ProductHockeyRinkPage = React.lazy(() => import('./pages/ProductHockeyRinkPage'));
-const ProductPumptrackPage = React.lazy(() => import('./pages/ProductPumptrackPage'));
-const ProductSkateAnlagenPage = React.lazy(() => import('./pages/ProductSkateAnlagenPage'));
-const ProductBmxPage = React.lazy(() => import('./pages/ProductBmxPage'));
-const ProductPavilionPage = React.lazy(() => import('./pages/ProductPavilionPage'));
-const ProjectDetailPage = React.lazy(() => import('./pages/ProjectDetailPage'));
-
-const ImpressumPage = React.lazy(() => import('./pages/ImpressumPage'));
-const PrivacyPolicyPage = React.lazy(() => import('./pages/PrivacyPolicyPage'));
-const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage'));
+import ProductGrillPage from './pages/ProductGrillPage';
+import ProductChangingCabinePage from './pages/ProductChangingCabinePage';
+import ProductHockeyRinkPage from './pages/ProductHockeyRinkPage';
+import ProductPumptrackPage from './pages/ProductPumptrackPage';
+import ProductSkateAnlagenPage from './pages/ProductSkateAnlagenPage';
+import ProductBmxPage from './pages/ProductBmxPage';
+import ProductPavilionPage from './pages/ProductPavilionPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
+import ImpressumPage from './pages/ImpressumPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -38,40 +34,19 @@ const ScrollToTop: React.FC = () => {
 
 const App: React.FC = () => {
   
-  // --- ARCHITECTURE FIX: BACKGROUND PRELOADING ---
-  // Waits 2.5s after main load (so we don't slow down the start),
-  // then silently fetches all other pages in the background.
-  // Result: No "Loading..." spinners when clicking links.
-  useEffect(() => {
-    const preloadRoutes = () => {
-        // Execute imports directly to start fetching chunks without assigning to unused variable
-        import('./pages/ProductSkateAnlagenPage');
-        import('./pages/ProductPumptrackPage');
-        import('./pages/ProductHockeyRinkPage');
-        import('./pages/ProductBmxPage');
-        import('./pages/ProductGrillPage');
-        import('./pages/ProductChangingCabinePage');
-        import('./pages/ProductPavilionPage');
-        import('./pages/ProjectDetailPage');
-    };
-
-    if (document.readyState === 'complete') {
-        setTimeout(preloadRoutes, 2500);
-    } else {
-        window.addEventListener('load', () => setTimeout(preloadRoutes, 2500));
-    }
-  }, []);
+  // Note: Background preloading logic removed as it is no longer needed 
+  // with static imports. All code is available immediately.
 
   return (
     <HashRouter>
       <LegacyRedirectHandler />
       <ScrollToTop />
       
-      {/* --- GLOBAL ATMOSPHERE LAYER (Restored & Fixed) --- */}
-      {/* Z-Index changed to 0 to sit ON TOP of body bg, but BEHIND content (z-10) */}
+      {/* --- GLOBAL ATMOSPHERE LAYER --- */}
+      {/* Z-Index 0 to sit ON TOP of body bg, but BEHIND content (z-10) */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
           
-          {/* 1. The Grid Pattern (Technical Look) - Opacity increased to 0.05 for visibility */}
+          {/* 1. The Grid Pattern (Technical Look) */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_40%,transparent_100%)]"></div>
 
           {/* 2. Main Orange Glow (Top Left) */}
@@ -93,50 +68,28 @@ const App: React.FC = () => {
         <Header />
         <main className="flex-grow">
           <Routes>
-            {/* Core Pages (Instant) */}
+            {/* Core Pages */}
             <Route path="/" element={<HomePage />} />
             <Route path="/projekte" element={<ProjectsPage />} />
             <Route path="/ueber-uns" element={<AboutPage />} />
             <Route path="/kontakt" element={<ContactPage />} />
 
-            {/* Product Pages (Lazy Loaded but Preloaded) */}
-            <Route path="/produkte/skate-anlagen" element={
-                <Suspense fallback={<SuspenseFallback />}><ProductSkateAnlagenPage /></Suspense>
-            } />
-            <Route path="/produkte/pumptrack-beton" element={
-                <Suspense fallback={<SuspenseFallback />}><ProductPumptrackPage /></Suspense>
-            } />
-            <Route path="/produkte/bmx-anlagen" element={
-                <Suspense fallback={<SuspenseFallback />}><ProductBmxPage /></Suspense>
-            } />
-            <Route path="/produkte/hockey-banden" element={
-                <Suspense fallback={<SuspenseFallback />}><ProductHockeyRinkPage /></Suspense>
-            } />
-            <Route path="/produkte/grillstelle-beton" element={
-                <Suspense fallback={<SuspenseFallback />}><ProductGrillPage /></Suspense>
-            } />
-            <Route path="/produkte/umkleidekabine-beton" element={
-                <Suspense fallback={<SuspenseFallback />}><ProductChangingCabinePage /></Suspense>
-            } />
-            <Route path="/produkte/ueberdachung-beton" element={
-                <Suspense fallback={<SuspenseFallback />}><ProductPavilionPage /></Suspense>
-            } />
+            {/* Product Pages (Now Instant) */}
+            <Route path="/produkte/skate-anlagen" element={<ProductSkateAnlagenPage />} />
+            <Route path="/produkte/pumptrack-beton" element={<ProductPumptrackPage />} />
+            <Route path="/produkte/bmx-anlagen" element={<ProductBmxPage />} />
+            <Route path="/produkte/hockey-banden" element={<ProductHockeyRinkPage />} />
+            <Route path="/produkte/grillstelle-beton" element={<ProductGrillPage />} />
+            <Route path="/produkte/umkleidekabine-beton" element={<ProductChangingCabinePage />} />
+            <Route path="/produkte/ueberdachung-beton" element={<ProductPavilionPage />} />
             
             {/* Detail Page */}
-            <Route path="/projekte/:projectId" element={
-                <Suspense fallback={<SuspenseFallback />}><ProjectDetailPage /></Suspense>
-            } />
+            <Route path="/projekte/:projectId" element={<ProjectDetailPage />} />
             
             {/* Legal / System Pages */}
-            <Route path="/impressum" element={
-                <Suspense fallback={<SuspenseFallback />}><ImpressumPage /></Suspense>
-            } />
-            <Route path="/datenschutz" element={
-                <Suspense fallback={<SuspenseFallback />}><PrivacyPolicyPage /></Suspense>
-            } />
-            <Route path="*" element={
-                <Suspense fallback={<SuspenseFallback />}><NotFoundPage /></Suspense>
-            } />
+            <Route path="/impressum" element={<ImpressumPage />} />
+            <Route path="/datenschutz" element={<PrivacyPolicyPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer />

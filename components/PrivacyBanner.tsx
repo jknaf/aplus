@@ -93,24 +93,27 @@ const PrivacyBanner: React.FC = () => {
         <>
             {/* Banner */}
             <div role="region" aria-label="Cookie Consent Banner" className="fixed bottom-0 left-0 right-0 bg-[#121212]/95 backdrop-blur-xl border-t border-white/10 z-[100] animate-[fade-in-up_0.5s_ease-out] shadow-[0_-10px_40px_rgba(0,0,0,0.8)]">
-                <div className="container mx-auto p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
-                    <div className="text-center md:text-left w-full md:w-auto">
+                <div className="container mx-auto p-4 md:p-6 flex flex-col xl:flex-row items-center justify-between gap-4 md:gap-6">
+                    <div className="text-center xl:text-left w-full xl:w-auto">
                         <h3 className="text-sm md:text-lg font-bold text-white uppercase tracking-wider mb-2">Datenschutzeinstellungen</h3>
                         <p className="text-xs md:text-sm text-gray-400 leading-relaxed max-w-3xl">
-                            Wir nutzen Cookies, um unsere Website für Sie zu optimieren. 
-                            <span className="hidden md:inline"> Das Laden von externen Videos (YouTube/Vimeo) erfordert Ihre Zustimmung.</span>
+                            Wir nutzen Cookies und ähnliche Technologien, um unsere Website für Sie zu optimieren und Ihnen ein bestmögliches Nutzungserlebnis zu bieten.
                             <br className="md:hidden" />
                             <Link to="/impressum" className="text-brand-orange hover:text-white underline mx-1">Impressum</Link> 
                             &bull;
                             <Link to="/datenschutz" className="text-brand-orange hover:text-white underline ml-1">Datenschutz</Link>
                         </p>
                     </div>
-                    <div className="flex-shrink-0 flex flex-wrap items-center gap-3 justify-center w-full md:w-auto">
-                        <button onClick={() => setIsModalOpen(true)} className="flex-1 md:flex-none px-4 py-3 md:py-2 text-xs font-bold border border-white/20 hover:bg-white/10 rounded bg-transparent transition-colors text-gray-300 uppercase tracking-widest whitespace-nowrap">
-                            Optionen
+                    {/* Buttons: Grid on mobile, Flex on desktop for better spacing */}
+                    <div className="w-full xl:w-auto grid grid-cols-1 sm:grid-cols-3 xl:flex gap-3">
+                         <button onClick={() => setIsModalOpen(true)} className="px-4 py-3 text-xs font-bold border border-white/20 hover:bg-white/10 rounded bg-transparent transition-colors text-gray-300 uppercase tracking-widest whitespace-nowrap">
+                            Dateneinstellungen
                         </button>
-                        <button onClick={handleAcceptAll} className="flex-1 md:flex-none px-6 py-3 md:py-2 text-xs font-bold bg-brand-orange text-black rounded hover:bg-white transition-colors shadow-lg shadow-brand-orange/20 uppercase tracking-widest whitespace-nowrap">
-                            Alles Akzeptieren
+                        <button onClick={handleDeclineAll} className="px-4 py-3 text-xs font-bold border border-white/20 hover:bg-white/10 rounded bg-transparent transition-colors text-white uppercase tracking-widest whitespace-nowrap">
+                            Alles ablehnen
+                        </button>
+                        <button onClick={handleAcceptAll} className="px-6 py-3 text-xs font-bold bg-brand-orange text-black rounded hover:bg-white transition-colors shadow-lg shadow-brand-orange/20 uppercase tracking-widest whitespace-nowrap">
+                            Alles akzeptieren
                         </button>
                     </div>
                 </div>
@@ -159,7 +162,7 @@ const PrivacyBanner: React.FC = () => {
                             <div className="flex justify-between items-center p-4 rounded-lg bg-black/20 border border-white/5 hover:border-white/20 transition-colors">
                                  <div>
                                     <h3 className="font-bold text-white text-sm uppercase tracking-wider">Externe Medien</h3>
-                                    <p className="text-xs text-gray-500 mt-1">Videos und Kartenmaterial laden.</p>
+                                    <p className="text-xs text-gray-500 mt-1">Inhalte von Drittanbietern laden.</p>
                                 </div>
                                  <button
                                     type="button"

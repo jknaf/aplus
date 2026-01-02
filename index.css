@@ -1,14 +1,7 @@
-/* Custom Styles - Tailwind is loaded via CDN in index.html */
-
-body {
-  background-color: #020202;
-  color: #EAEAEA;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
+/* 
+   NOTE: @tailwind directives removed. 
+   We are using the CDN in index.html for guaranteed stability in this environment.
+*/
 
 /* --- INDUSTRIAL TYPOGRAPHY RESTORATION --- */
 .text-outline-bold {

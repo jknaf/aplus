@@ -44,7 +44,7 @@ const App: React.FC = () => {
   // Result: No "Loading..." spinners when clicking links.
   useEffect(() => {
     const preloadRoutes = () => {
-        // Execute imports directly to start fetching chunks
+        // Execute imports directly to start fetching chunks without assigning to unused variable
         import('./pages/ProductSkateAnlagenPage');
         import('./pages/ProductPumptrackPage');
         import('./pages/ProductHockeyRinkPage');
@@ -71,7 +71,7 @@ const App: React.FC = () => {
       {/* Z-Index changed to 0 to sit ON TOP of body bg, but BEHIND content (z-10) */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
           
-          {/* 1. The Grid Pattern (Technical Look) - Opacity increased to 0.05 */}
+          {/* 1. The Grid Pattern (Technical Look) - Opacity increased to 0.05 for visibility */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_40%,transparent_100%)]"></div>
 
           {/* 2. Main Orange Glow (Top Left) */}

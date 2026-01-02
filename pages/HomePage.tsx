@@ -307,20 +307,19 @@ const ScrollyFeature: React.FC<{
 // --- HYBRID HERO COMPONENT (Mobile Optimized + Video) ---
 // Strategy: 
 // 1. Show Image IMMEDIATELY (LCP < 0.5s)
-// 2. Wait 0.5 seconds (bare minimum to render paint)
-// 3. Inject Video (Cool factor returns FAST)
-// This avoids the long "just an image" feeling while keeping the LCP green.
+// 2. Wait 2.5 seconds (Allow Mobile UI to settle)
+// 3. Inject Video (Cool factor returns without blocking initial scroll)
 const Hero: React.FC = () => {
     const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
     const [videoReady, setVideoReady] = useState(false);
     
     useEffect(() => {
-        // DELAYED VIDEO LOADING
-        // Reduced from 2500ms to 500ms to make it feel almost instant
-        // while still giving priority to the initial image paint.
+        // DELAYED VIDEO LOADING - PERFORMANCE OPTIMIZATION
+        // Increased to 2500ms to allow low-end mobile devices to finish 
+        // hydration and painting before starting heavy video decoding.
         const timer = setTimeout(() => {
             setShouldLoadVideo(true);
-        }, 500);
+        }, 2500);
         return () => clearTimeout(timer);
     }, []);
 

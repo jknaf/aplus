@@ -54,14 +54,14 @@ const ProductPumptrackPage: React.FC = () => {
                  <picture>
                     <source 
                         media="(max-width: 600px)" 
-                        srcSet="https://www.kommunaldirekt.de/wp-content/uploads/2024/09/kd424_aplus-urbandesign1.jpg.webp?w=600&q=75" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.2-Pump-Track_A%2B-756x430.jpg/picture-1200?_=19386fba8e0&w=600&q=75" 
                     />
                     <source 
                         media="(max-width: 1200px)" 
-                        srcSet="https://www.kommunaldirekt.de/wp-content/uploads/2024/09/kd424_aplus-urbandesign1.jpg.webp?w=1200&q=80" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.2-Pump-Track_A%2B-756x430.jpg/picture-1200?_=19386fba8e0&w=1200&q=80" 
                     />
                     <img 
-                        src="https://www.kommunaldirekt.de/wp-content/uploads/2024/09/kd424_aplus-urbandesign1.jpg.webp" 
+                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.2-Pump-Track_A%2B-756x430.jpg/picture-2600?_=19386fba8e0" 
                         alt="Hero Pumptrack" 
                         className="w-full h-full object-cover"
                         loading="eager"
@@ -125,7 +125,7 @@ const ProductPumptrackPage: React.FC = () => {
                 {/* Scrolling Gallery */}
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pumptrack Curve" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PUMPTRACK/.3-Pump-Track-Beton-Module_A%2B-756x430.jpg/picture-1200?_=193820c4b00" alt="Pumptrack Curve" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 01. STEILKURVE</div>
                     </div>
                     
@@ -140,7 +140,7 @@ const ProductPumptrackPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/2241144/pexels-photo-2241144.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pumptrack Overview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PUMPTRACK/.1-Pumptrack-Beton-Elemente_A%2B-756x430.jpg/picture-1200?_=193820c8d68" alt="Pumptrack Overview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 02. MODULARES SYSTEM</div>
                     </div>
                 </div>

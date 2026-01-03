@@ -54,14 +54,14 @@ const ProductChangingCabinePage: React.FC = () => {
                  <picture>
                     <source 
                         media="(max-width: 600px)" 
-                        srcSet="https://www.freiraum-gestalten.info/vorlagen/webapp/cache/cms/1-20210618-092959auss2b_g43tkojwg4zq-1700x1131.webp?w=600&q=75" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.4-Umkleidekabine-Schnecke_Freibad_A%2B-756x430.jpg/picture-1200?_=19382187c18&w=600&q=75" 
                     />
                      <source 
                         media="(max-width: 1200px)" 
-                        srcSet="https://www.freiraum-gestalten.info/vorlagen/webapp/cache/cms/1-20210618-092959auss2b_g43tkojwg4zq-1700x1131.webp?w=1200&q=80" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.4-Umkleidekabine-Schnecke_Freibad_A%2B-756x430.jpg/picture-1200?_=19382187c18&w=1200&q=80" 
                     />
                     <img 
-                        src="https://www.freiraum-gestalten.info/vorlagen/webapp/cache/cms/1-20210618-092959auss2b_g43tkojwg4zq-1700x1131.webp" 
+                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.4-Umkleidekabine-Schnecke_Freibad_A%2B-756x430.jpg/picture-2600?_=19382187c18" 
                         alt="Hero Umkleidekabine" 
                         className="w-full h-full object-cover"
                         loading="eager"
@@ -126,7 +126,7 @@ const ProductChangingCabinePage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/5413303/pexels-photo-5413303.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Umkleide Architektur" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.1-Umkleide-Kabine_Beton_Freibad_A%2B-756x430.jpg/picture-1200?_=19382189f40" alt="Umkleide Architektur" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. EXTERIOR</div>
                     </div>
                     
@@ -139,7 +139,7 @@ const ProductChangingCabinePage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/2241144/pexels-photo-2241144.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bodenplatte Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.2-Umkleide-Kabine-Beton_Freibad_A%2B-756x430.jpg/picture-1200?_=19382189388" alt="Bodenplatte Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. CLEAN SURFACE</div>
                     </div>
                 </div>

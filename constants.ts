@@ -15,6 +15,7 @@ export const NAV_LINKS = [
       { name: 'Überdachung / Pavillon', href: '/produkte/ueberdachung-beton' },
     ]
   },
+  { name: 'Planung', href: '/planung' },
   { name: 'Projekte', href: '/projekte' },
   { name: 'Über Uns', href: '/ueber-uns' },
   { name: 'Kontakt', href: '/kontakt' },
@@ -24,7 +25,7 @@ export const PRODUCTS: Product[] = [
    {
     id: 'skate-anlagen',
     title: 'Beton Skate-Anlagen',
-    imageUrl: 'https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/BOWLS/.1-Skate-Bowl_A%2B-756x430.jpg/picture-2600?_=193735e8e88',
     path: '/produkte/skate-anlagen',
     altText: 'Hochwertige Beton-Skateanlage mit Bowl und Street-Bereich bei Sonnenuntergang.',
     tuvCertified: true,
@@ -33,7 +34,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'pumptrack',
     title: 'Pumptrack aus Beton',
-    imageUrl: 'https://www.kommunaldirekt.de/wp-content/uploads/2024/09/kd424_aplus-urbandesign1.jpg.webp',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.2-Pump-Track_A%2B-756x430.jpg/picture-2600?_=19386fba8e0',
     path: '/produkte/pumptrack-beton',
     altText: 'Geschwungener Pumptrack aus Beton, ideal für Bikes und Boards.',
     tuvCertified: true,
@@ -42,9 +43,9 @@ export const PRODUCTS: Product[] = [
   {
     id: 'bmx-anlagen',
     title: 'BMX-Anlagen',
-    imageUrl: 'https://images.unsplash.com/photo-1576435728678-35d016018997?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PIPES/.1-Skate-Pipe_A%2B-756x430.jpg/picture-2600?_=193734a9158',
     path: '/produkte/bmx-anlagen',
-    altText: 'BMX-Fahrer in der Luft über einer Rampe in einer Outdoor-Anlage.',
+    altText: 'Massive Beton-Pipe, perfekt geeignet für BMX und Skate.',
     tuvCertified: true,
     usp: 'Professionelle Dirt- & Park-Setups aus unverwüstlichem Hochleistungsbeton.'
   },
@@ -68,7 +69,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'umkleide',
     title: 'Umkleidekabine',
-    imageUrl: 'https://www.freiraum-gestalten.info/vorlagen/webapp/cache/cms/1-20210618-092959auss2b_g43tkojwg4zq-1700x1131.webp',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.4-Umkleidekabine-Schnecke_Freibad_A%2B-756x430.jpg/picture-2600?_=19382187c18',
     path: '/produkte/umkleidekabine-beton',
     altText: 'Moderne Architektur mit Sichtbetonwänden.',
     usp: 'Die „Schnecke“: Hygienisch, türlos und absolut missbrauchssicher konstruiert.'
@@ -76,7 +77,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'ueberdachung',
     title: 'Überdachung / Pavillon',
-    imageUrl: 'https://images.unsplash.com/photo-1619983081563-430f63602796?q=80&w=1000&auto=format&fit=crop',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.2-Ueberdachung_Unterstellplatz-Beton_A%2B-712x363.jpg/picture-2600?_=1938232bad8',
     path: '/produkte/ueberdachung-beton',
     altText: 'Minimalistische Betonüberdachung im urbanen Raum.',
     usp: 'Massiver, architektonischer Wetterschutz in zeitloser Sichtbeton-Ästhetik.'
@@ -89,11 +90,11 @@ export const PROJECTS: Project[] = [
         title: "Skatepark Neustadt",
         category: "Skatepark",
         year: 2023,
-        imageUrl: "https://images.unsplash.com/photo-1453282716202-de94e528067c?q=80&w=1000&auto=format&fit=crop",
+        imageUrl: "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEPARK/.1-Skate-Park_A%2B-756x430.jpg/picture-2600?_=19373432300",
         images: [
-            "https://images.unsplash.com/photo-1565259164223-10d659e93b33?q=80&w=1200&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1558350298-632050e93233?q=80&w=1200&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1597858348877-69502b489955?q=80&w=1200&auto=format&fit=crop",
+            "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEPARK/.2-Skate-Park_A%2B-756x430.jpg/picture-1200?_=19373431f18",
+            "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEPARK/.3-Skatepark_A%2B-756x430.jpg/picture-1200?_=19373431b30",
+            "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEPARK/.4-Skatepark_A%2B-756x430.jpg/picture-1200?_=19373431b30",
         ],
         description: "Ein moderner Beton-Skatepark für die Gemeinde Neustadt, der sowohl Anfängern als auch Profis gerecht wird. Die Anlage umfasst eine vielfältige Street-Area mit Rails und Ledges sowie eine anspruchsvolle Bowl-Sektion. Alle Elemente sind aus unserem vandalismusresistenten Hochleistungsbeton gefertigt.",
         altText: "Luftaufnahme des Beton-Skateparks Neustadt mit Bowl und Street-Bereich.",
@@ -107,10 +108,10 @@ export const PROJECTS: Project[] = [
         title: "Pumptrack am See",
         category: "Pumptrack",
         year: 2022,
-        imageUrl: "https://images.unsplash.com/photo-1627402633008-8fbff809a473?q=80&w=1000&auto=format&fit=crop",
+        imageUrl: "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PUMPTRACK/.1-Pumptrack-Beton-Elemente_A%2B-756x430.jpg/picture-2600?_=193820c8d68",
         images: [
-            "https://images.unsplash.com/photo-1596700760824-c8c32d434237?q=80&w=1200&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1544652478-6653e09f1826?q=80&w=1200&auto=format&fit=crop",
+             "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PUMPTRACK/.3-Pump-Track-Beton-Module_A%2B-756x430.jpg/picture-1200?_=193820c4b00",
+             "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PUMPTRACK/.4-Pump-Track-Beton-Module_A%2B-756x430.jpg/picture-1200?_=193820c3b60",
         ],
         description: "Dieser flowige Pumptrack liegt idyllisch am Seeufer und bietet Fahrspaß für Fahrräder, Scooter und Skateboards. Die modularen Betonelemente ermöglichen einen abwechslungsreichen Kurs, der sich perfekt in die Landschaft einfügt.",
         altText: "Flowiger Pumptrack aus Beton am Seeufer für Fahrräder und Scooter.",
@@ -123,10 +124,10 @@ export const PROJECTS: Project[] = [
         title: "Grillplatz im Stadtpark",
         category: "Grillstelle",
         year: 2023,
-        imageUrl: "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750",
+        imageUrl: "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.1-Grill-Platz-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3f20",
         images: [
-             "https://images.unsplash.com/photo-1555685812-4b943f3e99a0?q=80&w=1200&auto=format&fit=crop",
-             "https://images.unsplash.com/photo-1523472721958-978152f4d69b?q=80&w=1200&auto=format&fit=crop",
+             "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-1600?_=193821b3750",
+             "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.5-Grill-Stelle_A%2B-756x430.jpg/picture-1200?_=193723cb750",
         ],
         description: "Für den zentralen Stadtpark wurde eine neue, barrierefreie Grill- und Begegnungszone geschaffen. Im Zentrum steht unsere robuste Betongrillstelle, die zum gemeinsamen Verweilen einlädt, direkt neben der neuen Skate-Anlage.",
         altText: "Vandalismusresistente Betongrillstelle im Stadtpark neben einem Skatepark.",
@@ -139,10 +140,10 @@ export const PROJECTS: Project[] = [
         title: "Inlinehockey-Feld Berlin",
         category: "Hockey-Bande",
         year: 2021,
-        imageUrl: "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.Roll-Hockey-Bande_A%2B.jpg/picture-2600?_=1938211b1d0",
+        imageUrl: "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.3-Inline-Hockey-Bande_A%2B-756x430.jpg/picture-2600?_=1938211e498",
         images: [
-            "https://images.unsplash.com/photo-1515233453752-9653a1a9e9a4?q=80&w=1200&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1558365849-6a8dd17297d3?q=80&w=1200&auto=format&fit=crop",
+             "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.1-Hockey-Einfassung_A%2B-756x430.jpg/picture-1200?_=1938211ec68",
+             "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.2-Inline-Hockey-Bande_A%2B.jpg/picture-1200?_=1938211e880",
         ],
         description: "Sanierung und Modernisierung des Inlinehockey-Feldes in Berlin-Kreuzberg mit unserem fundamentfreien Bandensystem. Das Feld ist nun für den ganzjährigen Spielbetrieb geeignet.",
         altText: "Professionelles Inlinehockey-Feld mit robusten Banden in Berlin.",
@@ -155,10 +156,10 @@ export const PROJECTS: Project[] = [
         title: "Umkleidekabinen Freibad Süd",
         category: "Umkleidekabine",
         year: 2022,
-        imageUrl: "https://www.freiraum-gestalten.info/vorlagen/webapp/cache/cms/1-20210618-092959auss2b_g43tkojwg4zq-1700x1131.webp",
+        imageUrl: "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.1-Umkleide-Kabine_Beton_Freibad_A%2B-756x430.jpg/picture-2600?_=19382189f40",
         images: [
-            "https://images.unsplash.com/photo-1481026469463-66327c86e544?q=80&w=1200&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
+            "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.3-Umkleidekabine-Freibad-Beton%2B-756x430.jpg/picture-1200?_=19382188bb8",
+            "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.2-Umkleide-Kabine-Beton_Freibad_A%2B-756x430.jpg/picture-1200?_=19382189388",
         ],
         description: "Im Rahmen der Modernisierung des Freibads Süd wurden sechs unserer Umkleidekabinen installiert. Sie bieten den Badegästen eine moderne, saubere und sichere Umkleidemöglichkeit.",
         altText: "Reihe von architektonischen Beton-Umkleidekabinen.",
@@ -171,12 +172,12 @@ export const PROJECTS: Project[] = [
         title: "Skate-Plaza Hamburg",
         category: "Skatepark",
         year: 2024,
-        imageUrl: "https://images.unsplash.com/photo-1541804797-152e06c33c2a?q=80&w=1000&auto=format&fit=crop",
+        imageUrl: "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEANLAGEN/.1-Skate-Anlage_A%2B-756x430.jpg/picture-2600?_=193733bdbb8",
         description: "Ein urbaner Treffpunkt für die Skateszene in Hamburg. Der Plaza wurde mit verschiedenen Street-Elementen ausgestattet, die sich harmonisch in das Stadtbild einfügen.",
         altText: "Urbaner Skate-Plaza in Hamburg mit modularen Beton-Elementen.",
         images: [
-            "https://images.unsplash.com/photo-1549488340-349f53c30164?q=80&w=1200&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1574404889270-43d92023db5e?q=80&w=1200&auto=format&fit=crop",
+            "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEANLAGEN/.3-Skateanlage_A%2B-756x430.jpg/picture-1200?_=193733bd7d0",
+            "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEANLAGEN/.4-Skateanlagen_A%2B-756x430.jpg/picture-1200?_=193733bd3e8",
         ],
         productsUsed: [
             { name: "Modulare Skate-Elemente", path: "/produkte/skate-anlagen" },

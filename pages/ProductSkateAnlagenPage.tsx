@@ -52,7 +52,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
       "name": "A+ Urban Design"
     },
     "category": "Urban Furniture",
-    "image": "https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg",
+    "image": "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/BOWLS/.1-Skate-Bowl_A%2B-756x430.jpg/picture-1200?_=193735e8e88",
     "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -77,14 +77,14 @@ const ProductSkateAnlagenPage: React.FC = () => {
                  <picture>
                     <source 
                         media="(max-width: 600px)" 
-                        srcSet="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg?w=600&q=75" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/BOWLS/.1-Skate-Bowl_A%2B-756x430.jpg/picture-1200?_=193735e8e88&width=600&q=75" 
                     />
                     <source 
                         media="(max-width: 1200px)" 
-                        srcSet="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg?w=1200&q=80" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/BOWLS/.1-Skate-Bowl_A%2B-756x430.jpg/picture-1200?_=193735e8e88&width=1200&q=80" 
                     />
                     <img 
-                        src="https://www.kommunaldirekt.de/wp-content/uploads/2020/03/kd120_aplusurbandesign2-1.jpg" 
+                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/BOWLS/.1-Skate-Bowl_A%2B-756x430.jpg/picture-2600?_=193735e8e88" 
                         alt="Hero Beton Skatepark" 
                         className="w-full h-full object-cover"
                         loading="eager"
@@ -153,35 +153,40 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 {/* Right: Scrolling Gallery & Features */}
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group relative z-10 backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Skate Bowl Detail" width="800" height="500" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 01. BOWL ELEMENT</div>
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEPARK/.1-Skate-Park_A%2B-756x430.jpg/picture-1200?_=19373432300" alt="Skate Bowl Detail" width="800" height="500" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 01. STREET ELEMENTS</div>
                     </div>
                     
-                    {/* Feature Highlight Box */}
+                    {/* Feature Highlight Box - NEW TECHNICAL SECTION */}
                     <div className="bg-white/5 border border-brand-orange/20 p-8 my-8 relative overflow-hidden z-10 backdrop-blur-md">
-                        <div className="absolute top-0 right-0 p-4 opacity-10">
-                            <span className="material-symbols-outlined text-9xl text-brand-orange">engineering</span>
+                        <div className="flex flex-col md:flex-row items-center gap-8">
+                            <div className="w-full md:w-1/2">
+                                <h3 className="text-2xl font-bold font-heading text-white uppercase mb-4 relative z-10">Material & Details</h3>
+                                <ul className="space-y-4 relative z-10">
+                                    <li className="flex gap-4">
+                                        <span className="text-brand-orange font-mono">01</span>
+                                        <span className="text-gray-300"><strong>Coping:</strong> Verzinktes Stahlrohr, perfekt integriert.</span>
+                                    </li>
+                                    <li className="flex gap-4">
+                                        <span className="text-brand-orange font-mono">02</span>
+                                        <span className="text-gray-300"><strong>Kanten:</strong> Feuerverzinkter Stahl-Kantenschutz.</span>
+                                    </li>
+                                    <li className="flex gap-4">
+                                        <span className="text-brand-orange font-mono">03</span>
+                                        <span className="text-gray-300"><strong>Übergang:</strong> Nahtloses Bodenblech.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="w-full md:w-1/2">
+                                <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/DETAILS/.2-Skate-Element-Copingrohr_A%2B-756x430.jpg/picture-1200?_=193736d3488" className="rounded border border-white/10" alt="Technical Detail" />
+                                <span className="block text-[10px] text-gray-500 font-mono mt-1 text-right">FIG 02. COPING DETAIL</span>
+                            </div>
                         </div>
-                        <h3 className="text-2xl font-bold font-heading text-white uppercase mb-4 relative z-10">Warum Beton?</h3>
-                        <ul className="space-y-4 relative z-10">
-                            <li className="flex gap-4">
-                                <span className="text-brand-orange font-mono">01</span>
-                                <span className="text-gray-300">Flüsterleise: Hohe Masse absorbiert Schall.</span>
-                            </li>
-                            <li className="flex gap-4">
-                                <span className="text-brand-orange font-mono">02</span>
-                                <span className="text-gray-300">Unzerstörbar: Resistent gegen Feuer & Schnitte.</span>
-                            </li>
-                            <li className="flex gap-4">
-                                <span className="text-brand-orange font-mono">03</span>
-                                <span className="text-gray-300">Grip: Perfekte Haftung, trocknet schnell ab.</span>
-                            </li>
-                        </ul>
                     </div>
 
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group relative z-10 backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Street Skateboarding" width="800" height="500" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 02. STREET PLAZA</div>
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEPARK/.4-Skatepark_A%2B-756x430.jpg/picture-1200?_=19373431b30" alt="Street Skateboarding" width="800" height="500" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 03. MODULAR PARK</div>
                     </div>
                 </div>
             </div>

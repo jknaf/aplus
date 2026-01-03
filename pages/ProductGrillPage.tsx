@@ -54,11 +54,11 @@ const ProductGrillPage: React.FC = () => {
                  <picture>
                     <source 
                         media="(max-width: 600px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750&w=600&q=75" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-1200?_=193821b3750&w=600&q=75" 
                     />
                      <source 
                         media="(max-width: 1200px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750&w=1200&q=80" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-1200?_=193821b3750&w=1200&q=80" 
                     />
                     <img 
                         src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750" 
@@ -125,8 +125,8 @@ const ProductGrillPage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/1739942/pexels-photo-1739942.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Grill Detail Rost" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. EDELSTAHL ROST</div>
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.5-Grill-Stelle_A%2B-756x430.jpg/picture-1200?_=193723cb750" alt="Grill Detail Rost" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. ROST DETAIL</div>
                     </div>
                     
                     <div className="bg-white/5 border border-white/10 p-8 my-8 flex items-center justify-between backdrop-blur-sm">
@@ -141,7 +141,7 @@ const ProductGrillPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/18449733/pexels-photo-18449733.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Grill Installation" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.1-Grill-Platz-Beton_A%2B-756x430.jpg/picture-1200?_=193821b3f20" alt="Grill Installation Umgebung" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. INSTALLATION</div>
                     </div>
                 </div>

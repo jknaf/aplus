@@ -54,14 +54,14 @@ const ProductPavilionPage: React.FC = () => {
                  <picture>
                     <source 
                         media="(max-width: 600px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200?format=auto&width=600&q=75" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.2-Ueberdachung_Unterstellplatz-Beton_A%2B-712x363.jpg/picture-1200?_=1938232bad8&width=600&q=75" 
                     />
                      <source 
                         media="(max-width: 1200px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200?format=auto&width=1200&q=80" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.2-Ueberdachung_Unterstellplatz-Beton_A%2B-712x363.jpg/picture-1200?_=1938232bad8&width=1200&q=80" 
                     />
                     <img 
-                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.4-a%2Bimg_0318b-756x430.jpg/picture-200?format=auto&width=1200" 
+                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.2-Ueberdachung_Unterstellplatz-Beton_A%2B-712x363.jpg/picture-2600?_=1938232bad8" 
                         alt="Hero Pavillon" 
                         className="w-full h-full object-cover"
                         loading="eager"
@@ -126,8 +126,8 @@ const ProductPavilionPage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/208801/pexels-photo-208801.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pavillon Design" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. MODERN SHELTER</div>
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.A%2B_Unterstellplatz_Ueberdachung_Pavillon-Varianten.jpg/picture-1200?_=19abaa369d8" alt="Pavillon Varianten" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. VARIANTEN & SYSTEM</div>
                     </div>
                     
                     <div className="bg-white/5 border border-white/10 p-8 my-8 backdrop-blur-sm">
@@ -141,7 +141,7 @@ const ProductPavilionPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/210393/pexels-photo-210393.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Massive Bauweise" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.Pavillon_Unterstellplatz_Ueberdachung_Wetterschutz.jpg/picture-1200?_=19aba6c7b58" alt="Massive Bauweise Pavillon" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. SOLID CONSTRUCTION</div>
                     </div>
                 </div>

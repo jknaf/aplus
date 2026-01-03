@@ -23,6 +23,7 @@ import ProjectDetailPage from './pages/ProjectDetailPage';
 import ImpressumPage from './pages/ImpressumPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import NotFoundPage from './pages/NotFoundPage';
+import PlanningPage from './pages/PlanningPage'; // NEW IMPORT
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -73,6 +74,7 @@ const App: React.FC = () => {
             <Route path="/projekte" element={<ProjectsPage />} />
             <Route path="/ueber-uns" element={<AboutPage />} />
             <Route path="/kontakt" element={<ContactPage />} />
+            <Route path="/planung" element={<PlanningPage />} /> {/* NEW ROUTE */}
 
             {/* Product Pages (Now Instant) */}
             <Route path="/produkte/skate-anlagen" element={<ProductSkateAnlagenPage />} />

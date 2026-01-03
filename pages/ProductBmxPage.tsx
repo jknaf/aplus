@@ -60,29 +60,29 @@ const ProductBmxPage: React.FC = () => {
                  <picture>
                     <source 
                         media="(max-width: 600px)" 
-                        srcSet="https://images.unsplash.com/photo-1576435728678-35d016018997?w=600&q=75&auto=format&fit=crop" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PIPES/.1-Skate-Pipe_A%2B-756x430.jpg/picture-1200?_=193734a9158&w=600&q=75" 
                     />
                      <source 
                         media="(max-width: 1200px)" 
-                        srcSet="https://images.unsplash.com/photo-1576435728678-35d016018997?w=1200&q=80&auto=format&fit=crop" 
+                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PIPES/.1-Skate-Pipe_A%2B-756x430.jpg/picture-1200?_=193734a9158&w=1200&q=80" 
                     />
                     <img 
-                        src="https://images.unsplash.com/photo-1576435728678-35d016018997?q=80&w=1600&auto=format&fit=crop" 
-                        alt="BMX Action"
-                        className="w-full h-full object-cover grayscale opacity-60"
+                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PIPES/.1-Skate-Pipe_A%2B-756x430.jpg/picture-2600?_=193734a9158" 
+                        alt="BMX Concrete Halfpipe"
+                        className="w-full h-full object-cover"
                         loading="eager"
                         fetchPriority="high"
                     />
                  </picture>
             </div>
 
-            {/* 2. VIDEO LAYER (Lazy Load) */}
+            {/* 2. VIDEO LAYER (Lazy Load - Keeping the stock video for mood but image is now real) */}
             {shouldLoadVideo && (
                 <div className={`absolute inset-0 z-10 transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
                     <video 
                         src="https://videos.pexels.com/video-files/5445275/5445275-hd_1920_1080_25fps.mp4"
                         autoPlay muted loop playsInline
-                        className="w-full h-full object-cover grayscale opacity-60"
+                        className="w-full h-full object-cover grayscale opacity-40 mix-blend-overlay"
                         onCanPlay={() => setVideoReady(true)}
                     />
                 </div>
@@ -140,7 +140,7 @@ const ProductBmxPage: React.FC = () => {
                 {/* Scrolling Gallery */}
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/165438/pexels-photo-165438.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="BMX Jump Ramp" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PIPES/.3-Skate-Pipe-Bank_A%2B-756x430.jpg/picture-1200?_=193734a8988" alt="BMX Jump Ramp / Bank" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. JUMP RAMPS</div>
                     </div>
                     
@@ -156,8 +156,8 @@ const ProductBmxPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
-                         <img src="https://images.pexels.com/photos/34521/bmx-rider-dramatic-lighting-action.jpg?auto=compress&cs=tinysrgb&w=1200" alt="BMX Bowl Action" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. BOWL SECTION</div>
+                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEPARK/.3-Skatepark_A%2B-756x430.jpg/picture-1200?_=19373431b30" alt="BMX Park Overview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. PARK SECTION</div>
                     </div>
                 </div>
             </div>

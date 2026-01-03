@@ -75,8 +75,8 @@ const AboutPage: React.FC = () => {
         {/* Background Texture/Image */}
         <div className="absolute inset-0 z-0">
              <img 
-                src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2000&auto=format&fit=crop" 
-                alt="Architecture Texture" 
+                src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PLANUNG/.2-Skateanlage-Planung_A%2B-756x430.jpg/picture-2600?_=1937df92038" 
+                alt="Architecture Planning" 
                 className="w-full h-full object-cover grayscale opacity-40 scale-105 animate-[kenburns-1_30s_infinite_alternate]"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent"></div>
@@ -114,8 +114,10 @@ const AboutPage: React.FC = () => {
           <div className="flex flex-col lg:flex-row gap-16 items-center">
               <div className="lg:w-1/2">
                   <div className="relative rounded-xl overflow-hidden border border-white/10 group">
-                      <img src="https://images.unsplash.com/photo-1564619730592-30113c042398?q=80&w=1200&auto=format&fit=crop" alt="Construction Site" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700"/>
+                      {/* REAL MONTAGE IMAGE instead of generic stock */}
+                      <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/MONTAGE/.1-Skate-Elemente-Transport_A%2B_756x430.jpg/picture-2600?_=19381ef02e8" alt="Logistik und Montage" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700"/>
                       <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
+                      <div className="absolute bottom-4 right-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-brand-orange">FIG 01. FUNDAMENTFREIE MONTAGE</div>
                   </div>
               </div>
               <div className="lg:w-1/2">

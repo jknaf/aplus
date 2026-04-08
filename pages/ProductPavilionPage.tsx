@@ -51,23 +51,11 @@ const ProductPavilionPage: React.FC = () => {
        {/* 1. HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
-                 <picture>
-                    <source 
-                        media="(max-width: 600px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.2-Ueberdachung_Unterstellplatz-Beton_A%2B-712x363.jpg/picture-1200?_=1938232bad8&width=600&q=75" 
-                    />
-                     <source 
-                        media="(max-width: 1200px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.2-Ueberdachung_Unterstellplatz-Beton_A%2B-712x363.jpg/picture-1200?_=1938232bad8&width=1200&q=80" 
-                    />
-                    <img 
-                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.2-Ueberdachung_Unterstellplatz-Beton_A%2B-712x363.jpg/picture-2600?_=1938232bad8" 
+                 <img src="/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg" 
                         alt="Hero Pavillon" 
                         className="w-full h-full object-cover"
                         loading="eager"
-                        fetchPriority="high"
-                    />
-                 </picture>
+                        fetchPriority="high" />
 
                  {/* Gradient to transparent to show grid */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
@@ -107,10 +95,10 @@ const ProductPavilionPage: React.FC = () => {
                             Schutz. <span className="text-brand-orange">Raum.</span> Ästhetik.
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Unser Überdachungssystem verbindet architektonischen Anspruch mit extremer Funktionalität. Als Bushaltestelle, Jugendtreff oder Schattenspender im Park.
+                            Ein einziges Betonelement, vier Funktionen: Einzeln als Unterstellplatz, nebeneinander als Haltestellenüberdachung, gegenüber für überdachte Sitznischen, oder als Dreier-/Vierergruppe zum Pavillon.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Das modulare C-Profil aus Beton kann einzeln stehen oder zu langen Arkaden und Gruppen kombiniert werden. Vandalismus hat an dem massiven Stahlbeton keine Chance.
+                            Bei 240 cm Länge, 200 cm Tiefe und 262 cm Höhe deckt das C-Profil aus bewehrtem Beton C35/45 diverse Einsatzzwecke ab. Abstände zwischen Elementen können mit Edelstahlseilen oder Kletterpflanzen-Netzen begrünt werden. Inklusive Sitzfläche und Bodenplatte — keine Vorarbeiten nötig.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -126,7 +114,7 @@ const ProductPavilionPage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.A%2B_Unterstellplatz_Ueberdachung_Pavillon-Varianten.jpg/picture-1200?_=19abaa369d8" alt="Pavillon Varianten" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/ueberdachung/pavillon-wetterschutz.jpg" alt="Pavillon Varianten" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. VARIANTEN & SYSTEM</div>
                     </div>
                     
@@ -141,7 +129,7 @@ const ProductPavilionPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.Pavillon_Unterstellplatz_Ueberdachung_Wetterschutz.jpg/picture-1200?_=19aba6c7b58" alt="Massive Bauweise Pavillon" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/ueberdachung/pavillon-wetterschutz.jpg" alt="Massive Bauweise Pavillon" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. SOLID CONSTRUCTION</div>
                     </div>
                 </div>
@@ -160,12 +148,12 @@ const ProductPavilionPage: React.FC = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <TechSpecCard title="Länge" value="240 cm" icon="straighten" />
                     <TechSpecCard title="Tiefe" value="200 cm" icon="square_foot" />
-                    <TechSpecCard title="Höhe" value="246 cm" icon="vertical_align_top" />
-                    <TechSpecCard title="Material" value="Stahlbeton" icon="architecture" />
-                    <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
-                    <TechSpecCard title="Modular" value="Kombinierbar" icon="view_column" />
-                    <TechSpecCard title="Wartung" value="Keine" icon="build_circle" />
-                    <TechSpecCard title="Schutz" value="Wetterfest" icon="umbrella" />
+                    <TechSpecCard title="Höhe" value="262 cm" icon="vertical_align_top" />
+                    <TechSpecCard title="Material" value="C35/45 Stahlbeton" icon="architecture" />
+                    <TechSpecCard title="Montage" value="Autokran, fundamentfrei" icon="layers" />
+                    <TechSpecCard title="Konfiguration" value="Einzel / Gruppe / Arkade" icon="view_column" />
+                    <TechSpecCard title="Sitzfläche" value="Integriert" icon="event_seat" />
+                    <TechSpecCard title="Begrünung" value="Stahlseile / Netze" icon="eco" />
                 </div>
             </div>
 

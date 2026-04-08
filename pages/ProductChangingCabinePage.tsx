@@ -51,23 +51,11 @@ const ProductChangingCabinePage: React.FC = () => {
        {/* 1. HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
-                 <picture>
-                    <source 
-                        media="(max-width: 600px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.4-Umkleidekabine-Schnecke_Freibad_A%2B-756x430.jpg/picture-1200?_=19382187c18&w=600&q=75" 
-                    />
-                     <source 
-                        media="(max-width: 1200px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.4-Umkleidekabine-Schnecke_Freibad_A%2B-756x430.jpg/picture-1200?_=19382187c18&w=1200&q=80" 
-                    />
-                    <img 
-                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.4-Umkleidekabine-Schnecke_Freibad_A%2B-756x430.jpg/picture-2600?_=19382187c18" 
+                 <img src="/images/umkleide/umkleidekabine-schnecke-04.jpg" 
                         alt="Hero Umkleidekabine" 
                         className="w-full h-full object-cover"
                         loading="eager"
-                        fetchPriority="high"
-                    />
-                 </picture>
+                        fetchPriority="high" />
 
                  {/* Gradient to transparent to show grid */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
@@ -107,10 +95,10 @@ const ProductChangingCabinePage: React.FC = () => {
                             Privatsphäre <span className="text-brand-orange">ohne Türen.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung: "Die Schnecke". 
+                            In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung: "Die Schnecke" — kein Kabinenkontakt beim Betreten und Verlassen. Oben und unten offener Freiraum zur Einsicht, nicht verschließbar, missbrauchshemmend.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Die spiralförmige Betonkonstruktion garantiert absoluten Sichtschutz ganz ohne bewegliche Teile. Das bedeutet: Keine Reparaturen, keine Wartung, keine hygienischen Schwachstellen.
+                            Die Kabine besteht aus nur zwei Teilen ohne Verschraubungen — einfach aufstellen, abbauen oder versetzen. Die fugenlose Bodenplatte dient zugleich als Fundamentplatte auf verdichtetem Schotterbett. Aus bewehrtem Beton und Edelstahl, nicht zerschneidbar, nicht anzündbar.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -126,7 +114,7 @@ const ProductChangingCabinePage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.1-Umkleide-Kabine_Beton_Freibad_A%2B-756x430.jpg/picture-1200?_=19382189f40" alt="Umkleide Architektur" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/umkleide/umkleide-kabine-01.jpg" alt="Umkleide Architektur" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. EXTERIOR</div>
                     </div>
                     
@@ -139,7 +127,7 @@ const ProductChangingCabinePage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.2-Umkleide-Kabine-Beton_Freibad_A%2B-756x430.jpg/picture-1200?_=19382189388" alt="Bodenplatte Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/umkleide/umkleide-kabine-02.jpg" alt="Bodenplatte Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. CLEAN SURFACE</div>
                     </div>
                 </div>
@@ -156,14 +144,14 @@ const ProductChangingCabinePage: React.FC = () => {
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <TechSpecCard title="Konstruktion" value="Monolithisch" icon="view_in_ar" />
+                    <TechSpecCard title="Aufbau" value="2 Teile, ohne Schrauben" icon="view_in_ar" />
                     <TechSpecCard title="Tür" value="Keine (Spirale)" icon="no_meeting_room" />
-                    <TechSpecCard title="Boden" value="Fugenlos" icon="check_box_outline_blank" />
-                    <TechSpecCard title="Material" value="Sichtbeton" icon="wallpaper" />
+                    <TechSpecCard title="Boden" value="Fugenlos integriert" icon="check_box_outline_blank" />
+                    <TechSpecCard title="Material" value="Beton + Edelstahl" icon="wallpaper" />
                     <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
                     <TechSpecCard title="Einsatz" value="Freibad / See" icon="water_drop" />
-                    <TechSpecCard title="Sicherheit" value="Vandalismusfest" icon="shield" />
-                    <TechSpecCard title="Reinigung" value="Hochdruck" icon="cleaning_services" />
+                    <TechSpecCard title="Missbrauchschutz" value="Oben + unten offen" icon="shield" />
+                    <TechSpecCard title="Winterbetrieb" value="Kein Abbau nötig" icon="ac_unit" />
                 </div>
             </div>
 

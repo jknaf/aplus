@@ -51,23 +51,11 @@ const ProductGrillPage: React.FC = () => {
        {/* 1. HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
             <div className="absolute inset-0">
-                 <picture>
-                    <source 
-                        media="(max-width: 600px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-1200?_=193821b3750&w=600&q=75" 
-                    />
-                     <source 
-                        media="(max-width: 1200px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-1200?_=193821b3750&w=1200&q=80" 
-                    />
-                    <img 
-                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.2-Grill-Stelle-Beton_A%2B-756x430.jpg/picture-2600?_=193821b3750" 
+                 <img src="/images/grill/grill-stelle-02.jpg" 
                         alt="Hero Grillstelle" 
                         className="w-full h-full object-cover"
                         loading="eager"
-                        fetchPriority="high"
-                    />
-                 </picture>
+                        fetchPriority="high" />
 
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
@@ -106,10 +94,10 @@ const ProductGrillPage: React.FC = () => {
                             Feuer & <span className="text-brand-orange">Beton.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Öffentliche Grillplätze müssen extremen Bedingungen standhalten. Unser Betongrill ist ein monolithischer Treffpunkt, der Vandalismus keine Chance lässt.
+                            Konzipiert für Freibäder, Campingplätze, Sportanlagen und Schrebergärten. Der runde Beton-Grillplatz mit 4,20 m Durchmesser und 2,70 m Höhe schafft eine Lagerfeuer-Atmosphäre im öffentlichen Raum.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Der massive Rost aus Edelstahl ist diebstahlsicher arretiert und höhenverstellbar. Die umgebenden Sitzelemente bilden eine soziale Einheit, die zum Verweilen einlädt.
+                            Der massive Rost aus Edelstahl ist höhenverstellbar und gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert. Die 16 cm starke Bodenplatte ist integriert — keine Pflasterarbeiten nötig. Einfach auf verdichtetes Schotterbett aufbauen.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -125,7 +113,7 @@ const ProductGrillPage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.5-Grill-Stelle_A%2B-756x430.jpg/picture-1200?_=193723cb750" alt="Grill Detail Rost" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/grill/grillstelle-background.jpg" alt="Grill Detail Rost" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. ROST DETAIL</div>
                     </div>
                     
@@ -141,7 +129,7 @@ const ProductGrillPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/GRILL/.1-Grill-Platz-Beton_A%2B-756x430.jpg/picture-1200?_=193821b3f20" alt="Grill Installation Umgebung" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/grill/grill-platz-01.jpg" alt="Grill Installation Umgebung" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. INSTALLATION</div>
                     </div>
                 </div>
@@ -158,13 +146,13 @@ const ProductGrillPage: React.FC = () => {
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <TechSpecCard title="Durchmesser" value="~4,20 Meter" icon="straighten" />
-                    <TechSpecCard title="Höhe" value="~2,40 Meter" icon="vertical_align_top" />
+                    <TechSpecCard title="Durchmesser" value="4,20 Meter" icon="straighten" />
+                    <TechSpecCard title="Höhe" value="2,70 Meter" icon="vertical_align_top" />
                     <TechSpecCard title="Rost" value="Edelstahl" icon="grid_on" />
-                    <TechSpecCard title="Korpus" value="Beton" icon="foundation" />
-                    <TechSpecCard title="Diebstahlschutz" value="Integriert" icon="lock" />
+                    <TechSpecCard title="Bodenplatte" value="16 cm" icon="foundation" />
+                    <TechSpecCard title="Diebstahlschutz" value="Zentrale Öse" icon="lock" />
                     <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
-                    <TechSpecCard title="Reinigung" value="Pflegeleicht" icon="cleaning_services" />
+                    <TechSpecCard title="Grillhöhe" value="Verstellbar" icon="tune" />
                     <TechSpecCard title="Einsatz" value="Öffentlich" icon="public" />
                 </div>
             </div>

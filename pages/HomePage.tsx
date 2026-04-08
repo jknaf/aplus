@@ -326,38 +326,28 @@ const Hero: React.FC = () => {
     return (
         <div className="relative h-[85svh] md:h-[90vh] w-full overflow-hidden bg-black">
             
-            {/* LAYER 1: RESPONSIVE IMAGE (Instant Load) */}
-            {/* CRITICAL UPDATE: Using <picture> for proper art direction and mobile speed */}
+            {/* LAYER 1: HERO IMAGE (A+ eigenes Bild) */}
             <div className="absolute inset-0 z-0">
-                 <picture>
-                    <source 
-                        media="(max-width: 600px)" 
-                        srcSet="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=600&q=75" 
-                    />
-                    <source 
-                        media="(max-width: 1200px)" 
-                        srcSet="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80" 
-                    />
-                    <img 
-                        src="https://images.pexels.com/photos/3315961/pexels-photo-3315961.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                        alt="Architecture" 
-                        className="w-full h-full object-cover"
-                        loading="eager" 
-                        decoding="sync"
-                        fetchPriority="high"
-                    />
-                 </picture>
+                <img
+                    src="/images/homepage/hero-banner.jpg"
+                    alt="A+ Urban Design Skatepark"
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    decoding="sync"
+                    fetchPriority="high"
+                />
             </div>
 
             {/* LAYER 2: VIDEO OVERLAY (Lazy Loaded, Faster Fade) */}
             {shouldLoadVideo && (
                 <div className={`absolute inset-0 z-10 transition-opacity duration-[1000ms] ease-in-out ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
-                    <video 
+                    <video
                         className="w-full h-full object-cover"
-                        src="https://videos.pexels.com/video-files/5464945/5464945-hd_1920_1080_25fps.mp4"
+                        src="/videos/skateparks/contest-skate-bmx-inline-scooter.mp4"
+                        poster="/videos/skateparks/poster-contest-skate-bmx.jpg"
                         muted
                         loop
-                        playsInline 
+                        playsInline
                         autoPlay
                         onCanPlay={() => setVideoReady(true)}
                     />

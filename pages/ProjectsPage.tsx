@@ -22,19 +22,19 @@ const ProjectsPage: React.FC = () => {
                 Portfolio 2005 - 2024
             </span>
         </div>
-        <h1 className="text-6xl md:text-9xl font-black font-heading text-white uppercase tracking-tighter leading-[0.85] mb-8 drop-shadow-2xl">
-            Work<br/><span className="text-transparent text-outline-bold">Selection.</span>
+        <h1 className="text-6xl md:text-9xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.85] mb-8">
+            Work<br/><span className="text-brand-orange">Selection.</span>
         </h1>
       </div>
 
       {/* 2. FILTER CONTROL PANEL - Transparent with Blur */}
-      <div className="sticky top-20 z-40 mb-16 backdrop-blur-xl border-y border-white/10 bg-black/20">
+      <div className="sticky top-20 z-40 mb-16 backdrop-blur-xl border-y border-brand-dark/10 bg-white/80">
         <div className="container mx-auto overflow-x-auto">
              <div className="flex justify-start md:justify-center min-w-max px-4">
                 <button
                     onClick={() => setFilter('all')}
                     className={`relative py-6 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 group ${
-                    filter === 'all' ? 'text-brand-orange' : 'text-gray-400 hover:text-white'
+                    filter === 'all' ? 'text-brand-orange' : 'text-brand-muted hover:text-brand-dark'
                     }`}
                 >
                     <span className="relative z-10">Alle Projekte</span>
@@ -47,7 +47,7 @@ const ProjectsPage: React.FC = () => {
                     key={category}
                     onClick={() => setFilter(category)}
                     className={`relative py-6 px-6 text-xs font-bold uppercase tracking-widest transition-all duration-300 group ${
-                        filter === category ? 'text-brand-orange' : 'text-gray-400 hover:text-white'
+                        filter === category ? 'text-brand-orange' : 'text-brand-muted hover:text-brand-dark'
                     }`}
                     >
                     <span className="relative z-10">{category.replace('-', ' ')}</span>
@@ -66,7 +66,7 @@ const ProjectsPage: React.FC = () => {
           <Link 
             to={`/projekte/${project.id}`} 
             key={project.id} 
-            className="group relative block aspect-[4/3] md:aspect-[16/10] overflow-hidden bg-white/5 border border-white/10 rounded-sm hover:border-brand-orange/50 transition-all duration-500 backdrop-blur-sm"
+            className="group relative block aspect-[4/3] md:aspect-[16/10] overflow-hidden bg-brand-surface/60 border border-brand-dark/10 rounded-sm hover:border-brand-orange/50 transition-all duration-500 shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
           >
             {/* Image Layer */}
             <div className="absolute inset-0 z-0">
@@ -81,7 +81,7 @@ const ProjectsPage: React.FC = () => {
             </div>
 
             {/* HUD Overlay (Corners) */}
-            <div className="absolute inset-4 z-10 border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+            <div className="absolute inset-4 z-10 border border-brand-dark/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                 <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-brand-orange"></div>
                 <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-brand-orange"></div>
                 <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-brand-orange"></div>
@@ -96,14 +96,14 @@ const ProjectsPage: React.FC = () => {
                     <span className="inline-block py-1 px-2 bg-black/60 backdrop-blur-md text-[10px] font-mono uppercase tracking-widest text-brand-orange border border-brand-orange/20">
                         REF-{String(index + 1).padStart(3, '0')}
                     </span>
-                    <span className="text-[10px] font-mono text-gray-300 uppercase tracking-widest bg-black/60 backdrop-blur-md px-2 py-1 rounded-sm border border-white/10">
+                    <span className="text-[10px] font-mono text-gray-300 uppercase tracking-widest bg-black/60 backdrop-blur-md px-2 py-1 rounded-sm border border-brand-dark/10">
                         {project.year || '2023'}
                     </span>
                 </div>
 
                 {/* Bottom Info */}
                 <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-3xl md:text-5xl font-black font-heading text-white uppercase tracking-tighter mb-2 leading-[0.9] drop-shadow-xl">
+                    <h3 className="text-3xl md:text-5xl font-extrabold font-heading text-white uppercase tracking-tighter mb-2 leading-[0.9] drop-shadow-xl">
                         {project.title}
                     </h3>
                     <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">

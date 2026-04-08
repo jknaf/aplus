@@ -51,23 +51,11 @@ const ProductPumptrackPage: React.FC = () => {
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
             <div className="absolute inset-0">
                  {/* OPTIMIZED HERO IMAGE for Mobile Speed */}
-                 <picture>
-                    <source 
-                        media="(max-width: 600px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.2-Pump-Track_A%2B-756x430.jpg/picture-1200?_=19386fba8e0&w=600&q=75" 
-                    />
-                    <source 
-                        media="(max-width: 1200px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.2-Pump-Track_A%2B-756x430.jpg/picture-1200?_=19386fba8e0&w=1200&q=80" 
-                    />
-                    <img 
-                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/.2-Pump-Track_A%2B-756x430.jpg/picture-2600?_=19386fba8e0" 
+                 <img src="/images/pumptrack/pumptrack-01.jpg" 
                         alt="Hero Pumptrack" 
                         className="w-full h-full object-cover"
                         loading="eager"
-                        fetchPriority="high"
-                    />
-                 </picture>
+                        fetchPriority="high" />
 
                  {/* Gradient to transparent to show grid */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
@@ -105,10 +93,10 @@ const ProductPumptrackPage: React.FC = () => {
                             Endloser <span className="text-brand-orange">Flow.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Ein Pumptrack ist mehr als nur eine Strecke – er ist ein biomechanischer Spielplatz. Durch Gewichtsverlagerung ("Pumpen") wird Geschwindigkeit aufgebaut, ohne in die Pedale zu treten.
+                            Ein Pumptrack ist mehr als nur eine Strecke – er ist ein biomechanischer Spielplatz. Die ca. 1,25 m breite Fahrbahn wird durch Gewichtsverlagerung ("Pumpen") befahren, ganz ohne in die Pedale zu treten.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Unsere Betonelemente bieten im Gegensatz zu Asphalt oder Erde eine dauerhaft perfekte Geometrie. Wartungsfrei, griffig und sicher für Skateboarder, Scooter-Kids und Mountainbiker gleichermaßen.
+                            Im Gegensatz zu Asphalt oder Erde bieten unsere Betonelemente eine dauerhaft perfekte Geometrie. Drei Aufbauvarianten möglich: direkt auf befestigter Fläche, auf separater Beton-/Asphaltpiste, oder auf Fundamentplatten mit anbetonierter Strecke. Gemeinden können unsere Module kaufen und selbst aufbauen.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -125,7 +113,7 @@ const ProductPumptrackPage: React.FC = () => {
                 {/* Scrolling Gallery */}
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PUMPTRACK/.3-Pump-Track-Beton-Module_A%2B-756x430.jpg/picture-1200?_=193820c4b00" alt="Pumptrack Curve" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/pumptrack/pumptrack-beton-module-03.jpg" alt="Pumptrack Curve" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 01. STEILKURVE</div>
                     </div>
                     
@@ -140,7 +128,7 @@ const ProductPumptrackPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PUMPTRACK/.1-Pumptrack-Beton-Elemente_A%2B-756x430.jpg/picture-1200?_=193820c8d68" alt="Pumptrack Overview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/pumptrack/pumptrack-beton-elemente-01.jpg" alt="Pumptrack Overview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 02. MODULARES SYSTEM</div>
                     </div>
                 </div>
@@ -156,14 +144,14 @@ const ProductPumptrackPage: React.FC = () => {
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <TechSpecCard title="Fahrbreite" value="~1,25 Meter" icon="straighten" />
                     <TechSpecCard title="Zielgruppe" value="Bike, Skate, Scooter" icon="groups" />
                     <TechSpecCard title="Oberfläche" value="Spezialbeton" icon="texture" />
-                    <TechSpecCard title="Wartung" value="Minimal" icon="build_circle" />
-                    <TechSpecCard title="Aufbau" value="Modular" icon="view_module" />
+                    <TechSpecCard title="Aufbau" value="3 Varianten" icon="view_module" />
                     <TechSpecCard title="Witterung" value="Ganzjährig" icon="wb_sunny" />
-                    <TechSpecCard title="Erweiterbar" value="Ja" icon="add_circle" />
+                    <TechSpecCard title="Erweiterbar" value="Symmetrisch / Parallel" icon="add_circle" />
                     <TechSpecCard title="Zertifikat" value="TÜV / GS" icon="verified" />
-                    <TechSpecCard title="Individualität" value="Custom Layouts" icon="draw" />
+                    <TechSpecCard title="Eigenaufbau" value="Möglich" icon="construction" />
                 </div>
             </div>
 

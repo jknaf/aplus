@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
@@ -41,6 +41,57 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
     </div>
 );
 
+const VIDEOS = [
+  { src: '/videos/skateparks/contest-skate-bmx-inline-scooter.mp4', poster: '/videos/skateparks/poster-contest-skate-bmx.jpg', title: 'Contest: Skate / BMX / Inline / Scooter' },
+  { src: '/videos/skateparks/session-skate-bmx-inline-scooter.mp4', poster: '/videos/skateparks/poster-session-skate-bmx.jpg', title: 'Session: Skate / BMX / Inline / Scooter' },
+  { src: '/videos/skateparks/contest-skateboard.mp4', poster: '/videos/skateparks/poster-contest-skateboard.jpg', title: 'Contest: Skateboard' },
+  { src: '/videos/skateparks/contest-bmx.mp4', poster: '/videos/skateparks/poster-contest-bmx.jpg', title: 'Contest: BMX' },
+  { src: '/videos/skateparks/contest-inliner.mp4', poster: '/videos/skateparks/poster-contest-inliner.jpg', title: 'Contest: Inliner' },
+  { src: '/videos/skateparks/contest-scooter.mp4', poster: '/videos/skateparks/poster-contest-scooter.jpg', title: 'Contest: Scooter' },
+];
+
+const VideoCard: React.FC<{ video: typeof VIDEOS[0] }> = ({ video }) => {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const toggle = () => {
+    if (!ref.current) return;
+    if (playing) { ref.current.pause(); } else { ref.current.play(); }
+    setPlaying(!playing);
+  };
+
+  return (
+    <div className="group relative aspect-video bg-black rounded-xl overflow-hidden border border-brand-dark/10 cursor-pointer shadow-[0_2px_12px_rgba(0,0,0,0.08)]" onClick={toggle}>
+      <video ref={ref} src={video.src} poster={video.poster} muted loop playsInline preload="none" className="w-full h-full object-cover" />
+      {!playing && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-colors">
+          <div className="w-16 h-16 rounded-full bg-brand-orange/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl">
+            <span className="material-symbols-outlined text-white text-3xl ml-1">play_arrow</span>
+          </div>
+        </div>
+      )}
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+        <span className="text-white text-sm font-bold uppercase tracking-wider">{video.title}</span>
+      </div>
+    </div>
+  );
+};
+
+const VideoGallery: React.FC = () => (
+  <div className="mb-32 relative z-20">
+    <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
+      <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
+        Videos<span className="text-brand-orange">.</span>
+      </h2>
+      <span className="font-mono text-brand-muted text-xs hidden sm:block">CONTESTS & SESSIONS</span>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {VIDEOS.map((video, i) => <VideoCard key={i} video={video} />)}
+    </div>
+    <p className="text-xs text-brand-muted font-mono mt-4 text-right">Videos: HaiHai Media</p>
+  </div>
+);
+
 const ProductSkateAnlagenPage: React.FC = () => {
   const productSchema = {
     "@context": "https://schema.org",
@@ -52,7 +103,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
       "name": "A+ Urban Design"
     },
     "category": "Urban Furniture",
-    "image": "https://www.aplusurbandesign.com/.cm4all/uproc.php/0/BOWLS/.1-Skate-Bowl_A%2B-756x430.jpg/picture-1200?_=193735e8e88",
+    "image": "/images/skate-bowls/skate-bowl-01.jpg",
     "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
@@ -74,23 +125,13 @@ const ProductSkateAnlagenPage: React.FC = () => {
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
             <div className="absolute inset-0">
                 {/* OPTIMIZED HERO IMAGE for Mobile Speed */}
-                 <picture>
-                    <source 
-                        media="(max-width: 600px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/BOWLS/.1-Skate-Bowl_A%2B-756x430.jpg/picture-1200?_=193735e8e88&width=600&q=75" 
-                    />
-                    <source 
-                        media="(max-width: 1200px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/BOWLS/.1-Skate-Bowl_A%2B-756x430.jpg/picture-1200?_=193735e8e88&width=1200&q=80" 
-                    />
-                    <img 
-                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/BOWLS/.1-Skate-Bowl_A%2B-756x430.jpg/picture-2600?_=193735e8e88" 
-                        alt="Hero Beton Skatepark" 
-                        className="w-full h-full object-cover"
-                        loading="eager"
-                        fetchPriority="high"
-                    />
-                 </picture>
+                 <img
+                    src="/images/skate-bowls/skate-bowl-01.jpg"
+                    alt="Hero Beton Skatepark"
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                 />
                 
                 {/* Center area clears for image, edges fade to black/transparent */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
@@ -132,10 +173,10 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Seit den <span className="text-brand-orange">90ern.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Unsere modularen Skate-Elemente haben den öffentlichen Raum revolutioniert. Sie bieten die perfekte Symbiose aus der Haltbarkeit von Beton und der Flexibilität eines Baukastensystems.
+                            Unsere modularen Skate-Elemente haben den öffentlichen Raum revolutioniert. Entwickelt in den 90ern, 1999 als weltweit erste modulare Beton-Skateelemente TÜV-zertifiziert. Vom ersten Bowl auf Gran Canaria (2002) bis zu Anlagen in Norwegen und Rumänien.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                             Egal ob Street-Plaza oder Flow-Park: Wir liefern TÜV-zertifizierte Module, die einfach auf eine verdichtete Schotterfläche gestellt werden. Kein aufwendiger Tiefbau, keine teuren Fundamente.
+                            Egal ob Street-Plaza oder Flow-Park: Die Module in Höhen von 45 bis 149 cm (Wandstärke 8–16 cm, Hohlkörperbauweise) werden einfach auf eine verdichtete Schotterfläche gestellt. Kein Tiefbau, keine Fundamente. Die rutschhemmende, offenporige Betonoberfläche bleibt auch bei Nässe griffig.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -153,7 +194,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 {/* Right: Scrolling Gallery & Features */}
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group relative z-10 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEPARK/.1-Skate-Park_A%2B-756x430.jpg/picture-1200?_=19373432300" alt="Skate Bowl Detail" width="800" height="500" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/skateparks/skatepark-01.jpg" alt="Skate Bowl Detail" width="800" height="500" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 01. STREET ELEMENTS</div>
                     </div>
                     
@@ -178,14 +219,14 @@ const ProductSkateAnlagenPage: React.FC = () => {
                                 </ul>
                             </div>
                             <div className="w-full md:w-1/2">
-                                <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/DETAILS/.2-Skate-Element-Copingrohr_A%2B-756x430.jpg/picture-1200?_=193736d3488" className="rounded border border-brand-dark/10" alt="Technical Detail" />
+                                <img src="/images/details/copingrohr-02.jpg" className="rounded border border-brand-dark/10" alt="Technical Detail" />
                                 <span className="block text-[10px] text-brand-muted font-mono mt-1 text-right">FIG 02. COPING DETAIL</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group relative z-10 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEPARK/.4-Skatepark_A%2B-756x430.jpg/picture-1200?_=19373431b30" alt="Street Skateboarding" width="800" height="500" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/skateparks/skatepark-04.jpg" alt="Street Skateboarding" width="800" height="500" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 03. MODULAR PARK</div>
                     </div>
                 </div>
@@ -205,15 +246,22 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <TechSpecCard title="Zertifizierung" value="DIN EN 14974" icon="verified" />
                     <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
                     <TechSpecCard title="Material" value="C35/45 Beton" icon="architecture" />
-                    <TechSpecCard title="Kantenschutz" value="Verzinkt / Gummi" icon="shield" />
-                    <TechSpecCard title="Lautstärke" value="Lärmmindernd" icon="volume_off" />
-                    <TechSpecCard title="Oberfläche" value="Besenstrich / Glatt" icon="texture" />
+                    <TechSpecCard title="Höhenraster" value="45–149 cm" icon="straighten" />
+                    <TechSpecCard title="Wandstärke" value="8–16 cm" icon="square_foot" />
+                    <TechSpecCard title="Bauweise" value="Hohlkörper" icon="view_in_ar" />
+                    <TechSpecCard title="Kantenschutz" value="Hartgummi / Stahl" icon="shield" />
+                    <TechSpecCard title="Lautstärke" value="Bis –15 dB" icon="volume_off" />
+                    <TechSpecCard title="Oberfläche" value="Offenporig / Grip" icon="texture" />
+                    <TechSpecCard title="Coping" value="Verzinkt + Alu-Kappen" icon="commit" />
                     <TechSpecCard title="Modularität" value="Erweiterbar" icon="extension" />
-                    <TechSpecCard title="Gewährleistung" value="5 Jahre" icon="security" />
+                    <TechSpecCard title="Einsatzgebiet" value="0–1000+ m ü. NN" icon="landscape" />
                 </div>
             </div>
 
-            {/* 4. BROCHURE & CTA */}
+            {/* 4. VIDEO GALERIE */}
+            <VideoGallery />
+
+            {/* 5. BROCHURE & CTA */}
             <BrochureRequestForm context="productpage" />
             <OtherProducts />
 

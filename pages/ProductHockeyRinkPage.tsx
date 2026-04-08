@@ -52,23 +52,11 @@ const ProductHockeyRinkPage: React.FC = () => {
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
                  {/* OPTIMIZED HERO IMAGE for Mobile Speed */}
-                 <picture>
-                    <source 
-                        media="(max-width: 600px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.Roll-Hockey-Bande_A%2B.jpg/picture-1200?_=1938211b1d0&w=600&q=75" 
-                    />
-                    <source 
-                        media="(max-width: 1200px)" 
-                        srcSet="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.Roll-Hockey-Bande_A%2B.jpg/picture-1200?_=1938211b1d0&w=1200&q=80" 
-                    />
-                    <img 
-                        src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.Roll-Hockey-Bande_A%2B.jpg/picture-2600?_=1938211b1d0" 
+                 <img src="/images/hockey/roll-hockey-bande.jpg" 
                         alt="Hero Hockey Rink" 
                         className="w-full h-full object-cover"
                         loading="eager"
-                        fetchPriority="high"
-                    />
-                 </picture>
+                        fetchPriority="high" />
                 
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
@@ -107,10 +95,10 @@ const ProductHockeyRinkPage: React.FC = () => {
                             Game On. <span className="text-brand-orange">All Year.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Ein Feld, alle Möglichkeiten. Unser patentiertes Bandensystem verwandelt jeden Platz in eine Arena für Inline-Hockey, Rollhockey und im Winter sogar für Eishockey.
+                            Ein Feld, alle Möglichkeiten. Unser mustergeschütztes Bandensystem verwandelt jeden Platz in eine Arena für Inline-Hockey, Rollhockey und im Winter sogar für Eishockey — durch ein Abdichtungsprofil unter der Einfassung.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Die fundamentfreie Konstruktion erlaubt eine Installation auf bestehenden Hartplätzen ohne Beschädigung des Bodens. Robust, modular in 1,5m Schritten erweiterbar und extrem langlebig.
+                            Zwei Varianten: 40 cm hohe Beton-Einfassungen mit Gummikappen als Spielfeldbegrenzung oder 110 cm hohe Banden mit Edelstahl-Handlauf für den Profi-Einsatz. Die fundamentfreie Konstruktion erlaubt eine Installation auf bestehenden Hartplätzen ohne Beschädigung des Bodens. Die am stärksten beanspruchte Fläche besteht aus massivem Beton.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -126,7 +114,7 @@ const ProductHockeyRinkPage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.2-Inline-Hockey-Bande_A%2B.jpg/picture-1200?_=1938211e880" alt="Modular Rink Element" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/hockey/inline-hockey-bande-02.jpg" alt="Modular Rink Element" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. MODULAR PANELS</div>
                     </div>
                     
@@ -143,7 +131,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.3-Inline-Hockey-Bande_A%2B-756x430.jpg/picture-1200?_=1938211e498" alt="Hockey Action View" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/hockey/inline-hockey-bande-03.jpg" alt="Hockey Action View" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. IN ACTION</div>
                     </div>
                 </div>

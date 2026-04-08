@@ -3,23 +3,57 @@ import PageShell from '../components/PageShell';
 
 type ProjectType = 'Skatepark' | 'Pumptrack' | 'Möblierung' | 'Sonstiges';
 
+interface FormErrors {
+    name?: string;
+    email?: string;
+    phone?: string;
+    message?: string;
+}
+
 const ContactPage: React.FC = () => {
-    const [formData, setFormData] = useState({ 
-        name: '', 
-        email: '', 
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
         phone: '',
-        message: '' 
+        message: ''
     });
     const [projectType, setProjectType] = useState<ProjectType>('Skatepark');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [errors, setErrors] = useState<FormErrors>({});
+    const [submitted, setSubmitted] = useState(false);
+
+    const validate = (data: typeof formData): FormErrors => {
+        const e: FormErrors = {};
+        if (!data.name.trim()) e.name = 'Bitte geben Sie Ihren Namen an.';
+        if (!data.email.trim()) {
+            e.email = 'Bitte geben Sie Ihre E-Mail-Adresse an.';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+            e.email = 'Bitte geben Sie eine gültige E-Mail-Adresse an.';
+        }
+        if (!data.phone.trim()) e.phone = 'Bitte geben Sie Ihre Telefonnummer an.';
+        if (!data.message.trim()) e.message = 'Bitte beschreiben Sie Ihr Projekt kurz.';
+        return e;
+    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({ ...prevState, [name]: value }));
+        const updated = { ...formData, [name]: value };
+        setFormData(updated);
+        // Fehler in Echtzeit entfernen sobald Feld ausgefüllt wird
+        if (submitted) {
+            setErrors(validate(updated));
+        }
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setSubmitted(true);
+        const validationErrors = validate(formData);
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+        setErrors({});
         setStatus('loading');
 
         try {
@@ -42,7 +76,11 @@ const ContactPage: React.FC = () => {
         }
     };
 
-    const inputClasses = "w-full bg-white border border-brand-dark/10 py-3 text-brand-dark placeholder-brand-muted focus:outline-none focus:border-brand-orange transition-all duration-300 font-sans rounded-lg px-4";
+    const inputClasses = (field: keyof FormErrors) => {
+        const base = "w-full bg-white py-3 text-brand-dark placeholder-brand-muted focus:outline-none transition-all duration-300 font-sans rounded-lg px-4 border";
+        if (errors[field]) return `${base} border-red-500 focus:border-red-500 bg-red-50/50`;
+        return `${base} border-brand-dark/10 focus:border-brand-orange`;
+    };
     const labelClasses = "block text-xs font-mono text-brand-orange uppercase tracking-widest mb-1";
 
     return (
@@ -139,24 +177,28 @@ const ContactPage: React.FC = () => {
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <div className="group">
-                                        <label htmlFor="name" className={labelClasses}>Name / Institution</label>
-                                        <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className={inputClasses} placeholder="Max Mustermann" />
+                                    <div>
+                                        <label htmlFor="name" className={labelClasses}>Name / Institution *</label>
+                                        <input type="text" name="name" id="name" value={formData.name} onChange={handleChange} className={inputClasses('name')} placeholder="Max Mustermann" />
+                                        {errors.name && <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1"><span className="material-symbols-outlined text-sm">error</span>{errors.name}</p>}
                                     </div>
-                                    <div className="group">
-                                        <label htmlFor="phone" className={labelClasses}>Telefon (Optional)</label>
-                                        <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className={inputClasses} placeholder="+49 ..." />
+                                    <div>
+                                        <label htmlFor="phone" className={labelClasses}>Telefon *</label>
+                                        <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className={inputClasses('phone')} placeholder="+49 ..." />
+                                        {errors.phone && <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1"><span className="material-symbols-outlined text-sm">error</span>{errors.phone}</p>}
                                     </div>
                                 </div>
 
-                                <div className="group">
-                                    <label htmlFor="email" className={labelClasses}>E-Mail Adresse</label>
-                                    <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className={inputClasses} placeholder="name@firma.de" />
+                                <div>
+                                    <label htmlFor="email" className={labelClasses}>E-Mail Adresse *</label>
+                                    <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} className={inputClasses('email')} placeholder="name@firma.de" />
+                                    {errors.email && <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1"><span className="material-symbols-outlined text-sm">error</span>{errors.email}</p>}
                                 </div>
 
-                                <div className="group">
-                                    <label htmlFor="message" className={labelClasses}>Projektdetails</label>
-                                    <textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleChange} className={`${inputClasses} resize-none`} placeholder="Standort, ungefähre Fläche, Budgetrahmen oder spezielle Wünsche..."></textarea>
+                                <div>
+                                    <label htmlFor="message" className={labelClasses}>Projektdetails *</label>
+                                    <textarea name="message" id="message" rows={4} value={formData.message} onChange={handleChange} className={`${inputClasses('message')} resize-none`} placeholder="Standort, ungefähre Fläche, Budgetrahmen oder spezielle Wünsche..."></textarea>
+                                    {errors.message && <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1"><span className="material-symbols-outlined text-sm">error</span>{errors.message}</p>}
                                 </div>
 
                                 {status === 'error' && (

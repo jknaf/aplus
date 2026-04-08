@@ -23,7 +23,8 @@ import ProjectDetailPage from './pages/ProjectDetailPage';
 import ImpressumPage from './pages/ImpressumPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import NotFoundPage from './pages/NotFoundPage';
-import PlanningPage from './pages/PlanningPage'; // NEW IMPORT
+import PlanningPage from './pages/PlanningPage';
+import ProductOverviewPage from './pages/ProductOverviewPage';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -46,21 +47,18 @@ const App: React.FC = () => {
       {/* --- GLOBAL ATMOSPHERE LAYER --- */}
       {/* Z-Index 0 to sit ON TOP of body bg, but BEHIND content (z-10) */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none transform-gpu">
-          
-          {/* 1. The Grid Pattern (Technical Look) */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_40%,transparent_100%)]"></div>
 
-          {/* 2. Main Orange Glow (Top Left) */}
-          <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-brand-orange/20 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow"></div>
-          
-          {/* 3. Secondary Cool Glow (Bottom Right) */}
-          <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] mix-blend-screen"></div>
-          
-          {/* 4. Center Ambient Light */}
-          <div className="absolute top-[30%] left-[50%] transform -translate-x-1/2 w-[600px] h-[600px] bg-brand-orange/5 rounded-full blur-[100px]"></div>
+          {/* 1. Subtle Grid Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(44,53,48,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(44,53,48,0.03)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_40%,transparent_100%)]"></div>
 
-          {/* 5. Noise Texture (Film Grain) */}
-          <div className="absolute inset-0 bg-noise-overlay opacity-20 mix-blend-overlay"></div>
+          {/* 2. Warm Accent Glow (Top Left) */}
+          <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-brand-orange/5 rounded-full blur-[150px]"></div>
+
+          {/* 3. Cool Green-Gray Glow (Bottom Right) */}
+          <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-[#7A9A7E]/5 rounded-full blur-[150px]"></div>
+
+          {/* 4. Noise Texture */}
+          <div className="absolute inset-0 bg-noise-overlay opacity-[0.08] mix-blend-multiply"></div>
       </div>
       
       {/* Main Content Area */}
@@ -76,7 +74,8 @@ const App: React.FC = () => {
             <Route path="/kontakt" element={<ContactPage />} />
             <Route path="/planung" element={<PlanningPage />} /> {/* NEW ROUTE */}
 
-            {/* Product Pages (Now Instant) */}
+            {/* Product Pages */}
+            <Route path="/produkte" element={<ProductOverviewPage />} />
             <Route path="/produkte/skate-anlagen" element={<ProductSkateAnlagenPage />} />
             <Route path="/produkte/pumptrack-beton" element={<ProductPumptrackPage />} />
             <Route path="/produkte/bmx-anlagen" element={<ProductBmxPage />} />

@@ -60,27 +60,23 @@ const Header: React.FC = () => {
           scrolled ? 'py-2' : 'py-3 md:py-6'
         }`}
       >
-        <div 
-          className={`mx-auto max-w-7xl rounded-2xl border transition-all duration-500 ${
-            scrolled 
-              ? 'bg-brand-bg/80 border-white/10 backdrop-blur-md shadow-lg shadow-black/50' 
-              : 'bg-transparent border-transparent md:bg-brand-bg/60 md:border-white/5 md:backdrop-blur-sm'
+        <div
+          className={`mx-auto border-b transition-all duration-500 ${
+            scrolled
+              ? 'bg-brand-bg/90 border-brand-dark/10 backdrop-blur-md shadow-lg shadow-brand-dark/5'
+              : 'bg-transparent border-transparent'
           }`}
         >
           <div className="flex items-center justify-between h-14 md:h-20 px-4 md:px-8">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 flex-shrink-0 z-50 group" aria-label="A+ Urban Design Home">
               <img
-                src="https://i.ibb.co/whMmCDk9/apluslogo.png"
+                src="/aplus-logo.svg"
                 alt="A+ Urban Design Logo"
-                width={32}
-                height={32}
-                className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-700 ease-in-out group-hover:[transform:rotateY(360deg)]"
+                width={160}
+                height={45}
+                className="h-8 md:h-10 w-auto transition-transform duration-700 ease-in-out group-hover:scale-105"
               />
-              <div className="flex flex-col">
-                <span className="text-base md:text-xl text-white font-black font-heading leading-none tracking-tighter">A+ URBAN</span>
-                <span className="text-[10px] md:text-sm text-brand-orange font-bold font-heading leading-none tracking-widest">DESIGN</span>
-              </div>
             </Link>
 
             {/* Desktop Nav - Semantic HTML Upgrade */}
@@ -93,7 +89,7 @@ const Header: React.FC = () => {
                       ref={dropdownButtonRef}
                       onClick={toggleDropdown}
                       onMouseEnter={() => setIsDropdownOpen(true)}
-                      className="text-gray-300 hover:text-white py-2 text-xs font-bold uppercase tracking-widest transition-colors duration-200 flex items-center gap-1"
+                      className="text-brand-dark/70 hover:text-brand-dark py-2 text-xs font-bold uppercase tracking-widest transition-colors duration-200 flex items-center gap-1"
                       aria-expanded={isDropdownOpen}
                     >
                       {link.name}
@@ -101,21 +97,21 @@ const Header: React.FC = () => {
                     </button>
                     
                     {/* Modern Dropdown */}
-                    <div 
+                    <div
                       ref={dropdownRef}
                       onMouseLeave={() => setIsDropdownOpen(false)}
-                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 p-2 bg-[#121212] border border-white/10 rounded-xl shadow-2xl backdrop-blur-md transition-all duration-300 origin-top transform ${
+                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 p-2 bg-white border border-brand-dark/10 rounded-xl shadow-2xl backdrop-blur-md transition-all duration-300 origin-top transform ${
                         isDropdownOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                       }`}
                     >
                       <ul className="flex flex-col gap-1">
                         {link.subLinks.map(subLink => (
                            <li key={subLink.name}>
-                             <Link 
-                                to={subLink.href} 
-                                className="block px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 group/item" 
+                             <Link
+                                to={subLink.href}
+                                className="block px-4 py-3 text-sm text-brand-muted hover:text-brand-dark hover:bg-brand-surface/50 rounded-lg transition-all duration-200 group/item"
                               >
-                                <span className="block font-bold text-white group-hover/item:text-brand-orange transition-colors">{subLink.name}</span>
+                                <span className="block font-bold text-brand-dark group-hover/item:text-brand-orange transition-colors">{subLink.name}</span>
                                 <span className="text-xs opacity-50">Betonfertigteile</span>
                               </Link>
                            </li>
@@ -127,7 +123,7 @@ const Header: React.FC = () => {
                   <li key={link.name}>
                     <Link 
                       to={link.href} 
-                      className="relative text-gray-300 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors duration-200 group"
+                      className="relative text-brand-dark/70 hover:text-brand-dark text-xs font-bold uppercase tracking-widest transition-colors duration-200 group"
                     >
                       {link.name}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-orange transition-all duration-300 group-hover:w-full"></span>
@@ -142,14 +138,14 @@ const Header: React.FC = () => {
             <div className="flex items-center gap-4">
               <Link 
                 to="/kontakt" 
-                className="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-xs font-black uppercase tracking-widest bg-white text-black hover:bg-brand-orange hover:text-white transition-all duration-300 rounded-lg transform hover:-translate-y-0.5 shadow-lg hover:shadow-brand-orange/20"
+                className="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-xs font-black uppercase tracking-widest bg-brand-orange text-white hover:bg-brand-dark hover:text-white transition-all duration-300 rounded-lg transform hover:-translate-y-0.5 shadow-lg hover:shadow-brand-orange/20"
               >
                 Kontakt
               </Link>
               
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="md:hidden relative z-50 p-2 text-white hover:text-brand-orange transition-colors"
+                className="md:hidden relative z-50 p-2 text-brand-dark hover:text-brand-orange transition-colors"
                 aria-label="Menu"
               >
                 <div className="w-6 flex flex-col items-end gap-1.5">
@@ -175,15 +171,14 @@ const Header: React.FC = () => {
               <div key={link.name} className="overflow-hidden">
                 {link.subLinks ? (
                    <div className="flex flex-col gap-4">
-                      <span className="text-sm font-bold text-brand-orange uppercase tracking-widest border-b border-white/10 pb-2">{link.name}</span>
-                      <div className="pl-4 border-l border-white/10 flex flex-col gap-4">
+                      <span className="text-sm font-bold text-brand-orange uppercase tracking-widest border-b border-brand-dark/10 pb-2">{link.name}</span>
+                      <div className="pl-4 border-l border-brand-dark/10 flex flex-col gap-4">
                         {link.subLinks.map((sub, subIdx) => (
-                           <Link 
+                           <Link
                             key={sub.name}
                             to={sub.href}
                             onClick={() => setIsMenuOpen(false)}
-                            // UPDATED: Removed text-outline/transparent, added solid text-gray-400 and hover white
-                            className={`text-xl font-bold uppercase tracking-wide text-gray-400 hover:text-white transition-all duration-300 translate-y-full animate-[fade-in-up_0.5s_forwards]`}
+                            className={`text-xl font-bold uppercase tracking-wide text-brand-muted hover:text-brand-dark transition-all duration-300 translate-y-full animate-[fade-in-up_0.5s_forwards]`}
                             style={{ animationDelay: `${100 + (subIdx * 50)}ms` }}
                           >
                             {sub.name}
@@ -192,11 +187,10 @@ const Header: React.FC = () => {
                       </div>
                    </div>
                 ) : (
-                  <Link 
+                  <Link
                     to={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    // UPDATED: Removed text-outline/transparent, added solid text-white and hover orange. Size adjusted to fit better.
-                    className={`block text-4xl sm:text-6xl font-black uppercase tracking-tighter text-white hover:text-brand-orange transition-all duration-300 translate-y-full ${isMenuOpen ? 'animate-[fade-in-up_0.5s_forwards]' : ''}`}
+                    className={`block text-4xl sm:text-6xl font-black uppercase tracking-tighter text-brand-dark hover:text-brand-orange transition-all duration-300 translate-y-full ${isMenuOpen ? 'animate-[fade-in-up_0.5s_forwards]' : ''}`}
                     style={{ animationDelay: `${idx * 100}ms` }}
                   >
                     {link.name}
@@ -205,16 +199,16 @@ const Header: React.FC = () => {
               </div>
             ))}
           </nav>
-          
-          <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 gap-8 animate-fade-in-up [animation-delay:600ms]">
+
+          <div className="mt-12 pt-8 border-t border-brand-dark/10 grid grid-cols-1 gap-8 animate-fade-in-up [animation-delay:600ms]">
             <div>
               <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Kontakt</span>
-              <a href="mailto:post@aplusurbandesign.com" className="block text-white font-bold text-lg">post@aplusurbandesign.com</a>
+              <a href="mailto:post@aplusurbandesign.com" className="block text-brand-dark font-bold text-lg">post@aplusurbandesign.com</a>
             </div>
             <div>
               <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Social</span>
               <div className="flex gap-4">
-                <a href="#" className="text-white hover:text-brand-orange text-lg font-bold">LinkedIn</a>
+                <a href="#" className="text-brand-dark hover:text-brand-orange text-lg font-bold">LinkedIn</a>
               </div>
             </div>
           </div>

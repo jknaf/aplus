@@ -5,10 +5,13 @@
 */
 
 :root {
-  --brand-bg: #020202;
-  --brand-surface: #121212;
-  --brand-orange: #F97316;
-  --text-main: #EAEAEA;
+  --brand-bg: #F2F0EB;
+  --brand-surface: #E5E3DC;
+  --brand-accent: #B5654A;
+  --brand-orange: #B5654A;
+  --text-main: #2C3530;
+  --brand-dark: #2C3530;
+  --brand-muted: #8A8A80;
 }
 
 html, body {
@@ -34,12 +37,12 @@ html, body {
 
 /* Typography Effects */
 .text-outline-bold {
-  -webkit-text-stroke: 1px #fff;
-  color: transparent; 
+  -webkit-text-stroke: 2px #2C3530;
+  color: transparent;
 }
 
 .text-outline-orange {
-  -webkit-text-stroke: 1px #F97316;
+  -webkit-text-stroke: 1px #B5654A;
   color: transparent;
 }
 
@@ -72,12 +75,12 @@ html, body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--brand-orange);
+  background: var(--brand-accent);
 }

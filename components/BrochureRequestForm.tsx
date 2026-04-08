@@ -140,9 +140,9 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
 
     if (isHomepage) {
         return (
-            <section id="katalog" className="relative py-24 bg-brand-surface overflow-hidden border-y border-white/5">
+            <section id="katalog" className="relative py-24 bg-brand-surface overflow-hidden border-y border-brand-dark/5">
                 {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#F97316 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#B5654A 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
                 <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-brand-bg to-transparent opacity-80"></div>
                 
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -156,11 +156,11 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                             
                             {/* TYPOGRAPHY SWAP: Outline 'Unser' (Industrial), Solid 'Katalog' (Readable) */}
                             <h2 className="text-5xl md:text-7xl font-black font-heading uppercase tracking-tighter leading-[0.9] mb-6">
-                                <span className="text-transparent text-outline-bold">Unser</span> <br/>
-                                <span className="text-white">Katalog.</span>
+                                <span className="text-brand-muted">Unser</span> <br/>
+                                <span className="text-brand-dark">Katalog.</span>
                             </h2>
-                            
-                            <p className="text-lg text-gray-400 mb-8 max-w-xl leading-relaxed">
+
+                            <p className="text-lg text-brand-muted mb-8 max-w-xl leading-relaxed">
                                 Planen Sie Ihr nächstes Projekt mit allen Details zur Hand. Unser Katalog enthält technische Zeichnungen, Ausschreibungstexte und inspirierende Case Studies unserer Beton-Skateparks und Stadtmöbel.
                             </p>
                             
@@ -177,16 +177,16 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 placeholder="Ihre geschäftliche E-Mail-Adresse"
                                                 required
-                                                className="relative w-full px-6 py-4 bg-[#0a0a0a] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-brand-orange transition-all shadow-xl"
+                                                className="relative w-full px-6 py-4 bg-white border border-brand-dark/10 rounded-lg text-brand-dark placeholder-brand-muted focus:outline-none focus:ring-1 focus:ring-brand-orange transition-all shadow-xl"
                                             />
                                         </div>
 
                                         {/* GDPR Checkbox */}
                                         <div className="flex items-start gap-3 mt-4 group cursor-pointer" onClick={() => setPrivacyAccepted(!privacyAccepted)}>
-                                            <div className={`mt-1 w-5 h-5 rounded border flex items-center justify-center transition-colors flex-shrink-0 ${privacyAccepted ? 'bg-brand-orange border-brand-orange' : 'bg-transparent border-gray-600 group-hover:border-gray-500'}`}>
-                                                {privacyAccepted && <span className="material-symbols-outlined text-black text-sm font-bold">check</span>}
+                                            <div className={`mt-1 w-5 h-5 rounded border flex items-center justify-center transition-colors flex-shrink-0 ${privacyAccepted ? 'bg-brand-orange border-brand-orange' : 'bg-transparent border-brand-muted group-hover:border-brand-dark'}`}>
+                                                {privacyAccepted && <span className="material-symbols-outlined text-white text-sm font-bold">check</span>}
                                             </div>
-                                            <p className="text-xs text-gray-500 leading-snug">
+                                            <p className="text-xs text-brand-muted leading-snug">
                                                 Ich stimme zu, dass meine Angaben zur Kontaktaufnahme gespeichert werden. Sie können unsere <Link to="/datenschutz" className="underline hover:text-brand-orange" onClick={(e) => e.stopPropagation()}>Datenschutzerklärung</Link> hier einsehen.
                                             </p>
                                         </div>
@@ -194,7 +194,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                                         <button
                                             type="submit"
                                             disabled={status === 'loading'}
-                                            className="w-full py-4 px-8 bg-brand-orange hover:bg-white text-black font-black uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(249,115,22,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex justify-center items-center gap-2 group"
+                                            className="w-full py-4 px-8 bg-brand-orange hover:bg-brand-dark text-white font-black uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(181,101,74,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex justify-center items-center gap-2 group"
                                         >
                                             {status === 'loading' ? 'Wird verarbeitet...' : 'Katalog jetzt anfordern'} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">download</span>
                                         </button>

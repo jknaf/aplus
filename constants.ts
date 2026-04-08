@@ -2,9 +2,9 @@ import { Product, Project } from './types';
 
 export const NAV_LINKS = [
   { name: 'Home', href: '/' },
-  { 
-    name: 'Produkte', 
-    href: '#',
+  {
+    name: 'Produkte',
+    href: '/produkte',
     subLinks: [
       { name: 'Skate-Anlagen', href: '/produkte/skate-anlagen' },
       { name: 'Pumptrack Beton', href: '/produkte/pumptrack-beton' },
@@ -50,13 +50,12 @@ export const PRODUCTS: Product[] = [
     usp: 'Professionelle Dirt- & Park-Setups aus unverwüstlichem Hochleistungsbeton.'
   },
   {
-    id: 'hockey',
-    title: 'Hockey-Banden',
-    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.Roll-Hockey-Bande_A%2B.jpg/picture-2600?_=1938211b1d0',
-    path: '/produkte/hockey-banden',
-    altText: 'Outdoor Hockey-Spielfeld mit robusten Banden.',
-    tuvCertified: true,
-    usp: 'Fundamentfreies, patentiertes Bandensystem für den ganzjährigen Profi-Einsatz.'
+    id: 'ueberdachung',
+    title: 'Überdachung / Pavillon',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.2-Ueberdachung_Unterstellplatz-Beton_A%2B-712x363.jpg/picture-2600?_=1938232bad8',
+    path: '/produkte/ueberdachung-beton',
+    altText: 'Minimalistische Betonüberdachung im urbanen Raum.',
+    usp: 'Massiver, architektonischer Wetterschutz in zeitloser Sichtbeton-Ästhetik.'
   },
   {
     id: 'grillstelle',
@@ -72,15 +71,16 @@ export const PRODUCTS: Product[] = [
     imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/UMKLEIDE/.4-Umkleidekabine-Schnecke_Freibad_A%2B-756x430.jpg/picture-2600?_=19382187c18',
     path: '/produkte/umkleidekabine-beton',
     altText: 'Moderne Architektur mit Sichtbetonwänden.',
-    usp: 'Die „Schnecke“: Hygienisch, türlos und absolut missbrauchssicher konstruiert.'
+    usp: 'Die „Schnecke”: Hygienisch, türlos und absolut missbrauchssicher konstruiert.'
   },
   {
-    id: 'ueberdachung',
-    title: 'Überdachung / Pavillon',
-    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/%C3%9CBERDACHUNG/.2-Ueberdachung_Unterstellplatz-Beton_A%2B-712x363.jpg/picture-2600?_=1938232bad8',
-    path: '/produkte/ueberdachung-beton',
-    altText: 'Minimalistische Betonüberdachung im urbanen Raum.',
-    usp: 'Massiver, architektonischer Wetterschutz in zeitloser Sichtbeton-Ästhetik.'
+    id: 'hockey',
+    title: 'Hockey-Banden',
+    imageUrl: 'https://www.aplusurbandesign.com/.cm4all/uproc.php/0/HOCKEY/.Roll-Hockey-Bande_A%2B.jpg/picture-2600?_=1938211b1d0',
+    path: '/produkte/hockey-banden',
+    altText: 'Outdoor Hockey-Spielfeld mit robusten Banden.',
+    tuvCertified: true,
+    usp: 'Fundamentfreies, patentiertes Bandensystem für den ganzjährigen Profi-Einsatz.'
   },
 ];
 

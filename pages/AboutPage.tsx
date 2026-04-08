@@ -104,7 +104,7 @@ const AboutPage: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
               <StatCounter end={250} suffix="+" label="Realisierte Projekte" />
               <StatCounter end={30} label="Jahre Erfahrung" />
-              <StatCounter end={100} suffix="%" label="Made in Germany" />
+              <StatCounter end={100} suffix="%" label="Made in Europe" />
               <StatCounter end={45} label="Betonklasse C35/45" />
           </div>
       </div>
@@ -231,9 +231,6 @@ const AboutPage: React.FC = () => {
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-brand-orange/20 transition-colors duration-500"></div>
                 
                 <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
-                    <div className="w-40 h-40 md:w-56 md:h-56 flex-shrink-0 bg-brand-surface/60 border border-brand-dark/10 rounded-full overflow-hidden relative shadow-2xl">
-                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" alt="Cüneyit Akcakoca" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"/>
-                    </div>
                     <div className="text-center md:text-left">
                         <div className="inline-block px-3 py-1 bg-brand-surface text-xs font-mono text-brand-dark mb-6 rounded uppercase tracking-widest">Gründer & Architekt</div>
                         <h3 className="text-4xl font-extrabold font-heading text-brand-dark uppercase mb-2 tracking-tight">Dipl.-Ing. Cüneyit Akcakoca</h3>

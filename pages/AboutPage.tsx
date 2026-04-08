@@ -103,7 +103,7 @@ const AboutPage: React.FC = () => {
       <div className="container mx-auto px-4 mb-32">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
               <StatCounter end={250} suffix="+" label="Realisierte Projekte" />
-              <StatCounter end={15} label="Jahre Erfahrung" />
+              <StatCounter end={30} label="Jahre Erfahrung" />
               <StatCounter end={100} suffix="%" label="Made in Germany" />
               <StatCounter end={45} label="Betonklasse C35/45" />
           </div>

@@ -159,34 +159,56 @@ const PlanningPage: React.FC = () => {
             </div>
         </div>
 
-        {/* 3. PROCESS STEPS */}
+        {/* 3. PLANUNGSBEISPIELE — alle 4 Zeichnungen */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 relative z-20">
+            <div className="mb-12">
+                <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Planungsbeispiele</span>
+                <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
+                    So planen <span className="text-brand-orange">wir.</span>
+                </h2>
+                <p className="text-lg text-brand-muted mt-4 max-w-3xl">
+                    Sie nennen uns die verfügbare Fläche und das Budget — wir erstellen einen individuellen Entwurf mit Draufsicht, 3D-Zeichnung und Kostenübersicht. Bei besonderen Wünschen senden Sie uns einfach eine Skizze als Vorlage.
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <img src="/images/planung/skate-anlage-planung-01.jpg" alt="Skatepark Planung Draufsicht" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">DRAUFSICHT — SKATE-ANLAGE</div>
+                </div>
+                <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <img src="/images/planung/skateanlage-planung-02.jpg" alt="Skatepark Planung anbetoniert" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">PLANUNG — ANBETONIERTE MODULE</div>
+                </div>
+                <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <img src="/images/planung/skate-park-planen-03.jpg" alt="Skatepark Planung Denkmalschutzgebiet" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">PLANUNG — DENKMALSCHUTZGEBIET</div>
+                </div>
+                <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <img src="/images/planung/skateanlage-planen-04.jpg" alt="Skatepark Layout Plan" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">LAYOUT — INDIVIDUELLE PLANUNG</div>
+                </div>
+            </div>
+
+            <div className="bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-muted">
+                <strong className="text-brand-dark">Hinweis für Planer und Architekten:</strong> Für die im Erdreich eingelassenen Skate-Elemente stellen wir einen Systemschnitt zur Verfügung. Bei größeren Skateanlagen ab 100.000 EUR brutto können wir DWG-Dateien bereitstellen. Für bestehende Flächen werden Module mit Übergangsblechen aufgestellt — bei neuen Flächen können Module ohne Übergangsbleche zum Anbetonieren verwendet werden.
+            </div>
+        </div>
+
+        {/* 4. PROCESS STEPS */}
         <div className="bg-brand-surface border-y border-brand-dark/10 py-24 mb-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                        Workflow
-                    </span>
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Workflow</span>
                     <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
                         Der Weg zum <span className="text-brand-orange">Park.</span>
                     </h2>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-                    <ProcessStep 
-                        number="01"
-                        title="Analyse & Skizze"
-                        desc="Wir prüfen Ihren Standort (digital oder vor Ort) und erstellen erste Layout-Ideen basierend auf Budget und Zielgruppe."
-                    />
-                    <ProcessStep 
-                        number="02"
-                        title="3D Visualisierung"
-                        desc="Sie erhalten fotorealistische 3D-Renderings, um Politik und Jugendliche gleichermaßen zu überzeugen."
-                    />
-                    <ProcessStep 
-                        number="03"
-                        title="Ausführung"
-                        desc="Nach Freigabe erstellen wir die exakten Werkpläne. Die Module werden im Werk gefertigt und just-in-time geliefert."
-                    />
+                    <ProcessStep number="01" title="Analyse & Skizze" desc="Wir prüfen Ihren Standort (digital oder vor Ort) und erstellen erste Layout-Ideen basierend auf Budget und Zielgruppe." />
+                    <ProcessStep number="02" title="3D Visualisierung" desc="Sie erhalten eine Draufsicht und 3D-Zeichnung der vorgeschlagenen Anlage sowie ein Angebot mit den Kosten der eingeplanten Elemente." />
+                    <ProcessStep number="03" title="Ausführung" desc="Nach Freigabe erstellen wir die exakten Werkpläne. Die Module werden im Werk gefertigt und just-in-time geliefert." />
                 </div>
             </div>
         </div>

@@ -83,14 +83,14 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
             </div>
 
             {/* 2. The Main "Digital File" Card */}
-            <div className="relative z-10 w-full h-full bg-[#0a0a0a] border border-white/20 p-2 shadow-2xl transition-transform duration-500 transform group-hover:rotate-y-6 group-hover:rotate-x-6 overflow-hidden rounded-sm">
+            <div className="relative z-10 w-full h-full bg-brand-dark border border-brand-dark/20 p-2 shadow-2xl transition-transform duration-500 transform group-hover:rotate-y-6 group-hover:rotate-x-6 overflow-hidden rounded-sm">
                 
                 {/* HUD Elements (Corners) */}
                 <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-brand-orange z-20"></div>
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-brand-orange z-20"></div>
 
                 {/* Inner Content Container */}
-                <div className="relative w-full h-full bg-[#151515] overflow-hidden group-hover:bg-[#1a1a1a] transition-colors">
+                <div className="relative w-full h-full bg-brand-dark/90 overflow-hidden group-hover:bg-brand-dark/80 transition-colors">
                     
                     {/* The Catalog Cover Image */}
                     <img 
@@ -103,20 +103,20 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-orange/20 to-transparent h-[20%] w-full animate-[scan_3s_linear_infinite] pointer-events-none mix-blend-screen border-b border-brand-orange/50"></div>
                     
                     {/* Data Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4 border-t border-white/10 flex justify-between items-center">
+                    <div className="absolute bottom-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-sm p-4 border-t border-brand-dark/10 flex justify-between items-center">
                         <div className="flex flex-col">
                             <span className="text-[10px] font-mono text-brand-orange tracking-widest uppercase">Datei</span>
                             <span className="text-white font-bold text-xs">PDF DOCUMENT</span>
                         </div>
                          <div className="flex flex-col text-right">
-                            <span className="text-[10px] font-mono text-gray-500 tracking-widest uppercase">Größe</span>
+                            <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase">Größe</span>
                             <span className="text-white font-bold text-xs">~12 MB</span>
                         </div>
                     </div>
                 </div>
 
                 {/* Status Indicator */}
-                <div className="absolute top-4 right-4 flex items-center gap-2 z-30 bg-black/60 px-2 py-1 rounded backdrop-blur-md border border-white/10">
+                <div className="absolute top-4 right-4 flex items-center gap-2 z-30 bg-brand-dark/60 px-2 py-1 rounded backdrop-blur-md border border-brand-dark/10">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                     <span className="text-[10px] font-mono text-white uppercase tracking-wider">Available</span>
                 </div>
@@ -155,7 +155,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                             </span>
                             
                             {/* TYPOGRAPHY SWAP: Outline 'Unser' (Industrial), Solid 'Katalog' (Readable) */}
-                            <h2 className="text-5xl md:text-7xl font-black font-heading uppercase tracking-tighter leading-[0.9] mb-6">
+                            <h2 className="text-5xl md:text-7xl font-extrabold font-heading uppercase tracking-tighter leading-[0.9] mb-6">
                                 <span className="text-brand-muted">Unser</span> <br/>
                                 <span className="text-brand-dark">Katalog.</span>
                             </h2>
@@ -194,7 +194,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                                         <button
                                             type="submit"
                                             disabled={status === 'loading'}
-                                            className="w-full py-4 px-8 bg-brand-orange hover:bg-brand-dark text-white font-black uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(107,143,74,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex justify-center items-center gap-2 group"
+                                            className="w-full py-4 px-8 bg-brand-orange hover:bg-brand-dark text-white font-extrabold uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(107,143,74,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex justify-center items-center gap-2 group"
                                         >
                                             {status === 'loading' ? 'Wird verarbeitet...' : 'Katalog jetzt anfordern'} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">download</span>
                                         </button>
@@ -215,12 +215,12 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
     
     // Product Page Version (Sidebar)
     return (
-        <div className="mt-12 p-1 bg-gradient-to-b from-white/10 to-transparent rounded-2xl">
-            <div className="bg-[#121212] rounded-xl p-8 border border-white/5 relative overflow-hidden">
+        <div className="mt-12 p-1 bg-gradient-to-b from-brand-dark/10 to-transparent rounded-2xl">
+            <div className="bg-white rounded-xl p-8 border border-brand-dark/10 relative overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 blur-[50px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
                 
-                <h3 className="text-2xl font-black font-heading text-white uppercase mb-2">Produktkatalog</h3>
-                <p className="text-sm text-gray-400 mb-6 leading-relaxed">
+                <h3 className="text-2xl font-extrabold font-heading text-brand-dark uppercase mb-2">Produktkatalog</h3>
+                <p className="text-sm text-brand-muted mb-6 leading-relaxed">
                     Alle technischen Daten, Maße und Zertifikate zu diesem Produkt in einer Datei.
                 </p>
 
@@ -235,16 +235,16 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="E-Mail-Adresse"
                                 required
-                                className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-brand-orange transition-colors text-sm"
+                                className="w-full px-4 py-3 bg-brand-surface border border-brand-dark/10 rounded-lg text-brand-dark placeholder-brand-muted focus:outline-none focus:border-brand-orange transition-colors text-sm"
                             />
                         </div>
                         
                          {/* GDPR Checkbox Small */}
                         <div className="flex items-start gap-2 cursor-pointer" onClick={() => setPrivacyAccepted(!privacyAccepted)}>
-                             <div className={`mt-0.5 w-4 h-4 rounded border flex items-center justify-center transition-colors flex-shrink-0 ${privacyAccepted ? 'bg-brand-orange border-brand-orange' : 'bg-transparent border-gray-700'}`}>
-                                {privacyAccepted && <span className="material-symbols-outlined text-black text-[10px] font-bold">check</span>}
+                             <div className={`mt-0.5 w-4 h-4 rounded border flex items-center justify-center transition-colors flex-shrink-0 ${privacyAccepted ? 'bg-brand-orange border-brand-orange' : 'bg-transparent border-brand-muted'}`}>
+                                {privacyAccepted && <span className="material-symbols-outlined text-white text-[10px] font-bold">check</span>}
                             </div>
-                            <p className="text-[10px] text-gray-500 leading-tight">
+                            <p className="text-[10px] text-brand-muted leading-tight">
                                 Datenschutz akzeptieren. <Link to="/datenschutz" className="underline" onClick={(e) => e.stopPropagation()}>Infos</Link>.
                             </p>
                         </div>

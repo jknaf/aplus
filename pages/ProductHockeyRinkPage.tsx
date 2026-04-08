@@ -134,6 +134,44 @@ const ProductHockeyRinkPage: React.FC = () => {
                          <img src="/images/hockey/inline-hockey-bande-03.jpg" alt="Hockey Action View" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. IN ACTION</div>
                     </div>
+
+                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                         <img src="/images/hockey/hockey-einfassung-01.jpg" alt="40cm Beton-Einfassung" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 03. 40 CM EINFASSUNG</div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 2b. VARIANTEN */}
+            <div className="mb-32">
+                <div className="mb-8">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Varianten</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
+                        40 cm oder <span className="text-brand-orange">110 cm.</span>
+                    </h2>
+                    <p className="text-lg text-brand-muted mt-4 max-w-3xl">
+                        Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen — bodeneben, stapelbar und vandalismusresistent. Die 110-cm-Bande mit Edelstahl-Handlauf schafft eine vollständige Arena für intensiven Spielbetrieb. Beide Varianten sind untereinander kombinierbar und auf jedem Untergrund fundamentfrei aufstellbar.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-8">
+                        <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">40 cm</div>
+                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">Einfassung</h3>
+                        <ul className="space-y-2 text-sm text-brand-muted">
+                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Gummikappen als Aufprallschutz</li>
+                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Spielfeldbegrenzung auf Hartplatz</li>
+                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Stapelbar für saisonale Nutzung</li>
+                        </ul>
+                    </div>
+                    <div className="bg-brand-surface/60 border border-brand-orange/30 rounded-xl p-8">
+                        <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">110 cm</div>
+                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">Profi-Bande</h3>
+                        <ul className="space-y-2 text-sm text-brand-muted">
+                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Edelstahl-Handlauf integriert</li>
+                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Eishockey-Abdichtungsprofil optional</li>
+                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Für intensive Beanspruchung</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

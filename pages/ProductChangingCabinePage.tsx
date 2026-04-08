@@ -130,6 +130,28 @@ const ProductChangingCabinePage: React.FC = () => {
                          <img src="/images/umkleide/umkleide-kabine-02.jpg" alt="Bodenplatte Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. CLEAN SURFACE</div>
                     </div>
+
+                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                         <img src="/images/umkleide/umkleidekabine-freibad-03.jpg" alt="Schnecken-Kabine im Freibad" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 03. FREIBAD-INSTALLATION</div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 2b. PANORAMA */}
+            <div className="mb-32">
+                <div className="mb-8">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Einsatzbereich</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
+                        Im <span className="text-brand-orange">Kontext.</span>
+                    </h2>
+                    <p className="text-lg text-brand-muted mt-4 max-w-3xl">
+                        Freibäder, Seen und Sportanlagen — überall dort, wo Türen zum Problem werden. Das Panoramabild zeigt die typische Aufstellsituation: mehrere Kabinen nebeneinander auf einem verdichteten Schotterbett, ohne Fundament, ohne Vorarbeiten.
+                    </p>
+                </div>
+                <div className="relative w-full aspect-[21/9] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+                    <img src="/images/umkleide/umkleide-panorama.jpg" alt="Schnecken-Kabinen im Freibad Panorama" loading="lazy" className="w-full h-full object-cover" />
+                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 04. PANORAMA — TYPISCHE AUFSTELLUNG</div>
                 </div>
             </div>
 

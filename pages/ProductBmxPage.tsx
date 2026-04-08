@@ -145,8 +145,45 @@ const ProductBmxPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/skateparks/skatepark-03.jpg" alt="BMX Park Overview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. PARK SECTION</div>
+                         <img src="/images/skate-pipes/skate-pipe-kombi-04.jpg" alt="Kombipipe mit Bank und Coping" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. KOMBI-PIPE</div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 2b. PIPE-TYPEN GALLERY */}
+            <div className="mb-32">
+                <div className="mb-10">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Pipe-Typen</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
+                        Drei Höhen. <span className="text-brand-orange">Ein System.</span>
+                    </h2>
+                    <p className="text-lg text-brand-muted mt-4 max-w-3xl">
+                        Mini-Pipe (165 cm), Standard-Pipe (200 cm) und Super-Pipe (255 cm) sind in derselben modularen Betonbauweise erhältlich. Alle Varianten können mit Banks, Coping-Ramps und Spines zu Kombi-Anlagen kombiniert werden. Die Nutzfläche zwischen den Pipes ist aus massivem Beton — der am stärksten beanspruchte Bereich.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                        <img src="/images/skate-pipes/skate-pipe-02.jpg" alt="Mini-Pipe 165cm Beton" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 03. MINI-PIPE — 165 CM</div>
+                    </div>
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                        <img src="/images/skate-pipes/skate-pipe-01.jpg" alt="Standard-Pipe 200cm" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 04. STANDARD-PIPE — 200 CM</div>
+                    </div>
+                </div>
+                <div className="mt-6 grid grid-cols-3 gap-4">
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-5 text-center">
+                        <div className="text-3xl font-extrabold font-mono text-brand-orange">165 cm</div>
+                        <div className="text-xs font-mono text-brand-muted uppercase tracking-widest mt-1">Mini-Pipe</div>
+                    </div>
+                    <div className="bg-brand-surface/60 border border-brand-orange/30 rounded-xl p-5 text-center">
+                        <div className="text-3xl font-extrabold font-mono text-brand-orange">200 cm</div>
+                        <div className="text-xs font-mono text-brand-muted uppercase tracking-widest mt-1">Standard-Pipe</div>
+                    </div>
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-5 text-center">
+                        <div className="text-3xl font-extrabold font-mono text-brand-orange">255 cm</div>
+                        <div className="text-xs font-mono text-brand-muted uppercase tracking-widest mt-1">Super-Pipe</div>
                     </div>
                 </div>
             </div>

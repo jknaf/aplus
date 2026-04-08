@@ -111,41 +111,78 @@ const AboutPage: React.FC = () => {
 
       {/* 3. THE MISSION (Split Layout) */}
       <div className="container mx-auto px-4 mb-32">
-          <div className="flex flex-col lg:flex-row gap-16 items-center">
+          <div className="flex flex-col lg:flex-row gap-16 items-center mb-16">
               <div className="lg:w-1/2">
                   <div className="relative rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                      {/* REAL MONTAGE IMAGE instead of generic stock */}
                       <img src="/images/montage/transport-01.jpg" alt="Logistik und Montage" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700"/>
-                      <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
-                      <div className="absolute bottom-4 right-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-brand-orange">FIG 01. FUNDAMENTFREIE MONTAGE</div>
+                      <div className="absolute bottom-4 right-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-brand-orange">FIG 01. TRANSPORT</div>
                   </div>
               </div>
               <div className="lg:w-1/2">
-                   <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
-                        Vision
-                   </span>
+                   <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Vision</span>
                   <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-8 leading-none">
                       Unsere <span className="text-brand-orange">Philosophie.</span>
                   </h2>
-                  <div className="space-y-8">
+                  <div className="space-y-6">
                       <p className="text-lg text-brand-muted leading-relaxed border-l-2 border-brand-orange pl-6">
-                          Öffentliche Räume sind die Wohnzimmer unserer Städte. Sie müssen einladend sein, aber auch den härtesten Bedingungen standhalten.
+                          Einfacher Aufbau ohne Fundamente. Witterungsbeständige Materialien. Modulare Elemente mit unendlich vielen Kombinationsmöglichkeiten. Leichtes Versetzen und Umbauen bestehender Anlagen.
                       </p>
                       <p className="text-lg text-brand-muted leading-relaxed">
-                          Wir haben uns vom klassischen Tiefbau verabschiedet. Unsere Antwort auf teure Baustellen und lange Sperrzeiten ist <strong>Modularität</strong>. Wir fertigen im Werk unter perfekten Bedingungen und montieren vor Ort in Rekordzeit.
+                          Wir fertigen im Werk unter kontrollierten Bedingungen und montieren vor Ort in Rekordzeit. Unsere TÜV-zertifizierten Module sind recycelbar, vandalismussicher und können umgebaut, erweitert, versetzt oder wiederverwendet werden.
                       </p>
                       <div className="grid grid-cols-2 gap-4 mt-8">
                           <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/5 shadow-sm">
                               <span className="material-symbols-outlined text-brand-orange mb-2 text-3xl">eco</span>
                               <h4 className="font-bold text-brand-dark uppercase text-sm mb-1">Nachhaltig</h4>
-                              <p className="text-xs text-brand-muted">Recycelbar & Langlebig</p>
+                              <p className="text-xs text-brand-muted">100% recycelbare Materialien</p>
                           </div>
                           <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/5 shadow-sm">
                               <span className="material-symbols-outlined text-brand-orange mb-2 text-3xl">engineering</span>
                               <h4 className="font-bold text-brand-dark uppercase text-sm mb-1">Präzise</h4>
-                              <p className="text-xs text-brand-muted">Millimetergenaue Fertigung</p>
+                              <p className="text-xs text-brand-muted">Millimetergenaue Werksfertigung</p>
                           </div>
                       </div>
+                  </div>
+              </div>
+          </div>
+
+          {/* MONTAGE PROZESS — alle 4 Bilder */}
+          <div className="mb-8">
+              <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Montage-Prozess</span>
+              <h3 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
+                  Vom LKW zum fertigen <span className="text-brand-orange">Park.</span>
+              </h3>
+              <p className="text-brand-muted max-w-2xl mb-8">
+                  Die Montage unserer Skate-Elemente erfolgt direkt auf einer betonierten oder asphaltierten Rollfläche mit Übergangsblechen — oder auf einer Fundamentplatte zum Anbetonieren. Wir stellen eine Montage- und Wartungsanleitung zur Verfügung.
+              </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                  <img src="/images/montage/transport-01.jpg" alt="Abladen der Skate-Elemente" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                      <span className="text-brand-orange font-mono text-xs">01</span>
+                      <span className="text-white text-sm font-bold ml-2">Transport</span>
+                  </div>
+              </div>
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                  <img src="/images/montage/abladen-02.jpg" alt="Bewegen der Skate-Module" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                      <span className="text-brand-orange font-mono text-xs">02</span>
+                      <span className="text-white text-sm font-bold ml-2">Abladen</span>
+                  </div>
+              </div>
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                  <img src="/images/montage/anbetonieren-03.jpg" alt="Montage zum Anbetonieren" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                      <span className="text-brand-orange font-mono text-xs">03</span>
+                      <span className="text-white text-sm font-bold ml-2">Positionieren</span>
+                  </div>
+              </div>
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                  <img src="/images/montage/aufbau-04.jpg" alt="Montage der Skate-Pipe mit Autokran" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                      <span className="text-brand-orange font-mono text-xs">04</span>
+                      <span className="text-white text-sm font-bold ml-2">Aufbau</span>
                   </div>
               </div>
           </div>

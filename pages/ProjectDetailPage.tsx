@@ -74,7 +74,7 @@ const ProjectDetailPage: React.FC = () => {
         </div>
 
         {/* Content Container (Transparent/Glass Background to show Grid) */}
-        <div className="bg-gradient-to-b from-black/90 via-black/80 to-black/60 backdrop-blur-xl border-t border-white/10 min-h-screen relative shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+        <div className="bg-brand-bg/95 backdrop-blur-xl border-t border-brand-dark/10 min-h-screen relative shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
             <div className="container mx-auto px-4 py-24">
                 
                 {/* 2. SPLIT LAYOUT */}
@@ -89,7 +89,7 @@ const ProjectDetailPage: React.FC = () => {
                                 <h3 className="text-xs font-bold text-brand-orange uppercase tracking-widest mb-4 flex items-center gap-2">
                                     <span className="w-8 h-px bg-brand-orange"></span> Briefing
                                 </h3>
-                                <p className="text-xl text-gray-300 leading-relaxed font-light">
+                                <p className="text-xl text-brand-muted leading-relaxed font-light">
                                     {project.description}
                                 </p>
                             </div>
@@ -155,7 +155,7 @@ const ProjectDetailPage: React.FC = () => {
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
                             {/* Main Large Image */}
-                             <div className="md:col-span-2 row-span-2 relative group overflow-hidden rounded-sm border border-white/10 bg-white/5">
+                             <div className="md:col-span-2 row-span-2 relative group overflow-hidden rounded-sm border border-brand-dark/10 bg-brand-surface/60">
                                 <img 
                                     src={project.imageUrl} 
                                     alt="Main View" 
@@ -168,7 +168,7 @@ const ProjectDetailPage: React.FC = () => {
                              {project.images.map((img, idx) => (
                                  <div 
                                     key={idx} 
-                                    className={`relative group overflow-hidden rounded-sm border border-white/10 bg-white/5 ${idx % 3 === 0 ? 'md:col-span-2' : ''}`}
+                                    className={`relative group overflow-hidden rounded-sm border border-brand-dark/10 bg-brand-surface/60 ${idx % 3 === 0 ? 'md:col-span-2' : ''}`}
                                  >
                                     <img 
                                         src={img} 
@@ -181,11 +181,11 @@ const ProjectDetailPage: React.FC = () => {
                         </div>
 
                          {/* CTA at bottom of gallery */}
-                        <div className="mt-24 pt-12 border-t border-white/10">
-                             <div className="bg-white/5 p-8 md:p-12 rounded-xl border border-white/5 text-center backdrop-blur-sm">
-                                <h3 className="text-3xl font-extrabold font-heading text-white uppercase mb-4">Interesse geweckt?</h3>
-                                <p className="text-gray-400 mb-8 max-w-lg mx-auto">Planen Sie ein ähnliches Projekt? Wir unterstützen Sie von der ersten Skizze bis zur Fertigstellung.</p>
-                                <Link to="/kontakt" className="inline-block bg-brand-orange text-black font-bold uppercase tracking-widest py-4 px-8 rounded hover:bg-white transition-colors">
+                        <div className="mt-24 pt-12 border-t border-brand-dark/10">
+                             <div className="bg-brand-surface/60 p-8 md:p-12 rounded-xl border border-brand-dark/5 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                                <h3 className="text-3xl font-extrabold font-heading text-brand-dark uppercase mb-4">Interesse geweckt?</h3>
+                                <p className="text-brand-muted mb-8 max-w-lg mx-auto">Planen Sie ein ähnliches Projekt? Wir unterstützen Sie von der ersten Skizze bis zur Fertigstellung.</p>
+                                <Link to="/kontakt" className="inline-block bg-brand-orange text-white font-bold uppercase tracking-widest py-4 px-8 rounded hover:bg-brand-dark transition-colors">
                                     Projekt anfragen
                                 </Link>
                              </div>
@@ -196,14 +196,14 @@ const ProjectDetailPage: React.FC = () => {
             </div>
 
             {/* 3. NEXT PROJECT NAV - Transparent BG */}
-            <div className="grid grid-cols-2 border-t border-white/10 bg-black/40 backdrop-blur-md">
-                <Link to={`/projekte/${prevProject.id}`} className="group block p-12 border-r border-white/10 hover:bg-white/5 transition-colors text-right relative overflow-hidden">
-                     <span className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2 group-hover:text-brand-orange transition-colors">Vorheriges</span>
-                     <span className="block text-2xl md:text-4xl font-extrabold font-heading text-white uppercase tracking-tighter group-hover:translate-x-[-10px] transition-transform">{prevProject.title}</span>
+            <div className="grid grid-cols-2 border-t border-brand-dark/10 bg-brand-surface/60">
+                <Link to={`/projekte/${prevProject.id}`} className="group block p-12 border-r border-brand-dark/10 hover:bg-brand-surface transition-colors text-right relative overflow-hidden">
+                     <span className="block text-xs font-mono text-brand-muted uppercase tracking-widest mb-2 group-hover:text-brand-orange transition-colors">Vorheriges</span>
+                     <span className="block text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter group-hover:translate-x-[-10px] transition-transform">{prevProject.title}</span>
                 </Link>
-                <Link to={`/projekte/${nextProject.id}`} className="group block p-12 hover:bg-white/5 transition-colors relative overflow-hidden">
-                     <span className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2 group-hover:text-brand-orange transition-colors">Nächstes</span>
-                     <span className="block text-2xl md:text-4xl font-extrabold font-heading text-white uppercase tracking-tighter group-hover:translate-x-[10px] transition-transform">{nextProject.title}</span>
+                <Link to={`/projekte/${nextProject.id}`} className="group block p-12 hover:bg-brand-surface transition-colors relative overflow-hidden">
+                     <span className="block text-xs font-mono text-brand-muted uppercase tracking-widest mb-2 group-hover:text-brand-orange transition-colors">Nächstes</span>
+                     <span className="block text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter group-hover:translate-x-[10px] transition-transform">{nextProject.title}</span>
                 </Link>
             </div>
 

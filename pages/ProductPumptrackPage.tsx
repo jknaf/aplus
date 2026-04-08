@@ -134,6 +134,32 @@ const ProductPumptrackPage: React.FC = () => {
                 </div>
             </div>
 
+            {/* 2b. ELEMENT GALLERY */}
+            <div className="mb-32">
+                <div className="mb-10">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Modulsystem</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
+                        Bauteile & <span className="text-brand-orange">Elemente.</span>
+                    </h2>
+                    <p className="text-lg text-brand-muted mt-4 max-w-3xl">
+                        Jede Kurve, jede Welle und jeder Roller ist ein präzisionsgefertigtes Fertigteil aus Spezialbeton. Die Module werden werksseitig mit definierter Geometrie hergestellt und lassen sich flexibel zu individuellen Streckenverläufen kombinieren.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                        <img src="/images/pumptrack/pumptrack-beton-elemente-02.jpg" alt="Pumptrack Betonelemente Detail" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 03. ELEMENT-VERBUND</div>
+                    </div>
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                        <img src="/images/pumptrack/pumptrack-beton-module-04.jpg" alt="Pumptrack Modulaufbau" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 04. AUFBAU & MONTAGE</div>
+                    </div>
+                </div>
+                <div className="mt-6 bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-muted">
+                    <strong className="text-brand-dark">Aufbauvariante Eigenleistung:</strong> Gemeinden und Vereine können unsere Pumptrack-Module kaufen und selbst aufbauen. Geeignet für alle drei Aufbauvarianten: direkt auf befestigter Fläche, auf separater Beton-/Asphaltpiste oder auf Fundamentplatten mit anbetonierter Strecke.
+                </div>
+            </div>
+
             {/* 3. TECHNICAL SPECS */}
             <div className="mb-32">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">

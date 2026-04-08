@@ -129,7 +129,7 @@ const ProductPavilionPage: React.FC = () => {
                     </div>
 
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/ueberdachung/pavillon-wetterschutz.jpg" alt="Massive Bauweise Pavillon" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/ueberdachung/ueberdachung-beton-01.jpg" alt="Beton-Pavillon Strukturdetail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. SOLID CONSTRUCTION</div>
                     </div>
                 </div>

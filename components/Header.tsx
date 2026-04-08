@@ -121,9 +121,9 @@ const Header: React.FC = () => {
                   </li>
                 ) : (
                   <li key={link.name}>
-                    <Link 
-                      to={link.href} 
-                      className="relative text-brand-dark/70 hover:text-brand-dark text-xs font-bold uppercase tracking-widest transition-colors duration-200 group"
+                    <Link
+                      to={link.href}
+                      className="relative inline-flex items-center py-2 text-brand-dark/70 hover:text-brand-dark text-xs font-bold uppercase tracking-widest transition-colors duration-200 group"
                     >
                       {link.name}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-orange transition-all duration-300 group-hover:w-full"></span>

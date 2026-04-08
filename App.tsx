@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PrivacyBanner from './components/PrivacyBanner';
-import LegacyRedirectHandler from './components/LegacyRedirectHandler';
 
 // --- CORE PAGES (ALL Static Imports for INSTANT Navigation) ---
 // Switching to Eager Loading to eliminate "Loading..." spinners during navigation.
@@ -40,8 +39,7 @@ const App: React.FC = () => {
   // with static imports. All code is available immediately.
 
   return (
-    <HashRouter>
-      <LegacyRedirectHandler />
+    <BrowserRouter>
       <ScrollToTop />
       
       {/* --- GLOBAL ATMOSPHERE LAYER --- */}
@@ -96,7 +94,7 @@ const App: React.FC = () => {
         <Footer />
         <PrivacyBanner />
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

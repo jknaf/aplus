@@ -75,9 +75,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     <p style="margin:0 0 4px 0;font-size:11px;font-weight:700;color:#FFFFFF;text-transform:uppercase;">A+ Urban Design</p>
     <p style="margin:0;font-size:11px;color:#6B7D6A;">Talstrasse 41 &middot; 70188 Stuttgart</p>
     <p style="margin:12px 0 0 0;font-size:10px;color:#4A5A4A;">
-      <a href="https://www.aplusurbandesign.com/#/datenschutz" style="color:#6B8F4A;text-decoration:none;">Datenschutzerklärung</a>
+      <a href="https://www.aplusurbandesign.com/datenschutz" style="color:#6B8F4A;text-decoration:none;">Datenschutzerklärung</a>
       &nbsp;&middot;&nbsp;
-      <a href="https://www.aplusurbandesign.com/#/impressum" style="color:#6B8F4A;text-decoration:none;">Impressum</a>
+      <a href="https://www.aplusurbandesign.com/impressum" style="color:#6B8F4A;text-decoration:none;">Impressum</a>
     </p>
   </td></tr>
   <tr><td style="height:3px;background-color:#6B8F4A;"></td></tr>

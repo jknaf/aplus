@@ -203,7 +203,7 @@ const ContactPage: React.FC = () => {
 
                                 {status === 'error' && (
                                     <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-lg text-sm">
-                                        Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an <a href="mailto:info@aplusurbandesign.com" className="underline">info@aplusurbandesign.com</a>.
+                                        Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an <a href="mailto:post@aplusurbandesign.com" className="underline">post@aplusurbandesign.com</a>.
                                     </div>
                                 )}
 

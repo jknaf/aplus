@@ -19,7 +19,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 1. Benachrichtigung intern
     await resend.emails.send({
       from: FROM,
-      to: 'info@aplusurbandesign.com',
+      to: 'post@aplusurbandesign.com',
       subject: `[Katalog-Anfrage] ${email}`,
       html: `<p>Neue Katalog-Anfrage von: <strong>${email}</strong></p>`,
     });
@@ -28,7 +28,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     await resend.emails.send({
       from: FROM,
       to: email,
-      replyTo: 'info@aplusurbandesign.com',
+      replyTo: 'post@aplusurbandesign.com',
       subject: 'Ihr A+ Urban Design Katalog',
       html: `<!DOCTYPE html>
 <html lang="de"><head><meta charset="UTF-8"/></head>
@@ -65,7 +65,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     </table>
     <p style="margin:24px 0 0 0;font-size:13px;color:#8A8A80;line-height:1.6;">
       Fragen zum Katalog oder zu einem konkreten Projekt?<br/>
-      <a href="mailto:info@aplusurbandesign.com" style="color:#6B8F4A;font-weight:600;text-decoration:none;">info@aplusurbandesign.com</a>
+      <a href="mailto:post@aplusurbandesign.com" style="color:#6B8F4A;font-weight:600;text-decoration:none;">post@aplusurbandesign.com</a>
       &nbsp;&middot;&nbsp;
       <a href="tel:+4915560090966" style="color:#6B8F4A;font-weight:600;text-decoration:none;">+49 155 600 909 66</a>
     </p>

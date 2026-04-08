@@ -160,7 +160,7 @@ function autoresponderHtml(name: string, email: string, projectType: string, mes
         <a href="tel:+4915560090966" style="font-family:Arial,sans-serif;font-size:14px;color:#2C3530;font-weight:600;text-decoration:none;">&#x260F; +49 155 600 909 66</a>
       </p>
       <p style="margin:0;">
-        <a href="mailto:info@aplusurbandesign.com" style="font-family:Arial,sans-serif;font-size:14px;color:#6B8F4A;font-weight:600;text-decoration:none;">&#x2709; info@aplusurbandesign.com</a>
+        <a href="mailto:post@aplusurbandesign.com" style="font-family:Arial,sans-serif;font-size:14px;color:#6B8F4A;font-weight:600;text-decoration:none;">&#x2709; post@aplusurbandesign.com</a>
       </p>
     </td></tr>
 
@@ -254,7 +254,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     await resend.emails.send({
       from: FROM,
       to: email,
-      replyTo: 'info@aplusurbandesign.com',
+      replyTo: 'post@aplusurbandesign.com',
       subject: 'Ihre Anfrage bei A+ Urban Design — Wir melden uns bald',
       html: autoresponderHtml(name, email, projectType, message),
     });

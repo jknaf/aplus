@@ -197,9 +197,9 @@ function autoresponderHtml(name: string, email: string, projectType: string, mes
         <tr><td>
           <p style="margin:0;font-family:Arial,sans-serif;font-size:10px;color:#4A5A4A;line-height:1.6;">
             Diese E-Mail wurde automatisch generiert. Bitte antworten Sie nicht direkt auf diese Nachricht.<br/>
-            <a href="https://www.aplusurbandesign.com/#/datenschutz" style="color:#6B8F4A;text-decoration:none;">Datenschutzerklärung</a>
+            <a href="https://www.aplusurbandesign.com/datenschutz" style="color:#6B8F4A;text-decoration:none;">Datenschutzerklärung</a>
             &nbsp;&middot;&nbsp;
-            <a href="https://www.aplusurbandesign.com/#/impressum" style="color:#6B8F4A;text-decoration:none;">Impressum</a>
+            <a href="https://www.aplusurbandesign.com/impressum" style="color:#6B8F4A;text-decoration:none;">Impressum</a>
           </p>
         </td></tr>
       </table>

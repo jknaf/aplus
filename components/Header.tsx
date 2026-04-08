@@ -55,16 +55,16 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out px-4 md:px-6 ${
-          scrolled ? 'py-2' : 'py-3 md:py-6'
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+          scrolled ? 'py-0' : 'py-0'
         }`}
       >
         <div
-          className={`mx-auto border-b transition-all duration-500 ${
+          className={`mx-auto border-b transition-all duration-500 bg-brand-bg/95 backdrop-blur-md ${
             scrolled
-              ? 'bg-brand-bg/90 border-brand-dark/10 backdrop-blur-md shadow-lg shadow-brand-dark/5'
-              : 'bg-transparent border-transparent'
+              ? 'border-brand-dark/10 shadow-lg shadow-brand-dark/5'
+              : 'border-brand-dark/5'
           }`}
         >
           <div className="flex items-center justify-between h-14 md:h-20 px-4 md:px-8">

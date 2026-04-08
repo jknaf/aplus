@@ -7,8 +7,8 @@
 :root {
   --brand-bg: #F2F0EB;
   --brand-surface: #E5E3DC;
-  --brand-accent: #B5654A;
-  --brand-orange: #B5654A;
+  --brand-accent: #6B8F4A;
+  --brand-orange: #6B8F4A;
   --text-main: #2C3530;
   --brand-dark: #2C3530;
   --brand-muted: #8A8A80;
@@ -42,7 +42,7 @@ html, body {
 }
 
 .text-outline-orange {
-  -webkit-text-stroke: 1px #B5654A;
+  -webkit-text-stroke: 1px #6B8F4A;
   color: transparent;
 }
 

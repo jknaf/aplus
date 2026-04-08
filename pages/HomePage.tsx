@@ -197,7 +197,7 @@ const ProductScrollytelling: React.FC = () => {
                                         ref={(el) => { itemRefs.current[index] = el; }}
                                         className={`group relative pl-0 md:pl-12 transition-all duration-500 ${isActive ? 'py-8' : 'py-6 opacity-40 hover:opacity-70'}`}
                                     >
-                                        <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange shadow-[0_0_15px_rgba(181,101,74,0.4)] scale-125' : 'bg-brand-bg border-brand-dark/20'}`}></div>
+                                        <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange shadow-[0_0_15px_rgba(107,143,74,0.4)] scale-125' : 'bg-brand-bg border-brand-dark/20'}`}></div>
                                         <div className={`relative rounded-xl border transition-all duration-500 overflow-hidden backdrop-blur-sm ${isActive ? 'bg-white/80 border-brand-orange/50 shadow-2xl scale-100' : 'bg-transparent border-brand-dark/5 scale-[0.98]'}`}>
                                             <div className="lg:hidden h-48 relative overflow-hidden border-b border-brand-dark/10">
                                                 <img 
@@ -276,7 +276,7 @@ const ScrollyFeature: React.FC<{
     }, []);
 
     const containerClass = isActive
-        ? "border-brand-orange bg-white/80 shadow-[0_0_30px_-5px_rgba(181,101,74,0.1)] scale-100 opacity-100 backdrop-blur-sm"
+        ? "border-brand-orange bg-white/80 shadow-[0_0_30px_-5px_rgba(107,143,74,0.1)] scale-100 opacity-100 backdrop-blur-sm"
         : "border-brand-dark/5 bg-transparent opacity-30 scale-95";
     
     const animationClass = {
@@ -454,7 +454,7 @@ const HomePage: React.FC = () => {
               </p>
               <Link
                 to="/kontakt"
-                className="inline-flex items-center gap-4 bg-brand-orange text-white font-black uppercase tracking-widest text-base md:text-lg py-5 px-10 md:py-6 md:px-12 rounded hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-[0_20px_50px_-10px_rgba(181,101,74,0.3)] hover:shadow-[0_20px_50px_-10px_rgba(44,53,48,0.3)] group"
+                className="inline-flex items-center gap-4 bg-brand-orange text-white font-black uppercase tracking-widest text-base md:text-lg py-5 px-10 md:py-6 md:px-12 rounded hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-[0_20px_50px_-10px_rgba(107,143,74,0.3)] hover:shadow-[0_20px_50px_-10px_rgba(44,53,48,0.3)] group"
               >
                 Projekt starten <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform text-2xl">arrow_forward</span>
               </Link>

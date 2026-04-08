@@ -142,7 +142,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
         return (
             <section id="katalog" className="relative py-24 bg-brand-surface overflow-hidden border-y border-brand-dark/5">
                 {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#B5654A 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#6B8F4A 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
                 <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-brand-bg to-transparent opacity-80"></div>
                 
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -194,7 +194,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                                         <button
                                             type="submit"
                                             disabled={status === 'loading'}
-                                            className="w-full py-4 px-8 bg-brand-orange hover:bg-brand-dark text-white font-black uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(181,101,74,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex justify-center items-center gap-2 group"
+                                            className="w-full py-4 px-8 bg-brand-orange hover:bg-brand-dark text-white font-black uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(107,143,74,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex justify-center items-center gap-2 group"
                                         >
                                             {status === 'loading' ? 'Wird verarbeitet...' : 'Katalog jetzt anfordern'} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">download</span>
                                         </button>

@@ -46,7 +46,7 @@ const ProductHockeyRinkPage: React.FC = () => {
   }, []);
 
   return (
-    <PageShell title="Inline-Hockey-Banden (fundamentfrei)">
+    <PageShell title="Inline-Hockey-Banden (fundamentfrei)" description="Inline-Hockey-Banden aus Beton — fundamentfrei, in 40 cm oder 110 cm Höhe erhältlich. Langlebig, wartungsfrei und sofort einsatzbereit.">
        
        {/* 1. HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">

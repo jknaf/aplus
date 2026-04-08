@@ -68,7 +68,7 @@ const AboutPage: React.FC = () => {
   }, []);
 
   return (
-    <PageShell title="Über A+ Urban Design">
+    <PageShell title="Über A+ Urban Design" description="Über 30 Jahre Erfahrung im Bau von TÜV-zertifizierten Beton-Skateparks und urbanen Anlagen. Gegründet von Dipl.-Ing. Cüneyit Akcakoca, Stuttgart.">
       
       {/* 1. CINEMATIC HERO - UNIFIED STYLE */}
       <div className="relative w-full h-[80vh] -mt-16 mb-32 flex items-center justify-center overflow-hidden">
@@ -240,7 +240,7 @@ const AboutPage: React.FC = () => {
                         </p>
                          <div className="mt-8 flex justify-center md:justify-start gap-4">
                              <a href="mailto:post@aplusurbandesign.com" className="w-12 h-12 flex items-center justify-center rounded-full bg-brand-surface/60 hover:bg-brand-orange hover:text-white transition-all text-brand-muted"><span className="material-symbols-outlined">mail</span></a>
-                             <a href="#" className="w-12 h-12 flex items-center justify-center rounded-full bg-brand-surface/60 hover:bg-[#0077b5] hover:text-white transition-all text-brand-muted"><span className="material-symbols-outlined">work</span></a>
+                             <a href="https://www.linkedin.com/in/cüneyit-akcakoca-6577673/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center rounded-full bg-brand-surface/60 hover:bg-[#0077b5] hover:text-white transition-all text-brand-muted"><span className="material-symbols-outlined">work</span></a>
                          </div>
                     </div>
                 </div>

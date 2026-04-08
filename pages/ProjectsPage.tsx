@@ -12,7 +12,7 @@ const ProjectsPage: React.FC = () => {
   const filteredProjects = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
 
   return (
-    <PageShell title="Referenzen & Projekte">
+    <PageShell title="Referenzen & Projekte" description="Realisierte Projekte von A+ Urban Design: Beton-Skateparks, Pumptracks, Hockey-Banden und urbane Freiraumlösungen quer durch Europa.">
       
       {/* 1. HEADER SECTION - Updated Typography */}
       <div className="relative pt-12 pb-24 text-center">

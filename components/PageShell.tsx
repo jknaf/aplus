@@ -10,51 +10,64 @@ interface PageShellProps {
   fullWidth?: boolean; // NEW: Opt-out of the default container constraint
 }
 
+const BASE_URL = 'https://www.aplusurbandesign.com';
+const DEFAULT_OG_IMAGE = `${BASE_URL}/images/skateparks/skatepark-02.jpg`;
+
+const setMeta = (attr: string, value: string, attrName = 'property') => {
+  let el = document.querySelector(`meta[${attrName}="${attr}"]`);
+  if (!el) {
+    el = document.createElement('meta');
+    el.setAttribute(attrName, attr);
+    document.head.appendChild(el);
+  }
+  el.setAttribute('content', value);
+};
+
 const PageShell: React.FC<PageShellProps> = ({ title, description, children, schema, noIndex = false, fullWidth = false }) => {
   const location = useLocation();
 
   useEffect(() => {
-    // 1. Set Title
-    document.title = `${title} | A+ Urban Design`;
+    const pageTitle = `${title} | A+ Urban Design`;
+    const pageDesc = description ?? 'TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig.';
+    const pageUrl = `${BASE_URL}${location.pathname}`;
 
-    // 2. Set Meta Description
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    if (description) {
-      metaDescription.setAttribute('content', description);
-    } else {
-        // Fallback description if none provided
-       metaDescription.setAttribute('content', 'TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig.');
-    }
+    // 1. Title
+    document.title = pageTitle;
 
-    // 3. Set Canonical URL (Self-referencing, Hash-aware)
+    // 2. Meta Description
+    setMeta('description', pageDesc, 'name');
+
+    // 3. Canonical
     let linkCanonical = document.querySelector('link[rel="canonical"]');
     if (!linkCanonical) {
       linkCanonical = document.createElement('link');
       linkCanonical.setAttribute('rel', 'canonical');
       document.head.appendChild(linkCanonical);
     }
-    // Use window.location.href to catch the full hash url in SPA mode
-    const canonicalUrl = window.location.href.split('?')[0];
-    linkCanonical.setAttribute('href', canonicalUrl);
+    linkCanonical.setAttribute('href', pageUrl);
 
-    // 4. Set Robots (Index/NoIndex)
-    let metaRobots = document.querySelector('meta[name="robots"]');
-    if (!metaRobots) {
-        metaRobots = document.createElement('meta');
-        metaRobots.setAttribute('name', 'robots');
-        document.head.appendChild(metaRobots);
-    }
-    metaRobots.setAttribute('content', noIndex ? 'noindex, nofollow' : 'index, follow');
+    // 4. Robots
+    setMeta('robots', noIndex ? 'noindex, nofollow' : 'index, follow', 'name');
 
-    // 5. Inject Structured Data (JSON-LD)
+    // 5. Open Graph
+    setMeta('og:title', pageTitle);
+    setMeta('og:description', pageDesc);
+    setMeta('og:url', pageUrl);
+    setMeta('og:type', 'website');
+    setMeta('og:site_name', 'A+ Urban Design');
+    setMeta('og:image', DEFAULT_OG_IMAGE);
+    setMeta('og:image:width', '1200');
+    setMeta('og:image:height', '630');
+
+    // 6. Twitter Card
+    setMeta('twitter:card', 'summary_large_image', 'name');
+    setMeta('twitter:title', pageTitle, 'name');
+    setMeta('twitter:description', pageDesc, 'name');
+    setMeta('twitter:image', DEFAULT_OG_IMAGE, 'name');
+
+    // 7. JSON-LD (page-specific)
     const scriptId = 'structured-data-jsonld';
     let scriptTag = document.getElementById(scriptId);
-    
     if (schema) {
         if (!scriptTag) {
             scriptTag = document.createElement('script');
@@ -64,11 +77,10 @@ const PageShell: React.FC<PageShellProps> = ({ title, description, children, sch
         }
         scriptTag.textContent = JSON.stringify(schema);
     } else if (scriptTag) {
-        // Remove script tag if no schema for this page
         scriptTag.remove();
     }
 
-    // 6. Breadcrumb Schema (Automatic based on URL)
+    // 8. Breadcrumb JSON-LD
     const breadcrumbId = 'breadcrumb-jsonld';
     let breadcrumbTag = document.getElementById(breadcrumbId);
     if (!breadcrumbTag) {
@@ -77,29 +89,20 @@ const PageShell: React.FC<PageShellProps> = ({ title, description, children, sch
         breadcrumbTag.setAttribute('type', 'application/ld+json');
         document.head.appendChild(breadcrumbTag);
     }
-    
-    // Simple hash-based breadcrumb generation
     const pathSegments = location.pathname.split('/').filter(Boolean);
-    const breadcrumbList = {
+    breadcrumbTag.textContent = JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": window.location.origin + (window.location.hash ? '/#' : '')
-            },
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
             ...pathSegments.map((segment, index) => ({
                 "@type": "ListItem",
                 "position": index + 2,
                 "name": segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
-                "item": `${window.location.origin}${window.location.hash ? '/#' : ''}/${pathSegments.slice(0, index + 1).join('/')}`
+                "item": `${BASE_URL}/${pathSegments.slice(0, index + 1).join('/')}`
             }))
         ]
-    };
-    breadcrumbTag.textContent = JSON.stringify(breadcrumbList);
-
+    });
 
   }, [title, description, location, schema, noIndex]);
 

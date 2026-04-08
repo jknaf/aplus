@@ -50,7 +50,7 @@ const ProductBmxPage: React.FC = () => {
   }, []);
 
   return (
-    <PageShell title="Planung & Bau von BMX-Anlagen">
+    <PageShell title="Planung & Bau von BMX-Anlagen" description="BMX-Anlagen und Skate-Pipes aus Beton: Halfpipes, Mini-Pipes und Kombinationsanlagen in drei Höhen (165/200/255 cm). Fundamentfrei und TÜV-zertifiziert.">
        
        {/* 1. IMMERSIVE HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">

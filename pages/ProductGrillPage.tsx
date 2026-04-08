@@ -46,7 +46,7 @@ const ProductGrillPage: React.FC = () => {
   }, []);
 
   return (
-    <PageShell title="Öffentliche Grillstelle aus Beton">
+    <PageShell title="Öffentliche Grillstelle aus Beton" description="Öffentliche Grillstellen aus Beton: robust, vandalismussicher und langlebig. Für Parks, Campingplätze und öffentliche Freiflächen.">
        
        {/* 1. HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">

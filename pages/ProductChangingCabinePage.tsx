@@ -46,7 +46,7 @@ const ProductChangingCabinePage: React.FC = () => {
   }, []);
 
   return (
-    <PageShell title="Vandalismussichere Umkleidekabine">
+    <PageShell title="Vandalismussichere Umkleidekabine" description="Umkleidekabinen aus Beton: zweiteilig, fundamentfrei und vandalismussicher. Ideal für Freibäder, Sportanlagen und Parks.">
        
        {/* 1. HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">

@@ -84,7 +84,7 @@ const ContactPage: React.FC = () => {
     const labelClasses = "block text-xs font-mono text-brand-orange uppercase tracking-widest mb-1";
 
     return (
-        <PageShell title="Kontakt & Anfrage">
+        <PageShell title="Kontakt & Anfrage" description="Projekt anfragen: Beratung, Planung und Umsetzung von Beton-Skateparks, Pumptracks und urbanen Anlagen. Jetzt Angebot anfordern.">
             <div className="relative w-full min-h-[80vh] flex flex-col justify-center">
                 
                 {/* Header Text - UPDATED TYPOGRAPHY */}

@@ -73,7 +73,7 @@ const PlanningPage: React.FC = () => {
   }, []);
 
   return (
-    <PageShell title="Planung & Beratung inklusive">
+    <PageShell title="Planung & Beratung inklusive" description="Individuelle Planung für Beton-Skateparks, Pumptracks und urbane Anlagen: von der Entwurfsidee über TÜV-konforme Ausarbeitung bis zur Realisierung.">
         
         {/* 1. HERO SECTION */}
         <div className="relative w-full h-[80vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">

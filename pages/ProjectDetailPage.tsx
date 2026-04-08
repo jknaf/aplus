@@ -158,7 +158,7 @@ const ProjectDetailPage: React.FC = () => {
                              <div className="md:col-span-2 row-span-2 relative group overflow-hidden rounded-sm border border-brand-dark/10 bg-brand-surface/60">
                                 <img 
                                     src={project.imageUrl} 
-                                    alt="Main View" 
+                                    alt={`${project.title} — Projektübersicht`}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">FIG 01. OVERVIEW</div>

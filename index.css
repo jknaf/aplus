@@ -1,7 +1,9 @@
-/* 
-   CRITICAL CSS FALLBACKS
-   These styles apply IMMEDIATELY before Tailwind loads.
-   This prevents the "White Flash" on mobile devices.
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+   Custom CSS (ergänzt Tailwind)
 */
 
 :root {

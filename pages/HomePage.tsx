@@ -201,8 +201,8 @@ const ProductScrollytelling: React.FC = () => {
                                         <div className={`relative rounded-2xl border transition-all duration-500 overflow-hidden ${isActive ? 'bg-white border-brand-orange/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)] scale-100' : 'bg-white/40 border-brand-dark/5 scale-[0.98]'}`}>
                                             <div className="lg:hidden h-48 relative overflow-hidden border-b border-brand-dark/10">
                                                 <img 
-                                                    src={product.imageUrl} 
-                                                    alt="" 
+                                                    src={product.imageUrl}
+                                                    alt={product.title}
                                                     className="w-full h-full object-cover opacity-60" 
                                                     loading="lazy"
                                                     srcSet={`${product.imageUrl}?auto=compress&cs=tinysrgb&w=400 400w, ${product.imageUrl}?auto=compress&cs=tinysrgb&w=800 800w`}

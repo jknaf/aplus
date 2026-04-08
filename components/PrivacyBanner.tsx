@@ -92,11 +92,11 @@ const PrivacyBanner: React.FC = () => {
     return (
         <>
             {/* Banner */}
-            <div role="region" aria-label="Cookie Consent Banner" className="fixed bottom-0 left-0 right-0 bg-[#121212]/95 backdrop-blur-xl border-t border-white/10 z-[100] animate-[fade-in-up_0.5s_ease-out] shadow-[0_-10px_40px_rgba(0,0,0,0.8)]">
+            <div role="region" aria-label="Cookie Consent Banner" className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-brand-dark/10 z-[100] animate-[fade-in-up_0.5s_ease-out] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
                 <div className="container mx-auto p-4 md:p-6 flex flex-col xl:flex-row items-center justify-between gap-4 md:gap-6">
                     <div className="text-center xl:text-left w-full xl:w-auto">
-                        <h3 className="text-sm md:text-lg font-bold text-white uppercase tracking-wider mb-2">Datenschutzeinstellungen</h3>
-                        <p className="text-xs md:text-sm text-gray-400 leading-relaxed max-w-3xl">
+                        <h3 className="text-sm md:text-lg font-bold text-brand-dark uppercase tracking-wider mb-2">Datenschutzeinstellungen</h3>
+                        <p className="text-xs md:text-sm text-brand-muted leading-relaxed max-w-3xl">
                             Wir nutzen Cookies und ähnliche Technologien, um unsere Website für Sie zu optimieren und Ihnen ein bestmögliches Nutzungserlebnis zu bieten.
                             <br className="md:hidden" />
                             <Link to="/impressum" className="text-brand-orange hover:text-white underline mx-1">Impressum</Link> 
@@ -106,10 +106,10 @@ const PrivacyBanner: React.FC = () => {
                     </div>
                     {/* Buttons: Grid on mobile, Flex on desktop for better spacing */}
                     <div className="w-full xl:w-auto grid grid-cols-1 sm:grid-cols-3 xl:flex gap-3">
-                         <button onClick={() => setIsModalOpen(true)} className="px-4 py-3 text-xs font-bold border border-white/20 hover:bg-white/10 rounded bg-transparent transition-colors text-gray-300 uppercase tracking-widest whitespace-nowrap">
+                         <button onClick={() => setIsModalOpen(true)} className="px-4 py-3 text-xs font-bold border border-brand-dark/20 hover:bg-brand-surface rounded bg-transparent transition-colors text-brand-muted uppercase tracking-widest whitespace-nowrap">
                             Dateneinstellungen
                         </button>
-                        <button onClick={handleDeclineAll} className="px-4 py-3 text-xs font-bold border border-white/20 hover:bg-white/10 rounded bg-transparent transition-colors text-white uppercase tracking-widest whitespace-nowrap">
+                        <button onClick={handleDeclineAll} className="px-4 py-3 text-xs font-bold border border-brand-dark/20 hover:bg-brand-surface rounded bg-transparent transition-colors text-brand-dark uppercase tracking-widest whitespace-nowrap">
                             Alles ablehnen
                         </button>
                         <button onClick={handleAcceptAll} className="px-6 py-3 text-xs font-bold bg-brand-orange text-black rounded hover:bg-white transition-colors shadow-lg shadow-brand-orange/20 uppercase tracking-widest whitespace-nowrap">
@@ -122,17 +122,17 @@ const PrivacyBanner: React.FC = () => {
             {/* Modal */}
             {isModalOpen && (
                  <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-end md:items-center justify-center z-[110] animate-[fade-in-up_0.2s_ease-out] md:animate-none">
-                    <div className="bg-[#181818] w-full md:rounded-xl shadow-2xl md:max-w-lg md:m-4 border-t md:border border-white/10 max-h-[90vh] flex flex-col">
-                        <div className="p-6 border-b border-white/10">
-                            <h2 className="text-xl font-bold text-white font-heading uppercase tracking-wide">Privatsphäre</h2>
-                            <p className="text-sm text-gray-500 mt-1">Entscheiden Sie selbst, welche Daten wir nutzen dürfen.</p>
+                    <div className="bg-white w-full md:rounded-xl shadow-2xl md:max-w-lg md:m-4 border-t md:border border-brand-dark/10 max-h-[90vh] flex flex-col">
+                        <div className="p-6 border-b border-brand-dark/10">
+                            <h2 className="text-xl font-bold text-brand-dark font-heading uppercase tracking-wide">Privatsphäre</h2>
+                            <p className="text-sm text-brand-muted mt-1">Entscheiden Sie selbst, welche Daten wir nutzen dürfen.</p>
                         </div>
                         
                         <div className="p-6 space-y-4 overflow-y-auto custom-scrollbar flex-grow">
-                            <div className="flex justify-between items-center p-4 rounded-lg bg-white/5 border border-white/5">
+                            <div className="flex justify-between items-center p-4 rounded-lg bg-brand-surface/60 border border-brand-dark/5">
                                 <div>
-                                    <h3 className="font-bold text-white text-sm uppercase tracking-wider">Technisch notwendig</h3>
-                                    <p className="text-xs text-gray-500 mt-1">Essenziell für die Funktion der Website.</p>
+                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">Technisch notwendig</h3>
+                                    <p className="text-xs text-brand-muted mt-1">Essenziell für die Funktion der Website.</p>
                                 </div>
                                 <div className="relative inline-block w-10 ml-2 align-middle select-none opacity-50">
                                     <input type="checkbox" checked readOnly disabled className="appearance-none"/>
@@ -142,10 +142,10 @@ const PrivacyBanner: React.FC = () => {
                                 </div>
                             </div>
                             
-                            <div className="flex justify-between items-center p-4 rounded-lg bg-black/20 border border-white/5 hover:border-white/20 transition-colors">
+                            <div className="flex justify-between items-center p-4 rounded-lg bg-brand-surface/40 border border-brand-dark/5 hover:border-brand-dark/20 transition-colors">
                                  <div>
-                                    <h3 className="font-bold text-white text-sm uppercase tracking-wider">Statistik</h3>
-                                    <p className="text-xs text-gray-500 mt-1">Anonyme Nutzungsdaten zur Verbesserung.</p>
+                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">Statistik</h3>
+                                    <p className="text-xs text-brand-muted mt-1">Anonyme Nutzungsdaten zur Verbesserung.</p>
                                 </div>
                                  <button
                                     type="button"
@@ -159,10 +159,10 @@ const PrivacyBanner: React.FC = () => {
                                 </button>
                             </div>
 
-                            <div className="flex justify-between items-center p-4 rounded-lg bg-black/20 border border-white/5 hover:border-white/20 transition-colors">
+                            <div className="flex justify-between items-center p-4 rounded-lg bg-brand-surface/40 border border-brand-dark/5 hover:border-brand-dark/20 transition-colors">
                                  <div>
-                                    <h3 className="font-bold text-white text-sm uppercase tracking-wider">Externe Medien</h3>
-                                    <p className="text-xs text-gray-500 mt-1">Inhalte von Drittanbietern laden.</p>
+                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">Externe Medien</h3>
+                                    <p className="text-xs text-brand-muted mt-1">Inhalte von Drittanbietern laden.</p>
                                 </div>
                                  <button
                                     type="button"
@@ -177,8 +177,8 @@ const PrivacyBanner: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="p-4 bg-black/40 border-t border-white/10 flex flex-col sm:flex-row justify-end gap-3 rounded-b-xl">
-                            <button onClick={handleDeclineAll} className="px-4 py-3 sm:py-2 text-xs font-bold border border-white/10 hover:bg-white/10 rounded transition-colors text-gray-400 uppercase tracking-widest w-full sm:w-auto">
+                        <div className="p-4 bg-brand-surface/40 border-t border-brand-dark/10 flex flex-col sm:flex-row justify-end gap-3 rounded-b-xl">
+                            <button onClick={handleDeclineAll} className="px-4 py-3 sm:py-2 text-xs font-bold border border-brand-dark/10 hover:bg-brand-surface rounded transition-colors text-brand-muted uppercase tracking-widest w-full sm:w-auto">
                                 Ablehnen
                             </button>
                             <button onClick={handleSavePreferences} className="px-6 py-3 sm:py-2 text-xs font-bold bg-white text-black rounded hover:bg-brand-orange hover:text-white transition-colors uppercase tracking-widest w-full sm:w-auto shadow-lg">

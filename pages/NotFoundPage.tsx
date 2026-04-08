@@ -10,14 +10,14 @@ const NotFoundPage: React.FC = () => {
   return (
     <PageShell title="404 - Seite nicht gefunden" noIndex={true}>
       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center">
-        <h1 className="text-9xl font-black text-outline-orange mb-4">404</h1>
-        <h2 className="text-3xl font-bold text-white mb-6">Diese Seite existiert nicht.</h2>
+        <h1 className="text-9xl font-extrabold text-brand-orange mb-4">404</h1>
+        <h2 className="text-3xl font-bold text-brand-dark mb-6">Diese Seite existiert nicht.</h2>
         <p className="text-brand-muted max-w-md mb-8">
           Möglicherweise wurde sie verschoben oder gelöscht. Überprüfen Sie die URL oder kehren Sie zur Startseite zurück.
         </p>
         <Link 
             to="/" 
-            className="inline-flex items-center gap-2 bg-brand-orange text-black font-black uppercase tracking-widest text-sm py-4 px-8 rounded-lg hover:bg-white hover:text-brand-orange transition-all duration-300"
+            className="inline-flex items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest text-sm py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300"
         >
             Zur Startseite
         </Link>

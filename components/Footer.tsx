@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-brand-surface text-brand-text relative z-10 border-t border-white/10">
+    <footer className="bg-brand-dark text-white relative z-10 border-t border-brand-dark/10">
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -21,16 +21,12 @@ const Footer: React.FC = () => {
                 <Link to="/" className="block mb-8 group">
                    <div className="flex items-center gap-3">
                         <img
-                            src="https://i.ibb.co/whMmCDk9/apluslogo.png"
+                            src="/aplus-logo.svg"
                             alt="A+ Urban Design Logo"
-                            width={48}
-                            height={48}
-                            className="w-12 h-12 transition-transform duration-700 ease-in-out group-hover:[transform:rotateY(360deg)]"
+                            width={160}
+                            height={45}
+                            className="h-10 w-auto brightness-0 invert transition-transform duration-700 ease-in-out group-hover:scale-105"
                         />
-                         <div className="flex flex-col">
-                            <span className="text-2xl text-white font-black font-heading leading-none tracking-tighter">A+ URBAN</span>
-                            <span className="text-sm text-brand-orange font-bold font-heading leading-none tracking-widest">DESIGN</span>
-                        </div>
                    </div>
                 </Link>
                 <p className="text-brand-muted leading-relaxed mb-8 max-w-sm">
@@ -109,7 +105,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-white/60">
              <p className="text-xs text-brand-muted">
                 &copy; {new Date().getFullYear()} A+ Urban Design. Alle Rechte vorbehalten. Aus Stuttgart.
             </p>
@@ -123,7 +119,7 @@ const Footer: React.FC = () => {
       
       {/* Massive Background Text Decoration */}
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none opacity-[0.03] select-none leading-none">
-          <span className="text-[18vw] font-black uppercase text-white whitespace-nowrap block translate-y-[20%]">
+          <span className="text-[18vw] font-extrabold uppercase text-white whitespace-nowrap block translate-y-[20%]">
               Urban Design
           </span>
       </div>

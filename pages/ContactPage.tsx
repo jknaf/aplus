@@ -29,7 +29,7 @@ const ContactPage: React.FC = () => {
         }, 1500);
     };
 
-    const inputClasses = "w-full bg-black/30 border-b border-gray-700 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-brand-orange focus:placeholder-gray-500 transition-all duration-300 font-sans backdrop-blur-sm rounded-t px-2";
+    const inputClasses = "w-full bg-white border border-brand-dark/10 py-3 text-brand-dark placeholder-brand-muted focus:outline-none focus:border-brand-orange transition-all duration-300 font-sans rounded-lg px-4";
     const labelClasses = "block text-xs font-mono text-brand-orange uppercase tracking-widest mb-1";
 
     return (
@@ -38,10 +38,10 @@ const ContactPage: React.FC = () => {
                 
                 {/* Header Text - UPDATED TYPOGRAPHY */}
                 <div className="text-center mb-16 animate-fade-in-up">
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85]">
-                        Gemeinsam<br/><span className="text-transparent text-outline-bold">Planen.</span>
+                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-brand-dark leading-[0.85]">
+                        Gemeinsam<br/><span className="text-brand-orange">Planen.</span>
                     </h1>
-                    <p className="mt-8 text-xl text-gray-400 max-w-2xl mx-auto font-light">
+                    <p className="mt-8 text-xl text-brand-muted max-w-2xl mx-auto font-light">
                         Bereit für das nächste Projekt? Erzählen Sie uns von Ihrer Vision. <br/>
                         Wir liefern die passende Beton-Lösung.
                     </p>
@@ -53,17 +53,17 @@ const ContactPage: React.FC = () => {
                     {/* LEFT COLUMN: CONTACT INFO & MAP PLACEHOLDER */}
                     <div className="lg:col-span-5 order-2 lg:order-1 animate-fade-in-up [animation-delay:200ms]">
                         {/* CHANGED: Transparent background to show grid */}
-                        <div className="bg-white/5 backdrop-blur-md border border-white/10 p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden group rounded-lg shadow-2xl">
+                        <div className="bg-white border border-brand-dark/10 p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden group rounded-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                              {/* Decorative Glow */}
                              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-orange/10 rounded-full blur-[80px] pointer-events-none"></div>
 
                             <div>
-                                <h3 className="text-2xl font-bold text-white mb-8 border-b border-white/10 pb-4">Planungsbüro</h3>
-                                <div className="space-y-8 font-light text-gray-300">
+                                <h3 className="text-2xl font-bold text-brand-dark mb-8 border-b border-brand-dark/10 pb-4">Planungsbüro</h3>
+                                <div className="space-y-8 font-light text-brand-muted">
                                     <div className="flex items-start gap-4">
                                         <span className="material-symbols-outlined text-brand-orange mt-1">location_on</span>
                                         <div>
-                                            <p className="font-bold text-white">A+ Urban Design</p>
+                                            <p className="font-bold text-brand-dark">A+ Urban Design</p>
                                             <p>Dipl.-Ing. Cüneyit Akcakoca</p>
                                             <p className="text-sm">Freier Architekt</p>
                                             <p className="mt-2">Talstrasse 41</p>
@@ -72,11 +72,11 @@ const ContactPage: React.FC = () => {
                                     </div>
                                     <div className="flex items-center gap-4 group/link">
                                         <span className="material-symbols-outlined text-brand-orange group-hover/link:scale-110 transition-transform">call</span>
-                                        <a href="tel:+4915560090966" className="hover:text-white transition-colors">+49 155 600 909 66</a>
+                                        <a href="tel:+4915560090966" className="hover:text-brand-dark transition-colors">+49 155 600 909 66</a>
                                     </div>
                                     <div className="flex items-center gap-4 group/link">
                                         <span className="material-symbols-outlined text-brand-orange group-hover/link:scale-110 transition-transform">mail</span>
-                                        <a href="mailto:post@aplusurbandesign.com" className="hover:text-white transition-colors">post@aplusurbandesign.com</a>
+                                        <a href="mailto:post@aplusurbandesign.com" className="hover:text-brand-dark transition-colors">post@aplusurbandesign.com</a>
                                     </div>
                                 </div>
                             </div>
@@ -86,12 +86,12 @@ const ContactPage: React.FC = () => {
                     {/* RIGHT COLUMN: INTERACTIVE FORM */}
                     <div className="lg:col-span-7 order-1 lg:order-2 animate-fade-in-up [animation-delay:400ms]">
                         {status === 'success' ? (
-                            <div className="h-full min-h-[400px] flex flex-col items-center justify-center bg-white/5 backdrop-blur-md border border-white/10 p-12 text-center animate-pop-in rounded-lg">
+                            <div className="h-full min-h-[400px] flex flex-col items-center justify-center bg-white border border-brand-dark/10 p-12 text-center animate-pop-in rounded-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                                 <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
                                     <span className="material-symbols-outlined text-4xl text-green-500">check</span>
                                 </div>
-                                <h3 className="text-3xl font-black text-white mb-4">Nachricht gesendet!</h3>
-                                <p className="text-gray-400 max-w-md">
+                                <h3 className="text-3xl font-extrabold text-brand-dark mb-4">Nachricht gesendet!</h3>
+                                <p className="text-brand-muted max-w-md">
                                     Vielen Dank für Ihre Anfrage. Unser Team wird Ihre Projektdaten analysieren und sich innerhalb von 48 Stunden bei Ihnen melden.
                                 </p>
                                 <button 
@@ -102,7 +102,7 @@ const ContactPage: React.FC = () => {
                                 </button>
                             </div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-8 bg-white/5 backdrop-blur-md p-8 md:p-12 border border-white/5 rounded-lg shadow-2xl">
+                            <form onSubmit={handleSubmit} className="space-y-8 bg-white p-8 md:p-12 border border-brand-dark/10 rounded-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                                 
                                 {/* Project Type Selector */}
                                 <div>
@@ -115,8 +115,8 @@ const ContactPage: React.FC = () => {
                                                 onClick={() => setProjectType(type)}
                                                 className={`px-6 py-2 rounded-lg text-sm font-bold uppercase tracking-wide transition-all duration-300 border ${
                                                     projectType === type 
-                                                    ? 'bg-brand-orange border-brand-orange text-black shadow-[0_0_20px_rgba(249,115,22,0.4)]' 
-                                                    : 'bg-transparent border-white/20 text-gray-400 hover:border-white hover:text-white hover:bg-white/5'
+                                                    ? 'bg-brand-orange border-brand-orange text-white shadow-[0_0_20px_rgba(107,143,74,0.3)]'
+                                                    : 'bg-transparent border-brand-dark/20 text-brand-muted hover:border-brand-dark hover:text-brand-dark hover:bg-brand-surface/60'
                                                 }`}
                                             >
                                                 {type}
@@ -150,7 +150,7 @@ const ContactPage: React.FC = () => {
                                     <button 
                                         type="submit" 
                                         disabled={status === 'loading'}
-                                        className="w-full md:w-auto px-12 py-4 bg-white hover:bg-brand-orange text-black font-black uppercase tracking-widest text-sm rounded-lg transition-all duration-300 hover:scale-[1.02] shadow-xl disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-2 group"
+                                        className="w-full md:w-auto px-12 py-4 bg-white hover:bg-brand-orange text-black font-extrabold uppercase tracking-widest text-sm rounded-lg transition-all duration-300 hover:scale-[1.02] shadow-xl disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-2 group"
                                     >
                                         {status === 'loading' ? (
                                             <>
@@ -163,7 +163,7 @@ const ContactPage: React.FC = () => {
                                             </>
                                         )}
                                     </button>
-                                    <p className="mt-4 text-[10px] text-gray-500">
+                                    <p className="mt-4 text-[10px] text-brand-muted">
                                         Mit dem Absenden akzeptieren Sie unsere <a href="/datenschutz" className="underline hover:text-brand-orange">Datenschutzerklärung</a>.
                                     </p>
                                 </div>

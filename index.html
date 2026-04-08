@@ -8,17 +8,17 @@
     <meta name="description" content="TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig. Fordern Sie jetzt Ihr individuelles Angebot an." />
     
     <!-- 1. CRITICAL ASSETS (Preload for Speed) -->
-    <link rel="preload" href="https://i.ibb.co/whMmCDk9/apluslogo.png" as="image" crossorigin="anonymous">
+    <link rel="preload" href="/aplus-logo.svg" as="image" type="image/svg+xml">
     
     <!-- NEW FAVICON (Updated with cache buster) -->
-    <link rel="icon" href="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/a%2B_logo_favicon-192x192.png?v=2" type="image/png" sizes="192x192" />
-    <link rel="shortcut icon" href="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/a%2B_logo_favicon-192x192.png?v=2" type="image/png" />
-    <link rel="apple-touch-icon" href="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/A%2B/a%2B_logo_favicon-192x192.png?v=2" />
+    <link rel="icon" href="/images/branding/aplus-logo-transparent.png" type="image/png" sizes="192x192" />
+    <link rel="shortcut icon" href="/images/branding/aplus-logo-transparent.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/images/branding/aplus-logo-transparent.png" />
     
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
 
     <!-- 2. TAILWIND RUNTIME ENGINE (The Fix) -->
@@ -29,14 +29,15 @@
         theme: {
           extend: {
             colors: {
-              'brand-bg': '#020202',
-              'brand-surface': '#121212',
-              'brand-orange': '#F97316',
-              'brand-muted': '#A3A3A3',
+              'brand-bg': '#F2F0EB',
+              'brand-surface': '#E5E3DC',
+              'brand-orange': '#6B8F4A',
+              'brand-muted': '#8A8A80',
+              'brand-dark': '#2C3530',
             },
             fontFamily: {
               'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-              'heading': ['Teko', 'sans-serif'], 
+              'heading': ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
             },
             animation: {
               'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
@@ -100,11 +101,11 @@
 </script>
 </head>
   <!-- NATIVE CSS CLASS FALLBACKS added to body to prevent flash -->
-  <body class="bg-[#020202] text-white overflow-x-hidden antialiased selection:bg-brand-orange selection:text-black">
+  <body class="bg-brand-bg text-brand-dark overflow-x-hidden antialiased selection:bg-brand-orange selection:text-white">
     
     <div id="root">
         <div id="initial-loader">
-             <img class="loader-logo" src="https://i.ibb.co/whMmCDk9/apluslogo.png" alt="Loading..." />
+             <img class="loader-logo" src="/aplus-logo.svg" alt="Loading..." />
         </div>
     </div>
 

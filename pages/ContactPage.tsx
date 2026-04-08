@@ -22,11 +22,24 @@ const ContactPage: React.FC = () => {
         e.preventDefault();
         setStatus('loading');
 
-        // Simulate API call
-        setTimeout(() => {
-             console.log('Form submitted:', { ...formData, projectType });
-             setStatus('success');
-        }, 1500);
+        try {
+            const response = await fetch('https://trkmuc.app.n8n.cloud/webhook/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    message: formData.message,
+                    projectType,
+                }),
+            });
+
+            if (!response.ok) throw new Error('Fehler beim Senden.');
+            setStatus('success');
+        } catch {
+            setStatus('error');
+        }
     };
 
     const inputClasses = "w-full bg-white border border-brand-dark/10 py-3 text-brand-dark placeholder-brand-muted focus:outline-none focus:border-brand-orange transition-all duration-300 font-sans rounded-lg px-4";
@@ -146,9 +159,15 @@ const ContactPage: React.FC = () => {
                                     <textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleChange} className={`${inputClasses} resize-none`} placeholder="Standort, ungefähre Fläche, Budgetrahmen oder spezielle Wünsche..."></textarea>
                                 </div>
 
+                                {status === 'error' && (
+                                    <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-lg text-sm">
+                                        Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an <a href="mailto:info@aplusurbandesign.com" className="underline">info@aplusurbandesign.com</a>.
+                                    </div>
+                                )}
+
                                 <div className="pt-4">
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         disabled={status === 'loading'}
                                         className="w-full md:w-auto px-12 py-4 bg-white hover:bg-brand-orange text-black font-extrabold uppercase tracking-widest text-sm rounded-lg transition-all duration-300 hover:scale-[1.02] shadow-xl disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-2 group"
                                     >

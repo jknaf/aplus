@@ -15,7 +15,7 @@ const ProductOverviewPage: React.FC = () => {
             <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
               Produktübersicht
             </span>
-            <h1 className="text-4xl md:text-7xl font-black font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+            <h1 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
               Unsere <span className="text-brand-orange">Produkte.</span>
             </h1>
             <p className="text-brand-muted mt-6 max-w-2xl mx-auto text-lg">
@@ -28,7 +28,7 @@ const ProductOverviewPage: React.FC = () => {
               <Link
                 key={product.id}
                 to={product.path}
-                className="group relative rounded-2xl overflow-hidden border border-brand-dark/10 bg-white/60 backdrop-blur-sm hover:border-brand-orange/50 transition-all duration-500 hover:shadow-2xl hover:shadow-brand-orange/5 hover:-translate-y-1"
+                className="group relative rounded-2xl overflow-hidden border border-brand-dark/5 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.05)] hover:border-brand-orange/40 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1"
               >
                 <div className="aspect-square overflow-hidden">
                   <img
@@ -41,7 +41,7 @@ const ProductOverviewPage: React.FC = () => {
 
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <h2 className="text-xl font-black font-heading text-brand-dark uppercase tracking-tight group-hover:text-brand-orange transition-colors">
+                    <h2 className="text-xl font-extrabold font-heading text-brand-dark uppercase tracking-tight group-hover:text-brand-orange transition-colors">
                       {product.title}
                     </h2>
                     <span className="material-symbols-outlined text-brand-muted group-hover:text-brand-orange group-hover:translate-x-1 transition-all">

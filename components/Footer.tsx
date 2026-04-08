@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
       
       {/* Massive Background Text Decoration */}
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none opacity-[0.03] select-none leading-none">
-          <span className="text-[18vw] font-black uppercase text-white whitespace-nowrap block translate-y-[20%]">
+          <span className="text-[18vw] font-extrabold uppercase text-white whitespace-nowrap block translate-y-[20%]">
               Urban Design
           </span>
       </div>

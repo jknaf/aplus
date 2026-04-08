@@ -138,7 +138,7 @@ const Header: React.FC = () => {
             <div className="flex items-center gap-4">
               <Link 
                 to="/kontakt" 
-                className="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-xs font-black uppercase tracking-widest bg-brand-orange text-white hover:bg-brand-dark hover:text-white transition-all duration-300 rounded-lg transform hover:-translate-y-0.5 shadow-lg hover:shadow-brand-orange/20"
+                className="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-xs font-extrabold uppercase tracking-widest bg-brand-orange text-white hover:bg-brand-dark hover:text-white transition-all duration-300 rounded-lg transform hover:-translate-y-0.5 shadow-lg hover:shadow-brand-orange/20"
               >
                 Kontakt
               </Link>
@@ -190,7 +190,7 @@ const Header: React.FC = () => {
                   <Link
                     to={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`block text-4xl sm:text-6xl font-black uppercase tracking-tighter text-brand-dark hover:text-brand-orange transition-all duration-300 translate-y-full ${isMenuOpen ? 'animate-[fade-in-up_0.5s_forwards]' : ''}`}
+                    className={`block text-4xl sm:text-6xl font-extrabold uppercase tracking-tighter text-brand-dark hover:text-brand-orange transition-all duration-300 translate-y-full ${isMenuOpen ? 'animate-[fade-in-up_0.5s_forwards]' : ''}`}
                     style={{ animationDelay: `${idx * 100}ms` }}
                   >
                     {link.name}

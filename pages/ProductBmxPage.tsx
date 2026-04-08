@@ -7,18 +7,18 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'bmx-anlagen' && p.id !== 'skate-anlagen').slice(0, 3);
   return (
-    <div className="mt-32 border-t border-white/10 pt-24">
-      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest text-white">
-        Weitere <span className="text-transparent text-outline-bold">Lösungen</span>
+    <div className="mt-32 border-t border-brand-dark/10 pt-24">
+      <h2 className="text-3xl font-bold font-heading text-center mb-16 uppercase tracking-widest text-brand-dark">
+        Weitere <span className="text-brand-orange">Lösungen</span>
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
-          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-white/5 border border-white/5 backdrop-blur-sm">
+          <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface/60 border border-brand-dark/5 backdrop-blur-sm shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
             <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="relative h-full flex flex-col justify-end p-8">
                <span className="text-brand-orange font-mono text-xs mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
-              <h3 className="text-2xl font-black font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
+              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
           </Link>
         ))}
@@ -28,10 +28,10 @@ const OtherProducts: React.FC = () => {
 }
 
 const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = ({ title, value, icon }) => (
-    <div className="bg-white/5 border border-white/10 p-6 backdrop-blur-sm hover:border-brand-orange/50 transition-colors duration-300">
+    <div className="bg-brand-surface/40 border border-brand-dark/5 p-6 rounded-xl shadow-sm hover:border-brand-orange/50 transition-colors duration-300">
         <span className="material-symbols-outlined text-brand-orange text-3xl mb-4">{icon}</span>
-        <h4 className="text-gray-400 font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
-        <p className="text-white font-bold text-lg leading-tight">{value}</p>
+        <h4 className="text-brand-muted font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
+        <p className="text-brand-dark font-bold text-lg leading-tight">{value}</p>
     </div>
 );
 
@@ -53,7 +53,7 @@ const ProductBmxPage: React.FC = () => {
     <PageShell title="Planung & Bau von BMX-Anlagen">
        
        {/* 1. IMMERSIVE HERO */}
-       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-white/10 z-10">
+       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
              
              {/* 1. STATIC IMAGE LAYER (Instant Load) */}
             <div className="absolute inset-0 z-0">
@@ -90,7 +90,7 @@ const ProductBmxPage: React.FC = () => {
             
              {/* Gradient to transparent to show grid */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-20"></div>
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent z-20"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent z-20"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-20"></div>
             
             <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-30">
@@ -102,9 +102,9 @@ const ProductBmxPage: React.FC = () => {
                          </span>
                     </div>
                     {/* INDUSTRIAL HEADER UPDATE */}
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
+                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
                         BMX<br/>
-                        <span className="text-transparent text-outline-bold">Parks</span>
+                        <span className="text-brand-orange">Parks</span>
                     </h1>
                 </div>
             </div>
@@ -118,8 +118,8 @@ const ProductBmxPage: React.FC = () => {
                 {/* Sticky Narrative */}
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
-                        <h2 className="text-3xl font-bold font-heading text-white mb-8">Big Air. Hard Concrete.</h2>
-                        <p className="text-xl text-gray-400 leading-relaxed mb-8">
+                        <h2 className="text-3xl font-bold font-heading text-brand-dark mb-8">Big Air. Hard Concrete.</h2>
+                        <p className="text-xl text-brand-muted leading-relaxed mb-8">
                             BMX-Parks müssen extremen Belastungen standhalten. Wenn Pegs auf Kanten treffen und Reifen mit hoher Geschwindigkeit landen, versagen Holz und Asphalt schnell.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
@@ -129,7 +129,7 @@ const ProductBmxPage: React.FC = () => {
                         <div className="flex flex-col gap-4">
                             <Link 
                                 to="/kontakt" 
-                                className="inline-flex justify-center items-center gap-2 bg-brand-orange text-black font-black uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-white hover:text-brand-orange transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
+                                className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
                             >
                                 Park anfragen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
@@ -139,23 +139,23 @@ const ProductBmxPage: React.FC = () => {
 
                 {/* Scrolling Gallery */}
                 <div className="lg:w-7/12 flex flex-col gap-8">
-                    <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
+                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/PIPES/.3-Skate-Pipe-Bank_A%2B-756x430.jpg/picture-1200?_=193734a8988" alt="BMX Jump Ramp / Bank" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. JUMP RAMPS</div>
                     </div>
-                    
+
                     {/* Elements Grid */}
-                    <div className="bg-white/5 border border-white/10 p-8 my-8 backdrop-blur-sm">
-                        <h3 className="text-2xl font-bold font-heading text-white uppercase mb-4">Core Elements</h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm text-gray-400 font-mono">
-                             <div className="border-b border-white/5 py-2 flex justify-between"><span>Dirt-Lines</span> <span className="text-brand-orange">+</span></div>
-                             <div className="border-b border-white/5 py-2 flex justify-between"><span>Spines</span> <span className="text-brand-orange">+</span></div>
-                             <div className="border-b border-white/5 py-2 flex justify-between"><span>Vertebrate</span> <span className="text-brand-orange">+</span></div>
-                             <div className="border-b border-white/5 py-2 flex justify-between"><span>Wall-Rides</span> <span className="text-brand-orange">+</span></div>
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Core Elements</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm text-brand-muted font-mono">
+                             <div className="border-b border-brand-dark/5 py-2 flex justify-between"><span>Dirt-Lines</span> <span className="text-brand-orange">+</span></div>
+                             <div className="border-b border-brand-dark/5 py-2 flex justify-between"><span>Spines</span> <span className="text-brand-orange">+</span></div>
+                             <div className="border-b border-brand-dark/5 py-2 flex justify-between"><span>Vertebrate</span> <span className="text-brand-orange">+</span></div>
+                             <div className="border-b border-brand-dark/5 py-2 flex justify-between"><span>Wall-Rides</span> <span className="text-brand-orange">+</span></div>
                         </div>
                     </div>
 
-                    <div className="aspect-[16/10] bg-white/5 rounded-sm overflow-hidden border border-white/10 group backdrop-blur-sm">
+                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="https://www.aplusurbandesign.com/.cm4all/uproc.php/0/SKATEPARK/.3-Skatepark_A%2B-756x430.jpg/picture-1200?_=19373431b30" alt="BMX Park Overview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. PARK SECTION</div>
                     </div>
@@ -164,10 +164,10 @@ const ProductBmxPage: React.FC = () => {
 
             {/* 3. TECHNICAL SPECS */}
             <div className="mb-32">
-                <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
+                <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     {/* INDUSTRIAL HEADER UPDATE */}
-                    <h2 className="text-5xl md:text-6xl font-black font-heading text-white uppercase tracking-tighter leading-none">
-                        Specs<span className="text-transparent text-outline-bold">Sheet</span>
+                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
+                        Specs<span className="text-brand-orange">Sheet</span>
                     </h2>
                 </div>
                 

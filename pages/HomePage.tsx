@@ -67,7 +67,7 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        <section className="py-24 border-t border-brand-dark/5 relative overflow-hidden bg-transparent">
+        <section className="py-24 relative overflow-hidden bg-brand-surface/30">
              <script type="application/ld+json">
                 {JSON.stringify(faqSchema)}
             </script>
@@ -76,7 +76,7 @@ const FAQSection: React.FC = () => {
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                         Wissen & Technik
                     </span>
-                    <h2 className="text-4xl md:text-7xl font-black font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+                    <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
                         Häufige <span className="text-brand-orange">Fragen.</span>
                     </h2>
                     <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
@@ -85,7 +85,7 @@ const FAQSection: React.FC = () => {
                 </AnimatedSection>
                 <div className="max-w-4xl mx-auto space-y-4">
                     {faqs.map((faq, index) => (
-                        <details key={index} className="group bg-white/60 backdrop-blur-md border border-brand-dark/10 rounded-lg overflow-hidden transition-all duration-300 open:border-brand-orange/50 open:bg-white/80">
+                        <details key={index} className="group bg-white rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.05)] border border-brand-dark/5 overflow-hidden transition-all duration-300 open:border-brand-orange/40 open:shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
                             <summary className="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-brand-surface/50 transition-colors">
                                 <span className="font-bold text-base md:text-xl text-brand-dark group-hover:text-brand-orange transition-colors pr-8">
                                     {faq.q}
@@ -133,7 +133,7 @@ const ProductScrollytelling: React.FC = () => {
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                         Unser Portfolio
                     </span>
-                    <h2 className="text-4xl md:text-7xl font-black font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+                    <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
                         Technische<br/>
                         <span className="text-brand-orange">Perfektion.</span>
                     </h2>
@@ -142,7 +142,7 @@ const ProductScrollytelling: React.FC = () => {
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
                     {/* Sticky HUD */}
                     <div className="hidden lg:block lg:w-1/2 sticky top-32">
-                        <div className="relative aspect-square w-full rounded-lg overflow-hidden border border-brand-dark/10 bg-brand-surface/50 backdrop-blur-md group">
+                        <div className="relative aspect-square w-full rounded-2xl overflow-hidden border border-brand-dark/10 bg-brand-surface/50 shadow-[0_8px_30px_rgba(0,0,0,0.1)] group">
                             <div className="absolute inset-0 z-20 pointer-events-none p-6 flex flex-col justify-between">
                                 <div className="flex justify-between items-start">
                                     <div className="flex gap-2">
@@ -198,7 +198,7 @@ const ProductScrollytelling: React.FC = () => {
                                         className={`group relative pl-0 md:pl-12 transition-all duration-500 ${isActive ? 'py-8' : 'py-6 opacity-40 hover:opacity-70'}`}
                                     >
                                         <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange shadow-[0_0_15px_rgba(107,143,74,0.4)] scale-125' : 'bg-brand-bg border-brand-dark/20'}`}></div>
-                                        <div className={`relative rounded-xl border transition-all duration-500 overflow-hidden backdrop-blur-sm ${isActive ? 'bg-white/80 border-brand-orange/50 shadow-2xl scale-100' : 'bg-transparent border-brand-dark/5 scale-[0.98]'}`}>
+                                        <div className={`relative rounded-2xl border transition-all duration-500 overflow-hidden ${isActive ? 'bg-white border-brand-orange/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)] scale-100' : 'bg-white/40 border-brand-dark/5 scale-[0.98]'}`}>
                                             <div className="lg:hidden h-48 relative overflow-hidden border-b border-brand-dark/10">
                                                 <img 
                                                     src={product.imageUrl} 
@@ -217,18 +217,18 @@ const ProductScrollytelling: React.FC = () => {
                                                     </span>
                                                     {isActive && <span className="material-symbols-outlined text-brand-orange animate-pulse">arrow_outward</span>}
                                                 </div>
-                                                <h3 className={`text-3xl md:text-4xl font-black font-heading uppercase tracking-tight mb-4 transition-colors ${isActive ? 'text-brand-dark' : 'text-brand-muted'}`}>
+                                                <h3 className={`text-3xl md:text-4xl font-extrabold font-heading uppercase tracking-tight mb-4 transition-colors ${isActive ? 'text-brand-dark' : 'text-brand-muted'}`}>
                                                     {product.title}
                                                 </h3>
                                                 <div className={`grid transition-all duration-500 ease-in-out ${isActive ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
                                                     <div className="overflow-hidden">
                                                         <p className="text-brand-muted leading-relaxed mb-6 border-l-2 border-brand-dark/10 pl-4">{product.usp}</p>
                                                         <div className="grid grid-cols-2 gap-4 mb-6">
-                                                            <div className="bg-brand-surface/60 p-3 rounded-lg border border-brand-dark/5">
+                                                            <div className="bg-brand-surface/40 p-3 rounded-xl border border-brand-dark/5 shadow-sm">
                                                                 <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">Material</div>
                                                                 <div className="text-sm font-bold text-brand-dark">C35/45 Beton</div>
                                                             </div>
-                                                            <div className="bg-brand-surface/60 p-3 rounded-lg border border-brand-dark/5">
+                                                            <div className="bg-brand-surface/40 p-3 rounded-xl border border-brand-dark/5 shadow-sm">
                                                                 <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">Lebensdauer</div>
                                                                 <div className="text-sm font-bold text-brand-dark">30+ Jahre</div>
                                                             </div>
@@ -276,8 +276,8 @@ const ScrollyFeature: React.FC<{
     }, []);
 
     const containerClass = isActive
-        ? "border-brand-orange bg-white/80 shadow-[0_0_30px_-5px_rgba(107,143,74,0.1)] scale-100 opacity-100 backdrop-blur-sm"
-        : "border-brand-dark/5 bg-transparent opacity-30 scale-95";
+        ? "border-brand-orange/40 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.08)] scale-100 opacity-100"
+        : "border-brand-dark/5 bg-white/40 opacity-30 scale-95";
     
     const animationClass = {
         'float': 'animate-float',
@@ -290,11 +290,11 @@ const ScrollyFeature: React.FC<{
         <div ref={ref} className={`transition-all duration-700 ease-out p-8 md:p-10 rounded-2xl border mb-24 last:mb-0 relative overflow-hidden group ${containerClass}`}>
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05]"></div>
             <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
-                <div className={`p-4 rounded-xl bg-brand-surface/50 border border-brand-dark/10 transition-all duration-500 ${isActive ? `text-brand-orange border-brand-orange/30 ${animationClass}` : 'text-brand-muted'}`}>
+                <div className={`p-4 rounded-xl bg-brand-surface/60 border transition-all duration-500 shadow-sm ${isActive ? `text-brand-orange border-brand-orange/30 shadow-[0_4px_12px_rgba(107,143,74,0.15)] ${animationClass}` : 'text-brand-muted border-brand-dark/5'}`}>
                     <span className="material-symbols-outlined text-4xl">{icon}</span>
                 </div>
                 <div>
-                    <h3 className={`text-2xl font-black font-heading uppercase mb-3 transition-colors ${isActive ? 'text-brand-dark' : 'text-brand-muted'}`}>
+                    <h3 className={`text-2xl font-extrabold font-heading uppercase mb-3 transition-colors ${isActive ? 'text-brand-dark' : 'text-brand-muted'}`}>
                         {title}
                     </h3>
                     <p className="text-base text-brand-muted leading-relaxed">{desc}</p>
@@ -371,7 +371,7 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-end pointer-events-none">
                  <div className="max-w-7xl">
                     <div className="animate-fade-in-up">
-                        <h1 className="flex flex-col font-black font-heading uppercase tracking-tighter leading-none md:leading-[0.85]">
+                        <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-tighter leading-none md:leading-[0.85]">
                             <span className="text-[clamp(2rem,7vw,7rem)] text-white opacity-90">Architektur</span>
                             <span className="text-[clamp(2rem,7vw,7rem)] text-white/60">für</span>
                             <span className="text-[clamp(2rem,7vw,7rem)] text-brand-orange">Freiräume</span>
@@ -397,7 +397,7 @@ const HomePage: React.FC = () => {
       <Hero />
       <ProductScrollytelling />
 
-      <section id="philosophie" className="relative py-24 lg:py-48">
+      <section id="philosophie" className="relative py-24 lg:py-48 bg-white">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
                     <div className="lg:w-5/12">
@@ -405,7 +405,7 @@ const HomePage: React.FC = () => {
                              <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                                 Unsere DNA
                              </span>
-                             <h2 className="text-4xl md:text-7xl font-black font-heading text-brand-dark leading-[0.9] mb-8 uppercase tracking-tighter">
+                             <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark leading-[0.9] mb-8 uppercase tracking-tighter">
                                 Gebaut<br/>für die<br/><span className="text-brand-orange">Ewigkeit.</span>
                              </h2>
                              <p className="text-lg md:text-xl text-brand-muted leading-relaxed mb-8">
@@ -444,7 +444,7 @@ const HomePage: React.FC = () => {
                     Ready for Takeoff
                  </span>
               </div>
-              <h2 className="text-6xl md:text-[10rem] font-black font-heading uppercase tracking-tighter mb-12 leading-[0.85] text-brand-dark">
+              <h2 className="text-6xl md:text-[10rem] font-extrabold font-heading uppercase tracking-tighter mb-12 leading-[0.85] text-brand-dark">
                 Start<br/>
                 <span className="text-brand-orange">Klar?</span>
               </h2>
@@ -454,7 +454,7 @@ const HomePage: React.FC = () => {
               </p>
               <Link
                 to="/kontakt"
-                className="inline-flex items-center gap-4 bg-brand-orange text-white font-black uppercase tracking-widest text-base md:text-lg py-5 px-10 md:py-6 md:px-12 rounded hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-[0_20px_50px_-10px_rgba(107,143,74,0.3)] hover:shadow-[0_20px_50px_-10px_rgba(44,53,48,0.3)] group"
+                className="inline-flex items-center gap-4 bg-brand-orange text-white font-extrabold uppercase tracking-widest text-base md:text-lg py-5 px-10 md:py-6 md:px-12 rounded-2xl hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-[0_8px_30px_rgba(107,143,74,0.3)] hover:shadow-[0_12px_40px_rgba(44,53,48,0.25)] group"
               >
                 Projekt starten <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform text-2xl">arrow_forward</span>
               </Link>

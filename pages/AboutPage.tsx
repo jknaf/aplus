@@ -35,11 +35,11 @@ const StatCounter: React.FC<{ end: number; suffix?: string; label: string }> = (
     }, [end]);
 
     return (
-        <div ref={ref} className="text-center p-8 border border-white/5 bg-white/5 backdrop-blur-sm group hover:border-brand-orange/30 transition-colors duration-500 rounded-lg">
-            <div className="text-5xl md:text-6xl font-black font-heading text-white mb-2 group-hover:text-brand-orange transition-colors duration-300">
+        <div ref={ref} className="text-center p-8 border border-brand-dark/5 bg-brand-surface/60 group hover:border-brand-orange/30 transition-colors duration-500 rounded-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+            <div className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark mb-2 group-hover:text-brand-orange transition-colors duration-300">
                 {count}{suffix}
             </div>
-            <div className="text-xs font-mono uppercase tracking-widest text-gray-500">{label}</div>
+            <div className="text-xs font-mono uppercase tracking-widest text-brand-muted">{label}</div>
         </div>
     );
 };
@@ -48,13 +48,13 @@ const StatCounter: React.FC<{ end: number; suffix?: string; label: string }> = (
 const PrincipleCard: React.FC<{ number: string; title: string; desc: string }> = ({ number, title, desc }) => (
     <div className="relative p-8 md:p-12 border border-white/10 bg-white/5 backdrop-blur-md group hover:border-brand-orange/50 transition-all duration-500 overflow-hidden rounded-xl">
         {/* Large Background Number */}
-        <div className="absolute -top-6 -right-6 text-[10rem] font-black font-heading text-white/5 group-hover:text-brand-orange/10 transition-colors duration-500 select-none leading-none z-0">
+        <div className="absolute -top-6 -right-6 text-[10rem] font-extrabold font-heading text-white/5 group-hover:text-brand-orange/10 transition-colors duration-500 select-none leading-none z-0">
             {number}
         </div>
         
         <div className="relative z-10">
             <div className="w-12 h-1 bg-brand-orange mb-6 group-hover:w-24 transition-all duration-500"></div>
-            <h3 className="text-3xl font-black font-heading text-white uppercase tracking-tighter mb-4">{title}</h3>
+            <h3 className="text-3xl font-extrabold font-heading text-white uppercase tracking-tighter mb-4">{title}</h3>
             <p className="text-lg text-gray-400 leading-relaxed max-w-sm">
                 {desc}
             </p>
@@ -87,9 +87,9 @@ const AboutPage: React.FC = () => {
             <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-8 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md animate-fade-in-up">
                 SEIT 2005 • STUTTGART
             </span>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-heading uppercase tracking-tighter text-white leading-[0.85] mb-8 animate-fade-in-up [animation-delay:200ms]">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] mb-8 animate-fade-in-up [animation-delay:200ms]">
                 Beton<br/>
-                <span className="text-transparent text-outline-bold">in</span>
+                <span className="text-transparent text-brand-orange">in</span>
                 <span className="text-brand-orange">Bestform</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto animate-fade-in-up [animation-delay:400ms]">
@@ -124,8 +124,8 @@ const AboutPage: React.FC = () => {
                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
                         Vision
                    </span>
-                  <h2 className="text-5xl font-black font-heading text-white uppercase tracking-tighter mb-8 leading-none">
-                      Unsere <span className="text-transparent text-outline-bold">Philosophie.</span>
+                  <h2 className="text-5xl font-extrabold font-heading text-white uppercase tracking-tighter mb-8 leading-none">
+                      Unsere <span className="text-transparent text-brand-orange">Philosophie.</span>
                   </h2>
                   <div className="space-y-8">
                       <p className="text-lg text-gray-400 leading-relaxed border-l-2 border-brand-orange pl-6">
@@ -158,8 +158,8 @@ const AboutPage: React.FC = () => {
                   <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
                         Der A+ Standard
                   </span>
-                  <h2 className="text-6xl md:text-8xl font-black font-heading text-white uppercase tracking-tighter leading-none">
-                      Das <span className="text-transparent text-outline-bold">Prinzip.</span>
+                  <h2 className="text-6xl md:text-8xl font-extrabold font-heading text-white uppercase tracking-tighter leading-none">
+                      Das <span className="text-transparent text-brand-orange">Prinzip.</span>
                   </h2>
               </div>
               
@@ -194,7 +194,7 @@ const AboutPage: React.FC = () => {
                     </div>
                     <div className="text-center md:text-left">
                         <div className="inline-block px-3 py-1 bg-white/10 text-xs font-mono text-white mb-6 rounded uppercase tracking-widest">Gründer & Architekt</div>
-                        <h3 className="text-4xl font-black font-heading text-white uppercase mb-2 tracking-tight">Dipl.-Ing. Cüneyit Akcakoca</h3>
+                        <h3 className="text-4xl font-extrabold font-heading text-white uppercase mb-2 tracking-tight">Dipl.-Ing. Cüneyit Akcakoca</h3>
                         <p className="text-brand-orange font-bold mb-6 text-lg">Freier Architekt</p>
                         <p className="text-gray-400 leading-relaxed text-lg max-w-lg">
                             "Architektur endet nicht an der Gebäudekante. Der Raum dazwischen – dort, wo das Leben stattfindet – verdient dieselbe Qualität und Aufmerksamkeit."

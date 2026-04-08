@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
                 </p>
             </div>
              <div className="flex gap-4">
-                 <a href="#" className="text-sm font-bold text-white hover:text-brand-orange transition-colors uppercase tracking-wider">
+                 <a href="https://www.linkedin.com/in/cüneyit-akcakoca-6577673/" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white hover:text-brand-orange transition-colors uppercase tracking-wider">
                     LinkedIn &rarr;
                  </a>
              </div>

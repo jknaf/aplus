@@ -12,13 +12,14 @@
     "@vercel/blob": "^2.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "resend": "^6.10.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.5",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
-    "@vercel/node": "^3.0.0",
+    "@vercel/node": "^3.2.29",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",

@@ -22,7 +22,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
         setMessage('');
 
         try {
-            const response = await fetch('https://trkmuc.app.n8n.cloud/webhook/email', {
+            const response = await fetch('/api/brochure', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

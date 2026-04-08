@@ -23,7 +23,7 @@ const ContactPage: React.FC = () => {
         setStatus('loading');
 
         try {
-            const response = await fetch('https://trkmuc.app.n8n.cloud/webhook/contact', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

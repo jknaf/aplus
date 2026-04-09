@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/angebote.html", "destination": "/produkte", "permanent": true },
     { "source": "/skatepark-fotos.html", "destination": "/projekte", "permanent": true },
     { "source": "/ueberdachung-pavillon.html", "destination": "/produkte/ueberdachung-beton", "permanent": true },
     { "source": "/kontakt.html", "destination": "/kontakt", "permanent": true },

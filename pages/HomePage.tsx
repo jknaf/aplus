@@ -314,13 +314,15 @@ type Slide =
   | { type: 'image'; src: string; alt: string; duration: number }
   | { type: 'video'; src: string; poster: string; duration: number };
 
+// Videos starten bei Sekunde 5 (um Logos/Intro zu überspringen) und spielen 10 Sek
+const VIDEO_START_TIME = 5;
+
 const SLIDES: Slide[] = [
   { type: 'image', src: '/images/homepage/hero-banner.jpg', alt: 'A+ Urban Design Skatepark', duration: 5000 },
   { type: 'video', src: '/videos/skateparks/contest-skateboard.mp4', poster: '/videos/skateparks/poster-contest-skateboard.jpg', duration: 10000 },
-  { type: 'image', src: '/images/skateparks/skatepark-02.jpg', alt: 'Beton-Skatepark Referenz', duration: 5000 },
+  { type: 'image', src: '/images/homepage/hero-anlage-01.jpg', alt: 'Beton-Skatepark — Totalaufnahme', duration: 5000 },
   { type: 'video', src: '/videos/skateparks/contest-bmx.mp4', poster: '/videos/skateparks/poster-contest-bmx.jpg', duration: 10000 },
-  { type: 'image', src: '/images/skateparks/skatepark-03.jpg', alt: 'Pumptrack Referenz', duration: 5000 },
-  { type: 'video', src: '/videos/skateparks/contest-inliner.mp4', poster: '/videos/skateparks/poster-contest-inliner.jpg', duration: 10000 },
+  { type: 'image', src: '/images/homepage/hero-anlage-02.jpg', alt: 'Skatepark-Anlage komplett', duration: 5000 },
 ];
 
 const Hero: React.FC = () => {
@@ -330,11 +332,11 @@ const Hero: React.FC = () => {
     useEffect(() => {
         const current = SLIDES[currentIndex];
 
-        // Bei Videos: abspielen
+        // Bei Videos: bei Sekunde 5 starten und abspielen
         if (current.type === 'video') {
             const video = videoRefs.current[currentIndex];
             if (video) {
-                video.currentTime = 0;
+                video.currentTime = VIDEO_START_TIME;
                 video.play().catch(() => {}); // Safari/autoplay-Schutz abfangen
             }
         }
@@ -377,6 +379,7 @@ const Hero: React.FC = () => {
                                 muted
                                 playsInline
                                 preload="auto"
+                                onLoadedMetadata={(e) => { e.currentTarget.currentTime = VIDEO_START_TIME; }}
                             />
                         )}
                     </div>

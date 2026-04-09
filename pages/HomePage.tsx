@@ -314,8 +314,8 @@ type Slide =
   | { type: 'image'; src: string; alt: string; duration: number }
   | { type: 'video'; src: string; poster: string; duration: number };
 
-// Videos starten bei Sekunde 10 (um Logos/Intro zu überspringen) und spielen 10 Sek
-const VIDEO_START_TIME = 10;
+// Videos starten bei Sekunde 15 (um Logos/Intro zu überspringen) und spielen 10 Sek
+const VIDEO_START_TIME = 15;
 
 const SLIDES: Slide[] = [
   { type: 'image', src: '/images/homepage/hero-banner.jpg', alt: 'A+ Urban Design Skatepark', duration: 5000 },

@@ -9,10 +9,10 @@ export const NAV_LINKS = [
       { name: 'Skate-Anlagen', href: '/produkte/skate-anlagen' },
       { name: 'Pumptrack Beton', href: '/produkte/pumptrack-beton' },
       { name: 'BMX-Anlagen', href: '/produkte/bmx-anlagen' },
-      { name: 'Hockey-Banden', href: '/produkte/hockey-banden' },
       { name: 'Grillstelle Beton', href: '/produkte/grillstelle-beton' },
       { name: 'Umkleidekabine', href: '/produkte/umkleidekabine-beton' },
       { name: 'Überdachung / Pavillon', href: '/produkte/ueberdachung-beton' },
+      { name: 'Hockey-Banden', href: '/produkte/hockey-banden' },
     ]
   },
   { name: 'Planung', href: '/planung' },

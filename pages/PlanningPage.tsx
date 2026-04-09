@@ -181,12 +181,10 @@ const PlanningPage: React.FC = () => {
                     <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">PLANUNG — ANBETONIERTE MODULE</div>
                 </div>
                 <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                    <img src="/images/planung/skate-park-planen-03.jpg" alt="Skatepark Planung Denkmalschutzgebiet" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">PLANUNG — DENKMALSCHUTZGEBIET</div>
+                    <img src="/images/planung/skate-park-planen-03.jpg" alt="Skate-Anlage in Denkmalschutzgebiet" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
                 <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                    <img src="/images/planung/skateanlage-planen-04.jpg" alt="Skatepark Layout Plan" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">LAYOUT — INDIVIDUELLE PLANUNG</div>
+                    <img src="/images/planung/skateanlage-planen-04.jpg" alt="Realisierte Skate-Anlage" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
             </div>
 

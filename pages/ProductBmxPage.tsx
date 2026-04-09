@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
@@ -36,46 +36,33 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 );
 
 const ProductBmxPage: React.FC = () => {
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
-
   useEffect(() => {
     document.title = "BMX-Anlagen & Parks | A+ Urban Design";
-    
-    // Delayed video load for performance
-    const timer = setTimeout(() => {
-        setShouldLoadVideo(true);
-    }, 1000);
-    return () => clearTimeout(timer);
   }, []);
 
   return (
     <PageShell title="Planung & Bau von BMX-Anlagen" description="BMX-Anlagen und Skate-Pipes aus Beton: Halfpipes, Mini-Pipes und Kombinationsanlagen in drei Höhen (165/200/255 cm). Fundamentfrei und TÜV-zertifiziert.">
-       
-       {/* 1. IMMERSIVE HERO */}
-       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
-             
-             {/* 1. STATIC IMAGE LAYER (Instant Load) */}
-            <div className="absolute inset-0 z-0">
-                 <img src="/images/skate-pipes/skate-pipe-01.jpg"
-                        alt="BMX Concrete Halfpipe"
-                        className="w-full h-full object-cover animate-kenburns-3"
-                        loading="eager"
-                        fetchPriority="high" />
-            </div>
 
-            {/* 2. VIDEO LAYER (Lazy Load - Keeping the stock video for mood but image is now real) */}
-            {shouldLoadVideo && (
-                <div className={`absolute inset-0 z-10 transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
-                    <video 
-                        src="/videos/skateparks/contest-bmx.mp4"
-                        poster="/videos/skateparks/poster-contest-bmx.jpg"
-                        autoPlay muted loop playsInline
-                        className="w-full h-full object-cover grayscale opacity-40 mix-blend-overlay"
-                        onCanPlay={() => setVideoReady(true)}
-                    />
-                </div>
-            )}
+       {/* 1. IMMERSIVE HERO — Video als Hauptvisual */}
+       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
+
+            {/* VIDEO LAYER — startet bei Sekunde 15 (überspringt Logos), loopt manuell */}
+            <div className="absolute inset-0 z-0">
+                <video
+                    src="/videos/skateparks/contest-bmx.mp4"
+                    poster="/videos/skateparks/poster-contest-bmx.jpg"
+                    autoPlay
+                    muted
+                    playsInline
+                    preload="auto"
+                    className="w-full h-full object-cover"
+                    onLoadedMetadata={(e) => { e.currentTarget.currentTime = 15; }}
+                    onEnded={(e) => {
+                        e.currentTarget.currentTime = 15;
+                        e.currentTarget.play().catch(() => {});
+                    }}
+                />
+            </div>
             
              {/* Gradient to transparent to show grid */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-20"></div>

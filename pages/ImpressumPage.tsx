@@ -56,6 +56,30 @@ const ImpressumPage: React.FC = () => {
             </div>
 
             <div>
+              <h2 className="text-2xl font-bold font-heading text-brand-dark uppercase tracking-wider border-b border-brand-dark/10 pb-4 mb-6">Berufsrechtliche Angaben</h2>
+              <p className="text-lg leading-relaxed">
+                <strong className="text-brand-dark">Berufsbezeichnung:</strong> Freier Architekt<br />
+                <strong className="text-brand-dark">Verliehen durch:</strong> Bundesrepublik Deutschland<br /><br />
+
+                <strong className="text-brand-dark">Zuständige Architektenkammer:</strong><br />
+                Architektenkammer Baden-Württemberg<br />
+                Danneckerstraße 54<br />
+                70182 Stuttgart<br />
+                <a href="https://www.akbw.de" target="_blank" rel="noopener noreferrer" className="text-brand-orange hover:underline">www.akbw.de</a><br /><br />
+
+                <strong className="text-brand-dark">Berufsrechtliche Regelungen:</strong>
+              </p>
+              <ul className="text-lg leading-relaxed list-disc list-inside ml-2 mt-2 space-y-1">
+                <li>Architektengesetz Baden-Württemberg (ArchG BW)</li>
+                <li>Berufsordnung der Architektenkammer Baden-Württemberg</li>
+                <li>Honorarordnung für Architekten und Ingenieure (HOAI)</li>
+              </ul>
+              <p className="text-lg leading-relaxed mt-2">
+                Einsehbar unter: <a href="https://www.akbw.de" target="_blank" rel="noopener noreferrer" className="text-brand-orange hover:underline">www.akbw.de</a>
+              </p>
+            </div>
+
+            <div>
               <h2 className="text-2xl font-bold font-heading text-brand-dark uppercase tracking-wider border-b border-brand-dark/10 pb-4 mb-6">EU-Streitschlichtung</h2>
               <p className="text-lg leading-relaxed">
                 Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <br/>

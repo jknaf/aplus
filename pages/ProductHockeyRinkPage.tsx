@@ -68,7 +68,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                     <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
                          <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">Multi-Season</span>
                          <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider bg-black/40 backdrop-blur-sm px-2 py-1">
-                            <span className="material-symbols-outlined text-base">verified_user</span> DIN EN 14974
+                            <span className="material-symbols-outlined text-base">verified_user</span> Inline & Eishockey
                          </span>
                     </div>
                     {/* INDUSTRIAL HEADER UPDATE */}
@@ -95,7 +95,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                             Game On. <span className="text-brand-orange">All Year.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Ein Feld, alle Möglichkeiten. Unser mustergeschütztes Bandensystem verwandelt jeden Platz in eine Arena für Inline-Hockey, Rollhockey und im Winter sogar für Eishockey — durch ein Abdichtungsprofil unter der Einfassung.
+                            Ein Feld, alle Möglichkeiten. Unser modulares Bandensystem verwandelt jeden Platz in eine Arena für Inline-Hockey, Rollhockey und im Winter sogar für Eishockey — durch ein Abdichtungsprofil unter der Einfassung.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
                             Zwei Varianten: 40 cm hohe Beton-Einfassungen mit Gummikappen als Spielfeldbegrenzung oder 110 cm hohe Banden mit Edelstahl-Handlauf für den Profi-Einsatz. Die fundamentfreie Konstruktion erlaubt eine Installation auf bestehenden Hartplätzen ohne Beschädigung des Bodens. Die am stärksten beanspruchte Fläche besteht aus massivem Beton.

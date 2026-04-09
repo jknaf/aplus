@@ -33,19 +33,19 @@ const FAQSection: React.FC = () => {
     const faqs = [
         {
             q: "Was kostet ein Beton-Skatepark oder Pumptrack?",
-            a: "Unsere modularen Betonfertigteil-Systeme sind bis zu dreimal günstiger als vergleichbare Ortbeton-Anlagen. Da wir komplett fundamentfrei bauen, entfallen teure Erdarbeiten, Bodenplatten und aufwendige Vorbereitungen – das spart erheblich bei Material und Bauzeit. Für eine genaue Kostenschätzung bieten wir eine kostenlose Erstberatung an."
+            a: "Modulare Betonfertigteile sind in vielen Projekten kostengünstiger als entsprechende Ortbeton-Lösungen, weil teure Erdarbeiten, Bodenplatten und aufwendige Vorbereitungen weitgehend entfallen. Für eine projektbezogene Kostenschätzung bieten wir Kommunen und Vereinen eine unverbindliche Erstberatung an."
         },
         {
             q: "Sind die Anlagen auch für BMX und Scooter geeignet?",
-            a: "Absolut. Unsere Betonoberflächen sind extrem widerstandsfähig und halten den hohen Punktbelastungen von BMX-Pegs und Scooter-Decks problemlos stand. Im Gegensatz zu Holzrampen splittert unser Beton nicht und bietet perfekten Grip für alle Rollsportarten – ob Skateboard, BMX, Scooter oder Inline-Skates."
+            a: "Ja. Unsere Betonoberflächen sind robust und halten den Punktbelastungen von BMX-Pegs und Scooter-Decks dauerhaft stand. Der massive Beton bietet zuverlässigen Grip für alle Rollsportarten – Skateboard, BMX, Scooter oder Inline-Skates."
         },
         {
-            q: "Warum Beton statt Asphalt für einen Pumptrack?",
-            a: "Asphalt wird im Sommer weich und verformt sich unter Belastung. Beton bleibt formstabil und ist nahezu wartungsfrei. Unser modulares System hat einen entscheidenden Vorteil: Die Betonelemente werden aufgestellt und nur dazwischen wird Asphalt verlegt. Das bedeutet deutlich weniger Flächenversiegelung und maximale Flexibilität – Elemente können jederzeit umgestellt, entfernt oder ergänzt werden."
+            q: "Warum Beton für einen Pumptrack?",
+            a: "Beton ist auch bei hohen Sommertemperaturen formstabil und nahezu wartungsfrei. Unser modulares System hat einen entscheidenden Vorteil: Die Betonelemente werden aufgestellt und nur dazwischen wird Asphalt verlegt. Das bedeutet weniger Flächenversiegelung und maximale Flexibilität – Elemente können bei Bedarf umgestellt, entfernt oder ergänzt werden."
         },
         {
             q: "Wie steht es um Lärmschutz und Baugenehmigung?",
-            a: "Beton ist ein massiver Schallschlucker. Unsere Elemente minimieren den typischen Dröhn-Effekt, den man von Hohlkörper-Rampen aus Holz oder Metall kennt – mit einer Reduktion von bis zu 15 Dezibel. Das erleichtert Baugenehmigungen erheblich. Wir unterstützen Sie zudem im Genehmigungsverfahren mit Schallgutachten-Vorlagen und statischen Berechnungen nach DIN EN 14974."
+            a: "Massive Betonelemente reduzieren Geräuschemissionen erheblich gegenüber leichteren Hohlkörper-Konstruktionen. Erfahrungswerte aus realisierten Projekten zeigen deutliche Pegelreduktionen, was Baugenehmigungen vereinfachen kann. Wir unterstützen im Genehmigungsverfahren mit statischen Berechnungen nach den einschlägigen Normen."
         },
         {
             q: "Können wir klein anfangen und die Anlage später erweitern?",
@@ -229,8 +229,8 @@ const ProductScrollytelling: React.FC = () => {
                                                                 <div className="text-sm font-bold text-brand-dark">C35/45 Beton</div>
                                                             </div>
                                                             <div className="bg-brand-surface/40 p-3 rounded-xl border border-brand-dark/5 shadow-sm">
-                                                                <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">Lebensdauer</div>
-                                                                <div className="text-sm font-bold text-brand-dark">30+ Jahre</div>
+                                                                <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">Bauweise</div>
+                                                                <div className="text-sm font-bold text-brand-dark">Stahlbeton bewehrt</div>
                                                             </div>
                                                         </div>
                                                         <span className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-brand-dark hover:text-brand-orange transition-colors group/link">
@@ -441,9 +441,9 @@ const HomePage: React.FC = () => {
                     <div className="lg:w-7/12 pt-12 lg:pt-0">
                         <div className="flex flex-col">
                             <ScrollyFeature icon="layers" animationType="float" title="Fundamentfrei" desc="Kein Betonieren vor Ort nötig. Unser modulares System erlaubt die Aufstellung auf einem einfachen Schotterbett." />
-                            <ScrollyFeature icon="shield" animationType="glow-pulse" title="Unzerstörbar" desc="Massiver C35/45 Hochleistungsbeton. Feuerfest, schnittfest und resistent gegen rohe Gewalt." />
-                            <ScrollyFeature icon="verified" animationType="stamp" title="TÜV Zertifiziert" desc="Sicherheit ohne Kompromisse. Alle unsere Anlagen sind nach DIN EN 14974 zertifiziert." />
-                            <ScrollyFeature icon="recycling" animationType="spin-slow" title="100% Recycelbar" desc="Nachhaltigkeit zu Ende gedacht. Unsere Module können vollständig recycelt oder wiederaufgebaut werden." />
+                            <ScrollyFeature icon="shield" animationType="glow-pulse" title="Vandalismussicher" desc="Massiver C35/45 Stahlbeton. Schnittfest, schwer entflammbar und extrem widerstandsfähig." />
+                            <ScrollyFeature icon="verified" animationType="stamp" title="TÜV Zertifiziert" desc="Hohe Sicherheitsstandards. Unsere Skate- und BMX-Anlagen sind nach DIN EN 14974 geprüft." />
+                            <ScrollyFeature icon="recycling" animationType="spin-slow" title="Wiederverwendbar" desc="Beton- und Stahlbestandteile sind weitestgehend recycelbar. Unsere Module können demontiert, versetzt oder wiederaufgebaut werden." />
                         </div>
                     </div>
                 </div>

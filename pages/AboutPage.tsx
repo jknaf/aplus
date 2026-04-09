@@ -134,7 +134,7 @@ const AboutPage: React.FC = () => {
                           <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/5 shadow-sm">
                               <span className="material-symbols-outlined text-brand-orange mb-2 text-3xl">eco</span>
                               <h4 className="font-bold text-brand-dark uppercase text-sm mb-1">Nachhaltig</h4>
-                              <p className="text-xs text-brand-muted">100% recycelbare Materialien</p>
+                              <p className="text-xs text-brand-muted">Beton & Stahl weitgehend recycelbar</p>
                           </div>
                           <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/5 shadow-sm">
                               <span className="material-symbols-outlined text-brand-orange mb-2 text-3xl">engineering</span>
@@ -209,7 +209,7 @@ const AboutPage: React.FC = () => {
                   <PrincipleCard
                       number="02"
                       title="Fertigung"
-                      desc="C35/45 Hochleistungsbeton aus kontrollierter Werksumgebung. Bessere Qualität als Ortbeton, wetterunabhängig."
+                      desc="C35/45 Stahlbeton aus kontrollierter Werksumgebung. Hohe Qualitätskontrolle bei Betonstärken, Bewehrung und Fugen — wetterunabhängig."
                   />
                   <PrincipleCard
                       number="03"

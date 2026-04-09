@@ -130,7 +130,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Seit den <span className="text-brand-orange">90ern.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            Unsere modularen Skateelemente aus Beton wurden in den 90er Jahren entwickelt. 1999 als weltweit erste modulare Beton-Skateelemente TÜV-zertifiziert und mit dem GS-Zeichen (Geprüfte Sicherheit) ausgezeichnet.
+                            Unsere modularen Skateelemente aus Beton wurden in den 90er Jahren entwickelt. 1999 wurden sie als eine der ersten modularen Beton-Skateelemente in Europa TÜV-geprüft und mit dem GS-Zeichen (Geprüfte Sicherheit) ausgezeichnet.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
                             Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. 2002 folgte der erste Bowl mit modularen Skateelementen auf Gran Canaria.
@@ -306,7 +306,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <TechSpecCard title="Coping" value="Verzinkt + Alu-Kappen" icon="commit" />
                     <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
                     <TechSpecCard title="Oberfläche" value="Offenporig / rutschfest" icon="texture" />
-                    <TechSpecCard title="Lautstärke" value="Bis –15 dB vs. Holz" icon="volume_off" />
+                    <TechSpecCard title="Lärmschutz" value="Massiv schalldämpfend" icon="volume_off" />
                     <TechSpecCard title="Modularität" value="Erweiterbar / versetzbar" icon="extension" />
                     <TechSpecCard title="Einsatzgebiet" value="0 – 1000+ m ü. NN" icon="landscape" />
                 </div>

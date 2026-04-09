@@ -71,7 +71,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/umkleide/umkleidekabine-schnecke-04.jpg',
     path: '/produkte/umkleidekabine-beton',
     altText: 'Moderne Architektur mit Sichtbetonwänden.',
-    usp: 'Die „Schnecke”: Hygienisch, türlos und absolut missbrauchssicher konstruiert.'
+    usp: 'Die „Schnecke”: Hygienisch, türlos und vandalismushemmend konstruiert.'
   },
   {
     id: 'hockey',
@@ -80,7 +80,7 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/hockey-banden',
     altText: 'Outdoor Hockey-Spielfeld mit robusten Banden.',
     tuvCertified: true,
-    usp: 'Fundamentfreies, patentiertes Bandensystem für den ganzjährigen Profi-Einsatz.'
+    usp: 'Fundamentfreies Bandensystem für den ganzjährigen Profi-Einsatz.'
   },
 ];
 

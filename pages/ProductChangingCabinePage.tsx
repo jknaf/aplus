@@ -98,7 +98,7 @@ const ProductChangingCabinePage: React.FC = () => {
                             In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung: "Die Schnecke" — kein Kabinenkontakt beim Betreten und Verlassen. Oben und unten offener Freiraum zur Einsicht, nicht verschließbar, missbrauchshemmend.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Die Kabine besteht aus nur zwei Teilen ohne Verschraubungen — einfach aufstellen, abbauen oder versetzen. Die fugenlose Bodenplatte dient zugleich als Fundamentplatte auf verdichtetem Schotterbett. Aus bewehrtem Beton und Edelstahl, nicht zerschneidbar, nicht anzündbar.
+                            Die Kabine besteht aus nur zwei Teilen ohne Verschraubungen — einfach aufstellen, abbauen oder versetzen. Die fugenlose Bodenplatte dient zugleich als Fundamentplatte auf verdichtetem Schotterbett. Aus bewehrtem Beton und Edelstahl gefertigt — extrem widerstandsfähig gegen Vandalismus.
                         </p>
                         
                         <div className="flex flex-col gap-4">

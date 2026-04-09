@@ -203,7 +203,7 @@ const ProductBmxPage: React.FC = () => {
                     <TechSpecCard title="Disziplinen" value="Dirt, Park, Street" icon="sports_motorsports" />
                     <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
                     <TechSpecCard title="Sicherheitszone" value="2 m beidseitig" icon="safety_check" />
-                    <TechSpecCard title="Lebensdauer" value="30+ Jahre" icon="update" />
+                    <TechSpecCard title="Bauweise" value="Bewehrter Beton" icon="update" />
                     <TechSpecCard title="Sicherheit" value="TÜV / GS" icon="security" />
                     <TechSpecCard title="Oberfläche" value="Offenporig / Grip" icon="terrain" />
                 </div>

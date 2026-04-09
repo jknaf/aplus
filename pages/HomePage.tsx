@@ -309,50 +309,79 @@ const ScrollyFeature: React.FC<{
 // 1. Show Image IMMEDIATELY (LCP < 0.5s)
 // 2. Wait 2.5 seconds (Allow Mobile UI to settle)
 // 3. Inject Video (Cool factor returns without blocking initial scroll)
+// Hero-Karussell: Wechselt automatisch zwischen Bildern (5s) und Videos (10s)
+type Slide =
+  | { type: 'image'; src: string; alt: string; duration: number }
+  | { type: 'video'; src: string; poster: string; duration: number };
+
+const SLIDES: Slide[] = [
+  { type: 'image', src: '/images/homepage/hero-banner.jpg', alt: 'A+ Urban Design Skatepark', duration: 5000 },
+  { type: 'video', src: '/videos/skateparks/contest-skateboard.mp4', poster: '/videos/skateparks/poster-contest-skateboard.jpg', duration: 10000 },
+  { type: 'image', src: '/images/skateparks/skatepark-02.jpg', alt: 'Beton-Skatepark Referenz', duration: 5000 },
+  { type: 'video', src: '/videos/skateparks/contest-bmx.mp4', poster: '/videos/skateparks/poster-contest-bmx.jpg', duration: 10000 },
+  { type: 'image', src: '/images/skateparks/skatepark-03.jpg', alt: 'Pumptrack Referenz', duration: 5000 },
+  { type: 'video', src: '/videos/skateparks/contest-inliner.mp4', poster: '/videos/skateparks/poster-contest-inliner.jpg', duration: 10000 },
+];
+
 const Hero: React.FC = () => {
-    const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-    const [videoReady, setVideoReady] = useState(false);
-    
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+
     useEffect(() => {
-        // DELAYED VIDEO LOADING - PERFORMANCE OPTIMIZATION
-        // Increased to 2500ms to allow low-end mobile devices to finish 
-        // hydration and painting before starting heavy video decoding.
+        const current = SLIDES[currentIndex];
+
+        // Bei Videos: abspielen
+        if (current.type === 'video') {
+            const video = videoRefs.current[currentIndex];
+            if (video) {
+                video.currentTime = 0;
+                video.play().catch(() => {}); // Safari/autoplay-Schutz abfangen
+            }
+        }
+
+        // Nach Ablauf der Dauer zum nächsten Slide wechseln
         const timer = setTimeout(() => {
-            setShouldLoadVideo(true);
-        }, 2500);
+            setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
+        }, current.duration);
+
         return () => clearTimeout(timer);
-    }, []);
+    }, [currentIndex]);
 
     return (
         <div className="relative h-[85svh] md:h-[90vh] w-full overflow-hidden bg-black">
-            
-            {/* LAYER 1: HERO IMAGE (A+ eigenes Bild) */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="/images/homepage/hero-banner.jpg"
-                    alt="A+ Urban Design Skatepark"
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                    decoding="sync"
-                    fetchPriority="high"
-                />
-            </div>
 
-            {/* LAYER 2: VIDEO OVERLAY (Lazy Loaded, Faster Fade) */}
-            {shouldLoadVideo && (
-                <div className={`absolute inset-0 z-10 transition-opacity duration-[1000ms] ease-in-out ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
-                    <video
-                        className="w-full h-full object-cover"
-                        src="/videos/skateparks/contest-skate-bmx-inline-scooter.mp4"
-                        poster="/videos/skateparks/poster-contest-skate-bmx.jpg"
-                        muted
-                        loop
-                        playsInline
-                        autoPlay
-                        onCanPlay={() => setVideoReady(true)}
-                    />
-                </div>
-            )}
+            {/* LAYER 1: KARUSSELL — alle Slides mit Crossfade */}
+            <div className="absolute inset-0 z-0">
+                {SLIDES.map((slide, index) => (
+                    <div
+                        key={index}
+                        className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
+                            index === currentIndex ? 'opacity-100' : 'opacity-0'
+                        }`}
+                    >
+                        {slide.type === 'image' ? (
+                            <img
+                                src={slide.src}
+                                alt={slide.alt}
+                                className="w-full h-full object-cover"
+                                loading={index === 0 ? 'eager' : 'lazy'}
+                                decoding={index === 0 ? 'sync' : 'async'}
+                                fetchPriority={index === 0 ? 'high' : 'auto'}
+                            />
+                        ) : (
+                            <video
+                                ref={(el) => { videoRefs.current[index] = el; }}
+                                className="w-full h-full object-cover"
+                                src={slide.src}
+                                poster={slide.poster}
+                                muted
+                                playsInline
+                                preload="auto"
+                            />
+                        )}
+                    </div>
+                ))}
+            </div>
 
             {/* LAYER 3: DARKNESS OVERLAY */}
             <div className="absolute inset-0 z-20 bg-black/40"></div>

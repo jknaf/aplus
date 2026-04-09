@@ -2,4 +2,8 @@
 node_modules
 dist
 .env.local
-public/videos/
+
+# Videos: nur große/unbenutzte Clips ausschließen
+public/videos/skateparks/contest-skate-bmx-inline-scooter.mp4
+public/videos/skateparks/session-skate-bmx-inline-scooter.mp4
+public/videos/skateparks/contest-scooter.mp4

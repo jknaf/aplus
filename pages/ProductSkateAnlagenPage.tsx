@@ -189,7 +189,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <GalleryImage src="/images/skate-bowls/skate-bowl-01.jpg" alt="Offener Skate-Bowl aus Beton" label="OFFENER BOWL" />
                     <GalleryImage src="/images/skate-bowls/skate-bowl-02.jpg" alt="Bowl aus Beton-Fertigteil-Modulen" label="FERTIGTEIL-BOWL" />
                     <GalleryImage src="/images/skate-bowls/skate-pool-03.jpg" alt="Skate-Bowl aus Beton-Modulen" label="SKATE-POOL" />
-                    <GalleryImage src="/images/skate-bowls/skate-pool-04.jpg" alt="Bowl aus TÜV-zertifizierten Skate-Elementen" label="TÜV-ELEMENTE" />
+                    <GalleryImage src="/images/skate-bowls/skate-pool-04.jpg" alt="Bowl aus modularen Skate-Elementen" label="SKATE-ELEMENTE" />
                     <GalleryImage src="/images/skate-bowls/skate-bowl-pool-05.jpg" alt="S-Form Skate-Bowl aus Beton-Modulen" label="S-FORM BOWL" />
                     <GalleryImage src="/images/skate-bowls/skate-bowls-pools-06.jpg" alt="Skate-Bowl Varianten aus Beton-Fertigteilen" label="VARIANTEN" />
                 </div>

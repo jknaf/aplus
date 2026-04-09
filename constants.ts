@@ -25,18 +25,18 @@ export const PRODUCTS: Product[] = [
    {
     id: 'skate-anlagen',
     title: 'Beton Skate-Anlagen',
-    imageUrl: '/images/skate-bowls/skate-bowl-01.jpg',
+    imageUrl: '/images/homepage/hero-anlage-01.jpg',
     path: '/produkte/skate-anlagen',
-    altText: 'Hochwertige Beton-Skateanlage mit Bowl und Street-Bereich bei Sonnenuntergang.',
+    altText: 'Beton-Skatepark mit Bowl und Street-Bereich — Totalaufnahme.',
     tuvCertified: true,
-    usp: 'Das Original: TÜV-zertifiziert, flüsterleise und modular gebaut für die Ewigkeit.'
+    usp: 'Das A+ Original: TÜV-zertifiziert, schalldämpfend und modular gebaut.'
   },
   {
     id: 'pumptrack',
     title: 'Pumptrack aus Beton',
-    imageUrl: '/images/pumptrack/pumptrack-01.jpg',
+    imageUrl: '/images/pumptrack/pumptrack-beton-elemente-01.jpg',
     path: '/produkte/pumptrack-beton',
-    altText: 'Geschwungener Pumptrack aus Beton, ideal für Bikes und Boards.',
+    altText: 'Realisierter Pumptrack aus Beton-Elementen im Park.',
     tuvCertified: true,
     usp: 'Endloser Flow für alle Rollsportarten – wartungsarm, griffig und modular erweiterbar.'
   },
@@ -60,17 +60,17 @@ export const PRODUCTS: Product[] = [
   {
     id: 'grillstelle',
     title: 'Öffentliche Grillstelle',
-    imageUrl: '/images/grill/grill-stelle-02.jpg',
+    imageUrl: '/images/grill/grillstelle-background.jpg',
     path: '/produkte/grillstelle-beton',
-    altText: 'Robuste Feuerstelle und Grillbereich aus Beton im öffentlichen Park.',
+    altText: 'Runder Beton-Grillplatz im Park mit Edelstahl-Rost.',
     usp: 'Der vandalismussichere Begegnungsort mit diebstahlgeschütztem Edelstahlrost.'
   },
   {
     id: 'umkleide',
     title: 'Umkleidekabine',
-    imageUrl: '/images/umkleide/umkleidekabine-schnecke-04.jpg',
+    imageUrl: '/images/umkleide/umkleide-panorama.jpg',
     path: '/produkte/umkleidekabine-beton',
-    altText: 'Moderne Architektur mit Sichtbetonwänden.',
+    altText: 'Schnecken-Umkleidekabine aus Beton im Freibad.',
     usp: 'Die „Schnecke”: Hygienisch, türlos und vandalismushemmend konstruiert.'
   },
   {

@@ -112,7 +112,6 @@ const Header: React.FC = () => {
                                 className="block px-4 py-3 text-sm text-brand-muted hover:text-brand-dark hover:bg-brand-surface/50 rounded-lg transition-all duration-200 group/item"
                               >
                                 <span className="block font-bold text-brand-dark group-hover/item:text-brand-orange transition-colors">{subLink.name}</span>
-                                <span className="text-xs opacity-50">Betonfertigteile</span>
                               </Link>
                            </li>
                         ))}

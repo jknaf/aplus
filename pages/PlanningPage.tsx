@@ -211,7 +211,77 @@ const PlanningPage: React.FC = () => {
             </div>
         </div>
 
-        {/* 4. CTA */}
+        {/* 5. BAU & UMSETZUNG — Inhalte aus skateanlage-bauen */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 relative z-20">
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
+
+                {/* Left: Text */}
+                <div>
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Bau & Umsetzung</span>
+                    <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
+                        Schneller. Einfacher. <span className="text-brand-orange">Witterungs-unabhängig.</span>
+                    </h2>
+                    <div className="space-y-6 text-lg text-brand-muted leading-relaxed">
+                        <p>
+                            Der Bau eines Skateparks mit modularen Beton-Fertigteilen ist <strong className="text-brand-dark">schneller, einfacher und witterungsunabhängiger</strong> als eine vor Ort gegossene Ortbeton-Konstruktion. Unsere TÜV-geprüften Module werden im Werk unter kontrollierten Bedingungen produziert — mit konstanter Qualität und ohne Wetterrisiko.
+                        </p>
+                        <p>
+                            Für die Aufstellung wird lediglich ein <strong className="text-brand-dark">fester Unterbau</strong> benötigt. Die Elemente lassen sich auf bestehende betonierte oder asphaltierte Flächen montieren — wahlweise mit Übergangsblechen oder auf Fundamentplatten zum Anbetonieren.
+                        </p>
+                        <p>
+                            Unser eigens entwickeltes <strong className="text-brand-dark">Verfugungssystem</strong> ist UV- und witterungsbeständig, dauerhaft elastisch und gleichzeitig schleifbar und befahrbar. Damit lassen sich auch große Parcours nahtlos verbinden.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Right: Aufbau-Varianten Cards */}
+                <div className="space-y-4">
+                    <div className="bg-white border border-brand-dark/10 rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:border-brand-orange/40 transition-colors">
+                        <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 bg-brand-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span className="material-symbols-outlined text-brand-orange">layers</span>
+                            </div>
+                            <div>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 1 — Bestandsfläche</h3>
+                                <p className="text-sm text-brand-muted leading-relaxed">
+                                    Aufstellung auf einer bestehenden, befestigten Fläche (Beton oder Asphalt). Die Module werden mit Übergangsblechen verbunden — schnellster Aufbau ohne Erdarbeiten.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white border border-brand-dark/10 rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:border-brand-orange/40 transition-colors">
+                        <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 bg-brand-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span className="material-symbols-outlined text-brand-orange">foundation</span>
+                            </div>
+                            <div>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 2 — Neue Fundamentplatte</h3>
+                                <p className="text-sm text-brand-muted leading-relaxed">
+                                    Bei Neuanlagen wird eine Fundamentplatte gegossen. Die Module werden direkt auf die Platte aufgestellt und anbetoniert — fugenloser Übergang zum Untergrund.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white border border-brand-dark/10 rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:border-brand-orange/40 transition-colors">
+                        <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 bg-brand-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span className="material-symbols-outlined text-brand-orange">tune</span>
+                            </div>
+                            <div>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 3 — Schotterbett</h3>
+                                <p className="text-sm text-brand-muted leading-relaxed">
+                                    Elemente ab 35 cm Höhe haben Arretierungsfüße zur Höheneinstellung. Damit ist eine Aufstellung auf verdichtetem Schotterbett ohne Mörtelbett möglich.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {/* 6. CTA */}
         <div className="max-w-4xl mx-auto px-4 text-center mb-24">
             <h2 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase mb-8">
                 Starten wir die Planung?

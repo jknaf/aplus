@@ -213,7 +213,7 @@ const PlanningPage: React.FC = () => {
 
         {/* 5. BAU & UMSETZUNG — Inhalte aus skateanlage-bauen */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 relative z-20">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
 
                 {/* Left: Text */}
                 <div>

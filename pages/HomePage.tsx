@@ -288,7 +288,7 @@ const ScrollyFeature: React.FC<{
     
     return (
         <div ref={ref} className={`transition-all duration-700 ease-out p-8 md:p-10 rounded-2xl border mb-24 last:mb-0 relative overflow-hidden group ${containerClass}`}>
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05]"></div>
+            <div className="absolute inset-0 bg-[url('/images/noise.svg')] opacity-[0.05]"></div>
             <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
                 <div className={`p-4 rounded-xl bg-brand-surface/60 border transition-all duration-500 shadow-sm ${isActive ? `text-brand-orange border-brand-orange/30 shadow-[0_4px_12px_rgba(107,143,74,0.15)] ${animationClass}` : 'text-brand-muted border-brand-dark/5'}`}>
                     <span className="material-symbols-outlined text-4xl">{icon}</span>

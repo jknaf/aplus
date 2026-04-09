@@ -80,7 +80,7 @@ const AboutPage: React.FC = () => {
                 className="w-full h-full object-cover grayscale opacity-40 scale-105 animate-[kenburns-1_30s_infinite_alternate]"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent"></div>
-             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+             <div className="absolute inset-0 bg-[url('/images/noise.svg')] opacity-20"></div>
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-6xl">

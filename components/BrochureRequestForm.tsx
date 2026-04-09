@@ -93,9 +93,9 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                 <div className="relative w-full h-full bg-brand-dark/90 overflow-hidden group-hover:bg-brand-dark/80 transition-colors">
                     
                     {/* The Catalog Cover Image */}
-                    <img 
-                        src="https://img.yumpu.com/1909210/1/500x640/skatepark-a-urban-design.jpg" 
-                        alt="A+ Urban Design Catalog Cover" 
+                    <img
+                        src="/images/branding/katalog-cover.jpg"
+                        alt="A+ Urban Design Katalog Cover"
                         className="w-full h-full object-cover opacity-80 mix-blend-normal filter contrast-125 grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
 

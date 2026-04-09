@@ -53,13 +53,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   <tr><td style="height:1px;background-color:#D0CEC7;"></td></tr>
   <tr><td style="padding:36px 40px;">
     <p style="margin:0 0 24px 0;font-size:15px;color:#5A5A54;line-height:1.7;">
-      vielen Dank für Ihr Interesse an unserem Produktkatalog. Laden Sie ihn hier direkt herunter:
+      vielen Dank für Ihr Interesse an unserem Produktkatalog. Wir senden Ihnen den vollständigen Katalog in Kürze per E-Mail zu. In der Zwischenzeit können Sie unsere Produktübersicht direkt online einsehen:
     </p>
     <table border="0" cellpadding="0" cellspacing="0">
       <tr><td style="background-color:#6B8F4A;border-radius:4px;">
-        <a href="https://img.yumpu.com/1909210/1/500x640/skatepark-a-urban-design.jpg"
+        <a href="https://www.aplusurbandesign.com/produkte"
           style="display:inline-block;padding:14px 32px;font-family:Arial,sans-serif;font-size:12px;font-weight:800;color:#FFFFFF;text-decoration:none;text-transform:uppercase;letter-spacing:2px;">
-          Katalog herunterladen &rarr;
+          Produktübersicht ansehen &rarr;
         </a>
       </td></tr>
     </table>

@@ -3,7 +3,6 @@ node_modules
 dist
 .env.local
 
-# Videos: nur große/unbenutzte Clips ausschließen
-public/videos/skateparks/contest-skate-bmx-inline-scooter.mp4
-public/videos/skateparks/session-skate-bmx-inline-scooter.mp4
-public/videos/skateparks/contest-scooter.mp4
+# Backup-Ordner für Original-Videos (vor Kompression)
+public/videos/skateparks-original-backup/
+public/videos/skateparks-compressed/

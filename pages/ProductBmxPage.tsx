@@ -44,7 +44,7 @@ const ProductBmxPage: React.FC = () => {
     <PageShell title="Planung & Bau von BMX-Anlagen" description="BMX-Anlagen und Skate-Pipes aus Beton: Halfpipes, Mini-Pipes und Kombinationsanlagen in drei Höhen (165/200/255 cm). Fundamentfrei und TÜV-zertifiziert.">
 
        {/* 1. IMMERSIVE HERO — Video als Hauptvisual */}
-       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
+       <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
 
             {/* VIDEO LAYER — startet bei Sekunde 15 (überspringt Logos), loopt manuell */}
             <div className="absolute inset-0 z-0">

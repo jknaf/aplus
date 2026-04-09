@@ -48,7 +48,7 @@ const ProductPumptrackPage: React.FC = () => {
     <PageShell title="Pumptrack aus Beton planen & bauen" description="Pumptrack aus Beton — dauerhaft, wartungsfrei und TÜV-zertifiziert. Modulares System, sofort befahrbar, europaweit realisiert.">
        
        {/* 1. IMMERSIVE HERO */}
-       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
+       <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
             <div className="absolute inset-0">
                  {/* OPTIMIZED HERO IMAGE for Mobile Speed */}
                  <img src="/images/pumptrack/pumptrack-beton-elemente-01.jpg"

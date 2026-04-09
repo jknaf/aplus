@@ -49,7 +49,7 @@ const ProductPavilionPage: React.FC = () => {
     <PageShell title="Überdachung & Pavillon aus Beton" description="Überdachungen und Pavillons aus Beton: wetterfest, fundamentfrei und langlebig. Für öffentliche Parks, Sportanlagen und Freizeitbereiche.">
        
        {/* 1. HERO */}
-       <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
+       <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
                  <img src="/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg"
                         alt="Hero Pavillon"

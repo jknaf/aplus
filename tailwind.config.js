@@ -30,6 +30,9 @@ export default {
         'stamp': 'stamp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
         'scan': 'scan 3s linear infinite',
         'pop-in': 'pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+        'kenburns-1': 'kenburns-1 25s ease-in-out infinite alternate',
+        'kenburns-2': 'kenburns-2 28s ease-in-out infinite alternate',
+        'kenburns-3': 'kenburns-3 30s ease-in-out infinite alternate',
       },
       keyframes: {
         'fade-in-up': {
@@ -61,6 +64,18 @@ export default {
         'pop-in': {
           '0%': { opacity: '0', transform: 'scale(0.8)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'kenburns-1': {
+          '0%': { transform: 'scale(1) translate(0, 0)', transformOrigin: '50% 50%' },
+          '100%': { transform: 'scale(1.15) translate(-2%, -1%)', transformOrigin: '50% 50%' },
+        },
+        'kenburns-2': {
+          '0%': { transform: 'scale(1.1) translate(2%, 1%)', transformOrigin: '40% 60%' },
+          '100%': { transform: 'scale(1.2) translate(-2%, -2%)', transformOrigin: '40% 60%' },
+        },
+        'kenburns-3': {
+          '0%': { transform: 'scale(1) translate(0, 0)', transformOrigin: '60% 40%' },
+          '100%': { transform: 'scale(1.18) translate(2%, 2%)', transformOrigin: '60% 40%' },
         },
       },
     },

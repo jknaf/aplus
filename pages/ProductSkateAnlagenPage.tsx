@@ -99,7 +99,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
        {/* 1. IMMERSIVE HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
             <div className="absolute inset-0">
-                 <img src="/images/skate-bowls/skate-bowl-01.jpg" alt="Hero Beton Skatepark" className="w-full h-full object-cover" loading="eager" fetchPriority="high" />
+                 <img src="/images/skate-bowls/skate-bowl-01.jpg" alt="Hero Beton Skatepark" className="w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-brand-dark/80 to-transparent opacity-90"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>

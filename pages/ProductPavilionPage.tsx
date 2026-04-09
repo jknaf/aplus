@@ -51,9 +51,9 @@ const ProductPavilionPage: React.FC = () => {
        {/* 1. HERO */}
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
-                 <img src="/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg" 
-                        alt="Hero Pavillon" 
-                        className="w-full h-full object-cover"
+                 <img src="/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg"
+                        alt="Hero Pavillon"
+                        className="w-full h-full object-cover animate-kenburns-1"
                         loading="eager"
                         fetchPriority="high" />
 

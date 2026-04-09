@@ -52,9 +52,9 @@ const ProductHockeyRinkPage: React.FC = () => {
        <div className="relative w-full h-[85vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
                  {/* OPTIMIZED HERO IMAGE for Mobile Speed */}
-                 <img src="/images/hockey/roll-hockey-bande.jpg" 
-                        alt="Hero Hockey Rink" 
-                        className="w-full h-full object-cover"
+                 <img src="/images/hockey/roll-hockey-bande.jpg"
+                        alt="Hero Hockey Rink"
+                        className="w-full h-full object-cover animate-kenburns-1"
                         loading="eager"
                         fetchPriority="high" />
                 

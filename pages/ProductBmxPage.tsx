@@ -57,9 +57,9 @@ const ProductBmxPage: React.FC = () => {
              
              {/* 1. STATIC IMAGE LAYER (Instant Load) */}
             <div className="absolute inset-0 z-0">
-                 <img src="/images/skate-pipes/skate-pipe-01.jpg" 
+                 <img src="/images/skate-pipes/skate-pipe-01.jpg"
                         alt="BMX Concrete Halfpipe"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover animate-kenburns-3"
                         loading="eager"
                         fetchPriority="high" />
             </div>

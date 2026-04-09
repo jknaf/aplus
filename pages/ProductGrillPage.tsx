@@ -51,8 +51,8 @@ const ProductGrillPage: React.FC = () => {
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
             <div className="absolute inset-0">
-                 <img src="/images/grill/grill-stelle-02.jpg"
-                        alt="Hero Grillstelle"
+                 <img src="/images/grill/grillstelle-background.jpg"
+                        alt="Hero Grillstelle im Park"
                         className="w-full h-full object-cover animate-kenburns-2"
                         loading="eager"
                         fetchPriority="high" />

@@ -397,7 +397,7 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-end pointer-events-none">
                  <div className="max-w-7xl">
                     <div className="animate-fade-in-up">
-                        <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-tighter leading-[1.1] md:leading-[0.95]">
+                        <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-tighter leading-[1.2] md:leading-[1.1]">
                             <span className="text-[clamp(2rem,7vw,7rem)] text-white opacity-90">Architektur</span>
                             <span className="text-[clamp(2rem,7vw,7rem)] text-white/60">für</span>
                             <span className="text-[clamp(2rem,7vw,7rem)] text-brand-orange">Freiräume</span>

@@ -398,9 +398,9 @@ const Hero: React.FC = () => {
                  <div className="max-w-7xl">
                     <div className="animate-fade-in-up">
                         <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-tighter leading-[1.2] md:leading-[1.1]">
-                            <span className="text-[clamp(2rem,7vw,7rem)] text-white opacity-90">Architektur</span>
-                            <span className="text-[clamp(2rem,7vw,7rem)] text-white/60">für</span>
-                            <span className="text-[clamp(2rem,7vw,7rem)] text-brand-orange">Freiräume</span>
+                            <span className="text-[clamp(2rem,6vw,6rem)] text-white opacity-90">Architektur</span>
+                            <span className="text-[clamp(2rem,6vw,6rem)] text-white/60">für</span>
+                            <span className="text-[clamp(2rem,6vw,6rem)] text-brand-orange">Freiräume</span>
                         </h1>
                         <p className="mt-6 md:mt-8 text-lg md:text-2xl text-white/80 max-w-xl md:max-w-2xl font-light border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
                             Wir planen und bauen die Plätze der Zukunft. <span className="text-white font-bold">Robust. Modular. Kompromisslos.</span>

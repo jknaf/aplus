@@ -93,7 +93,6 @@ const ProductSkateAnlagenPage: React.FC = () => {
         title="Skatepark-Hersteller — Beton-Skateparks planen & bauen"
         description="Skatepark-Hersteller seit 1999: A+ Urban Design plant und baut modulare Beton-Skateparks. TÜV-zertifizierte Skate-Elemente wie Ramps, Bowls & Rails. Fundamentfrei, europaweite Lieferung."
         schema={productSchema}
-        fullWidth={true}
     >
 
        {/* 1. IMMERSIVE HERO */}

@@ -90,8 +90,8 @@ const ProductSkateAnlagenPage: React.FC = () => {
 
   return (
     <PageShell
-        title="Planung & Bau von Beton-Skateanlagen"
-        description="Planung und Bau von modularen Beton-Skateparks. TÜV-zertifizierte Skate-Elemente wie Ramps, Bowls & Rails. Langlebig, fundamentfrei und europaweite Lieferung."
+        title="Skatepark-Hersteller — Beton-Skateparks planen & bauen"
+        description="Skatepark-Hersteller seit 1999: A+ Urban Design plant und baut modulare Beton-Skateparks. TÜV-zertifizierte Skate-Elemente wie Ramps, Bowls & Rails. Fundamentfrei, europaweite Lieferung."
         schema={productSchema}
         fullWidth={true}
     >
@@ -130,13 +130,13 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Seit den <span className="text-brand-orange">90ern.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            Unsere modularen Skateelemente aus Beton wurden in den 90er Jahren entwickelt. 1999 wurden sie als eine der ersten modularen Beton-Skateelemente in Europa TÜV-zertifiziert und mit dem GS-Zeichen (Geprüfte Sicherheit) ausgezeichnet.
+                            Als Skatepark-Hersteller entwickeln wir seit den 90er Jahren modulare Skateelemente aus Beton. 1999 wurden sie als eine der ersten modularen Beton-Skateelemente in Europa TÜV-zertifiziert und mit dem GS-Zeichen (Geprüfte Sicherheit) ausgezeichnet.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. 2002 folgte der erste Bowl mit modularen Skateelementen auf Gran Canaria.
+                            Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. 2002 folgte der erste Bowl mit modularen Skateelementen auf Gran Canaria. Ob Skatepark, Skateanlage oder Skaterbahn — Kommunen und Gemeinden vertrauen auf unsere Betonfertigteile.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
-                            Heute sind unsere Elemente im Einsatz von Norden (Norwegen) bis Süden (Kanarische Inseln) und von Osten (Rumänien) bis Westen (England) — in Höhenlagen von 0 bis über 1.000 m ü. NN.
+                            Heute sind unsere Skaterampen, Bowls und Halfpipes im Einsatz von Norden (Norwegen) bis Süden (Kanarische Inseln) und von Osten (Rumänien) bis Westen (England) — in Höhenlagen von 0 bis über 1.000 m ü. NN.
                         </p>
 
                         <div className="flex flex-col gap-4">

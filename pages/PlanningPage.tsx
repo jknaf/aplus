@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import BrochureRequestForm from '../components/BrochureRequestForm';
@@ -68,12 +68,55 @@ const ProcessStep: React.FC<{ number: string; title: string; desc: string }> = (
 );
 
 const PlanningPage: React.FC = () => {
-  useEffect(() => {
-    document.title = "Individuelle Planung & Architektur | A+ Urban Design";
-  }, []);
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Ist die Planung im Produktpreis enthalten?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Die individuelle Planung mit Draufsicht, 3D-Zeichnung und Kostenübersicht ist im Produktpreis enthalten — keine zusätzlichen Architektenkosten."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie läuft die Planung eines Skateparks ab?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In drei Schritten: 1. Analyse Ihres Standorts und Budget, 2. 3D-Visualisierung mit Draufsicht und Kostenübersicht, 3. Werkplanung und Fertigung der Module im Werk."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Sind die Skateelemente TÜV-zertifiziert?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Alle Elemente sind nach DIN EN 14974 TÜV-zertifiziert und tragen das GS-Zeichen (Geprüfte Sicherheit)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Welche Aufbauvarianten gibt es?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Drei Varianten: Aufstellung auf bestehender befestigter Fläche mit Übergangsblechen, auf neuer Fundamentplatte zum Anbetonieren, oder auf verdichtetem Schotterbett mit Arretierungsfüßen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Können DWG-Dateien bereitgestellt werden?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Für Projekte ab 100.000 EUR brutto stellen wir DWG-Dateien für Planer und Architekten zur Verfügung. Systemschnitte für im Erdreich eingelassene Elemente sind Standard."
+        }
+      }
+    ]
+  };
 
   return (
-    <PageShell title="Planung & Beratung inklusive" description="Individuelle Planung für Beton-Skateparks, Pumptracks und urbane Anlagen: von der Entwurfsidee über TÜV-konforme Ausarbeitung bis zur Realisierung.">
+    <PageShell title="Skatepark planen lassen — Planung & Beratung inklusive" description="Skatepark planen und bauen lassen: Individuelle Planung für Beton-Skateparks, Pumptracks und urbane Anlagen — von der Entwurfsidee über TÜV-konforme Ausarbeitung bis zur schlüsselfertigen Realisierung." schema={faqSchema}>
         
         {/* 1. HERO SECTION */}
         <div className="relative w-full h-[80vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
@@ -100,7 +143,7 @@ const PlanningPage: React.FC = () => {
                         <span className="text-brand-orange">Inklusive.</span>
                     </h1>
                     <p className="text-xl text-gray-300 max-w-2xl border-l-4 border-brand-orange pl-6 leading-relaxed">
-                        Sie kaufen kein Produkt von der Stange. Sie erhalten eine individuelle Architektenleistung, maßgeschneidert auf Ihren Standort und Ihre Bedürfnisse.
+                        Sie möchten einen Skatepark planen und bauen lassen? Bei uns kaufen Sie kein Produkt von der Stange. Sie erhalten eine individuelle Architektenleistung, maßgeschneidert auf Ihren Standort und Ihre Bedürfnisse.
                     </p>
                 </div>
             </div>

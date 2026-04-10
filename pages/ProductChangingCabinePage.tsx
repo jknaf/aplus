@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
@@ -41,13 +41,19 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 );
 
 const ProductChangingCabinePage: React.FC = () => {
-  useEffect(() => {
-    document.title = "Umkleidekabine 'Die Schnecke' | A+ Urban Design";
-  }, []);
+  const productSchema = {
+    "@context": "https://schema.org", "@type": "Product",
+    "name": "Umkleidekabine 'Die Schnecke'",
+    "description": "Vandalismussichere Umkleidekabine aus Beton und Edelstahl. Zweiteilig, ohne Türen, fundamentfrei. Ideal für Freibäder und Sportanlagen.",
+    "brand": { "@type": "Brand", "name": "A+ Urban Design" },
+    "category": "Urban Furniture",
+    "image": "/images/umkleide/umkleidekabine-schnecke-04.jpg",
+    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/umkleidekabine-beton" }
+  };
 
   return (
-    <PageShell title="Vandalismussichere Umkleidekabine" description="Umkleidekabinen aus Beton: zweiteilig, fundamentfrei und vandalismussicher. Ideal für Freibäder, Sportanlagen und Parks.">
-       
+    <PageShell title="Umkleidekabine Beton — Freibad, Sportplatz & Outdoor" description="Vandalismussichere Outdoor-Umkleidekabine aus Beton: türlos, zweiteilig und fundamentfrei. Ideal für Freibäder, Sportplätze, Schwimmbäder und öffentliche Parks. Das Schnecken-Prinzip — hygienisch und wartungsfrei." schema={productSchema}>
+
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
@@ -41,13 +41,19 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 );
 
 const ProductPavilionPage: React.FC = () => {
-  useEffect(() => {
-    document.title = "Überdachung & Pavillon aus Beton | A+ Urban Design";
-  }, []);
+  const productSchema = {
+    "@context": "https://schema.org", "@type": "Product",
+    "name": "Überdachung & Pavillon aus Beton",
+    "description": "C-Profil-Überdachung aus bewehrtem Beton C35/45. 240 x 200 x 262 cm. Einzeln oder als Pavillon-Gruppe. Fundamentfrei, mit integrierter Sitzfläche.",
+    "brand": { "@type": "Brand", "name": "A+ Urban Design" },
+    "category": "Urban Furniture",
+    "image": "/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg",
+    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/ueberdachung-beton" }
+  };
 
   return (
-    <PageShell title="Überdachung & Pavillon aus Beton" description="Überdachungen und Pavillons aus Beton: wetterfest, fundamentfrei und langlebig. Für öffentliche Parks, Sportanlagen und Freizeitbereiche.">
-       
+    <PageShell title="Beton-Überdachung & Pavillon — Unterstellplatz öffentlich" description="Überdachung, Pavillon und Unterstellplatz aus Beton: wetterfest, fundamentfrei und vandalismussicher. Stadtmöbel und Wetterschutz für öffentliche Parks, Sportanlagen und Freizeitbereiche." schema={productSchema}>
+
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">

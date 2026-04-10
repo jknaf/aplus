@@ -33,15 +33,23 @@ const FAQSection: React.FC = () => {
     const faqs = [
         {
             q: "Was kostet ein Beton-Skatepark oder Pumptrack?",
-            a: "Modulare Betonfertigteile sind in vielen Projekten kostengünstiger als entsprechende Ortbeton-Lösungen, weil teure Erdarbeiten, Bodenplatten und aufwendige Vorbereitungen weitgehend entfallen. Für eine projektbezogene Kostenschätzung bieten wir Kommunen und Vereinen eine unverbindliche Erstberatung an."
+            a: "Die Kosten für einen Skatepark hängen von Größe, Elementauswahl und Untergrund ab. Modulare Betonfertigteile sind in vielen Projekten kostengünstiger als Ortbeton-Lösungen, weil teure Erdarbeiten, Bodenplatten und aufwendige Vorbereitungen weitgehend entfallen. Kommunen und Gemeinden können über die Sportstättenförderung Fördermittel beantragen. Wir bieten eine unverbindliche Erstberatung mit projektbezogener Kostenschätzung an."
+        },
+        {
+            q: "Skatepark, Skateanlage oder Skaterpark — was ist der Unterschied?",
+            a: "Die korrekte Bezeichnung ist Skatepark oder Skateanlage — umgangssprachlich wird oft auch Skaterpark, Skaterbahn oder Skaterplatz gesagt. Gemeint ist dasselbe: eine speziell gestaltete Fläche mit Obstacles wie Ramps, Bowls, Rails und Halfpipes für Skateboard, BMX, Scooter und Inline-Skates. Wir als Skatepark-Hersteller bauen diese Anlagen aus modularen Betonfertigteilen."
         },
         {
             q: "Sind die Anlagen auch für BMX und Scooter geeignet?",
-            a: "Ja. Unsere Betonoberflächen sind robust und halten den Punktbelastungen von BMX-Pegs und Scooter-Decks dauerhaft stand. Der massive Beton bietet zuverlässigen Grip für alle Rollsportarten – Skateboard, BMX, Scooter oder Inline-Skates."
+            a: "Ja. Unsere Betonoberflächen sind robust und halten den Punktbelastungen von BMX-Pegs und Scooter-Decks dauerhaft stand. Der massive Beton bietet zuverlässigen Grip für alle Rollsportarten – Skateboard, BMX, Scooter oder Inline-Skates. Ob Skatepark, BMX-Park oder Pumptrack: Alle Anlagen sind multisportfähig ausgelegt."
         },
         {
-            q: "Warum Beton für einen Pumptrack?",
-            a: "Beton ist auch bei hohen Sommertemperaturen formstabil und nahezu wartungsfrei. Unser modulares System hat einen entscheidenden Vorteil: Die Betonelemente werden aufgestellt und nur dazwischen wird Asphalt verlegt. Das bedeutet weniger Flächenversiegelung und maximale Flexibilität – Elemente können bei Bedarf umgestellt, entfernt oder ergänzt werden."
+            q: "Warum Beton statt Holz oder Asphalt?",
+            a: "Beton ist formstabil, wartungsfrei und vandalismussicher — selbst bei extremen Temperaturen. Unsere Skaterampen und Pumptrack-Elemente aus Hochleistungsbeton C35/45 überdauern Holz und Asphalt um Jahrzehnte. Das modulare System ermöglicht zudem maximale Flexibilität: Elemente können umgestellt, entfernt oder ergänzt werden, ohne Fundamente aufzubrechen."
+        },
+        {
+            q: "Gibt es Fördermittel für Skateparks und Pumptracks?",
+            a: "Ja. Kommunen und Gemeinden können Fördermittel über die Sportstättenförderung von Bund und Ländern beantragen. Auch Programme für urbane Freiräume und Bewegungsförderung kommen infrage. Wir unterstützen bei der Ausschreibung und liefern alle technischen Unterlagen, die für den Förderantrag benötigt werden — von der DIN-EN-14974-Zertifizierung bis zur statischen Berechnung."
         },
         {
             q: "Wie steht es um Lärmschutz und Baugenehmigung?",
@@ -49,7 +57,11 @@ const FAQSection: React.FC = () => {
         },
         {
             q: "Können wir klein anfangen und die Anlage später erweitern?",
-            a: "Ja, das ist der Kern unseres A+ Modulsystems. Viele Kommunen starten mit einem Starter-Kit – zum Beispiel Quarter, Bank und Rail – und erweitern den Skatepark über Jahre hinweg. Da keine Fundamente gegossen werden müssen, bleibt die Fläche jederzeit flexibel und erweiterbar. Elemente können auch umgestellt oder an einen neuen Standort versetzt werden."
+            a: "Ja, das ist der Kern unseres A+ Modulsystems. Viele Kommunen starten mit einem Starter-Kit — zum Beispiel Quarter, Bank und Rail — und erweitern den Skatepark über Jahre hinweg. Ob Skateanlage, Pumptrack oder BMX-Park: Da keine Fundamente gegossen werden müssen, bleibt die Fläche jederzeit flexibel und erweiterbar. Elemente können auch umgestellt oder an einen neuen Standort versetzt werden."
+        },
+        {
+            q: "Wie läuft die Planung und der Bau eines Skateparks ab?",
+            a: "Der Prozess beginnt mit einer Bedarfsanalyse vor Ort. Als Skatepark-Hersteller übernehmen wir die komplette Architektenleistung: vom Entwurf über die 3D-Planung und TÜV-konforme Ausarbeitung bis zur schlüsselfertigen Montage. Die fundamentfreien Betonfertigteile werden per LKW angeliefert und mit einem Kran aufgestellt — eine typische Skateanlage steht innerhalb weniger Tage."
         }
     ];
 
@@ -80,7 +92,7 @@ const FAQSection: React.FC = () => {
                         Häufige <span className="text-brand-orange">Fragen.</span>
                     </h2>
                     <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
-                        Alles über Planung, Kosten und Bau von Skateparks, Pumptracks und BMX-Anlagen.
+                        Alles über Planung, Kosten, Fördermittel und Bau von Skateparks, Pumptracks und BMX-Anlagen — von Ihrem Skatepark-Hersteller.
                     </p>
                 </AnimatedSection>
                 <div className="max-w-4xl mx-auto space-y-4">
@@ -403,7 +415,7 @@ const Hero: React.FC = () => {
                             <span className="text-[clamp(2rem,6vw,6rem)] text-brand-orange">Freiräume</span>
                         </h1>
                         <p className="mt-6 md:mt-8 text-lg md:text-2xl text-white/80 max-w-xl md:max-w-2xl font-light border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
-                            Wir planen und bauen die Plätze der Zukunft. <span className="text-white font-bold">Robust. Modular. Kompromisslos.</span>
+                            Skatepark-Hersteller aus Stuttgart — wir planen und bauen Skateparks, Pumptracks und urbane Anlagen aus Beton. <span className="text-white font-bold">Robust. Modular. Kompromisslos.</span>
                         </p>
                     </div>
                  </div>
@@ -416,8 +428,8 @@ const Hero: React.FC = () => {
 const HomePage: React.FC = () => {
   return (
     <PageShell 
-        title="Beton-Skateparks, Pumptracks & Skate-Anlagen"
-        description="A+ Urban Design plant und baut TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig."
+        title="Skatepark-Hersteller | Beton-Skateparks & Pumptracks"
+        description="A+ Urban Design — Ihr Skatepark-Hersteller aus Stuttgart. Wir planen und bauen TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei, seit 1999."
         fullWidth={true}
     >
       <Hero />

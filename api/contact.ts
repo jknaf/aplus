@@ -231,9 +231,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Pflichtfelder fehlen.' });
   }
 
-  // Notification geht immer an den verifizierten Account-Inhaber (knaf@hm.edu),
-  // bis die Domain aplusurbandesign.com in Resend verifiziert ist.
-  const NOTIFY_TO = process.env.NOTIFICATION_EMAIL ?? 'knaf@hm.edu';
+  const NOTIFY_TO = process.env.NOTIFICATION_EMAIL ?? 'post@aplusurbandesign.com';
 
   try {
     // 1. Benachrichtigung an Inhaber

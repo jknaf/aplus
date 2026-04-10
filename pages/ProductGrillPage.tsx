@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
@@ -41,13 +41,19 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 );
 
 const ProductGrillPage: React.FC = () => {
-  useEffect(() => {
-    document.title = "Öffentliche Grillstelle aus Beton | A+ Urban Design";
-  }, []);
+  const productSchema = {
+    "@context": "https://schema.org", "@type": "Product",
+    "name": "Öffentliche Grillstelle aus Beton",
+    "description": "Runder Beton-Grillplatz mit 4,20 m Durchmesser. Vandalismussicher, höhenverstellbarer Edelstahlrost, integrierte Bodenplatte. Fundamentfrei.",
+    "brand": { "@type": "Brand", "name": "A+ Urban Design" },
+    "category": "Urban Furniture",
+    "image": "/images/grill/grillstelle-background.jpg",
+    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/grillstelle-beton" }
+  };
 
   return (
-    <PageShell title="Öffentliche Grillstelle aus Beton" description="Öffentliche Grillstellen aus Beton: robust, vandalismussicher und langlebig. Für Parks, Campingplätze und öffentliche Freiflächen.">
-       
+    <PageShell title="Öffentlicher Grillplatz aus Beton — vandalismussicher" description="Öffentliche Grillstelle und Grillplatz aus Beton: vandalismussicher, wartungsfrei und langlebig. Ideal als Stadtmöbel für Parks, Campingplätze und kommunale Freiflächen. Mit diebstahlsicherem Edelstahlrost." schema={productSchema}>
+
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
             <div className="absolute inset-0">

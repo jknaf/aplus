@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
@@ -36,16 +36,18 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 );
 
 const ProductPumptrackPage: React.FC = () => {
-  useEffect(() => {
-    document.title = "Pumptrack aus Beton planen | A+ Urban Design";
-    const descriptionTag = document.querySelector('meta[name="description"]');
-    if (descriptionTag) {
-      descriptionTag.setAttribute('content', 'A+ Urban Design plant und baut TÜV-zertifizierte Pumptracks aus modularen Betonelementen. Langlebig, wartungsarm und perfekt für Bikes, Skateboards und Scooter.');
-    }
-  }, []);
+  const productSchema = {
+    "@context": "https://schema.org", "@type": "Product",
+    "name": "Pumptrack aus Beton",
+    "description": "Modularer Pumptrack aus Beton-Fertigteilen. TÜV-zertifiziert, dauerhaft perfekte Geometrie, wartungsfrei. Für Bikes, Skateboards und Scooter.",
+    "brand": { "@type": "Brand", "name": "A+ Urban Design" },
+    "category": "Urban Furniture",
+    "image": "/images/pumptrack/pumptrack-beton-elemente-01.jpg",
+    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/pumptrack-beton" }
+  };
 
   return (
-    <PageShell title="Pumptrack aus Beton planen & bauen" description="Pumptrack aus Beton — dauerhaft, wartungsfrei und TÜV-zertifiziert. Modulares System, sofort befahrbar, europaweit realisiert.">
+    <PageShell title="Pumptrack-Hersteller — Beton-Pumptrack planen & bauen" description="Pumptrack-Hersteller A+ Urban Design: Beton-Pumptracks — dauerhaft, wartungsfrei und TÜV-zertifiziert. Modulares System, sofort befahrbar, europaweit realisiert." schema={productSchema}>
        
        {/* 1. IMMERSIVE HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
@@ -93,10 +95,10 @@ const ProductPumptrackPage: React.FC = () => {
                             Endloser <span className="text-brand-orange">Flow.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Ein Pumptrack ist mehr als nur eine Strecke – er ist ein biomechanischer Spielplatz. Die ca. 1,25 m breite Fahrbahn wird durch Gewichtsverlagerung ("Pumpen") befahren, ganz ohne in die Pedale zu treten.
+                            Als Pumptrack-Hersteller wissen wir: Ein Pumptrack ist mehr als nur eine Strecke – er ist ein biomechanischer Spielplatz. Die ca. 1,25 m breite Fahrbahn wird durch Gewichtsverlagerung ("Pumpen") befahren, ganz ohne in die Pedale zu treten.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Im Gegensatz zu Asphalt oder Erde bieten unsere Betonelemente eine dauerhaft perfekte Geometrie. Drei Aufbauvarianten möglich: direkt auf befestigter Fläche, auf separater Beton-/Asphaltpiste, oder auf Fundamentplatten mit anbetonierter Strecke. Gemeinden können unsere Module kaufen und selbst aufbauen.
+                            Im Gegensatz zu Asphalt oder Erde bieten unsere Beton-Pumptrack-Elemente eine dauerhaft perfekte Geometrie. Drei Aufbauvarianten möglich: direkt auf befestigter Fläche, auf separater Beton-/Asphaltpiste, oder auf Fundamentplatten mit anbetonierter Strecke. Kommunen und Gemeinden können unsere Pumptrack-Module kaufen und selbst aufbauen — auch Fördermittel aus der Sportstättenförderung sind nutzbar.
                         </p>
                         
                         <div className="flex flex-col gap-4">

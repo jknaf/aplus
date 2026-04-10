@@ -68,7 +68,7 @@ const AboutPage: React.FC = () => {
   }, []);
 
   return (
-    <PageShell title="Über A+ Urban Design" description="Über 30 Jahre Erfahrung im Bau von TÜV-zertifizierten Beton-Skateparks und urbanen Anlagen. Gegründet von Dipl.-Ing. Cüneyit Akcakoca, Stuttgart.">
+    <PageShell title="Über A+ Urban Design — Skatepark-Hersteller seit 1999" description="Skatepark-Hersteller mit über 25 Jahren Erfahrung: TÜV-zertifizierte Beton-Skateparks und urbane Anlagen. Gegründet von Dipl.-Ing. Cüneyit Akcakoca, Stuttgart.">
       
       {/* 1. CINEMATIC HERO - UNIFIED STYLE */}
       <div className="relative w-full h-[80vh] -mt-16 mb-32 flex items-center justify-center overflow-hidden">
@@ -93,7 +93,7 @@ const AboutPage: React.FC = () => {
                 <span className="text-brand-orange">Bestform</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto animate-fade-in-up [animation-delay:400ms]">
-                Wir verwandeln graue Flächen in lebendige Begegnungsorte. 
+                Skatepark-Hersteller und Planungsbüro aus Stuttgart — wir verwandeln graue Flächen in lebendige Begegnungsorte.
                 <span className="text-white font-bold"> Präzise. Modular. Für die Ewigkeit.</span>
             </p>
         </div>

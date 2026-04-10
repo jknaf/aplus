@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
@@ -36,14 +36,20 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 );
 
 const ProductBmxPage: React.FC = () => {
-  useEffect(() => {
-    document.title = "BMX-Anlagen & Parks | A+ Urban Design";
-  }, []);
+  const productSchema = {
+    "@context": "https://schema.org", "@type": "Product",
+    "name": "BMX-Anlagen aus Beton",
+    "description": "BMX-Anlagen und Skate-Pipes aus Beton: Halfpipes, Mini-Pipes und Kombinationsanlagen in drei Höhen (165/200/255 cm). Fundamentfrei und TÜV-zertifiziert.",
+    "brand": { "@type": "Brand", "name": "A+ Urban Design" },
+    "category": "Urban Furniture",
+    "image": "/images/skate-pipes/skate-pipe-bank-03.jpg",
+    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/bmx-anlagen" }
+  };
 
   return (
-    <PageShell title="Planung & Bau von BMX-Anlagen" description="BMX-Anlagen und Skate-Pipes aus Beton: Halfpipes, Mini-Pipes und Kombinationsanlagen in drei Höhen (165/200/255 cm). Fundamentfrei und TÜV-zertifiziert.">
+    <PageShell title="BMX-Anlagen aus Beton — Hersteller A+ Urban Design" description="BMX-Anlagen und Skate-Pipes vom Hersteller: Halfpipes, Mini-Pipes und Kombinationsanlagen aus Beton in drei Höhen (165/200/255 cm). Fundamentfrei und TÜV-zertifiziert." schema={productSchema}>
 
-       {/* 1. IMMERSIVE HERO — Video als Hauptvisual */}
+       {/* 1. HERO — Video */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
 
             {/* VIDEO LAYER — startet bei Sekunde 15 (überspringt Logos), loopt manuell */}
@@ -96,7 +102,7 @@ const ProductBmxPage: React.FC = () => {
                     <div className="lg:sticky lg:top-32">
                         <h2 className="text-3xl font-bold font-heading text-brand-dark mb-8">Big Air. Hard Concrete.</h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            BMX-Parks müssen extremen Belastungen standhalten. Wenn Pegs auf Kanten treffen und Reifen mit hoher Geschwindigkeit landen, versagen Holz und Asphalt schnell. Unsere Pipes aus bewehrtem Beton gibt es in 165, 200 und 255 cm Höhe.
+                            Ein BMX-Park muss extremen Belastungen standhalten. Wenn Pegs auf Kanten treffen und Reifen mit hoher Geschwindigkeit landen, versagen Holz und Asphalt schnell. Unsere Halfpipes und BMX-Rampen aus bewehrtem Beton gibt es in 165, 200 und 255 cm Höhe — ideal für Kommunen, die eine BMX-Anlage bauen lassen möchten.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
                             Unsere Beton-Lösungen für Jump-Ramps, Dirt-Lines und Bowls sind für die Ewigkeit gebaut. Standard- und Kombi-Pipes können mit Banks, Coping-Ramps und Spines kombiniert werden. Freistehende Pipes erfordern beidseitig 2 m Sicherheitszone und Absturzsicherung.

@@ -27,27 +27,27 @@ export const PRODUCTS: Product[] = [
     title: 'Beton Skate-Anlagen',
     imageUrl: '/images/homepage/hero-anlage-01.jpg',
     path: '/produkte/skate-anlagen',
-    altText: 'Beton-Skatepark mit Bowl und Street-Bereich — Totalaufnahme.',
+    altText: 'Beton-Skatepark mit Bowl und Street-Bereich — modulare Skateanlage vom Hersteller A+ Urban Design.',
     tuvCertified: true,
-    usp: 'Das A+ Original: TÜV-zertifiziert, schalldämpfend und modular gebaut.'
+    usp: 'Das A+ Original: TÜV-zertifizierte Skaterampen, Bowls und Halfpipes — modular, schalldämpfend und fundamentfrei.'
   },
   {
     id: 'pumptrack',
     title: 'Pumptrack aus Beton',
     imageUrl: '/images/pumptrack/pumptrack-beton-elemente-01.jpg',
     path: '/produkte/pumptrack-beton',
-    altText: 'Realisierter Pumptrack aus Beton-Elementen im Park.',
+    altText: 'Beton-Pumptrack aus modularen Fertigteilen — realisiert vom Pumptrack-Hersteller A+ Urban Design.',
     tuvCertified: true,
-    usp: 'Endloser Flow für alle Rollsportarten – wartungsarm, griffig und modular erweiterbar.'
+    usp: 'Endloser Flow für alle Rollsportarten — wartungsfrei, vandalismussicher und modular erweiterbar.'
   },
   {
     id: 'bmx-anlagen',
     title: 'BMX-Anlagen',
     imageUrl: '/images/skate-pipes/skate-pipe-01.jpg',
     path: '/produkte/bmx-anlagen',
-    altText: 'Massive Beton-Pipe, perfekt geeignet für BMX und Skate.',
+    altText: 'Beton-Halfpipe für BMX-Park und Skateanlage — TÜV-zertifiziert.',
     tuvCertified: true,
-    usp: 'Professionelle Dirt- & Park-Setups aus unverwüstlichem Hochleistungsbeton.'
+    usp: 'BMX-Anlagen und Halfpipes aus Hochleistungsbeton — robust genug für Pegs, Scooter und harte Landungen.'
   },
   {
     id: 'ueberdachung',

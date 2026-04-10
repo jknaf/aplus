@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
@@ -41,13 +41,19 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 );
 
 const ProductHockeyRinkPage: React.FC = () => {
-  useEffect(() => {
-    document.title = "Inline-Hockey-Banden | A+ Urban Design";
-  }, []);
+  const productSchema = {
+    "@context": "https://schema.org", "@type": "Product",
+    "name": "Inline-Hockey-Banden",
+    "description": "Modulare Hockey-Banden aus Stahl, Beton und HPL. Fundamentfrei, in 40 cm oder 110 cm Höhe. Ganzjährig einsetzbar für Inline- und Eishockey.",
+    "brand": { "@type": "Brand", "name": "A+ Urban Design" },
+    "category": "Urban Furniture",
+    "image": "/images/hockey/roll-hockey-bande.jpg",
+    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/hockey-banden" }
+  };
 
   return (
-    <PageShell title="Inline-Hockey-Banden (fundamentfrei)" description="Inline-Hockey-Banden aus Beton — fundamentfrei, in 40 cm oder 110 cm Höhe erhältlich. Langlebig, wartungsfrei und sofort einsatzbereit.">
-       
+    <PageShell title="Hockey-Banden kaufen — Inline- & Streethockey-Feld" description="Hockey-Banden und Hockeyfeld aus Beton und Stahl: fundamentfrei, in 40 cm oder 110 cm Höhe. Für Inline-Hockey, Streethockey und Rollhockey. Wartungsfrei und sofort einsatzbereit — auch für Kommunen und Vereine." schema={productSchema}>
+
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">

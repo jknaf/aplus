@@ -89,7 +89,7 @@ const Header: React.FC = () => {
                       ref={dropdownButtonRef}
                       onClick={toggleDropdown}
                       onMouseEnter={() => setIsDropdownOpen(true)}
-                      className="text-brand-dark/70 hover:text-brand-dark py-2 text-xs font-bold uppercase tracking-widest transition-colors duration-200 flex items-center gap-1"
+                      className="text-brand-dark/70 hover:text-brand-dark py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-200 flex items-center gap-1"
                       aria-expanded={isDropdownOpen}
                     >
                       {link.name}
@@ -122,7 +122,7 @@ const Header: React.FC = () => {
                   <li key={link.name}>
                     <Link
                       to={link.href}
-                      className="relative inline-flex items-center py-2 text-brand-dark/70 hover:text-brand-dark text-xs font-bold uppercase tracking-widest transition-colors duration-200 group"
+                      className="relative inline-flex items-center py-2 text-brand-dark/70 hover:text-brand-dark text-sm font-bold uppercase tracking-widest transition-colors duration-200 group"
                     >
                       {link.name}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-orange transition-all duration-300 group-hover:w-full"></span>

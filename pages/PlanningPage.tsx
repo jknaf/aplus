@@ -223,7 +223,7 @@ const PlanningPage: React.FC = () => {
                     </h2>
                     <div className="space-y-6 text-lg text-brand-muted leading-relaxed">
                         <p>
-                            Der Bau eines Skateparks mit modularen Beton-Fertigteilen ist <strong className="text-brand-dark">schneller, einfacher und witterungsunabhängiger</strong> als eine vor Ort gegossene Ortbeton-Konstruktion. Unsere TÜV-geprüften Module werden im Werk unter kontrollierten Bedingungen produziert — mit konstanter Qualität und ohne Wetterrisiko.
+                            Der Bau eines Skateparks mit modularen Beton-Fertigteilen ist <strong className="text-brand-dark">schneller, einfacher und witterungsunabhängiger</strong> als eine vor Ort gegossene Ortbeton-Konstruktion. Unsere TÜV-zertifizierten Module werden im Werk unter kontrollierten Bedingungen produziert — mit konstanter Qualität und ohne Wetterrisiko.
                         </p>
                         <p>
                             Für die Aufstellung wird lediglich ein <strong className="text-brand-dark">fester Unterbau</strong> benötigt. Die Elemente lassen sich auf bestehende betonierte oder asphaltierte Flächen montieren — wahlweise mit Übergangsblechen oder auf Fundamentplatten zum Anbetonieren.

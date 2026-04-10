@@ -86,8 +86,8 @@ export const PRODUCTS: Product[] = [
 
 export const PROJECTS: Project[] = [
     {
-        id: "skatepark-neustadt",
-        title: "Skatepark Neustadt",
+        id: "modularer-beton-skatepark",
+        title: "Modularer Beton-Skatepark",
         category: "Skatepark",
         year: 2023,
         imageUrl: "/images/skateparks/skatepark-01.jpg",
@@ -96,16 +96,16 @@ export const PROJECTS: Project[] = [
             "/images/skateparks/skatepark-03.jpg",
             "/images/skateparks/skatepark-04.jpg",
         ],
-        description: "Ein moderner Beton-Skatepark für die Gemeinde Neustadt, der sowohl Anfängern als auch Profis gerecht wird. Die Anlage umfasst eine vielfältige Street-Area mit Rails und Ledges sowie eine anspruchsvolle Bowl-Sektion. Alle Elemente sind aus unserem vandalismusresistenten Hochleistungsbeton gefertigt.",
-        altText: "Luftaufnahme des Beton-Skateparks Neustadt mit Bowl und Street-Bereich.",
+        description: "Ein moderner Beton-Skatepark, der sowohl Anfängern als auch Profis gerecht wird. Die Anlage umfasst eine vielfältige Street-Area mit Rails und Ledges sowie eine anspruchsvolle Bowl-Sektion. Alle Elemente sind aus unserem vandalismusresistenten Hochleistungsbeton gefertigt.",
+        altText: "Luftaufnahme eines modularen Beton-Skateparks mit Bowl und Street-Bereich.",
         productsUsed: [
             { name: "Quarter-Ramps & Half-Pipes", path: "/produkte/skate-anlagen" },
             { name: "Skate-Bowls", path: "/produkte/skate-anlagen" }
         ]
     },
     {
-        id: "pumptrack-am-see",
-        title: "Pumptrack am See",
+        id: "beton-pumptrack",
+        title: "Beton-Pumptrack",
         category: "Pumptrack",
         year: 2022,
         imageUrl: "/images/pumptrack/pumptrack-beton-elemente-01.jpg",
@@ -113,8 +113,8 @@ export const PROJECTS: Project[] = [
              "/images/pumptrack/pumptrack-beton-module-03.jpg",
              "/images/pumptrack/pumptrack-beton-module-04.jpg",
         ],
-        description: "Dieser flowige Pumptrack liegt idyllisch am Seeufer und bietet Fahrspaß für Fahrräder, Scooter und Skateboards. Die modularen Betonelemente ermöglichen einen abwechslungsreichen Kurs, der sich perfekt in die Landschaft einfügt.",
-        altText: "Flowiger Pumptrack aus Beton am Seeufer für Fahrräder und Scooter.",
+        description: "Ein flowiger Pumptrack, der Fahrspaß für Fahrräder, Scooter und Skateboards bietet. Die modularen Betonelemente ermöglichen einen abwechslungsreichen Kurs, der sich perfekt in die Umgebung einfügt.",
+        altText: "Flowiger Pumptrack aus modularen Betonelementen für Fahrräder und Scooter.",
         productsUsed: [
             { name: "Modulare Pumptrack-Elemente", path: "/produkte/pumptrack-beton" },
         ]
@@ -136,8 +136,8 @@ export const PROJECTS: Project[] = [
         ]
     },
     {
-        id: "hockeyfeld-berlin",
-        title: "Inlinehockey-Feld Berlin",
+        id: "inlinehockey-feld",
+        title: "Inlinehockey-Feld",
         category: "Hockey-Bande",
         year: 2021,
         imageUrl: "/images/hockey/inline-hockey-bande-03.jpg",
@@ -145,8 +145,8 @@ export const PROJECTS: Project[] = [
              "/images/hockey/hockey-einfassung-01.jpg",
              "/images/hockey/inline-hockey-bande-02.jpg",
         ],
-        description: "Sanierung und Modernisierung des Inlinehockey-Feldes in Berlin-Kreuzberg mit unserem fundamentfreien Bandensystem. Das Feld ist nun für den ganzjährigen Spielbetrieb geeignet.",
-        altText: "Professionelles Inlinehockey-Feld mit robusten Banden in Berlin.",
+        description: "Sanierung und Modernisierung eines Inlinehockey-Feldes mit unserem fundamentfreien Bandensystem. Das Feld ist nun für den ganzjährigen Spielbetrieb geeignet.",
+        altText: "Professionelles Inlinehockey-Feld mit robusten Beton-Banden.",
         productsUsed: [
             { name: "Hockey-Banden (110cm)", path: "/produkte/hockey-banden" },
         ]
@@ -168,13 +168,13 @@ export const PROJECTS: Project[] = [
         ]
     },
     {
-        id: "skateplaza-hamburg",
-        title: "Skate-Plaza Hamburg",
+        id: "bastion-skatepark-alba-iulia",
+        title: "Bastion Skatepark Alba Iulia",
         category: "Skatepark",
         year: 2024,
         imageUrl: "/images/skate-anlagen/skate-anlage-01.jpg",
-        description: "Ein urbaner Treffpunkt für die Skateszene in Hamburg. Der Plaza wurde mit verschiedenen Street-Elementen ausgestattet, die sich harmonisch in das Stadtbild einfügen.",
-        altText: "Urbaner Skate-Plaza in Hamburg mit modularen Beton-Elementen.",
+        description: "Der Bastion Skatepark in Alba Iulia, Rumänien — ein urbaner Treffpunkt für die Skateszene. Der Park wurde mit verschiedenen Street-Elementen ausgestattet, die sich harmonisch in das historische Stadtbild einfügen.",
+        altText: "Bastion Skatepark in Alba Iulia mit modularen Beton-Elementen.",
         images: [
             "/images/skate-anlagen/skateanlage-03.jpg",
             "/images/skate-anlagen/skateanlagen-04.jpg",

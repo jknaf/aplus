@@ -143,23 +143,11 @@ const ProductScrollytelling: React.FC = () => {
                     {/* Sticky HUD */}
                     <div className="hidden lg:block lg:w-1/2 sticky top-32">
                         <div className="relative aspect-square w-full rounded-2xl overflow-hidden border border-brand-dark/10 bg-brand-surface/50 shadow-[0_8px_30px_rgba(0,0,0,0.1)] group">
-                            <div className="absolute inset-0 z-20 pointer-events-none p-6 flex flex-col justify-between">
-                                <div className="flex justify-between items-start">
-                                    <div className="flex gap-2">
-                                        <div className="w-2 h-2 bg-brand-orange animate-pulse"></div>
-                                        <span className="text-[10px] font-mono text-brand-orange tracking-widest">LIVE BILD</span>
-                                    </div>
-                                    <div className="text-[10px] font-mono text-gray-500 tracking-widest">
-                                        KAMERA-0{PRODUCTS.findIndex(p => p.id === activeId) + 1}
-                                    </div>
-                                </div>
-                                <div className="absolute top-1/2 left-1/2 w-12 h-12 border border-white/30 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-50"></div>
-                                <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-white -translate-x-1/2 -translate-y-1/2 rounded-full"></div>
-                                <div className="flex justify-between items-end">
-                                    <div className="text-[10px] font-mono text-white/60">ISO 800<br/>F/2.8</div>
+                            <div className="absolute inset-0 z-20 pointer-events-none p-6 flex flex-col justify-end">
+                                <div className="flex justify-end">
                                     <div className="border border-white/20 px-2 py-1 bg-brand-dark/60 backdrop-blur-md rounded-sm">
                                         <span className="text-xs font-bold text-white uppercase tracking-wider">
-                                            {PRODUCTS.find(p => p.id === activeId)?.tuvCertified ? 'TÜV GEPRÜFT' : 'A+ STANDARD'}
+                                            TÜV ZERTIFIZIERT
                                         </span>
                                     </div>
                                 </div>
@@ -409,7 +397,7 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-end pointer-events-none">
                  <div className="max-w-7xl">
                     <div className="animate-fade-in-up">
-                        <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-tighter leading-none md:leading-[0.85]">
+                        <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-tighter leading-[1.1] md:leading-[0.95]">
                             <span className="text-[clamp(2rem,7vw,7rem)] text-white opacity-90">Architektur</span>
                             <span className="text-[clamp(2rem,7vw,7rem)] text-white/60">für</span>
                             <span className="text-[clamp(2rem,7vw,7rem)] text-brand-orange">Freiräume</span>

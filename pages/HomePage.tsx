@@ -331,13 +331,26 @@ const Hero: React.FC = () => {
 
     useEffect(() => {
         const current = SLIDES[currentIndex];
+        let cleanupListener: (() => void) | undefined;
 
-        // Bei Videos: bei Sekunde 5 starten und abspielen
+        // Bei Videos: bei Sekunde 15 starten und abspielen
         if (current.type === 'video') {
             const video = videoRefs.current[currentIndex];
             if (video) {
-                video.currentTime = VIDEO_START_TIME;
-                video.play().catch(() => {}); // Safari/autoplay-Schutz abfangen
+                const seekAndPlay = () => {
+                    video.currentTime = VIDEO_START_TIME;
+                    video.play().catch(() => {}); // Safari/autoplay-Schutz abfangen
+                };
+
+                if (video.readyState >= 1) {
+                    // Desktop: Metadaten bereits geladen (preload hat gewirkt)
+                    seekAndPlay();
+                } else {
+                    // Mobile: Metadaten noch nicht da — auf Load warten
+                    video.addEventListener('loadedmetadata', seekAndPlay, { once: true });
+                    video.load();
+                    cleanupListener = () => video.removeEventListener('loadedmetadata', seekAndPlay);
+                }
             }
         }
 
@@ -346,7 +359,10 @@ const Hero: React.FC = () => {
             setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
         }, current.duration);
 
-        return () => clearTimeout(timer);
+        return () => {
+            clearTimeout(timer);
+            cleanupListener?.();
+        };
     }, [currentIndex]);
 
     return (

@@ -406,7 +406,7 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 z-20 bg-black/40"></div>
 
             {/* LAYER 4: CONTENT */}
-            <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-end pointer-events-none">
+            <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-center pointer-events-none">
                  <div className="max-w-7xl">
                     <div className="animate-fade-in-up">
                         <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-tighter leading-[1.2] md:leading-[1.1]">

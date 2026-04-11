@@ -158,11 +158,11 @@ const ProductBmxPage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <img src="/images/skate-pipes/skate-pipe-02.jpg" alt="Mini-Pipe 165cm Beton" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                        <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 03. MINI-PIPE — 165 CM</div>
+                        <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Standard Pipes</div>
                     </div>
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <img src="/images/skate-pipes/skate-pipe-01.jpg" alt="Standard-Pipe 200cm" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                        <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 04. STANDARD-PIPE — 200 CM</div>
+                        <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Standard Pipes</div>
                     </div>
                 </div>
                 <div className="mt-6 grid grid-cols-3 gap-4">

@@ -154,7 +154,7 @@ const ProductPumptrackPage: React.FC = () => {
                     </div>
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <img src="/images/pumptrack/pumptrack-beton-module-04.jpg" alt="Pumptrack Modulaufbau" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                        <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 04. AUFBAU & MONTAGE</div>
+                        <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 04 3D-Visualisierung</div>
                     </div>
                 </div>
                 <div className="mt-6 bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-muted">

@@ -221,7 +221,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         <GalleryImage src="/images/skate-elemente/skate-elemente-beton-01.jpg" alt="Skate-Elemente: Ramps und Skateteile" label="RAMPS & TEILE" />
                         <GalleryImage src="/images/skate-elemente/skate-elemente-beton-02.jpg" alt="Skate-Elemente als Beton-Fertigteil-Module" label="FERTIGTEIL-MODULE" />
                         <GalleryImage src="/images/skate-elemente/skateelemente-beton-03.jpg" alt="Skatemodule mit Übergangsblech" label="MIT ÜBERGANGSBLECH" />
-                        <GalleryImage src="/images/skate-elemente/skate-module-beton-04.jpg" alt="Zusammengebaute Beton-Skatemodule" label="ZUSAMMENGEBAUT" />
+                        <GalleryImage src="/images/skate-elemente/skate-module-beton-04.jpg" alt="Zusammengebaute Beton-Skatemodule" label="Beton-Elemente" />
                     </div>
                 </div>
             </div>
@@ -280,7 +280,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <GalleryImage src="/images/skate-anlagen/skate-anlagen-02.jpg" alt="Skateanlage mit offenem Bowl" label="ANLAGE MIT BOWL" />
-                    <GalleryImage src="/images/skate-anlagen/skateanlage-03.jpg" alt="Skatepark mit Bowl und Pipe" label="BOWL & PIPE" />
+                    <GalleryImage src="/images/skate-anlagen/skateanlage-03.jpg" alt="Skatepark mit Bowl und Pipe" label="BOWL und weitere Elemente" />
                     <GalleryImage src="/images/skate-anlagen/skateanlagen-04.jpg" alt="Skatepark aus Beton-Fertigteilen" label="FERTIGTEIL-PARK" />
                     <GalleryImage src="/images/skateparks/skatepark-02.jpg" alt="Skatepark aus modularen Elementen" label="MODULAR PARK" />
                 </div>

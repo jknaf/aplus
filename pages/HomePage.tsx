@@ -415,7 +415,7 @@ const Hero: React.FC = () => {
                             <span className="text-[clamp(2rem,6vw,6rem)] text-brand-orange">Freiräume</span>
                         </h1>
                         <p className="mt-6 md:mt-8 text-lg md:text-2xl text-white/80 max-w-xl md:max-w-2xl font-light border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
-                            Skatepark-Hersteller aus Stuttgart — wir planen und bauen Skateparks, Pumptracks und urbane Anlagen aus Beton. <span className="text-white font-bold">Robust. Modular. Kompromisslos.</span>
+                            Skateparks, Pumptracks und urbane Anlagen aus Beton. <span className="text-white font-bold">Robust. Modular. Kompromisslos.</span>
                         </p>
                     </div>
                  </div>

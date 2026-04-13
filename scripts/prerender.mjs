@@ -110,11 +110,27 @@ const main = async () => {
   const server = createServer(serve);
   await new Promise((resolve) => server.listen(PORT, resolve));
 
-  console.log(`[prerender] Browser starten…`);
-  const browser = await puppeteer.launch({
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+  // Vercel-Linux-Container fehlen System-Libs fuer das Puppeteer-Standard-Chromium.
+  // Deshalb auf Vercel den Lambda-optimierten @sparticuz/chromium laden, lokal
+  // weiterhin das gebundelte Puppeteer-Chromium nutzen.
+  const isVercel = !!process.env.VERCEL;
+  let launchOptions;
+  if (isVercel) {
+    const { default: chromium } = await import('@sparticuz/chromium');
+    launchOptions = {
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    };
+    console.log(`[prerender] Browser starten (Vercel via @sparticuz/chromium)…`);
+  } else {
+    launchOptions = {
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    };
+    console.log(`[prerender] Browser starten (lokal via puppeteer)…`);
+  }
+  const browser = await puppeteer.launch(launchOptions);
 
   const errors = [];
   let ok = 0;

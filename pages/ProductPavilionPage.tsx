@@ -42,13 +42,27 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 
 const ProductPavilionPage: React.FC = () => {
   const productSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org",
+    "@type": "Product",
     "name": "Überdachung & Pavillon aus Beton",
     "description": "C-Profil-Überdachung aus bewehrtem Beton C35/45. 240 x 200 x 262 cm. Einzeln oder als Pavillon-Gruppe. Fundamentfrei, mit integrierter Sitzfläche.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
-    "category": "Urban Furniture",
-    "image": "/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg",
-    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/ueberdachung-beton" }
+    "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
+    "category": "Stadtmöblierung / Urban Furniture",
+    "material": "Bewehrter Beton C35/45",
+    "countryOfOrigin": "DE",
+    "image": "https://www.aplusurbandesign.com/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.aplusurbandesign.com/produkte/ueberdachung-beton",
+      "availability": "https://schema.org/InStock",
+      "businessFunction": "https://schema.org/Sell",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
   };
 
   return (

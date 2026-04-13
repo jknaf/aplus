@@ -37,13 +37,27 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 
 const ProductPumptrackPage: React.FC = () => {
   const productSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org",
+    "@type": "Product",
     "name": "Pumptrack aus Beton",
     "description": "Modularer Pumptrack aus Beton-Fertigteilen. TÜV-zertifiziert, dauerhaft perfekte Geometrie, wartungsfrei. Für Bikes, Skateboards und Scooter.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
-    "category": "Urban Furniture",
-    "image": "/images/pumptrack/pumptrack-beton-elemente-01.jpg",
-    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/pumptrack-beton" }
+    "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
+    "category": "Sportanlagen / Urban Sports",
+    "material": "Beton",
+    "countryOfOrigin": "DE",
+    "image": "https://www.aplusurbandesign.com/images/pumptrack/pumptrack-beton-elemente-01.jpg",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.aplusurbandesign.com/produkte/pumptrack-beton",
+      "availability": "https://schema.org/InStock",
+      "businessFunction": "https://schema.org/Sell",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
   };
 
   return (

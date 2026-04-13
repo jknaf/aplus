@@ -42,13 +42,27 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 
 const ProductHockeyRinkPage: React.FC = () => {
   const productSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org",
+    "@type": "Product",
     "name": "Inline-Hockey-Banden",
     "description": "Modulare Hockey-Banden aus Stahl, Beton und HPL. Fundamentfrei, in 40 cm oder 110 cm Höhe. Ganzjährig einsetzbar für Inline- und Eishockey.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
-    "category": "Urban Furniture",
-    "image": "/images/hockey/roll-hockey-bande.jpg",
-    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/hockey-banden" }
+    "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
+    "category": "Sportanlagen / Urban Sports",
+    "material": "Stahl, Beton, HPL",
+    "countryOfOrigin": "DE",
+    "image": "https://www.aplusurbandesign.com/images/hockey/roll-hockey-bande.jpg",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.aplusurbandesign.com/produkte/hockey-banden",
+      "availability": "https://schema.org/InStock",
+      "businessFunction": "https://schema.org/Sell",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
   };
 
   return (

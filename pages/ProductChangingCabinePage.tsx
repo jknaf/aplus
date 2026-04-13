@@ -42,13 +42,27 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 
 const ProductChangingCabinePage: React.FC = () => {
   const productSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org",
+    "@type": "Product",
     "name": "Umkleidekabine 'Die Schnecke'",
     "description": "Vandalismussichere Umkleidekabine aus Beton und Edelstahl. Zweiteilig, ohne Türen, fundamentfrei. Ideal für Freibäder und Sportanlagen.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
-    "category": "Urban Furniture",
-    "image": "/images/umkleide/umkleidekabine-schnecke-04.jpg",
-    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/umkleidekabine-beton" }
+    "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
+    "category": "Stadtmöblierung / Urban Furniture",
+    "material": "Beton, Edelstahl",
+    "countryOfOrigin": "DE",
+    "image": "https://www.aplusurbandesign.com/images/umkleide/umkleidekabine-schnecke-04.jpg",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.aplusurbandesign.com/produkte/umkleidekabine-beton",
+      "availability": "https://schema.org/InStock",
+      "businessFunction": "https://schema.org/Sell",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
   };
 
   return (

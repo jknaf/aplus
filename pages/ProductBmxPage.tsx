@@ -37,13 +37,27 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 
 const ProductBmxPage: React.FC = () => {
   const productSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org",
+    "@type": "Product",
     "name": "BMX-Anlagen aus Beton",
     "description": "BMX-Anlagen und Skate-Pipes aus Beton: Halfpipes, Mini-Pipes und Kombinationsanlagen in drei Höhen (165/200/255 cm). Fundamentfrei und TÜV-zertifiziert.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
-    "category": "Urban Furniture",
-    "image": "/images/skate-pipes/skate-pipe-bank-03.jpg",
-    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/bmx-anlagen" }
+    "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
+    "category": "Sportanlagen / Urban Sports",
+    "material": "Beton",
+    "countryOfOrigin": "DE",
+    "image": "https://www.aplusurbandesign.com/images/skate-pipes/skate-pipe-bank-03.jpg",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.aplusurbandesign.com/produkte/bmx-anlagen",
+      "availability": "https://schema.org/InStock",
+      "businessFunction": "https://schema.org/Sell",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
   };
 
   return (

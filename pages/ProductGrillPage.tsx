@@ -42,13 +42,27 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 
 const ProductGrillPage: React.FC = () => {
   const productSchema = {
-    "@context": "https://schema.org", "@type": "Product",
+    "@context": "https://schema.org",
+    "@type": "Product",
     "name": "Öffentliche Grillstelle aus Beton",
     "description": "Runder Beton-Grillplatz mit 4,20 m Durchmesser. Vandalismussicher, höhenverstellbarer Edelstahlrost, integrierte Bodenplatte. Fundamentfrei.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
-    "category": "Urban Furniture",
-    "image": "/images/grill/grillstelle-background.jpg",
-    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "price": "0", "url": "https://www.aplusurbandesign.com/produkte/grillstelle-beton" }
+    "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
+    "category": "Stadtmöblierung / Urban Furniture",
+    "material": "Beton, Edelstahl",
+    "countryOfOrigin": "DE",
+    "image": "https://www.aplusurbandesign.com/images/grill/grillstelle-background.jpg",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.aplusurbandesign.com/produkte/grillstelle-beton",
+      "availability": "https://schema.org/InStock",
+      "businessFunction": "https://schema.org/Sell",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
   };
 
   return (

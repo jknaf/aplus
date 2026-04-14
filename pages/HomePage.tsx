@@ -252,6 +252,82 @@ const ProductScrollytelling: React.FC = () => {
     );
 };
 
+// --- Service Overview Section (Planung / Montage / Service) ---
+const ServiceOverviewSection: React.FC = () => {
+    const services = [
+        {
+            icon: "design_services",
+            title: "Planung & Beratung",
+            desc: "Von der ersten Idee bis zur TÜV-konformen Ausführungsplanung. Wir erstellen Draufsichten und 3D-Entwürfe auf Basis Ihrer Fläche und Ihres Budgets — individuell abgestimmt, DIN EN 14974 konform, ideal für Kommunen, Architekten und Landschaftsplaner."
+        },
+        {
+            icon: "construction",
+            title: "Bau & Montage",
+            desc: "Schneller, günstiger und wetterunabhängiger als Ortbeton: Unsere modularen Fertigteile werden direkt auf Asphalt, Beton oder Fundamentplatte montiert. Eine typische Anlage steht in wenigen Tagen — schlüsselfertig durch unser Team."
+        },
+        {
+            icon: "build_circle",
+            title: "Service & Wartung",
+            desc: "Nach der Eröffnung bleibt alles flexibel: Module lassen sich erweitern, versetzen, reparieren oder komplett umbauen. Wir liefern Wartungsanleitungen, unterstützen bei Erweiterungen und stehen langfristig als Partner zur Verfügung."
+        }
+    ];
+
+    return (
+        <section id="leistungen" className="py-24 relative bg-brand-surface/30 border-y border-brand-dark/5">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <AnimatedSection className="mb-16 text-center">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                        Alles aus einer Hand
+                    </span>
+                    <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+                        Planung, Bau<br />
+                        & <span className="text-brand-orange">Service.</span>
+                    </h2>
+                    <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
+                        Seit über 25 Jahren begleiten wir Kommunen, Architekten und Landschaftsplaner durch jede Phase eines Skatepark-Projekts — von der Beratung bis zur langfristigen Wartung.
+                    </p>
+                </AnimatedSection>
+
+                <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    {services.map((service, index) => (
+                        <AnimatedSection
+                            key={service.title}
+                            className={`bg-white rounded-2xl border border-brand-dark/5 shadow-[0_2px_12px_rgba(0,0,0,0.05)] p-8 hover:border-brand-orange/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 group`}
+                        >
+                            <div className="flex items-start gap-5 mb-5">
+                                <div className="p-4 rounded-xl bg-brand-surface/60 border border-brand-dark/5 text-brand-orange shadow-sm group-hover:border-brand-orange/30 group-hover:shadow-[0_4px_12px_rgba(107,143,74,0.15)] transition-all duration-300 shrink-0">
+                                    <span className="material-symbols-outlined text-4xl">{service.icon}</span>
+                                </div>
+                                <div>
+                                    <span className="font-mono text-xs tracking-widest uppercase text-brand-muted block mb-2">
+                                        Phase 0{index + 1}
+                                    </span>
+                                    <h3 className="text-2xl font-extrabold font-heading uppercase text-brand-dark tracking-tight leading-tight">
+                                        {service.title}
+                                    </h3>
+                                </div>
+                            </div>
+                            <p className="text-brand-muted leading-relaxed text-sm md:text-base border-l-2 border-brand-dark/10 group-hover:border-brand-orange/40 pl-4 transition-colors duration-300">
+                                {service.desc}
+                            </p>
+                        </AnimatedSection>
+                    ))}
+                </div>
+
+                <AnimatedSection className="text-center mt-16">
+                    <Link
+                        to="/planung"
+                        className="inline-flex items-center gap-2 text-brand-dark font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider group"
+                    >
+                        Kompletten Planungsprozess ansehen
+                        <span className="text-xl group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </Link>
+                </AnimatedSection>
+            </div>
+        </section>
+    );
+};
+
 // --- ScrollyFeature Component ---
 const ScrollyFeature: React.FC<{
     icon: string;
@@ -465,6 +541,8 @@ const HomePage: React.FC = () => {
                 </div>
             </div>
         </section>
+
+      <ServiceOverviewSection />
 
       <BrochureRequestForm context="homepage" />
       

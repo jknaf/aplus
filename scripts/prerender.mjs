@@ -31,6 +31,7 @@ const STATIC_ROUTES = [
   '/ueber-uns',
   '/kontakt',
   '/planung',
+  '/referenzen-presse',
   '/produkte',
   '/produkte/skate-anlagen',
   '/produkte/pumptrack-beton',
@@ -64,6 +65,7 @@ const sitemapMetaFor = (route) => {
   if (route === '/produkte') return { changefreq: 'monthly', priority: '0.9' };
   if (route === '/ueber-uns' || route === '/kontakt') return { changefreq: 'monthly', priority: '0.9' };
   if (route === '/planung') return { changefreq: 'monthly', priority: '0.8' };
+  if (route === '/referenzen-presse') return { changefreq: 'monthly', priority: '0.7' };
   if (route === '/impressum' || route === '/datenschutz') return { changefreq: 'yearly', priority: '0.3' };
   return { changefreq: 'monthly', priority: '0.5' };
 };

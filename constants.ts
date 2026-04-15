@@ -1,4 +1,4 @@
-import { Product, Project } from './types';
+import { Product, Project, PressArticle } from './types';
 
 export const NAV_LINKS = [
   { name: 'Home', href: '/' },
@@ -17,8 +17,105 @@ export const NAV_LINKS = [
   },
   { name: 'Planung', href: '/planung' },
   { name: 'Projekte', href: '/projekte' },
+  { name: 'Presse', href: '/referenzen-presse' },
   { name: 'Über Uns', href: '/ueber-uns' },
   { name: 'Kontakt', href: '/kontakt' },
+];
+
+// Fachpublikationen, in denen A+ Urban Design erwähnt wird.
+// Teaser sind Platzhalter bis Roland Originaltexte nachreicht.
+export const PRESS_ARTICLES: PressArticle[] = [
+  {
+    id: 'kommunaldirekt-skatepark-friedrichsdorf',
+    title: 'Skatepark Friedrichsdorf',
+    publisher: 'kommunaldirekt.de',
+    url: 'https://www.kommunaldirekt.de/skatepark-friedrichsdorf/',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'kommunaldirekt-umkleidekabine-freibaeder',
+    title: 'Umkleidekabine für Freibäder',
+    publisher: 'kommunaldirekt.de',
+    url: 'https://www.kommunaldirekt.de/umkleidekabine-fuer-freibaeder/',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'kommunaldirekt-skateanlage-serpent',
+    title: 'Skateanlage mit Serpent',
+    publisher: 'kommunaldirekt.de',
+    url: 'https://www.kommunaldirekt.de/skateanlage-mit-serpent/',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'kommunalclick24-duschkabine-so-frei',
+    title: 'Duschkabine – wir sind so frei',
+    publisher: 'kommunalclick24.de',
+    url: 'https://kommunalclick24.de/kommunen/duschkabine-wir-sind-so-frei/',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'kommunalclick24-offene-skatebowl-betonfertigteile',
+    title: 'Skateelemente: Offene Skatebowl aus Betonfertigteilen',
+    publisher: 'kommunalclick24.de',
+    url: 'https://kommunalclick24.de/kommunen/skateelemente-offene-skatebowl-aus-betonfertigteilen/',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'kommunalclick24-schneckenhaus-duschkabine',
+    title: 'Ein Schneckenhaus als Duschkabine',
+    publisher: 'kommunalclick24.de',
+    url: 'https://kommunalclick24.de/gebauede/instandhaltung-technik/ein-schneckenhaus-als-duschkabine/',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'treffpunkt-kommune-nachhaltig-oekologisch-sport',
+    title: 'Auf nachhaltige und ökologische Weise Sport treiben',
+    publisher: 'treffpunkt-kommune.de',
+    url: 'https://www.treffpunkt-kommune.de/auf-nachhaltige-und-oekologische-weise-sport-treiben/',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'freiraum-gestalten-skatepark-friedrichsdorf',
+    title: 'Skatepark Friedrichsdorf',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-7779922-208098/skatepark-friedrichsdorf-.html',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'freiraum-gestalten-nachhaltig-sport-treiben',
+    title: 'Nachhaltig Sport treiben',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/aktuelles/news/article-7759678-208085/nachhaltig-sport-treiben-.html',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'freiraum-gestalten-skaten-denkmalschutz',
+    title: 'Skaten und Denkmalschutz vereinen',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/aktuelles/news/article-7473521-208085/skaten-und-denkmalschutz-vereinen-.html',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'freiraum-gestalten-offene-skatebowl-betonfertigteile',
+    title: 'Offene Skatebowl aus Betonfertigteilen',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-6531315-208098/offene-skatebowl-aus-betonfertigteilen-.html',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'freiraum-gestalten-skateanlage-a59',
+    title: 'Skateanlage über A 59',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-6270321-208098/skateanlage-ueber-a-59-.html',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
+  {
+    id: 'freiraum-gestalten-skate-park-planen',
+    title: 'Wie man einen Skate-Park plant',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-5192982-208098/wie-man-einen-skate-park-plant-.html',
+    teaser: 'Artikelbeschreibung folgt.',
+  },
 ];
 
 export const PRODUCTS: Product[] = [

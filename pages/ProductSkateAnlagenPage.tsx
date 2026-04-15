@@ -18,7 +18,7 @@ const OtherProducts: React.FC = () => {
             <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} width="600" height="800" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="absolute inset-0 flex flex-col justify-end p-8 z-30">
-               <span className="text-brand-orange font-mono text-xs mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
+               <span className="text-brand-orange font-mono text-xs mb-2 hidden group-hover:block">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
               <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
           </Link>
@@ -107,15 +107,14 @@ const ProductSkateAnlagenPage: React.FC = () => {
         title="Skatepark-Hersteller — Beton-Skateparks planen & bauen"
         description="Skatepark-Hersteller seit 1999: A+ Urban Design plant und baut modulare Beton-Skateparks. TÜV-zertifizierte Skate-Elemente wie Ramps, Bowls & Rails. Fundamentfrei, europaweite Lieferung."
         schema={productSchema}
-        fullWidth={true}
     >
 
        {/* 1. IMMERSIVE HERO */}
-       <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
+       <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
                  <img src="/images/homepage/hero-anlage-01.jpg" alt="Hero Beton Skatepark — Totalaufnahme" className="w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-brand-dark/80 to-transparent opacity-90"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
             </div>
             <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
@@ -144,13 +143,13 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Seit den <span className="text-brand-orange">90ern.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            Als Skatepark-Hersteller entwickeln wir seit den 90er Jahren modulare Skateelemente aus Beton. 1999 wurden sie als eine der ersten modularen Beton-Skateelemente in Europa TÜV-zertifiziert und mit dem GS-Zeichen (Geprüfte Sicherheit) ausgezeichnet.
+                            Als Skatepark-Hersteller entwickeln wir seit den 90er Jahren modulare Skateelemente aus Beton. 1999 wurden sie als eine der ersten Beton-Skateelemente in Europa TÜV-zertifiziert.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. 2002 folgte der erste Bowl mit modularen Skateelementen auf Gran Canaria. Ob Skatepark, Skateanlage oder Skaterbahn — Kommunen und Gemeinden vertrauen auf unsere Betonfertigteile.
+                            Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. 2002 folgte der erste Bowl auf Gran Canaria.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
-                            Heute sind unsere Skaterampen, Bowls und Halfpipes im Einsatz von Norden (Norwegen) bis Süden (Kanarische Inseln) und von Osten (Rumänien) bis Westen (England) — in Höhenlagen von 0 bis über 1.000 m ü. NN.
+                            Heute sind unsere Skaterampen, Bowls und Halfpipes europaweit im Einsatz — von Norwegen bis zu den Kanarischen Inseln, in Höhenlagen von 0 bis über 1.000 m ü. NN.
                         </p>
 
                         <div className="flex flex-col gap-4">

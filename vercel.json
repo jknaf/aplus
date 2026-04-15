@@ -22,7 +22,7 @@
     { "source": "/de/skate-pipes.html", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/de/skate-park-html{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/de/skate-park.html", "destination": "/produkte/skate-anlagen", "permanent": true },
-    { "source": "/de/skate-element-e-html{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/de/skate-elemente-html{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/de/eis-rollhockey/index.php{/}?", "destination": "/produkte/hockey-banden", "permanent": true },
     { "source": "/mediapool/:path*", "destination": "/produkte/skate-anlagen", "permanent": true },
 
@@ -31,7 +31,8 @@
     { "source": "/skate-park{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/skate-pipes{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/skate-bowl{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
-    { "source": "/skate-element-e{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-element{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-elemente{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/skatepark-planen{/}?", "destination": "/planung", "permanent": true },
     { "source": "/skateanlage-bauen{/}?", "destination": "/planung", "permanent": true },
     { "source": "/montage-skateelemente{/}?", "destination": "/ueber-uns", "permanent": true },
@@ -51,7 +52,8 @@
     { "source": "/umkleidekabine.html", "destination": "/produkte/umkleidekabine-beton", "permanent": true },
     { "source": "/eis-rollhockey.html", "destination": "/produkte/hockey-banden", "permanent": true },
     { "source": "/skate-bowls-pools.html", "destination": "/produkte/skate-anlagen", "permanent": true },
-    { "source": "/skate-element-e.html", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-element.html", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-elemente.html", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/skate-fotos.html", "destination": "/projekte", "permanent": true },
     { "source": "/fotos-skate.html", "destination": "/projekte", "permanent": true },
     { "source": "/skateranlagen.html", "destination": "/produkte/skate-anlagen", "permanent": true },
@@ -73,7 +75,8 @@
     { "source": "/de/skate-park{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/de/skate-pipes{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/de/skate-bowl{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
-    { "source": "/de/skate-element-e{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/de/skate-element{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/de/skate-elemente{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/de/skatepark-planen{/}?", "destination": "/planung", "permanent": true },
     { "source": "/de/skateanlage-bauen{/}?", "destination": "/planung", "permanent": true },
     { "source": "/de/montage-skateelemente{/}?", "destination": "/ueber-uns", "permanent": true },
@@ -109,7 +112,7 @@
     { "source": "/skate-anlagen/skate-bowls{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/skate-anlagen/skate-pipes{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/skate-anlagen/skate-elemente{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
-    { "source": "/skate-anlagen/skate-element%20e{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-anlagen/skate-element{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/skate-anlagen/planung{/}?", "destination": "/planung", "permanent": true },
     { "source": "/skate-anlagen/montage{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/skate-anlagen/videos{/}?", "destination": "/projekte", "permanent": true },
@@ -128,7 +131,7 @@
     { "source": "/englisch/skate-anlagen/skate-bowls{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/englisch/skate-anlagen/skate-pipes{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/englisch/skate-anlagen/skate-elemente{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
-    { "source": "/englisch/skate-anlagen/skate-element%20e{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/englisch/skate-anlagen/skate-element{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/englisch/skate-anlagen/planung{/}?", "destination": "/planung", "permanent": true },
     { "source": "/englisch/skate-anlagen/videos{/}?", "destination": "/projekte", "permanent": true },
     { "source": "/englisch/Inline-hockey{/}?", "destination": "/produkte/hockey-banden", "permanent": true },
@@ -138,7 +141,10 @@
     { "source": "/englisch/grill-platz{/}?", "destination": "/produkte/grillstelle-beton", "permanent": true },
     { "source": "/englisch/%C3%BCberdachung-pavillon{/}?", "destination": "/produkte/ueberdachung-beton", "permanent": true },
     { "source": "/englisch/ueberdachung-pavillon{/}?", "destination": "/produkte/ueberdachung-beton", "permanent": true },
-    { "source": "/englisch/info{/}?", "destination": "/ueber-uns", "permanent": true }
+    { "source": "/englisch/info{/}?", "destination": "/ueber-uns", "permanent": true },
+
+    { "source": "/skate-anlagen/:path*", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/englisch/skate-anlagen/:path*", "destination": "/produkte/skate-anlagen", "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

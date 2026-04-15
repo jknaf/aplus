@@ -25,3 +25,18 @@ export interface Project {
   }[];
   year?: number;
 }
+
+export type PressPublisher =
+  | 'kommunaldirekt.de'
+  | 'kommunalclick24.de'
+  | 'treffpunkt-kommune.de'
+  | 'freiraum-gestalten.info';
+
+export interface PressArticle {
+  id: string;
+  title: string;
+  publisher: PressPublisher;
+  url: string;
+  teaser: string;
+  year?: number;
+}

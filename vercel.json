@@ -103,7 +103,42 @@
     { "source": "/ENGLISH/OUTDOR-DRESSING-ROOM{/}?", "destination": "/produkte/umkleidekabine-beton", "permanent": true },
     { "source": "/ENGLISH/BBQ-AREA{/}?", "destination": "/produkte/grillstelle-beton", "permanent": true },
     { "source": "/ENGLISH/CANOPY{/}?", "destination": "/produkte/ueberdachung-beton", "permanent": true },
-    { "source": "/ENGLISH/NEWS-INFO{/}?", "destination": "/projekte", "permanent": true }
+    { "source": "/ENGLISH/NEWS-INFO{/}?", "destination": "/projekte", "permanent": true },
+
+    { "source": "/skate-anlagen/skate-park{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-anlagen/skate-bowls{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-anlagen/skate-pipes{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-anlagen/skate-elemente{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-anlagen/skate-element%20e{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-anlagen/planung{/}?", "destination": "/planung", "permanent": true },
+    { "source": "/skate-anlagen/montage{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-anlagen/videos{/}?", "destination": "/projekte", "permanent": true },
+
+    { "source": "/inline-hockey{/}?", "destination": "/produkte/hockey-banden", "permanent": true },
+    { "source": "/Inline-hockey{/}?", "destination": "/produkte/hockey-banden", "permanent": true },
+    { "source": "/pump-tracks{/}?", "destination": "/produkte/pumptrack-beton", "permanent": true },
+    { "source": "/grill-platz{/}?", "destination": "/produkte/grillstelle-beton", "permanent": true },
+    { "source": "/%C3%BCberdachung-pavillon{/}?", "destination": "/produkte/ueberdachung-beton", "permanent": true },
+    { "source": "/ueberdachung-pavillon{/}?", "destination": "/produkte/ueberdachung-beton", "permanent": true },
+    { "source": "/info{/}?", "destination": "/ueber-uns", "permanent": true },
+
+    { "source": "/englisch{/}?", "destination": "/", "permanent": true },
+    { "source": "/englisch/skate-anlagen{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/englisch/skate-anlagen/skate-park{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/englisch/skate-anlagen/skate-bowls{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/englisch/skate-anlagen/skate-pipes{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/englisch/skate-anlagen/skate-elemente{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/englisch/skate-anlagen/skate-element%20e{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/englisch/skate-anlagen/planung{/}?", "destination": "/planung", "permanent": true },
+    { "source": "/englisch/skate-anlagen/videos{/}?", "destination": "/projekte", "permanent": true },
+    { "source": "/englisch/Inline-hockey{/}?", "destination": "/produkte/hockey-banden", "permanent": true },
+    { "source": "/englisch/inline-hockey{/}?", "destination": "/produkte/hockey-banden", "permanent": true },
+    { "source": "/englisch/pump-tracks{/}?", "destination": "/produkte/pumptrack-beton", "permanent": true },
+    { "source": "/englisch/umkleidekabine{/}?", "destination": "/produkte/umkleidekabine-beton", "permanent": true },
+    { "source": "/englisch/grill-platz{/}?", "destination": "/produkte/grillstelle-beton", "permanent": true },
+    { "source": "/englisch/%C3%BCberdachung-pavillon{/}?", "destination": "/produkte/ueberdachung-beton", "permanent": true },
+    { "source": "/englisch/ueberdachung-pavillon{/}?", "destination": "/produkte/ueberdachung-beton", "permanent": true },
+    { "source": "/englisch/info{/}?", "destination": "/ueber-uns", "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

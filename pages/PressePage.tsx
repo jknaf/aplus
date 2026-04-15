@@ -101,7 +101,7 @@ const PressePage: React.FC = () => {
                           {article.title}
                         </h3>
 
-                        <p className="text-sm text-brand-muted leading-relaxed flex-grow italic">
+                        <p className="text-sm text-brand-muted leading-relaxed flex-grow">
                           {article.teaser}
                         </p>
 

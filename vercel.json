@@ -1,5 +1,7 @@
 {
   "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "aplusurbandesign.com" }], "destination": "https://www.aplusurbandesign.com/:path*", "permanent": true },
+
     { "source": "/angebote.html", "destination": "/produkte", "permanent": true },
     { "source": "/skatepark-fotos.html", "destination": "/projekte", "permanent": true },
     { "source": "/ueberdachung-pavillon.html", "destination": "/produkte/ueberdachung-beton", "permanent": true },

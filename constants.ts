@@ -50,6 +50,69 @@ export const PRESS_ARTICLES: PressArticle[] = [
       'Die Altdorfer Skateanlage wurde grunderneuert und um einen „Serpent" erweitert – eine offene Bowl, die zugleich als Startrampe dient. Der Serpent wurde in die Fläche eingebaut, angeböscht und begrünt; sanierte Bestandselemente wurden mit neuen TÜV-zertifizierten Betonfertigteilen kombiniert.',
   },
   {
+    id: 'kommunaldirekt-skatepark-friedrichsdorf-2024',
+    title: 'Skatepark Friedrichsdorf (2024)',
+    publisher: 'kommunaldirekt.de',
+    url: 'https://www.kommunaldirekt.de/skatepark-friedrichsdorf-2/',
+    teaser:
+      'Aktualisierte Berichterstattung zur 2.000 m² großen Skateanlage in Friedrichsdorf: zwei verbundene Ebenen mit Fun-Boxen, Jump-Ramps, Stairs, Pyramid-Hip, Ledges und Rail-Slides aus TÜV-zertifizierten Betonelementen von A+ Urban Design – integriert in das Freizeit- und Sportgebiet.',
+    year: 2024,
+  },
+  {
+    id: 'kommunaldirekt-skateanlage-duisburg-a59',
+    title: 'Skateanlage in Duisburg',
+    publisher: 'kommunaldirekt.de',
+    url: 'https://www.kommunaldirekt.de/skateanlage-in-duisburg/',
+    teaser:
+      'Am Ende der Duisburger Fußgängerzone wurde eine kompakte Skateanlage aus 38 modularen Betonfertigteilen von A+ Urban Design installiert – direkt über der Autobahn A 59. Die Herausforderung: die Module trotz unebener Asphaltschicht über der Brückenabdichtung sicher zu setzen, ohne die darunterliegende Membran zu beschädigen.',
+    year: 2022,
+  },
+  {
+    id: 'kommunaldirekt-pumptrack-berlin',
+    title: 'Pump-Track in Berlin',
+    publisher: 'kommunaldirekt.de',
+    url: 'https://www.kommunaldirekt.de/pump-track-in-berlin/',
+    teaser:
+      'Im Bezirk Reinickendorf entstand neben dem Humboldt-Gymnasium der erste Pump-Track des Bezirks. Die Anlage erstreckt sich teilweise über dem Tegel Tunnel und musste zwischen bestehenden Bäumen geführt werden – realisiert mit modularen, TÜV-zertifizierten Betonelementen von A+ Urban Design.',
+    year: 2022,
+  },
+  {
+    id: 'kommunaldirekt-offener-skatebowl-bonnigheim',
+    title: 'Offener Skatebowl aus Betonfertigteilen',
+    publisher: 'kommunaldirekt.de',
+    url: 'https://www.kommunaldirekt.de/offener-skatebowl-aus-betonfertigteilen/',
+    teaser:
+      'In Bönnigheim wurde westlich der Burgstraße ein Bewegungspark aus TÜV-zertifizierten Betonfertigteilen errichtet. Die Rampen gehen nahtlos in die umgebende Asphaltfläche über – ein Designprinzip von A+ Urban Design, das Lärmemissionen minimiert und die Anlage harmonisch in die Landschaft integriert.',
+    year: 2019,
+  },
+  {
+    id: 'kommunaldirekt-grillplatz-oeffentlicher-raum',
+    title: 'Grillplatz für öffentlichen Raum',
+    publisher: 'kommunaldirekt.de',
+    url: 'https://www.kommunaldirekt.de/grillplatz-fuer-oeffentlichen-raum/',
+    teaser:
+      'Ein stationärer Grillplatz aus Betonfertigteilen mit Edelstahl-Rost, höhenverstellbarer Grillfläche und Windschutzring – Durchmesser 420 cm, fundamentfrei. Eine A+-Lösung für Freibäder, Sportanlagen und Schrebergärten: robust, vandalismussicher und ohne bewegliche Teile.',
+    year: 2020,
+  },
+  {
+    id: 'kommunaldirekt-modulare-skateelemente-2018',
+    title: 'Modulare Skateelemente aus Beton',
+    publisher: 'kommunaldirekt.de',
+    url: 'https://www.kommunaldirekt.de/modulare-skateelemente-aus-beton/',
+    teaser:
+      'Fachvorstellung der TÜV-zertifizierten Skateelemente von A+ Urban Design: Beton mit eingebauten Stahlkomponenten, modulare Gestaltung, niedrige Wartung, lange Haltbarkeit. Jedes Angebot wird mit individuellen 3D-Visualisierungen begleitet, die Module können später zerlegt und wiederverwendet werden.',
+    year: 2018,
+  },
+  {
+    id: 'kommunaldirekt-modulare-skateelemente-2020',
+    title: 'Modulare Skateelemente aus Beton (Update 2020)',
+    publisher: 'kommunaldirekt.de',
+    url: 'https://www.kommunaldirekt.de/modulare-skateelemente-aus-beton-2/',
+    teaser:
+      'Aktualisierte Vorstellung der zertifizierten Skateelemente: Beton mit verzinktem Stahl, fundamentfrei installierbar, wartungsarm und mit gutem Grip auch bei Feuchtigkeit. Die modulare Bauweise ermöglicht mehrfache Verwendung und einfaches Recycling.',
+    year: 2020,
+  },
+  {
     id: 'kommunalclick24-duschkabine-so-frei',
     title: 'Duschkabine – wir sind so frei',
     publisher: 'kommunalclick24.de',
@@ -128,6 +191,69 @@ export const PRESS_ARTICLES: PressArticle[] = [
     url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-5192982-208098/wie-man-einen-skate-park-plant-.html',
     teaser:
       'Bei der Skateparkplanung müssen Rampen und Hindernisse die DIN EN 14974 erfüllen. Nutzerbeteiligung ist wünschenswert, braucht aber fachliche Moderation – persönliche Vorlieben stehen oft im Konflikt mit normgerechter, langfristig tragfähiger Gestaltung.',
+  },
+  {
+    id: 'freiraum-gestalten-pumptrack-skater-biker-2024',
+    title: 'Pumptrack für Skater und Biker',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/aktuelles/produkte/article-7991735-208480/pumptrack-fuer-skater-und-biker-.html',
+    teaser:
+      'A+ Urban Design erweitert das Produktportfolio um modulare Pumptrack-Elemente: schräge Kurventeile und gerade Strecken mit Hindernissen ermöglichen Fahrern, allein durch Gewichtsverlagerung Geschwindigkeit aufzubauen – ohne Antrieb, ohne Pedale.',
+    year: 2024,
+  },
+  {
+    id: 'freiraum-gestalten-pumptracken-berlin-2022',
+    title: 'Pumptracken in Berlin',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-7271021-208098/pumptracken-in-berlin-.html',
+    teaser:
+      'Fachbeitrag zur Pump-Track-Anlage in Berlin-Reinickendorf neben dem Humboldt-Gymnasium: die Trasse schlängelt sich durch den Baumbestand und führt teilweise über den Tegel Tunnel. A+ Urban Design lieferte speziell entwickelte, wartungsarme Betonelemente und unterstützte die Trassenplanung. (FREIRAUM GESTALTEN 05/2022)',
+    year: 2022,
+  },
+  {
+    id: 'freiraum-gestalten-mobil-geraeuscharm-2022',
+    title: 'Mobil und geräuscharm',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-7133612-208098/mobil-und-geraeuscharm-.html',
+    teaser:
+      'Modulare Skateboard-Elemente für Inline-, Skateboard- und BMX-Anlagen: Pools, Rampen und Fun-Boxen ohne Bodenbefestigung. Durch die hohe Masse des Betons besonders geräuscharm. Erfüllen DIN EN 14974, TÜV-zertifiziert. (FREIRAUM GESTALTEN 02/2022)',
+    year: 2022,
+  },
+  {
+    id: 'freiraum-gestalten-pump-track-skater-biker-2015',
+    title: 'Pump-Track für Skater und Biker',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-5191212-208098/pump-track-fuer-skater-und-biker-.html',
+    teaser:
+      'Erstvorstellung der modular aufgebauten Pumptracks von A+ Urban Design: Nachbildungen unebener Pisten aus festen Betonelementen, die sich auf bestehenden Hartbelagsflächen oder speziellen Unterlagen installieren lassen. (FREIRAUM GESTALTEN 01/2015)',
+    year: 2015,
+  },
+  {
+    id: 'freiraum-gestalten-ohne-fundament-bandensystem-2015',
+    title: 'Ohne Fundament und Bodenbefestigung',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-5190957-208098/ohne-fundament-und-bodenbefestigung-.html',
+    teaser:
+      'A+ Urban Design präsentiert ein Bandensystem für Sportfelder, das ohne Fundamente und ohne Bodenbefestigungen aufgestellt wird. Witterungsbeständige Materialien mit Edelstahlkomponenten, flexibel anpassbar an verschiedene Feldgrößen. (FREIRAUM GESTALTEN 02/2015)',
+    year: 2015,
+  },
+  {
+    id: 'freiraum-gestalten-modulare-skateelemente-2014',
+    title: 'Modulare Skateelemente aus Beton',
+    publisher: 'freiraum-gestalten.info',
+    url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-5190799-208098/modulare-skateelemente-aus-beton-.html',
+    teaser:
+      'Frühe Vorstellung der A+-Skateelemente: keine Verschraubungen auf der Oberfläche, keine Verschleißplatten zum Austauschen. Nach DIN EN 14974 geprüft, vom TÜV-Süd zertifiziert und mit GS-Zeichen für geprüfte Sicherheit. (FREIRAUM GESTALTEN 01/2014)',
+    year: 2014,
+  },
+  {
+    id: 'flaechenmanager-beruehrungsfreie-umkleidekabine',
+    title: 'Berührungsfreie Umkleidekabine für Freibäder',
+    publisher: 'flaechenmanager.com',
+    url: 'https://www.flaechenmanager.com/aktuelles/produkte/article-6840410-203909/beruehrungsfreie-umkleidekabine-fuer-freibaeder-.html',
+    teaser:
+      'A+ Urban Design präsentiert eine wartungsarme Umkleidekabine für Freibäder: fugenlose Betonbodenplatte mit schneckenförmigem Oberteil auf Edelstahlfüßen. Beim Betreten und Verlassen ist kein Kabinenkontakt nötig – ein hygienischer Vorteil, besonders während der Pandemie entwickelt.',
+    year: 2021,
   },
 ];
 

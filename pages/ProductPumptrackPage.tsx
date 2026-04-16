@@ -27,13 +27,36 @@ const OtherProducts: React.FC = () => {
   );
 }
 
-const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = ({ title, value, icon }) => (
-    <div className="bg-brand-surface/40 border border-brand-dark/5 p-6 rounded-xl shadow-sm hover:border-brand-orange/50 transition-colors duration-300">
-        <span className="material-symbols-outlined text-brand-orange text-3xl mb-4">{icon}</span>
-        <h4 className="text-brand-muted font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
-        <p className="text-brand-dark font-bold text-lg leading-tight">{value}</p>
-    </div>
-);
+const TechSpecCard: React.FC<{ title: string; value: string; icon: string; href?: string; linkLabel?: string }> = ({ title, value, icon, href, linkLabel }) => {
+    const content = (
+        <>
+            <span className="material-symbols-outlined text-brand-orange text-3xl mb-4">{icon}</span>
+            <h4 className="text-brand-muted font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
+            <p className="text-brand-dark font-bold text-lg leading-tight">{value}</p>
+            {href && (
+                <span className="mt-3 inline-flex items-center gap-1 text-brand-orange font-mono text-xs uppercase tracking-wider">
+                    {linkLabel ?? 'Zertifikat ansehen'}
+                    <span className="material-symbols-outlined text-sm">open_in_new</span>
+                </span>
+            )}
+        </>
+    );
+    const baseClass = "bg-brand-surface/40 border border-brand-dark/5 p-6 rounded-xl shadow-sm hover:border-brand-orange/50 transition-colors duration-300";
+    if (href) {
+        return (
+            <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${title}: ${value} – ${linkLabel ?? 'Zertifikat in der TÜV-SÜD-Datenbank ansehen'}`}
+                className={`${baseClass} block group hover:shadow-md`}
+            >
+                {content}
+            </a>
+        );
+    }
+    return <div className={baseClass}>{content}</div>;
+};
 
 const ProductPumptrackPage: React.FC = () => {
   const productSchema = {
@@ -192,7 +215,13 @@ const ProductPumptrackPage: React.FC = () => {
                     <TechSpecCard title="Aufbau" value="3 Varianten" icon="view_module" />
                     <TechSpecCard title="Witterung" value="Ganzjährig" icon="wb_sunny" />
                     <TechSpecCard title="Erweiterbar" value="Symmetrisch / Parallel" icon="add_circle" />
-                    <TechSpecCard title="Zertifikat" value="TÜV / GS" icon="verified" />
+                    <TechSpecCard
+                        title="Zertifikat"
+                        value="TÜV / GS"
+                        icon="verified"
+                        href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/"
+                        linkLabel="TÜV-SÜD Zertifikat"
+                    />
                     <TechSpecCard title="Eigenaufbau" value="Möglich" icon="construction" />
                 </div>
             </div>

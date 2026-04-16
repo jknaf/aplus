@@ -23,6 +23,8 @@
     { "source": "/de/skate-park-html{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/de/skate-park.html", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/de/skate-elemente-html{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/de/skate-element-e-html{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
+    { "source": "/skate-element-e-html{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
     { "source": "/de/eis-rollhockey/index.php{/}?", "destination": "/produkte/hockey-banden", "permanent": true },
     { "source": "/mediapool/:path*", "destination": "/produkte/skate-anlagen", "permanent": true },
 

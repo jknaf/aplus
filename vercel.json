@@ -189,9 +189,7 @@
   ],
   "rewrites": [
     { "source": "/projekte", "destination": "/index.html" },
-    { "source": "/projekte/:projectId", "destination": "/index.html" },
     { "source": "/produkte", "destination": "/index.html" },
-    { "source": "/produkte/:product", "destination": "/index.html" },
     { "source": "/ueber-uns", "destination": "/index.html" },
     { "source": "/kontakt", "destination": "/index.html" },
     { "source": "/planung", "destination": "/index.html" },

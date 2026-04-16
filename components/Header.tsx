@@ -207,7 +207,7 @@ const Header: React.FC = () => {
             <div>
               <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Social</span>
               <div className="flex gap-4">
-                <a href="#" className="text-brand-dark hover:text-brand-orange text-lg font-bold">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/cüneyit-akcakoca-6577673/" target="_blank" rel="noopener noreferrer" className="text-brand-dark hover:text-brand-orange text-lg font-bold">LinkedIn</a>
               </div>
             </div>
           </div>

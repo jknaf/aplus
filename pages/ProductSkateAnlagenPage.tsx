@@ -337,7 +337,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         title="Zertifizierung"
                         value="DIN EN 14974 / TÜV / GS"
                         icon="verified"
-                        href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/"
+                        href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/?q=Z1A+056616+0012+Rev.+00"
                         linkLabel="TÜV-SÜD Zertifikat"
                     />
                     <TechSpecCard title="Material" value="C35/45 Beton" icon="architecture" />

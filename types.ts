@@ -30,7 +30,8 @@ export type PressPublisher =
   | 'kommunaldirekt.de'
   | 'kommunalclick24.de'
   | 'treffpunkt-kommune.de'
-  | 'freiraum-gestalten.info';
+  | 'freiraum-gestalten.info'
+  | 'flaechenmanager.com';
 
 export interface PressArticle {
   id: string;

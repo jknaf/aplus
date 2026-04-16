@@ -8,6 +8,7 @@ const PUBLISHER_ORDER: PressPublisher[] = [
   'kommunalclick24.de',
   'treffpunkt-kommune.de',
   'freiraum-gestalten.info',
+  'flaechenmanager.com',
 ];
 
 const PUBLISHER_LABEL: Record<PressPublisher, string> = {
@@ -15,6 +16,7 @@ const PUBLISHER_LABEL: Record<PressPublisher, string> = {
   'kommunalclick24.de': 'Kommunalclick24',
   'treffpunkt-kommune.de': 'Treffpunkt Kommune',
   'freiraum-gestalten.info': 'Freiraum Gestalten',
+  'flaechenmanager.com': 'Flächenmanager',
 };
 
 const PressePage: React.FC = () => {

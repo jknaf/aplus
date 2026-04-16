@@ -219,7 +219,7 @@ const ProductPumptrackPage: React.FC = () => {
                         title="Zertifikat"
                         value="TÜV / GS"
                         icon="verified"
-                        href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/"
+                        href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/?q=Z1A+056616+0012+Rev.+00"
                         linkLabel="TÜV-SÜD Zertifikat"
                     />
                     <TechSpecCard title="Eigenaufbau" value="Möglich" icon="construction" />

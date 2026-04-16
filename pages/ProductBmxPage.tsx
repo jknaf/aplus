@@ -238,7 +238,7 @@ const ProductBmxPage: React.FC = () => {
                         title="Sicherheit"
                         value="TÜV / GS"
                         icon="security"
-                        href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/"
+                        href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/?q=Z1A+056616+0012+Rev.+00"
                         linkLabel="TÜV-SÜD Zertifikat"
                     />
                     <TechSpecCard title="Oberfläche" value="Offenporig / Grip" icon="terrain" />

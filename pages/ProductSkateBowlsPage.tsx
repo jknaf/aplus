@@ -124,10 +124,10 @@ const ProductSkateBowlsPage: React.FC = () => {
                             In den 50er Jahren entdeckten kalifornische Surfer leere Swimmingpools als Skateflächen. Die charakteristischen geschwungenen Transitions, das Flat und das Copingrohr an der Oberkante sind bis heute die DNA jedes Skate-Bowls.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Mit unseren modularen Skate-Elementen aus bewehrtem Beton realisieren wir Skate-Bowls und Skate-Pools in beliebigen Größen und Formen — geschlossen im Erdreich oder offen oberirdisch. Tiefen von <strong className="text-brand-dark">98 cm und 150 cm</strong>, Radien und Übergänge exakt nach DIN EN 14974.
+                            Mit unseren modularen Skate-Elementen aus bewehrtem Beton realisieren wir Skate-Bowls und Skate-Pools in beliebigen Größen und Formen — geschlossen im Erdreich oder offen oberirdisch. Die Skate-Bowls bestehen aus einer horizontalen Fläche an der unteren Seite (Flat), die seitlich von einer gekrümmten Fläche (Transition) begrenzt wird. Entlang der Transition und der oberen Plattform befindet sich ein Copingrohr. Tiefen: <strong className="text-brand-dark">98 cm und 150 cm</strong>.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
-                            2002 realisierten wir den ersten Beton-Bowl auf Gran Canaria. Seither ist unser Modulsystem europaweit im Einsatz, von Stadtparks bis zu Premium-Skateparks.
+                            2002 wurde der erste Bowl mit unseren modularen Skateelementen auf Gran Canaria gebaut. Unsere Skateelemente sind im Bereich von 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz — von Norwegen bis zu den Kanaren, von Rumänien bis England.
                         </p>
 
                         <div className="flex flex-col gap-4">
@@ -214,25 +214,18 @@ const ProductSkateBowlsPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-12">
                     <div>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Ortbeton-Bowls werden vor Ort geschalt und gegossen — aufwändig, wetterabhängig, schwer zu korrigieren. Mit unseren modularen Beton-Fertigteilen haben Sie dagegen eine <strong className="text-brand-dark">vollständige Qualitätskontrolle</strong>: Betonstärken, Bewehrung, Fugen — alles im Werk unter Hallenbedingungen gefertigt.
-                        </p>
-                        <p className="text-brand-muted leading-relaxed mb-6">
-                            Die Ausführung vor Ort ist schneller. Sie sind nahezu wetterunabhängig, denn die Elemente werden nur noch verbaut, nicht mehr gegossen. Und in den meisten Fällen ist das Fertigteil-System auch günstiger als Ortbeton.
+                            Als Kunde haben Sie eine <strong className="text-brand-dark">bessere Kontrolle der Qualität</strong> als bei Ortbeton: Betonstärken, Bewehrung, Fugen sind im Werk unter kontrollierten Bedingungen gefertigt. Die Ausführung ist schneller, fast wetterunabhängig — und meistens auch noch günstiger.
                         </p>
                         <p className="text-brand-muted leading-relaxed">
-                            Wichtig ist aber eine fundierte Vorplanung. Die Module haben definierte Radien und Übergänge — Freiformen müssen modulweise aufgelöst werden. Deshalb: Bitte nehmen Sie vor Beginn der Planung mit uns Kontakt auf.
+                            Wichtig ist aber eine gute Vorplanung der Anlage. <strong className="text-brand-dark">Bitte nehmen Sie vor Beginn der Planung mit uns Kontakt auf.</strong>
                         </p>
                     </div>
                     <div className="bg-brand-dark text-white p-8 rounded-xl">
-                        <h3 className="text-2xl font-bold font-heading uppercase mb-6">Was wir vorab brauchen</h3>
-                        <ul className="space-y-4 text-sm font-mono">
-                            <li className="flex gap-3 items-start"><span className="text-brand-orange">01</span><span>Grundriss der Bestandsfläche (idealerweise als DWG oder PDF)</span></li>
-                            <li className="flex gap-3 items-start"><span className="text-brand-orange">02</span><span>Gewünschte Gesamtfläche und Skate-Niveau (Einsteiger / Fortgeschritten / Contest)</span></li>
-                            <li className="flex gap-3 items-start"><span className="text-brand-orange">03</span><span>Drainage- und Entwässerungssituation (für geschlossene Bowls)</span></li>
-                            <li className="flex gap-3 items-start"><span className="text-brand-orange">04</span><span>Budget-Rahmen und Zeitplan</span></li>
-                            <li className="flex gap-3 items-start"><span className="text-brand-orange">05</span><span>Vorgaben der Kommune (DIN EN 14974, Lärmschutz, Öffnungszeiten)</span></li>
-                        </ul>
-                        <Link to="/planung" className="mt-8 inline-flex items-center gap-2 text-brand-orange font-mono text-sm uppercase tracking-wider hover:underline">
+                        <h3 className="text-2xl font-bold font-heading uppercase mb-4">Planung & Beratung</h3>
+                        <p className="text-sm text-white/80 leading-relaxed mb-6">
+                            Jede Bowl-Anlage ist eine individuelle Planungsaufgabe. Wir begleiten Sie von der ersten Skizze über die 3D-Visualisierung bis zur schlüsselfertigen Montage.
+                        </p>
+                        <Link to="/planung" className="inline-flex items-center gap-2 text-brand-orange font-mono text-sm uppercase tracking-wider hover:underline">
                             Planungsprozess ansehen <span className="material-symbols-outlined text-base">arrow_forward</span>
                         </Link>
                     </div>

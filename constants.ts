@@ -341,14 +341,8 @@ export const PROJECTS: Project[] = [
             "/images/skateparks/skatepark-03.jpg",
             "/images/skateparks/skatepark-04.jpg",
         ],
-        description: "Ein moderner Beton-Skatepark, der Anfängern wie Profis gerecht wird — mit einer vielfältigen Street-Area und einer anspruchsvollen Bowl-Sektion. Alle Elemente sind aus vandalismusresistentem Hochleistungsbeton gefertigt.",
-        longDescription: [
-            "Die Anlage kombiniert Street-Obstacles und Bowl-Bereich zu einem fließenden Parcours: Quarter-Ramps in verschiedenen Höhen, Funboxen, Pyramid-Hip, Ledges und Rail-Slides sind um eine zentrale Skate-Bowl mit 98 cm Tiefe arrangiert. Die Module sind TÜV-zertifiziert nach DIN EN 14974 und mit GS-Zeichen geprüft — Stahlbeton C35/45, bewehrt, mit verzinkten Copingrohren und Hartgummi-Kantenschutz an allen Rollflächen.",
-            "Die gesamte Anlage ist fundamentfrei montiert: die Module wurden auf der vorhandenen Asphaltfläche aufgestellt und mit Edelstahl-Übergangsblechen an die Rollfläche angeschlossen. Dadurch entfallen teure Erdarbeiten, Fundamentplatten und lange Aushärtungszeiten — der Park war in wenigen Tagen montiert und direkt nutzbar. Das modulare System erlaubt spätere Erweiterungen, Umbauten und Versetzen an einen anderen Standort.",
-            "Zielgruppe sind Skateboarder, BMX-Fahrer, Inline-Skater und Scooter-Fahrer aller Niveaus. Der Park ist ganzjährig nutzbar — die Beton-Oberflächen bieten auch bei Feuchtigkeit zuverlässigen Grip, und die massive Materialdichte reduziert Geräuschemissionen deutlich gegenüber Holz- oder Stahlrampen. Damit ist die Anlage auch für wohnungsnahe Standorte genehmigungsfähig.",
-            "Für die Planung wurden individuelle 3D-Visualisierungen mit Draufsicht und Kostenübersicht erstellt. Die Auftraggeberschaft erhielt vor Baubeginn einen komplett kalkulierten Systemvorschlag — inklusive Lieferlogistik, Montagedauer und Wartungshinweisen. Die Produkt-Module stammen aus unserem Standard-Baukasten und sind vollständig dokumentiert (DIN-Statik, TÜV-Zertifikat Z1A 056616 0012 Rev. 00)."
-        ],
-        altText: "Luftaufnahme eines modularen Beton-Skateparks mit Bowl und Street-Bereich.",
+        description: "Modulare Beton-Skateanlage mit Bowl- und Street-Bereich. Roland: konkreter Standort, Jahr und Auftraggeber bitte ergänzen — hier sitzen die echten Projektdaten noch nicht.",
+        altText: "Modularer Beton-Skatepark mit Bowl und Street-Bereich.",
         productsUsed: [
             { name: "Quarter-Ramps & Half-Pipes", path: "/produkte/skate-anlagen" },
             { name: "Skate-Bowls", path: "/produkte/skate-bowls-beton" }
@@ -364,14 +358,8 @@ export const PROJECTS: Project[] = [
              "/images/pumptrack/pumptrack-beton-module-03.jpg",
              "/images/pumptrack/pumptrack-beton-module-04.jpg",
         ],
-        description: "Ein flowiger Rundkurs aus modularen Beton-Fertigteilen für Fahrräder, Scooter, Inline-Skates und Skateboards. Die Strecke wird ausschließlich durch Gewichtsverlagerung befahren — ohne Treten, ohne Antrieb.",
-        longDescription: [
-            "Die Trasse besteht aus vorgefertigten Betonelementen mit ca. 1,25 m Fahrbahnbreite — Steilkurven, Rollern (Wellen) und geraden Passagen mit Hindernissen wie Doubles und Tabletops. Jedes Element ist werksseitig mit definierter Geometrie gefertigt; die Module werden vor Ort mit Arretierungsstäben verbunden und mit Kantenschutzprofilen gesichert. TÜV-zertifiziert mit GS-Zeichen nach DIN EN 14974.",
-            "Der Aufbau erfolgte in drei Tagen: die Module wurden direkt auf der vorhandenen befestigten Fläche montiert, ohne Fundament und ohne Betonierarbeiten vor Ort. Alternativ hätten die Elemente auch auf einer separaten Beton-/Asphaltpiste oder auf Fundamentplatten anbetoniert werden können — drei Aufbauvarianten standen zur Wahl. Die modulare Bauweise erlaubt es, später einzelne Streckenabschnitte zu ergänzen, zu versetzen oder komplett umzubauen.",
-            "Im Gegensatz zu Asphalt- oder Erde-Pumptracks bieten die Beton-Fertigteile eine dauerhaft perfekte Geometrie: keine Verformungen durch Nutzung, keine saisonale Instandhaltung, kein Nachverdichten. Die Oberfläche ist frostsicher, UV-beständig und auch bei Feuchtigkeit griffig. Das macht die Anlage ganzjährig nutzbar — vom Frühjahr bis zum ersten Schnee.",
-            "Zielgruppe sind Kinder, Jugendliche und Erwachsene, die mit Rollgeräten aller Art Fahrtechnik und Kondition trainieren wollen. Pumptracks haben sich in den letzten Jahren als hochfrequent genutzte Freizeitanlagen etabliert — geringe Einstiegshürde, hoher Wiederholungsfaktor, kein Vandalismusrisiko. Kommunen und Vereine können die Module auch selbst aufbauen und so Kosten sparen; Fördermittel aus der Sportstättenförderung sind nutzbar."
-        ],
-        altText: "Flowiger Beton-Pumptrack aus modularen Fertigteilen für Bikes, Scooter, Inliner und Skateboards.",
+        description: "Beton-Pumptrack aus modularen Fertigteilen für Bikes, Scooter, Inline-Skates und Skateboards. Roland: konkreter Standort, Jahr und Auftraggeber bitte ergänzen.",
+        altText: "Beton-Pumptrack aus modularen Fertigteilen für Bikes, Scooter, Inliner und Skateboards.",
         productsUsed: [
             { name: "Modulare Pumptrack-Elemente", path: "/produkte/pumptrack-beton" },
         ]
@@ -386,14 +374,8 @@ export const PROJECTS: Project[] = [
              "/images/grill/grill-stelle-02.jpg",
              "/images/grill/grillstelle-background.jpg",
         ],
-        description: "Eine barrierefreie Grill- und Begegnungszone im zentralen Stadtpark — mit unserer runden Beton-Grillstelle als sozialem Mittelpunkt. Platz für 12–16 Personen, direkt neben der neuen Skate-Anlage.",
-        longDescription: [
-            "Die stationäre Grillstelle besteht aus Beton-Fertigteilen mit 4,20 m Durchmesser und 2,70 m Höhe. Der massive Rost aus Edelstahl ist höhenverstellbar und durch eine zentrale Öse gegen Schwenken und Diebstahl gesichert. Die 16 cm starke Bodenplatte ist integriert — keine Pflaster- oder Erdarbeiten nötig. Die Windschutz-Ringwand sorgt für kontrolliertes Feuer auch bei Zugluft.",
-            "Der Aufbau erfolgte in einem Tag: die Grillstelle wurde per Autokran abgeladen und direkt auf ein verdichtetes Schotterbett gesetzt. Damit ist die Installation fundamentfrei, vandalismussicher und vollständig wartungsarm. Alle Oberflächen sind leicht zu reinigen — eine regelmäßige Spülung mit Wasser reicht. Der Edelstahlrost ist in einem Aufwaschvorgang vom Grillrückstand befreit.",
-            "Die Zielgruppe ist der öffentliche Raum: Familien, Jugendgruppen, Vereine, Nachbarschafts-Events. Die Grillstelle bietet auch im geselligen Rahmen Sicherheit — massive Betonwand statt freier Feuerstelle, kein Funkenflug in die Umgebung, keine offenen Elektro- oder Gasanschlüsse. Für Freibäder, Campingplätze, Sportanlagen und Schrebergärten ist dies die langlebige Alternative zu improvisierten Grillplätzen.",
-            "Die Grillstelle lässt sich modular um Sitzbänke aus Beton, Überdachungen und Tische ergänzen. Im Stadtpark wurde zusätzlich ein Pavillon-Modul als Wetterschutz aufgestellt. Die gesamte Zone ist rollstuhlgerecht erreichbar; die Grillhöhe kann nach Bedarf eingestellt werden. Kommunen erhalten von A+ Urban Design auf Wunsch Wartungshinweise und ein Ersatzteil-Datenblatt für den Edelstahlrost."
-        ],
-        altText: "Vandalismusresistente Betongrillstelle im Stadtpark mit Platz für 12-16 Personen.",
+        description: "Öffentliche Grillstelle aus Beton im Stadtpark. Roland: konkreter Standort, Jahr und Auftraggeber bitte ergänzen.",
+        altText: "Öffentliche Grillstelle aus Beton im Stadtpark.",
         productsUsed: [
             { name: "Öffentliche Grillstelle", path: "/produkte/grillstelle-beton" },
         ]
@@ -408,14 +390,8 @@ export const PROJECTS: Project[] = [
              "/images/hockey/hockey-einfassung-01.jpg",
              "/images/hockey/inline-hockey-bande-02.jpg",
         ],
-        description: "Modernisierung eines Inlinehockey-Feldes mit unserem fundamentfreien Bandensystem — modular erweiterbar in 1,5-m-Schritten, ohne Bandenaufbau, ohne Bodenbefestigung. Ganzjährig für Inline-/Rollhockey und im Winter sogar für Eishockey nutzbar.",
-        longDescription: [
-            "Das bestehende Hartplatz-Feld wurde mit unseren 110-cm-Profil-Banden mit Edelstahl-Handlauf eingefasst. Die Konstruktion aus Stahlrahmen, Beton-Gewichten und hochschlagfesten HPL-Platten ist auf intensiven Spielbetrieb ausgelegt — Schussbelastung, Check-Beanspruchung und unvermeidliche Vandalismus-Versuche werden ohne Schaden aufgenommen. Die Banden sitzen fundamentfrei auf dem vorhandenen Untergrund und können jederzeit versetzt oder erweitert werden.",
-            "Das modulare 1,5-m-Raster erlaubt die Anpassung an verschiedene Feldgrößen: Kleinfeld, Halbfeld oder DIN-gerechtes Spielfeld nach IIHF-Standard. Zwei Varianten stehen zur Verfügung — die 40-cm-Einfassung mit Gummikappen als leichte Spielfeldbegrenzung für Inline-Hockey, oder die 110-cm-Profil-Bande für Rollhockey und Eishockey. Beide Systeme sind miteinander kombinierbar.",
-            "Für den Wintereinsatz wird unter der 110-cm-Bande ein Abdichtungsprofil eingesetzt. Damit verwandelt sich das Feld in eine Eislauffläche, sobald Temperaturen und Eisaufbereitung es erlauben — die selbe Anlage bedient Sommer- und Wintersport. Die Bodenfläche selbst bleibt bei allen Varianten unberührt, die Konstruktionsweise benötigt keine Bodenbefestigung.",
-            "Zielgruppe sind Vereine, Schulen und kommunale Sportanlagen, die mit begrenztem Budget eine professionelle Outdoor-Hockey-Lösung benötigen. Tore, Netze und Zubehör (Schiedsrichterpodest, Spielerbänke) sind optional erhältlich. Die Anlage in diesem Projekt wurde in einer einzigen Arbeitswoche aufgebaut — die einzelnen Module passen auf einen Standard-LKW, die Montage erfolgt mit Autokran."
-        ],
-        altText: "Professionelles Inlinehockey-Feld mit robusten Beton-Banden in 110 cm Höhe für Inline-, Roll- und Eishockey.",
+        description: "Inlinehockey-Feld mit fundamentfreiem Bandensystem. Roland: konkreter Standort, Jahr und Auftraggeber bitte ergänzen.",
+        altText: "Inlinehockey-Feld mit Beton-Banden in 110 cm Höhe.",
         productsUsed: [
             { name: "Hockey-Banden (110cm)", path: "/produkte/hockey-banden" },
         ]
@@ -430,14 +406,8 @@ export const PROJECTS: Project[] = [
             "/images/umkleide/umkleidekabine-freibad-03.jpg",
             "/images/umkleide/umkleide-kabine-02.jpg",
         ],
-        description: "Sechs Schnecken-Umkleidekabinen aus bewehrtem Beton für das Freibad Süd — türlos, fundamentfrei und vandalismussicher. Leicht zu reinigen, ganzjährig einsatzbereit, ohne Abbau im Winter.",
-        longDescription: [
-            "In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung ist die Schnecke — ein schneckenförmiger Sichtschutz statt Tür: Beim Betreten und Verlassen gibt es keinen Kabinenkontakt, oben und unten ist die Kabine offen — das erlaubt Sichtkontrolle gegen Missbrauch und sorgt für Luftzirkulation. Die Kabine kann nicht verschlossen werden, Vandalismus an Scharnieren oder Schlössern ist konstruktiv ausgeschlossen.",
-            "Jede Kabine besteht aus nur zwei Teilen ohne Verschraubungen: die Bodenplatte und das schneckenförmige Oberteil auf Edelstahlfüßen. Die fugenlose Bodenplatte dient zugleich als Fundamentschutz auf verdichtetem Schotterbett — kein klassisches Fundament erforderlich. Die Oberfläche ist wartungsfrei und lässt sich mit einem Hochdruckreiniger in wenigen Minuten säubern.",
-            "Material: bewehrter Beton C35/45 in Verbindung mit Edelstahl-Elementen. Die Kabine ist witterungsbeständig, wartungsarm und muss im Winter nicht abgebaut werden — sie verrottet nicht, quillt nicht auf und verliert keine Befestigungen. Optional integrierte Haken, Sitzbänke oder Duschkabinen-Ausstattung mit Gully und Wasseranschluss sind erhältlich.",
-            "Die sechs Kabinen des Freibad Süd stehen in zwei Reihen nebeneinander und bedienen an Spitzentagen mehrere hundert Badegäste. Die Installation erfolgte in zwei Tagen — inklusive Anlieferung, Aufstellung mit Autokran und Verfugung. Das Schotterbett wurde im Vorfeld von der örtlichen Tiefbaufirma vorbereitet. Insgesamt spart die Schnecken-Lösung gegenüber klassischen Umkleiden mit Türen rund zwei Drittel der Wartungskosten über 10 Jahre."
-        ],
-        altText: "Reihe von architektonischen Beton-Umkleidekabinen — Schnecken-Prinzip ohne Türen, fundamentfrei im Freibad.",
+        description: "Schnecken-Umkleidekabine aus Beton im Freibad — türlos, fundamentfrei und vandalismussicher. Roland: konkreter Standort, Stückzahl, Jahr und Auftraggeber bitte ergänzen.",
+        altText: "Schnecken-Umkleidekabine aus Beton im Freibad.",
         productsUsed: [
             { name: 'Umkleidekabine', path: "/produkte/umkleidekabine-beton" },
         ]
@@ -448,13 +418,7 @@ export const PROJECTS: Project[] = [
         category: "Skatepark",
         year: 2024,
         imageUrl: "/images/skate-anlagen/skate-anlage-01.jpg",
-        description: "Der Bastion Skatepark im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia, Rumänien — ein urbaner Treffpunkt, der Denkmalschutz und moderne Skatekultur verbindet. Aus mehr als 50 m Entfernung unsichtbar.",
-        longDescription: [
-            "Die Festung Alba Carolina im transsilvanischen Alba Iulia ist eine der best erhaltenen Sternfestungen Mittel- und Südosteuropas — UNESCO-Kandidat, Denkmalschutz höchster Stufe. Der ehemalige Festungsgraben zwischen Ober- und Unterstadt war jahrzehntelang ungenutzt. Die Stadtverwaltung stellte A+ Urban Design vor die Aufgabe, hier einen modernen Skatepark zu integrieren — ohne die historische Substanz zu beeinträchtigen und ohne das Festungsbild aus der Stadt heraus zu stören.",
-            "Die Lösung ist eine mehrstufige Beton-Skateanlage, die sich komplett in den Graben einfügt: von den Promenaden der Oberstadt aus ist der Park aus mehr als 50 m Entfernung unsichtbar. Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert und gesichert. Die Skate-Elemente sind so platziert, dass sie zugleich als Verbindung zwischen Ober- und Unterstadt funktionieren — ein Weg, der gleichzeitig Skate-Fläche ist.",
-            "Technisch wurden modulare Skate-Elemente in Hohlkörperbauweise eingesetzt: Höhen 45 bis 149 cm, Wandstärke 8–16 cm, mit verzinkten Copingrohren und Hartgummi-Kantenschutz. Alle Module sind nach DIN EN 14974 TÜV-zertifiziert mit GS-Zeichen. Da der Graben nicht perfekt eben war, wurden Arretierungsfüße zur Höheneinstellung genutzt — keine Fundamentplatte, kein Eingriff in die historische Bausubstanz.",
-            "Der Park ist öffentlich zugänglich und hat sich schnell zum Treffpunkt der lokalen Skate-Szene entwickelt. Regelmäßige Contests (Skateboard, BMX, Inliner, Scooter) werden mit Sponsoring-Partnern durchgeführt. A+ Urban Design hat das Projekt vom ersten Entwurf über die Denkmalschutz-Abstimmung bis zur schlüsselfertigen Lieferung betreut. Die Anlage gilt als Vorzeigebeispiel, wie Freizeitnutzung und Denkmalschutz nicht im Widerspruch stehen müssen."
-        ],
+        description: "Skatepark im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia, Rumänien — mehrstufige Anlage, verbindet Ober- und Unterstadt, aus mehr als 50 m Entfernung unsichtbar. Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert. Quelle: Archiv-Pressetext news-info / freiraum-gestalten.info 'Skaten und Denkmalschutz vereinen'.",
         altText: "Bastion Skatepark in Alba Iulia, Rumänien — modulare Beton-Skate-Elemente im historischen Festungsgraben.",
         images: [
             "/images/skate-anlagen/skateanlage-03.jpg",

@@ -187,20 +187,14 @@ const ProductSkatePipesPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-8">
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 rounded-xl">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Standard-Aufstellung</h3>
-                        <p className="text-brand-muted leading-relaxed mb-4">
-                            Die Pipe steht für sich allein — mit beidseitigem Flat, Plattform, Copingrohr. Mindestbreite: 375 cm bei der kleinen Pipe, 500 cm bei mittlerer und großer. Freistehend benötigt die Pipe eine <strong className="text-brand-dark">Absturzsicherung (Geländer)</strong> und beidseitig einen Sicherheitsbereich von mindestens 2 m.
-                        </p>
-                        <p className="text-sm text-brand-muted font-mono">
-                            Einsatzgebiet: Schulhöfe, Jugendzentren, kleine Skate-Areale, Street-Spots.
+                        <p className="text-brand-muted leading-relaxed">
+                            Die Pipe steht für sich allein — mit beidseitigem Flat, Plattform, Copingrohr. Mindestbreite: 375 cm bei der kleinen Pipe, 500 cm bei mittlerer und großer. Freistehende Skate-Pipes müssen eine <strong className="text-brand-dark">Absturzsicherung (Geländer)</strong> und auf beiden Seiten einen Sicherheitsbereich von mindestens 2 m haben.
                         </p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 rounded-xl">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Combi-Pipe</h3>
-                        <p className="text-brand-muted leading-relaxed mb-4">
-                            Im Gegensatz zur Standard-Aufstellung wird die Combi-Pipe mit anderen Elementen kombiniert: unterschiedliche Höhen, Anfahrt- oder Abfahrt-Teile (Banks, Quarter-Ramps), oder Hindernisse im Flat (Spine, Wave, Bank-to-Bank).
-                        </p>
-                        <p className="text-sm text-brand-muted font-mono">
-                            Einsatzgebiet: Vollständige Skateparks, Contest-Setups, Multi-Level-Anlagen.
+                        <p className="text-brand-muted leading-relaxed">
+                            Im Gegensatz zu den Standard-Pipes werden Combi-Pipes mit anderen Elementen kombiniert. Sie können unterschiedliche Höhen haben, mit zusätzlichen Anfahrt- oder Abfahrtteilen (Banks oder Quarter-Ramps) ausgestattet sein oder andere Elemente auf dem Flat haben (Spine, Wave oder Bank to Bank). Abhängig von der Höhe der Zusatzteile müssen diese eine bestimmte Minimalbreite einhalten.
                         </p>
                     </div>
                 </div>

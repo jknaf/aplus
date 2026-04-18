@@ -174,7 +174,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. Bald darauf folgte der erste Bowl auf Gran Canaria.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
-                            Heute sind unsere Skate-Anlagen mit Bowls und Pipes europaweit im Einsatz — von Norwegen bis zu den Kanarischen Inseln, in Höhenlagen von 0 bis über 1.000 m ü. NN, auf Flächen von 100 bis zu 1.000 m².
+                            Unsere Skateelemente sind im Bereich von ca. 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz — von Norden in Norwegen bis Süden auf den Kanaren, von Osten in Rumänien bis Westen in England.
                         </p>
 
                         <div className="flex flex-col gap-4">

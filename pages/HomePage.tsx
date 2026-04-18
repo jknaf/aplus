@@ -252,6 +252,16 @@ const ProductScrollytelling: React.FC = () => {
                         </div>
                     </div>
                 </div>
+
+                <AnimatedSection className="text-center mt-16">
+                    <Link
+                        to="/produkte"
+                        className="inline-flex items-center gap-2 text-brand-dark font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider group"
+                    >
+                        Zur Produkt-Übersicht
+                        <span className="text-xl group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </Link>
+                </AnimatedSection>
             </div>
         </section>
     );

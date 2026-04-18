@@ -19,7 +19,7 @@ const ProjectsPage: React.FC = () => {
         <div className="inline-flex items-center gap-3 py-1 px-4 border border-brand-orange/30 bg-brand-orange/10 rounded-full mb-8 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
             <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">
-                Portfolio 2005 - 2024
+                Portfolio
             </span>
         </div>
         <h1 className="text-6xl md:text-9xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.85] mb-8">
@@ -95,9 +95,6 @@ const ProjectsPage: React.FC = () => {
                 <div className="flex justify-between items-start opacity-100 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="inline-block py-1 px-2 bg-black/60 backdrop-blur-md text-[10px] font-mono uppercase tracking-widest text-brand-orange border border-brand-orange/20">
                         REF-{String(index + 1).padStart(3, '0')}
-                    </span>
-                    <span className="text-[10px] font-mono text-gray-300 uppercase tracking-widest bg-black/60 backdrop-blur-md px-2 py-1 rounded-sm border border-brand-dark/10">
-                        {project.year || '2023'}
                     </span>
                 </div>
 

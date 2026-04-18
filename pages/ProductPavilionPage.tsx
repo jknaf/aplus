@@ -157,25 +157,57 @@ const ProductPavilionPage: React.FC = () => {
                 </div>
             </div>
 
-            {/* 3. TECH SPECS */}
+            {/* 3. EIGENSCHAFTEN (aus ueberdachung-pavillon.md) */}
             <div className="mb-32">
+                <div className="mb-8">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Das Original</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
+                        Überdachungselement <span className="text-brand-orange">Bogen.</span>
+                    </h2>
+                    <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
+                        Das Überdachungselement von A+ Urban Design ist multifunktional: Einsetzbar als Überdachung für Haltestellen und Sitznischen sowie Pavillons. Das Modul wird inklusive Bodenplatte und Sitzbank mit Autokran versetzt — es sind keine Teile zusammenzubauen, und es sind keine Fundament- oder Pflasterarbeiten notwendig. Die Aufstellung erfolgt auf verdichtetem Kies- oder Schotterbett.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Multifunktional</h3>
+                        <p className="text-sm text-brand-muted leading-relaxed">Einzeln als Unterstellplatz, nebeneinander als Haltestellenüberdachung, gegenüber als überdachte Sitznische, oder als Dreier-/Vierergruppe zum Pavillon konfigurierbar.</p>
+                    </div>
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Fundamentfrei</h3>
+                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen ohne Fundament auf verdichtetem Kies- oder Schotterbett. Geringe Vorarbeiten — keine Fundamentarbeiten oder Pflasterarbeiten notwendig.</p>
+                    </div>
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Robust</h3>
+                        <p className="text-sm text-brand-muted leading-relaxed">Kann nicht verbogen, angezündet oder zerschlagen werden. Aus bewehrtem Beton C 35/45 — witterungsbeständig und auch unter Dauernutzung im öffentlichen Raum stabil.</p>
+                    </div>
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Wartungsarm</h3>
+                        <p className="text-sm text-brand-muted leading-relaxed">Keine Verschraubungen, keine zerbrechlichen Teile. Der Boden ist einfach zu reinigen. Materialien recycelbar — das Modul lässt sich jederzeit versetzen oder zurückbauen.</p>
+                    </div>
+                </div>
+
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
-                    {/* INDUSTRIAL HEADER UPDATE */}
                     <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
                         Tech<span className="text-brand-orange">Specs</span>
                     </h2>
                     <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: PAVILLON</span>
                 </div>
-                
+
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <TechSpecCard title="Länge" value="240 cm" icon="straighten" />
                     <TechSpecCard title="Tiefe" value="200 cm" icon="square_foot" />
-                    <TechSpecCard title="Höhe" value="262 cm" icon="vertical_align_top" />
-                    <TechSpecCard title="Material" value="C35/45 Stahlbeton" icon="architecture" />
+                    <TechSpecCard title="Höhe" value="246 + 16 cm" icon="vertical_align_top" />
+                    <TechSpecCard title="Material" value="Bewehrter Beton C35/45" icon="architecture" />
                     <TechSpecCard title="Montage" value="Autokran, fundamentfrei" icon="layers" />
                     <TechSpecCard title="Konfiguration" value="Einzel / Gruppe / Arkade" icon="view_column" />
                     <TechSpecCard title="Sitzfläche" value="Integriert" icon="event_seat" />
                     <TechSpecCard title="Begrünung" value="Stahlseile / Netze" icon="eco" />
+                    <TechSpecCard title="Aufbauen" value="Keine Teile zusammenbauen" icon="build" />
+                    <TechSpecCard title="Witterung" value="Wetterbeständig" icon="thermostat" />
+                    <TechSpecCard title="Recycelbar" value="Ja" icon="recycling" />
+                    <TechSpecCard title="Einsatz" value="Haltestellen / Sitznischen / Pavillons" icon="public" />
                 </div>
             </div>
 

@@ -156,25 +156,57 @@ const ProductGrillPage: React.FC = () => {
                 </div>
             </div>
 
-            {/* 3. TECH SPECS */}
+            {/* 3. KONSTRUKTION & EIGENSCHAFTEN (aus grill-grillplatz.md) */}
             <div className="mb-32">
+                <div className="mb-8">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Konstruktion & Eigenschaften</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
+                        Das Original <span className="text-brand-orange">A+ Urban Design.</span>
+                    </h2>
+                    <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
+                        Der Grillplatz besteht aus mehreren Betonfertigteilen, die zusammengebaut eine Einheit bilden. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl gefertigt. Die höhenverstellbare Grillfläche wird gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert. Der Grillplatz benötigt keine Fundamente — er wird direkt auf ein verdichtetes Schotterbett 5/30 mm aufgebaut. Bei einem Durchmesser von 420 cm und einer Höhe von 2,40 m wurde die Konstruktion so entwickelt, dass sie einfach zu bedienen ist und wenig Verschleißteile hat.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Materialien</h3>
+                        <p className="text-sm text-brand-muted leading-relaxed">Beton, Edelstahl und verzinkter Stahl — durchweg witterungsbeständig und recycelbar. Der Grillrost aus Edelstahl hält auch dauerhafter Nutzung stand.</p>
+                    </div>
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Ohne Fundamente</h3>
+                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen auf verdichtetem Kies- oder Schotterbett. Die 16 cm starke Bodenplatte ist integriert — keine Pflasterarbeiten, keine Erdarbeiten, keine lange Bauzeit.</p>
+                    </div>
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Vandalismussicher</h3>
+                        <p className="text-sm text-brand-muted leading-relaxed">Die A+-Lösung für Freibäder, Sportanlagen, Campingplätze und Schrebergärten: robust, vandalismussicher und ohne bewegliche Teile — ausgelegt für den öffentlichen Raum.</p>
+                    </div>
+                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Höhenverstellbar</h3>
+                        <p className="text-sm text-brand-muted leading-relaxed">Die Grillfläche lässt sich einfach in der Höhe einstellen. Der Windschutzring sorgt für kontrolliertes Feuer, die Diebstahlsicherung über die zentrale Öse schützt den Edelstahlrost.</p>
+                    </div>
+                </div>
+
                  <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
-                    {/* INDUSTRIAL HEADER UPDATE */}
                     <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
                         Tech<span className="text-brand-orange">Specs</span>
                     </h2>
                     <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: GRILLSTELLE</span>
                 </div>
-                
+
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <TechSpecCard title="Durchmesser" value="4,20 Meter" icon="straighten" />
                     <TechSpecCard title="Höhe" value="2,40 Meter" icon="vertical_align_top" />
                     <TechSpecCard title="Rost" value="Edelstahl" icon="grid_on" />
                     <TechSpecCard title="Bodenplatte" value="16 cm" icon="foundation" />
                     <TechSpecCard title="Diebstahlschutz" value="Zentrale Öse" icon="lock" />
-                    <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
+                    <TechSpecCard title="Montage" value="Schotterbett 5/30 mm" icon="layers" />
                     <TechSpecCard title="Grillhöhe" value="Verstellbar" icon="tune" />
-                    <TechSpecCard title="Einsatz" value="Öffentlich" icon="public" />
+                    <TechSpecCard title="Einsatz" value="Öffentlicher Raum" icon="public" />
+                    <TechSpecCard title="Stütze" value="Verzinkter Stahl" icon="construction" />
+                    <TechSpecCard title="Witterung" value="Wetterbeständig" icon="thermostat" />
+                    <TechSpecCard title="Recycelbar" value="Ja" icon="recycling" />
+                    <TechSpecCard title="Bauweise" value="Betonfertigteile" icon="view_in_ar" />
                 </div>
             </div>
 

@@ -6,3 +6,4 @@ dist
 # Backup-Ordner für Original-Videos (vor Kompression)
 public/videos/skateparks-original-backup/
 public/videos/skateparks-compressed/
+.DS_Store

@@ -190,7 +190,13 @@
     { "source": "/englisch/skate-anlagen/:path*", "destination": "/produkte/skate-anlagen", "permanent": true },
 
     { "source": "/produkte/bmx-anlagen{/}?", "destination": "/produkte/skate-anlagen", "permanent": true },
-    { "source": "/produkte/bmx-anlagen/:path*", "destination": "/produkte/skate-anlagen", "permanent": true }
+    { "source": "/produkte/bmx-anlagen/:path*", "destination": "/produkte/skate-anlagen", "permanent": true },
+
+    { "source": "/projekte/modularer-beton-skatepark{/}?", "destination": "/projekte/skatepark-friedrichsdorf", "permanent": true },
+    { "source": "/projekte/beton-pumptrack{/}?", "destination": "/projekte/pumptrack-berlin-reinickendorf", "permanent": true },
+    { "source": "/projekte/grillplatz-stadtpark{/}?", "destination": "/projekte/grillplatz-oeffentlicher-raum", "permanent": true },
+    { "source": "/projekte/inlinehockey-feld{/}?", "destination": "/projekte/hockey-bandensystem-outdoor", "permanent": true },
+    { "source": "/projekte/umkleide-freibad{/}?", "destination": "/projekte/schnecke-umkleidekabine", "permanent": true }
   ],
   "rewrites": [
     { "source": "/projekte", "destination": "/index.html" },

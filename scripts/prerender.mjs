@@ -46,11 +46,11 @@ const STATIC_ROUTES = [
 ];
 
 const PROJECT_IDS = [
-  'modularer-beton-skatepark',
-  'beton-pumptrack',
-  'grillplatz-stadtpark',
-  'inlinehockey-feld',
-  'umkleide-freibad',
+  'skatepark-friedrichsdorf',
+  'pumptrack-berlin-reinickendorf',
+  'grillplatz-oeffentlicher-raum',
+  'hockey-bandensystem-outdoor',
+  'schnecke-umkleidekabine',
   'bastion-skatepark-alba-iulia',
 ];
 

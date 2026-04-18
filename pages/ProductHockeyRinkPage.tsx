@@ -45,11 +45,11 @@ const ProductHockeyRinkPage: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Inline-Hockey-Banden",
-    "description": "Modulare Hockey-Banden aus Stahl, Beton und HPL. Fundamentfrei, in 40 cm oder 110 cm Höhe. Ganzjährig einsetzbar für Inline- und Eishockey.",
+    "description": "Modulare Hockey-Banden aus Beton, Edelstahl, Laminatplatten und Gummi. Fundamentfrei, in 40 cm, 80 cm oder 110 cm Höhe. Ganzjährig einsetzbar für Inline-, Roll- und Eishockey.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
     "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
     "category": "Sportanlagen / Urban Sports",
-    "material": "Stahl, Beton, HPL",
+    "material": "Beton, Edelstahl, Laminatplatten, Gummi",
     "countryOfOrigin": "DE",
     "image": "https://www.aplusurbandesign.com/images/hockey/roll-hockey-bande.jpg",
     "offers": {
@@ -142,14 +142,15 @@ const ProductHockeyRinkPage: React.FC = () => {
                     </div>
                     
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Konstruktion</h3>
+                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Materialien</h3>
                         <p className="text-brand-muted mb-4 font-mono text-sm border-l-2 border-brand-orange pl-4">
-                            Kombination aus Stahlrahmen, Beton-Gewichten und hochschlagfesten HPL-Platten.
+                            Witterungsbeständige Materialien: Beton, Edelstahl, Laminatplatten und Gummi. Die am stärksten beanspruchte Fläche ist aus Beton.
                         </p>
-                        <div className="flex gap-4">
-                            <span className="text-xs uppercase tracking-widest text-brand-orange border border-brand-orange px-2 py-1">Stahl</span>
+                        <div className="flex flex-wrap gap-2">
                             <span className="text-xs uppercase tracking-widest text-brand-orange border border-brand-orange px-2 py-1">Beton</span>
-                            <span className="text-xs uppercase tracking-widest text-brand-orange border border-brand-orange px-2 py-1">HPL</span>
+                            <span className="text-xs uppercase tracking-widest text-brand-orange border border-brand-orange px-2 py-1">Edelstahl</span>
+                            <span className="text-xs uppercase tracking-widest text-brand-orange border border-brand-orange px-2 py-1">Laminat</span>
+                            <span className="text-xs uppercase tracking-widest text-brand-orange border border-brand-orange px-2 py-1">Gummi</span>
                         </div>
                     </div>
 
@@ -211,14 +212,14 @@ const ProductHockeyRinkPage: React.FC = () => {
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <TechSpecCard title="Höhen" value="40cm / 110cm" icon="height" />
+                    <TechSpecCard title="Höhen" value="40 / 80 / 110 cm" icon="height" />
                     <TechSpecCard title="Raster" value="1,50 Meter" icon="grid_view" />
                     <TechSpecCard title="Einsatz" value="Ganzjährig" icon="calendar_month" />
                     <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
                     <TechSpecCard title="Eignung" value="Inline & Eis" icon="ice_skating" />
-                    <TechSpecCard title="Material" value="Stahl/HPL/Beton" icon="science" />
-                    <TechSpecCard title="Schutz" value="Verletzungsarm" icon="shield" />
-                    <TechSpecCard title="Zubehör" value="Tore & Netze" icon="sports_hockey" />
+                    <TechSpecCard title="Material" value="Beton, Edelstahl, Laminat, Gummi" icon="science" />
+                    <TechSpecCard title="Schutz" value="Gummikappe an Einfassung" icon="shield" />
+                    <TechSpecCard title="Am beanspruchtesten" value="Beton" icon="layers" />
                 </div>
             </div>
 

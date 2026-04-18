@@ -140,12 +140,10 @@ const ProductPavilionPage: React.FC = () => {
                     
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Anwendungen</h3>
-                        {/* Roland §9.4: Sportanlagen als Anwendung noch final bestätigen */}
                         <ul className="grid grid-cols-2 gap-4 list-disc list-inside text-brand-muted">
-                            <li>Bushaltestellen</li>
-                            <li>Schulhöfe</li>
-                            <li>Parkanlagen</li>
-                            <li>Fahrradunterstände</li>
+                            <li>Haltestellen</li>
+                            <li>Sitznischen</li>
+                            <li>Pavillons</li>
                         </ul>
                         <p className="text-xs font-mono uppercase tracking-widest text-brand-muted mt-4 pt-3 border-t border-brand-dark/5">
                             Schotterbett-Aufbau · fundamentfrei · ohne TÜV-Zertifizierung für Pavillons

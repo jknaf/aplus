@@ -100,13 +100,13 @@ const AboutPage: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. STATS GRID — nur belegbare Kennzahlen */}
+      {/* 2. STATS GRID — Zahlen nach Rolands Screenshot-Anmerkungen */}
       <div className="container mx-auto px-4 mb-32">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
               <StatCounter end={432} suffix="+" label="Realisierte Anlagen" />
-              <StatCounter end={30} label="Jahre Erfahrung" />
+              <StatCounter end={25} suffix="+" label="Jahre Erfahrung" />
               <StatCounter end={100} suffix="%" label="Made in Europe" />
-              <StatCounter end={45} label="Betonklasse C35/45" />
+              <StatCounter end={100} suffix="%" label="Recycelbar" />
           </div>
       </div>
 

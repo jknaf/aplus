@@ -134,7 +134,7 @@ const ProductSkatePipesPage: React.FC = () => {
                             <Link to="/kontakt" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 Pipe konfigurieren <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
-                            <span className="text-xs text-brand-muted font-mono text-center">Inklusive 3D-Voranalyse · auch als Selbst-Aufbau</span>
+                            <span className="text-xs text-brand-muted font-mono text-center">Inklusive 3D-Voranalyse, schlüsselfertige Lieferung und Montage</span>
                         </div>
                     </div>
                 </div>
@@ -260,7 +260,7 @@ const ProductSkatePipesPage: React.FC = () => {
                     <TechSpecCard title="Sicherheitszone" value="2 m beidseitig" icon="safety_check" />
                     <TechSpecCard title="Absturzsicherung" value="freistehend: Geländer" icon="shield" />
                     <TechSpecCard title="Combi-Elemente" value="Banks · Spines · Waves" icon="extension" />
-                    <TechSpecCard title="Selbst-Aufbau" value="möglich" icon="build" />
+                    <TechSpecCard title="Montage" value="Durch A+ Urban Design" icon="build" />
                 </div>
             </div>
 

@@ -281,23 +281,9 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange">layers</span>
                             </div>
                             <div>
-                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 1 — Bestandsfläche</h3>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 1 — Befestigte Fläche</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
-                                    Aufstellung auf einer bestehenden, befestigten Fläche (Beton oder Asphalt). Die Module werden mit Übergangsblechen verbunden oder auf eine neue, dauerhafte Fläche sinkbetoniert — schnellster Aufbau ohne Erdarbeiten.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="bg-white border border-brand-dark/10 rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:border-brand-orange/40 transition-colors">
-                        <div className="flex items-start gap-4">
-                            <div className="w-10 h-10 bg-brand-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <span className="material-symbols-outlined text-brand-orange">swap_horiz</span>
-                            </div>
-                            <div>
-                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 2 — Auf-, Ab- und Umbau</h3>
-                                <p className="text-sm text-brand-muted leading-relaxed">
-                                    Der modulare Vorteil: Bestehende Anlagen lassen sich erweitern, einzelne Module versetzen oder die gesamte Anlage an einen neuen Standort umbauen. Keine Fundamente werden beschädigt.
+                                    Aufstellung auf einer bestehenden, befestigten Fläche (Beton oder Asphalt). Die Module werden montiert und die Strecke markiert. Der Belag bleibt unbeschädigt (Quelle: pump-tracks.md und skate-anlagen.md).
                                 </p>
                             </div>
                         </div>
@@ -309,10 +295,10 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange">foundation</span>
                             </div>
                             <div>
-                                {/* Roland §4.13: präziser Wortlaut "sehr liegende Fundamentplatte / einrahmendes Fugensystem" noch klären */}
-                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 3 — Neue Fundamentplatte</h3>
+                                {/* Roland §4.13: präziser Wortlaut 'sehr liegende Fundamentplatte / einrahmendes Fugensystem' noch klären */}
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 2 — Neue Fundamentplatte</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
-                                    Bei Neuanlagen wird eine Fundamentplatte gegossen. Die Module werden direkt auf die Platte aufgestellt und anbetoniert — fugenloser Übergang zum Untergrund, kein Übergangsblech erforderlich.
+                                    Auf einer gesondert hergestellten Strecke werden die Elemente zuerst auf Fundamentplatten aufgestellt und anschließend anbetoniert oder anasphaltiert (Quelle: pump-tracks.md).
                                 </p>
                             </div>
                         </div>
@@ -324,9 +310,23 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange">tune</span>
                             </div>
                             <div>
-                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 4 — Schotterbett</h3>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 3 — Schotterbett</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
-                                    Start-Rampen und Pipes auf verdichtetem Schotterbett außerhalb der Fläche — auch für Grill-Plätze und Umkleidekabinen. Gehwegplatten unter den Arretierungsfüßen. So aufgebaut, dass einfacher Abbau jederzeit möglich ist.
+                                    Start-Rampen und Pipes auf verdichtetem Schotterbett außerhalb der Fläche — auch für Grill-Plätze und Umkleidekabinen. Gehwegplatten unter den Arretierungsfüßen. So aufgebaut, dass einfacher Abbau jederzeit möglich ist (Roland §4.14).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white border border-brand-dark/10 rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:border-brand-orange/40 transition-colors">
+                        <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 bg-brand-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span className="material-symbols-outlined text-brand-orange">landscape</span>
+                            </div>
+                            <div>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 4 — Erdeinbau & Anböschung</h3>
+                                <p className="text-sm text-brand-muted leading-relaxed">
+                                    Skate-Elemente sind für Erdeinbau und Erdmodellierungen geeignet (Quelle: skate-anlagen.md). Durch Böschungen und Geländeintegration fügen sich die Anlagen harmonisch ein — in Friedrichsdorf wurden Teile der Anlage angeböscht, in Altdorf der Serpent eingebaut und begrünt (Quellen: kommunaldirekt.de, freiraum-gestalten.info).
                                 </p>
                             </div>
                         </div>

@@ -134,7 +134,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                             <Link to="/kontakt" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 Bowl planen lassen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
-                            <span className="text-xs text-brand-muted font-mono text-center">Kostenlose 3D-Voranalyse · auch als Selbst-Aufbau</span>
+                            <span className="text-xs text-brand-muted font-mono text-center">Kostenlose 3D-Voranalyse, schlüsselfertige Lieferung und Montage</span>
                         </div>
                     </div>
                 </div>
@@ -259,7 +259,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                     <TechSpecCard title="Freiformen" value="modulweise lösbar" icon="extension" />
                     <TechSpecCard title="Witterung" value="Frostsicher · UV-beständig" icon="ac_unit" />
                     <TechSpecCard title="Versetzbar" value="Ja (Open Bowl)" icon="unfold_more" />
-                    <TechSpecCard title="Selbst-Aufbau" value="möglich" icon="build" />
+                    <TechSpecCard title="Montage" value="Durch A+ Urban Design" icon="build" />
                 </div>
             </div>
 

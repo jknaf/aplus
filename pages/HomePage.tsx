@@ -507,7 +507,7 @@ const Hero: React.FC = () => {
                         </h1>
                         <p className="mt-6 md:mt-8 text-lg md:text-2xl text-white/80 max-w-xl md:max-w-2xl font-light border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
                             {/* Roland §3.2: 30-Jahre-Jubiläums-Claim noch klären — vorläufig */}
-                            Skateparks, Pumptracks und urbane Anlagen aus Beton und Stahl. <span className="text-white font-bold">Modular. Robust. Fundamentfrei.</span>
+                            Skateparks, Pumptracks und urbane Anlagen aus Beton und Stahl. <span className="text-white font-bold">Modular. Robust. Fundamentfrei. Recycelbar.</span>
                         </p>
                     </div>
                  </div>

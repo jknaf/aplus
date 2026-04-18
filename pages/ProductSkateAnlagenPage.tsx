@@ -181,7 +181,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             <Link to="/kontakt" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 3D-Planung anfragen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
-                            <span className="text-xs text-brand-muted font-mono text-center">Inklusive Kostenschätzung — oder selbst aufbauen möglich</span>
+                            <span className="text-xs text-brand-muted font-mono text-center">Inklusive Kostenschätzung, schlüsselfertige Lieferung und Montage</span>
                         </div>
                     </div>
                 </div>

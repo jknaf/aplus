@@ -138,9 +138,9 @@ const ProductPumptrackPage: React.FC = () => {
                             Im Gegensatz zu Asphaltpisten bieten unsere Beton-Pumptrack-Elemente eine dauerhaft perfekte Geometrie. Zwei Aufbauvarianten möglich: auf einer befestigten Fläche aufbauen (Module montieren, Strecke markieren) oder auf einer gesondert hergestellten Strecke, bei der die Elemente zuerst auf Fundamentplatten aufgestellt und anschließend anbetoniert oder anasphaltiert werden.
                         </p>
                         <div className="bg-brand-orange/10 border border-brand-orange/30 rounded-xl p-5 mb-12">
-                            <p className="text-brand-dark font-bold uppercase text-sm tracking-widest mb-2">Selbst-Aufbau möglich</p>
+                            <p className="text-brand-dark font-bold uppercase text-sm tracking-widest mb-2">Schlüsselfertige Lieferung</p>
                             <p className="text-sm text-brand-muted leading-relaxed">
-                                Kommunen, Gemeinden und Vereine können unsere Pumptrack-Module kaufen und selbst aufbauen — das reduziert die Kosten erheblich. Auch Fördermittel aus der Sportstättenförderung sind nutzbar.
+                                Planung, Werkfertigung, Anlieferung und Aufbau erfolgen aus einer Hand durch A+ Urban Design. Für Kommunen und Gemeinden sind Fördermittel aus der Sportstättenförderung nutzbar.
                             </p>
                         </div>
                         
@@ -197,7 +197,7 @@ const ProductPumptrackPage: React.FC = () => {
                     </div>
                 </div>
                 <div className="mt-6 bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-muted">
-                    <strong className="text-brand-dark">Aufbauvariante Eigenleistung:</strong> Gemeinden und Vereine können unsere Pumptrack-Module kaufen und selbst aufbauen. Geeignet für alle drei Aufbauvarianten: direkt auf befestigter Fläche, auf separater Beton-/Asphaltpiste oder auf Fundamentplatten mit anbetonierter Strecke.
+                    <strong className="text-brand-dark">Aufbauvarianten:</strong> Die Module können auf einer befestigten Fläche aufgebaut werden (Module montiert, Strecke markiert) oder auf einer gesondert hergestellten Strecke — dabei werden die Elemente zuerst auf Fundamentplatten aufgestellt und anschließend anbetoniert oder anasphaltiert (Quelle: pump-tracks.md).
                 </div>
             </div>
 

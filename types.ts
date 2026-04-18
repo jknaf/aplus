@@ -18,6 +18,7 @@ export interface Project {
   imageUrl: string;
   images: string[];
   description: string;
+  longDescription?: string[];
   altText: string;
   productsUsed: {
     name: string;

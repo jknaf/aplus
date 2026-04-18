@@ -89,9 +89,16 @@ const ProjectDetailPage: React.FC = () => {
                                 <h3 className="text-xs font-bold text-brand-orange uppercase tracking-widest mb-4 flex items-center gap-2">
                                     <span className="w-8 h-px bg-brand-orange"></span> Briefing
                                 </h3>
-                                <p className="text-xl text-brand-muted leading-relaxed font-light">
+                                <p className="text-xl text-brand-muted leading-relaxed font-light mb-6">
                                     {project.description}
                                 </p>
+                                {project.longDescription && (
+                                    <div className="space-y-4 text-base text-brand-muted leading-relaxed">
+                                        {project.longDescription.map((paragraph, i) => (
+                                            <p key={i}>{paragraph}</p>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
 
                             {/* Tech Specs Table */}

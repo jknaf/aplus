@@ -155,17 +155,22 @@ const ProductScrollytelling: React.FC = () => {
                     {/* Sticky HUD */}
                     <div className="hidden lg:block lg:w-1/2 sticky top-32">
                         <div className="relative aspect-square w-full rounded-2xl overflow-hidden border border-brand-dark/10 bg-brand-surface/50 shadow-[0_8px_30px_rgba(0,0,0,0.1)] group">
-                            <div className="absolute inset-0 z-20 pointer-events-none p-6 flex flex-col justify-end">
-                                <div className="flex justify-end">
-                                    <div className="border border-white/20 px-2 py-1 bg-brand-dark/60 backdrop-blur-md rounded-sm">
-                                        <span className="text-xs font-bold text-white uppercase tracking-wider">
-                                            TÜV ZERTIFIZIERT
-                                        </span>
+                            {PRODUCTS.map((product) => product.tuvCertified && (
+                                <div
+                                    key={`tuv-${product.id}`}
+                                    className={`absolute inset-0 z-20 pointer-events-none p-6 flex flex-col justify-end transition-opacity duration-500 ${activeId === product.id ? 'opacity-100' : 'opacity-0'}`}
+                                >
+                                    <div className="flex justify-end">
+                                        <div className="border border-white/20 px-2 py-1 bg-brand-dark/60 backdrop-blur-md rounded-sm">
+                                            <span className="text-xs font-bold text-white uppercase tracking-wider">
+                                                TÜV ZERTIFIZIERT
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            ))}
                             {PRODUCTS.map((product) => (
-                                <div 
+                                <div
                                     key={product.id}
                                     className={`absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${activeId === product.id ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}
                                 >
@@ -491,7 +496,8 @@ const Hero: React.FC = () => {
                             <span className="text-[clamp(2rem,6vw,6rem)] text-brand-orange">Freiräume</span>
                         </h1>
                         <p className="mt-6 md:mt-8 text-lg md:text-2xl text-white/80 max-w-xl md:max-w-2xl font-light border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
-                            Skateparks, Pumptracks und urbane Anlagen aus Beton. <span className="text-white font-bold">Robust. Modular. Kompromisslos.</span>
+                            {/* Roland §3.2: 30-Jahre-Jubiläums-Claim noch klären — vorläufig */}
+                            Skateparks, Pumptracks und urbane Anlagen aus Beton und Stahl. <span className="text-white font-bold">Modular. Robust. Fundamentfrei.</span>
                         </p>
                     </div>
                  </div>

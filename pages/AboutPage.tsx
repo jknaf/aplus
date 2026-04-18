@@ -92,20 +92,47 @@ const AboutPage: React.FC = () => {
                 <span className="text-brand-orange">in</span>
                 <span className="text-brand-orange">Bestform</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto animate-fade-in-up [animation-delay:400ms]">
+            <p className="text-xl md:text-2xl text-white/95 font-light max-w-2xl mx-auto animate-fade-in-up [animation-delay:400ms]">
                 Skatepark-Hersteller und Planungsbüro aus Stuttgart — wir verwandeln graue Flächen in lebendige Begegnungsorte.
-                <span className="text-white font-bold"> Präzise. Modular. Für die Ewigkeit.</span>
+                {/* Roland §2.1: 30-Jahre-Jubiläums-Claim noch klären */}
+                <span className="text-white font-bold"> Präzise. Modular. Vandalismussicher. Für die Ewigkeit.</span>
             </p>
         </div>
       </div>
 
       {/* 2. STATS GRID */}
       <div className="container mx-auto px-4 mb-32">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-              <StatCounter end={250} suffix="+" label="Realisierte Projekte" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8">
+              <StatCounter end={432} suffix="+" label="Realisierte Anlagen" />
               <StatCounter end={30} label="Jahre Erfahrung" />
               <StatCounter end={100} suffix="%" label="Made in Europe" />
               <StatCounter end={45} label="Betonklasse C35/45" />
+          </div>
+          {/* Legende zu den realisierten Anlagen (Stand Ende 2024) */}
+          <div className="max-w-4xl mx-auto text-center">
+              <p className="text-xs font-mono uppercase tracking-widest text-brand-muted mb-4">Verteilung der 432 realisierten Anlagen (Stand Ende 2024)</p>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 text-sm">
+                  <div className="bg-brand-surface/40 border border-brand-dark/5 rounded-lg p-3">
+                      <div className="font-mono text-brand-orange text-lg font-bold">~348</div>
+                      <div className="text-xs text-brand-muted">Skate-Anlagen <span className="block text-[10px] opacity-70">(312 ohne Nachbestellungen)</span></div>
+                  </div>
+                  <div className="bg-brand-surface/40 border border-brand-dark/5 rounded-lg p-3">
+                      <div className="font-mono text-brand-orange text-lg font-bold">~45</div>
+                      <div className="text-xs text-brand-muted">Umkleidekabinen</div>
+                  </div>
+                  <div className="bg-brand-surface/40 border border-brand-dark/5 rounded-lg p-3">
+                      <div className="font-mono text-brand-orange text-lg font-bold">~23</div>
+                      <div className="text-xs text-brand-muted">Grillstellen</div>
+                  </div>
+                  <div className="bg-brand-surface/40 border border-brand-dark/5 rounded-lg p-3">
+                      <div className="font-mono text-brand-orange text-lg font-bold">~15</div>
+                      <div className="text-xs text-brand-muted">Hockey-Felder</div>
+                  </div>
+                  <div className="bg-brand-surface/40 border border-brand-dark/5 rounded-lg p-3">
+                      <div className="font-mono text-brand-orange text-lg font-bold">1</div>
+                      <div className="text-xs text-brand-muted">Pump-Track</div>
+                  </div>
+              </div>
           </div>
       </div>
 
@@ -125,7 +152,7 @@ const AboutPage: React.FC = () => {
                   </h2>
                   <div className="space-y-6">
                       <p className="text-lg text-brand-muted leading-relaxed border-l-2 border-brand-orange pl-6">
-                          Einfacher Aufbau ohne Fundamente. Witterungsbeständige Materialien. Modulare Elemente mit unendlich vielen Kombinationsmöglichkeiten. Leichtes Versetzen und Umbauen bestehender Anlagen.
+                          Nachhaltig, langlebig, wartungsarm, witterungsbeständig, wiederverwendbar, recycelbar und vandalismussicher. Modulare Elemente mit unendlich vielen Kombinationsmöglichkeiten, leichtes Versetzen und Umbauen bestehender Anlagen.
                       </p>
                       <p className="text-lg text-brand-muted leading-relaxed">
                           Wir fertigen im Werk unter kontrollierten Bedingungen und montieren vor Ort in Rekordzeit. Unsere TÜV-zertifizierten Module sind recycelbar, vandalismussicher und können umgebaut, erweitert, versetzt oder wiederverwendet werden.
@@ -200,26 +227,27 @@ const AboutPage: React.FC = () => {
                   </h2>
               </div>
               
+              {/* Roland §2.6: Ob der 4-Schritt-Prozess für alle Produkte gilt oder nur Skate noch klären */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                   <PrincipleCard
                       number="01"
                       title="Planung"
-                      desc="Individuelle 3D-Planung mit Draufsicht und Kostenübersicht. Wir integrieren unsere Anlagen nahtlos in Ihre Umgebung."
+                      desc="Individuelle 3D-Planung, bauliche Anpassung und Absteckung — inkl. ansatzfreiem Fundamentschutz und Abtrag Bewehrung (nur für Skate-Anlagen). Wir integrieren die Anlagen nahtlos in Ihre Umgebung."
                   />
                   <PrincipleCard
                       number="02"
                       title="Fertigung"
-                      desc="C35/45 Stahlbeton aus kontrollierter Werksumgebung. Hohe Qualitätskontrolle bei Betonstärken, Bewehrung und Fugen — wetterunabhängig."
+                      desc="C35/45 Stahlbeton aus kontrollierter Werksumgebung. Hohe Qualitätskontrolle bei Betonstärken, Bewehrung und Fugen — wetterunabhängig. TÜV-Überprüfung der Fertigungsstätte (nur für Skate-Elemente)."
                   />
                   <PrincipleCard
                       number="03"
                       title="Transport"
-                      desc="Module mit Gabelstapler oder Autokran abladen. Hohlkörperbauweise reduziert das Gewicht für einfache Logistik."
+                      desc="Module mit Gabelstapler oder Autokran abladen. Hohlkörperbauweise reduziert das Gewicht für einfache Logistik. Transport-Absicherung (nur für Skate-Anlagen)."
                   />
                   <PrincipleCard
                       number="04"
                       title="Montage"
-                      desc="Aufstellen auf verdichtetes Schotterbett — kein Tiefbau. Komplette Parks in wenigen Tagen. TÜV-zertifiziert, recycelbar, versetzbar."
+                      desc="Aufstellen in wenigen Tagen. Keine Bodenbefestigung für Skate-Elemente erforderlich. TÜV-zertifiziert für Skate-Elemente. Recycelbar und versetzbar."
                   />
               </div>
           </div>
@@ -234,7 +262,7 @@ const AboutPage: React.FC = () => {
                     <div className="text-center md:text-left">
                         <div className="inline-block px-3 py-1 bg-brand-surface text-xs font-mono text-brand-dark mb-6 rounded uppercase tracking-widest">Gründer & Architekt</div>
                         <h3 className="text-4xl font-extrabold font-heading text-brand-dark uppercase mb-2 tracking-tight">Dipl.-Ing. Cüneyit Akcakoca</h3>
-                        <p className="text-brand-orange font-bold mb-6 text-lg">Freier Architekt</p>
+                        <p className="text-brand-orange font-bold mb-6 text-lg">Architekt · A+ Urban Design</p>
                         <p className="text-brand-muted leading-relaxed text-lg max-w-lg">
                             "Architektur endet nicht an der Gebäudekante. Der Raum dazwischen – dort, wo das Leben stattfindet – verdient dieselbe Qualität und Aufmerksamkeit."
                         </p>

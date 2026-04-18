@@ -16,7 +16,8 @@ import ProductChangingCabinePage from './pages/ProductChangingCabinePage';
 import ProductHockeyRinkPage from './pages/ProductHockeyRinkPage';
 import ProductPumptrackPage from './pages/ProductPumptrackPage';
 import ProductSkateAnlagenPage from './pages/ProductSkateAnlagenPage';
-import ProductBmxPage from './pages/ProductBmxPage';
+import ProductSkateBowlsPage from './pages/ProductSkateBowlsPage';
+import ProductSkatePipesPage from './pages/ProductSkatePipesPage';
 import ProductPavilionPage from './pages/ProductPavilionPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ImpressumPage from './pages/ImpressumPage';
@@ -77,8 +78,9 @@ const App: React.FC = () => {
             {/* Product Pages */}
             <Route path="/produkte" element={<ProductOverviewPage />} />
             <Route path="/produkte/skate-anlagen" element={<ProductSkateAnlagenPage />} />
+            <Route path="/produkte/skate-bowls-beton" element={<ProductSkateBowlsPage />} />
+            <Route path="/produkte/skate-pipes-beton" element={<ProductSkatePipesPage />} />
             <Route path="/produkte/pumptrack-beton" element={<ProductPumptrackPage />} />
-            <Route path="/produkte/bmx-anlagen" element={<ProductBmxPage />} />
             <Route path="/produkte/hockey-banden" element={<ProductHockeyRinkPage />} />
             <Route path="/produkte/grillstelle-beton" element={<ProductGrillPage />} />
             <Route path="/produkte/umkleidekabine-beton" element={<ProductChangingCabinePage />} />

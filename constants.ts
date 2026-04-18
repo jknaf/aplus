@@ -7,8 +7,9 @@ export const NAV_LINKS = [
     href: '/produkte',
     subLinks: [
       { name: 'Skate-Anlagen', href: '/produkte/skate-anlagen' },
+      { name: 'Skate-Bowls', href: '/produkte/skate-bowls-beton' },
+      { name: 'Skate-Pipes', href: '/produkte/skate-pipes-beton' },
       { name: 'Pumptrack Beton', href: '/produkte/pumptrack-beton' },
-      { name: 'BMX-Anlagen', href: '/produkte/bmx-anlagen' },
       { name: 'Grillstelle Beton', href: '/produkte/grillstelle-beton' },
       { name: 'Umkleidekabine', href: '/produkte/umkleidekabine-beton' },
       { name: 'Überdachung / Pavillon', href: '/produkte/ueberdachung-beton' },
@@ -263,9 +264,27 @@ export const PRODUCTS: Product[] = [
     title: 'Beton Skate-Anlagen',
     imageUrl: '/images/homepage/hero-anlage-01.jpg',
     path: '/produkte/skate-anlagen',
-    altText: 'Beton-Skatepark mit Bowl und Street-Bereich — modulare Skateanlage vom Hersteller A+ Urban Design.',
+    altText: 'Beton-Skate-Anlage mit Bowls und Pipes — modulare Skate-Elemente vom Hersteller A+ Urban Design.',
     tuvCertified: true,
-    usp: 'Das A+ Original: TÜV-zertifizierte Skaterampen, Bowls und Halfpipes — modular, schalldämpfend und fundamentfrei.'
+    usp: 'Das A+ Original: TÜV-zertifizierte Skate-Anlagen mit Bowls und Pipes — modular, skalierbar und schalldämpfend.'
+  },
+  {
+    id: 'skate-bowls',
+    title: 'Modulare Skate-Bowls',
+    imageUrl: '/images/skate-bowls/skate-bowl-01.jpg',
+    path: '/produkte/skate-bowls-beton',
+    altText: 'Modulare Skate-Bowls aus Beton-Fertigteilen — geschlossen und offen, TÜV-zertifiziert.',
+    tuvCertified: true,
+    usp: 'Bowl-Tiefen 98 und 150 cm — als geschlossener Standard-Bowl im Erdreich oder offener Bowl direkt auf der Fläche.'
+  },
+  {
+    id: 'skate-pipes',
+    title: 'Beton Skate-Pipes',
+    imageUrl: '/images/skate-pipes/skate-pipe-01.jpg',
+    path: '/produkte/skate-pipes-beton',
+    altText: 'Beton Skate-Pipes — Mini-Pipe, Standard-Pipe und Super-Pipe vom Hersteller A+ Urban Design.',
+    tuvCertified: true,
+    usp: 'Halfpipe und Mini-Pipe in fünf Höhen (135–255 cm) — Standardaufstellung oder Combi-Pipe mit Banks, Spines und Coping-Ramps.'
   },
   {
     id: 'pumptrack',
@@ -274,16 +293,7 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/pumptrack-beton',
     altText: 'Beton-Pumptrack aus modularen Fertigteilen — realisiert vom Pumptrack-Hersteller A+ Urban Design.',
     tuvCertified: true,
-    usp: 'Endloser Flow für alle Rollsportarten — wartungsfrei, vandalismussicher und modular erweiterbar.'
-  },
-  {
-    id: 'bmx-anlagen',
-    title: 'BMX-Anlagen',
-    imageUrl: '/images/skate-pipes/skate-pipe-01.jpg',
-    path: '/produkte/bmx-anlagen',
-    altText: 'Beton-Halfpipe für BMX-Park und Skateanlage — TÜV-zertifiziert.',
-    tuvCertified: true,
-    usp: 'BMX-Anlagen und Halfpipes aus Hochleistungsbeton — robust genug für Pegs, Scooter und harte Landungen.'
+    usp: 'Der flowige Rundkurs für Bikes, Scooter, Inliner und Skateboards — mit Arretierungsstäben und Kantenschutzprofil montagefertig.'
   },
   {
     id: 'ueberdachung',
@@ -291,15 +301,15 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg',
     path: '/produkte/ueberdachung-beton',
     altText: 'Minimalistische Betonüberdachung im urbanen Raum.',
-    usp: 'Massiver, architektonischer Wetterschutz in zeitloser Sichtbeton-Ästhetik.'
+    usp: 'Massiver Wetterschutz aus Sichtbeton — fundamentfrei, modular und zeitlos.'
   },
   {
     id: 'grillstelle',
     title: 'Öffentliche Grillstelle',
     imageUrl: '/images/grill/grillstelle-background.jpg',
     path: '/produkte/grillstelle-beton',
-    altText: 'Runder Beton-Grillplatz im Park mit Edelstahl-Rost.',
-    usp: 'Der vandalismussichere Begegnungsort mit diebstahlgeschütztem Edelstahlrost.'
+    altText: 'Runder Beton-Grillplatz im Park mit Edelstahl-Rost — Platz für 12–16 Personen.',
+    usp: 'Fundamentfrei und höhenverstellbar — Platz für 12–16 Personen an vandalismussicherem Edelstahl-Rost.'
   },
   {
     id: 'umkleide',
@@ -307,16 +317,15 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/umkleide/umkleide-panorama.jpg',
     path: '/produkte/umkleidekabine-beton',
     altText: 'Schnecken-Umkleidekabine aus Beton im Freibad.',
-    usp: 'Die „Schnecke”: Hygienisch, türlos und vandalismushemmend konstruiert.'
+    usp: 'Die Schnecke: fundamentfrei mit fugenloser Bodenplatte — türlos, vandalismushemmend und hygienisch.'
   },
   {
     id: 'hockey',
     title: 'Hockey-Banden',
     imageUrl: '/images/hockey/roll-hockey-bande.jpg',
     path: '/produkte/hockey-banden',
-    altText: 'Outdoor Hockey-Spielfeld mit robusten Banden.',
-    tuvCertified: true,
-    usp: 'Fundamentfreies Bandensystem für den ganzjährigen Profi-Einsatz.'
+    altText: 'Outdoor Hockey-Spielfeld mit robusten Beton-Banden für Inline- und Rollhockey.',
+    usp: 'Modular erweiterbar in 1,5 m-Schritten — ohne Bandenaufbau, ohne Bodenbefestigung.'
   },
 ];
 

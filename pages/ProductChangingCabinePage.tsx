@@ -163,10 +163,10 @@ const ProductChangingCabinePage: React.FC = () => {
                 <div className="mb-8">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Einsatzbereich</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
-                        Im <span className="text-brand-orange">Kontext.</span>
+                        Freibad & <span className="text-brand-orange">Baggersee.</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                        Freibäder, Seen und Sportanlagen — überall dort, wo Türen zum Problem werden. Das Panoramabild zeigt die typische Aufstellsituation: mehrere Kabinen nebeneinander auf einem verdichteten Schotterbett, ohne Fundament, ohne Vorarbeiten.
+                        Umkleidekabine für Freibad und Baggersee — als freistehende Kabine für den Außenbereich konzipiert. Die Bodenplatte wird auf verdichtetes Schotterbett aufgestellt; keine Pflasterarbeiten oder Fundamentarbeiten notwendig.
                     </p>
                 </div>
                 <div className="relative w-full aspect-[21/9] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">

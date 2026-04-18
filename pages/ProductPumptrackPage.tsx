@@ -132,11 +132,17 @@ const ProductPumptrackPage: React.FC = () => {
                             Endloser <span className="text-brand-orange">Flow.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Als Pumptrack-Hersteller wissen wir: Ein Pumptrack ist mehr als nur eine Strecke – er ist ein biomechanischer Spielplatz. Die ca. 1,25 m breite Fahrbahn wird durch Gewichtsverlagerung ("Pumpen") befahren, ganz ohne in die Pedale zu treten.
+                            Als Pumptrack-Hersteller wissen wir: Ein Pumptrack ist mehr als nur eine Strecke – er ist ein biomechanischer Spielplatz. Die ca. 1,25 m breite Fahrbahn wird ohne Treten, nur durch Gewichtsverlagerung („Pumpen"), befahren.
                         </p>
-                        <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Im Gegensatz zu Asphalt oder Erde bieten unsere Beton-Pumptrack-Elemente eine dauerhaft perfekte Geometrie. Drei Aufbauvarianten möglich: direkt auf befestigter Fläche, auf separater Beton-/Asphaltpiste, oder auf Fundamentplatten mit anbetonierter Strecke. Kommunen und Gemeinden können unsere Pumptrack-Module kaufen und selbst aufbauen — auch Fördermittel aus der Sportstättenförderung sind nutzbar.
+                        <p className="text-lg text-brand-muted leading-relaxed mb-6">
+                            Im Gegensatz zu Asphaltpisten bieten unsere Beton-Pumptrack-Elemente eine dauerhaft perfekte Geometrie. Drei Aufbauvarianten möglich: direkt auf befestigter Fläche, auf separater Beton-/Asphaltpiste, oder auf Fundamentplatten mit anbetonierter Strecke.
                         </p>
+                        <div className="bg-brand-orange/10 border border-brand-orange/30 rounded-xl p-5 mb-12">
+                            <p className="text-brand-dark font-bold uppercase text-sm tracking-widest mb-2">Selbst-Aufbau möglich</p>
+                            <p className="text-sm text-brand-muted leading-relaxed">
+                                Kommunen, Gemeinden und Vereine können unsere Pumptrack-Module kaufen und selbst aufbauen — das reduziert die Kosten erheblich. Auch Fördermittel aus der Sportstättenförderung sind nutzbar.
+                            </p>
+                        </div>
                         
                         <div className="flex flex-col gap-4">
                             <Link 
@@ -158,12 +164,15 @@ const ProductPumptrackPage: React.FC = () => {
                     
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Track Features</h3>
-                        <div className="grid grid-cols-2 gap-4 text-sm text-brand-muted font-mono uppercase">
+                        <div className="grid grid-cols-2 gap-4 text-sm text-brand-muted font-mono uppercase mb-4">
                              <div className="flex items-center gap-2"><div className="w-2 h-2 bg-brand-orange"></div>Rollers (Wellen)</div>
                              <div className="flex items-center gap-2"><div className="w-2 h-2 bg-brand-orange"></div>Steilkurven</div>
                              <div className="flex items-center gap-2"><div className="w-2 h-2 bg-brand-orange"></div>Doubles</div>
                              <div className="flex items-center gap-2"><div className="w-2 h-2 bg-brand-orange"></div>Tabletops</div>
                         </div>
+                        <p className="text-xs font-mono uppercase tracking-widest text-brand-orange border-t border-brand-orange/20 pt-3">
+                            TÜV zertifiziert mit GS-Zeichen
+                        </p>
                     </div>
 
                     <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">

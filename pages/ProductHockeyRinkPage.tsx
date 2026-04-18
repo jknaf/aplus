@@ -115,10 +115,13 @@ const ProductHockeyRinkPage: React.FC = () => {
                             Game On. <span className="text-brand-orange">All Year.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Ein Feld, alle Möglichkeiten. Unser modulares Bandensystem verwandelt jeden Platz in eine Arena für Inline-Hockey, Rollhockey und im Winter sogar für Eishockey — durch ein Abdichtungsprofil unter der Einfassung.
+                            Ein Feld, alle Möglichkeiten. Unser modulares Bandensystem verwandelt jeden Platz in eine Arena für Inline-/Rollhockey und im Winter sogar für Eishockey — durch ein Abdichtungsprofil unter der Einfassung.
+                        </p>
+                        <p className="text-lg text-brand-muted leading-relaxed mb-4">
+                            Zwei Varianten: 40 cm hohe Beton-Einfassungen mit Gummikappen als Spielfeldgrenze oder 110 cm hohe Profil-Banden mit Edelstahl-Handlauf für Rollhockey oder Eishockey. Beide Varianten können modular in 1,5-m-Schritten erweitert oder verkleinert werden.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Zwei Varianten: 40 cm hohe Beton-Einfassungen mit Gummikappen als Spielfeldbegrenzung oder 110 cm hohe Banden mit Edelstahl-Handlauf für den Profi-Einsatz. Die fundamentfreie Konstruktion erlaubt eine Installation auf bestehenden Hartplätzen ohne Beschädigung des Bodens. Die am stärksten beanspruchte Fläche besteht aus massivem Beton.
+                            <strong className="text-brand-dark">Die Konstruktionsweise benötigt keine Bodenbefestigung.</strong> Die fundamentfreie Installation erfolgt auf bestehenden Hartplätzen ohne Beschädigung des Bodens. Die am stärksten beanspruchte Fläche besteht aus massivem Beton.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -173,19 +176,21 @@ const ProductHockeyRinkPage: React.FC = () => {
                         Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen — bodeneben, stapelbar und vandalismusresistent. Die 110-cm-Bande mit Edelstahl-Handlauf schafft eine vollständige Arena für intensiven Spielbetrieb. Beide Varianten sind untereinander kombinierbar und auf jedem Untergrund fundamentfrei aufstellbar.
                     </p>
                 </div>
+                {/* Roland §8.7: Klarstellung Profil-Bande vs. Einfassung als getrennte Systeme noch final abstimmen */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-8">
                         <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">40 cm</div>
-                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">Einfassung</h3>
+                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">Einfassung für Inline-Hockey</h3>
+                        <p className="text-sm text-brand-muted mb-3">Auch als Spielfeldgrenze auf Hartplätzen einsetzbar.</p>
                         <ul className="space-y-2 text-sm text-brand-muted">
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Gummikappen als Aufprallschutz</li>
-                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Spielfeldbegrenzung auf Hartplatz</li>
+                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Modular erweiterbar in 1,5-m-Schritten</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Stapelbar für saisonale Nutzung</li>
                         </ul>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-orange/30 rounded-xl p-8">
                         <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">110 cm</div>
-                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">Profi-Bande</h3>
+                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">Profil-Bande für Rollhockey oder Eishockey</h3>
                         <ul className="space-y-2 text-sm text-brand-muted">
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Edelstahl-Handlauf integriert</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Eishockey-Abdichtungsprofil optional</li>

@@ -166,20 +166,22 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Seit den <span className="text-brand-orange">90ern.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            Als Skatepark-Hersteller entwickeln wir seit den 90er Jahren modulare Skateelemente aus Beton. 1999 wurden sie als eine der ersten Beton-Skateelemente in Europa TÜV-zertifiziert.
+                            Als Skate-Elemente-Hersteller entwickeln wir seit 1998 (die Ersten in Deutschland) modulare Skate-Elemente aus Beton. Sie wurden als eine der ersten Beton-Skateelemente in Europa TÜV-zertifiziert.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. 2002 folgte der erste Bowl auf Gran Canaria.
+                            {/* Roland §5.4: Gran Canaria Jahreszahl 2001 oder 2002 noch klären */}
+                            {/* Roland §5.5: Combi-Rey als historischer Akteur noch verifizieren */}
+                            Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. Bald darauf folgte der erste Bowl auf Gran Canaria.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
-                            Heute sind unsere Skaterampen, Bowls und Halfpipes europaweit im Einsatz — von Norwegen bis zu den Kanarischen Inseln, in Höhenlagen von 0 bis über 1.000 m ü. NN.
+                            Heute sind unsere Skate-Anlagen mit Bowls und Pipes europaweit im Einsatz — von Norwegen bis zu den Kanarischen Inseln, in Höhenlagen von 0 bis über 1.000 m ü. NN, auf Flächen von 100 bis zu 1.000 m².
                         </p>
 
                         <div className="flex flex-col gap-4">
                             <Link to="/kontakt" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 3D-Planung anfragen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
-                            <span className="text-xs text-brand-muted font-mono text-center">Inklusive Kostenschätzung & Layout</span>
+                            <span className="text-xs text-brand-muted font-mono text-center">Inklusive Kostenschätzung — oder selbst aufbauen möglich</span>
                         </div>
                     </div>
                 </div>
@@ -215,9 +217,12 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         <p className="text-brand-muted leading-relaxed mb-6">
                             Die Elemente geschlossener Bowls werden auf gesonderte Fundamente gestellt und anbetoniert. Mindestens ein Gully (besser zwei als Sicherheit) muss eingeplant werden.
                         </p>
-                        <p className="text-brand-muted leading-relaxed">
+                        <p className="text-brand-muted leading-relaxed mb-6">
                             Als Kunde haben Sie eine bessere Qualitätskontrolle als bei Ortbeton (Betonstärken, Bewehrung, Fugen), sind schneller in der Ausführung, nahezu wetterunabhängig — und meistens günstiger.
                         </p>
+                        <Link to="/produkte/skate-bowls-beton" className="inline-flex items-center gap-2 text-brand-orange font-mono text-sm uppercase tracking-wider hover:underline">
+                            Zur Bowls-Produktseite <span className="material-symbols-outlined text-base">arrow_forward</span>
+                        </Link>
                     </div>
                 </div>
 
@@ -245,13 +250,14 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 <div className="grid lg:grid-cols-5 gap-8 mb-8">
                     <div className="lg:col-span-2">
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Unsere Skatemodule sind aus bewehrtem Beton hergestellt. Elemente von 35 cm bis 150 cm Höhe sind in <strong className="text-brand-dark">Hohlkörperbauweise</strong> ausgeführt, um das Gewicht zu verringern. Module bis 150 cm sind mit Aussparungen für Gabelstapler zum Abladen und Montieren ausgestattet.
+                            {/* Roland §5.11: "Modulkörperbausatz" korrekte Produktbezeichnung noch klären */}
+                            Unsere Skate-Module sind aus bewehrtem Beton hergestellt. Elemente von 35 cm bis 150 cm Höhe sind in <strong className="text-brand-dark">Hohlkörperbauweise</strong> ausgeführt, um das Gewicht zu verringern. Module bis 150 cm sind mit Aussparungen für Gabelstapler zum Abladen und Montieren ausgestattet.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-6">
-                            <strong className="text-brand-dark">Höhenraster:</strong> 45 – 60 – 75 – 98 – 125 – 149 cm (Raster 125 cm, Wandstärke 8–16 cm). Pipes in 150, 185, 240 und 320 cm Höhe.
+                            <strong className="text-brand-dark">Höhenraster:</strong> 35, 45, 55, 70, 100, 110, 135 und 145 cm (Wandstärke 8–16 cm). Auch Flat zur oberen Plattform lieferbar. Pipes in den Höhen 135, 165, 200, 240 und 255 cm — siehe eigene <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">Pipes-Produktseite</Link>.
                         </p>
                         <p className="text-brand-muted leading-relaxed">
-                            Die Module sind UV- und witterungsbeständig. Durch die konische Ausführung und die eingebauten Kantenschutzprofile können die Elemente mit offenen Fugen aufgestellt werden. Bei Bedarf können Fugen mit unserem speziellen Verfahren elastisch und schleifbar geschlossen werden.
+                            Die Module sind UV- und witterungsbeständig und auch auf leichte Unebenheiten montierbar. Durch die konische Ausführung und die eingebauten Kantenschutzprofile können die Elemente mit offenen Fugen aufgestellt werden. Bei Bedarf können Fugen mit unserem speziellen Verfahren elastisch und schleifbar geschlossen werden.
                         </p>
                     </div>
                     <div className="lg:col-span-3 grid grid-cols-2 gap-4">
@@ -286,11 +292,11 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     </div>
 
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <img src="/images/details/copingrohr-02.jpg" alt="Copingrohr mit Alu-Kappe" loading="lazy" className="w-full aspect-[16/10] object-cover" />
+                        <img src="/images/details/copingrohr-02.jpg" alt="Edelstahl-Copingrohr mit Alu-Kappe" loading="lazy" className="w-full aspect-[16/10] object-cover" />
                         <div className="p-6">
-                            <h3 className="text-lg font-bold font-heading text-brand-dark uppercase mb-2">Copingrohr</h3>
+                            <h3 className="text-lg font-bold font-heading text-brand-dark uppercase mb-2">Edelstahl-Copingrohr</h3>
                             <p className="text-sm text-brand-muted leading-relaxed">
-                                Durchgehende verzinkte Copingrohre, vollständig in Kleber-/Mörtelbett eingebettet und mit Stahlzapfen im Beton befestigt. Enden mit gedrehten Alu-Kappen verschlossen — gleiten besser und dellen nicht ein.
+                                Durchlaufendes Edelstahl-Copingrohr, vollständig in Kleber-/Mörtelbett eingebettet und mit Stahlzapfen im Beton befestigt — passt auch an Transitionen an. Enden mit gedrehten Alu-Kappen verschlossen, gleiten besser und dellen nicht ein. Edelstahl-Übergangsblech garantiert den Detail-Übergang zur Nachbarfläche.
                             </p>
                         </div>
                     </div>

@@ -142,8 +142,8 @@ const PlanningPage: React.FC = () => {
                         Planung<br/>
                         <span className="text-brand-orange">Inklusive.</span>
                     </h1>
-                    <p className="text-xl text-gray-300 max-w-2xl border-l-4 border-brand-orange pl-6 leading-relaxed">
-                        Sie möchten einen Skatepark planen und bauen lassen? Bei uns kaufen Sie kein Produkt von der Stange. Sie erhalten eine individuelle Architektenleistung, maßgeschneidert auf Ihren Standort und Ihre Bedürfnisse.
+                    <p className="text-xl text-white/90 max-w-2xl border-l-4 border-brand-orange pl-6 leading-relaxed">
+                        Mehr als nur Beton — individuelle Planung von Skate-Anlagen, Skate-Bowls und Pump-Tracks mit unseren Produkten. Bei uns kaufen Sie kein Produkt von der Stange, sondern eine Architektenleistung maßgeschneidert auf Ihren Standort.
                     </p>
                 </div>
             </div>
@@ -161,7 +161,7 @@ const PlanningPage: React.FC = () => {
                     </h2>
                     <div className="space-y-6 text-lg text-brand-muted leading-relaxed">
                         <p>
-                            Bei A+ Urban Design ist die Planung kein externer Posten, sondern der Kern unserer Arbeit. Gründer <strong className="text-brand-dark">Dipl.-Ing. Cüneyit Akcakoca</strong> ist freier Architekt. Das bedeutet für Sie:
+                            Bei A+ Urban Design ist die Planung kein externer Posten, sondern der Kern unserer Arbeit. Gründer <strong className="text-brand-dark">Dipl.-Ing. Cüneyit Akcakoca</strong> ist Architekt bei A+ Urban Design. <strong className="text-brand-dark">Die Produkte sind vom Architekten entwickelt und auch die Anlagen werden vom erfahrenen Architekten entworfen.</strong> Das bedeutet für Sie:
                         </p>
                         <ul className="space-y-4">
                             <li className="flex items-start gap-4">
@@ -247,9 +247,10 @@ const PlanningPage: React.FC = () => {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-                    <ProcessStep number="01" title="Analyse & Skizze" desc="Wir prüfen Ihren Standort (digital oder vor Ort) und erstellen erste Layout-Ideen basierend auf Budget und Zielgruppe." />
+                    <ProcessStep number="01" title="Analyse & Skizze" desc="Wir prüfen Ihren Standort (digital oder vor Ort) und erstellen erste Layout-Ideen basierend auf Budget und Zielgruppe. Bitte nehmen Sie vor Beginn der Planung Kontakt mit uns auf — nur so können wir Sie zielgerichtet beraten." />
+                    {/* Roland §4.5: Wortlaut für 3D-Phase präzisieren (Skizze + 3D + Geländer) noch klären */}
                     <ProcessStep number="02" title="3D Visualisierung" desc="Sie erhalten eine Draufsicht und 3D-Zeichnung der vorgeschlagenen Anlage sowie ein Angebot mit den Kosten der eingeplanten Elemente." />
-                    <ProcessStep number="03" title="Ausführung" desc="Nach Freigabe erstellen wir die exakten Werkpläne. Die Module werden im Werk gefertigt und just-in-time geliefert." />
+                    <ProcessStep number="03" title="Ausführung" desc="Nach Freigabe erstellen wir die exakten Werkpläne. Die Module werden im Werk gefertigt — nicht gleich geliefert, sondern zu einem geplanten Liefertermin. Sie erhalten den geplanten Termin rechtzeitig von uns." />
                 </div>
             </div>
         </div>
@@ -261,17 +262,19 @@ const PlanningPage: React.FC = () => {
                 {/* Left: Text */}
                 <div>
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Bau & Umsetzung</span>
-                    <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
+                    <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-4">
                         Schneller. Einfacher. <span className="text-brand-orange">Witterungs-unabhängig.</span>
                     </h2>
+                    <p className="text-sm font-mono text-brand-muted uppercase tracking-widest mb-8">Mit regelmäßiger TÜV-Überprüfung der Fertigungsstätte</p>
                     <div className="space-y-6 text-lg text-brand-muted leading-relaxed">
                         <p>
                             Der Bau eines Skateparks mit modularen Beton-Fertigteilen ist <strong className="text-brand-dark">schneller, einfacher und witterungsunabhängiger</strong> als eine vor Ort gegossene Ortbeton-Konstruktion. Unsere TÜV-zertifizierten Module werden im Werk unter kontrollierten Bedingungen produziert — mit konstanter Qualität und ohne Wetterrisiko.
                         </p>
                         <p>
-                            Für die Aufstellung wird lediglich ein <strong className="text-brand-dark">fester Unterbau</strong> benötigt. Die Elemente lassen sich auf bestehende betonierte oder asphaltierte Flächen montieren — wahlweise mit Übergangsblechen oder auf Fundamentplatten zum Anbetonieren.
+                            Für die Aufstellung wird lediglich ein <strong className="text-brand-dark">fester Unterbau</strong> benötigt. Die Elemente lassen sich auf bestehende Setzbeton- oder Asphaltflächen montieren — oder auf Fundamentplatten oder Schotterbett.
                         </p>
                         <p>
+                            {/* Roland §4.10: "Verfügungssystem" vs. "Verfugungssystem" oder "Montagesystem" noch klären */}
                             Unser eigens entwickeltes <strong className="text-brand-dark">Verfugungssystem</strong> ist UV- und witterungsbeständig, dauerhaft elastisch und gleichzeitig schleifbar und befahrbar. Damit lassen sich auch große Parcours nahtlos verbinden.
                         </p>
                     </div>
@@ -287,7 +290,21 @@ const PlanningPage: React.FC = () => {
                             <div>
                                 <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 1 — Bestandsfläche</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
-                                    Aufstellung auf einer bestehenden, befestigten Fläche (Beton oder Asphalt). Die Module werden mit Übergangsblechen verbunden — schnellster Aufbau ohne Erdarbeiten.
+                                    Aufstellung auf einer bestehenden, befestigten Fläche (Beton oder Asphalt). Die Module werden mit Übergangsblechen verbunden oder auf eine neue, dauerhafte Fläche sinkbetoniert — schnellster Aufbau ohne Erdarbeiten.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white border border-brand-dark/10 rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:border-brand-orange/40 transition-colors">
+                        <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 bg-brand-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span className="material-symbols-outlined text-brand-orange">swap_horiz</span>
+                            </div>
+                            <div>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 2 — Auf-, Ab- und Umbau</h3>
+                                <p className="text-sm text-brand-muted leading-relaxed">
+                                    Der modulare Vorteil: Bestehende Anlagen lassen sich erweitern, einzelne Module versetzen oder die gesamte Anlage an einen neuen Standort umbauen. Keine Fundamente werden beschädigt.
                                 </p>
                             </div>
                         </div>
@@ -299,9 +316,10 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange">foundation</span>
                             </div>
                             <div>
-                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 2 — Neue Fundamentplatte</h3>
+                                {/* Roland §4.13: präziser Wortlaut "sehr liegende Fundamentplatte / einrahmendes Fugensystem" noch klären */}
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 3 — Neue Fundamentplatte</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
-                                    Bei Neuanlagen wird eine Fundamentplatte gegossen. Die Module werden direkt auf die Platte aufgestellt und anbetoniert — fugenloser Übergang zum Untergrund.
+                                    Bei Neuanlagen wird eine Fundamentplatte gegossen. Die Module werden direkt auf die Platte aufgestellt und anbetoniert — fugenloser Übergang zum Untergrund, kein Übergangsblech erforderlich.
                                 </p>
                             </div>
                         </div>
@@ -313,13 +331,17 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange">tune</span>
                             </div>
                             <div>
-                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 3 — Schotterbett</h3>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 4 — Schotterbett</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
-                                    Elemente ab 35 cm Höhe haben Arretierungsfüße zur Höheneinstellung. Damit ist eine Aufstellung auf verdichtetem Schotterbett ohne Mörtelbett möglich.
+                                    Start-Rampen und Pipes auf verdichtetem Schotterbett außerhalb der Fläche — auch für Grill-Plätze und Umkleidekabinen. Gehwegplatten unter den Arretierungsfüßen. So aufgebaut, dass einfacher Abbau jederzeit möglich ist.
                                 </p>
                             </div>
                         </div>
                     </div>
+
+                    <p className="text-xs text-brand-muted italic pt-3 border-t border-brand-dark/5">
+                        Hinweis: Um Skateelemente besser in die Umgebung zu integrieren und zusätzliche Geländer zu vermeiden, können die Skateelemente angebohrt werden.
+                    </p>
                 </div>
             </div>
         </div>

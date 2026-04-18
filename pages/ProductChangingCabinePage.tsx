@@ -114,11 +114,11 @@ const ProductChangingCabinePage: React.FC = () => {
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
                             Privatsphäre <span className="text-brand-orange">ohne Türen.</span>
                         </h2>
-                        <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung: "Die Schnecke" — kein Kabinenkontakt beim Betreten und Verlassen. Oben und unten offener Freiraum zur Einsicht, nicht verschließbar, missbrauchshemmend.
+                        <p className="text-xl text-brand-muted leading-relaxed mb-6">
+                            In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung: „Die Schnecke" — kein Kabinenkontakt beim Betreten und Verlassen. Oben und unten offener Freiraum zur Einsicht, nicht verschließbar, missbrauchshemmend. Die fugenlose Oberfläche ist leicht zu reinigen.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Die Kabine besteht aus nur zwei Teilen ohne Verschraubungen — einfach aufstellen, abbauen oder versetzen. Die fugenlose Bodenplatte dient zugleich als Fundamentplatte auf verdichtetem Schotterbett. Aus bewehrtem Beton und Edelstahl gefertigt — extrem widerstandsfähig gegen Vandalismus.
+                            Die Kabine ist einfach aufgestellt, umsetzbar oder versetzbar — die hygienische Bodenplatte dient zugleich als Fundamentschutz auf verdichtetem Schotterbett. Aus bewehrtem Beton auf Edelstahl gefertigt: witterungsbeständig und extrem widerstandsfähig gegen Vandalismus. Schotterbett-Aufbau, ganz ohne Bodenbefestigung.
                         </p>
                         
                         <div className="flex flex-col gap-4">

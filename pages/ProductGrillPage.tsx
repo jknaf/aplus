@@ -114,10 +114,10 @@ const ProductGrillPage: React.FC = () => {
                             Feuer & <span className="text-brand-orange">Beton.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Konzipiert für Freibäder, Campingplätze, Sportanlagen und Schrebergärten. Der runde Beton-Grillplatz mit 4,20 m Durchmesser und 2,70 m Höhe schafft eine Lagerfeuer-Atmosphäre im öffentlichen Raum.
+                            Konzipiert für den öffentlichen Raum — Freibäder, Campingplätze, Sportanlagen und Schrebergärten. Der runde Beton-Grillplatz mit 4,20 m Durchmesser und 2,70 m Höhe schafft eine Lagerfeuer-Atmosphäre und bietet Platz für 12–16 Personen.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Der massive Rost aus Edelstahl ist höhenverstellbar und gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert. Die 16 cm starke Bodenplatte ist integriert — keine Pflasterarbeiten nötig. Einfach auf verdichtetes Schotterbett aufbauen.
+                            Der massive Rost aus Edelstahl ist höhenverstellbar, leicht zu reinigen und gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert. Die 16 cm starke Bodenplatte ist integriert — keine Pflasterarbeiten nötig. Einfach auf verdichtetes Schotterbett aufbauen, fundamentfrei.
                         </p>
                         
                         <div className="flex flex-col gap-4">

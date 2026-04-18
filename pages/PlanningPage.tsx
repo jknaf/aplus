@@ -104,14 +104,6 @@ const PlanningPage: React.FC = () => {
           "text": "Drei Varianten: Aufstellung auf bestehender befestigter Fläche mit Übergangsblechen, auf neuer Fundamentplatte zum Anbetonieren, oder auf verdichtetem Schotterbett mit Arretierungsfüßen."
         }
       },
-      {
-        "@type": "Question",
-        "name": "Können DWG-Dateien bereitgestellt werden?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja. Für Projekte ab 100.000 EUR brutto stellen wir DWG-Dateien für Planer und Architekten zur Verfügung. Systemschnitte für im Erdreich eingelassene Elemente sind Standard."
-        }
-      }
     ]
   };
 
@@ -182,7 +174,7 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange mt-1">verified</span>
                                 <div>
                                     <strong className="text-brand-dark block uppercase text-sm tracking-wide mb-1">DIN EN 14974 konform</strong>
-                                    Normgerechte Planung ist Standard. Für Projekte ab 100.000 EUR stellen wir DWG-Dateien zur Verfügung.
+                                    Normgerechte Planung ist Standard. Alle Skate-Elemente nach DIN EN 14974 geprüft, TÜV-zertifiziert und mit GS-Zeichen.
                                 </div>
                             </li>
                         </ul>
@@ -233,7 +225,7 @@ const PlanningPage: React.FC = () => {
             </div>
 
             <div className="bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-muted">
-                <strong className="text-brand-dark">Hinweis für Planer und Architekten:</strong> Für die im Erdreich eingelassenen Skate-Elemente stellen wir einen Systemschnitt zur Verfügung. Bei größeren Skateanlagen ab 100.000 EUR brutto können wir DWG-Dateien bereitstellen. Für bestehende Flächen werden Module mit Übergangsblechen aufgestellt — bei neuen Flächen können Module ohne Übergangsbleche zum Anbetonieren verwendet werden.
+                <strong className="text-brand-dark">Hinweis zur Montage:</strong> Für bestehende Flächen werden die Module mit Übergangsblechen aufgestellt — bei neuen Flächen können Module ohne Übergangsbleche zum Anbetonieren verwendet werden.
             </div>
         </div>
 

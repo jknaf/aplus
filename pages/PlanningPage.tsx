@@ -161,7 +161,7 @@ const PlanningPage: React.FC = () => {
                     </h2>
                     <div className="space-y-6 text-lg text-brand-muted leading-relaxed">
                         <p>
-                            Bei A+ Urban Design ist die Planung kein externer Posten, sondern der Kern unserer Arbeit. Gründer <strong className="text-brand-dark">Dipl.-Ing. Cüneyit Akcakoca</strong> ist Architekt bei A+ Urban Design. <strong className="text-brand-dark">Die Produkte sind vom Architekten entwickelt und auch die Anlagen werden vom erfahrenen Architekten entworfen.</strong> Das bedeutet für Sie:
+                            Bei A+ Urban Design ist die Planung kein externer Posten, sondern der Kern unserer Arbeit. Ihr Ansprechpartner <strong className="text-brand-dark">Dipl.-Ing. Cüneyit Akcakoca</strong> ist Architekt bei A+ Urban Design. <strong className="text-brand-dark">Die Produkte sind vom Architekten entwickelt und auch die Anlagen werden vom erfahrenen Architekten entworfen.</strong> Das bedeutet für Sie:
                         </p>
                         <ul className="space-y-4">
                             <li className="flex items-start gap-4">
@@ -214,14 +214,15 @@ const PlanningPage: React.FC = () => {
                 </p>
             </div>
 
+            {/* Roland: Bildunterschriften + Entwurf/Umsetzung-Paarung pro Bild noch klären — Dateinamen unterscheiden das nicht */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                    <img src="/images/planung/skate-anlage-planung-01.jpg" alt="Skatepark Planung Draufsicht" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">DRAUFSICHT — SKATE-ANLAGE</div>
+                    <img src="/images/planung/skate-anlage-planung-01.jpg" alt="Skatepark-Planung — Beispiel 1" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">PLANUNG 01</div>
                 </div>
                 <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                    <img src="/images/planung/skateanlage-planung-02.jpg" alt="Skatepark Planung anbetoniert" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">PLANUNG — ANBETONIERTE MODULE</div>
+                    <img src="/images/planung/skateanlage-planung-02.jpg" alt="Skatepark-Planung — Beispiel 2" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">PLANUNG 02</div>
                 </div>
                 <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                     <img src="/images/planung/skate-park-planen-03.jpg" alt="Skate-Anlage in Denkmalschutzgebiet" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />

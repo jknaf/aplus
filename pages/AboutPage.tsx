@@ -68,7 +68,7 @@ const AboutPage: React.FC = () => {
   }, []);
 
   return (
-    <PageShell title="Über A+ Urban Design — Skatepark-Hersteller seit 1999" description="Skatepark-Hersteller mit über 25 Jahren Erfahrung: TÜV-zertifizierte Beton-Skateparks und urbane Anlagen. Gegründet von Dipl.-Ing. Cüneyit Akcakoca, Stuttgart.">
+    <PageShell title="Über A+ Urban Design — Skatepark-Hersteller seit 1998" description="Skatepark-Hersteller mit über 25 Jahren Erfahrung: TÜV-zertifizierte Beton-Skateparks und urbane Anlagen. Ihr Ansprechpartner: Dipl.-Ing. Cüneyit Akcakoca, Stuttgart.">
       
       {/* 1. CINEMATIC HERO - UNIFIED STYLE */}
       <div className="relative w-full h-[80vh] -mt-16 mb-32 flex items-center justify-center overflow-hidden">
@@ -260,7 +260,7 @@ const AboutPage: React.FC = () => {
                 
                 <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
                     <div className="text-center md:text-left">
-                        <div className="inline-block px-3 py-1 bg-brand-surface text-xs font-mono text-brand-dark mb-6 rounded uppercase tracking-widest">Gründer & Architekt</div>
+                        <div className="inline-block px-3 py-1 bg-brand-surface text-xs font-mono text-brand-dark mb-6 rounded uppercase tracking-widest">Ihr Ansprechpartner</div>
                         <h3 className="text-4xl font-extrabold font-heading text-brand-dark uppercase mb-2 tracking-tight">Dipl.-Ing. Cüneyit Akcakoca</h3>
                         <p className="text-brand-orange font-bold mb-6 text-lg">Architekt · A+ Urban Design</p>
                         <p className="text-brand-muted leading-relaxed text-lg max-w-lg">

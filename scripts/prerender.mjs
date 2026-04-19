@@ -39,6 +39,7 @@ const STATIC_ROUTES = [
   '/produkte/pumptrack-beton',
   '/produkte/hockey-banden',
   '/produkte/grillstelle-beton',
+  '/produkte/grillstelle-beton/montageanleitung',
   '/produkte/umkleidekabine-beton',
   '/produkte/ueberdachung-beton',
   '/impressum',
@@ -62,6 +63,7 @@ const sitemapMetaFor = (route) => {
   if (route === '/') return { changefreq: 'weekly', priority: '1.0' };
   if (route === '/projekte') return { changefreq: 'weekly', priority: '0.9' };
   if (route.startsWith('/projekte/')) return { changefreq: 'monthly', priority: '0.7' };
+  if (route === '/produkte/grillstelle-beton/montageanleitung') return { changefreq: 'yearly', priority: '0.6' };
   if (route.startsWith('/produkte/')) return { changefreq: 'monthly', priority: '0.8' };
   if (route === '/produkte') return { changefreq: 'monthly', priority: '0.9' };
   if (route === '/ueber-uns' || route === '/kontakt') return { changefreq: 'monthly', priority: '0.9' };

@@ -121,11 +121,18 @@ const ProductGrillPage: React.FC = () => {
                         </p>
                         
                         <div className="flex flex-col gap-4">
-                            <Link 
-                                to="/kontakt" 
+                            <Link
+                                to="/kontakt"
                                 className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
                             >
                                 Angebot anfordern <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </Link>
+                            <Link
+                                to="/produkte/grillstelle-beton/montageanleitung"
+                                className="inline-flex justify-center items-center gap-2 border border-brand-dark/15 bg-white/60 backdrop-blur-sm text-brand-dark font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:border-brand-orange hover:text-brand-orange transition-all duration-300 group"
+                            >
+                                <span className="material-symbols-outlined">menu_book</span>
+                                Montageanleitung ansehen
                             </Link>
                         </div>
                     </div>
@@ -207,6 +214,41 @@ const ProductGrillPage: React.FC = () => {
                     <TechSpecCard title="Witterung" value="Wetterbeständig" icon="thermostat" />
                     <TechSpecCard title="Recycelbar" value="Ja" icon="recycling" />
                     <TechSpecCard title="Bauweise" value="Betonfertigteile" icon="view_in_ar" />
+                </div>
+
+                {/* Montageanleitung — CTA */}
+                <div className="mt-16 rounded-2xl border border-brand-dark/10 bg-brand-surface/50 p-8 lg:p-10 backdrop-blur-sm">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                        <div>
+                            <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                                Dokumentation
+                            </span>
+                            <h3 className="font-heading text-2xl lg:text-3xl font-extrabold uppercase tracking-tighter text-brand-dark">
+                                Montageanleitung <span className="text-brand-orange">Grillplatz.</span>
+                            </h3>
+                            <p className="mt-3 text-brand-muted max-w-xl leading-relaxed">
+                                Vollständige Aufbauanleitung: Kiesbett, Abladen, Setzreihenfolge, Träger mit Schnurlot,
+                                Kette &amp; Gegengewicht, Werkzeugliste und Wartungsplan. Online lesen oder als PDF herunterladen.
+                            </p>
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                            <Link
+                                to="/produkte/grillstelle-beton/montageanleitung"
+                                className="inline-flex justify-center items-center gap-2 bg-brand-dark text-white font-extrabold uppercase tracking-widest py-3 px-6 rounded-lg hover:bg-brand-orange transition-colors duration-300 group text-sm"
+                            >
+                                <span className="material-symbols-outlined">menu_book</span>
+                                Online ansehen
+                            </Link>
+                            <a
+                                href="/downloads/montage-grillplatz.pdf"
+                                download
+                                className="inline-flex justify-center items-center gap-2 border border-brand-dark/20 bg-white/60 text-brand-dark font-extrabold uppercase tracking-widest py-3 px-6 rounded-lg hover:border-brand-orange hover:text-brand-orange transition-colors duration-300 text-sm"
+                            >
+                                <span className="material-symbols-outlined">download</span>
+                                PDF (625 KB)
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 

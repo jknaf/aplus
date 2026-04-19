@@ -1,0 +1,1011 @@
+/* =============================================================
+   Montageanleitung Grillplatz — Page-spezifische Styles
+   Scope-isoliert unter `.assembly-page`, damit die bestehende
+   Site (Header, Footer, Routen) nicht betroffen ist.
+   Farben & Fonts kommen aus dem globalen Theme; zusätzliche
+   Design-Tokens werden lokal am `.assembly-page`-Wrapper definiert.
+   ============================================================= */
+
+.assembly-page {
+  --am-fg-1: var(--brand-dark, #2C3530);
+  --am-fg-2: var(--brand-muted, #8A8A80);
+  --am-fg-3: rgba(44, 53, 48, 0.5);
+  --am-accent: var(--brand-accent, #6B8F4A);
+  --am-bg: var(--brand-bg, #F2F0EB);
+  --am-surface: var(--brand-surface, #E5E3DC);
+  --am-card: #FFFFFF;
+  --am-bg-accent-soft: rgba(107, 143, 74, 0.05);
+  --am-border-hairline: rgba(44, 53, 48, 0.05);
+  --am-border-soft: rgba(44, 53, 48, 0.10);
+  --am-border-accent: rgba(107, 143, 74, 0.30);
+  --am-border-accent-strong: rgba(107, 143, 74, 0.40);
+  --am-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --am-font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --am-font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --am-shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.05);
+  --am-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --am-ease-out-quart: cubic-bezier(0.16, 1, 0.3, 1);
+  --am-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  position: relative;
+  background: var(--am-bg);
+  color: var(--am-fg-1);
+  font-family: var(--am-font-sans);
+  scroll-behavior: smooth;
+}
+
+.assembly-page * { box-sizing: border-box; }
+
+.assembly-page .am-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+@media (min-width: 768px) { .assembly-page .am-container { padding: 0 2rem; } }
+@media (min-width: 1024px) { .assembly-page .am-container { padding: 0 3rem; } }
+
+/* ===== HEADER ===== */
+.assembly-page .hdr {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(242, 240, 235, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--am-border-hairline);
+}
+.assembly-page .hdr-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 0;
+  gap: 1rem;
+}
+.assembly-page .hdr-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--am-fg-1);
+}
+.assembly-page .hdr-logo img { height: 24px; display: block; }
+.assembly-page .hdr-meta {
+  display: flex; gap: 1.25rem; align-items: center;
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--am-fg-2);
+}
+.assembly-page .hdr-meta .sep {
+  width: 1px; height: 14px;
+  background: var(--am-border-soft);
+  display: inline-block;
+}
+.assembly-page .hdr-print-btn {
+  border: 1px solid var(--am-border-accent);
+  background: var(--am-bg-accent-soft);
+  color: var(--am-accent);
+  padding: 0.5rem 0.875rem;
+  border-radius: 8px;
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 200ms var(--am-ease-out-quart);
+}
+.assembly-page .hdr-print-btn:hover {
+  background: var(--am-accent);
+  color: white;
+  border-color: var(--am-accent);
+}
+.assembly-page .hdr-print-btn .material-symbols-outlined { font-size: 16px; }
+@media (max-width: 768px) {
+  .assembly-page .hdr-meta .hide-sm { display: none; }
+  .assembly-page .hdr-print-btn span:not(.material-symbols-outlined) { display: none; }
+}
+.assembly-page .hdr-progress {
+  position: absolute; left: 0; bottom: 0; height: 2px;
+  background: var(--am-accent);
+  width: 0%;
+  transition: width 120ms linear;
+}
+
+/* ===== SIDE NAV ===== */
+.assembly-page .sidenav {
+  position: fixed;
+  right: 2rem; top: 50%;
+  transform: translateY(-50%);
+  z-index: 35;
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+@media (min-width: 1280px) { .assembly-page .sidenav { display: flex; } }
+.assembly-page .sidenav a {
+  display: flex; align-items: center; gap: 0.75rem;
+  text-decoration: none;
+  font-family: var(--am-font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--am-fg-2);
+  padding: 0.25rem 0;
+  transition: color 250ms ease;
+}
+.assembly-page .sidenav a .bar {
+  width: 20px; height: 1px;
+  background: var(--am-fg-2);
+  transition: all 300ms ease;
+}
+.assembly-page .sidenav a:hover,
+.assembly-page .sidenav a.active { color: var(--am-fg-1); }
+.assembly-page .sidenav a.active .bar {
+  width: 40px;
+  background: var(--am-accent);
+  height: 2px;
+}
+
+/* ===== HERO ===== */
+.assembly-page .hero {
+  position: relative;
+  padding: 6rem 0 5rem;
+  overflow: hidden;
+  background: var(--am-bg);
+}
+.assembly-page .hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url('/images/noise.svg');
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.assembly-page .hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+}
+@media (min-width: 1024px) {
+  .assembly-page .hero-grid { grid-template-columns: 1.1fr 1fr; gap: 5rem; }
+}
+.assembly-page .hero-eyebrow-row {
+  display: flex; gap: 0.75rem; align-items: center;
+  margin-bottom: 2rem;
+}
+.assembly-page .hero-status {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--am-font-mono); font-size: 11px;
+  color: var(--am-fg-2);
+  text-transform: uppercase; letter-spacing: 0.2em;
+}
+.assembly-page .hero-status .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--am-accent);
+  box-shadow: 0 0 0 4px rgba(107, 143, 74, 0.18);
+  animation: am-pulse-dot 2s ease-in-out infinite;
+}
+@keyframes am-pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(107, 143, 74, 0.18); }
+  50% { box-shadow: 0 0 0 8px rgba(107, 143, 74, 0); }
+}
+.assembly-page .hero h1 {
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: clamp(2.75rem, 7vw, 6rem);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+  color: var(--am-fg-1);
+}
+.assembly-page .hero h1 .line { display: block; overflow: hidden; }
+.assembly-page .hero h1 .line > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: am-riseIn 0.9s var(--am-ease-out-quart) forwards;
+}
+.assembly-page .hero h1 .line:nth-child(2) > span { animation-delay: 0.08s; }
+.assembly-page .hero h1 .line:nth-child(3) > span { animation-delay: 0.16s; }
+.assembly-page .hero h1 .accent { color: var(--am-accent); }
+@keyframes am-riseIn { to { transform: translateY(0); } }
+
+.assembly-page .hero-lead {
+  font-family: var(--am-font-sans);
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--am-fg-2);
+  max-width: 44ch;
+  margin: 0 0 2.5rem;
+  opacity: 0;
+  animation: am-fadeUp 0.9s var(--am-ease-out-quart) 0.4s forwards;
+}
+@keyframes am-fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.assembly-page .hero-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--am-border-soft);
+  opacity: 0;
+  animation: am-fadeUp 0.9s var(--am-ease-out-quart) 0.6s forwards;
+}
+.assembly-page .hero-meta-grid > div {
+  padding: 1.25rem 1.25rem 1.25rem 0;
+  border-right: 1px solid var(--am-border-soft);
+}
+.assembly-page .hero-meta-grid > div:last-child { border-right: none; padding-right: 0; }
+.assembly-page .hero-meta-grid .lbl {
+  font-family: var(--am-font-mono);
+  font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.2em; color: var(--am-fg-2);
+  margin-bottom: 0.5rem;
+}
+.assembly-page .hero-meta-grid .val {
+  font-family: var(--am-font-heading);
+  font-weight: 800; font-size: 1.5rem;
+  letter-spacing: -0.02em; color: var(--am-fg-1);
+}
+.assembly-page .hero-meta-grid .val .u {
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--am-fg-2); margin-left: 0.25rem;
+}
+
+.assembly-page .hero-stage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(155deg, #EDEBE4 0%, #DBD8CE 100%);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(44, 53, 48, 0.12), 0 2px 8px rgba(44, 53, 48, 0.06);
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  animation: am-heroIn 1.1s var(--am-ease-out-quart) 0.3s forwards;
+}
+@keyframes am-heroIn { to { opacity: 1; transform: translateY(0) scale(1); } }
+.assembly-page .hero-stage img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  filter: contrast(1.05) saturate(0);
+}
+.assembly-page .hero-stage::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.06) 50%);
+  background-size: 100% 3px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.assembly-page .hero-stage .corner {
+  position: absolute;
+  width: 24px; height: 24px;
+  border: 1.5px solid var(--am-accent);
+}
+.assembly-page .hero-stage .c-tl { top: 16px; left: 16px; border-right: none; border-bottom: none; }
+.assembly-page .hero-stage .c-tr { top: 16px; right: 16px; border-left: none; border-bottom: none; }
+.assembly-page .hero-stage .c-bl { bottom: 16px; left: 16px; border-right: none; border-top: none; }
+.assembly-page .hero-stage .c-br { bottom: 16px; right: 16px; border-left: none; border-top: none; }
+.assembly-page .hero-stage .stamp {
+  position: absolute;
+  top: 24px; right: 24px;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--am-accent);
+  color: white;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: 10px;
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  box-shadow: 0 4px 16px rgba(107, 143, 74, 0.35);
+  opacity: 0;
+  animation: am-stampIn 0.6s var(--am-ease-spring) 1.3s forwards;
+}
+.assembly-page .hero-stage .stamp .big { font-size: 1.25rem; letter-spacing: -0.02em; }
+@keyframes am-stampIn {
+  from { opacity: 0; transform: rotate(-20deg) scale(1.3); }
+  to   { opacity: 1; transform: rotate(-8deg) scale(1); }
+}
+.assembly-page .hero-stage .spec-overlay {
+  position: absolute;
+  bottom: 24px; left: 24px;
+  background: rgba(44, 53, 48, 0.92);
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  display: flex; gap: 1rem; align-items: center;
+  opacity: 0;
+  animation: am-fadeUp 0.7s var(--am-ease-out-quart) 1s forwards;
+}
+.assembly-page .hero-stage .spec-overlay .tag { color: var(--am-accent); font-weight: 700; }
+
+/* ===== SECTION SCAFFOLDING ===== */
+.assembly-page .am-section { position: relative; }
+.assembly-page .section-head {
+  display: flex; flex-direction: column; gap: 1.25rem;
+  margin-bottom: 4rem;
+  max-width: 68ch;
+}
+.assembly-page .section-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--am-accent);
+}
+.assembly-page .section-eyebrow .num {
+  color: var(--am-fg-2);
+  padding-right: 0.75rem;
+  border-right: 1px solid var(--am-border-soft);
+}
+.assembly-page .section-head h2 {
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--am-fg-1);
+}
+.assembly-page .section-head h2 .accent { color: var(--am-accent); }
+.assembly-page .section-head p {
+  font-family: var(--am-font-sans);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--am-fg-2);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* ===== VORAUSSETZUNGEN ===== */
+.assembly-page .prereq {
+  background: var(--am-surface);
+  padding: 6rem 0;
+  border-top: 1px solid var(--am-border-hairline);
+  border-bottom: 1px solid var(--am-border-hairline);
+}
+.assembly-page .prereq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+@media (min-width: 1024px) {
+  .assembly-page .prereq-grid { grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; }
+}
+.assembly-page .prereq-svg-wrap {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--am-border-hairline);
+  box-shadow: var(--am-shadow-sm);
+}
+.assembly-page .prereq-layers {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.assembly-page .layer-card {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  background: white;
+  border: 1px solid var(--am-border-hairline);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  transition: all 300ms var(--am-ease-out-quart);
+}
+.assembly-page .layer-card:hover {
+  border-color: var(--am-border-accent-strong);
+  transform: translateX(4px);
+  box-shadow: var(--am-shadow-sm);
+}
+.assembly-page .layer-num {
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--am-accent);
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+.assembly-page .layer-body .ttl {
+  font-family: var(--am-font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--am-fg-1);
+  margin-bottom: 0.25rem;
+}
+.assembly-page .layer-body .desc {
+  font-size: 0.875rem;
+  color: var(--am-fg-2);
+  line-height: 1.5;
+}
+.assembly-page .layer-spec {
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--am-fg-1);
+  text-align: right;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* ===== STEPS ===== */
+.assembly-page .steps {
+  padding: 6rem 0;
+  background: var(--am-bg);
+}
+.assembly-page .step-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  padding: 4rem 0;
+  border-top: 1px solid var(--am-border-hairline);
+  position: relative;
+}
+@media (min-width: 1024px) {
+  .assembly-page .step-row { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .assembly-page .step-row.reverse .step-visual { order: 2; }
+}
+.assembly-page .step-row:last-child { border-bottom: 1px solid var(--am-border-hairline); }
+.assembly-page .step-meta {
+  display: flex; gap: 1rem; align-items: baseline;
+  margin-bottom: 1.5rem;
+}
+.assembly-page .step-number {
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--am-accent);
+  opacity: 0.18;
+}
+.assembly-page .step-tag {
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--am-fg-2);
+  padding-top: 0.5rem;
+}
+.assembly-page .step-tag .phase { color: var(--am-accent); font-weight: 600; }
+.assembly-page .step-title {
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  margin: 0 0 1.5rem;
+  color: var(--am-fg-1);
+}
+.assembly-page .step-title .accent { color: var(--am-accent); }
+.assembly-page .step-body p {
+  font-family: var(--am-font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--am-fg-2);
+  margin: 0 0 1.25rem;
+}
+.assembly-page .step-body strong { color: var(--am-fg-1); font-weight: 600; }
+.assembly-page .step-visual {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--am-border-hairline);
+  padding: 2rem;
+  box-shadow: var(--am-shadow-sm);
+  overflow: hidden;
+}
+.assembly-page .step-visual::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url('/images/noise.svg');
+  opacity: 0.25;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* ===== BLUEPRINT (Originalzeichnungen) ===== */
+.assembly-page .blueprint {
+  position: relative;
+  background: #FBFAF6;
+  border: 1px solid var(--am-border-soft);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+.assembly-page .blueprint .bp-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed var(--am-border-soft);
+  margin-bottom: 1rem;
+}
+.assembly-page .blueprint .bp-title {
+  font-family: var(--am-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--am-fg-1);
+  font-weight: 700;
+}
+.assembly-page .blueprint .bp-no {
+  font-family: var(--am-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--am-fg-2);
+}
+.assembly-page .blueprint img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+.assembly-page .blueprint .bp-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--am-border-soft);
+  font-family: var(--am-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--am-fg-2);
+}
+.assembly-page .blueprint .bp-foot .scale {
+  padding: 0.25rem 0.5rem;
+  background: var(--am-accent);
+  color: white;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+/* ===== CALLOUTS ===== */
+.assembly-page .callout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  border: 1px solid transparent;
+  align-items: start;
+}
+.assembly-page .callout .ico {
+  font-family: 'Material Symbols Outlined';
+  font-size: 22px;
+  line-height: 1;
+  margin-top: 2px;
+}
+.assembly-page .callout .lbl {
+  font-family: var(--am-font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+.assembly-page .callout .txt {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--am-fg-1);
+}
+.assembly-page .callout.warning {
+  background: rgba(220, 38, 38, 0.04);
+  border-color: rgba(220, 38, 38, 0.15);
+}
+.assembly-page .callout.warning .ico,
+.assembly-page .callout.warning .lbl { color: #B91C1C; }
+.assembly-page .callout.tip {
+  background: var(--am-bg-accent-soft);
+  border-color: var(--am-border-accent);
+}
+.assembly-page .callout.tip .ico,
+.assembly-page .callout.tip .lbl { color: var(--am-accent); }
+
+/* ===== WERKZEUGE ===== */
+.assembly-page .tools {
+  padding: 6rem 0;
+  background: var(--am-surface);
+  border-top: 1px solid var(--am-border-hairline);
+}
+.assembly-page .tools-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 640px) { .assembly-page .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .assembly-page .tools-grid { grid-template-columns: repeat(3, 1fr); } }
+.assembly-page .tool-card {
+  background: white;
+  border: 1px solid var(--am-border-hairline);
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: all 400ms var(--am-ease-out-quart);
+  position: relative;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  min-height: 200px;
+}
+.assembly-page .tool-card::before {
+  content: attr(data-num);
+  position: absolute;
+  top: 1rem; right: 1rem;
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  color: var(--am-fg-3);
+  letter-spacing: 0.1em;
+}
+.assembly-page .tool-card:hover {
+  border-color: var(--am-border-accent-strong);
+  box-shadow: var(--am-shadow-lg);
+  transform: translateY(-4px);
+}
+.assembly-page .tool-card .ico-wrap {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--am-bg-accent-soft);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.assembly-page .tool-card .ico-wrap .material-symbols-outlined {
+  color: var(--am-accent);
+  font-size: 24px;
+}
+.assembly-page .tool-card h4 {
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+  color: var(--am-fg-1);
+}
+.assembly-page .tool-card .spec {
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  color: var(--am-accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+.assembly-page .tool-card p {
+  font-size: 0.9375rem;
+  color: var(--am-fg-2);
+  line-height: 1.55;
+  margin: 0;
+  margin-top: auto;
+}
+
+/* ===== WARTUNG / TIMELINE ===== */
+.assembly-page .maint {
+  padding: 6rem 0;
+  background: var(--am-fg-1);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.assembly-page .maint::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url('/images/noise.svg');
+  opacity: 0.2;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.assembly-page .maint .section-head h2 { color: white; }
+.assembly-page .maint .section-head p { color: rgba(255, 255, 255, 0.6); }
+.assembly-page .maint .section-eyebrow { color: var(--am-accent); }
+.assembly-page .maint .section-eyebrow .num {
+  color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.assembly-page .wordmark-bleed {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -2.5vw;
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: 18vw;
+  line-height: 0.8;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  white-space: nowrap;
+  text-align: center;
+}
+.assembly-page .timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  position: relative;
+}
+@media (min-width: 768px) { .assembly-page .timeline-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .assembly-page .timeline-grid { grid-template-columns: repeat(4, 1fr); } }
+.assembly-page .freq-card {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 400ms var(--am-ease-out-quart);
+}
+.assembly-page .freq-card:hover {
+  border-color: rgba(107, 143, 74, 0.4);
+  background: rgba(107, 143, 74, 0.05);
+  transform: translateY(-4px);
+}
+.assembly-page .freq-card .freq-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.assembly-page .freq-card .freq {
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: white;
+}
+.assembly-page .freq-card .per {
+  font-family: var(--am-font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--am-accent);
+}
+.assembly-page .freq-card h4 {
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: white;
+  margin: 0 0 0.75rem;
+}
+.assembly-page .freq-card p {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== HANDOVER CARD / CHECKLIST ===== */
+.assembly-page .handover-card {
+  background: linear-gradient(135deg, #6B8F4A 0%, #557439 100%);
+  color: white;
+  border-radius: 14px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.assembly-page .handover-card .ring-1,
+.assembly-page .handover-card .ring-2 {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.assembly-page .handover-card .ring-1 { top: -40px; right: -40px; width: 180px; height: 180px; border-color: rgba(255, 255, 255, 0.15); }
+.assembly-page .handover-card .ring-2 { top: -20px; right: -20px; width: 140px; height: 140px; }
+.assembly-page .handover-card .status {
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+.assembly-page .handover-card .title {
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.assembly-page .handover-card .desc {
+  opacity: 0.9;
+  font-size: 0.9375rem;
+  max-width: 28ch;
+  line-height: 1.6;
+  margin-top: 1.25rem;
+}
+.assembly-page .checklist {
+  margin-top: 1.5rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.assembly-page .checklist > div {
+  display: flex; gap: 0.75rem; align-items: center;
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--am-border-hairline);
+}
+.assembly-page .checklist .material-symbols-outlined {
+  color: var(--am-accent);
+  font-size: 18px;
+}
+.assembly-page .checklist span:not(.material-symbols-outlined) {
+  font-size: 0.875rem;
+  color: var(--am-fg-1);
+}
+
+/* Qualification box on Wartung section */
+.assembly-page .qualif-box {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 1.5rem 1.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  margin-top: 3rem;
+}
+.assembly-page .qualif-box .material-symbols-outlined {
+  color: var(--am-accent);
+  font-size: 22px;
+}
+.assembly-page .qualif-box .lbl {
+  font-family: var(--am-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--am-accent);
+  margin-bottom: 0.25rem;
+}
+.assembly-page .qualif-box .txt {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.assembly-page .qualif-box .txt strong { color: white; }
+
+/* Closing line on Montage */
+.assembly-page .closing-line {
+  font-family: var(--am-font-heading);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--am-fg-1);
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
+/* ===== FOOTER ===== */
+.assembly-page .ftr {
+  padding: 4rem 0 2rem;
+  background: var(--am-fg-1);
+  color: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.assembly-page .ftr-inner {
+  display: flex; flex-wrap: wrap; gap: 2rem;
+  justify-content: space-between; align-items: flex-end;
+}
+.assembly-page .ftr-logo img { height: 24px; filter: brightness(0) invert(1); opacity: 0.8; }
+.assembly-page .ftr-meta {
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 2;
+}
+.assembly-page .ftr-meta a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.assembly-page .ftr-back {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-family: var(--am-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.5rem 0.875rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  transition: all 200ms var(--am-ease-out-quart);
+}
+.assembly-page .ftr-back:hover {
+  background: var(--am-accent);
+  border-color: var(--am-accent);
+  color: white;
+}
+.assembly-page .ftr-back .material-symbols-outlined { font-size: 16px; }
+
+/* ===== REVEAL ===== */
+.assembly-page .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 800ms var(--am-ease-out-quart), transform 800ms var(--am-ease-out-quart);
+}
+.assembly-page .reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.assembly-page .fade-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 700ms var(--am-ease-out-quart), transform 700ms var(--am-ease-out-quart);
+}
+.assembly-page .fade-stagger.in > *:nth-child(1) { transition-delay: 0ms; }
+.assembly-page .fade-stagger.in > *:nth-child(2) { transition-delay: 80ms; }
+.assembly-page .fade-stagger.in > *:nth-child(3) { transition-delay: 160ms; }
+.assembly-page .fade-stagger.in > *:nth-child(4) { transition-delay: 240ms; }
+.assembly-page .fade-stagger.in > *:nth-child(5) { transition-delay: 320ms; }
+.assembly-page .fade-stagger.in > *:nth-child(6) { transition-delay: 400ms; }
+.assembly-page .fade-stagger.in > * { opacity: 1; transform: translateY(0); }
+
+/* ===== Swing-Animationen (ChainCounterweight) ===== */
+@keyframes am-sway { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+@keyframes am-sway2 { 0%, 100% { transform: rotate(2deg); } 50% { transform: rotate(-2deg); } }
+
+/* ===== PRINT ===== */
+@media print {
+  @page { size: A4; margin: 15mm; }
+  .assembly-page { background: white !important; }
+  .assembly-page .hdr,
+  .assembly-page .sidenav,
+  .assembly-page .hdr-print-btn,
+  .assembly-page .ftr-back,
+  .assembly-page .hero-stage .stamp,
+  .assembly-page .hero-stage .spec-overlay { display: none !important; }
+  .assembly-page .reveal,
+  .assembly-page .fade-stagger > * { opacity: 1 !important; transform: none !important; }
+  .assembly-page .am-section,
+  .assembly-page .hero,
+  .assembly-page .prereq,
+  .assembly-page .steps,
+  .assembly-page .tools,
+  .assembly-page .maint {
+    page-break-inside: avoid;
+    padding: 2rem 0;
+  }
+  .assembly-page .step-row { page-break-inside: avoid; padding: 2rem 0; }
+  .assembly-page .maint { background: white !important; color: var(--am-fg-1) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .assembly-page .maint .section-head h2 { color: var(--am-fg-1) !important; }
+  .assembly-page .maint .section-head p { color: var(--am-fg-2) !important; }
+  .assembly-page .freq-card { background: white !important; border-color: var(--am-border-soft) !important; }
+  .assembly-page .freq-card .freq,
+  .assembly-page .freq-card h4 { color: var(--am-fg-1) !important; }
+  .assembly-page .freq-card p { color: var(--am-fg-2) !important; }
+  .assembly-page .ftr { background: white !important; color: var(--am-fg-2) !important; border-top: 1px solid var(--am-border-soft); }
+  .assembly-page .ftr-logo img { filter: none !important; opacity: 1 !important; }
+  .assembly-page .hero-stage,
+  .assembly-page .step-visual,
+  .assembly-page .prereq-svg-wrap,
+  .assembly-page .handover-card {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .assembly-page h1, .assembly-page h2, .assembly-page h3, .assembly-page h4 {
+    page-break-after: avoid;
+  }
+  .assembly-page .wordmark-bleed { display: none !important; }
+}

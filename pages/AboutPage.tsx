@@ -211,12 +211,12 @@ const AboutPage: React.FC = () => {
                   <PrincipleCard
                       number="02"
                       title="Fertigung"
-                      desc="C35/45 Stahlbeton aus kontrollierter Werksumgebung. Hohe Qualitätskontrolle bei Betonstärken, Bewehrung und Fugen — wetterunabhängig. TÜV-Überprüfung der Fertigungsstätte (nur für Skate-Elemente)."
+                      desc="C35/45 Stahlbeton aus kontrollierter Werksumgebung. Hohe Qualitätskontrolle bei Betonstärken, Bewehrung und Fugen — wetterunabhängig. TÜV-Überprüfung der Fertigungsstätte."
                   />
                   <PrincipleCard
                       number="03"
                       title="Transport"
-                      desc="Module mit Gabelstapler oder Autokran abladen. Hohlkörperbauweise reduziert das Gewicht für einfache Logistik. Transport-Absicherung (nur für Skate-Anlagen)."
+                      desc="Module mit Gabelstapler oder Autokran abladen. Hohlkörperbauweise reduziert das Gewicht für einfache Logistik. Transport-Absicherung nach Produktanforderung."
                   />
                   <PrincipleCard
                       number="04"

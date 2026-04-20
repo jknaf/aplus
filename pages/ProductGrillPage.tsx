@@ -139,7 +139,7 @@ const ProductGrillPage: React.FC = () => {
                 </div>
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
-                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/grill/grillstelle-background.jpg" alt="Grill Detail Rost" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          {/* Roland: Bildunterschriften pro Bild noch mit tatsächlichem Motiv abgleichen */}
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">GRILLSTELLE</div>
@@ -156,7 +156,7 @@ const ProductGrillPage: React.FC = () => {
                          </div>
                     </div>
 
-                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/grill/grill-platz-01.jpg" alt="Grill Installation Umgebung" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">GRILLPLATZ VOR ORT</div>
                     </div>

@@ -157,7 +157,7 @@ const ProductPumptrackPage: React.FC = () => {
 
                 {/* Scrolling Gallery */}
                 <div className="lg:w-7/12 flex flex-col gap-8">
-                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/pumptrack/pumptrack-beton-module-03.jpg" alt="Pumptrack Curve" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 01. STEILKURVE</div>
                     </div>
@@ -168,7 +168,7 @@ const ProductPumptrackPage: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/pumptrack/pumptrack-beton-elemente-01.jpg" alt="Pumptrack Overview" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">ABB 02. MODULARES SYSTEM</div>
                     </div>

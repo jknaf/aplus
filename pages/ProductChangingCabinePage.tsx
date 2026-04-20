@@ -133,7 +133,7 @@ const ProductChangingCabinePage: React.FC = () => {
                 </div>
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
-                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/umkleide/umkleide-kabine-01.jpg" alt="Umkleide Architektur" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. EXTERIOR</div>
                     </div>
@@ -146,12 +146,12 @@ const ProductChangingCabinePage: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/umkleide/umkleide-kabine-02.jpg" alt="Bodenplatte Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. CLEAN SURFACE</div>
                     </div>
 
-                    <div className="aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/umkleide/umkleidekabine-freibad-03.jpg" alt="Schnecken-Kabine im Freibad" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 03. FREIBAD-INSTALLATION</div>
                     </div>

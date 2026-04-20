@@ -412,6 +412,7 @@ const SLIDES: Slide[] = [
   { type: 'image', src: '/images/homepage/hero-banner.jpg', alt: 'A+ Urban Design Skatepark', duration: 5000 },
   { type: 'video', src: '/videos/skateparks/contest-skateboard.mp4', poster: '/videos/skateparks/poster-contest-skateboard.jpg', duration: 10000 },
   { type: 'image', src: '/images/homepage/hero-anlage-01.jpg', alt: 'Beton-Skatepark — Totalaufnahme', duration: 5000 },
+  { type: 'image', src: '/images/homepage/hero-anlage-panorama.jpg', alt: 'Skatepark-Panorama mit Bowl und Street-Area', duration: 5000 },
   { type: 'video', src: '/videos/skateparks/contest-bmx.mp4', poster: '/videos/skateparks/poster-contest-bmx.jpg', duration: 10000 },
   { type: 'image', src: '/images/homepage/hero-anlage-02.jpg', alt: 'Skatepark-Anlage komplett', duration: 5000 },
 ];

@@ -127,7 +127,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                             Mit unseren modularen Skate-Elementen aus bewehrtem Beton realisieren wir Skate-Bowls und Skate-Pools in beliebigen Größen und Formen — geschlossen im Erdreich oder offen oberirdisch. Die Skate-Bowls bestehen aus einer horizontalen Fläche an der unteren Seite (Flat), die seitlich von einer gekrümmten Fläche (Transition) begrenzt wird. Entlang der Transition und der oberen Plattform befindet sich ein Copingrohr. Tiefen: <strong className="text-brand-dark">98 cm und 150 cm</strong>.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
-                            2002 wurde der erste Bowl mit unseren modularen Skateelementen auf Gran Canaria gebaut. Unsere Skateelemente sind im Bereich von 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz — von Norwegen bis zu den Kanaren, von Rumänien bis England.
+                            2002 wurde der erste Bowl mit unseren modularen Skateelementen auf Gran Canaria gebaut. Unsere Skateelemente sind im Bereich von 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz — von Norwegen bis zu den Kanaren, von England bis zur Türkei.
                         </p>
 
                         <div className="flex flex-col gap-4">

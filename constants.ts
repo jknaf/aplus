@@ -266,7 +266,7 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/skate-anlagen',
     altText: 'Beton-Skate-Anlage mit Bowls und Pipes — modulare Skate-Elemente vom Hersteller A+ Urban Design.',
     tuvCertified: true,
-    usp: 'Das A+ Original: TÜV-zertifizierte Skate-Anlagen mit Bowls und Pipes — modular, skalierbar und schalldämpfend.'
+    usp: 'Das A+ Original: TÜV-zertifizierte Skate-Anlagen mit Bowls und Pipes — modular, erweiterbar und schalldämpfend.'
   },
   {
     id: 'skate-bowls',

@@ -166,7 +166,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Seit den <span className="text-brand-orange">90ern.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            Als Skate-Elemente-Hersteller entwickeln wir seit 1998 (die Ersten in Deutschland) modulare Skate-Elemente aus Beton. Sie wurden als eine der ersten Beton-Skateelemente in Europa TÜV-zertifiziert.
+                            Als Skate-Elemente-Hersteller entwickeln wir modulare Skate-Elemente aus Beton. Sie wurden als eine der ersten Beton-Skateelemente in Europa TÜV-zertifiziert.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
                             {/* Roland §5.4: Gran Canaria Jahreszahl 2001 oder 2002 noch klären */}
@@ -174,7 +174,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. Bald darauf folgte der erste Bowl auf Gran Canaria.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
-                            Unsere Skateelemente sind im Bereich von ca. 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz — von Norden in Norwegen bis Süden auf den Kanaren, von Osten in Rumänien bis Westen in England.
+                            Unsere Skateelemente sind im Bereich von ca. 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz — von Norden in Norwegen bis Süden auf den Kanaren, von Westen in England bis Osten in der Türkei.
                         </p>
 
                         <div className="flex flex-col gap-4">

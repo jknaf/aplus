@@ -132,13 +132,13 @@ const ProductPumptrackPage: React.FC = () => {
                             Endloser <span className="text-brand-orange">Flow.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Als Pumptrack-Hersteller wissen wir: Ein Pumptrack ist mehr als nur eine Strecke – er ist ein biomechanischer Spielplatz. Die ca. 1,25 m breite Fahrbahn wird ohne Treten, nur durch Gewichtsverlagerung („Pumpen"), befahren.
+                            Als Pumptrack-Hersteller wissen wir: Ein Pumptrack ist mehr als nur eine Strecke – er ist ein System aus Wellen und Kurven für alle Altersgruppen. Die ca. 1,25 m breite Fahrbahn wird ohne Treten, nur durch Gewichtsverlagerung („Pumpen"), befahren.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Im Gegensatz zu Asphaltpisten bieten unsere Beton-Pumptrack-Elemente eine dauerhaft perfekte Geometrie. Zwei Aufbauvarianten möglich: auf einer befestigten Fläche aufbauen (Module montieren, Strecke markieren) oder auf einer gesondert hergestellten Strecke, bei der die Elemente zuerst auf Fundamentplatten aufgestellt und anschließend anbetoniert oder anasphaltiert werden.
+                            Im Gegensatz zu Asphaltpisten bieten unsere Beton-Pumptrack-Elemente eine dauerhaft perfekte Geometrie. Drei Aufbauvarianten möglich: auf vorhandener befahrbarer Fläche mit Markierung der Trasse, auf neu erstellter Trassenfläche aus Beton oder Asphalt oder aufgestellt auf Fundamentplatten mit anbetonierter bzw. anasphaltierter Trasse. Elemente können angeböscht werden.
                         </p>
                         <div className="bg-brand-orange/10 border border-brand-orange/30 rounded-xl p-5 mb-12">
-                            <p className="text-brand-dark font-bold uppercase text-sm tracking-widest mb-2">Schlüsselfertige Lieferung</p>
+                            <p className="text-brand-dark font-bold uppercase text-sm tracking-widest mb-2">Lieferung & Montage aus einer Hand</p>
                             <p className="text-sm text-brand-muted leading-relaxed">
                                 Planung, Werkfertigung, Anlieferung und Aufbau erfolgen aus einer Hand durch A+ Urban Design. Für Kommunen und Gemeinden sind Fördermittel aus der Sportstättenförderung nutzbar.
                             </p>
@@ -197,7 +197,7 @@ const ProductPumptrackPage: React.FC = () => {
                     </div>
                 </div>
                 <div className="mt-6 bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-muted">
-                    <strong className="text-brand-dark">Aufbauvarianten:</strong> Die Module können auf einer befestigten Fläche aufgebaut werden (Module montiert, Strecke markiert) oder auf einer gesondert hergestellten Strecke — dabei werden die Elemente zuerst auf Fundamentplatten aufgestellt und anschließend anbetoniert oder anasphaltiert (Quelle: pump-tracks.md).
+                    <strong className="text-brand-dark">Aufbauvarianten:</strong> (1) auf vorhandener befahrbarer Fläche mit Markierung der Trasse, (2) auf neu erstellter Trassenfläche aus Beton oder Asphalt, (3) aufgestellt auf Fundamentplatten mit anbetonierter oder anasphaltierter Trasse. Elemente können angeböscht werden.
                 </div>
             </div>
 
@@ -224,7 +224,7 @@ const ProductPumptrackPage: React.FC = () => {
                         href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/?q=Z1A+056616+0012+Rev.+00"
                         linkLabel="TÜV-SÜD Zertifikat"
                     />
-                    <TechSpecCard title="Eigenaufbau" value="Möglich" icon="construction" />
+                    <TechSpecCard title="Montage" value="Durch A+" icon="construction" />
                 </div>
             </div>
 

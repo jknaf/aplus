@@ -7,8 +7,9 @@ export const NAV_LINKS = [
     href: '/produkte',
     subLinks: [
       { name: 'Skate-Anlagen', href: '/produkte/skate-anlagen' },
+      { name: 'Skate-Bowls', href: '/produkte/skate-bowls-beton' },
+      { name: 'Skate-Pipes', href: '/produkte/skate-pipes-beton' },
       { name: 'Pumptrack Beton', href: '/produkte/pumptrack-beton' },
-      { name: 'BMX-Anlagen', href: '/produkte/bmx-anlagen' },
       { name: 'Grillstelle Beton', href: '/produkte/grillstelle-beton' },
       { name: 'Umkleidekabine', href: '/produkte/umkleidekabine-beton' },
       { name: 'Überdachung / Pavillon', href: '/produkte/ueberdachung-beton' },
@@ -263,9 +264,27 @@ export const PRODUCTS: Product[] = [
     title: 'Beton Skate-Anlagen',
     imageUrl: '/images/homepage/hero-anlage-01.jpg',
     path: '/produkte/skate-anlagen',
-    altText: 'Beton-Skatepark mit Bowl und Street-Bereich — modulare Skateanlage vom Hersteller A+ Urban Design.',
+    altText: 'Beton-Skate-Anlage mit Bowls und Pipes — modulare Skate-Elemente vom Hersteller A+ Urban Design.',
     tuvCertified: true,
-    usp: 'Das A+ Original: TÜV-zertifizierte Skaterampen, Bowls und Halfpipes — modular, schalldämpfend und fundamentfrei.'
+    usp: 'Das A+ Original: TÜV-zertifizierte Skate-Anlagen mit Bowls und Pipes — modular, erweiterbar und schalldämpfend.'
+  },
+  {
+    id: 'skate-bowls',
+    title: 'Modulare Skate-Bowls',
+    imageUrl: '/images/skate-bowls/skate-bowl-01.jpg',
+    path: '/produkte/skate-bowls-beton',
+    altText: 'Modulare Skate-Bowls aus Beton-Fertigteilen — geschlossen und offen, TÜV-zertifiziert.',
+    tuvCertified: true,
+    usp: 'Bowl-Tiefen 98 und 150 cm — als geschlossener Standard-Bowl im Erdreich oder offener Bowl direkt auf der Fläche.'
+  },
+  {
+    id: 'skate-pipes',
+    title: 'Beton Skate-Pipes',
+    imageUrl: '/images/skate-pipes/skate-pipe-01.jpg',
+    path: '/produkte/skate-pipes-beton',
+    altText: 'Beton Skate-Pipes — Mini-Pipe, Standard-Pipe und Super-Pipe vom Hersteller A+ Urban Design.',
+    tuvCertified: true,
+    usp: 'Halfpipe und Mini-Pipe in fünf Höhen (135–255 cm) — Standardaufstellung oder Combi-Pipe mit Banks, Spines und Coping-Ramps.'
   },
   {
     id: 'pumptrack',
@@ -274,16 +293,7 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/pumptrack-beton',
     altText: 'Beton-Pumptrack aus modularen Fertigteilen — realisiert vom Pumptrack-Hersteller A+ Urban Design.',
     tuvCertified: true,
-    usp: 'Endloser Flow für alle Rollsportarten — wartungsfrei, vandalismussicher und modular erweiterbar.'
-  },
-  {
-    id: 'bmx-anlagen',
-    title: 'BMX-Anlagen',
-    imageUrl: '/images/skate-pipes/skate-pipe-01.jpg',
-    path: '/produkte/bmx-anlagen',
-    altText: 'Beton-Halfpipe für BMX-Park und Skateanlage — TÜV-zertifiziert.',
-    tuvCertified: true,
-    usp: 'BMX-Anlagen und Halfpipes aus Hochleistungsbeton — robust genug für Pegs, Scooter und harte Landungen.'
+    usp: 'Der flowige Rundkurs für Bikes, Scooter, Inliner und Skateboards — mit Arretierungsstäben und Kantenschutzprofil montagefertig.'
   },
   {
     id: 'ueberdachung',
@@ -291,15 +301,15 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg',
     path: '/produkte/ueberdachung-beton',
     altText: 'Minimalistische Betonüberdachung im urbanen Raum.',
-    usp: 'Massiver, architektonischer Wetterschutz in zeitloser Sichtbeton-Ästhetik.'
+    usp: 'Massiver Wetterschutz aus Sichtbeton — fundamentfrei, modular und zeitlos.'
   },
   {
     id: 'grillstelle',
     title: 'Öffentliche Grillstelle',
     imageUrl: '/images/grill/grillstelle-background.jpg',
     path: '/produkte/grillstelle-beton',
-    altText: 'Runder Beton-Grillplatz im Park mit Edelstahl-Rost.',
-    usp: 'Der vandalismussichere Begegnungsort mit diebstahlgeschütztem Edelstahlrost.'
+    altText: 'Runder Beton-Grillplatz im Park mit Edelstahl-Rost — Platz für 12–16 Personen.',
+    usp: 'Fundamentfrei und höhenverstellbar — Platz für 12–16 Personen an vandalismussicherem Edelstahl-Rost.'
   },
   {
     id: 'umkleide',
@@ -307,98 +317,125 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/umkleide/umkleide-panorama.jpg',
     path: '/produkte/umkleidekabine-beton',
     altText: 'Schnecken-Umkleidekabine aus Beton im Freibad.',
-    usp: 'Die „Schnecke”: Hygienisch, türlos und vandalismushemmend konstruiert.'
+    usp: 'Die Schnecke: fundamentfrei mit fugenloser Bodenplatte — türlos, vandalismushemmend und hygienisch.'
   },
   {
     id: 'hockey',
     title: 'Hockey-Banden',
     imageUrl: '/images/hockey/roll-hockey-bande.jpg',
     path: '/produkte/hockey-banden',
-    altText: 'Outdoor Hockey-Spielfeld mit robusten Banden.',
-    tuvCertified: true,
-    usp: 'Fundamentfreies Bandensystem für den ganzjährigen Profi-Einsatz.'
+    altText: 'Outdoor Hockey-Spielfeld mit robusten Beton-Banden für Inline- und Rollhockey.',
+    usp: 'Modular erweiterbar in 1,5 m-Schritten — ohne Bandenaufbau, ohne Bodenbefestigung.'
   },
 ];
 
 export const PROJECTS: Project[] = [
     {
-        id: "modularer-beton-skatepark",
-        title: "Modularer Beton-Skatepark",
+        id: "skatepark-friedrichsdorf",
+        title: "Skatepark Friedrichsdorf",
         category: "Skatepark",
-        year: 2023,
+        year: 2022,
         imageUrl: "/images/skateparks/skatepark-01.jpg",
         images: [
             "/images/skateparks/skatepark-02.jpg",
             "/images/skateparks/skatepark-03.jpg",
-            "/images/skateparks/skatepark-04.jpg",
         ],
-        description: "Ein moderner Beton-Skatepark, der sowohl Anfängern als auch Profis gerecht wird. Die Anlage umfasst eine vielfältige Street-Area mit Rails und Ledges sowie eine anspruchsvolle Bowl-Sektion. Alle Elemente sind aus unserem vandalismusresistenten Hochleistungsbeton gefertigt.",
-        altText: "Luftaufnahme eines modularen Beton-Skateparks mit Bowl und Street-Bereich.",
+        description: "2.000 m² große Skateanlage auf zwei Ebenen mit TÜV-zertifizierten Skateelementen aus Beton — Fun-Boxen, Stairs, Pyramid-Hip, Ledges, Rail-Slides sowie eine knapp zwei Meter hohe Pipe. Durch Böschungen und Geländeintegration fügt sich die Anlage harmonisch in das Sport- und Freizeitgebiet ein.",
+        longDescription: [
+            "In Friedrichsdorf entstand eine 2.000 m² große Skateanlage auf zwei verbundenen Ebenen mit TÜV-zertifizierten Betonelementen von A+ Urban Design. Die Anlage umfasst Fun-Boxen, Stairs, Pyramid-Hip, Ledges, Rail-Slides und eine knapp zwei Meter hohe Pipe.",
+            "Böschungen und Geländeintegration sorgen dafür, dass sich die Anlage harmonisch in das bestehende Sport- und Freizeitgebiet einfügt. Die Skateelemente wurden teils angeböscht und so in das Gelände modelliert.",
+            "Quellen: kommunaldirekt.de (»Skatepark Friedrichsdorf«, 2022 und 2024), freiraum-gestalten.info (»Skatepark Friedrichsdorf«). Für einen Fachbeitrag mit weiteren Details siehe die verlinkten Artikel auf unserer Presse-Seite."
+        ],
+        altText: "Skatepark Friedrichsdorf — 2.000 m² zweistufige Skateanlage aus TÜV-zertifizierten Betonelementen.",
         productsUsed: [
-            { name: "Quarter-Ramps & Half-Pipes", path: "/produkte/skate-anlagen" },
-            { name: "Skate-Bowls", path: "/produkte/skate-anlagen" }
+            { name: "Modulare Skate-Elemente", path: "/produkte/skate-anlagen" },
+            { name: "Skate-Pipes", path: "/produkte/skate-pipes-beton" },
         ]
     },
     {
-        id: "beton-pumptrack",
-        title: "Beton-Pumptrack",
+        id: "pumptrack-berlin-reinickendorf",
+        title: "Pump-Track Berlin-Reinickendorf",
         category: "Pumptrack",
         year: 2022,
         imageUrl: "/images/pumptrack/pumptrack-beton-elemente-01.jpg",
         images: [
              "/images/pumptrack/pumptrack-beton-module-03.jpg",
              "/images/pumptrack/pumptrack-beton-module-04.jpg",
+             "/images/pumptrack/pumptrack-beton-elemente-02.jpg",
         ],
-        description: "Ein flowiger Pumptrack, der Fahrspaß für Fahrräder, Scooter und Skateboards bietet. Die modularen Betonelemente ermöglichen einen abwechslungsreichen Kurs, der sich perfekt in die Umgebung einfügt.",
-        altText: "Flowiger Pumptrack aus modularen Betonelementen für Fahrräder und Scooter.",
+        description: "Der erste Pump-Track im Bezirk Reinickendorf, neben dem Humboldt-Gymnasium — realisiert mit modularen, TÜV-zertifizierten Betonelementen von A+ Urban Design. Die Trasse erstreckt sich teilweise über dem Tegel-Tunnel und musste zwischen bestehenden Bäumen geführt werden.",
+        longDescription: [
+            "Im Berliner Bezirk Reinickendorf entstand neben dem Humboldt-Gymnasium der erste Pump-Track des Bezirks. Die Anlage erstreckt sich teilweise über dem Tegel-Tunnel und musste zwischen bestehendem Baumbestand geführt werden — eine anspruchsvolle Trassenplanung mit beengten Bau- und Tragwerksbedingungen.",
+            "Die Lösung waren modular aufgebaute Pump-Track-Elemente aus Beton: schräge Kurventeile und gerade Strecken mit Hindernissen, die Fahrern erlauben, allein durch Gewichtsverlagerung Geschwindigkeit aufzubauen — ohne Antrieb, ohne Pedale. A+ Urban Design lieferte speziell entwickelte, wartungsarme Betonelemente und unterstützte die Trassenplanung.",
+            "Quellen: kommunaldirekt.de (»Pump-Track in Berlin«, 2022), freiraum-gestalten.info (»Pumptracken in Berlin«, FREIRAUM GESTALTEN 05/2022)."
+        ],
+        altText: "Pump-Track Berlin-Reinickendorf am Humboldt-Gymnasium, über dem Tegel-Tunnel — modulare Beton-Elemente.",
         productsUsed: [
             { name: "Modulare Pumptrack-Elemente", path: "/produkte/pumptrack-beton" },
         ]
     },
     {
-        id: "grillplatz-stadtpark",
-        title: "Grillplatz im Stadtpark",
+        id: "grillplatz-oeffentlicher-raum",
+        title: "Grillplatz für den öffentlichen Raum",
         category: "Grillstelle",
-        year: 2023,
+        year: 2020,
         imageUrl: "/images/grill/grill-platz-01.jpg",
         images: [
              "/images/grill/grill-stelle-02.jpg",
              "/images/grill/grillstelle-background.jpg",
         ],
-        description: "Für den zentralen Stadtpark wurde eine neue, barrierefreie Grill- und Begegnungszone geschaffen. Im Zentrum steht unsere robuste Betongrillstelle, die zum gemeinsamen Verweilen einlädt, direkt neben der neuen Skate-Anlage.",
-        altText: "Vandalismusresistente Betongrillstelle im Stadtpark neben einem Skatepark.",
+        description: "Stationärer Grillplatz aus Betonfertigteilen mit Edelstahl-Rost, höhenverstellbarer Grillfläche und Windschutzring — Durchmesser 420 cm, fundamentfrei. Eine A+-Lösung für Freibäder, Sportanlagen und Schrebergärten: robust, vandalismussicher und ohne bewegliche Teile.",
+        longDescription: [
+            "Der Grillplatz aus A+-Betonfertigteilen besteht aus mehreren Betonteilen, die zusammengebaut eine Einheit mit 420 cm Durchmesser bilden. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl, höhenverstellbar und gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert.",
+            "Konzipiert für den öffentlichen Raum: Freibäder, Campingplätze, Sportanlagen und Schrebergärten. Die Installation erfolgt fundamentfrei auf einem verdichteten Schotterbett — keine Pflasterarbeiten, keine Erdarbeiten. Die Bodenplatte ist 16 cm stark und Teil der Grillstelle.",
+            "Quelle: kommunaldirekt.de, »Grillplatz für öffentlichen Raum« (2020)."
+        ],
+        altText: "Grillplatz aus A+-Betonfertigteilen — Durchmesser 420 cm, Edelstahlrost, fundamentfrei.",
         productsUsed: [
             { name: "Öffentliche Grillstelle", path: "/produkte/grillstelle-beton" },
         ]
     },
     {
-        id: "inlinehockey-feld",
-        title: "Inlinehockey-Feld",
+        id: "hockey-bandensystem-outdoor",
+        title: "Fundamentfreies Bandensystem für Sportfelder",
         category: "Hockey-Bande",
-        year: 2021,
+        year: 2015,
         imageUrl: "/images/hockey/inline-hockey-bande-03.jpg",
         images: [
              "/images/hockey/hockey-einfassung-01.jpg",
              "/images/hockey/inline-hockey-bande-02.jpg",
+             "/images/hockey/roll-hockey-bande.jpg",
         ],
-        description: "Sanierung und Modernisierung eines Inlinehockey-Feldes mit unserem fundamentfreien Bandensystem. Das Feld ist nun für den ganzjährigen Spielbetrieb geeignet.",
-        altText: "Professionelles Inlinehockey-Feld mit robusten Beton-Banden.",
+        description: "Ein Bandensystem für Sportfelder, das ohne Fundamente und ohne Bodenbefestigungen aufgestellt wird. Witterungsbeständige Materialien mit Edelstahlkomponenten, flexibel anpassbar an verschiedene Feldgrößen.",
+        longDescription: [
+            "A+ Urban Design hat ein Bandensystem für Sportfelder entwickelt, das ohne Fundamente und ohne Bodenbefestigungen aufgestellt wird. Der Bodenbelag bleibt unbeschädigt — anders als bei klassischen Banden mit Verankerung im Untergrund.",
+            "Das System arbeitet mit witterungsbeständigen Materialien: Beton, Edelstahl, Laminatplatten und Gummi. Die am stärksten beanspruchte Einfassungsfläche ist aus Beton. Modulare Erweiterung in 1,5-m-Schritten erlaubt die flexible Anpassung an Kleinfeld, Halbfeld oder reguläres Spielfeld.",
+            "Drei Varianten sind verfügbar: 40 cm als Einfassung mit Gummikappe für Inline-Hockey, 80 cm und 110 cm als Profil-Banden mit Edelstahl-Handlauf für Rollhockey, Inline-Hockey oder — mit optionalem Abdichtungsprofil — auch für Eishockey im Winter.",
+            "Quelle: freiraum-gestalten.info, »Ohne Fundament und Bodenbefestigung« (FREIRAUM GESTALTEN 02/2015)."
+        ],
+        altText: "Fundamentfreies Bandensystem für Inline-Hockey, Rollhockey und Eishockey — Beton, Edelstahl, Laminat.",
         productsUsed: [
-            { name: "Hockey-Banden (110cm)", path: "/produkte/hockey-banden" },
+            { name: "Hockey-Banden", path: "/produkte/hockey-banden" },
         ]
     },
     {
-        id: "umkleide-freibad",
-        title: "Umkleidekabinen Freibad Süd",
+        id: "schnecke-umkleidekabine",
+        title: "Schnecke — Umkleidekabine für Freibäder",
         category: "Umkleidekabine",
-        year: 2022,
+        year: 2021,
         imageUrl: "/images/umkleide/umkleide-kabine-01.jpg",
         images: [
             "/images/umkleide/umkleidekabine-freibad-03.jpg",
             "/images/umkleide/umkleide-kabine-02.jpg",
+            "/images/umkleide/umkleide-panorama.jpg",
         ],
-        description: "Im Rahmen der Modernisierung des Freibads Süd wurden sechs unserer Umkleidekabinen installiert. Sie bieten den Badegästen eine moderne, saubere und sichere Umkleidemöglichkeit.",
-        altText: "Reihe von architektonischen Beton-Umkleidekabinen.",
+        description: "Die Umkleide- und Duschkabine von A+ Urban Design besteht aus zwei aufeinandergesetzten Betonfertigteilen mit charakteristisch schneckenförmiger Sichtschutzwand auf Edelstahlfüßen. Wahlweise mit integrierter Dusche oder nur mit Aussparungen für Gully und Wasserleitungen — komplett ohne aufwendige Fundamentarbeit.",
+        longDescription: [
+            "Die Schnecke ist eine wartungsarme Umkleidekabine für Freibäder: fugenlose Betonbodenplatte, schneckenförmiges Oberteil auf Edelstahlfüßen. Beim Betreten und Verlassen ist kein Kabinenkontakt nötig — ein hygienischer Vorteil, der besonders während der Pandemie von Bedeutung war.",
+            "Die Sichtschutzwand ab 30 cm Höhe ermöglicht Sichtkontrolle gegen Missbrauch. Wartungsarme Materialien ohne bewegliche Teile garantieren langjährige Haltbarkeit. Die Kabine besteht aus nur zwei Teilen ohne Verschraubungen und lässt sich einfach aufstellen, umsetzen oder versetzen.",
+            "Quellen: kommunaldirekt.de (»Umkleidekabine für Freibäder«), kommunalclick24.de (»Ein Schneckenhaus als Duschkabine«, »Duschkabine – wir sind so frei«), flaechenmanager.com (»Berührungsfreie Umkleidekabine für Freibäder«, 2021)."
+        ],
+        altText: "Schnecke — Umkleide- und Duschkabine aus zwei Betonfertigteilen mit schneckenförmigem Sichtschutz.",
         productsUsed: [
             { name: 'Umkleidekabine', path: "/produkte/umkleidekabine-beton" },
         ]
@@ -409,14 +446,18 @@ export const PROJECTS: Project[] = [
         category: "Skatepark",
         year: 2024,
         imageUrl: "/images/skate-anlagen/skate-anlage-01.jpg",
-        description: "Der Bastion Skatepark in Alba Iulia, Rumänien — ein urbaner Treffpunkt für die Skateszene. Der Park wurde mit verschiedenen Street-Elementen ausgestattet, die sich harmonisch in das historische Stadtbild einfügen.",
-        altText: "Bastion Skatepark in Alba Iulia mit modularen Beton-Elementen.",
-        images: [
-            "/images/skate-anlagen/skateanlage-03.jpg",
-            "/images/skate-anlagen/skateanlagen-04.jpg",
+        description: "Skatepark im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia (Rumänien) — mehrstufige Anlage aus modularen Beton-Skateelementen, die aus mehr als 50 m Entfernung unsichtbar bleibt. Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert.",
+        longDescription: [
+            "Im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia, Rumänien, entstand ein Skatepark, der aus mehr als 50 m Entfernung unsichtbar bleibt — ein bewusster Entwurf, um die historische Gesamtwirkung der Sternfestung nicht zu stören.",
+            "Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert; die mehrstufige Skateanlage verbindet zugleich Ober- und Unterstadt und zeigt, wie Freizeitnutzung und Denkmalschutz zusammengehen können. A+ Urban Design lieferte die modularen Betonelemente und begleitete die Einbindung in den Denkmalschutz-Kontext.",
+            "Quelle: freiraum-gestalten.info, »Skaten und Denkmalschutz vereinen«."
         ],
+        altText: "Bastion Skatepark in Alba Iulia, Rumänien — modulare Beton-Skate-Elemente im historischen Festungsgraben.",
+        images: [],
         productsUsed: [
             { name: "Modulare Skate-Elemente", path: "/produkte/skate-anlagen" },
+            { name: "Skate-Bowls", path: "/produkte/skate-bowls-beton" },
+            { name: "Skate-Pipes", path: "/produkte/skate-pipes-beton" },
         ]
     },
 ];

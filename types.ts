@@ -9,7 +9,7 @@ export interface Product {
   usp?: string;
 }
 
-export type ProjectCategory = 'Skatepark' | 'Pumptrack' | 'Hockey-Bande' | 'Grillstelle' | 'Umkleidekabine' | 'BMX-Anlage' | 'Spezialbau';
+export type ProjectCategory = 'Skatepark' | 'Pumptrack' | 'Hockey-Bande' | 'Grillstelle' | 'Umkleidekabine';
 
 export interface Project {
   id: string;
@@ -18,6 +18,7 @@ export interface Project {
   imageUrl: string;
   images: string[];
   description: string;
+  longDescription?: string[];
   altText: string;
   productsUsed: {
     name: string;

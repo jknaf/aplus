@@ -34,10 +34,12 @@ const STATIC_ROUTES = [
   '/referenzen-presse',
   '/produkte',
   '/produkte/skate-anlagen',
+  '/produkte/skate-bowls-beton',
+  '/produkte/skate-pipes-beton',
   '/produkte/pumptrack-beton',
-  '/produkte/bmx-anlagen',
   '/produkte/hockey-banden',
   '/produkte/grillstelle-beton',
+  '/produkte/grillstelle-beton/montageanleitung',
   '/produkte/umkleidekabine-beton',
   '/produkte/ueberdachung-beton',
   '/impressum',
@@ -45,11 +47,11 @@ const STATIC_ROUTES = [
 ];
 
 const PROJECT_IDS = [
-  'modularer-beton-skatepark',
-  'beton-pumptrack',
-  'grillplatz-stadtpark',
-  'inlinehockey-feld',
-  'umkleide-freibad',
+  'skatepark-friedrichsdorf',
+  'pumptrack-berlin-reinickendorf',
+  'grillplatz-oeffentlicher-raum',
+  'hockey-bandensystem-outdoor',
+  'schnecke-umkleidekabine',
   'bastion-skatepark-alba-iulia',
 ];
 
@@ -61,6 +63,7 @@ const sitemapMetaFor = (route) => {
   if (route === '/') return { changefreq: 'weekly', priority: '1.0' };
   if (route === '/projekte') return { changefreq: 'weekly', priority: '0.9' };
   if (route.startsWith('/projekte/')) return { changefreq: 'monthly', priority: '0.7' };
+  if (route === '/produkte/grillstelle-beton/montageanleitung') return { changefreq: 'yearly', priority: '0.6' };
   if (route.startsWith('/produkte/')) return { changefreq: 'monthly', priority: '0.8' };
   if (route === '/produkte') return { changefreq: 'monthly', priority: '0.9' };
   if (route === '/ueber-uns' || route === '/kontakt') return { changefreq: 'monthly', priority: '0.9' };

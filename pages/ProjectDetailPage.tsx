@@ -63,9 +63,6 @@ const ProjectDetailPage: React.FC = () => {
                     <span className="bg-brand-orange text-black text-xs font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
                         {project.category}
                     </span>
-                    <span className="text-gray-300 font-mono text-xs tracking-widest">
-                        EST. {project.year || '2023'}
-                    </span>
                  </div>
                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading text-white uppercase tracking-tighter leading-[0.85] shadow-black drop-shadow-2xl">
                     {project.title}
@@ -89,9 +86,16 @@ const ProjectDetailPage: React.FC = () => {
                                 <h3 className="text-xs font-bold text-brand-orange uppercase tracking-widest mb-4 flex items-center gap-2">
                                     <span className="w-8 h-px bg-brand-orange"></span> Briefing
                                 </h3>
-                                <p className="text-xl text-brand-muted leading-relaxed font-light">
+                                <p className="text-xl text-brand-muted leading-relaxed font-light mb-6">
                                     {project.description}
                                 </p>
+                                {project.longDescription && (
+                                    <div className="space-y-4 text-base text-brand-muted leading-relaxed">
+                                        {project.longDescription.map((paragraph, i) => (
+                                            <p key={i}>{paragraph}</p>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
 
                             {/* Tech Specs Table */}
@@ -100,10 +104,6 @@ const ProjectDetailPage: React.FC = () => {
                                     Projektdaten
                                 </h3>
                                 <dl className="space-y-4 text-sm">
-                                    <div className="flex justify-between">
-                                        <dt className="text-brand-muted font-mono uppercase">Baujahr</dt>
-                                        <dd className="text-brand-dark font-bold">{project.year || '2023'}</dd>
-                                    </div>
                                     <div className="flex justify-between">
                                         <dt className="text-brand-muted font-mono uppercase">Typ</dt>
                                         <dd className="text-brand-dark font-bold">{project.category}</dd>

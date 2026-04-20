@@ -65,7 +65,7 @@ const ProductSkatePipesPage: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Beton Skate-Pipes — Halfpipe, Mini-Pipe, Super-Pipe",
-    "description": "Skate-Pipes aus bewehrtem Beton: Mini-Pipe 135/165 cm, Standard 200 cm, Super-Pipe 240/255 cm. Standardaufstellung oder Kombi mit Banks, Coping-Ramps, Spines. TÜV-zertifiziert nach DIN EN 14974.",
+    "description": "Skate-Pipes aus bewehrtem Beton in drei Gesamthöhen (inkl. Flat): 165 cm (Mini-Pipe), 240 und 255 cm (Super-Pipe). Standardaufstellung oder Kombi mit Banks, Coping-Ramps, Spines. TÜV-zertifiziert nach DIN EN 14974.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
     "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
     "category": "Sportanlagen / Urban Sports",
@@ -84,7 +84,7 @@ const ProductSkatePipesPage: React.FC = () => {
   return (
     <PageShell
         title="Beton Skate-Pipes — Halfpipe, Mini-Pipe & Super-Pipe"
-        description="Skate-Pipes aus bewehrtem Beton in fünf Höhen: 135, 165, 200, 240, 255 cm. Standardaufstellung oder Combi-Pipe mit Banks, Coping-Ramps und Spines. TÜV-zertifiziert nach DIN EN 14974. Fundamentfrei montierbar."
+        description="Skate-Pipes aus bewehrtem Beton in drei Gesamthöhen (inkl. Flat): 165, 240 und 255 cm. Standardaufstellung oder Combi-Pipe mit Banks, Coping-Ramps und Spines. TÜV-zertifiziert nach DIN EN 14974. Fundamentfrei montierbar."
         schema={productSchema}
     >
        {/* 1. HERO */}
@@ -124,7 +124,7 @@ const ProductSkatePipesPage: React.FC = () => {
                             Die Halfpipe entstand in den 1970er Jahren aus leeren Schwimmbecken. Heute ist sie das prägende Element jedes Skateparks — und in Beton die dauerhafteste Ausführung überhaupt.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Unsere Skate-Pipes sind aus bewehrtem Beton gefertigt. Unter jeder Plattform sitzt eine arretierbare Stütze, die Fugen sind mit verzinktem Copingrohr abgedeckt. Lieferbar in <strong className="text-brand-dark">135, 165, 200, 240 und 255 cm</strong> Höhe (Flat = 15 cm), als Standard oder als Combi-Pipe mit Banks, Coping-Ramps und Spines.
+                            Unsere Skate-Pipes sind aus bewehrtem Beton gefertigt. Unter jeder Plattform sitzt eine arretierbare Stütze, die Fugen sind mit verzinktem Copingrohr abgedeckt. Lieferbar in <strong className="text-brand-dark">165, 240 und 255 cm</strong> Gesamthöhe (inkl. Flat = 15 cm), als Standard oder als Combi-Pipe mit Banks, Coping-Ramps und Spines.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
                             Mindestbreite: 375 cm für die kleine Pipe (erweiterbar in 187,5-cm-Schritten), 500 cm für mittlere und große Pipes (Modulraster 250 cm). Montage fundamentfrei auf Asphalt, Betonplatte oder Schotterbett.
@@ -152,27 +152,19 @@ const ProductSkatePipesPage: React.FC = () => {
                     <div>
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Höhen-Raster</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                            Fünf Höhen. <span className="text-brand-orange">Ein System.</span>
+                            Drei Höhen. <span className="text-brand-orange">Ein System.</span>
                         </h2>
                     </div>
                 </div>
 
                 <p className="text-lg text-brand-muted leading-relaxed mb-8 max-w-4xl">
-                    Mini-Pipes (135/165 cm), Standard-Pipes (200 cm) und Super-Pipes (240/255 cm) sind in derselben modularen Betonbauweise erhältlich. Alle Höhen können untereinander kombiniert werden — beispielsweise als Pipe-zu-Pipe-Transfer mit Zwischen-Spine. Die Nutzfläche zwischen den Pipes ist aus massivem Beton, weil dort die stärkste Belastung auftritt.
+                    Mini-Pipe (165 cm) und Super-Pipes (240/255 cm) sind in derselben modularen Betonbauweise erhältlich. Alle Höhen können untereinander kombiniert werden — beispielsweise als Pipe-zu-Pipe-Transfer mit Zwischen-Spine. Die Nutzfläche zwischen den Pipes ist aus massivem Beton, weil dort die stärkste Belastung auftritt.
                 </p>
 
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-5 text-center">
-                        <div className="text-3xl font-extrabold font-mono text-brand-orange">135 cm</div>
-                        <div className="text-xs font-mono text-brand-muted uppercase tracking-widest mt-1">Mini</div>
-                    </div>
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-5 text-center">
+                <div className="grid grid-cols-3 gap-4 mb-10">
+                    <div className="bg-brand-surface/60 border border-brand-orange/40 rounded-xl p-5 text-center">
                         <div className="text-3xl font-extrabold font-mono text-brand-orange">165 cm</div>
                         <div className="text-xs font-mono text-brand-muted uppercase tracking-widest mt-1">Mini-Pipe</div>
-                    </div>
-                    <div className="bg-brand-surface/60 border border-brand-orange/40 rounded-xl p-5 text-center">
-                        <div className="text-3xl font-extrabold font-mono text-brand-orange">200 cm</div>
-                        <div className="text-xs font-mono text-brand-muted uppercase tracking-widest mt-1">Standard</div>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-5 text-center">
                         <div className="text-3xl font-extrabold font-mono text-brand-orange">240 cm</div>
@@ -250,7 +242,7 @@ const ProductSkatePipesPage: React.FC = () => {
                         href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/?q=Z1A+056616+0012+Rev.+00"
                         linkLabel="TÜV-SÜD Zertifikat"
                     />
-                    <TechSpecCard title="Pipe-Höhen" value="135 / 165 / 200 / 240 / 255 cm" icon="straighten" />
+                    <TechSpecCard title="Pipe-Höhen" value="165 / 240 / 255 cm" icon="straighten" />
                     <TechSpecCard title="Flat-Höhe" value="15 cm" icon="square_foot" />
                     <TechSpecCard title="Mindestbreite kl." value="375 cm (+187,5 cm)" icon="width" />
                     <TechSpecCard title="Mindestbreite gr." value="500 cm (+250 cm)" icon="width" />

@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { useActiveSection, useReveal, useScrollProgress } from '../components/assembly/hooks';
 import {
-  ChainCounterweightAnim,
   FoundationDiagram,
-  PlanDiagram,
   RiggingDiagram,
   SetzreihenfolgeDiagram,
-  TraegerDiagram,
 } from '../components/assembly/diagrams';
 import './ProductGrillAssemblyPage.css';
 
@@ -155,10 +152,10 @@ const Voraussetzungen: React.FC = () => {
             <FoundationDiagram />
             <div className="blueprint">
               <div className="bp-head">
-                <span className="bp-title">Originalzeichnung · Schnitt</span>
+                <span className="bp-title">Schnitt</span>
                 <span className="bp-no">DWG-01 / A+</span>
               </div>
-              <img src="/images/montage-grillplatz/zeichnung-schnitt.png" alt="Originalzeichnung Querschnitt Grillplatz" loading="lazy" />
+              <img src="/images/montage-grillplatz/zeichnung-schnitt.png" alt="Querschnitt Grillplatz" loading="lazy" />
               <div className="bp-foot">
                 <span>A+ Urban Design · Grillplatz</span>
                 <span className="scale">M 1:50</span>
@@ -305,15 +302,12 @@ const Montage: React.FC = () => (
         </div>
         <div className="step-visual">
           <SetzreihenfolgeDiagram />
-          <div style={{ marginTop: '1.5rem' }}>
-            <PlanDiagram />
-          </div>
           <div className="blueprint">
             <div className="bp-head">
-              <span className="bp-title">Originalzeichnung · Grundriss</span>
+              <span className="bp-title">Grundriss</span>
               <span className="bp-no">DWG-02 / A+</span>
             </div>
-            <img src="/images/montage-grillplatz/zeichnung-grundriss.png" alt="Originalzeichnung Grundriss Grillplatz" loading="lazy" />
+            <img src="/images/montage-grillplatz/zeichnung-grundriss.png" alt="Grundriss Grillplatz" loading="lazy" />
             <div className="bp-foot">
               <span>Ø 4,20 m · Mitte Ø 1,40 / 0,95 m</span>
               <span className="scale">M 1:50</span>
@@ -344,13 +338,12 @@ const Montage: React.FC = () => (
           </div>
         </div>
         <div className="step-visual">
-          <TraegerDiagram />
           <div className="blueprint">
             <div className="bp-head">
-              <span className="bp-title">Originalzeichnung · Trägerdetail</span>
+              <span className="bp-title">Trägerdetail</span>
               <span className="bp-no">DWG-03 / A+</span>
             </div>
-            <img src="/images/montage-grillplatz/zeichnung-traeger-v3.png" alt="Originalzeichnung Träger mit Rolle und Kette" loading="lazy" />
+            <img src="/images/montage-grillplatz/zeichnung-traeger-v3.png" alt="Träger mit Rolle und Kette" loading="lazy" />
             <div className="bp-foot">
               <span>Träger · Rolle · Kette · Gegengewicht</span>
               <span className="scale">DETAIL</span>
@@ -359,7 +352,7 @@ const Montage: React.FC = () => (
         </div>
       </div>
 
-      <div className="step-row reverse reveal">
+      <div className="step-row reveal" style={{ gridTemplateColumns: '1fr' }}>
         <div>
           <div className="step-meta">
             <span className="step-number">04</span>
@@ -389,9 +382,6 @@ const Montage: React.FC = () => (
               </div>
             </div>
           </div>
-        </div>
-        <div className="step-visual">
-          <ChainCounterweightAnim />
         </div>
       </div>
 

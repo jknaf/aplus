@@ -339,7 +339,6 @@ export const PROJECTS: Project[] = [
         images: [
             "/images/skateparks/skatepark-02.jpg",
             "/images/skateparks/skatepark-03.jpg",
-            "/images/skateparks/skatepark-04.jpg",
         ],
         description: "2.000 m² große Skateanlage auf zwei Ebenen mit TÜV-zertifizierten Skateelementen aus Beton — Fun-Boxen, Stairs, Pyramid-Hip, Ledges, Rail-Slides sowie eine knapp zwei Meter hohe Pipe. Durch Böschungen und Geländeintegration fügt sich die Anlage harmonisch in das Sport- und Freizeitgebiet ein.",
         longDescription: [
@@ -451,13 +450,10 @@ export const PROJECTS: Project[] = [
         longDescription: [
             "Im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia, Rumänien, entstand ein Skatepark, der aus mehr als 50 m Entfernung unsichtbar bleibt — ein bewusster Entwurf, um die historische Gesamtwirkung der Sternfestung nicht zu stören.",
             "Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert; die mehrstufige Skateanlage verbindet zugleich Ober- und Unterstadt und zeigt, wie Freizeitnutzung und Denkmalschutz zusammengehen können. A+ Urban Design lieferte die modularen Betonelemente und begleitete die Einbindung in den Denkmalschutz-Kontext.",
-            "Quelle: freiraum-gestalten.info, »Skaten und Denkmalschutz vereinen«; zusätzlich News-Beiträge im A+-Archiv. Weitere Projekt-Details und Fotos folgen mit Roland-Input."
+            "Quelle: freiraum-gestalten.info, »Skaten und Denkmalschutz vereinen«."
         ],
         altText: "Bastion Skatepark in Alba Iulia, Rumänien — modulare Beton-Skate-Elemente im historischen Festungsgraben.",
-        images: [
-            "/images/skate-anlagen/skateanlage-03.jpg",
-            "/images/skate-anlagen/skateanlagen-04.jpg",
-        ],
+        images: [],
         productsUsed: [
             { name: "Modulare Skate-Elemente", path: "/produkte/skate-anlagen" },
             { name: "Skate-Bowls", path: "/produkte/skate-bowls-beton" },

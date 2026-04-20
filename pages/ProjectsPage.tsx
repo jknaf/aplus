@@ -4,7 +4,7 @@ import PageShell from '../components/PageShell';
 import { PROJECTS } from '../constants';
 import { ProjectCategory } from '../types';
 
-const CATEGORIES: ProjectCategory[] = ['Skatepark', 'Pumptrack', 'Hockey-Bande', 'Grillstelle', 'Umkleidekabine', 'BMX-Anlage', 'Spezialbau'];
+const CATEGORIES: ProjectCategory[] = ['Skatepark', 'Pumptrack', 'Hockey-Bande', 'Grillstelle', 'Umkleidekabine'];
 
 const ProjectsPage: React.FC = () => {
   const [filter, setFilter] = useState<ProjectCategory | 'all'>('all');

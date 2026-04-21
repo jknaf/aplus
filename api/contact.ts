@@ -31,7 +31,7 @@ function notificationHtml(name: string, email: string, phone: string, message: s
       </td></tr>
       <tr><td style="padding:10px 20px;border-bottom:1px solid #D0CEC7;">
         <span style="font-size:10px;color:#8A8A80;text-transform:uppercase;letter-spacing:1px;font-family:'Courier New',monospace;">E-Mail</span><br/>
-        <a href="mailto:${email}" style="font-size:14px;color:#6B8F4A;font-weight:600;">${email}</a>
+        <span style="font-size:14px;color:#6B8F4A;font-weight:600;">${email}</span>
       </td></tr>
       <tr><td style="padding:10px 20px;border-bottom:1px solid #D0CEC7;">
         <span style="font-size:10px;color:#8A8A80;text-transform:uppercase;letter-spacing:1px;font-family:'Courier New',monospace;">Telefon</span><br/>
@@ -46,9 +46,9 @@ function notificationHtml(name: string, email: string, phone: string, message: s
         <span style="font-size:14px;color:#2C3530;line-height:1.6;">${message.replace(/\n/g, '<br/>')}</span>
       </td></tr>
     </table>
-    <a href="mailto:${email}?subject=Re: Ihre Anfrage bei A+ Urban Design (${projectType})" style="display:inline-block;padding:12px 28px;background-color:#6B8F4A;color:#FFFFFF;font-weight:800;font-size:12px;text-decoration:none;text-transform:uppercase;letter-spacing:2px;border-radius:4px;">
-      Direkt antworten →
-    </a>
+    <p style="margin:0;padding:12px 0 0 0;font-size:12px;color:#5A5A54;font-style:italic;">
+      Zum Antworten einfach im Mail-Client auf „Antworten" klicken — Reply-To ist bereits auf den Absender gesetzt.
+    </p>
   </td></tr>
   <tr><td style="height:3px;background-color:#6B8F4A;"></td></tr>
 </table>

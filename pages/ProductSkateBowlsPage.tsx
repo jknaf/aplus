@@ -131,7 +131,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                         </p>
 
                         <div className="flex flex-col gap-4">
-                            <Link to="/kontakt" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
+                            <Link to="/kontakt?projectType=Skatepark" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 Bowl planen lassen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
                             <span className="text-xs text-brand-muted font-mono text-center">Kostenlose 3D-Voranalyse, schlüsselfertige Lieferung und Montage</span>

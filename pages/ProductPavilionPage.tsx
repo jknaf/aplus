@@ -122,8 +122,8 @@ const ProductPavilionPage: React.FC = () => {
                         </p>
                         
                         <div className="flex flex-col gap-4">
-                            <Link 
-                                to="/kontakt" 
+                            <Link
+                                to="/kontakt?projectType=Möblierung"
                                 className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
                             >
                                 Beratung anfordern <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 
-type ProjectType = 'Skatepark' | 'Pumptrack' | 'Möblierung' | 'Sonstiges';
+const PROJECT_TYPES = ['Skatepark', 'Pumptrack', 'Möblierung', 'Katalog', 'Beratung', 'Sonstiges'] as const;
+type ProjectType = typeof PROJECT_TYPES[number];
 
 interface FormErrors {
     name?: string;
@@ -11,13 +13,19 @@ interface FormErrors {
 }
 
 const ContactPage: React.FC = () => {
+    const [searchParams] = useSearchParams();
+    const initialProjectType: ProjectType = (() => {
+        const p = searchParams.get('projectType');
+        return p && (PROJECT_TYPES as readonly string[]).includes(p) ? (p as ProjectType) : 'Skatepark';
+    })();
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
         message: ''
     });
-    const [projectType, setProjectType] = useState<ProjectType>('Skatepark');
+    const [projectType, setProjectType] = useState<ProjectType>(initialProjectType);
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errors, setErrors] = useState<FormErrors>({});
     const [submitted, setSubmitted] = useState(false);
@@ -159,7 +167,7 @@ const ContactPage: React.FC = () => {
                                 <div>
                                     <label className={labelClasses}>Worum geht es?</label>
                                     <div className="flex flex-wrap gap-3 mt-2">
-                                        {(['Skatepark', 'Pumptrack', 'Möblierung', 'Sonstiges'] as ProjectType[]).map((type) => (
+                                        {PROJECT_TYPES.map((type) => (
                                             <button
                                                 key={type}
                                                 type="button"

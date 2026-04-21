@@ -233,32 +233,38 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const NOTIFY_TO = process.env.NOTIFICATION_EMAIL ?? 'post@aplusurbandesign.com';
 
+  // 1. Benachrichtigung an Inhaber — kritisch, bei Fehler 500
   try {
-    // 1. Benachrichtigung an Inhaber
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: FROM,
       to: NOTIFY_TO,
       replyTo: email,
       subject: `[Anfrage] ${projectType}: ${name}`,
       html: notificationHtml(name, email, phone, message, projectType),
     });
+    if (error) {
+      console.error('Resend notification error:', error);
+      return res.status(500).json({ error: 'E-Mail konnte nicht gesendet werden.' });
+    }
   } catch (err) {
-    console.error('Resend notification error:', err);
+    console.error('Resend notification throw:', err);
     return res.status(500).json({ error: 'E-Mail konnte nicht gesendet werden.' });
   }
 
+  // 2. Autoresponder an Absender — best-effort, Fehler nur loggen
   try {
-    // 2. Autoresponder an Absender (best-effort — schlägt fehl wenn Domain nicht verifiziert)
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: FROM,
       to: email,
       replyTo: 'post@aplusurbandesign.com',
       subject: 'Ihre Anfrage bei A+ Urban Design — Wir melden uns bald',
       html: autoresponderHtml(name, email, projectType, message),
     });
+    if (error) {
+      console.warn('Autoresponder API-Error:', error);
+    }
   } catch (err) {
-    // Autoresponder-Fehler nicht an den User weitergeben
-    console.warn('Autoresponder konnte nicht gesendet werden (Domain nicht verifiziert?):', err);
+    console.warn('Autoresponder throw:', err);
   }
 
   return res.status(200).json({ success: true });

@@ -348,7 +348,7 @@ const PlanningPage: React.FC = () => {
                 Lassen Sie uns über Ihre Fläche sprechen. Die Erstberatung und Kostenschätzung ist für Kommunen und Vereine unverbindlich.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/kontakt" className="px-8 py-4 bg-brand-orange text-white font-extrabold uppercase tracking-widest rounded hover:bg-brand-dark transition-colors shadow-lg hover:shadow-brand-orange/50">
+                <Link to="/kontakt?projectType=Beratung" className="px-8 py-4 bg-brand-orange text-white font-extrabold uppercase tracking-widest rounded hover:bg-brand-dark transition-colors shadow-lg hover:shadow-brand-orange/50">
                     Projekt anfragen
                 </Link>
                 <a href="tel:+4915560090966" className="px-8 py-4 border border-brand-dark/20 text-brand-dark font-bold uppercase tracking-widest rounded hover:bg-brand-surface transition-colors">

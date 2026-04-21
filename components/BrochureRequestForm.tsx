@@ -1,128 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
+const CTA_TARGET = '/kontakt?projectType=Katalog';
+
 const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = ({ context }) => {
-    const [email, setEmail] = useState('');
-    const [privacyAccepted, setPrivacyAccepted] = useState(false);
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-    const [message, setMessage] = useState('');
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        
-        if (!privacyAccepted) {
-            setStatus('error');
-            setMessage('Bitte akzeptieren Sie die Datenschutzbestimmungen, um fortzufahren.');
-            return;
-        }
-
-        if (!email || status === 'loading') return;
-
-        setStatus('loading');
-        setMessage('');
-
-        try {
-            const response = await fetch('/api/brochure', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email: email.trim(), privacyAccepted: true }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Fehler beim Senden der Anfrage. Bitte versuchen Sie es später erneut.');
-            }
-
-            setStatus('success');
-            setMessage('Vielen Dank! Der Katalog ist auf dem Weg in Ihr Postfach.');
-            setEmail('');
-            setPrivacyAccepted(false);
-
-        } catch (error) {
-            setStatus('error');
-            setMessage(error instanceof Error ? error.message : 'Ein unbekannter Fehler ist aufgetreten.');
-        }
-    };
-
     const isHomepage = context === 'homepage';
 
-    const feedbackContainer = (
-        <div 
-          role="alert" 
-          aria-live="assertive"
-          className={`
-            ${status === 'success' ? 'bg-green-500/10 border border-green-500/20 text-green-400 p-4 rounded-lg text-left text-sm' : ''}
-            ${status === 'error' ? 'bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-lg text-left text-sm mt-4' : ''}
-          `}
-        >
-          <p className="font-bold flex items-center gap-2">
-            {status === 'success' && <span className="material-symbols-outlined">check_circle</span>}
-            {status === 'error' && <span className="material-symbols-outlined">error</span>}
-            {message}
-          </p>
-        </div>
-    );
-
-    // NEW: "Digital Tech / Blueprint" Visualization
-    // Focuses on "Data", "Planning" and "Technical Precision" instead of a physical book.
     const TechCatalogVisual = () => (
         <div className="relative w-72 h-96 mx-auto lg:mx-0 mt-12 lg:mt-0 perspective-1000 group">
-            
-            {/* 1. Abstract 3D Wireframe Background (Rotating Cube) */}
-            {/* This represents the "3D Planning" aspect behind the catalog */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 pointer-events-none z-0">
                 <div className="relative w-full h-full animate-[spin_10s_linear_infinite] transform-style-3d opacity-20 group-hover:opacity-40 transition-opacity duration-500">
-                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform translate-z-[32px]"></div>
-                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform translate-z-[-32px]"></div>
-                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-x-90 translate-z-[32px]"></div>
-                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-x-90 translate-z-[-32px]"></div>
-                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-y-90 translate-z-[32px]"></div>
-                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-y-90 translate-z-[-32px]"></div>
+                    <div className="absolute inset-0 border-2 border-brand-orange/50 transform translate-z-[32px]"></div>
+                    <div className="absolute inset-0 border-2 border-brand-orange/50 transform translate-z-[-32px]"></div>
+                    <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-x-90 translate-z-[32px]"></div>
+                    <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-x-90 translate-z-[-32px]"></div>
+                    <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-y-90 translate-z-[32px]"></div>
+                    <div className="absolute inset-0 border-2 border-brand-orange/50 transform rotate-y-90 translate-z-[-32px]"></div>
                 </div>
             </div>
 
-            {/* 2. The Main "Digital File" Card */}
             <div className="relative z-10 w-full h-full bg-brand-dark border border-brand-dark/20 p-2 shadow-2xl transition-transform duration-500 transform group-hover:rotate-y-6 group-hover:rotate-x-6 overflow-hidden rounded-sm">
-                
-                {/* HUD Elements (Corners) */}
                 <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-brand-orange z-20"></div>
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-brand-orange z-20"></div>
 
-                {/* Inner Content Container */}
                 <div className="relative w-full h-full bg-brand-dark/90 overflow-hidden group-hover:bg-brand-dark/80 transition-colors">
-                    
-                    {/* The Catalog Cover Image */}
                     <img
                         src="/images/branding/katalog-cover.jpg"
                         alt="A+ Urban Design Katalog Cover"
                         className="w-full h-full object-cover opacity-80 mix-blend-normal filter contrast-125 grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
-
-                    {/* Scanning Line Animation */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-orange/20 to-transparent h-[20%] w-full animate-[scan_3s_linear_infinite] pointer-events-none mix-blend-screen border-b border-brand-orange/50"></div>
-                    
-                    {/* Data Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-sm p-4 border-t border-brand-dark/10 flex justify-between items-center">
                         <div className="flex flex-col">
                             <span className="text-[10px] font-mono text-brand-orange tracking-widest uppercase">Datei</span>
                             <span className="text-white font-bold text-xs">PDF DOCUMENT</span>
                         </div>
-                         <div className="flex flex-col text-right">
+                        <div className="flex flex-col text-right">
                             <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase">Größe</span>
                             <span className="text-white font-bold text-xs">~12 MB</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Status Indicator */}
                 <div className="absolute top-4 right-4 flex items-center gap-2 z-30 bg-brand-dark/60 px-2 py-1 rounded backdrop-blur-md border border-brand-dark/10">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                     <span className="text-[10px] font-mono text-white uppercase tracking-wider">Available</span>
                 </div>
             </div>
 
-            {/* Reflection/Glow */}
             <div className="absolute -bottom-8 left-0 right-0 h-4 bg-brand-orange/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[100%]"></div>
 
             <style>{`
@@ -141,20 +66,17 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
     if (isHomepage) {
         return (
             <section id="katalog" className="relative py-24 bg-brand-surface overflow-hidden border-y border-brand-dark/5">
-                {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#6B8F4A 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
                 <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-brand-bg to-transparent opacity-80"></div>
-                
+
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="grid lg:grid-cols-12 gap-12 items-center">
-                        
-                        {/* Text & Form Column */}
+
                         <div className="lg:col-span-7 text-left order-2 lg:order-1">
                             <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                                Kostenloser Download
+                                Katalog anfordern
                             </span>
-                            
-                            {/* TYPOGRAPHY SWAP: Outline 'Unser' (Industrial), Solid 'Katalog' (Readable) */}
+
                             <h2 className="text-5xl md:text-7xl font-extrabold font-heading uppercase tracking-tighter leading-[0.9] mb-6">
                                 <span className="text-brand-muted">Unser</span> <br/>
                                 <span className="text-brand-dark">Katalog.</span>
@@ -163,47 +85,20 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                             <p className="text-lg text-brand-muted mb-8 max-w-xl leading-relaxed">
                                 Planen Sie Ihr nächstes Projekt mit allen Details zur Hand. Unser Katalog enthält technische Zeichnungen, Ausschreibungstexte und inspirierende Case Studies unserer Beton-Skateparks und Stadtmöbel.
                             </p>
-                            
-                            {status === 'success' ? feedbackContainer : (
-                                <form onSubmit={handleSubmit} className="max-w-md">
-                                    <div className="space-y-4">
-                                        <div className="relative group">
-                                            <div className="absolute -inset-0.5 bg-gradient-to-r from-brand-orange to-brand-orange/50 rounded-lg blur opacity-20 group-focus-within:opacity-75 transition duration-500"></div>
-                                            <input
-                                                type="email"
-                                                id="brochure-email-home"
-                                                name="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                placeholder="Ihre geschäftliche E-Mail-Adresse"
-                                                required
-                                                className="relative w-full px-6 py-4 bg-white border border-brand-dark/10 rounded-lg text-brand-dark placeholder-brand-muted focus:outline-none focus:ring-1 focus:ring-brand-orange transition-all shadow-xl"
-                                            />
-                                        </div>
 
-                                        {/* GDPR Checkbox */}
-                                        <div className="flex items-start gap-3 mt-4 group cursor-pointer" onClick={() => setPrivacyAccepted(!privacyAccepted)}>
-                                            <div className={`mt-1 w-5 h-5 rounded border flex items-center justify-center transition-colors flex-shrink-0 ${privacyAccepted ? 'bg-brand-orange border-brand-orange' : 'bg-transparent border-brand-muted group-hover:border-brand-dark'}`}>
-                                                {privacyAccepted && <span className="material-symbols-outlined text-white text-sm font-bold">check</span>}
-                                            </div>
-                                            <p className="text-xs text-brand-muted leading-snug">
-                                                Ich stimme zu, dass meine Angaben zur Kontaktaufnahme gespeichert werden. Sie können unsere <Link to="/datenschutz" className="underline hover:text-brand-orange" onClick={(e) => e.stopPropagation()}>Datenschutzerklärung</Link> hier einsehen.
-                                            </p>
-                                        </div>
+                            <Link
+                                to={CTA_TARGET}
+                                className="inline-flex items-center gap-2 py-4 px-8 bg-brand-orange hover:bg-brand-dark text-white font-extrabold uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(107,143,74,0.4)] group"
+                            >
+                                Katalog anfordern
+                                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </Link>
 
-                                        <button
-                                            type="submit"
-                                            disabled={status === 'loading'}
-                                            className="w-full py-4 px-8 bg-brand-orange hover:bg-brand-dark text-white font-extrabold uppercase tracking-widest text-sm rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_20px_-10px_rgba(107,143,74,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex justify-center items-center gap-2 group"
-                                        >
-                                            {status === 'loading' ? 'Wird verarbeitet...' : 'Katalog jetzt anfordern'} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">download</span>
-                                        </button>
-                                    </div>
-                                </form>
-                            )}
+                            <p className="mt-4 text-xs text-brand-muted max-w-md">
+                                Kurzes Formular mit Telefonnummer — wir schicken den Katalog persönlich zu.
+                            </p>
                         </div>
 
-                        {/* Visual Column */}
                         <div className="lg:col-span-5 flex justify-center lg:justify-end relative order-1 lg:order-2">
                             <TechCatalogVisual />
                         </div>
@@ -212,55 +107,24 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
             </section>
         );
     }
-    
-    // Product Page Version (Sidebar)
+
     return (
         <div className="mt-12 p-1 bg-gradient-to-b from-brand-dark/10 to-transparent rounded-2xl">
             <div className="bg-white rounded-xl p-8 border border-brand-dark/10 relative overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 blur-[50px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                
+
                 <h3 className="text-2xl font-extrabold font-heading text-brand-dark uppercase mb-2">Produktkatalog</h3>
                 <p className="text-sm text-brand-muted mb-6 leading-relaxed">
-                    Alle technischen Daten, Maße und Zertifikate zu diesem Produkt in einer Datei.
+                    Alle technischen Daten, Maße und Zertifikate zu diesem Produkt in einer Datei. Anfrage über unser Kontaktformular, wir schicken den Katalog persönlich zu.
                 </p>
 
-                {status === 'success' ? feedbackContainer : (
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <div>
-                             <input
-                                type="email"
-                                id="brochure-email-product"
-                                name="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="E-Mail-Adresse"
-                                required
-                                className="w-full px-4 py-3 bg-brand-surface border border-brand-dark/10 rounded-lg text-brand-dark placeholder-brand-muted focus:outline-none focus:border-brand-orange transition-colors text-sm"
-                            />
-                        </div>
-                        
-                         {/* GDPR Checkbox Small */}
-                        <div className="flex items-start gap-2 cursor-pointer" onClick={() => setPrivacyAccepted(!privacyAccepted)}>
-                             <div className={`mt-0.5 w-4 h-4 rounded border flex items-center justify-center transition-colors flex-shrink-0 ${privacyAccepted ? 'bg-brand-orange border-brand-orange' : 'bg-transparent border-brand-muted'}`}>
-                                {privacyAccepted && <span className="material-symbols-outlined text-white text-[10px] font-bold">check</span>}
-                            </div>
-                            <p className="text-[10px] text-brand-muted leading-tight">
-                                Datenschutz akzeptieren. <Link to="/datenschutz" className="underline" onClick={(e) => e.stopPropagation()}>Infos</Link>.
-                            </p>
-                        </div>
-
-                        <button
-                            type="submit"
-                            disabled={status === 'loading'}
-                            className="w-full py-3 bg-white hover:bg-brand-orange text-black hover:text-white font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group"
-                        >
-                            {status === 'loading' ? '...' : 'Jetzt herunterladen'} <span className="material-symbols-outlined text-sm group-hover:translate-y-0.5 transition-transform">download</span>
-                        </button>
-                    </form>
-                )}
-                 <div className="mt-4 text-center">
-                    {status === 'error' && feedbackContainer}
-                </div>
+                <Link
+                    to={CTA_TARGET}
+                    className="w-full py-3 bg-white hover:bg-brand-orange text-black hover:text-white font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group border border-brand-dark/10"
+                >
+                    Katalog anfordern
+                    <span className="material-symbols-outlined text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+                </Link>
             </div>
         </div>
     );

@@ -156,12 +156,8 @@ function autoresponderHtml(name: string, email: string, projectType: string, mes
       <p style="margin:0 0 8px 0;font-family:Arial,sans-serif;font-size:14px;color:#5A5A54;">
         Sie können uns auch direkt erreichen:
       </p>
-      <p style="margin:0 0 4px 0;">
-        <a href="tel:+4915560090966" style="font-family:Arial,sans-serif;font-size:14px;color:#2C3530;font-weight:600;text-decoration:none;">&#x260F; +49 155 600 909 66</a>
-      </p>
-      <p style="margin:0;">
-        <a href="mailto:post@aplusurbandesign.com" style="font-family:Arial,sans-serif;font-size:14px;color:#6B8F4A;font-weight:600;text-decoration:none;">&#x2709; post@aplusurbandesign.com</a>
-      </p>
+      <p style="margin:0 0 4px 0;font-family:Arial,sans-serif;font-size:14px;color:#2C3530;font-weight:600;">&#x260F; +49 155 600 909 66</p>
+      <p style="margin:0;font-family:Arial,sans-serif;font-size:14px;color:#6B8F4A;font-weight:600;">&#x2709; post@aplusurbandesign.com</p>
     </td></tr>
 
     <!-- CTA -->

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 
@@ -25,6 +25,10 @@ const ContactPage: React.FC = () => {
         phone: '',
         message: ''
     });
+    // Honeypot: Bots füllen oft alle Felder aus, echte User sehen dieses nie
+    const [website, setWebsite] = useState('');
+    // Render-Zeitstempel für Zeitfalle: Formular wird serverseitig abgelehnt, wenn Submit < 3 s nach Mount erfolgt
+    const renderedAtRef = useRef<number>(Date.now());
     const [projectType, setProjectType] = useState<ProjectType>(initialProjectType);
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errors, setErrors] = useState<FormErrors>({});
@@ -74,6 +78,8 @@ const ContactPage: React.FC = () => {
                     phone: formData.phone,
                     message: formData.message,
                     projectType,
+                    website,
+                    renderedAt: renderedAtRef.current,
                 }),
             });
 
@@ -162,7 +168,21 @@ const ContactPage: React.FC = () => {
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} className="space-y-8 bg-white p-8 md:p-12 border border-brand-dark/10 rounded-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                                
+
+                                {/* Honeypot — für Nutzer unsichtbar, Bots füllen es meist aus */}
+                                <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+                                    <label htmlFor="website">Website (bitte leer lassen)</label>
+                                    <input
+                                        type="text"
+                                        id="website"
+                                        name="website"
+                                        tabIndex={-1}
+                                        autoComplete="off"
+                                        value={website}
+                                        onChange={(e) => setWebsite(e.target.value)}
+                                    />
+                                </div>
+
                                 {/* Project Type Selector */}
                                 <div>
                                     <label className={labelClasses}>Worum geht es?</label>

@@ -215,13 +215,30 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, phone = '', message, projectType = 'Sonstiges' } = req.body as {
+  const { name, email, phone = '', message, projectType = 'Sonstiges', website = '', renderedAt } = req.body as {
     name: string;
     email: string;
     phone?: string;
     message: string;
     projectType?: string;
+    website?: string;
+    renderedAt?: number;
   };
+
+  // Anti-Spam: Honeypot. Echte Nutzer sehen das Feld nie, Bots füllen es aus.
+  // Silent Drop (200 OK) statt 4xx, damit Bots nicht lernen, dass sie geblockt wurden.
+  if (website && website.trim() !== '') {
+    console.warn('Contact spam blocked: honeypot filled', { website: website.slice(0, 40) });
+    return res.status(200).json({ success: true });
+  }
+
+  // Anti-Spam: Zeitfalle. Bots submitten in Millisekunden, Formular muss mindestens 3 s offen gewesen sein.
+  // Ein Renderstempel älter als 1 h ist verdächtig (alter Tab oder manipuliert).
+  const now = Date.now();
+  if (typeof renderedAt !== 'number' || now - renderedAt < 3000 || now - renderedAt > 3_600_000) {
+    console.warn('Contact spam blocked: time trap', { renderedAt, deltaMs: typeof renderedAt === 'number' ? now - renderedAt : null });
+    return res.status(200).json({ success: true });
+  }
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Pflichtfelder fehlen.' });

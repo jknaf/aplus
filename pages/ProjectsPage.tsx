@@ -77,7 +77,7 @@ const ProjectsPage: React.FC = () => {
                     alt={project.altText} 
                     className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 filter grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100" 
                  />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent opacity-70 group-hover:opacity-35 transition-opacity duration-500"></div>
             </div>
 
             {/* HUD Overlay (Corners) */}

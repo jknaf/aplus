@@ -92,9 +92,9 @@ const ProductSkatePipesPage: React.FC = () => {
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
                  <img src="/images/skate-pipes/skate-pipe-01.jpg" alt="Beton Skate-Pipe vom Hersteller A+ Urban Design" className="w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
             </div>
             <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
                 <div className="max-w-7xl mx-auto">

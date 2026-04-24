@@ -118,7 +118,7 @@ const PlanningPage: React.FC = () => {
                     alt="3D Skatepark Planung A+ Urban Design" 
                     className="w-full h-full object-cover animate-[kenburns-1_20s_infinite_alternate]"
                  />
-                 <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
+                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent"></div>
                  <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
             </div>
 

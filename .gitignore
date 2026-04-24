@@ -7,3 +7,4 @@ dist
 public/videos/skateparks-original-backup/
 public/videos/skateparks-compressed/
 .DS_Store
+.env*.local

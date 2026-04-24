@@ -486,7 +486,7 @@ const Hero: React.FC = () => {
                                 poster={slide.poster}
                                 muted
                                 playsInline
-                                preload="auto"
+                                preload="metadata"
                                 onLoadedMetadata={(e) => { e.currentTarget.currentTime = VIDEO_START_TIME; }}
                             />
                         )}

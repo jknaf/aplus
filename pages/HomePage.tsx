@@ -434,15 +434,29 @@ const Hero: React.FC = () => {
                     video.play().catch(() => {}); // Safari/autoplay-Schutz abfangen
                 };
 
-                if (video.readyState >= 1) {
-                    // Desktop: Metadaten bereits geladen (preload hat gewirkt)
+                if (video.readyState >= 3) {
+                    // Video ist ausreichend gepuffert (HAVE_FUTURE_DATA)
                     seekAndPlay();
                 } else {
-                    // Mobile: Metadaten noch nicht da — auf Load warten
-                    video.addEventListener('loadedmetadata', seekAndPlay, { once: true });
+                    // Noch nicht genug gepuffert — auf canplay warten
+                    video.addEventListener('canplay', seekAndPlay, { once: true });
                     video.load();
-                    cleanupListener = () => video.removeEventListener('loadedmetadata', seekAndPlay);
+                    cleanupListener = () => video.removeEventListener('canplay', seekAndPlay);
                 }
+            }
+        }
+
+        // Smart-Preload: während dieser Slide läuft, das nächste Video-Slide
+        // im Hintergrund vorladen. So nutzen wir bewusst die Bild-Slots (5 s)
+        // als Ladezeit fuer das kommende Video, ohne beim Page-Load alle
+        // Videos gleichzeitig herunterzuladen (Safari 26 unter macOS Tahoe
+        // nimmt preload="auto" als "alles sofort voll laden" wortwoertlich).
+        const nextIndex = (currentIndex + 1) % SLIDES.length;
+        const nextSlide = SLIDES[nextIndex];
+        if (nextSlide.type === 'video') {
+            const nextVideo = videoRefs.current[nextIndex];
+            if (nextVideo && nextVideo.readyState < 3) {
+                try { nextVideo.load(); } catch {}
             }
         }
 

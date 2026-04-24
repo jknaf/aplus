@@ -63,8 +63,11 @@ const App: React.FC = () => {
       </div>
       
       {/* Main Content Area */}
-      {/* Content needs explicit z-index > 0 to sit above atmosphere */}
-      <div className="flex flex-col min-h-screen relative z-[10]">
+      {/* Kein eigener Stacking-Kontext hier: Header (fixed z-50) und Seiteninhalte
+          leben direkt im Root. Das z-[10] hat vorher den fixed Header eingeklammert,
+          wodurch Seiten-Container mit z-10 ihn geometrisch überdeckt haben und
+          Header-Dropdown-Klicks auf Projekt-/Produktseiten ins Leere liefen. */}
+      <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
           <Routes>

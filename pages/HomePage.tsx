@@ -228,7 +228,7 @@ const ProductScrollytelling: React.FC = () => {
                                                 <div className={`grid transition-all duration-500 ease-in-out ${isActive ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
                                                     <div className="overflow-hidden">
                                                         <p className="text-brand-muted leading-relaxed mb-6 border-l-2 border-brand-dark/10 pl-4">{product.usp}</p>
-                                                        <div className="grid grid-cols-2 gap-4 mb-6">
+                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                                                             <div className="bg-brand-surface/40 p-3 rounded-xl border border-brand-dark/5 shadow-sm">
                                                                 <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">Material</div>
                                                                 <div className="text-sm font-bold text-brand-dark">{product.material}</div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
 import BrochureRequestForm from '../components/BrochureRequestForm';
+import ReferencedProjects from '../components/ReferencedProjects';
 
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'skate-pipes' && p.id !== 'skate-anlagen').slice(0, 3);
@@ -257,6 +258,7 @@ const ProductSkatePipesPage: React.FC = () => {
             </div>
 
             <BrochureRequestForm context="productpage" />
+            <ReferencedProjects productPath="/produkte/skate-pipes-beton" />
             <OtherProducts />
 
        </div>

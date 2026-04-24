@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
 import BrochureRequestForm from '../components/BrochureRequestForm';
+import ReferencedProjects from '../components/ReferencedProjects';
 
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'ueberdachung' && p.id !== 'grillstelle').slice(0, 3);
@@ -243,6 +244,7 @@ const ProductPavilionPage: React.FC = () => {
             </div>
 
             <BrochureRequestForm context="productpage" />
+            <ReferencedProjects productPath="/produkte/ueberdachung-beton" />
             <OtherProducts />
 
        </div>

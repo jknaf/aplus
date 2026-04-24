@@ -110,6 +110,21 @@ const AboutPage: React.FC = () => {
           </div>
       </div>
 
+      {/* 2b. QUALITÄTSNACHWEISE */}
+      <div className="container mx-auto px-4 mb-32">
+          <div className="max-w-5xl mx-auto bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-8 md:p-12 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+              <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
+                  Qualitätsnachweise
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-8 leading-none">
+                  Geprüfte <span className="text-brand-orange">Skate-Elemente.</span>
+              </h2>
+              <p className="text-lg text-brand-muted leading-relaxed">
+                  Unsere ersten modularen Skate-Elemente wurden 1998 hergestellt. Im Jahr 2000 haben unsere modularen Skate-Elemente aus Beton das TÜV-Zertifikat und das GS-Zeichen für geprüfte Sicherheit erhalten. Aktuell sind unsere modularen Skate-Elemente aus Beton nach DIN EN 14974 („Skateparks — Sicherheitstechnische Anforderungen und Prüfverfahren“), nach PPP 63126B und anderen Normen geprüft und zertifiziert mit der Zertifikats-Nummer Z1A 056616 0012. Damit waren wir weltweit vermutlich die ersten Hersteller modularer Beton-Skate-Elemente mit TÜV-Siegel. Über 27 Fachartikel in einschlägigen Publikationen dokumentieren die über 350 Skate-Anlagen, bei denen unser modulares Skateelemente-System verwendet wurde.
+              </p>
+          </div>
+      </div>
+
       {/* 3. THE MISSION (Split Layout) */}
       <div className="container mx-auto px-4 mb-32">
           <div className="flex flex-col lg:flex-row gap-16 items-center mb-16">
@@ -130,6 +145,12 @@ const AboutPage: React.FC = () => {
                       </p>
                       <p className="text-lg text-brand-muted leading-relaxed">
                           Wir fertigen im Werk unter kontrollierten Bedingungen und montieren vor Ort in Rekordzeit. Unsere TÜV-zertifizierten Module sind recycelbar, vandalismussicher und können umgebaut, erweitert, versetzt oder wiederverwendet werden.
+                      </p>
+                      <p className="text-lg text-brand-muted leading-relaxed">
+                          Genaue Fertigung der Skate-Elemente im Werk in lasergeschnittenen Stahlschalungen und nicht in Ortbeton auf der Baustelle: Das heißt Bewehrung, Betonstärken und Geometrie sind wetterunabhängig kontrollierbar. Unsere Kantenschutzprofile, eingeführt in den 1990er Jahren, werden in jede befahrbare Kante eingegossen. Ergebnis: Elemente, die nach 25 Jahren Dauerbetrieb im öffentlichen Raum immer noch befahrbar sind und keine Sanierung brauchen.
+                      </p>
+                      <p className="text-lg text-brand-muted leading-relaxed">
+                          Die gleiche Fertigungsphilosophie steht hinter unseren Hockey-Banden, Pumptrack-Modulen, Umkleidekabinen, Grillstellen und Überdachungen: ein System, robust, witterungsbeständig, fundamentfrei, wartungsarm, vandalismussicher, wiederverwendbar, recycelbar und nachhaltig für viele Anwendungen.
                       </p>
                       <div className="grid grid-cols-2 gap-4 mt-8">
                           <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/5 shadow-sm">
@@ -239,6 +260,9 @@ const AboutPage: React.FC = () => {
                         <p className="text-brand-orange font-bold mb-6 text-lg">Architekt · A+ Urban Design</p>
                         <p className="text-brand-muted leading-relaxed text-lg max-w-lg">
                             "Architektur endet nicht an der Gebäudekante. Der Raum dazwischen – dort, wo das Leben stattfindet – verdient dieselbe Qualität und Aufmerksamkeit."
+                        </p>
+                        <p className="text-brand-muted leading-relaxed text-lg max-w-lg mt-6">
+                            Das Unternehmen hat bis heute über 350 Skate-Anlagen europaweit realisiert: von den Kanaren bis Norwegen und von Großbritannien bis zur Türkei. Entwickelt, gefertigt und logistisch gesteuert wird alles seit 2025 aus Stuttgart.
                         </p>
                          <div className="mt-8 flex justify-center md:justify-start gap-4">
                              <a href="mailto:post@aplusurbandesign.com" className="w-12 h-12 flex items-center justify-center rounded-full bg-brand-surface/60 hover:bg-brand-orange hover:text-white transition-all text-brand-muted"><span className="material-symbols-outlined">mail</span></a>

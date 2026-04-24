@@ -157,6 +157,37 @@ const ProductPavilionPage: React.FC = () => {
                 </div>
             </div>
 
+            <div className="mb-32 grid lg:grid-cols-2 gap-8">
+                <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                        Einsatzbereiche
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
+                        Wetterschutz im <span className="text-brand-orange">öffentlichen Raum.</span>
+                    </h2>
+                    <p className="text-lg text-brand-muted leading-relaxed">
+                        Typische Einsatzorte unserer Überdachung / Pavillon als Wetterschutz sind Haltestellen, Schulhöfe, Parks, Campingplätze, Sportanlagen, Friedhöfe, Rastplätze und allgemein der öffentliche Raum. Das Beton-Element mit 240 × 200 × 262 cm hat eine integrierte Sitzfläche für 4-5 Personen und schützt insgesamt ca. 10 Personen vor Regen und Sonne. Sie kann einzeln oder nebeneinander aufgestellt werden, so entsteht eine durchgehende Haltestellenüberdachung, gegenüber aufgestellt entsteht eine Sitznische mit Sichtschutz, als Dreier- oder Viererkombination entsteht ein vollwertiger Pavillon mit Sitzfläche für bis zu 16 Personen und Schutz für bis zu 40 Personen. Abstände zwischen den Elementen lassen sich mit Edelstahlseilen oder Netzen für Kletterpflanzen begrünen.
+                    </p>
+                </div>
+
+                <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                        Montage & Lebensdauer
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
+                        Positionieren. <span className="text-brand-orange">Nutzen.</span> Versetzen.
+                    </h2>
+                    <div className="space-y-5 text-lg text-brand-muted leading-relaxed">
+                        <p>
+                            Ein Modul wird mit Autokran schnell an den Standort auf ein verdichtetes Kies- oder Schotterbett positioniert, ohne Fundamentarbeiten und ohne Pflasterarbeiten. Da keine Verschraubungen und keine beweglichen Teile verbaut sind, ist das modulare Fertigteil-Element wartungsarm und lässt sich einfach an einen anderen Standort verlegen oder zurückbauen und abtransportieren.
+                        </p>
+                        <p>
+                            Im Vergleich zu Stahl- oder Holzvarianten altert bewehrter Beton langsamer und muss nicht ständig vor Rost oder Fäulnis geschützt werden. Beton ist nicht brennbar und benötigt über die gesamte Lebensdauer kaum Wartung. Außerdem lässt sich die fugenlose Oberfläche leicht reinigen. Argumente, die besonders im öffentlichen Raum, an Haltestellen und auf Schulhöfen zählen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             {/* 3. EIGENSCHAFTEN (aus ueberdachung-pavillon.md) */}
             <div className="mb-32">
                 <div className="mb-8">

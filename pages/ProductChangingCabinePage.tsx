@@ -158,6 +158,37 @@ const ProductChangingCabinePage: React.FC = () => {
                 </div>
             </div>
 
+            <div className="mb-32 grid lg:grid-cols-2 gap-8">
+                <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                        Schnecken-Prinzip
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
+                        Geometrie statt <span className="text-brand-orange">Mechanik.</span>
+                    </h2>
+                    <div className="space-y-5 text-lg text-brand-muted leading-relaxed">
+                        <p>
+                            Herkömmliche Umkleidekabinen scheitern im öffentlichen Raum an drei Problemen: Verriegelungen gehen kaputt, Scharniere korrodieren, Material verrottet oder rostet. „Die Schnecke“ löst alle drei Probleme auf einmal: durch Geometrie statt Mechanik und durch witterungsbeständige Materialien. Die spiralförmige Wand führt den Nutzer in einen geschützten Innenraum, ohne dass ein einziges bewegliches Teil verbaut werden muss. Oben und unten bleibt ein schmaler Spalt frei: für Luftzirkulation, gegen Missbrauch, für hygienische Kontrolle.
+                        </p>
+                        <p>
+                            Eine Kabine bietet Platz für eine Person mit Kleidung und Tasche. Die Spiralgeometrie verhindert Einblicke von außen vollständig; der Spalt unten ist so dimensioniert, dass er nur Luft und Licht durchlässt. Und weil die Kabine aus zwei Teilen ohne Verschraubungen besteht und ohne Fundament auf verdichtetem Schotterbett steht, kann sie mit einem Radlader oder Autokran bei Bedarf einfach an einen anderen Standort bewegt und neu aufgestellt werden.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                        Einsatz & Varianten
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
+                        Außenkabine. <span className="text-brand-orange">Optional Dusche.</span>
+                    </h2>
+                    <p className="text-lg text-brand-muted leading-relaxed">
+                        Konzipiert für Freibäder, Baggerseen, Strandbäder, Campingplätze und Sportanlagen: als freistehende Außenkabine, wahlweise auch als Duschkabine. Die fugenlose, geschlossene Innenoberfläche lässt sich in wenigen Minuten reinigen: kein Schimmelrisiko, keine Verbundstellen, an denen sich Schmutz absetzt oder Unkraut wächst. Im Winter bleibt die Kabine stehen. Keine Beschädigungen durch Wind, Wetter oder UV-Strahlen. Die Umkleidekabine-Schnecke muss nicht ständig überwacht werden, da sie solide gebaut, vandalismussicher ist und auch nicht angezündet werden kann.
+                    </p>
+                </div>
+            </div>
+
             {/* 2b. PANORAMA */}
             <div className="mb-32">
                 <div className="mb-8">

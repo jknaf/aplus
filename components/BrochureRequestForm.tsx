@@ -95,7 +95,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                             </Link>
 
                             <p className="mt-4 text-xs text-brand-muted max-w-md">
-                                Kurzes Formular mit Telefonnummer — wir schicken den Katalog persönlich zu.
+                                Ein Klick öffnet Ihr E-Mail-Programm mit einer vorbereiteten Nachricht — wir schicken den Katalog persönlich zu.
                             </p>
                         </div>
 
@@ -115,7 +115,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
 
                 <h3 className="text-2xl font-extrabold font-heading text-brand-dark uppercase mb-2">Produktkatalog</h3>
                 <p className="text-sm text-brand-muted mb-6 leading-relaxed">
-                    Alle technischen Daten, Maße und Zertifikate zu diesem Produkt in einer Datei. Anfrage über unser Kontaktformular, wir schicken den Katalog persönlich zu.
+                    Alle technischen Daten, Maße und Zertifikate zu diesem Produkt in einer Datei. Ein Klick öffnet Ihr E-Mail-Programm mit einer vorbereiteten Anfrage — wir schicken den Katalog persönlich zu.
                 </p>
 
                 <Link

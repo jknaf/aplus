@@ -231,11 +231,11 @@ const ProductScrollytelling: React.FC = () => {
                                                         <div className="grid grid-cols-2 gap-4 mb-6">
                                                             <div className="bg-brand-surface/40 p-3 rounded-xl border border-brand-dark/5 shadow-sm">
                                                                 <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">Material</div>
-                                                                <div className="text-sm font-bold text-brand-dark">C35/45 Beton</div>
+                                                                <div className="text-sm font-bold text-brand-dark">{product.material}</div>
                                                             </div>
                                                             <div className="bg-brand-surface/40 p-3 rounded-xl border border-brand-dark/5 shadow-sm">
-                                                                <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">Bauweise</div>
-                                                                <div className="text-sm font-bold text-brand-dark">Stahlbeton bewehrt</div>
+                                                                <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">Details</div>
+                                                                <div className="text-sm font-bold text-brand-dark">{product.details}</div>
                                                             </div>
                                                         </div>
                                                         <span className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-brand-dark hover:text-brand-orange transition-colors group/link">

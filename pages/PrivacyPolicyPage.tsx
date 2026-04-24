@@ -51,16 +51,13 @@ const PrivacyPolicyPage: React.FC = () => {
             </div>
 
             <div>
-                <h2 className="text-2xl font-bold font-heading text-brand-dark uppercase tracking-wider border-b border-brand-dark/10 pb-4 mb-6">Kontaktformular & Katalog</h2>
+                <h2 className="text-2xl font-bold font-heading text-brand-dark uppercase tracking-wider border-b border-brand-dark/10 pb-4 mb-6">Kontaktaufnahme per E-Mail</h2>
                 <p className="text-lg mb-4">
-                Wenn Sie uns über das Kontaktformular oder die Katalog-Anforderung Daten übermitteln (Name, E-Mail-Adresse, Telefonnummer, Nachricht), werden diese zur Bearbeitung Ihrer Anfrage und für eventuelle Anschlussfragen gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an effizienter Kommunikation). Diese Daten werden nicht ohne Ihre Einwilligung an Dritte weitergegeben.
+                Die Kontaktaufnahme auf dieser Website erfolgt ausschließlich über <strong>mailto-Links</strong>. Ein Klick auf einen Anfrage-Button öffnet das auf Ihrem Gerät eingerichtete E-Mail-Programm mit einer vorbereiteten Nachricht an <strong>post@aplusurbandesign.com</strong>. Es wird kein Formular ausgefüllt, keine Daten an diese Website übermittelt und kein Dienstleister zwischengeschaltet. Ihre Daten gelangen ausschließlich über Ihren eigenen E-Mail-Anbieter an uns.
                 </p>
-                <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/10">
-                    <p className="font-bold text-brand-dark mb-2 uppercase text-sm tracking-wider">E-Mail-Versand über Resend</p>
-                    <p className="text-sm">
-                    Für den technischen Versand von E-Mails (Bestätigungen und Benachrichtigungen) nutzen wir den Dienstleister <strong>Resend, Inc.</strong> (2261 Market Street #5039, San Francisco, CA 94114, USA). Die Verarbeitung erfolgt auf Resend-Servern in der EU-Region (Irland). Mit Resend besteht ein Auftragsverarbeitungsvertrag gemäß Art. 28 DSGVO. Da Resend ein US-Unternehmen ist, kann es zu einer Datenübermittlung in die USA kommen. Die Übermittlung erfolgt auf Grundlage von Standardvertragsklauseln. Weitere Informationen: <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-brand-orange hover:underline">resend.com/legal/privacy-policy</a>
-                    </p>
-                </div>
+                <p className="text-lg">
+                Die von Ihnen in der E-Mail übermittelten Daten (Name, E-Mail-Adresse, Telefonnummer, Projektbeschreibung) verarbeiten wir zur Bearbeitung Ihrer Anfrage und für eventuelle Anschlussfragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an effizienter Kommunikation). Diese Daten werden nicht ohne Ihre Einwilligung an Dritte weitergegeben.
+                </p>
             </div>
 
             <div>

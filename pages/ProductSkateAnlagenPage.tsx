@@ -149,7 +149,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                          </span>
                     </div>
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms] drop-shadow-2xl">
-                        Skatepark-Elemente<br/><span className="text-brand-orange">aus Beton</span>
+                        Skatepark<br/><span className="text-brand-orange">aus Beton</span>
                     </h1>
                 </div>
             </div>

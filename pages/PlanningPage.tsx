@@ -131,8 +131,8 @@ const PlanningPage: React.FC = () => {
                          </span>
                     </div>
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] mb-6 drop-shadow-2xl">
-                        Skatepark Planung<br/>
-                        <span className="text-brand-orange">Inklusive.</span>
+                        Skatepark<br/>
+                        <span className="text-brand-orange">Planung</span>
                     </h1>
                     <p className="text-xl text-white/90 max-w-2xl border-l-4 border-brand-orange pl-6 leading-relaxed">
                         Sie möchten einen Skatepark planen? Mehr als nur Beton — individuelle Skatepark-Planung von Skate-Anlagen, Skate-Bowls und Pump-Tracks mit unseren Produkten. Bei uns kaufen Sie kein Produkt von der Stange, sondern eine Architektenleistung maßgeschneidert auf Ihren Standort.

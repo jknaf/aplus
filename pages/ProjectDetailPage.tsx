@@ -82,9 +82,9 @@ const ProjectDetailPage: React.FC = () => {
             fetchPriority="high"
             loading="eager"
             decoding="async"
-            className="w-full h-full object-cover filter brightness-[0.5]"
+            className="w-full h-full object-cover filter brightness-[0.8]"
          />
-         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent"></div>
+         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-transparent"></div>
          {/* Fade out at bottom to blend into global background */}
          <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
       </div>

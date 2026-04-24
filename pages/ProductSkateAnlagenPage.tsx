@@ -88,13 +88,13 @@ const VideoCard: React.FC<{ video: typeof VIDEOS[0] }> = ({ video }) => {
     <div className="group relative aspect-video bg-black rounded-xl overflow-hidden border border-brand-dark/10 cursor-pointer shadow-[0_2px_12px_rgba(0,0,0,0.08)]" onClick={toggle}>
       <video ref={ref} src={video.src} poster={video.poster} muted loop playsInline preload="none" className="w-full h-full object-cover" />
       {!playing && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-colors">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/15 group-hover:bg-black/5 transition-colors">
           <div className="w-16 h-16 rounded-full bg-brand-orange/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl">
             <span className="material-symbols-outlined text-white text-3xl ml-1">play_arrow</span>
           </div>
         </div>
       )}
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/40 to-transparent">
         <span className="text-white text-sm font-bold uppercase tracking-wider">{video.title}</span>
       </div>
     </div>
@@ -137,9 +137,9 @@ const ProductSkateAnlagenPage: React.FC = () => {
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
                  <img src="/images/homepage/hero-anlage-01.jpg" alt="Hero Beton Skatepark — Totalaufnahme" className="w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
             </div>
             <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
                 <div className="max-w-7xl mx-auto">

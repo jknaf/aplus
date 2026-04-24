@@ -84,9 +84,6 @@ const AboutPage: React.FC = () => {
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-6xl">
-            <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-8 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md animate-fade-in-up">
-                SEIT 2005 • STUTTGART
-            </span>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] mb-8 animate-fade-in-up [animation-delay:200ms]">
                 Beton<br/>
                 <span className="text-brand-orange">in</span>

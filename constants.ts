@@ -266,7 +266,9 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/skate-anlagen',
     altText: 'Beton-Skate-Anlage mit Bowls und Pipes — modulare Skate-Elemente vom Hersteller A+ Urban Design.',
     tuvCertified: true,
-    usp: 'Das A+ Original: TÜV-zertifizierte Skate-Anlagen mit Bowls und Pipes — modular, erweiterbar und schalldämpfend.'
+    usp: 'Das A+ Original: TÜV-zertifizierte Skate-Elemente aus Beton für Skate-Anlagen, Bowls und Pipes. Fertigteile, modular, erweiterbar, wartungsarm, vandalismussicher, witterungsbeständig, langlebig, nachhaltig, recycelbar und schallarm.',
+    material: 'Bewehrter Beton',
+    details: 'Arretierungsfüße, Kantenschutzprofil'
   },
   {
     id: 'skate-bowls',
@@ -275,7 +277,9 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/skate-bowls-beton',
     altText: 'Modulare Skate-Bowls aus Beton-Fertigteilen — geschlossen und offen, TÜV-zertifiziert.',
     tuvCertified: true,
-    usp: 'Bowl-Tiefen 98 und 150 cm — als geschlossener Standard-Bowl im Erdreich oder offener Bowl direkt auf der Fläche.'
+    usp: 'Das A+ Original: TÜV-zertifizierte Skate-Elemente aus Beton für geschlossene Bowls im Erdreich oder offene Bowls direkt auf der Fläche, in Höhen von 98 und 150 cm. Beton-Fertigteile, modular, erweiterbar, wartungsarm, vandalismussicher, witterungsbeständig, langlebig, nachhaltig, recycelbar und schallarm.',
+    material: 'Bewehrter Beton',
+    details: 'Arretierungsfüße, Kantenschutzprofil'
   },
   {
     id: 'skate-pipes',
@@ -284,16 +288,20 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/skate-pipes-beton',
     altText: 'Beton Skate-Pipes — Mini-Pipe, Standard-Pipe und Super-Pipe vom Hersteller A+ Urban Design.',
     tuvCertified: true,
-    usp: 'Halfpipe und Mini-Pipe in fünf Höhen (135–255 cm) — Standardaufstellung oder Combi-Pipe mit Banks, Spines und Coping-Ramps.'
+    usp: 'Das A+ Original: TÜV-zertifizierte Skate-Elemente aus Beton in drei Höhen für seitlich erweiterbare Standard-Pipes oder Kombi-Pipes mit Coping-Ramps, Banks und Spines. Beton-Fertigteile, modular, erweiterbar, wartungsarm, vandalismussicher, witterungsbeständig, langlebig, nachhaltig, recycelbar und schallarm.',
+    material: 'Bewehrter Beton',
+    details: 'Arretierungsfüße, Kantenschutzprofil'
   },
   {
     id: 'pumptrack',
-    title: 'Pumptrack aus Beton',
+    title: 'Pumptracks aus Beton',
     imageUrl: '/images/pumptrack/pumptrack-beton-elemente-01.jpg',
     path: '/produkte/pumptrack-beton',
     altText: 'Beton-Pumptrack aus modularen Fertigteilen — realisiert vom Pumptrack-Hersteller A+ Urban Design.',
     tuvCertified: true,
-    usp: 'Der flowige Rundkurs für Bikes, Scooter, Inliner und Skateboards — mit Arretierungsstäben und Kantenschutzprofil montagefertig.'
+    usp: 'Das A+ Original: TÜV-zertifizierte Elemente für Pump-Tracks aus Beton, für Steilkurven, Wellen und Rampen. Geeignet zum Aufstellen oder zum Einbetonieren/Einasphaltieren und für Bikes, Scooter, Inliner und Skateboards. Fertigteile, modular, erweiterbar, wartungsarm, vandalismussicher, witterungsbeständig, langlebig, nachhaltig, recycelbar und schallarm.',
+    material: 'Bewehrter Beton',
+    details: 'Arretierungsfüße, Kantenschutzprofil'
   },
   {
     id: 'ueberdachung',
@@ -301,7 +309,9 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg',
     path: '/produkte/ueberdachung-beton',
     altText: 'Minimalistische Betonüberdachung im urbanen Raum.',
-    usp: 'Massiver Wetterschutz aus Sichtbeton — fundamentfrei, modular und zeitlos.'
+    usp: 'Das A+ Original: Massiver Wetterschutz aus Sichtbeton mit integrierter Bodenplatte und Sitzfläche für Sportanlagen, Grünflächen, Haltestellen und öffentlichen Raum. Alleinstehend oder frei kombinierbar, zum Aufstellen auf Schotterbett, Beton oder Asphalt. Fertigteile, modular, erweiterbar, wartungsarm, vandalismussicher, witterungsbeständig, langlebig, nachhaltig und recycelbar.',
+    material: 'Bewehrter Beton',
+    details: 'Fundamentfreie Aufstellung'
   },
   {
     id: 'grillstelle',
@@ -309,15 +319,19 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/grill/grillstelle-background.jpg',
     path: '/produkte/grillstelle-beton',
     altText: 'Runder Beton-Grillplatz im Park mit Edelstahl-Rost — Platz für 12–16 Personen.',
-    usp: 'Fundamentfrei und höhenverstellbar — Platz für 12–16 Personen an vandalismussicherem Edelstahl-Rost.'
+    usp: 'Das A+ Original: Grillplatz mit höhenverstellbarer Edelstahlgrillfläche, Bodenplatte und Sitzfläche für 12-16 Personen. Zum Aufstellen auf Schotterbett, Beton oder Asphalt. Beton-Fertigteile, wartungsarm, vandalismussicher, witterungsbeständig, langlebig, nachhaltig und recycelbar.',
+    material: 'Bewehrter Beton, Edelstahlrost',
+    details: 'Fundamentfreie Aufstellung, höhenverstellbare Grillfläche'
   },
   {
     id: 'umkleide',
-    title: 'Umkleidekabine',
+    title: 'Umkleidekabine Schnecke',
     imageUrl: '/images/umkleide/umkleide-panorama.jpg',
     path: '/produkte/umkleidekabine-beton',
     altText: 'Schnecken-Umkleidekabine aus Beton im Freibad.',
-    usp: 'Die Schnecke: fundamentfrei mit fugenloser Bodenplatte — türlos, vandalismushemmend und hygienisch.'
+    usp: 'Das A+ Original: Umkleidekabine Schnecke ohne bewegliche Teile aus Sichtbeton und Edelstahl, mit integrierter Bodenplatte und wahlweise Edelstahl-Sitzfläche und Kleiderhaken. Zum Aufstellen auf Schotterbett, Beton oder Asphalt. Betonfertigteil, wartungsarm, vandalismussicher, witterungsbeständig, langlebig, nachhaltig und recycelbar.',
+    material: 'Bewehrter Beton, Edelstahl',
+    details: 'Fundamentfreie Aufstellung'
   },
   {
     id: 'hockey',
@@ -325,7 +339,9 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/hockey/roll-hockey-bande.jpg',
     path: '/produkte/hockey-banden',
     altText: 'Outdoor Hockey-Spielfeld mit robusten Beton-Banden für Inline- und Rollhockey.',
-    usp: 'Modular erweiterbar in 1,5 m-Schritten — ohne Bandenaufbau, ohne Bodenbefestigung.'
+    usp: 'Das A+ Original: Fundamentfreie Hockey-Einfassungen und Banden, modular erweiterbar in 1,5-m-Schritten und ohne bewegliche Teile für Inline-, Roll- und Eis-Hockey im öffentlichen Bereich. Zum Aufstellen auf Beton- oder Asphaltflächen. Modulare Fertigteile, erweiterbar, wartungsarm, witterungsbeständig, langlebig, nachhaltig und recycelbar.',
+    material: 'Bewehrter Beton, recycelter Gummi, Edelstahl, HPL-Platten',
+    details: 'Fundamentfreie Aufstellung'
   },
 ];
 

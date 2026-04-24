@@ -149,7 +149,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                          </span>
                     </div>
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms] drop-shadow-2xl">
-                        Beton<br/><span className="text-brand-orange">Skateparks</span>
+                        Skatepark<br/><span className="text-brand-orange">aus Beton</span>
                     </h1>
                 </div>
             </div>
@@ -166,7 +166,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Seit den <span className="text-brand-orange">90ern.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            Als Skate-Elemente-Hersteller entwickeln wir modulare Skate-Elemente aus Beton. Sie wurden als eine der ersten Beton-Skateelemente in Europa TÜV-zertifiziert.
+                            Als Skatepark-Elemente-Hersteller entwickeln wir modulare Skate-Elemente aus Beton für dauerhafte Skateparks im öffentlichen Raum. Unsere Skatepark-Elemente wurden als eine der ersten Beton-Skateelemente in Europa TÜV-zertifiziert.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
                             Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. 2002 folgte der erste Bowl auf Gran Canaria.
@@ -197,7 +197,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <div>
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Baukastensystem</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                            Skate-<span className="text-brand-orange">Elemente</span>
+                            Skatepark-<span className="text-brand-orange">Elemente</span>
                         </h2>
                     </div>
                 </div>

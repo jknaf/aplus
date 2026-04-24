@@ -18,9 +18,11 @@ import puppeteer from 'puppeteer';
 import { writeFile, mkdir, copyFile, unlink } from 'fs/promises';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, '..', 'dist');
+const REPO_ROOT = join(__dirname, '..');
 const BASE_URL = 'https://www.aplusurbandesign.com';
 const PORT = 4321;
 
@@ -58,6 +60,46 @@ const PROJECT_IDS = [
 const PROJECT_ROUTES = PROJECT_IDS.map((id) => `/projekte/${id}`);
 const ALL_ROUTES = [...STATIC_ROUTES, ...PROJECT_ROUTES];
 
+// --- Pro Route: welche Source-Files bestimmen den "letzten Änderungszeitpunkt" ---
+const sourceFilesFor = (route) => {
+  const shared = ['components/PageShell.tsx', 'constants.ts'];
+  if (route === '/') return ['pages/HomePage.tsx', 'constants.ts'];
+  if (route === '/projekte') return ['pages/ProjectsPage.tsx', 'constants.ts'];
+  if (route === '/ueber-uns') return ['pages/AboutPage.tsx'];
+  if (route === '/kontakt') return ['pages/ContactPage.tsx'];
+  if (route === '/planung') return ['pages/PlanningPage.tsx'];
+  if (route === '/referenzen-presse') return ['pages/PressePage.tsx', 'constants.ts'];
+  if (route === '/produkte') return ['pages/ProductOverviewPage.tsx', 'constants.ts'];
+  if (route === '/produkte/skate-anlagen') return ['pages/ProductSkateAnlagenPage.tsx', 'constants.ts'];
+  if (route === '/produkte/skate-bowls-beton') return ['pages/ProductSkateBowlsPage.tsx', 'constants.ts'];
+  if (route === '/produkte/skate-pipes-beton') return ['pages/ProductSkatePipesPage.tsx', 'constants.ts'];
+  if (route === '/produkte/pumptrack-beton') return ['pages/ProductPumptrackPage.tsx', 'constants.ts'];
+  if (route === '/produkte/hockey-banden') return ['pages/ProductHockeyRinkPage.tsx', 'constants.ts'];
+  if (route === '/produkte/grillstelle-beton') return ['pages/ProductGrillPage.tsx', 'constants.ts'];
+  if (route === '/produkte/grillstelle-beton/montageanleitung') return ['pages/ProductGrillAssemblyPage.tsx'];
+  if (route === '/produkte/umkleidekabine-beton') return ['pages/ProductChangingCabinePage.tsx', 'constants.ts'];
+  if (route === '/produkte/ueberdachung-beton') return ['pages/ProductPavilionPage.tsx', 'constants.ts'];
+  if (route === '/impressum') return ['pages/ImpressumPage.tsx'];
+  if (route === '/datenschutz') return ['pages/PrivacyPolicyPage.tsx'];
+  if (route.startsWith('/projekte/')) return ['pages/ProjectDetailPage.tsx', 'constants.ts'];
+  return shared;
+};
+
+const gitLastmodFor = (route, fallbackIso) => {
+  const files = sourceFilesFor(route);
+  try {
+    const out = execSync(
+      `git log -1 --format=%cI -- ${files.map((f) => `"${f}"`).join(' ')}`,
+      { cwd: REPO_ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] },
+    ).trim();
+    // Auf Datum kürzen (YYYY-MM-DD), reicht für Google und bleibt stabil bei Branch-Wechsel
+    if (out) return out.slice(0, 10);
+  } catch {
+    // Git nicht verfügbar oder keine Commits — Fallback
+  }
+  return fallbackIso.slice(0, 10);
+};
+
 // --- Sitemap-Metadaten pro Route ---
 const sitemapMetaFor = (route) => {
   if (route === '/') return { changefreq: 'weekly', priority: '1.0' };
@@ -84,18 +126,33 @@ const writeHtml = async (route, html) => {
   return rel;
 };
 
-const buildSitemap = (lastmod) => {
+const xmlEscape = (s) =>
+  String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+
+const buildSitemap = (routeData, fallbackIso) => {
   const urls = ALL_ROUTES.map((r) => {
     const { changefreq, priority } = sitemapMetaFor(r);
+    const data = routeData[r] || {};
+    const lastmod = data.lastmod || gitLastmodFor(r, fallbackIso);
+    const imageBlocks = (data.images || [])
+      .slice(0, 10)
+      .map((img) => `    <image:image>\n      <image:loc>${xmlEscape(img)}</image:loc>\n    </image:image>`)
+      .join('\n');
     return `  <url>
     <loc>${BASE_URL}${r === '/' ? '/' : r}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
+    <priority>${priority}</priority>${imageBlocks ? '\n' + imageBlocks : ''}
   </url>`;
   }).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urls}
 </urlset>
 `;
@@ -139,6 +196,7 @@ const main = async () => {
 
   const errors = [];
   let ok = 0;
+  const routeData = {};
 
   for (const route of ALL_ROUTES) {
     const url = `http://localhost:${PORT}${route}`;
@@ -167,9 +225,47 @@ const main = async () => {
       // Kurzer Puffer für nachträgliche Schema-Injektionen
       await new Promise((r) => setTimeout(r, 500));
 
+      // Alle Bilder extrahieren, die auf die Produktionsdomain absolut aufgelöst werden können.
+      // Priorität: og:image zuerst (Hero), dann alle weiteren <img src>-Einträge.
+      const pageImages = await page.evaluate((baseUrl) => {
+        const toAbs = (src) => {
+          if (!src) return null;
+          if (/^data:/i.test(src)) return null;
+          try {
+            const abs = new URL(src, document.baseURI).href;
+            return abs.startsWith('http') ? abs : null;
+          } catch {
+            return null;
+          }
+        };
+        const result = [];
+        const og = document.querySelector('meta[property="og:image"]')?.getAttribute('content');
+        const ogAbs = toAbs(og);
+        if (ogAbs) result.push(ogAbs);
+        document.querySelectorAll('img').forEach((img) => {
+          const abs = toAbs(img.getAttribute('src'));
+          if (abs) result.push(abs);
+        });
+        // Auf Produktionsdomain umschreiben (Puppeteer rendert via localhost:PORT) + dedupen.
+        // Logo/Icon gehören nicht in die Image-Sitemap — sie stecken ohnehin in jedem <header> und
+        // verdrängen echte Content-Bilder aus dem 10er-Limit pro URL.
+        const skipPaths = [
+          '/aplus-logo.svg',
+          '/aplus-icon.svg',
+          '/LogoAplus.png',
+          '/favicon.ico',
+        ];
+        const rewritten = result
+          .map((u) => u.replace(/^https?:\/\/[^/]+/, baseUrl))
+          .filter((u) => !skipPaths.some((p) => u.endsWith(p)))
+          .filter((u, i, arr) => arr.indexOf(u) === i);
+        return rewritten;
+      }, BASE_URL);
+
       const html = await page.content();
       const rel = await writeHtml(route, html);
-      console.log(`  ✓ ${route.padEnd(50)} → dist/${rel}`);
+      routeData[route] = { images: pageImages };
+      console.log(`  ✓ ${route.padEnd(50)} → dist/${rel}  (${pageImages.length} Bilder)`);
       ok++;
     } catch (err) {
       console.error(`  ✗ ${route} — ${err.message}`);
@@ -185,11 +281,14 @@ const main = async () => {
   // Template-Backup wegräumen
   await unlink(join(DIST_DIR, TEMPLATE_FILE)).catch(() => {});
 
-  // Sitemap
-  const today = new Date().toISOString().slice(0, 10);
-  const sitemap = buildSitemap(today);
+  // Sitemap — lastmod pro Route aus git log, Image-Sitemap pro Route aus gerendertem HTML
+  const todayIso = new Date().toISOString();
+  const sitemap = buildSitemap(routeData, todayIso);
   await writeFile(join(DIST_DIR, 'sitemap.xml'), sitemap, 'utf8');
-  console.log(`\n[prerender] sitemap.xml mit ${ALL_ROUTES.length} URLs geschrieben.`);
+  const totalImages = Object.values(routeData).reduce((n, d) => n + (d.images?.length || 0), 0);
+  console.log(
+    `\n[prerender] sitemap.xml mit ${ALL_ROUTES.length} URLs und ${totalImages} Bild-Einträgen geschrieben.`,
+  );
 
   console.log(`\n[prerender] Fertig: ${ok}/${ALL_ROUTES.length} Routen prerendered.`);
   if (errors.length) {

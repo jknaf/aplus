@@ -8,10 +8,17 @@ interface PageShellProps {
   schema?: object; // For JSON-LD Structured Data
   noIndex?: boolean;
   fullWidth?: boolean; // NEW: Opt-out of the default container constraint
+  ogImage?: string; // Seitenspezifisches OG-/Twitter-Bild; absolut oder relativ zu BASE_URL
 }
 
 const BASE_URL = 'https://www.aplusurbandesign.com';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/images/skateparks/skatepark-02.jpg`;
+
+const absoluteImageUrl = (src?: string): string => {
+  if (!src) return DEFAULT_OG_IMAGE;
+  if (/^https?:\/\//i.test(src)) return src;
+  return `${BASE_URL}${src.startsWith('/') ? '' : '/'}${src}`;
+};
 
 const setMeta = (attr: string, value: string, attrName = 'property') => {
   let el = document.querySelector(`meta[${attrName}="${attr}"]`);
@@ -23,13 +30,14 @@ const setMeta = (attr: string, value: string, attrName = 'property') => {
   el.setAttribute('content', value);
 };
 
-const PageShell: React.FC<PageShellProps> = ({ title, description, children, schema, noIndex = false, fullWidth = false }) => {
+const PageShell: React.FC<PageShellProps> = ({ title, description, children, schema, noIndex = false, fullWidth = false, ogImage }) => {
   const location = useLocation();
 
   useEffect(() => {
     const pageTitle = `${title} | A+ Urban Design`;
     const pageDesc = description ?? 'TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig.';
     const pageUrl = `${BASE_URL}${location.pathname}`;
+    const pageImage = absoluteImageUrl(ogImage);
 
     // 1. Title
     document.title = pageTitle;
@@ -55,7 +63,7 @@ const PageShell: React.FC<PageShellProps> = ({ title, description, children, sch
     setMeta('og:url', pageUrl);
     setMeta('og:type', 'website');
     setMeta('og:site_name', 'A+ Urban Design');
-    setMeta('og:image', DEFAULT_OG_IMAGE);
+    setMeta('og:image', pageImage);
     setMeta('og:image:width', '1200');
     setMeta('og:image:height', '630');
 
@@ -63,7 +71,7 @@ const PageShell: React.FC<PageShellProps> = ({ title, description, children, sch
     setMeta('twitter:card', 'summary_large_image', 'name');
     setMeta('twitter:title', pageTitle, 'name');
     setMeta('twitter:description', pageDesc, 'name');
-    setMeta('twitter:image', DEFAULT_OG_IMAGE, 'name');
+    setMeta('twitter:image', pageImage, 'name');
 
     // 7. JSON-LD (page-specific)
     const scriptId = 'structured-data-jsonld';
@@ -104,7 +112,7 @@ const PageShell: React.FC<PageShellProps> = ({ title, description, children, sch
         ]
     });
 
-  }, [title, description, location, schema, noIndex]);
+  }, [title, description, location, schema, noIndex, ogImage]);
 
   if (fullWidth) {
       return (

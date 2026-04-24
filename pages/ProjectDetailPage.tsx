@@ -38,8 +38,41 @@ const ProjectDetailPage: React.FC = () => {
     });
   };
 
+  const BASE_URL = 'https://www.aplusurbandesign.com';
+  const absoluteImg = (src: string) => `${BASE_URL}${src.startsWith('/') ? '' : '/'}${src}`;
+  const allImages = [project.imageUrl, ...project.images].map(absoluteImg);
+
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": project.title,
+    "headline": project.title,
+    "description": project.description,
+    "image": allImages,
+    "keywords": project.category,
+    "inLanguage": "de-DE",
+    "isAccessibleForFree": true,
+    ...(project.year ? { "datePublished": String(project.year) } : {}),
+    "creator": {
+      "@type": "Organization",
+      "name": "A+ Urban Design",
+      "url": BASE_URL,
+    },
+    "about": project.productsUsed.map((prod) => ({
+      "@type": "Product",
+      "name": prod.name,
+      "url": `${BASE_URL}${prod.path}`,
+    })),
+    "mainEntityOfPage": `${BASE_URL}/projekte/${project.id}`,
+  };
+
   return (
-    <PageShell title={project.title}>
+    <PageShell
+      title={project.title}
+      description={project.description}
+      ogImage={project.imageUrl}
+      schema={projectSchema}
+    >
       
       {/* 1. CINEMATIC HERO (Fixed/Parallax feel) */}
       <div className="fixed inset-0 z-0 h-[80vh] w-full pointer-events-none">

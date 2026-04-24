@@ -76,9 +76,12 @@ const ProjectDetailPage: React.FC = () => {
       
       {/* 1. CINEMATIC HERO (Fixed/Parallax feel) */}
       <div className="fixed inset-0 z-0 h-[80vh] w-full pointer-events-none">
-         <img 
-            src={project.imageUrl} 
-            alt={project.altText} 
+         <img
+            src={project.imageUrl}
+            alt={project.altText}
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover filter brightness-[0.5]"
          />
          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent"></div>
@@ -86,8 +89,12 @@ const ProjectDetailPage: React.FC = () => {
          <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
       </div>
 
-      {/* Spacer to push content below Hero */}
-      <div className="relative z-10 pt-[50vh] pb-32">
+      {/* Spacer to push content below Hero.
+          Kein explizites z-index: `relative` allein reicht, um im Paint-Order
+          nach dem fixed Hero gerendert zu werden (beide positioned, DOM-Reihenfolge
+          entscheidet). `z-10` würde hier einen eigenen Stacking-Kontext aufspannen
+          und die Header-Nav (z-50) geometrisch vom Klick aussperren. */}
+      <div className="relative pt-[50vh] pb-32">
         
         {/* Title Overlay */}
         <div className="container mx-auto px-4 mb-24">
@@ -189,9 +196,11 @@ const ProjectDetailPage: React.FC = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
                             {/* Main Large Image */}
                              <div className="md:col-span-2 row-span-2 relative group overflow-hidden rounded-sm border border-brand-dark/10 bg-brand-surface/60">
-                                <img 
-                                    src={project.imageUrl} 
+                                <img
+                                    src={project.imageUrl}
                                     alt={`${project.title} — Projektübersicht`}
+                                    loading="lazy"
+                                    decoding="async"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">FIG 01. OVERVIEW</div>
@@ -199,13 +208,15 @@ const ProjectDetailPage: React.FC = () => {
 
                              {/* Gallery Images */}
                              {project.images.map((img, idx) => (
-                                 <div 
-                                    key={idx} 
+                                 <div
+                                    key={idx}
                                     className={`relative group overflow-hidden rounded-sm border border-brand-dark/10 bg-brand-surface/60 ${idx % 3 === 0 ? 'md:col-span-2' : ''}`}
                                  >
-                                    <img 
-                                        src={img} 
-                                        alt={`Detail ${idx + 1}`} 
+                                    <img
+                                        src={img}
+                                        alt={`Detail ${idx + 1}`}
+                                        loading="lazy"
+                                        decoding="async"
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
                                     <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">FIG {String(idx + 2).padStart(2, '0')}. DETAIL</div>

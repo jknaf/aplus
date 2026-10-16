@@ -51,17 +51,6 @@ const material = (e: Element) => {
   return e.materialien.some(metall) ? 'Stahlbeton C35/45, Stahl (verzinkt / Edelstahl)' : 'Stahlbeton C35/45';
 };
 
-const wertText = (p: Parameter) => {
-  if (typeof p.wert === 'number') {
-    if (p.typ === 'Länge') return `${Math.round(p.wert * 1000).toLocaleString('de-DE')} mm`;
-    if (p.typ === 'Winkel') return `${Math.round(p.wert * 10) / 10}°`;
-    if (p.typ === 'Boolean') return p.wert ? 'Ja' : 'Nein';
-    return String(Math.round(p.wert * 1000) / 1000).replace('.', ',');
-  }
-  if (Array.isArray(p.wert)) return `${p.wert.length} Werte`;
-  return String(p.wert ?? '–');
-};
-
 const PreisBadge: React.FC<{ preis: string | null; gross?: boolean; onSperre: () => void }> = ({ preis, gross, onSperre }) =>
   preis ? (
     <span className={`font-heading font-extrabold text-brand-dark ${gross ? 'text-3xl' : 'text-base'}`}>
@@ -156,9 +145,9 @@ const Detail: React.FC<{
           <dl className="mb-8">
             {p ? (
               <>
-                <Zeile label="Höhe H (Preisliste)">{p.h} cm</Zeile>
-                <Zeile label="Länge L (Preisliste)">{p.l} cm</Zeile>
-                <Zeile label="Breite B (Preisliste)">{p.b} cm</Zeile>
+                <Zeile label="Höhe H">{p.h} cm</Zeile>
+                <Zeile label="Länge L">{p.l} cm</Zeile>
+                <Zeile label="Breite B">{p.b} cm</Zeile>
                 {p.w && <Zeile label="Winkel W">{p.w}°</Zeile>}
               </>
             ) : null}
@@ -179,19 +168,6 @@ const Detail: React.FC<{
             <Zeile label="Bibliothekselement">{e.gsm_datei}</Zeile>
           </dl>
 
-          {e.gdl_parameter.length > 0 && (
-            <details className="mb-6 group">
-              <summary className="cursor-pointer font-mono text-xs uppercase tracking-widest text-brand-muted hover:text-brand-orange list-none flex items-center gap-1">
-                <span className="material-symbols-outlined text-base group-open:rotate-90 transition-transform">chevron_right</span>
-                Planungsparameter ({e.gdl_parameter.length})
-              </summary>
-              <dl className="mt-2">
-                {e.gdl_parameter.map((x) => (
-                  <Zeile key={x.name} label={x.beschreibung || x.name}>{wertText(x)}</Zeile>
-                ))}
-              </dl>
-            </details>
-          )}
 
           <div className="mt-auto pt-6 flex items-center justify-between gap-4 border-t border-brand-dark/10">
             {zurueck ? <Link to={`/katalog/${zurueck.slug}`} className="flex items-center gap-1 text-sm text-brand-muted hover:text-brand-orange"><span className="material-symbols-outlined">arrow_back</span>{zurueck.name}</Link> : <span />}

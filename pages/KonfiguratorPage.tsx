@@ -30,11 +30,13 @@ const Knopf: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & { icon?: s
   </button>
 );
 
-// Ohne WebGL (alte Geräte, gesperrte Grafik) nicht die ganze Seite verlieren: dann den Plan zeigen
-class OhneDreiD extends React.Component<{ ersatz: React.ReactNode; children: React.ReactNode }, { fehler: boolean }> {
+// Fällt die 3D-Bühne aus, nicht die ganze Seite verlieren: dann den Plan zeigen
+const webglDa = () => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } };
+class OhneDreiD extends React.Component<{ ersatz: (grund: 'gerät' | 'fehler', neu: () => void) => React.ReactNode; children: React.ReactNode }, { fehler: boolean }> {
   state = { fehler: false };
   static getDerivedStateFromError() { return { fehler: true }; }
-  render() { return this.state.fehler ? this.props.ersatz : this.props.children; }
+  componentDidCatch(e: unknown) { console.error('[konfigurator] 3D-Bühne', e); }
+  render() { return this.state.fehler ? this.props.ersatz(webglDa() ? 'fehler' : 'gerät', () => this.setState({ fehler: false })) : this.props.children; }
 }
 
 // Werkzeugleiste: zusammengehörige Knöpfe als Gruppe, kompakt, Beschriftung erst bei genug Platz
@@ -229,6 +231,9 @@ const KonfiguratorPage: React.FC = () => {
   const [druckDialog, setDruckDialog] = useState(false);
   const [druck, setDruck] = useState<{ optionen: DruckOptionen; bild: string } | null>(null);
   const [panel, setPanel] = useState<'katalog' | 'liste' | null>(null);
+  // Stückliste am Desktop ein- und ausblenden; die Wahl merkt sich der Browser
+  const [listeOffen, setListeOffen] = useState(() => { try { return localStorage.getItem('aplus-konfigurator-liste') !== 'zu'; } catch { return true; } });
+  const listeUmschalten = () => setListeOffen((o) => { try { localStorage.setItem('aplus-konfigurator-liste', o ? 'zu' : 'offen'); } catch { /* ohne Speicher nur für diese Sitzung */ } return !o; });
   const api = useRef<BuehnenApi | null>(null);
 
   const melden = useCallback((text: string) => { setMeldung(text); window.setTimeout(() => setMeldung((x) => (x === text ? null : x)), 3500); }, []);
@@ -583,7 +588,10 @@ const KonfiguratorPage: React.FC = () => {
 
   const liste = (
     <div className="flex flex-col h-full min-h-0">
-      <div className="p-4 border-b border-brand-dark/10">
+      <div className="p-4 border-b border-brand-dark/10 relative">
+        <button type="button" onClick={listeUmschalten} className="hidden lg:flex absolute top-3 right-3 w-8 h-8 items-center justify-center rounded-lg text-brand-muted hover:bg-white hover:text-brand-dark" title="Stückliste ausblenden" aria-label="Stückliste ausblenden">
+          <span className="material-symbols-outlined text-[20px]">right_panel_close</span>
+        </button>
         <h2 className="font-heading font-extrabold uppercase text-brand-dark">Stückliste</h2>
         <p className="text-xs text-brand-muted">{park?.teile.length ?? 0} Elemente · Fläche {m(park?.flaeche.l ?? 0)} × {m(park?.flaeche.b ?? 0)} m</p>
       </div>
@@ -620,12 +628,17 @@ const KonfiguratorPage: React.FC = () => {
 
         <section className="relative flex-1 min-w-0" onDragOver={(e) => e.preventDefault()} onDrop={fallenLassen}>
           {ctx && park && dargestellt && ab && (
-            <OhneDreiD ersatz={
+            <OhneDreiD ersatz={(grund, neu) => (
               <div className="absolute inset-0 overflow-auto p-6 pt-36">
-                <p className="mb-3 text-sm text-brand-muted">Die 3D-Ansicht läuft auf diesem Gerät nicht. Planen, Stückliste, PDF und Anfrage funktionieren trotzdem.</p>
+                <p className="mb-3 text-sm text-brand-muted">
+                  {grund === 'gerät'
+                    ? 'Die 3D-Ansicht läuft auf diesem Gerät nicht. Planen, Stückliste, PDF und Anfrage funktionieren trotzdem.'
+                    : 'Die 3D-Ansicht konnte nicht geladen werden. Planen, Stückliste, PDF und Anfrage funktionieren trotzdem.'}
+                  {grund === 'fehler' && <button type="button" onClick={neu} className="ml-2 font-semibold text-brand-orange underline">Erneut versuchen</button>}
+                </p>
                 <Plan park={park} ctx={ctx} zusatz={[...ab.gelaender, ...ab.keile]} bemassung={false} />
               </div>
-            }>
+            )}>
             <Buehne
               ctx={ctx}
               park={dargestellt}
@@ -678,6 +691,10 @@ const KonfiguratorPage: React.FC = () => {
                   <LKnopf icon="360" title="Rundflug" aktiv={rundflug} onClick={() => { setAnsicht('3d'); setRundflug(!rundflug); }} />
                 </Gruppe>
                 <Gruppe>
+                  <span className="hidden lg:contents">
+                    <LKnopf icon="list_alt" label="Liste" aktiv={listeOffen} title={listeOffen ? 'Stückliste ausblenden' : 'Stückliste einblenden'} onClick={listeUmschalten} />
+                  </span>
+                  {!listeOffen && <span className="hidden lg:contents"><LKnopf icon="request_quote" label="Anfrage" title="Angebot anfragen" onClick={() => setAnfrage(true)} disabled={!park.teile.length} /></span>}
                   <LKnopf icon="print" label="PDF" title="Drucken oder als PDF sichern" onClick={() => setDruckDialog(true)} disabled={!park.teile.length} />
                   <LKnopf icon="share" label="Teilen" labelAb="2xl:inline" title="Link zu diesem Park kopieren" onClick={teilen} />
                 </Gruppe>
@@ -778,7 +795,7 @@ const KonfiguratorPage: React.FC = () => {
 
         </section>
 
-        <aside className="hidden lg:flex w-80 shrink-0 flex-col bg-brand-bg border-l border-brand-dark/10">{liste}</aside>
+        {listeOffen && <aside className="hidden lg:flex w-80 shrink-0 flex-col bg-brand-bg border-l border-brand-dark/10">{liste}</aside>}
         {(start || (ctx && !park)) && <Start onWahl={vorlageWaehlen} onSchliessen={park ? () => setStart(false) : undefined} />}
       </div>
       <DruckDialog offen={druckDialog} onClose={() => setDruckDialog(false)} onDrucken={drucken} />

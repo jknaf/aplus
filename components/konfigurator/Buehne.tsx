@@ -1,6 +1,6 @@
 import React, { Suspense, memo, useCallback, useEffect, useMemo, useRef } from 'react';
 import { Canvas, useThree, type ThreeEvent } from '@react-three/fiber';
-import { Environment, Html, Line, OrbitControls, useGLTF, useTexture } from '@react-three/drei';
+import { Environment, Html, Line, OrbitControls, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import { umriss, type Ctx, type Park, type Teil, type V, type Zusatz } from './logik';
@@ -30,6 +30,13 @@ interface Props {
 
 const boden = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
 const rad = (g: number) => (g * Math.PI) / 180;
+
+class ModellFehler extends React.Component<{ ersatz: React.ReactNode; children: React.ReactNode }, { fehler: boolean }> {
+  state = { fehler: false };
+  static getDerivedStateFromError() { return { fehler: true }; }
+  componentDidCatch(e: unknown) { console.warn('[konfigurator] Modell nicht geladen', e); }
+  render() { return this.state.fehler ? this.props.ersatz : this.props.children; }
+}
 
 // Ein Katalogmodell, geklont, damit dasselbe Element mehrfach stehen kann
 const Modell: React.FC<{ url: string }> = ({ url }) => {
@@ -63,9 +70,11 @@ const TeilObjekt = memo<{
   return (
     // Handler direkt am Element: bei Pointer-Capture liefert r3f Bewegungen nur an das gegriffene Objekt
     <group position={[t.x, 0, t.z]} rotation={[0, rad(t.rot), 0]} onPointerDown={(e) => onDown(e, t)} onPointerMove={onMove} onPointerUp={onUp}>
-      <Suspense fallback={<Platzhalter l={m.l} b={m.b} h={m.h} />}>
-        <Modell url={url} />
-      </Suspense>
+      <ModellFehler ersatz={<Platzhalter l={m.l} b={m.b} h={m.h} />}>
+        <Suspense fallback={<Platzhalter l={m.l} b={m.b} h={m.h} />}>
+          <Modell url={url} />
+        </Suspense>
+      </ModellFehler>
       {stufe && (
         <Html position={[0, m.h + 0.5, 0]} center zIndexRange={[20, 0]}>
           <span className={`block w-4 h-4 rounded-full border-2 border-white shadow ${stufe === 'rot' ? 'bg-red-600' : 'bg-amber-400'}`} />
@@ -148,27 +157,20 @@ const Raster: React.FC<{ l: number; b: number }> = ({ l, b }) => {
   );
 };
 
-const Boden: React.FC<{ l: number; b: number; onLeer: () => void }> = ({ l, b, onLeer }) => {
-  // useTexture lädt über Suspense; so wird nach dem Laden neu gezeichnet (Bühne rendert nur bei Bedarf)
-  const textur = useTexture('/katalog/modelle/texturen/beton_farbe.jpg', (t) => {
-    t.wrapS = t.wrapT = THREE.RepeatWrapping;
-    t.colorSpace = THREE.SRGBColorSpace;
-  });
-  useEffect(() => { textur.repeat.set(l / 4, b / 4); textur.needsUpdate = true; }, [textur, l, b]);
-  return (
-    <group>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.02, 0]} receiveShadow onPointerDown={(e) => { if (e.button === 0) onLeer(); }}>
-        <planeGeometry args={[400, 400]} />
-        <meshStandardMaterial color="#a3ad92" roughness={1} />
-      </mesh>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.001, 0]} receiveShadow onPointerDown={(e) => { if (e.button === 0) onLeer(); }}>
-        <planeGeometry args={[l, b]} />
-        <meshStandardMaterial map={textur} color="#d9d6cf" roughness={0.95} />
-      </mesh>
-      <Raster l={l} b={b} />
-    </group>
-  );
-};
+// Boden in Betonfarbe ohne Textur-Datei: die Modell-Exporte benennen Texturen um, der Boden darf daran nicht hängen
+const Boden: React.FC<{ l: number; b: number; onLeer: () => void }> = ({ l, b, onLeer }) => (
+  <group>
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.02, 0]} receiveShadow onPointerDown={(e) => { if (e.button === 0) onLeer(); }}>
+      <planeGeometry args={[400, 400]} />
+      <meshStandardMaterial color="#a3ad92" roughness={1} />
+    </mesh>
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.001, 0]} receiveShadow onPointerDown={(e) => { if (e.button === 0) onLeer(); }}>
+      <planeGeometry args={[l, b]} />
+      <meshStandardMaterial color="#d6d3cc" roughness={0.95} />
+    </mesh>
+    <Raster l={l} b={b} />
+  </group>
+);
 
 const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansicht, rundflug, modellPfad, onAuswahl, onZiehen, onAblegen, onBereit }) => {
   const steuerung = useRef<OrbitControlsImpl>(null);
@@ -221,9 +223,11 @@ const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansic
     >
       <color attach="background" args={['#e9ebe4']} />
       <fog attach="fog" args={['#e9ebe4', 80, 260]} />
-      <Suspense fallback={null}>
-        <Environment files="/katalog/tageslicht.hdr" environmentIntensity={0.9} />
-      </Suspense>
+      <ModellFehler ersatz={null}>
+        <Suspense fallback={null}>
+          <Environment files="/katalog/tageslicht.hdr" environmentIntensity={0.9} />
+        </Suspense>
+      </ModellFehler>
       <hemisphereLight args={['#ffffff', '#9aa38a', 0.5]} />
       <directionalLight
         position={[18, 30, 12]}
@@ -236,13 +240,13 @@ const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansic
         shadow-camera-bottom={-40}
         shadow-bias={-0.0004}
       />
-      <Suspense fallback={null}><Boden l={park.flaeche.l} b={park.flaeche.b} onLeer={() => onAuswahl(null)} /></Suspense>
+      <Boden l={park.flaeche.l} b={park.flaeche.b} onLeer={() => onAuswahl(null)} />
       {park.teile.map((t) => (
         <TeilObjekt key={t.id} t={t} ctx={ctx} url={modellPfad(t.slug)} stufe={punkte.has(t.id) ? markierung[t.id] : undefined} onDown={runter} onMove={bewegen} onUp={loslassen} />
       ))}
       {zusatz.map((z, i) => (
         <group key={`${z.slug}-${i}`} position={[z.x, z.y ?? 0, z.z]} rotation={[0, rad(z.rot), 0]}>
-          <Suspense fallback={null}><Modell url={modellPfad(z.slug)} /></Suspense>
+          <ModellFehler ersatz={null}><Suspense fallback={null}><Modell url={modellPfad(z.slug)} /></Suspense></ModellFehler>
         </group>
       ))}
       {gewaehlt && <Rahmen punkte={umriss(gewaehlt, ctx)} farbe={markierung[gewaehlt.id] === 'rot' ? '#dc2626' : '#6B8F4A'} />}

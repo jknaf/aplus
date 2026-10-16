@@ -287,7 +287,7 @@ const KatalogPage: React.FC = () => {
                     className="group rounded-2xl overflow-hidden border border-brand-dark/5 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.05)] hover:border-brand-orange/40 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1"
                   >
                     <div className="aspect-square bg-[radial-gradient(ellipse_at_50%_40%,#ffffff_0%,#F2F0EB_80%)] p-4 relative">
-                      <img src={e.bild} alt={e.name} loading="lazy" decoding="async" width="420" height="420" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
+                      <img src={e.bild} alt={e.name} loading="lazy" decoding="async" width="640" height="640" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
                       <span className="absolute top-3 right-3 material-symbols-outlined text-brand-muted/60 group-hover:text-brand-orange text-xl">3d_rotation</span>
                     </div>
                     <div className="p-4 md:p-5">

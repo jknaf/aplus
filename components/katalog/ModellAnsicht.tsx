@@ -29,11 +29,11 @@ const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string }> = ({
       auto-rotate-delay="1500"
       rotation-per-second="18deg"
       interaction-prompt="none"
-      shadow-intensity="0.9"
-      shadow-softness="0.8"
-      exposure="0.8"
+      shadow-intensity="1"
+      shadow-softness="0.5"
+      exposure="1"
       tone-mapping="agx"
-      environment-image="neutral"
+      environment-image="/katalog/tageslicht.hdr"
       camera-orbit="35deg 65deg auto"
       style={{ width: '100%', height: '100%', background: 'transparent', '--poster-color': 'transparent' } as React.CSSProperties}
     />

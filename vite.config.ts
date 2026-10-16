@@ -29,10 +29,14 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
+           // Vite-Helfer nie in einen 3D-Chunk legen, sonst lädt jede Seite three.js mit
+           if (id.includes('preload-helper') || id.includes('commonjsHelpers')) return 'vendor-react';
            if (id.includes('node_modules')) {
              // 3D-Viewer nur im Katalog nachladen, nicht im allgemeinen Vendor-Paket
              if (/node_modules\/(@google\/model-viewer|three|@monogrid|lit|@lit|lit-html|lit-element)\//.test(id)) return 'katalog-3d';
-             if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+             // Konfigurator: React-three und Helfer nur mit der Konfigurator-Seite laden
+             if (/node_modules\/(@react-three|three-stdlib|three-mesh-bvh|maath|camera-controls|troika-[^/]+|@react-spring|zustand|suspend-react|its-fine|react-reconciler|react-use-measure|tunnel-rat|detect-gpu|stats-gl|stats\.js|meshline|@use-gesture|hls\.js|glsl-noise|@mediapipe|bidi-js|webgl-sdf-generator|potpack|lamina)\//.test(id)) return 'konfigurator-3d';
+             if (id.includes('react') || id.includes('/scheduler/') || id.includes('@remix-run') || id.includes('use-sync-external-store')) {
                return 'vendor-react';
              }
              return 'vendor';

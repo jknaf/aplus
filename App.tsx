@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -28,6 +28,9 @@ import PlanningPage from './pages/PlanningPage';
 import ProductOverviewPage from './pages/ProductOverviewPage';
 import PressePage from './pages/PressePage';
 import KatalogPage from './pages/KatalogPage';
+
+// Konfigurator lädt three.js; deshalb als einzige Seite erst beim Aufruf
+const KonfiguratorPage = lazy(() => import('./pages/KonfiguratorPage'));
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -81,6 +84,7 @@ const App: React.FC = () => {
             <Route path="/referenzen-presse" element={<PressePage />} />
             <Route path="/katalog" element={<KatalogPage />} />
             <Route path="/katalog/:slug" element={<KatalogPage />} />
+            <Route path="/konfigurator" element={<Suspense fallback={<div className="min-h-screen" />}><KonfiguratorPage /></Suspense>} />
 
             {/* Product Pages */}
             <Route path="/produkte" element={<ProductOverviewPage />} />

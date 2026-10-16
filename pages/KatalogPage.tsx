@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import ModellAnsicht from '../components/katalog/ModellAnsicht';
 import { usePreise } from '../components/katalog/usePreise';
+import { anzahlImPark, merken } from '../components/konfigurator/merkliste';
 
 // Daten: public/katalog/katalog.json, erzeugt aus der Archicad-Skate-Bibliothek
 // (08_CAD_Blender/10_Katalog/katalog_web.py). Preise kommen nur über /api/skate-preise.
@@ -116,6 +117,38 @@ const CodeDialog: React.FC<{ offen: boolean; onClose: () => void; freischalten: 
   );
 };
 
+// Element in den eigenen Park legen; der Konfigurator setzt es beim nächsten Öffnen an einen freien Platz
+const ParkKnopf: React.FC<{ slug: string }> = ({ slug }) => {
+  const [drin, setDrin] = useState(false);
+  useEffect(() => setDrin(false), [slug]);
+  return drin ? (
+    <Link to="/konfigurator" className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-brand-orange/10 text-brand-orange font-bold uppercase tracking-wider text-sm hover:bg-brand-orange hover:text-white transition-colors">
+      <span className="material-symbols-outlined text-lg">check</span> Im Park · zum Konfigurator
+    </Link>
+  ) : (
+    <button type="button" onClick={() => { merken(slug); setDrin(true); }} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-brand-dark text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-orange transition-colors">
+      <span className="material-symbols-outlined text-lg">add</span> In meinen Park legen
+    </button>
+  );
+};
+
+const ParkZaehler: React.FC = () => {
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    const neu = () => setN(anzahlImPark());
+    neu();
+    window.addEventListener('aplus-park', neu);
+    return () => window.removeEventListener('aplus-park', neu);
+  }, []);
+  return (
+    <Link to="/konfigurator" className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider border border-brand-dark/15 text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-colors">
+      <span className="material-symbols-outlined text-lg">view_in_ar</span>
+      <span className="hidden sm:inline">Park planen</span>
+      {n > 0 && <span className="min-w-5 h-5 px-1.5 rounded-full bg-brand-orange text-white text-[11px] leading-5 text-center">{n}</span>}
+    </Link>
+  );
+};
+
 const Zeile: React.FC<{ label: string; children: React.ReactNode }> = ({ label, children }) => (
   <div className="flex justify-between gap-6 py-2.5 border-b border-brand-dark/5 text-sm">
     <dt className="text-brand-muted">{label}</dt>
@@ -150,7 +183,8 @@ const Detail: React.FC<{
           <span className="font-mono text-xs uppercase tracking-widest text-brand-orange mb-3">{e.gruppe}</span>
           <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mb-2">{e.name}</h2>
           <p className="font-mono text-sm text-brand-muted mb-6">{e.preisliste_code || e.kuerzel || 'ohne Code'}{e.preisliste_produkt && ` · ${e.preisliste_produkt}`}</p>
-          <div className="mb-8"><PreisBadge preis={preis} gross onSperre={onSperre} /></div>
+          <div className="mb-6"><PreisBadge preis={preis} gross onSperre={onSperre} /></div>
+          <div className="mb-8"><ParkKnopf slug={e.slug} /></div>
 
           <h3 className="font-mono text-xs uppercase tracking-widest text-brand-muted mb-1">Bemaßung</h3>
           <dl className="mb-8">
@@ -240,6 +274,9 @@ const KatalogPage: React.FC = () => {
           <p className="text-brand-muted mt-6 max-w-2xl mx-auto text-lg">
             {katalog ? `${katalog.elemente.length} Elemente` : 'Alle Elemente'} in 3D. Drehen, zoomen und vergleichen, mit allen Maßen und Planungsdaten.
           </p>
+          <Link to="/konfigurator" className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors">
+            <span className="material-symbols-outlined text-lg">view_in_ar</span> Eigenen Skatepark planen
+          </Link>
         </div>
       </section>
 
@@ -258,9 +295,11 @@ const KatalogPage: React.FC = () => {
               <a key={g} href={`#${gruppenId(g)}`} className="shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider text-brand-muted border border-brand-dark/10 hover:border-brand-orange hover:text-brand-orange transition-colors">{g}</a>
             ))}
           </nav>
+          <span className="ml-auto" />
+          <ParkZaehler />
           <button
             type="button" onClick={() => !preise && setDialog(true)}
-            className={`ml-auto shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${preise ? 'bg-brand-orange/10 text-brand-orange cursor-default' : 'bg-brand-dark text-white hover:bg-brand-orange'}`}
+            className={`shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${preise ? 'bg-brand-orange/10 text-brand-orange cursor-default' : 'bg-brand-dark text-white hover:bg-brand-orange'}`}
           >
             <span className="material-symbols-outlined text-lg">{preise ? 'lock_open' : 'lock'}</span>
             {preise ? 'Preise freigeschaltet' : 'Preise freischalten'}

@@ -177,6 +177,9 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         </p>
 
                         <div className="flex flex-col gap-4">
+                            <Link to="/konfigurator" className="inline-flex justify-center items-center gap-2 bg-white text-brand-dark border border-brand-dark/15 font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:border-brand-orange hover:text-brand-orange transition-all duration-300 relative z-30">
+                                <span className="material-symbols-outlined">view_in_ar</span> Im Konfigurator planen
+                            </Link>
                             <Link to="/kontakt?projectType=Skatepark" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 3D-Planung anfragen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>

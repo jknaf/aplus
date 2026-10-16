@@ -3,6 +3,9 @@
 		"generator":"Khronos glTF Blender I/O v5.2.40",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -21,15 +24,38 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"name":"Stahl_web.043",
+			"normalTexture":{
+				"index":0,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":1,
+					"texCoord":1
+				},
+				"roughnessFactor":0.15000000596046448
+			}
+		},
+		{
+			"doubleSided":true,
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.055",
+			"normalTexture":{
+				"index":2,
+				"texCoord":1
+			},
+			"pbrMetallicRoughness":{
+				"baseColorTexture":{
+					"index":3,
+					"texCoord":1
+				},
+				"metallicFactor":0,
+				"roughnessFactor":0.9200000166893005
 			}
 		}
 	],
@@ -41,19 +67,60 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
+				},
+				{
+					"attributes":{
+						"POSITION":5,
+						"NORMAL":6,
+						"TEXCOORD_0":7,
+						"TEXCOORD_1":8
+					},
+					"indices":9,
+					"material":1
 				}
 			]
+		}
+	],
+	"textures":[
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		},
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		}
+	],
+	"images":[
+		{
+			"mimeType":"image/jpeg",
+			"name":"gelaender-ende-links_normal",
+			"uri":"texturen/gelaender-ende-links_normal.jpg"
+		},
+		{
+			"mimeType":"image/jpeg",
+			"name":"gelaender-ende-links_farbe",
+			"uri":"texturen/gelaender-ende-links_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":3896,
+			"count":6836,
 			"max":[
 				0.6075000166893005,
 				1.1200000047683716,
@@ -69,51 +136,139 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":3896,
+			"count":6836,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":3896,
+			"count":6836,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
+			"componentType":5126,
+			"count":6836,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":4,
 			"componentType":5123,
-			"count":11616,
+			"count":11742,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":5,
+			"componentType":5126,
+			"count":880,
+			"max":[
+				0.36210158467292786,
+				0.10379549860954285,
+				0.03569551929831505
+			],
+			"min":[
+				0.20210157334804535,
+				0,
+				-0.05100000277161598
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":6,
+			"componentType":5126,
+			"count":880,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":7,
+			"componentType":5126,
+			"count":880,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":8,
+			"componentType":5126,
+			"count":880,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":9,
+			"componentType":5123,
+			"count":1146,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":46752,
+			"byteLength":82032,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":46752,
-			"byteOffset":46752,
+			"byteLength":82032,
+			"byteOffset":82032,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":31168,
-			"byteOffset":93504,
+			"byteLength":54688,
+			"byteOffset":164064,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":23232,
-			"byteOffset":124672,
+			"byteLength":54688,
+			"byteOffset":218752,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":23484,
+			"byteOffset":273440,
 			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":10560,
+			"byteOffset":296924,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":10560,
+			"byteOffset":307484,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":7040,
+			"byteOffset":318044,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":7040,
+			"byteOffset":325084,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":2292,
+			"byteOffset":332124,
+			"target":34963
+		}
+	],
+	"samplers":[
+		{
+			"magFilter":9729,
+			"minFilter":9987
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":147904,
+			"byteLength":334416,
 			"uri":"gelaender-ende-links.bin"
 		}
 	]

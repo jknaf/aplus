@@ -21,15 +21,17 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"name":"Stahl_web.001",
+			"normalTexture":{
+				"index":0,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":1,
+					"texCoord":1
+				},
+				"roughnessFactor":0.15000000596046448
 			}
 		}
 	],
@@ -41,19 +43,42 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
 				}
 			]
+		}
+	],
+	"textures":[
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		}
+	],
+	"images":[
+		{
+			"mimeType":"image/jpeg",
+			"name":"rail-b-bank_normal",
+			"uri":"texturen/rail-b-bank_normal.jpg"
+		},
+		{
+			"mimeType":"image/jpeg",
+			"name":"rail-b-bank_farbe",
+			"uri":"texturen/rail-b-bank_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":112,
+			"count":416,
 			"max":[
 				0.08000000566244125,
 				0.9602700471878052,
@@ -69,51 +94,69 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":112,
+			"count":416,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":112,
+			"count":416,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
+			"componentType":5126,
+			"count":416,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":4,
 			"componentType":5123,
-			"count":192,
+			"count":696,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":1344,
+			"byteLength":4992,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1344,
-			"byteOffset":1344,
+			"byteLength":4992,
+			"byteOffset":4992,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":896,
-			"byteOffset":2688,
+			"byteLength":3328,
+			"byteOffset":9984,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":384,
-			"byteOffset":3584,
+			"byteLength":3328,
+			"byteOffset":13312,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1392,
+			"byteOffset":16640,
 			"target":34963
+		}
+	],
+	"samplers":[
+		{
+			"magFilter":9729,
+			"minFilter":9987
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":3968,
+			"byteLength":18032,
 			"uri":"rail-b-bank.bin"
 		}
 	]

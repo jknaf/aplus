@@ -29,7 +29,7 @@
 					"specularFactor":0.4000000059604645
 				}
 			},
-			"name":"Beton_web.001",
+			"name":"Beton_web.027",
 			"normalTexture":{
 				"index":0,
 				"texCoord":1
@@ -45,7 +45,7 @@
 		},
 		{
 			"doubleSided":true,
-			"name":"Stahl_web.002",
+			"name":"Stahl_web.021",
 			"normalTexture":{
 				"index":2,
 				"texCoord":1
@@ -65,7 +65,7 @@
 					"specularFactor":0.699999988079071
 				}
 			},
-			"name":"Kantenwinkel_web.001",
+			"name":"Kantenwinkel_web.016",
 			"normalTexture":{
 				"index":4,
 				"texCoord":1

@@ -21,15 +21,17 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"name":"Stahl_web.004",
+			"normalTexture":{
+				"index":0,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":1,
+					"texCoord":1
+				},
+				"roughnessFactor":0.15000000596046448
 			}
 		}
 	],
@@ -41,19 +43,42 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
 				}
 			]
+		}
+	],
+	"textures":[
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		}
+	],
+	"images":[
+		{
+			"mimeType":"image/jpeg",
+			"name":"rail-btb-s_normal",
+			"uri":"texturen/rail-btb-s_normal.jpg"
+		},
+		{
+			"mimeType":"image/jpeg",
+			"name":"rail-btb-s_farbe",
+			"uri":"texturen/rail-btb-s_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":376,
+			"count":1040,
 			"max":[
 				2.855001211166382,
 				0.9600000381469727,
@@ -69,51 +94,69 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":376,
+			"count":1040,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":376,
+			"count":1040,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
+			"componentType":5126,
+			"count":1040,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":4,
 			"componentType":5123,
-			"count":852,
+			"count":1428,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":4512,
+			"byteLength":12480,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4512,
-			"byteOffset":4512,
+			"byteLength":12480,
+			"byteOffset":12480,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3008,
-			"byteOffset":9024,
+			"byteLength":8320,
+			"byteOffset":24960,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1704,
-			"byteOffset":12032,
+			"byteLength":8320,
+			"byteOffset":33280,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":2856,
+			"byteOffset":41600,
 			"target":34963
+		}
+	],
+	"samplers":[
+		{
+			"magFilter":9729,
+			"minFilter":9987
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":13736,
+			"byteLength":44456,
 			"uri":"rail-btb-s.bin"
 		}
 	]

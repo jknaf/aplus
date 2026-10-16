@@ -3,6 +3,9 @@
 		"generator":"Khronos glTF Blender I/O v5.2.40",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -21,32 +24,38 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Beton",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.054",
 			"normalTexture":{
 				"index":0,
-				"scale":0.6000000238418579
+				"texCoord":1
 			},
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":1
+					"index":1,
+					"texCoord":1
 				},
 				"metallicFactor":0,
-				"metallicRoughnessTexture":{
-					"index":2
-				}
+				"roughnessFactor":0.9200000166893005
 			}
 		},
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"name":"Stahl_web.042",
+			"normalTexture":{
+				"index":2,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":3,
+					"texCoord":1
+				},
+				"roughnessFactor":0.15000000596046448
 			}
 		}
 	],
@@ -58,18 +67,20 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":4,
-						"NORMAL":5,
-						"TEXCOORD_0":6
+						"POSITION":5,
+						"NORMAL":6,
+						"TEXCOORD_0":7,
+						"TEXCOORD_1":8
 					},
-					"indices":7,
+					"indices":9,
 					"material":1
 				}
 			]
@@ -86,65 +97,70 @@
 		},
 		{
 			"sampler":0,
-			"source":2
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
 		}
 	],
 	"images":[
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_normal",
-			"uri":"texturen/beton_normal.jpg"
+			"name":"gelaender-500_normal",
+			"uri":"texturen/gelaender-500_normal.jpg"
 		},
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_farbe",
-			"uri":"texturen/beton_farbe.jpg"
-		},
-		{
-			"mimeType":"image/jpeg",
-			"name":"beton_rauheit",
-			"uri":"texturen/beton_rauheit.jpg"
+			"name":"gelaender-500_farbe",
+			"uri":"texturen/gelaender-500_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":32,
+			"count":3520,
 			"max":[
-				-0.027000000700354576,
-				0.0005699463072232902,
-				1.2505000829696655
+				0.05100000277161598,
+				0.10005005449056625,
+				1.9553985595703125
 			],
 			"min":[
-				-0.02800000086426735,
-				5.004883132642135e-05,
-				-1.25
+				-0.03200000151991844,
+				0,
+				-1.9546016454696655
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":32,
+			"count":3520,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":32,
+			"count":3520,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5123,
-			"count":48,
-			"type":"SCALAR"
+			"componentType":5126,
+			"count":3520,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
+			"componentType":5123,
+			"count":4584,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":5,
 			"componentType":5126,
-			"count":11376,
+			"count":17120,
 			"max":[
 				0.05100000277161598,
 				1.1200000047683716,
@@ -158,71 +174,89 @@
 			"type":"VEC3"
 		},
 		{
-			"bufferView":5,
+			"bufferView":6,
 			"componentType":5126,
-			"count":11376,
+			"count":17120,
 			"type":"VEC3"
 		},
 		{
-			"bufferView":6,
+			"bufferView":7,
 			"componentType":5126,
-			"count":11376,
+			"count":17120,
 			"type":"VEC2"
 		},
 		{
-			"bufferView":7,
+			"bufferView":8,
+			"componentType":5126,
+			"count":17120,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":9,
 			"componentType":5123,
-			"count":31368,
+			"count":31440,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":384,
+			"byteLength":42240,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":384,
-			"byteOffset":384,
+			"byteLength":42240,
+			"byteOffset":42240,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":256,
-			"byteOffset":768,
+			"byteLength":28160,
+			"byteOffset":84480,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":96,
-			"byteOffset":1024,
+			"byteLength":28160,
+			"byteOffset":112640,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":9168,
+			"byteOffset":140800,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":136512,
-			"byteOffset":1120,
+			"byteLength":205440,
+			"byteOffset":149968,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":136512,
-			"byteOffset":137632,
+			"byteLength":205440,
+			"byteOffset":355408,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":91008,
-			"byteOffset":274144,
+			"byteLength":136960,
+			"byteOffset":560848,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":62736,
-			"byteOffset":365152,
+			"byteLength":136960,
+			"byteOffset":697808,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":62880,
+			"byteOffset":834768,
 			"target":34963
 		}
 	],
@@ -234,7 +268,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":427888,
+			"byteLength":897648,
 			"uri":"gelaender-500.bin"
 		}
 	]

@@ -37,6 +37,24 @@ class OhneDreiD extends React.Component<{ ersatz: React.ReactNode; children: Rea
   render() { return this.state.fehler ? this.props.ersatz : this.props.children; }
 }
 
+// Werkzeugleiste: zusammengehörige Knöpfe als Gruppe, kompakt, Beschriftung erst bei genug Platz
+const Gruppe: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="inline-flex items-stretch h-9 rounded-lg bg-white/90 border border-brand-dark/10 shadow-sm divide-x divide-brand-dark/10 overflow-hidden">{children}</div>
+);
+const LKnopf: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & { icon: string; aktiv?: boolean; label?: string; labelAb?: string }> = ({ icon, aktiv, label, labelAb = 'lg:inline', title, ...rest }) => (
+  <button
+    type="button"
+    title={title ?? label}
+    aria-label={title ?? label}
+    {...rest}
+    className={`inline-flex items-center gap-1 px-2.5 text-[13px] font-semibold transition-colors disabled:opacity-35 disabled:cursor-not-allowed ${aktiv ? 'bg-brand-dark text-white' : 'text-brand-dark hover:bg-white'}`}
+  >
+    <span className="material-symbols-outlined text-[18px]">{icon}</span>
+    {label && <span className={`hidden ${labelAb}`}>{label}</span>}
+  </button>
+);
+const ohnePfeile = '[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none';
+
 // ---------- Start: Vorlage wählen ----------
 
 const Start: React.FC<{ onWahl: (id: string) => void; onSchliessen?: () => void }> = ({ onWahl, onSchliessen }) => (
@@ -630,27 +648,39 @@ const KonfiguratorPage: React.FC = () => {
           {park && (
             <div className="absolute top-3 left-3 right-3 flex flex-wrap items-start gap-2 pointer-events-none">
               <div className="flex flex-wrap gap-2 pointer-events-auto">
-                <Knopf icon="dashboard_customize" onClick={() => setStart(true)}><span className="hidden md:inline">Vorlage</span></Knopf>
-                <div className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-white/80 border border-brand-dark/10 text-sm">
-                  <span className="material-symbols-outlined text-[18px] text-brand-muted">square_foot</span>
-                  <input aria-label="Länge in Metern" type="number" step={RASTER} min={5} max={120} value={park.flaeche.l} onChange={(e) => flaecheSetzen(Number(e.target.value), park.flaeche.b)} className="w-12 md:w-16 bg-transparent text-right font-semibold focus:outline-none" />
-                  <span>×</span>
-                  <input aria-label="Breite in Metern" type="number" step={RASTER} min={5} max={120} value={park.flaeche.b} onChange={(e) => flaecheSetzen(park.flaeche.l, Number(e.target.value))} className="w-12 md:w-16 bg-transparent text-right font-semibold focus:outline-none" />
-                  <span className="text-brand-muted">m</span>
-                </div>
-                <Knopf icon={park.flaeche.angeboescht ? 'landscape' : 'view_in_ar'} onClick={() => flaecheSetzen(park.flaeche.l, park.flaeche.b, !park.flaeche.angeboescht)} title="Freistehend: Geländer an hohen Podesten. Angeböscht: Böschung statt Geländer.">
-                  <span className="hidden md:inline">{park.flaeche.angeboescht ? 'Angeböscht' : 'Freistehend'}</span>
-                </Knopf>
-                <Knopf icon="auto_awesome_mosaic" onClick={neuAnordnen} disabled={!park.teile.length} title="Gruppen nach dem Muster der A+-Beispielparks verteilen"><span className="hidden md:inline">Anordnen</span></Knopf>
+                <Gruppe><LKnopf icon="dashboard_customize" label="Vorlage" onClick={() => setStart(true)} /></Gruppe>
+                <Gruppe>
+                  <label className="inline-flex items-center gap-1 px-2 text-[13px] font-semibold text-brand-dark" title="Fläche in Metern (Raster 1,25 m)">
+                    <span className="material-symbols-outlined text-[18px] text-brand-muted">square_foot</span>
+                    <input aria-label="Länge in Metern" type="number" step={RASTER} min={5} max={120} value={park.flaeche.l} onChange={(e) => flaecheSetzen(Number(e.target.value), park.flaeche.b)} style={{ width: `${String(park.flaeche.l).length + 0.8}ch` }} className={`bg-transparent text-center focus:outline-none focus:text-brand-orange ${ohnePfeile}`} />
+                    <span className="text-brand-muted">×</span>
+                    <input aria-label="Breite in Metern" type="number" step={RASTER} min={5} max={120} value={park.flaeche.b} onChange={(e) => flaecheSetzen(park.flaeche.l, Number(e.target.value))} style={{ width: `${String(park.flaeche.b).length + 0.8}ch` }} className={`bg-transparent text-center focus:outline-none focus:text-brand-orange ${ohnePfeile}`} />
+                    <span className="text-brand-muted font-normal">m</span>
+                  </label>
+                  <LKnopf
+                    icon={park.flaeche.angeboescht ? 'landscape' : 'view_in_ar'}
+                    label={park.flaeche.angeboescht ? 'Angeböscht' : 'Freistehend'}
+                    labelAb="2xl:inline"
+                    title={park.flaeche.angeboescht ? 'Angeböscht: Böschung statt Geländer (umschalten)' : 'Freistehend: Geländer an hohen Podesten (umschalten)'}
+                    onClick={() => flaecheSetzen(park.flaeche.l, park.flaeche.b, !park.flaeche.angeboescht)}
+                  />
+                </Gruppe>
+                <Gruppe><LKnopf icon="auto_awesome_mosaic" label="Anordnen" labelAb="2xl:inline" title="Anordnen nach dem Muster der A+-Beispielparks" onClick={neuAnordnen} disabled={!park.teile.length} /></Gruppe>
               </div>
               <div className="flex flex-wrap gap-2 pointer-events-auto md:ml-auto">
-                <Knopf icon="undo" onClick={rueckgaengig} disabled={!verlauf.zurueck.length} title="Rückgängig (Cmd/Strg + Z)" />
-                <Knopf icon="redo" onClick={wiederholen} disabled={!verlauf.vor.length} title="Wiederholen" />
-                <Knopf icon="view_in_ar" aktiv={ansicht === '3d'} onClick={() => setAnsicht('3d')}><span className="hidden md:inline">3D</span></Knopf>
-                <Knopf icon="grid_view" aktiv={ansicht === 'oben'} onClick={() => { setAnsicht('oben'); setRundflug(false); }}><span className="hidden md:inline">Plan</span></Knopf>
-                <Knopf icon="360" aktiv={rundflug} onClick={() => { setAnsicht('3d'); setRundflug(!rundflug); }} title="Rundflug" />
-                <Knopf icon="print" onClick={() => setDruckDialog(true)} disabled={!park.teile.length} title="Drucken oder als PDF sichern"><span className="hidden md:inline">PDF</span></Knopf>
-                <Knopf icon="share" onClick={teilen}><span className="hidden md:inline">Teilen</span></Knopf>
+                <Gruppe>
+                  <LKnopf icon="undo" title="Rückgängig (Cmd/Strg + Z)" onClick={rueckgaengig} disabled={!verlauf.zurueck.length} />
+                  <LKnopf icon="redo" title="Wiederholen (Cmd/Strg + Umschalt + Z)" onClick={wiederholen} disabled={!verlauf.vor.length} />
+                </Gruppe>
+                <Gruppe>
+                  <LKnopf icon="view_in_ar" label="3D" aktiv={ansicht === '3d' && !rundflug} onClick={() => { setAnsicht('3d'); setRundflug(false); }} />
+                  <LKnopf icon="grid_view" label="Plan" aktiv={ansicht === 'oben'} onClick={() => { setAnsicht('oben'); setRundflug(false); }} />
+                  <LKnopf icon="360" title="Rundflug" aktiv={rundflug} onClick={() => { setAnsicht('3d'); setRundflug(!rundflug); }} />
+                </Gruppe>
+                <Gruppe>
+                  <LKnopf icon="print" label="PDF" title="Drucken oder als PDF sichern" onClick={() => setDruckDialog(true)} disabled={!park.teile.length} />
+                  <LKnopf icon="share" label="Teilen" labelAb="2xl:inline" title="Link zu diesem Park kopieren" onClick={teilen} />
+                </Gruppe>
               </div>
               {hinweise.length > 0 && (
                 <div className="basis-full pointer-events-auto">

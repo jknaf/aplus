@@ -1,6 +1,6 @@
-import React, { Suspense, useEffect, useMemo, useRef } from 'react';
+import React, { Suspense, memo, useCallback, useEffect, useMemo, useRef } from 'react';
 import { Canvas, useThree, type ThreeEvent } from '@react-three/fiber';
-import { Environment, Html, Line, OrbitControls, useGLTF } from '@react-three/drei';
+import { Environment, Html, Line, OrbitControls, useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import { umriss, type Ctx, type Park, type Teil, type V, type Zusatz } from './logik';
@@ -53,12 +53,12 @@ const Rahmen: React.FC<{ punkte: V[]; farbe: string }> = ({ punkte, farbe }) => 
   <Line points={[...punkte, punkte[0]].map((p) => [p.x, 0.02, p.z] as [number, number, number])} color={farbe} lineWidth={3} />
 );
 
-const TeilObjekt: React.FC<{
+const TeilObjekt = memo<{
   t: Teil; ctx: Ctx; url: string; stufe?: 'rot' | 'gelb';
   onDown: (e: ThreeEvent<PointerEvent>, t: Teil) => void;
   onMove: (e: ThreeEvent<PointerEvent>) => void;
   onUp: (e: ThreeEvent<PointerEvent>) => void;
-}> = ({ t, ctx, url, stufe, onDown, onMove, onUp }) => {
+}>(({ t, ctx, url, stufe, onDown, onMove, onUp }) => {
   const m = ctx.masse[t.slug];
   return (
     // Handler direkt am Element: bei Pointer-Capture liefert r3f Bewegungen nur an das gegriffene Objekt
@@ -73,7 +73,7 @@ const TeilObjekt: React.FC<{
       )}
     </group>
   );
-};
+});
 
 const Kamera: React.FC<{ park: Park; ansicht: '3d' | 'oben'; rundflug: boolean; steuerung: React.RefObject<OrbitControlsImpl> }> = ({ park, ansicht, rundflug, steuerung }) => {
   const { camera } = useThree();
@@ -149,12 +149,11 @@ const Raster: React.FC<{ l: number; b: number }> = ({ l, b }) => {
 };
 
 const Boden: React.FC<{ l: number; b: number; onLeer: () => void }> = ({ l, b, onLeer }) => {
-  const textur = useMemo(() => {
-    const t = new THREE.TextureLoader().load('/katalog/modelle/texturen/beton_farbe.jpg');
+  // useTexture lädt über Suspense; so wird nach dem Laden neu gezeichnet (Bühne rendert nur bei Bedarf)
+  const textur = useTexture('/katalog/modelle/texturen/beton_farbe.jpg', (t) => {
     t.wrapS = t.wrapT = THREE.RepeatWrapping;
     t.colorSpace = THREE.SRGBColorSpace;
-    return t;
-  }, []);
+  });
   useEffect(() => { textur.repeat.set(l / 4, b / 4); textur.needsUpdate = true; }, [textur, l, b]);
   return (
     <group>
@@ -175,8 +174,13 @@ const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansic
   const steuerung = useRef<OrbitControlsImpl>(null);
   const ziehen = useRef<{ id: string; versatz: V; teil: Teil; bewegt: boolean; einzeln: boolean } | null>(null);
   const gewaehlt = park.teile.find((t) => t.id === auswahl);
+  // höchstens 25 Hinweis-Punkte, rote zuerst: jedes HTML-Overlay kostet bei jedem Bild
+  const punkte = useMemo(() => new Set(Object.entries(markierung).sort((a, b) => (a[1] === 'rot' ? -1 : 1) - (b[1] === 'rot' ? -1 : 1)).slice(0, 25).map(([id]) => id)), [markierung]);
 
-  const runter = (e: ThreeEvent<PointerEvent>, t: Teil) => {
+  const rueckruf = useRef({ onAuswahl, onZiehen, onAblegen });
+  rueckruf.current = { onAuswahl, onZiehen, onAblegen };
+  const runter = useCallback((e: ThreeEvent<PointerEvent>, t: Teil) => {
+    const { onAuswahl } = rueckruf.current;
     if (e.button !== 0) return;
     e.stopPropagation();
     onAuswahl(t.id);
@@ -185,8 +189,9 @@ const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansic
     ziehen.current = { id: t.id, versatz: { x: t.x - p.x, z: t.z - p.z }, teil: t, bewegt: false, einzeln: e.altKey };
     (e.target as Element).setPointerCapture?.(e.pointerId);
     if (steuerung.current) steuerung.current.enabled = false;
-  };
-  const bewegen = (e: ThreeEvent<PointerEvent>) => {
+  }, []);
+  const bewegen = useCallback((e: ThreeEvent<PointerEvent>) => {
+    const { onZiehen } = rueckruf.current;
     const z = ziehen.current;
     if (!z) return;
     e.stopPropagation();
@@ -194,20 +199,22 @@ const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansic
     if (!e.ray.intersectPlane(boden, p)) return;
     z.bewegt = true;
     onZiehen({ ...z.teil, x: p.x + z.versatz.x, z: p.z + z.versatz.z }, z.einzeln);
-  };
-  const loslassen = (e: ThreeEvent<PointerEvent>) => {
+  }, []);
+  const loslassen = useCallback((e: ThreeEvent<PointerEvent>) => {
+    const { onAblegen } = rueckruf.current;
     const z = ziehen.current;
     if (!z) return;
     (e.target as Element).releasePointerCapture?.(e.pointerId);
     ziehen.current = null;
     if (steuerung.current) steuerung.current.enabled = true;
     if (z.bewegt) onAblegen();
-  };
+  }, []);
 
   return (
     <Canvas
       shadows
-      dpr={[1, 2]}
+      frameloop={rundflug ? 'always' : 'demand'}
+      dpr={park.teile.length > 120 ? [1, 1.25] : [1, 2]}
       gl={{ preserveDrawingBuffer: true, antialias: true }}
       camera={{ fov: 40, near: 0.1, far: 1000, position: [20, 18, 26] }}
       onPointerMissed={() => onAuswahl(null)}
@@ -229,9 +236,9 @@ const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansic
         shadow-camera-bottom={-40}
         shadow-bias={-0.0004}
       />
-      <Boden l={park.flaeche.l} b={park.flaeche.b} onLeer={() => onAuswahl(null)} />
+      <Suspense fallback={null}><Boden l={park.flaeche.l} b={park.flaeche.b} onLeer={() => onAuswahl(null)} /></Suspense>
       {park.teile.map((t) => (
-        <TeilObjekt key={t.id} t={t} ctx={ctx} url={modellPfad(t.slug)} stufe={markierung[t.id]} onDown={runter} onMove={bewegen} onUp={loslassen} />
+        <TeilObjekt key={t.id} t={t} ctx={ctx} url={modellPfad(t.slug)} stufe={punkte.has(t.id) ? markierung[t.id] : undefined} onDown={runter} onMove={bewegen} onUp={loslassen} />
       ))}
       {zusatz.map((z, i) => (
         <group key={`${z.slug}-${i}`} position={[z.x, z.y ?? 0, z.z]} rotation={[0, rad(z.rot), 0]}>

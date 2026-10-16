@@ -70,7 +70,21 @@ const kurvenUmriss = (t: Teil, k: Kurve): V[] => {
   for (let i = 6; i >= 0; i--) lokal.push(plus(k.c, polar(k.von + ((k.bis - k.von) * i) / 6, k.R)));
   return lokal.map((p) => plus(t, drehe(p, t.rot)));
 };
-export const umriss = (t: Teil, ctx: Ctx) => (istKurve(t.slug) ? kurvenUmriss(t, KURVE[t.slug]) : ecken(t, ctx.masse[t.slug]));
+const umrissCache = new WeakMap<Teil, V[]>();
+export const umriss = (t: Teil, ctx: Ctx): V[] => {
+  let u = umrissCache.get(t);
+  if (!u) { u = istKurve(t.slug) ? kurvenUmriss(t, KURVE[t.slug]) : ecken(t, ctx.masse[t.slug]); umrissCache.set(t, u); }
+  return u;
+};
+interface Box { x0: number; x1: number; z0: number; z1: number }
+const boxCache = new WeakMap<Teil, Box>();
+const teilBox = (t: Teil, ctx: Ctx): Box => {
+  let b = boxCache.get(t);
+  if (!b) { b = box(umriss(t, ctx)); boxCache.set(t, b); }
+  return b;
+};
+// Schneller Vorfilter: liegen zwei Rechtecke näher als d beieinander?
+const nah = (a: Box, b: Box, d = 0) => a.x0 - d < b.x1 && b.x0 - d < a.x1 && a.z0 - d < b.z1 && b.z0 - d < a.z1;
 // Bögen sind in Stützpunkten angenähert; deshalb dort etwas mehr Toleranz beim Überlappen
 const tol = (a: Teil, b: Teil) => (istKurve(a.slug) || istKurve(b.slug) ? 0.05 : 0.02);
 
@@ -126,7 +140,7 @@ const innen = (p: V, poly: V[]) => {
 };
 const imFeld = (p: V[], f: Flaeche, tol = 0.01) => p.every((q) => Math.abs(q.x) <= f.l / 2 + tol && Math.abs(q.z) <= f.b / 2 + tol);
 const randAbstand = (p: V[], f: Flaeche) => Math.min(...p.map((q) => Math.min(f.l / 2 - Math.abs(q.x), f.b / 2 - Math.abs(q.z))));
-const box = (p: V[]) => ({
+const box = (p: V[]): Box => ({
   x0: Math.min(...p.map((q) => q.x)), x1: Math.max(...p.map((q) => q.x)),
   z0: Math.min(...p.map((q) => q.z)), z1: Math.max(...p.map((q) => q.z)),
 });
@@ -156,10 +170,11 @@ const seiteIn = (t: Teil, m: Masse, richtung: V) => seiten(t, m).reduce((best, s
 // Welches Teil liegt direkt an dieser Seite an? (Stichproben knapp außerhalb der Seite)
 const anliegend = (s: Seite, ohne: string, park: Park, ctx: Ctx, nurArten?: Art[]) => {
   const proben = [-0.4, -0.2, 0, 0.2, 0.4].map((k) => plus(plus(s.mitte, mal(s.tangente, k * s.laenge)), mal(s.normale, 0.06)));
+  const pb = box(proben);
   let best: Teil | null = null;
   let treffer = 0;
   for (const o of park.teile) {
-    if (o.id === ohne) continue;
+    if (o.id === ohne || !nah(pb, teilBox(o, ctx), 0.01)) continue;
     if (nurArten && !nurArten.includes(art(o.slug, ctx))) continue;
     const p = umriss(o, ctx);
     const n = proben.filter((q) => innen(q, p)).length;
@@ -167,7 +182,6 @@ const anliegend = (s: Seite, ohne: string, park: Park, ctx: Ctx, nurArten?: Art[
   }
   return treffer >= 3 ? best : null;
 };
-
 // ---------- Andocken (Regelwerk Abschnitt 3) ----------
 
 export interface Pose { slug: string; x: number; z: number; rot: number; ziel: string }
@@ -235,9 +249,9 @@ export const andockPosen = (slug: string, park: Park, ctx: Ctx, ohne?: string): 
 
 export const kollidiert = (t: Teil, park: Park, ctx: Ctx) => {
   const p = umriss(t, ctx);
-  return park.teile.some((o) => o.id !== t.id && ueberlappt(p, umriss(o, ctx), tol(t, o)));
-};
-const ohneTeil = (park: Park, id: string): Park => ({ ...park, teile: park.teile.filter((t) => t.id !== id) });
+  const b = teilBox(t, ctx);
+  return park.teile.some((o) => o.id !== t.id && nah(b, teilBox(o, ctx)) && ueberlappt(p, umriss(o, ctx), tol(t, o)));
+};const ohneTeil = (park: Park, id: string): Park => ({ ...park, teile: park.teile.filter((t) => t.id !== id) });
 
 // Element ins Feld schieben
 export const klemmen = (t: Teil, f: Flaeche, ctx: Ctx): Teil => {
@@ -299,40 +313,48 @@ export const gruppeVerschieben = (gruppe: Teil[], d: V, park: Park, ctx: Ctx): T
 export const freierPlatz = (gruppe: Teil[], park: Park, ctx: Ctx, abstandMin = SICHER): V | null => {
   const b = box(gruppe.flatMap((t) => umriss(t, ctx)));
   const mitte = { x: (b.x0 + b.x1) / 2, z: (b.z0 + b.z1) / 2 };
-  const andere = park.teile.map((o) => umriss(o, ctx));
-  for (let r = 0; r <= 40; r++) {
+  const andere = park.teile.map((o) => teilBox(o, ctx));
+  const f = park.flaeche;
+  const rand = Math.min(abstandMin, 1);
+  const ringe = Math.ceil(Math.max(f.l, f.b) / FEIN / 2) + 1;
+  // ponytail: das Rechteck der Gruppe ist etwas größer als die Teile selbst; bei Bedarf genauer prüfen
+  for (let r = 0; r <= ringe; r++) {
     for (let i = -r; i <= r; i++) {
       for (const [ix, iz] of [[i, -r], [i, r], [-r, i], [r, i]]) {
         const d = { x: ix * FEIN - mitte.x, z: iz * FEIN - mitte.z };
-        const polys = gruppe.map((t) => umriss({ ...t, x: t.x + d.x, z: t.z + d.z }, ctx));
-        if (!polys.every((p) => imFeld(p, park.flaeche))) continue;
-        const minAbst = Math.min(Infinity, ...polys.flatMap((p) => andere.map((q) => abstand(p, q))));
-        if (minAbst >= abstandMin && Math.min(...polys.map((p) => randAbstand(p, park.flaeche))) >= Math.min(abstandMin, 1)) return d;
+        const g = { x0: b.x0 + d.x, x1: b.x1 + d.x, z0: b.z0 + d.z, z1: b.z1 + d.z };
+        if (g.x0 < -f.l / 2 + rand || g.x1 > f.l / 2 - rand || g.z0 < -f.b / 2 + rand || g.z1 > f.b / 2 - rand) continue;
+        if (!andere.some((o) => nah(g, o, abstandMin))) return d;
       }
     }
   }
   return null;
-};
-const verschiebe = (teile: Teil[], d: V) => teile.map((t) => ({ ...t, x: r3(t.x + d.x), z: r3(t.z + d.z) }));
+};const verschiebe = (teile: Teil[], d: V) => teile.map((t) => ({ ...t, x: r3(t.x + d.x), z: r3(t.z + d.z) }));
 
 // ---------- Gruppen (zusammenhängende Elemente) ----------
 
+const gruppenCache = new WeakMap<Teil[], Teil[][]>();
 export const gruppen = (park: Park, ctx: Ctx): Teil[][] => {
-  const polys = new Map(park.teile.map((t) => [t.id, umriss(t, ctx)]));
+  const gemerkt = gruppenCache.get(park.teile);
+  if (gemerkt) return gemerkt;
   const eltern = new Map(park.teile.map((t) => [t.id, t.id]));
-  const finde = (id: string): string => (eltern.get(id) === id ? id : finde(eltern.get(id)!));
+  const finde = (id: string): string => { let x = id; while (eltern.get(x) !== x) x = eltern.get(x)!; return x; };
   for (let i = 0; i < park.teile.length; i++) {
+    const a = park.teile[i];
+    const ba = teilBox(a, ctx);
     for (let j = i + 1; j < park.teile.length; j++) {
-      const a = park.teile[i];
       const b = park.teile[j];
-      if (abstand(polys.get(a.id)!, polys.get(b.id)!) < BERUEHRT) eltern.set(finde(a.id), finde(b.id));
+      if (!nah(ba, teilBox(b, ctx), BERUEHRT)) continue;
+      if (finde(a.id) === finde(b.id)) continue;
+      if (abstand(umriss(a, ctx), umriss(b, ctx)) < BERUEHRT) eltern.set(finde(a.id), finde(b.id));
     }
   }
   const m = new Map<string, Teil[]>();
-  for (const t of park.teile) { const w = finde(t.id); m.set(w, [...(m.get(w) ?? []), t]); }
-  return [...m.values()];
+  for (const t of park.teile) { const w = finde(t.id); const l = m.get(w); if (l) l.push(t); else m.set(w, [t]); }
+  const out = [...m.values()];
+  gruppenCache.set(park.teile, out);
+  return out;
 };
-
 // ---------- Automatik: Geländer, Anlaufkeile, Pflichtteile (Abschnitte 3, 4, 7) ----------
 
 export interface Zusatz { slug: string; x: number; z: number; rot: number; y?: number }
@@ -433,6 +455,19 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
 
 // ---------- Prüfregeln (Abschnitt 5) ----------
 
+// Anlaufzonen (F03) der freien Rampen-Vorderseiten; in Bowls und Snake-Runs entfällt das, dort ist die Mitte Fahrfläche
+const anlaufZonen = (teile: Teil[], park: Park, ctx: Ctx): V[][] => {
+  const mitKurve = new Set(gruppen(park, ctx).filter((g) => g.some((t) => istKurve(t.slug))).flatMap((g) => g.map((t) => t.id)));
+  const out: V[][] = [];
+  for (const t of teile) {
+    const m = ctx.masse[t.slug];
+    if (art(t.slug, ctx) !== 'rampe' || !m.hoch || !hochAchsig(m) || istKurve(t.slug) || mitKurve.has(t.id)) continue;
+    const vorne = seiteIn(t, m, mal(hochWelt(t, m)!, -1));
+    if (!anliegend(vorne, t.id, park, ctx)) out.push(zoneVor(vorne, ANLAUF));
+  }
+  return out;
+};
+
 export type Behebung = 'verschieben' | 'hoehe' | 'zurueck';
 export interface Hinweis { id: string; stufe: 'rot' | 'gelb'; teile: string[]; text: string; fix?: Behebung }
 
@@ -441,13 +476,14 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
   const polys = new Map(park.teile.map((t) => [t.id, umriss(t, ctx)]));
   const name = (t: Teil) => ctx.info[t.slug]?.name ?? t.slug;
   const mitKurve = new Set(gruppen(park, ctx).filter((g) => g.some((t) => istKurve(t.slug))).flatMap((g) => g.map((t) => t.id)));
+  const zoneBelegt = (z: V[], ohne: string) => { const zb = box(z); return park.teile.some((o) => o.id !== ohne && nah(zb, teilBox(o, ctx)) && ueberlappt(z, polys.get(o.id)!, 0.05)); };
   // F06: Überlappung und außerhalb der Fläche
   for (let i = 0; i < park.teile.length; i++) {
     const a = park.teile[i];
     if (!imFeld(polys.get(a.id)!, park.flaeche, 0.02)) out.push({ id: `feld-${a.id}`, stufe: 'rot', teile: [a.id], text: `${name(a)} ragt über die Fläche hinaus.`, fix: 'zurueck' });
     for (let j = i + 1; j < park.teile.length; j++) {
       const b = park.teile[j];
-      if (ueberlappt(polys.get(a.id)!, polys.get(b.id)!, tol(a, b))) out.push({ id: `ueber-${a.id}-${b.id}`, stufe: 'rot', teile: [b.id, a.id], text: `${name(b)} und ${name(a)} überlappen sich.`, fix: 'verschieben' });
+      if (nah(teilBox(a, ctx), teilBox(b, ctx)) && ueberlappt(polys.get(a.id)!, polys.get(b.id)!, tol(a, b))) out.push({ id: `ueber-${a.id}-${b.id}`, stufe: 'rot', teile: [b.id, a.id], text: `${name(b)} und ${name(a)} überlappen sich.`, fix: 'verschieben' });
     }
   }
   for (const t of park.teile) {
@@ -465,14 +501,14 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
     // F02: hinter freistehender Jump-Ramp 5 m frei
     if (istJump && !anliegend(hinten, t.id, park, ctx)) {
       const z = zoneVor(hinten, ANLAUF);
-      if (!imFeld(z, park.flaeche, 0.3) || park.teile.some((o) => o.id !== t.id && ueberlappt(z, polys.get(o.id)!, 0.05))) {
+      if (!imFeld(z, park.flaeche, 0.3) || zoneBelegt(z, t.id)) {
         out.push({ id: `lande-${t.id}`, stufe: 'gelb', teile: [t.id], text: 'Hinter der Jump-Ramp 5 m frei lassen.', fix: 'verschieben' });
       }
     }
     // F03: 5 m Anlauf vor jeder Rampe
     if (!mitKurve.has(t.id) && !anliegend(vorne, t.id, park, ctx)) {
       const z = zoneVor(vorne, ANLAUF);
-      if (!imFeld(z, park.flaeche, 0.3) || park.teile.some((o) => o.id !== t.id && ueberlappt(z, polys.get(o.id)!, 0.05))) {
+      if (!imFeld(z, park.flaeche, 0.3) || zoneBelegt(z, t.id)) {
         out.push({ id: `anlauf-${t.id}`, stufe: 'gelb', teile: [t.id], text: `Vor ${name(t)} fehlen 5 m freie Anlauffläche.`, fix: 'verschieben' });
       }
     }
@@ -481,17 +517,19 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
   for (const t of park.teile) {
     if (!istSlide(t.slug)) continue;
     const p = polys.get(t.id)!;
-    if (!park.teile.some((o) => o.id !== t.id && abstand(p, polys.get(o.id)!) < BERUEHRT)) {
+    if (!park.teile.some((o) => o.id !== t.id && nah(teilBox(t, ctx), teilBox(o, ctx), BERUEHRT) && abstand(p, polys.get(o.id)!) < BERUEHRT)) {
       out.push({ id: `slide-${t.id}`, stufe: 'gelb', teile: [t.id], text: `${name(t)} wird seitlich an ein anderes Element geschraubt. Bitte anlegen.` });
     }
   }
   // F01: Sicherheitsbereich 2 m zwischen Gruppen und zum Flächenrand
   const gs = gruppen(park, ctx);
   const gp = gs.map((g) => g.map((t) => polys.get(t.id)!));
+  const gb = gs.map((g) => box(g.flatMap((t) => polys.get(t.id)!)));
   for (let i = 0; i < gs.length; i++) {
     for (let j = i + 1; j < gs.length; j++) {
+      if (!nah(gb[i], gb[j], SICHER)) continue;
       let d = Infinity;
-      for (const a of gp[i]) for (const b of gp[j]) d = Math.min(d, abstand(a, b));
+      for (const a of gs[i]) for (const b of gs[j]) if (nah(teilBox(a, ctx), teilBox(b, ctx), SICHER)) d = Math.min(d, abstand(umriss(a, ctx), umriss(b, ctx)));
       if (d > BERUEHRT && d < SICHER - 0.05) {
         const klein = gs[i].length <= gs[j].length ? gs[i] : gs[j];
         out.push({ id: `abst-${klein[0].id}`, stufe: 'gelb', teile: klein.map((t) => t.id), text: `Abstand ${d.toFixed(1).replace('.', ',')} m, mindestens 2 m Sicherheitsbereich nötig.`, fix: 'verschieben' });
@@ -510,7 +548,7 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
 
 const VERSATZ: V[] = (() => {
   const v: V[] = [];
-  for (let i = -16; i <= 16; i++) for (let j = -16; j <= 16; j++) if (i || j) v.push({ x: i * FEIN, z: j * FEIN });
+  for (let i = -12; i <= 12; i++) for (let j = -12; j <= 12; j++) if (i || j) v.push({ x: i * FEIN, z: j * FEIN });
   return v.sort((a, b) => laenge(a) - laenge(b));
 })();
 
@@ -526,14 +564,35 @@ export const beheben = (h: Hinweis, park: Park, ctx: Ctx): Park | null => {
     return { ...park, teile: park.teile.map((x) => (x.id === t.id ? { ...x, slug: neu, ...(pose ? { x: pose.x, z: pose.z, rot: pose.rot } : {}) } : x)) };
   }
   if (h.fix === 'verschieben') {
-    const gruppe = gruppen(park, ctx).find((g) => g.some((x) => x.id === t.id)) ?? [t];
+    // Überlappung: nur das eine Teil bewegen; sonst die ganze Gruppe
+    const gruppe = h.id.startsWith('ueber') ? [t] : gruppen(park, ctx).find((g) => g.some((x) => x.id === t.id)) ?? [t];
     const ids = new Set(gruppe.map((x) => x.id));
-    const zaehlen = (p: Park) => pruefen(p, ctx).filter((x) => x.teile.some((id) => ids.has(id)));
-    const vorher = zaehlen(park);
-    for (const d of VERSATZ) {
-      const neu = { ...park, teile: park.teile.map((x) => (ids.has(x.id) ? { ...x, x: r3(x.x + d.x), z: r3(x.z + d.z) } : x)) };
-      const nach = zaehlen(neu);
-      if (!nach.some((x) => x.id === h.id) && !nach.some((x) => x.stufe === 'rot') && nach.length < vorher.length && gruppen(neu, ctx).length >= gruppen(park, ctx).length) return neu;
+    const rest: Park = { ...park, teile: park.teile.filter((x) => !ids.has(x.id)) };
+    const fremdeZonen = anlaufZonen(rest.teile, rest, ctx).map((z) => ({ z, b: box(z) }));
+    // Gezielte Prüfung nur für die verschobene Gruppe statt der ganzen Prüfung je Kandidat
+    const passt = (f: Flaeche, d: V) => {
+      const neu = gruppe.map((x) => ({ ...x, x: r3(x.x + d.x), z: r3(x.z + d.z) }));
+      const gb = box(neu.flatMap((x) => umriss(x, ctx)));
+      if (gb.x0 < -f.l / 2 + SICHER - 0.05 || gb.x1 > f.l / 2 - SICHER + 0.05 || gb.z0 < -f.b / 2 + SICHER - 0.05 || gb.z1 > f.b / 2 - SICHER + 0.05) return null;
+      for (const o of rest.teile) {
+        const ob = teilBox(o, ctx);
+        if (!nah(gb, ob, SICHER)) continue;
+        for (const x of neu) if (nah(teilBox(x, ctx), ob, SICHER - 0.05) && abstand(umriss(x, ctx), umriss(o, ctx)) < SICHER - 0.05) return null;
+      }
+      for (const { z, b: zb } of fremdeZonen) if (nah(gb, zb) && neu.some((x) => ueberlappt(z, umriss(x, ctx), 0.05))) return null;
+      const probe: Park = { flaeche: f, teile: [...rest.teile, ...neu] };
+      for (const z of anlaufZonen(neu, probe, ctx)) {
+        if (!imFeld(z, f, 0.3)) return null;
+        const zb = box(z);
+        if (rest.teile.some((o) => nah(zb, teilBox(o, ctx)) && ueberlappt(z, umriss(o, ctx), 0.05))) return null;
+      }
+      return probe;
+    };
+    // Erst auf der vorhandenen Fläche suchen, sonst die Fläche schrittweise vergrößern
+    let f = park.flaeche;
+    for (let runde = 0; runde < 5; runde++) {
+      for (const d of VERSATZ) { const p = passt(f, d); if (p) return p; }
+      f = { ...f, l: f.l + 2 * RASTER, b: f.b + 2 * RASTER };
     }
   }
   return null;

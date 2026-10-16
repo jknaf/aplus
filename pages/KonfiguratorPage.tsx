@@ -664,7 +664,7 @@ const KonfiguratorPage: React.FC = () => {
 
           {/* Auswahl */}
           {ausgewaehlt && ctx && !ziehen && (
-            <div className="absolute bottom-3 left-3 right-3 md:right-auto md:max-w-md pointer-events-auto">
+            <div className="absolute bottom-16 lg:bottom-3 left-3 right-3 md:right-auto md:max-w-md pointer-events-auto">
               <div className="bg-brand-bg/95 backdrop-blur rounded-xl border border-brand-dark/10 shadow-lg p-3">
                 <div className="flex items-center justify-between gap-3">
                   <div className="min-w-0">
@@ -701,7 +701,7 @@ const KonfiguratorPage: React.FC = () => {
 
           {/* Vorschlag: immer nur einer */}
           {vorschlag && !ziehen && (
-            <div className="absolute bottom-24 md:bottom-3 left-1/2 -translate-x-1/2 w-[min(92%,30rem)] md:left-auto md:right-3 md:translate-x-0 pointer-events-auto">
+            <div className="absolute bottom-40 lg:bottom-3 left-1/2 -translate-x-1/2 w-[min(92%,30rem)] lg:left-auto lg:right-3 lg:translate-x-0 pointer-events-auto">
               <div className="bg-brand-dark text-white rounded-xl shadow-xl p-4">
                 <p className="text-sm mb-3"><span className="material-symbols-outlined text-[18px] align-[-4px] mr-1 text-[#9fc27a]">lightbulb</span>{vorschlag.text}</p>
                 <div className="flex flex-wrap gap-2">

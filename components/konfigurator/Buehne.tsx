@@ -9,6 +9,7 @@ THREE.Cache.enabled = true;
 
 export interface BuehnenApi {
   bild: () => string;
+  foto: () => string;
   bodenPunkt: (clientX: number, clientY: number) => V | null;
 }
 
@@ -111,6 +112,7 @@ const Api: React.FC<{ onBereit: (api: BuehnenApi) => void; park: Park }> = ({ on
         const p = new THREE.Vector3();
         return raycaster.ray.intersectPlane(boden, p) ? { x: p.x, z: p.z } : null;
       },
+      foto: () => { gl.render(scene, camera); return gl.domElement.toDataURL('image/jpeg', 0.9); },
       // Draufsicht für die Anfrage: Kamera kurz nach oben, ein Bild rendern, zurück
       bild: () => {
         const f = flaeche.current;

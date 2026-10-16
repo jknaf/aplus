@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import {
   BAUSTEINE, VORLAGEN, vorlageBauen, gruppen, pruefen, abgeleitet, einrasten, stueckliste, kodieren, dekodieren,
-  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, type Ctx, type Park,
+  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, type Ctx, type Park,
 } from '../components/konfigurator/logik.ts';
 
 const katalog = JSON.parse(readFileSync(new URL('../public/katalog/katalog.json', import.meta.url), 'utf8'));
@@ -18,7 +18,8 @@ for (const b of BAUSTEINE) {
   const t = b.bauen(ctx);
   assert.ok(t, `${b.id} baut nicht`);
   for (let i = 0; i < t.length; i++) for (let j = i + 1; j < t.length; j++) {
-    assert.ok(!ueberlappt(umriss(t[i], ctx), umriss(t[j], ctx)), `${b.id}: ${t[i].slug} überlappt ${t[j].slug}`);
+    const kurve = t[i].slug.startsWith('corner') || t[j].slug.startsWith('corner');
+    assert.ok(!ueberlappt(umriss(t[i], ctx), umriss(t[j], ctx), kurve ? 0.05 : 0.02), `${b.id}: ${t[i].slug} überlappt ${t[j].slug}`);
   }
   const park: Park = { flaeche: feld, teile: t };
   assert.equal(gruppen(park, ctx).length, 1, `${b.id} zerfällt in mehrere Gruppen`);
@@ -50,6 +51,42 @@ assert.equal(gruppen(mitRampe, ctx).length, 1);
 
 // Wall bringt die Wall-Ramp automatisch mit (A11)
 assert.equal(hinzufuegen({ flaeche: feld, teile: [] }, [{ id: 'w', slug: 'wall-410', x: 0, z: 0, rot: 0 }], ctx).teile.length, 2);
+
+// Kurve anhängen: Coping Ramp 98 mit Table, Kurve rechts, danach Gerade; alles zusammenhängend, nichts überlappt
+{
+  for (const h of [98, 150]) {
+    const start: Park = { flaeche: { l: 20, b: 20, angeboescht: false }, teile: [
+      { id: 'r', slug: `coping-ramp-${h}`, x: 0, z: 0, rot: 0 },
+    ] };
+    const tisch = vorschlag('r', start, ctx)!.optionen[0].anwenden(start);
+    assert.equal(tisch.teile.length, 2);
+    assert.deepEqual(anbauMoeglich('r', tisch, ctx).kurve.sort(), ['links', 'rechts']);
+    const k = kurveAnhaengen('r', 'rechts', tisch, ctx)!;
+    assert.ok(k, 'Kurve lässt sich nicht anhängen');
+    assert.equal(k.teile.length, 2 + 6 + 2);
+    assert.equal(gruppen(k, ctx).length, 1, `Kurve ${h} hängt nicht zusammen`);
+    assert.ok(!pruefen(k, ctx).some((x) => x.stufe === 'rot'), `Kurve ${h}: ${pruefen(k, ctx).map((x) => x.text).join(' | ')}`);
+    // Coping der Geraden nach der Kurve liegt genau auf dem Bogenende (Spalt < 2 cm)
+    const letzte = k.teile[k.teile.length - 2];
+    const g = geradeAnhaengen(letzte.id, anbauMoeglich(letzte.id, k, ctx).gerade[0], k, ctx)!;
+    assert.equal(g.teile.length, k.teile.length + 2);
+    assert.equal(gruppen(g, ctx).length, 1);
+  }
+}
+
+// Bowl: geschlossen, eine Gruppe, keine Überlappung, Geländer nur bei 150, bauseitige Zeile
+for (const [h, nl, nb] of [[98, 1, 0], [98, 3, 1], [150, 3, 1]] as const) {
+  const t = bowl(h, nl, nb, ctx)!;
+  const p: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: t };
+  assert.equal(gruppen(p, ctx).length, 1, `Bowl ${h} ${nl}×${nb} nicht geschlossen`);
+  assert.ok(!pruefen(p, ctx).some((x) => x.stufe === 'rot'), `Bowl ${h}: ${pruefen(p, ctx).filter((x) => x.stufe === 'rot').map((x) => x.text).join(' | ')}`);
+  const ab = abgeleitet(p, ctx);
+  if (h === 98) assert.equal(ab.gelaender.length, 0); else assert.ok(ab.gelaender.filter((g) => g.slug === 'gelaender-sger-150').length === 12);
+  assert.ok(stueckliste(p, ctx).some((z) => z.code === 'bauseits'));
+  const xs = t.flatMap((x) => umriss(x, ctx)).map((q) => q.x);
+  const zs = t.flatMap((x) => umriss(x, ctx)).map((q) => q.z);
+  console.log(`Bowl ${h} ${nl}×${nb}: ${t.length} Teile, außen ${(Math.max(...xs) - Math.min(...xs)).toFixed(2)} × ${(Math.max(...zs) - Math.min(...zs)).toFixed(2)} m`);
+}
 
 // Kein Platz frei: Fläche wächst, nichts überlappt
 {

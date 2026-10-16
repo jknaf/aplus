@@ -52,7 +52,27 @@ export const familie = (slug: string) => slug.replace(/-\d.*$/, '');
 
 const ecken = (t: Teil, m: Masse): V[] =>
   [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([a, b]) => plus(t, drehe({ x: (a * m.l) / 2, z: (b * m.b) / 2 }, t.rot)));
-export const umriss = (t: Teil, ctx: Ctx) => ecken(t, ctx.masse[t.slug]);
+// Kurvenstücke (Corner, Table Corner): Kreisringsektor um den Mittelpunkt c, Radien r (vorn) bis R (Coping bzw. Außenkante),
+// Kanten unter den Winkeln von/bis (Konvention wie winkel()). Aus den glTF-Modellen gemessen, deckt sich mit dem A+-Katalog (K S. 4, 6).
+export interface Kurve { c: V; r: number; R: number; von: number; bis: number }
+export const KURVE: Record<string, Kurve> = {
+  'corner-98': { c: { x: -1.6868, z: -0.6483 }, r: 0.901, R: 2.593, von: -30, bis: 0 },
+  'corner-150': { c: { x: -2.0648, z: 0.7795 }, r: 1.168, R: 3.123, von: 0, bis: 30 },
+  'corner-table-98': { c: { x: -3.0442, z: -0.9608 }, r: 2.593, R: 3.848, von: -30, bis: 0 },
+  'corner-table-150': { c: { x: -3.5344, z: 1.092 }, r: 3.118, R: 4.373, von: 0, bis: 30 },
+};
+export const istKurve = (slug: string) => slug in KURVE;
+const polar = (g: number, rad_: number): V => ({ x: Math.cos(rad(g)) * rad_, z: -Math.sin(rad(g)) * rad_ });
+// Umriss als konvexes Vieleck: innen die Tangente an den Bogen (liegt ganz im Teil), außen der Bogen in Stützpunkten
+const kurvenUmriss = (t: Teil, k: Kurve): V[] => {
+  const rt = k.r / Math.cos(rad((k.bis - k.von) / 2));
+  const lokal = [plus(k.c, polar(k.von, rt)), plus(k.c, polar(k.bis, rt))];
+  for (let i = 6; i >= 0; i--) lokal.push(plus(k.c, polar(k.von + ((k.bis - k.von) * i) / 6, k.R)));
+  return lokal.map((p) => plus(t, drehe(p, t.rot)));
+};
+export const umriss = (t: Teil, ctx: Ctx) => (istKurve(t.slug) ? kurvenUmriss(t, KURVE[t.slug]) : ecken(t, ctx.masse[t.slug]));
+// Bögen sind in Stützpunkten angenähert; deshalb dort etwas mehr Toleranz beim Überlappen
+const tol = (a: Teil, b: Teil) => (istKurve(a.slug) || istKurve(b.slug) ? 0.05 : 0.02);
 
 const projektion = (p: V[], achse: V) => {
   let lo = Infinity;
@@ -184,7 +204,7 @@ export const poseAnEcke = (ziel: Teil, eckIndex: number, slug: string, ctx: Ctx)
 
 export const andockPosen = (slug: string, park: Park, ctx: Ctx, ohne?: string): Pose[] => {
   const m = ctx.masse[slug];
-  if (!m?.hoch || art(slug, ctx) !== 'rampe') return [];
+  if (!m?.hoch || art(slug, ctx) !== 'rampe' || istKurve(slug)) return [];
   const out: Pose[] = [];
   for (const z of park.teile) {
     if (z.id === ohne) continue;
@@ -192,11 +212,11 @@ export const andockPosen = (slug: string, park: Park, ctx: Ctx, ohne?: string): 
     const az = art(z.slug, ctx);
     const passend = Math.abs(mz.h - m.h) < 0.06 ? slug : variante(slug, mz.h, ctx) ?? slug;
     if (!hochAchsig(m)) {
-      if (az === 'plattform') for (let i = 0; i < 4; i++) { const p = poseAnEcke(z, i, passend, ctx); if (p) out.push(p); }
+      if (az === 'plattform' && !istKurve(z.slug)) for (let i = 0; i < 4; i++) { const p = poseAnEcke(z, i, passend, ctx); if (p) out.push(p); }
       continue;
     }
     let ziele: Seite[] = [];
-    if (az === 'plattform') ziele = seiten(z, mz);
+    if (az === 'plattform' && !istKurve(z.slug)) ziele = seiten(z, mz);
     else if ((az === 'wand' || familie(z.slug) === 'coping-ramp') && mz.hoch) ziele = [seiteIn(z, mz, hochWelt(z, mz)!)];
     if (az === 'wand' && familie(slug) !== 'wall-ramp') ziele = [];
     if (familie(z.slug) === 'coping-ramp' && familie(slug) !== 'coping-ramp') ziele = [];
@@ -215,7 +235,7 @@ export const andockPosen = (slug: string, park: Park, ctx: Ctx, ohne?: string): 
 
 export const kollidiert = (t: Teil, park: Park, ctx: Ctx) => {
   const p = umriss(t, ctx);
-  return park.teile.some((o) => o.id !== t.id && ueberlappt(p, umriss(o, ctx)));
+  return park.teile.some((o) => o.id !== t.id && ueberlappt(p, umriss(o, ctx), tol(t, o)));
 };
 const ohneTeil = (park: Park, id: string): Park => ({ ...park, teile: park.teile.filter((t) => t.id !== id) });
 
@@ -327,7 +347,7 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
     const m = ctx.masse[t.slug];
     const a = art(t.slug, ctx);
     // G01/G02: Plattformen über 1 m Fallhöhe, bei Rampen nur die hohe Rückseite
-    if (!park.flaeche.angeboescht && m.h >= 1.0 && (a === 'plattform' || (a === 'rampe' && m.hoch && hochAchsig(m)))) {
+    if (!park.flaeche.angeboescht && m.h >= 1.0 && !istKurve(t.slug) && (a === 'plattform' || (a === 'rampe' && m.hoch && hochAchsig(m)))) {
       const kandidaten = a === 'plattform' ? seiten(t, m) : [seiteIn(t, m, hochWelt(t, m)!)];
       for (const s of kandidaten) {
         if (anliegend(s, t.id, park, ctx)) continue; // G06: wo etwas andockt, kein Geländer
@@ -352,6 +372,21 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
           }
         }
       }
+    }
+  }
+  // G01 an Kurven: Rundgeländer SGER-150 außen am Table Corner 150. Lage im Modell: Sehne unter -14,2°, Bogen nach -z
+  const rund: Zusatz[] = [];
+  if (!park.flaeche.angeboescht && ctx.masse['gelaender-sger-150']) {
+    for (const t of park.teile) {
+      if (t.slug !== 'corner-table-150') continue;
+      const k = KURVE[t.slug];
+      const halb = (k.von + k.bis) / 2;
+      const aussen = drehe(polar(halb, 1), t.rot);
+      const mitteAussen = plus(t, drehe(plus(k.c, polar(halb, k.R)), t.rot));
+      if (park.teile.some((o) => o.id !== t.id && innen(plus(mitteAussen, mal(aussen, 0.1)), umriss(o, ctx)))) continue;
+      const rot = norm360(winkel(aussen) - 75.8);
+      const p = minus(plus(mitteAussen, mal(aussen, -0.08)), drehe({ x: 0, z: -0.13 }, rot));
+      rund.push({ slug: 'gelaender-sger-150', x: r3(p.x), z: r3(p.z), rot, y: ctx.masse[t.slug].h });
     }
   }
   // Gleich ausgerichtete, aneinander stoßende Strecken zu Läufen verbinden
@@ -393,7 +428,7 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
     }
     verbinder += Math.max(0, teile - 1); // ponytail: Endteile und 90°-Ecken fehlen noch, A+ ergänzt im Angebot
   }
-  return { gelaender, verbinder, keile };
+  return { gelaender: [...gelaender, ...rund], verbinder, keile };
 };
 
 // ---------- Prüfregeln (Abschnitt 5) ----------
@@ -405,18 +440,19 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
   const out: Hinweis[] = [];
   const polys = new Map(park.teile.map((t) => [t.id, umriss(t, ctx)]));
   const name = (t: Teil) => ctx.info[t.slug]?.name ?? t.slug;
+  const mitKurve = new Set(gruppen(park, ctx).filter((g) => g.some((t) => istKurve(t.slug))).flatMap((g) => g.map((t) => t.id)));
   // F06: Überlappung und außerhalb der Fläche
   for (let i = 0; i < park.teile.length; i++) {
     const a = park.teile[i];
     if (!imFeld(polys.get(a.id)!, park.flaeche, 0.02)) out.push({ id: `feld-${a.id}`, stufe: 'rot', teile: [a.id], text: `${name(a)} ragt über die Fläche hinaus.`, fix: 'zurueck' });
     for (let j = i + 1; j < park.teile.length; j++) {
       const b = park.teile[j];
-      if (ueberlappt(polys.get(a.id)!, polys.get(b.id)!)) out.push({ id: `ueber-${a.id}-${b.id}`, stufe: 'rot', teile: [b.id, a.id], text: `${name(b)} und ${name(a)} überlappen sich.`, fix: 'verschieben' });
+      if (ueberlappt(polys.get(a.id)!, polys.get(b.id)!, tol(a, b))) out.push({ id: `ueber-${a.id}-${b.id}`, stufe: 'rot', teile: [b.id, a.id], text: `${name(b)} und ${name(a)} überlappen sich.`, fix: 'verschieben' });
     }
   }
   for (const t of park.teile) {
     const m = ctx.masse[t.slug];
-    if (art(t.slug, ctx) !== 'rampe' || !m.hoch || !hochAchsig(m)) continue;
+    if (art(t.slug, ctx) !== 'rampe' || !m.hoch || !hochAchsig(m) || istKurve(t.slug)) continue;
     const hw = hochWelt(t, m)!;
     const hinten = seiteIn(t, m, hw);
     const vorne = seiteIn(t, m, mal(hw, -1));
@@ -434,7 +470,7 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
       }
     }
     // F03: 5 m Anlauf vor jeder Rampe
-    if (!anliegend(vorne, t.id, park, ctx)) {
+    if (!mitKurve.has(t.id) && !anliegend(vorne, t.id, park, ctx)) {
       const z = zoneVor(vorne, ANLAUF);
       if (!imFeld(z, park.flaeche, 0.3) || park.teile.some((o) => o.id !== t.id && ueberlappt(z, polys.get(o.id)!, 0.05))) {
         out.push({ id: `anlauf-${t.id}`, stufe: 'gelb', teile: [t.id], text: `Vor ${name(t)} fehlen 5 m freie Anlauffläche.`, fix: 'verschieben' });
@@ -621,10 +657,13 @@ export const BAUSTEINE: Baustein[] = [
   { id: 'pipe-165', name: 'Pipe 165', text: '4 Quarterramps mit Flats, 3,75 m breit', seite: 'K S. 16', bauen: pipe(165) },
   { id: 'pipe-200', name: 'Pipe 200', text: '4 Quarterramps mit Flats, 5 m breit', seite: 'K S. 16', bauen: pipe(200) },
   { id: 'pipe-255', name: 'Pipe 255', text: '4 Quarterramps 255 mit Flats, 5 m breit', seite: 'K S. 16', bauen: pipe(255) },
+  { id: 'bowl-98-klein', name: 'Bowl 98 klein', text: 'Runde Ecken aus Corners, außen ca. 9,0 × 7,7 m', seite: 'K S. 4, 41', bauen: (ctx) => bowl(98, 1, 0, ctx) },
+  { id: 'bowl-98', name: 'Bowl 98', text: 'Runde Ecken aus Corners, außen ca. 11,5 × 9,0 m', seite: 'K S. 4, 41', bauen: (ctx) => bowl(98, 3, 1, ctx) },
+  { id: 'bowl-150', name: 'Bowl 150', text: 'Runde Ecken aus Corners, außen ca. 12,5 × 10,0 m, mit Geländer', seite: 'K S. 4, 41', bauen: (ctx) => bowl(150, 3, 1, ctx) },
 ];
 
 // Einzelteile, die der Kunde nicht direkt wählt: Geländer und Anlaufkeile setzt die Automatik, SQR-255 nur in der Pipe (A09)
-export const waehlbar = (slug: string, ctx: Ctx) => art(slug, ctx) !== 'auto' && slug !== 'quarterramp-255';
+export const waehlbar = (slug: string, ctx: Ctx) => art(slug, ctx) !== 'auto' && slug !== 'quarterramp-255' && !istKurve(slug);
 
 // Neues Teil oder Baustein in den Park setzen, an einen freien Platz
 export const hinzufuegen = (park: Park, neu: Teil[], ctx: Ctx): Park => {
@@ -646,6 +685,130 @@ export const hinzufuegen = (park: Park, neu: Teil[], ctx: Ctx): Park => {
     if (p) teile = [...teile, teil(p.slug, p.x, p.z, p.rot)];
   }
   return { ...park, teile };
+};
+
+// ---------- Kurven und Bowls ----------
+
+// Kurvenstück so setzen, dass sein Mittelpunkt auf cw liegt und seine Winkelhalbierende in Richtung bw zeigt
+const kurvenStueck = (slug: string, cw: V, bw: number): Teil => {
+  const k = KURVE[slug];
+  const rot = norm360(bw - (k.von + k.bis) / 2);
+  const p = minus(cw, drehe(k.c, rot));
+  return teil(slug, r3(p.x), r3(p.z), rot);
+};
+const KURVEN_HOEHEN: Record<string, { corner: string; tisch: string }> = {
+  'coping-ramp-98': { corner: 'corner-98', tisch: 'corner-table-98' },
+  'coping-ramp-150': { corner: 'corner-150', tisch: 'corner-table-150' },
+};
+export type Richtung = 'links' | 'rechts';
+export interface Anbau { kurve: Richtung[]; gerade: Richtung[] }
+
+// Lage einer Coping Ramp: Rückseite (Coping), Tiefe, Breite, Seitenrichtungen aus Sicht des Fahrers
+const rampenLage = (t: Teil, ctx: Ctx) => {
+  const m = ctx.masse[t.slug];
+  const hw = hochWelt(t, m)!;
+  const tiefe = Math.abs(m.hoch!.x) > 0.5 ? m.l : m.b;
+  const breite = Math.abs(m.hoch!.x) > 0.5 ? m.b : m.l;
+  const links = { x: hw.z, z: -hw.x };
+  return { m, hw, tiefe, breite, seite: (r: Richtung) => (r === 'links' ? links : mal(links, -1)) };
+};
+
+// Was an dieser Coping Ramp angebaut werden kann (nur an freien Seiten)
+export const anbauMoeglich = (id: string, park: Park, ctx: Ctx): Anbau => {
+  const t = park.teile.find((x) => x.id === id);
+  if (!t || familie(t.slug) !== 'coping-ramp' || !ctx.masse[t.slug]?.hoch) return { kurve: [], gerade: [] };
+  const l = rampenLage(t, ctx);
+  const frei = (['links', 'rechts'] as Richtung[]).filter((r) => !anliegend(seiteIn(t, l.m, l.seite(r)), t.id, park, ctx));
+  return { kurve: KURVEN_HOEHEN[t.slug] ? frei : [], gerade: frei };
+};
+
+// Neue Teile einfügen: Fläche bei Bedarf vergrößern, Überlappung verhindern
+const anbauen = (park: Park, neu: Teil[], ctx: Ctx): Park | null => {
+  if (neu.some((t) => kollidiert(t, park, ctx))) return null;
+  const b = box(neu.flatMap((t) => umriss(t, ctx)));
+  const f = park.flaeche;
+  const l = Math.max(f.l, aufRaster(2 * Math.max(Math.abs(b.x0), Math.abs(b.x1)) + 0.01));
+  const br = Math.max(f.b, aufRaster(2 * Math.max(Math.abs(b.z0), Math.abs(b.z1)) + 0.01));
+  return { flaeche: { ...f, l, b: br }, teile: [...park.teile, ...neu] };
+};
+
+// Gerade: eine weitere Coping Ramp (mit Table, wenn dahinter einer steht) in der Reihe
+export const geradeAnhaengen = (id: string, r: Richtung, park: Park, ctx: Ctx): Park | null => {
+  const t = park.teile.find((x) => x.id === id);
+  if (!t) return null;
+  const l = rampenLage(t, ctx);
+  const s = l.seite(r);
+  const neu = [teil(t.slug, r3(t.x + s.x * l.breite), r3(t.z + s.z * l.breite), t.rot)];
+  const tisch = anliegend(seiteIn(t, l.m, l.hw), t.id, park, ctx, ['plattform']);
+  if (tisch && !istKurve(tisch.slug)) neu.push(teil(tisch.slug, r3(tisch.x + s.x * l.breite), r3(tisch.z + s.z * l.breite), tisch.rot));
+  return anbauen(park, neu, ctx);
+};
+
+// Innenkurve 90°: drei Corner um einen gemeinsamen Mittelpunkt, dahinter drei Table Corner, danach eine gerade Coping Ramp
+export const kurveAnhaengen = (id: string, r: Richtung, park: Park, ctx: Ctx): Park | null => {
+  const t = park.teile.find((x) => x.id === id);
+  const satz = t && KURVEN_HOEHEN[t.slug];
+  if (!t || !satz) return null;
+  const l = rampenLage(t, ctx);
+  const s = l.seite(r);
+  const k = KURVE[satz.corner];
+  const ecke = plus(plus(t, mal(l.hw, l.tiefe / 2)), mal(s, l.breite / 2)); // Coping-Ende auf dieser Seite
+  const mitte = minus(ecke, mal(l.hw, k.R));
+  const ah = winkel(l.hw);
+  const sinn = ((winkel(s) - ah + 540) % 360) - 180 > 0 ? 1 : -1;
+  const mitTisch = !!anliegend(seiteIn(t, l.m, l.hw), t.id, park, ctx, ['plattform']);
+  const neu: Teil[] = [];
+  for (let i = 0; i < 3; i++) {
+    const bw = ah + sinn * (15 + 30 * i);
+    neu.push(kurvenStueck(satz.corner, mitte, bw));
+    if (mitTisch) neu.push(kurvenStueck(satz.tisch, mitte, bw));
+  }
+  // Nach 90° zeigt die Rückseite zur Seite s, die Reihe läuft zurück Richtung Fahrer
+  const rot = norm360(winkel(s) - winkel(l.m.hoch!));
+  const gerade = plus(plus(mitte, mal(s, k.r + l.tiefe / 2)), mal(l.hw, -l.breite / 2));
+  neu.push(teil(t.slug, r3(gerade.x), r3(gerade.z), rot));
+  if (mitTisch) {
+    const tt = plus(gerade, mal(s, l.tiefe / 2 + RASTER / 2));
+    const tischSlug = t.slug === 'coping-ramp-98' ? 'table-98' : 'table-150';
+    neu.push(teil(tischSlug, r3(tt.x), r3(tt.z), rot));
+  }
+  return anbauen(park, neu, ctx);
+};
+
+// Bowl: Rechteck mit runden Innenecken; nl × nb gerade Coping Ramps je Seite, an jeder Ecke 3 Corner, dahinter Tables und Table Corner
+export const bowl = (h: 98 | 150, nl: number, nb: number, ctx: Ctx): Teil[] | null => {
+  const rampe = `coping-ramp-${h}`;
+  const satz = KURVEN_HOEHEN[rampe];
+  const m = ctx.masse[rampe];
+  if (!satz || !m?.hoch) return null;
+  const k = KURVE[satz.corner];
+  const tiefe = Math.abs(m.hoch.x) > 0.5 ? m.l : m.b;
+  const W = nl * RASTER;
+  const H = nb * RASTER;
+  const out: Teil[] = [];
+  const reihe = (aussen: V, start: V, entlang: V, n: number) => {
+    const rot = norm360(winkel(aussen) - winkel(m.hoch!));
+    for (let i = 0; i < n; i++) {
+      const basis = plus(start, mal(entlang, RASTER / 2 + i * RASTER));
+      const c = plus(basis, mal(aussen, k.r + tiefe / 2));
+      const tt = plus(basis, mal(aussen, k.r + tiefe + RASTER / 2));
+      out.push(teil(rampe, r3(c.x), r3(c.z), rot), teil(`table-${h}`, r3(tt.x), r3(tt.z), rot));
+    }
+  };
+  reihe({ x: 0, z: -1 }, { x: -W / 2, z: -H / 2 }, { x: 1, z: 0 }, nl);
+  reihe({ x: 0, z: 1 }, { x: -W / 2, z: H / 2 }, { x: 1, z: 0 }, nl);
+  reihe({ x: -1, z: 0 }, { x: -W / 2, z: -H / 2 }, { x: 0, z: 1 }, nb);
+  reihe({ x: 1, z: 0 }, { x: W / 2, z: -H / 2 }, { x: 0, z: 1 }, nb);
+  for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
+    const mitte = { x: (sx * W) / 2, z: (sz * H) / 2 };
+    const a = winkel({ x: 0, z: sz });
+    const sinn = ((winkel({ x: sx, z: 0 }) - a + 540) % 360) - 180 > 0 ? 1 : -1;
+    for (let i = 0; i < 3; i++) {
+      const bw = a + sinn * (15 + 30 * i);
+      out.push(kurvenStueck(satz.corner, mitte, bw), kurvenStueck(satz.tisch, mitte, bw));
+    }
+  }
+  return out;
 };
 
 // ---------- Vorschläge beim Ziehen (A02–A05) ----------
@@ -720,7 +883,7 @@ export const vorschlag = (id: string, park: Park, ctx: Ctx): Vorschlag | null =>
 
 // ---------- Anordnen nach dem Muster der Beispielparks (Regelwerk Abschnitt 9) ----------
 
-const drehenGruppe = (g: Teil[], viertel: number, ctx: Ctx): Teil[] => {
+export const drehenGruppe = (g: Teil[], viertel: number, ctx: Ctx): Teil[] => {
   if (!viertel) return g;
   const b = box(g.flatMap((t) => umriss(t, ctx)));
   const c = { x: (b.x0 + b.x1) / 2, z: (b.z0 + b.z1) / 2 };
@@ -882,6 +1045,9 @@ export const stueckliste = (park: Park, ctx: Ctx): Zeile[] => {
       return { slug, code: i?.code ?? '', name: i?.name ?? slug, menge: z.menge, kg: i?.kg ? i.kg * z.menge : null, auto: z.auto };
     });
   if (park.teile.length) zeilen.push({ slug: null, code: 'SHS', name: 'Hinweisschild nach DIN EN 14974', menge: 1, kg: null, auto: true }); // P01
+  if (park.teile.filter((t) => t.slug.startsWith('corner-') && !t.slug.startsWith('corner-table')).length >= 12) {
+    zeilen.push({ slug: null, code: 'bauseits', name: 'Bowl: Bodenplatte 15 cm bewehrt, Innenfläche ausbetoniert, befahrbarer Gully', menge: 1, kg: null, auto: true });
+  }
   return zeilen;
 };
 const GRUPPEN = ['Tables', 'Banks', 'Pyramid Hips', 'Corner', 'Coping Ramps', 'Quarterramps und Walls', 'Kegel und Cross-Ramps', 'Jump-Ramps, Anlaufkeile, Wave', 'Stairs', 'Ledges, Curbs, Flats', 'Rails und Slides', 'Geländer'];

@@ -3,9 +3,10 @@ import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import Buehne, { type BuehnenApi } from '../components/konfigurator/Buehne';
+import Druck, { Plan, type DruckOptionen } from '../components/konfigurator/Druck';
 import { PARK_SPEICHER, leeren, warteschlange } from '../components/konfigurator/merkliste';
 import {
-  BAUSTEINE, LEER, RASTER, gruppen, gruppeVerschieben, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
+  BAUSTEINE, LEER, RASTER, gruppen, gruppeVerschieben, anbauMoeglich, bowl, drehenGruppe, geradeAnhaengen, kurveAnhaengen, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
   hinzufuegen, kodieren, kollidiert, neueId, pruefen, stueckliste, vorlageBauen, vorschlag as vorschlagFuer, waehlbar,
   type Ctx, type Hinweis, type Park, type Teil, type Vorschlag,
 } from '../components/konfigurator/logik';
@@ -28,6 +29,13 @@ const Knopf: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement> & { icon?: s
     {children}
   </button>
 );
+
+// Ohne WebGL (alte Geräte, gesperrte Grafik) nicht die ganze Seite verlieren: dann den Plan zeigen
+class OhneDreiD extends React.Component<{ ersatz: React.ReactNode; children: React.ReactNode }, { fehler: boolean }> {
+  state = { fehler: false };
+  static getDerivedStateFromError() { return { fehler: true }; }
+  render() { return this.state.fehler ? this.props.ersatz : this.props.children; }
+}
 
 // ---------- Start: Vorlage wählen ----------
 
@@ -149,6 +157,36 @@ const AnfrageDialog: React.FC<{
   );
 };
 
+// ---------- Drucken ----------
+
+const DruckDialog: React.FC<{ offen: boolean; onClose: () => void; onDrucken: (o: DruckOptionen) => void }> = ({ offen, onClose, onDrucken }) => {
+  const [o, setO] = useState<DruckOptionen>({ titel: '', bemassung: true, bezeichnungen: true, ansicht3d: true, liste: true });
+  if (!offen) return null;
+  const haken = (f: 'bemassung' | 'bezeichnungen' | 'ansicht3d' | 'liste', text: string) => (
+    <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={o[f]} onChange={(e) => setO({ ...o, [f]: e.target.checked })} />{text}</label>
+  );
+  return createPortal(
+    <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-brand-dark/50 backdrop-blur-sm" onClick={onClose}>
+      <form onClick={(e) => e.stopPropagation()} onSubmit={(e) => { e.preventDefault(); onDrucken(o); }} className="w-full max-w-md bg-brand-bg rounded-2xl shadow-2xl p-8">
+        <h2 className="text-2xl font-extrabold font-heading uppercase text-brand-dark mb-1">Drucken / PDF</h2>
+        <p className="text-sm text-brand-muted mb-5">Mit Logo und Datum. Im Druckfenster „Als PDF sichern“ wählen.</p>
+        <Feld label="Titel (z. B. Ort oder Projekt)"><input className={eingabe} value={o.titel} maxLength={80} onChange={(e) => setO({ ...o, titel: e.target.value })} placeholder="Skatepark" /></Feld>
+        <div className="mt-4 space-y-2">
+          {haken('bemassung', 'Plan mit Bemaßung')}
+          {haken('bezeichnungen', 'Plan mit Bezeichnungen (Name und Kürzel)')}
+          {haken('ansicht3d', '3D-Ansicht (aktueller Blickwinkel)')}
+          {haken('liste', 'Stückliste')}
+        </div>
+        <div className="mt-6 flex gap-4 items-center">
+          <button type="submit" className="px-5 py-2.5 rounded-lg bg-brand-orange text-white font-bold uppercase text-sm hover:bg-brand-dark">PDF erstellen</button>
+          <button type="button" onClick={onClose} className="text-sm text-brand-muted">Abbrechen</button>
+        </div>
+      </form>
+    </div>,
+    document.body,
+  );
+};
+
 // ---------- Seite ----------
 
 const KonfiguratorPage: React.FC = () => {
@@ -170,6 +208,8 @@ const KonfiguratorPage: React.FC = () => {
   const [suche, setSuche] = useState('');
   const [start, setStart] = useState(false);
   const [anfrage, setAnfrage] = useState(false);
+  const [druckDialog, setDruckDialog] = useState(false);
+  const [druck, setDruck] = useState<{ optionen: DruckOptionen; bild: string } | null>(null);
   const [panel, setPanel] = useState<'katalog' | 'liste' | null>(null);
   const api = useRef<BuehnenApi | null>(null);
 
@@ -255,13 +295,21 @@ const KonfiguratorPage: React.FC = () => {
     aendern({ ...park, teile: park.teile.filter((t) => t.id !== auswahl) });
     setAuswahl(null); setVorschlag(null);
   }, [park, auswahl, aendern]);
-  const drehen = useCallback((grad: number) => {
+  const drehen = useCallback((grad: number, einzeln = false) => {
     if (!park || !auswahl || !ctx) return;
     const t = park.teile.find((x) => x.id === auswahl)!;
-    const roh = { ...t, rot: (((t.rot + grad) % 360) + 360) % 360 };
-    const r = Math.abs(grad) === 90 ? einrasten(roh, park, ctx).teil : roh;
-    const neu = { ...park, teile: park.teile.map((x) => (x.id === t.id ? r : x)) };
-    if (kollidiert(r, neu, ctx)) { melden('Zum Drehen ist hier kein Platz.'); return; }
+    const gruppe = gruppen(park, ctx).find((g) => g.some((x) => x.id === t.id)) ?? [t];
+    let neu: Park;
+    if (!einzeln && gruppe.length > 1 && Math.abs(grad) === 90) {
+      const gedreht = new Map(drehenGruppe(gruppe, grad > 0 ? 1 : 3, ctx).map((x) => [x.id, x]));
+      neu = { ...park, teile: park.teile.map((x) => gedreht.get(x.id) ?? x) };
+      if ([...gedreht.values()].some((x) => kollidiert(x, neu, ctx))) { melden('Zum Drehen ist hier kein Platz.'); return; }
+    } else {
+      const roh = { ...t, rot: (((t.rot + grad) % 360) + 360) % 360 };
+      const r = Math.abs(grad) === 90 ? einrasten(roh, park, ctx).teil : roh;
+      neu = { ...park, teile: park.teile.map((x) => (x.id === t.id ? r : x)) };
+      if (kollidiert(r, neu, ctx)) { melden('Zum Drehen ist hier kein Platz.'); return; }
+    }
     aendern(neu);
   }, [park, auswahl, ctx, aendern, melden]);
   const duplizieren = useCallback(() => {
@@ -308,6 +356,18 @@ const KonfiguratorPage: React.FC = () => {
     if (z.teile.length === 1) zeigeVorschlag(t.id, neu);
   }, [ctx, park, aendern, melden, zeigeVorschlag]);
 
+  const anbau = useMemo(() => (ctx && park && auswahl ? anbauMoeglich(auswahl, park, ctx) : { kurve: [], gerade: [] }), [ctx, park, auswahl]);
+  const anbauen = (art: 'kurve' | 'gerade', r: Richtung) => {
+    if (!ctx || !park || !auswahl) return;
+    const neu = art === 'kurve' ? kurveAnhaengen(auswahl, r, park, ctx) : geradeAnhaengen(auswahl, r, park, ctx);
+    if (!neu) { melden('Dafür ist hier kein Platz.'); return; }
+    aendern(neu);
+    // Das zuletzt angebaute Stück auswählen, damit man direkt weiterbauen kann
+    const letzte = neu.teile.filter((t) => t.slug === park.teile.find((x) => x.id === auswahl)?.slug).pop();
+    if (letzte) setAuswahl(letzte.id);
+    setVorschlag(null);
+  };
+  const [bowlMass, setBowlMass] = useState<{ h: 98 | 150; l: number; b: number }>({ h: 98, l: 3, b: 1 });
   const hinweisBeheben = (h: Hinweis) => {
     if (!ctx || !park) return;
     const neu = beheben(h, park, ctx);
@@ -337,6 +397,18 @@ const KonfiguratorPage: React.FC = () => {
     a.download = 'A-Plus-Skatepark-Stueckliste.csv';
     a.click();
     URL.revokeObjectURL(a.href);
+  };
+  const drucken = (o: DruckOptionen) => {
+    let bild = '';
+    try { bild = o.ansicht3d ? api.current?.foto() ?? '' : ''; } catch { bild = ''; }
+    setDruckDialog(false);
+    setDruck({ optionen: o, bild });
+    // erst rendern lassen, dann das Druckfenster öffnen; danach die Druckansicht wieder entfernen
+    window.setTimeout(() => {
+      const weg = () => { setDruck(null); window.removeEventListener('afterprint', weg); };
+      window.addEventListener('afterprint', weg);
+      window.print();
+    }, 400);
   };
   const teilen = () => {
     navigator.clipboard?.writeText(link).then(() => melden('Link kopiert. Wer ihn öffnet, sieht genau diesen Park.'), () => melden(link));
@@ -394,18 +466,18 @@ const KonfiguratorPage: React.FC = () => {
   // Tastatur
   useEffect(() => {
     const taste = (e: KeyboardEvent) => {
-      if (istEingabe(e.target) || anfrage) return;
+      if (istEingabe(e.target) || anfrage || druckDialog) return;
       const cmd = e.metaKey || e.ctrlKey;
       if (cmd && e.key.toLowerCase() === 'z') { e.preventDefault(); if (e.shiftKey) wiederholen(); else rueckgaengig(); return; }
       if (cmd && e.key.toLowerCase() === 'd') { e.preventDefault(); duplizieren(); return; }
       if (!auswahl) return;
       if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); loeschen(); }
-      if (e.key.toLowerCase() === 'r') drehen(e.shiftKey ? 15 : 90);
+      if (e.key.toLowerCase() === 'r') drehen(e.shiftKey ? 15 : 90, e.altKey);
       if (e.key === 'Escape') { setAuswahl(null); setVorschlag(null); }
     };
     window.addEventListener('keydown', taste);
     return () => window.removeEventListener('keydown', taste);
-  }, [auswahl, anfrage, loeschen, drehen, duplizieren, rueckgaengig, wiederholen]);
+  }, [auswahl, anfrage, druckDialog, loeschen, drehen, duplizieren, rueckgaengig, wiederholen]);
 
   const modellPfad = useCallback((slug: string) => katalog?.elemente.find((e) => e.slug === slug)?.modell ?? `/katalog/modelle/${slug}.gltf`, [katalog]);
   const ausgewaehlt = park?.teile.find((t) => t.id === auswahl);
@@ -431,6 +503,16 @@ const KonfiguratorPage: React.FC = () => {
         {reiter === 'bausteine' ? (
           <>
             <p className="text-xs text-brand-muted px-1 pb-1">Fertige Kombinationen aus dem A+-Katalog. Klicken oder auf die Fläche ziehen.</p>
+            <div className="p-3 rounded-lg bg-white border border-brand-dark/10">
+              <span className="block font-heading font-bold uppercase text-sm text-brand-dark">Bowl nach Maß</span>
+              <span className="block text-xs text-brand-muted mb-2">Gerade Wände je Seite, Ecken rund aus Corners</span>
+              <div className="grid grid-cols-3 gap-1.5 text-xs">
+                <label>Höhe<select className={`${eingabe} !px-1.5 !py-1`} value={bowlMass.h} onChange={(e) => setBowlMass({ ...bowlMass, h: Number(e.target.value) as 98 | 150 })}><option value={98}>98</option><option value={150}>150</option></select></label>
+                <label>Länge<input type="number" min={0} max={10} className={`${eingabe} !px-1.5 !py-1`} value={bowlMass.l} onChange={(e) => setBowlMass({ ...bowlMass, l: Math.max(0, Math.min(10, Number(e.target.value))) })} /></label>
+                <label>Breite<input type="number" min={0} max={10} className={`${eingabe} !px-1.5 !py-1`} value={bowlMass.b} onChange={(e) => setBowlMass({ ...bowlMass, b: Math.max(0, Math.min(10, Number(e.target.value))) })} /></label>
+              </div>
+              <button type="button" onClick={() => { if (!ctx) return; const g = bowl(bowlMass.h, bowlMass.l, bowlMass.b, ctx); if (g) { teileHinzufuegen(g, 'Bowl gesetzt.'); setPanel(null); } }} className="mt-2 w-full py-1.5 rounded-lg bg-brand-dark text-white text-xs font-bold uppercase tracking-wider hover:bg-brand-orange">Bowl setzen</button>
+            </div>
             {BAUSTEINE.map((b) => (
               <button
                 key={b.id}
@@ -518,6 +600,12 @@ const KonfiguratorPage: React.FC = () => {
 
         <section className="relative flex-1 min-w-0" onDragOver={(e) => e.preventDefault()} onDrop={fallenLassen}>
           {ctx && park && dargestellt && ab && (
+            <OhneDreiD ersatz={
+              <div className="absolute inset-0 overflow-auto p-6 pt-36">
+                <p className="mb-3 text-sm text-brand-muted">Die 3D-Ansicht läuft auf diesem Gerät nicht. Planen, Stückliste, PDF und Anfrage funktionieren trotzdem.</p>
+                <Plan park={park} ctx={ctx} zusatz={[...ab.gelaender, ...ab.keile]} bemassung={false} />
+              </div>
+            }>
             <Buehne
               ctx={ctx}
               park={dargestellt}
@@ -532,6 +620,7 @@ const KonfiguratorPage: React.FC = () => {
               onAblegen={ablegen}
               onBereit={(a) => { api.current = a; }}
             />
+            </OhneDreiD>
           )}
           {!ctx && <div className="absolute inset-0 flex items-center justify-center text-brand-muted">Lade Elemente …</div>}
 
@@ -558,6 +647,7 @@ const KonfiguratorPage: React.FC = () => {
                 <Knopf icon="view_in_ar" aktiv={ansicht === '3d'} onClick={() => setAnsicht('3d')}><span className="hidden md:inline">3D</span></Knopf>
                 <Knopf icon="grid_view" aktiv={ansicht === 'oben'} onClick={() => { setAnsicht('oben'); setRundflug(false); }}><span className="hidden md:inline">Plan</span></Knopf>
                 <Knopf icon="360" aktiv={rundflug} onClick={() => { setAnsicht('3d'); setRundflug(!rundflug); }} title="Rundflug" />
+                <Knopf icon="print" onClick={() => setDruckDialog(true)} disabled={!park.teile.length} title="Drucken oder als PDF sichern"><span className="hidden md:inline">PDF</span></Knopf>
                 <Knopf icon="share" onClick={teilen}><span className="hidden md:inline">Teilen</span></Knopf>
               </div>
               {hinweise.length > 0 && (
@@ -582,7 +672,7 @@ const KonfiguratorPage: React.FC = () => {
                     <p className="font-mono text-[11px] text-brand-muted">{ctx.info[ausgewaehlt.slug]?.code}</p>
                   </div>
                   <div className="flex gap-1 shrink-0">
-                    <Knopf icon="rotate_right" onClick={() => drehen(90)} title="Drehen 90° (R), mit Umschalt 15°" />
+                    <Knopf icon="rotate_right" onClick={() => drehen(90)} title="Gruppe drehen 90° (R), mit Alt nur dieses Element, mit Umschalt 15°" />
                     <Knopf icon="content_copy" onClick={duplizieren} title="Duplizieren (Cmd/Strg + D)" />
                     <Knopf icon="delete" onClick={loeschen} title="Löschen (Entf)" />
                     <Link to={`/katalog/${ausgewaehlt.slug}`} target="_blank" className="inline-flex items-center px-2 rounded-lg bg-white/80 border border-brand-dark/10 text-brand-dark hover:bg-white" title="Im Katalog ansehen">
@@ -590,7 +680,15 @@ const KonfiguratorPage: React.FC = () => {
                     </Link>
                   </div>
                 </div>
-                <p className="mt-2 text-[11px] text-brand-muted">Ziehen verschiebt die ganze Gruppe, mit gedrückter Alt-Taste nur dieses Element. R dreht, Entf löscht.</p>
+                {(anbau.gerade.length > 0 || anbau.kurve.length > 0) && (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {anbau.kurve.includes('links') && <Knopf icon="turn_left" onClick={() => anbauen('kurve', 'links')}>Kurve links</Knopf>}
+                    {anbau.gerade.includes('links') && <Knopf icon="west" onClick={() => anbauen('gerade', 'links')}>Gerade</Knopf>}
+                    {anbau.gerade.includes('rechts') && <Knopf icon="east" onClick={() => anbauen('gerade', 'rechts')}>Gerade</Knopf>}
+                    {anbau.kurve.includes('rechts') && <Knopf icon="turn_right" onClick={() => anbauen('kurve', 'rechts')}>Kurve rechts</Knopf>}
+                  </div>
+                )}
+                <p className="mt-2 text-[11px] text-brand-muted">Ziehen und R wirken auf die ganze Gruppe, mit gedrückter Alt-Taste nur auf dieses Element. Entf löscht.</p>
                 {auswahlHinweise.map((h) => (
                   <div key={h.id} className={`mt-2 flex items-center justify-between gap-2 text-xs rounded-lg px-2.5 py-2 ${h.stufe === 'rot' ? 'bg-red-50 text-red-800' : 'bg-amber-50 text-amber-900'}`}>
                     <span>{h.text}</span>
@@ -641,6 +739,10 @@ const KonfiguratorPage: React.FC = () => {
         <aside className="hidden lg:flex w-80 shrink-0 flex-col bg-brand-bg border-l border-brand-dark/10">{liste}</aside>
         {(start || (ctx && !park)) && <Start onWahl={vorlageWaehlen} onSchliessen={park ? () => setStart(false) : undefined} />}
       </div>
+      <DruckDialog offen={druckDialog} onClose={() => setDruckDialog(false)} onDrucken={drucken} />
+      {druck && ctx && park && ab && (
+        <Druck park={park} ctx={ctx} zusatz={[...ab.gelaender, ...ab.keile]} zeilen={zeilen} hinweise={hinweise.map((h) => h.text)} optionen={druck.optionen} bild3d={druck.bild} link={link} />
+      )}
       <AnfrageDialog offen={anfrage} onClose={() => setAnfrage(false)} senden={senden} offeneHinweise={hinweise.length} csvLaden={csvLaden} link={link} />
     </PageShell>
   );

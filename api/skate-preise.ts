@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { timingSafeEqual } from 'node:crypto';
-import SKATE_PREISE from './_skate-preise';
+import SKATE_PREISE from './_skate-preise.js';
 
 // Gibt die Nettopreise des Skate-Katalogs nur gegen den richtigen Freischaltcode heraus.
 // Der Code liegt ausschließlich in der Umgebungsvariable SKATE_PREIS_CODE (Vercel), nie im Frontend.

@@ -694,7 +694,7 @@ const KonfiguratorPage: React.FC = () => {
                   <span className="hidden lg:contents">
                     <LKnopf icon="list_alt" label="Liste" aktiv={listeOffen} title={listeOffen ? 'Stückliste ausblenden' : 'Stückliste einblenden'} onClick={listeUmschalten} />
                   </span>
-                  {!listeOffen && <span className="hidden lg:contents"><LKnopf icon="request_quote" label="Anfrage" title="Angebot anfragen" onClick={() => setAnfrage(true)} disabled={!park.teile.length} /></span>}
+                  {!listeOffen && <span className="hidden lg:contents"><LKnopf icon="send" label="Anfrage" title="Angebot anfragen" onClick={() => setAnfrage(true)} disabled={!park.teile.length} /></span>}
                   <LKnopf icon="print" label="PDF" title="Drucken oder als PDF sichern" onClick={() => setDruckDialog(true)} disabled={!park.teile.length} />
                   <LKnopf icon="share" label="Teilen" labelAb="2xl:inline" title="Link zu diesem Park kopieren" onClick={teilen} />
                 </Gruppe>

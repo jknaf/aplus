@@ -43,6 +43,13 @@ const kurzMasse = (e: Element) => {
   return `H ${m.hoehe} · L ${Math.max(m.laenge, m.breite)} · B ${Math.min(m.laenge, m.breite)} cm`;
 };
 
+// Die CAD-Oberflächen (z. B. „Anstrich“, „Kiefer“) sind nur Archicad-Darstellung, nicht das Produktmaterial.
+const material = (e: Element) => {
+  const metall = (m: string) => /stahl|zink|alu/i.test(m);
+  if (e.materialien.length && e.materialien.every(metall)) return 'Stahl';
+  return e.materialien.some(metall) ? 'Beton, Stahl' : 'Beton';
+};
+
 const wertText = (p: Parameter) => {
   if (typeof p.wert === 'number') {
     if (p.typ === 'Länge') return `${Math.round(p.wert * 1000).toLocaleString('de-DE')} mm`;
@@ -166,10 +173,8 @@ const Detail: React.FC<{
           <dl className="mb-6">
             <Zeile label="Code Preisliste">{e.preisliste_code || '–'}</Zeile>
             <Zeile label="Kürzel Planung (2D-Symbol)">{e.kuerzel || '–'}</Zeile>
-            <Zeile label="Materialien">{e.materialien.length ? e.materialien.join(', ') : '–'}</Zeile>
+            <Zeile label="Material">{material(e)}</Zeile>
             <Zeile label="Bibliothekselement">{e.gsm_datei}</Zeile>
-            <Zeile label="Version / Datum">{[e.gsm_version, e.gsm_datum].filter(Boolean).join(' · ') || '–'}</Zeile>
-            {e.makros.length > 0 && <Zeile label="Makros">{e.makros.join(', ')}</Zeile>}
           </dl>
 
           {e.gdl_parameter.length > 0 && (

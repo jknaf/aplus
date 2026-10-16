@@ -55,7 +55,7 @@
 					"index":3,
 					"texCoord":1
 				},
-				"roughnessFactor":0.3499999940395355
+				"roughnessFactor":0.15000000596046448
 			}
 		},
 		{
@@ -70,11 +70,16 @@
 					"index":5,
 					"texCoord":1
 				},
-				"roughnessFactor":0.3499999940395355
+				"roughnessFactor":0.15000000596046448
 			}
 		},
 		{
 			"doubleSided":true,
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.699999988079071
+				}
+			},
 			"name":"Kantenwinkel_web",
 			"normalTexture":{
 				"index":6,
@@ -85,7 +90,8 @@
 					"index":7,
 					"texCoord":1
 				},
-				"roughnessFactor":0.3499999940395355
+				"metallicFactor":0,
+				"roughnessFactor":0.699999988079071
 			}
 		}
 	],

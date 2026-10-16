@@ -3,6 +3,9 @@
 		"generator":"Khronos glTF Blender I/O v5.2.40",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -21,32 +24,59 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Beton",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.067",
 			"normalTexture":{
 				"index":0,
-				"scale":0.6000000238418579
+				"texCoord":1
 			},
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":1
+					"index":1,
+					"texCoord":1
 				},
 				"metallicFactor":0,
-				"metallicRoughnessTexture":{
-					"index":2
-				}
+				"roughnessFactor":0.9200000166893005
 			}
 		},
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"name":"Stahl_web.055",
+			"normalTexture":{
+				"index":2,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":3,
+					"texCoord":1
+				},
+				"roughnessFactor":0.15000000596046448
+			}
+		},
+		{
+			"doubleSided":true,
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.699999988079071
+				}
+			},
+			"name":"Kantenwinkel_web.042",
+			"normalTexture":{
+				"index":4,
+				"texCoord":1
+			},
+			"pbrMetallicRoughness":{
+				"baseColorTexture":{
+					"index":5,
+					"texCoord":1
+				},
+				"metallicFactor":0,
+				"roughnessFactor":0.699999988079071
 			}
 		}
 	],
@@ -58,19 +88,31 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":4,
-						"NORMAL":5,
-						"TEXCOORD_0":6
+						"POSITION":5,
+						"NORMAL":6,
+						"TEXCOORD_0":7,
+						"TEXCOORD_1":8
 					},
-					"indices":7,
+					"indices":9,
 					"material":1
+				},
+				{
+					"attributes":{
+						"POSITION":10,
+						"NORMAL":11,
+						"TEXCOORD_0":12,
+						"TEXCOORD_1":13
+					},
+					"indices":14,
+					"material":2
 				}
 			]
 		}
@@ -86,39 +128,46 @@
 		},
 		{
 			"sampler":0,
-			"source":2
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		},
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
 		}
 	],
 	"images":[
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_normal",
-			"uri":"texturen/beton_normal.jpg"
+			"name":"jump-ramp-sjr-75_normal",
+			"uri":"texturen/jump-ramp-sjr-75_normal.jpg"
 		},
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_farbe",
-			"uri":"texturen/beton_farbe.jpg"
-		},
-		{
-			"mimeType":"image/jpeg",
-			"name":"beton_rauheit",
-			"uri":"texturen/beton_rauheit.jpg"
+			"name":"jump-ramp-sjr-75_farbe",
+			"uri":"texturen/jump-ramp-sjr-75_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":137,
+			"count":947,
 			"max":[
-				0.8400000333786011,
+				0.8400001525878906,
 				0.7300000190734863,
 				0.625
 			],
 			"min":[
 				-0.8400000333786011,
-				0,
+				-5.972792926911552e-09,
 				-0.625
 			],
 			"type":"VEC3"
@@ -126,103 +175,197 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":137,
+			"count":947,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":137,
+			"count":947,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5123,
-			"count":291,
-			"type":"SCALAR"
+			"componentType":5126,
+			"count":947,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
+			"componentType":5123,
+			"count":1383,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":5,
 			"componentType":5126,
-			"count":17,
+			"count":24,
 			"max":[
-				0.8400000333786011,
-				0.06841050088405609,
+				0.7341046929359436,
+				0.07225431501865387,
 				0.625
 			],
 			"min":[
-				0.48669925332069397,
-				0,
+				0.4960996210575104,
+				0.013172401115298271,
 				-0.625
 			],
 			"type":"VEC3"
 		},
 		{
-			"bufferView":5,
+			"bufferView":6,
 			"componentType":5126,
-			"count":17,
+			"count":24,
 			"type":"VEC3"
 		},
 		{
-			"bufferView":6,
+			"bufferView":7,
 			"componentType":5126,
-			"count":17,
+			"count":24,
 			"type":"VEC2"
 		},
 		{
-			"bufferView":7,
+			"bufferView":8,
+			"componentType":5126,
+			"count":24,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":9,
 			"componentType":5123,
-			"count":33,
+			"count":36,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":10,
+			"componentType":5126,
+			"count":184,
+			"max":[
+				0.19991247355937958,
+				0.7321138381958008,
+				0.6271213293075562
+			],
+			"min":[
+				-0.841152012348175,
+				0.14290137588977814,
+				-0.6271213293075562
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":11,
+			"componentType":5126,
+			"count":184,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":12,
+			"componentType":5126,
+			"count":184,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":13,
+			"componentType":5126,
+			"count":184,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":14,
+			"componentType":5123,
+			"count":276,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":1644,
+			"byteLength":11364,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1644,
-			"byteOffset":1644,
+			"byteLength":11364,
+			"byteOffset":11364,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1096,
-			"byteOffset":3288,
+			"byteLength":7576,
+			"byteOffset":22728,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":582,
-			"byteOffset":4384,
+			"byteLength":7576,
+			"byteOffset":30304,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":2766,
+			"byteOffset":37880,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":204,
-			"byteOffset":4968,
+			"byteLength":288,
+			"byteOffset":40648,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":204,
-			"byteOffset":5172,
+			"byteLength":288,
+			"byteOffset":40936,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":136,
-			"byteOffset":5376,
+			"byteLength":192,
+			"byteOffset":41224,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":66,
-			"byteOffset":5512,
+			"byteLength":192,
+			"byteOffset":41416,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":72,
+			"byteOffset":41608,
+			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":2208,
+			"byteOffset":41680,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":2208,
+			"byteOffset":43888,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1472,
+			"byteOffset":46096,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1472,
+			"byteOffset":47568,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":552,
+			"byteOffset":49040,
 			"target":34963
 		}
 	],
@@ -234,7 +377,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":5580,
+			"byteLength":49592,
 			"uri":"jump-ramp-sjr-75.bin"
 		}
 	]

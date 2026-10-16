@@ -3,6 +3,9 @@
 		"generator":"Khronos glTF Blender I/O v5.2.40",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -21,32 +24,59 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Beton",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.031",
 			"normalTexture":{
 				"index":0,
-				"scale":0.6000000238418579
+				"texCoord":1
 			},
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":1
+					"index":1,
+					"texCoord":1
 				},
 				"metallicFactor":0,
-				"metallicRoughnessTexture":{
-					"index":2
-				}
+				"roughnessFactor":0.9200000166893005
 			}
 		},
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"name":"Stahl_web.025",
+			"normalTexture":{
+				"index":2,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":3,
+					"texCoord":1
+				},
+				"roughnessFactor":0.15000000596046448
+			}
+		},
+		{
+			"doubleSided":true,
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.699999988079071
+				}
+			},
+			"name":"Kantenwinkel_web.020",
+			"normalTexture":{
+				"index":4,
+				"texCoord":1
+			},
+			"pbrMetallicRoughness":{
+				"baseColorTexture":{
+					"index":5,
+					"texCoord":1
+				},
+				"metallicFactor":0,
+				"roughnessFactor":0.699999988079071
 			}
 		}
 	],
@@ -58,19 +88,31 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":4,
-						"NORMAL":5,
-						"TEXCOORD_0":6
+						"POSITION":5,
+						"NORMAL":6,
+						"TEXCOORD_0":7,
+						"TEXCOORD_1":8
 					},
-					"indices":7,
+					"indices":9,
 					"material":1
+				},
+				{
+					"attributes":{
+						"POSITION":10,
+						"NORMAL":11,
+						"TEXCOORD_0":12,
+						"TEXCOORD_1":13
+					},
+					"indices":14,
+					"material":2
 				}
 			]
 		}
@@ -86,39 +128,46 @@
 		},
 		{
 			"sampler":0,
-			"source":2
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		},
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
 		}
 	],
 	"images":[
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_normal",
-			"uri":"texturen/beton_normal.jpg"
+			"name":"coping-ramp-98_normal",
+			"uri":"texturen/coping-ramp-98_normal.jpg"
 		},
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_farbe",
-			"uri":"texturen/beton_farbe.jpg"
-		},
-		{
-			"mimeType":"image/jpeg",
-			"name":"beton_rauheit",
-			"uri":"texturen/beton_rauheit.jpg"
+			"name":"coping-ramp-98_farbe",
+			"uri":"texturen/coping-ramp-98_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":126,
+			"count":766,
 			"max":[
-				0.5080000162124634,
+				0.8450000882148743,
 				0.9600000381469727,
 				0.625
 			],
 			"min":[
 				-0.8450000286102295,
-				0,
+				-3.147221150356927e-09,
 				-0.625
 			],
 			"type":"VEC3"
@@ -126,103 +175,197 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":126,
+			"count":766,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":126,
+			"count":766,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5123,
-			"count":240,
-			"type":"SCALAR"
+			"componentType":5126,
+			"count":766,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
+			"componentType":5123,
+			"count":1134,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":5,
 			"componentType":5126,
-			"count":192,
+			"count":252,
 			"max":[
-				0.8450000286102295,
+				0.6769309043884277,
 				0.9782000780105591,
 				0.625
 			],
 			"min":[
 				-0.7990000247955322,
-				0,
+				0.01979999989271164,
 				-0.625
 			],
 			"type":"VEC3"
 		},
 		{
-			"bufferView":5,
+			"bufferView":6,
 			"componentType":5126,
-			"count":192,
+			"count":252,
 			"type":"VEC3"
 		},
 		{
-			"bufferView":6,
+			"bufferView":7,
 			"componentType":5126,
-			"count":192,
+			"count":252,
 			"type":"VEC2"
 		},
 		{
-			"bufferView":7,
+			"bufferView":8,
+			"componentType":5126,
+			"count":252,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":9,
 			"componentType":5123,
-			"count":498,
+			"count":486,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":10,
+			"componentType":5126,
+			"count":80,
+			"max":[
+				0.321860134601593,
+				0.941016435623169,
+				0.6271213293075562
+			],
+			"min":[
+				-0.7739363312721252,
+				0.08404535800218582,
+				-0.6271213293075562
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":11,
+			"componentType":5126,
+			"count":80,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":12,
+			"componentType":5126,
+			"count":80,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":13,
+			"componentType":5126,
+			"count":80,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":14,
+			"componentType":5123,
+			"count":120,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":1512,
+			"byteLength":9192,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1512,
-			"byteOffset":1512,
+			"byteLength":9192,
+			"byteOffset":9192,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1008,
-			"byteOffset":3024,
+			"byteLength":6128,
+			"byteOffset":18384,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":480,
-			"byteOffset":4032,
+			"byteLength":6128,
+			"byteOffset":24512,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":2268,
+			"byteOffset":30640,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":2304,
-			"byteOffset":4512,
+			"byteLength":3024,
+			"byteOffset":32908,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2304,
-			"byteOffset":6816,
+			"byteLength":3024,
+			"byteOffset":35932,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1536,
-			"byteOffset":9120,
+			"byteLength":2016,
+			"byteOffset":38956,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":996,
-			"byteOffset":10656,
+			"byteLength":2016,
+			"byteOffset":40972,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":972,
+			"byteOffset":42988,
+			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":960,
+			"byteOffset":43960,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":960,
+			"byteOffset":44920,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":640,
+			"byteOffset":45880,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":640,
+			"byteOffset":46520,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":240,
+			"byteOffset":47160,
 			"target":34963
 		}
 	],
@@ -234,7 +377,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":11652,
+			"byteLength":47400,
 			"uri":"coping-ramp-98.bin"
 		}
 	]

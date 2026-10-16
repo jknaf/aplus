@@ -3,6 +3,9 @@
 		"generator":"Khronos glTF Blender I/O v5.2.40",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -21,32 +24,44 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Beton",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.011",
 			"normalTexture":{
 				"index":0,
-				"scale":0.6000000238418579
+				"texCoord":1
 			},
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":1
+					"index":1,
+					"texCoord":1
 				},
 				"metallicFactor":0,
-				"metallicRoughnessTexture":{
-					"index":2
-				}
+				"roughnessFactor":0.9200000166893005
 			}
 		},
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.012",
+			"normalTexture":{
+				"index":2,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":3,
+					"texCoord":1
+				},
+				"metallicFactor":0,
+				"roughnessFactor":0.9200000166893005
 			}
 		}
 	],
@@ -58,18 +73,20 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":4,
-						"NORMAL":5,
-						"TEXCOORD_0":6
+						"POSITION":5,
+						"NORMAL":6,
+						"TEXCOORD_0":7,
+						"TEXCOORD_1":8
 					},
-					"indices":7,
+					"indices":9,
 					"material":1
 				}
 			]
@@ -86,39 +103,38 @@
 		},
 		{
 			"sampler":0,
-			"source":2
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
 		}
 	],
 	"images":[
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_normal",
-			"uri":"texturen/beton_normal.jpg"
+			"name":"anlaufkeil-250_normal",
+			"uri":"texturen/anlaufkeil-250_normal.jpg"
 		},
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_farbe",
-			"uri":"texturen/beton_farbe.jpg"
-		},
-		{
-			"mimeType":"image/jpeg",
-			"name":"beton_rauheit",
-			"uri":"texturen/beton_rauheit.jpg"
+			"name":"anlaufkeil-250_farbe",
+			"uri":"texturen/anlaufkeil-250_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":24,
+			"count":192,
 			"max":[
 				0.6067500114440918,
-				0.15000000596046448,
+				0.14927276968955994,
 				1.25
 			],
 			"min":[
-				-0.22585158050060272,
-				1.486120364748854e-16,
+				-0.6032493710517883,
+				1.547165197735012e-06,
 				-1.25
 			],
 			"type":"VEC3"
@@ -126,103 +142,127 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":24,
+			"count":192,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":24,
+			"count":192,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5123,
-			"count":36,
-			"type":"SCALAR"
+			"componentType":5126,
+			"count":192,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
+			"componentType":5123,
+			"count":294,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":5,
 			"componentType":5126,
-			"count":11,
+			"count":13,
 			"max":[
 				-0.22315235435962677,
 				0.048335000872612,
 				1.25
 			],
 			"min":[
-				-0.6067500114440918,
-				0,
+				-0.6007977724075317,
+				3.3472476843598997e-06,
 				-1.25
 			],
 			"type":"VEC3"
 		},
 		{
-			"bufferView":5,
+			"bufferView":6,
 			"componentType":5126,
-			"count":11,
+			"count":13,
 			"type":"VEC3"
 		},
 		{
-			"bufferView":6,
+			"bufferView":7,
 			"componentType":5126,
-			"count":11,
+			"count":13,
 			"type":"VEC2"
 		},
 		{
-			"bufferView":7,
+			"bufferView":8,
+			"componentType":5126,
+			"count":13,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":9,
 			"componentType":5123,
-			"count":15,
+			"count":21,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":288,
+			"byteLength":2304,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":288,
-			"byteOffset":288,
+			"byteLength":2304,
+			"byteOffset":2304,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":192,
-			"byteOffset":576,
+			"byteLength":1536,
+			"byteOffset":4608,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":72,
-			"byteOffset":768,
+			"byteLength":1536,
+			"byteOffset":6144,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":588,
+			"byteOffset":7680,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":132,
-			"byteOffset":840,
+			"byteLength":156,
+			"byteOffset":8268,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":132,
-			"byteOffset":972,
+			"byteLength":156,
+			"byteOffset":8424,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":88,
-			"byteOffset":1104,
+			"byteLength":104,
+			"byteOffset":8580,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":30,
-			"byteOffset":1192,
+			"byteLength":104,
+			"byteOffset":8684,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":42,
+			"byteOffset":8788,
 			"target":34963
 		}
 	],
@@ -234,7 +274,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":1224,
+			"byteLength":8832,
 			"uri":"anlaufkeil-250.bin"
 		}
 	]

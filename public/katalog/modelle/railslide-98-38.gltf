@@ -3,6 +3,9 @@
 		"generator":"Khronos glTF Blender I/O v5.2.40",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -21,32 +24,38 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Beton",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.081",
 			"normalTexture":{
 				"index":0,
-				"scale":0.6000000238418579
+				"texCoord":1
 			},
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":1
+					"index":1,
+					"texCoord":1
 				},
 				"metallicFactor":0,
-				"metallicRoughnessTexture":{
-					"index":2
-				}
+				"roughnessFactor":0.9200000166893005
 			}
 		},
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"name":"Stahl_web.066",
+			"normalTexture":{
+				"index":2,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":3,
+					"texCoord":1
+				},
+				"roughnessFactor":0.15000000596046448
 			}
 		}
 	],
@@ -58,18 +67,20 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":4,
-						"NORMAL":5,
-						"TEXCOORD_0":6
+						"POSITION":5,
+						"NORMAL":6,
+						"TEXCOORD_0":7,
+						"TEXCOORD_1":8
 					},
-					"indices":7,
+					"indices":9,
 					"material":1
 				}
 			]
@@ -86,143 +97,166 @@
 		},
 		{
 			"sampler":0,
-			"source":2
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
 		}
 	],
 	"images":[
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_normal",
-			"uri":"texturen/beton_normal.jpg"
+			"name":"railslide-98-38_normal",
+			"uri":"texturen/railslide-98-38_normal.jpg"
 		},
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_farbe",
-			"uri":"texturen/beton_farbe.jpg"
-		},
-		{
-			"mimeType":"image/jpeg",
-			"name":"beton_rauheit",
-			"uri":"texturen/beton_rauheit.jpg"
+			"name":"railslide-98-38_farbe",
+			"uri":"texturen/railslide-98-38_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":92,
+			"count":750,
 			"max":[
 				1.4450000524520874,
-				0.940000057220459,
-				0.06485156714916229
+				0.9800000190734863,
+				0.06485158205032349
 			],
 			"min":[
 				-1.4450000524520874,
-				0,
-				-0.0648476630449295
+				-1.2517038072701325e-08,
+				-0.0648476779460907
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":92,
+			"count":750,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":92,
+			"count":750,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5123,
-			"count":186,
-			"type":"SCALAR"
+			"componentType":5126,
+			"count":750,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
-			"componentType":5126,
-			"count":50,
-			"max":[
-				1.4450000524520874,
-				0.9800000190734863,
-				0.06485156714916229
-			],
-			"min":[
-				-1.4450000524520874,
-				8.660015618937908e-16,
-				-0.0648476630449295
-			],
-			"type":"VEC3"
+			"componentType":5123,
+			"count":1158,
+			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":50,
+			"count":69,
+			"max":[
+				1.4450000524520874,
+				0.9800000190734863,
+				0.06485158205032349
+			],
+			"min":[
+				-1.4450000524520874,
+				8.660015618937908e-16,
+				-0.0648476779460907
+			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":50,
-			"type":"VEC2"
+			"count":69,
+			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
+			"componentType":5126,
+			"count":69,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":8,
+			"componentType":5126,
+			"count":69,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":9,
 			"componentType":5123,
-			"count":84,
+			"count":99,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":1104,
+			"byteLength":9000,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1104,
-			"byteOffset":1104,
+			"byteLength":9000,
+			"byteOffset":9000,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":736,
-			"byteOffset":2208,
+			"byteLength":6000,
+			"byteOffset":18000,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":372,
-			"byteOffset":2944,
+			"byteLength":6000,
+			"byteOffset":24000,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":2316,
+			"byteOffset":30000,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":600,
-			"byteOffset":3316,
+			"byteLength":828,
+			"byteOffset":32316,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":600,
-			"byteOffset":3916,
+			"byteLength":828,
+			"byteOffset":33144,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":400,
-			"byteOffset":4516,
+			"byteLength":552,
+			"byteOffset":33972,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":168,
-			"byteOffset":4916,
+			"byteLength":552,
+			"byteOffset":34524,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":198,
+			"byteOffset":35076,
 			"target":34963
 		}
 	],
@@ -234,7 +268,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":5084,
+			"byteLength":35276,
 			"uri":"railslide-98-38.bin"
 		}
 	]

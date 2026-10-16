@@ -21,15 +21,17 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"name":"Stahl_web",
+			"normalTexture":{
+				"index":0,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":1,
+					"texCoord":1
+				},
+				"roughnessFactor":0.15000000596046448
 			}
 		}
 	],
@@ -41,19 +43,42 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
 				}
 			]
+		}
+	],
+	"textures":[
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		}
+	],
+	"images":[
+		{
+			"mimeType":"image/jpeg",
+			"name":"rail-301_normal",
+			"uri":"texturen/rail-301_normal.jpg"
+		},
+		{
+			"mimeType":"image/jpeg",
+			"name":"rail-301_farbe",
+			"uri":"texturen/rail-301_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":88,
+			"count":392,
 			"max":[
 				1.5000001192092896,
 				0.45000001788139343,
@@ -69,51 +94,69 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":88,
+			"count":392,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":88,
+			"count":392,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
+			"componentType":5126,
+			"count":392,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":4,
 			"componentType":5123,
-			"count":156,
+			"count":636,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":1056,
+			"byteLength":4704,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1056,
-			"byteOffset":1056,
+			"byteLength":4704,
+			"byteOffset":4704,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":704,
-			"byteOffset":2112,
+			"byteLength":3136,
+			"byteOffset":9408,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":312,
-			"byteOffset":2816,
+			"byteLength":3136,
+			"byteOffset":12544,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1272,
+			"byteOffset":15680,
 			"target":34963
+		}
+	],
+	"samplers":[
+		{
+			"magFilter":9729,
+			"minFilter":9987
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":3128,
+			"byteLength":16952,
 			"uri":"rail-301.bin"
 		}
 	]

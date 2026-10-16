@@ -3,6 +3,9 @@
 		"generator":"Khronos glTF Blender I/O v5.2.40",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -21,32 +24,59 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Beton",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.013",
 			"normalTexture":{
 				"index":0,
-				"scale":0.6000000238418579
+				"texCoord":1
 			},
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":1
+					"index":1,
+					"texCoord":1
 				},
 				"metallicFactor":0,
-				"metallicRoughnessTexture":{
-					"index":2
-				}
+				"roughnessFactor":0.9200000166893005
 			}
 		},
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"name":"Stahl_web.008",
+			"normalTexture":{
+				"index":2,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":3,
+					"texCoord":1
+				},
+				"roughnessFactor":0.15000000596046448
+			}
+		},
+		{
+			"doubleSided":true,
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.699999988079071
+				}
+			},
+			"name":"Kantenwinkel_web.002",
+			"normalTexture":{
+				"index":4,
+				"texCoord":1
+			},
+			"pbrMetallicRoughness":{
+				"baseColorTexture":{
+					"index":5,
+					"texCoord":1
+				},
+				"metallicFactor":0,
+				"roughnessFactor":0.699999988079071
 			}
 		}
 	],
@@ -58,19 +88,31 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":4,
-						"NORMAL":5,
-						"TEXCOORD_0":6
+						"POSITION":5,
+						"NORMAL":6,
+						"TEXCOORD_0":7,
+						"TEXCOORD_1":8
 					},
-					"indices":7,
+					"indices":9,
 					"material":1
+				},
+				{
+					"attributes":{
+						"POSITION":10,
+						"NORMAL":11,
+						"TEXCOORD_0":12,
+						"TEXCOORD_1":13
+					},
+					"indices":14,
+					"material":2
 				}
 			]
 		}
@@ -86,39 +128,46 @@
 		},
 		{
 			"sampler":0,
-			"source":2
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		},
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
 		}
 	],
 	"images":[
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_normal",
-			"uri":"texturen/beton_normal.jpg"
+			"name":"bigbank-165_normal",
+			"uri":"texturen/bigbank-165_normal.jpg"
 		},
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_farbe",
-			"uri":"texturen/beton_farbe.jpg"
-		},
-		{
-			"mimeType":"image/jpeg",
-			"name":"beton_rauheit",
-			"uri":"texturen/beton_rauheit.jpg"
+			"name":"bigbank-165_farbe",
+			"uri":"texturen/bigbank-165_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":216,
+			"count":968,
 			"max":[
 				2.444951295852661,
 				1.6500000953674316,
 				0.9375000596046448
 			],
 			"min":[
-				-2.22904896736145,
-				0,
+				-2.446536064147949,
+				1.7897379353518463e-21,
 				-0.9375000596046448
 			],
 			"type":"VEC3"
@@ -126,103 +175,197 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":216,
+			"count":968,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":216,
+			"count":968,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5123,
-			"count":516,
-			"type":"SCALAR"
+			"componentType":5126,
+			"count":968,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
-			"componentType":5126,
-			"count":374,
-			"max":[
-				1.9641504287719727,
-				1.5510001182556152,
-				0.9375000596046448
-			],
-			"min":[
-				-2.4449493885040283,
-				1.8772431220994475e-15,
-				-0.9375000596046448
-			],
-			"type":"VEC3"
+			"componentType":5123,
+			"count":1536,
+			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":374,
+			"count":548,
+			"max":[
+				1.9641504287719727,
+				1.5510001182556152,
+				0.9374945163726807
+			],
+			"min":[
+				-2.446536064147949,
+				2.1775542791147018e-06,
+				-0.9374945163726807
+			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":374,
-			"type":"VEC2"
+			"count":548,
+			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
+			"componentType":5126,
+			"count":548,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":8,
+			"componentType":5126,
+			"count":548,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":9,
 			"componentType":5123,
-			"count":972,
+			"count":966,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":10,
+			"componentType":5126,
+			"count":40,
+			"max":[
+				2.446012020111084,
+				1.6521214246749878,
+				0.9396213889122009
+			],
+			"min":[
+				-2.229903221130371,
+				0.06354285776615143,
+				-0.9396213889122009
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":11,
+			"componentType":5126,
+			"count":40,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":12,
+			"componentType":5126,
+			"count":40,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":13,
+			"componentType":5126,
+			"count":40,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":14,
+			"componentType":5123,
+			"count":60,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":2592,
+			"byteLength":11616,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2592,
-			"byteOffset":2592,
+			"byteLength":11616,
+			"byteOffset":11616,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1728,
-			"byteOffset":5184,
+			"byteLength":7744,
+			"byteOffset":23232,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1032,
-			"byteOffset":6912,
+			"byteLength":7744,
+			"byteOffset":30976,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":3072,
+			"byteOffset":38720,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":4488,
-			"byteOffset":7944,
+			"byteLength":6576,
+			"byteOffset":41792,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4488,
-			"byteOffset":12432,
+			"byteLength":6576,
+			"byteOffset":48368,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2992,
-			"byteOffset":16920,
+			"byteLength":4384,
+			"byteOffset":54944,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1944,
-			"byteOffset":19912,
+			"byteLength":4384,
+			"byteOffset":59328,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1932,
+			"byteOffset":63712,
+			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":480,
+			"byteOffset":65644,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":480,
+			"byteOffset":66124,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":320,
+			"byteOffset":66604,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":320,
+			"byteOffset":66924,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":120,
+			"byteOffset":67244,
 			"target":34963
 		}
 	],
@@ -234,7 +377,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":21856,
+			"byteLength":67364,
 			"uri":"bigbank-165.bin"
 		}
 	]

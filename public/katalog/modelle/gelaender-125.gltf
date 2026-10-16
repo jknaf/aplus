@@ -3,6 +3,9 @@
 		"generator":"Khronos glTF Blender I/O v5.2.40",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -21,15 +24,38 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"name":"Stahl_web.039",
+			"normalTexture":{
+				"index":0,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":1,
+					"texCoord":1
+				},
+				"roughnessFactor":0.15000000596046448
+			}
+		},
+		{
+			"doubleSided":true,
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.051",
+			"normalTexture":{
+				"index":2,
+				"texCoord":1
+			},
+			"pbrMetallicRoughness":{
+				"baseColorTexture":{
+					"index":3,
+					"texCoord":1
+				},
+				"metallicFactor":0,
+				"roughnessFactor":0.9200000166893005
 			}
 		}
 	],
@@ -41,19 +67,60 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
+				},
+				{
+					"attributes":{
+						"POSITION":5,
+						"NORMAL":6,
+						"TEXCOORD_0":7,
+						"TEXCOORD_1":8
+					},
+					"indices":9,
+					"material":1
 				}
 			]
+		}
+	],
+	"textures":[
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		},
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		}
+	],
+	"images":[
+		{
+			"mimeType":"image/jpeg",
+			"name":"gelaender-125_normal",
+			"uri":"texturen/gelaender-125_normal.jpg"
+		},
+		{
+			"mimeType":"image/jpeg",
+			"name":"gelaender-125_farbe",
+			"uri":"texturen/gelaender-125_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":2636,
+			"count":3836,
 			"max":[
 				0.51500004529953,
 				1.1200000047683716,
@@ -69,51 +136,139 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":2636,
+			"count":3836,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":2636,
+			"count":3836,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
+			"componentType":5126,
+			"count":3836,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":4,
 			"componentType":5123,
-			"count":6888,
+			"count":7050,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":5,
+			"componentType":5126,
+			"count":856,
+			"max":[
+				0.07960156351327896,
+				0.10009961575269699,
+				0.03200000151991844
+			],
+			"min":[
+				-0.08039844036102295,
+				0,
+				-0.05100000277161598
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":6,
+			"componentType":5126,
+			"count":856,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":7,
+			"componentType":5126,
+			"count":856,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":8,
+			"componentType":5126,
+			"count":856,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":9,
+			"componentType":5123,
+			"count":1110,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":31632,
+			"byteLength":46032,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":31632,
-			"byteOffset":31632,
+			"byteLength":46032,
+			"byteOffset":46032,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":21088,
-			"byteOffset":63264,
+			"byteLength":30688,
+			"byteOffset":92064,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":13776,
-			"byteOffset":84352,
+			"byteLength":30688,
+			"byteOffset":122752,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":14100,
+			"byteOffset":153440,
 			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":10272,
+			"byteOffset":167540,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":10272,
+			"byteOffset":177812,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":6848,
+			"byteOffset":188084,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":6848,
+			"byteOffset":194932,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":2220,
+			"byteOffset":201780,
+			"target":34963
+		}
+	],
+	"samplers":[
+		{
+			"magFilter":9729,
+			"minFilter":9987
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":98128,
+			"byteLength":204000,
 			"uri":"gelaender-125.bin"
 		}
 	]

@@ -3,6 +3,9 @@
 		"generator":"Khronos glTF Blender I/O v5.2.40",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -21,32 +24,65 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Beton",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.068",
 			"normalTexture":{
 				"index":0,
-				"scale":0.6000000238418579
+				"texCoord":1
 			},
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":1
+					"index":1,
+					"texCoord":1
 				},
 				"metallicFactor":0,
-				"metallicRoughnessTexture":{
-					"index":2
-				}
+				"roughnessFactor":0.9200000166893005
 			}
 		},
 		{
 			"doubleSided":true,
-			"name":"Stahl",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.4000000059604645
+				}
+			},
+			"name":"Beton_web.069",
+			"normalTexture":{
+				"index":2,
+				"texCoord":1
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.75,
-					0.7599999904632568,
-					0.7799999713897705,
-					1
-				],
-				"roughnessFactor":0.3499999940395355
+				"baseColorTexture":{
+					"index":3,
+					"texCoord":1
+				},
+				"metallicFactor":0,
+				"roughnessFactor":0.9200000166893005
+			}
+		},
+		{
+			"doubleSided":true,
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.699999988079071
+				}
+			},
+			"name":"Kantenwinkel_web.043",
+			"normalTexture":{
+				"index":4,
+				"texCoord":1
+			},
+			"pbrMetallicRoughness":{
+				"baseColorTexture":{
+					"index":5,
+					"texCoord":1
+				},
+				"metallicFactor":0,
+				"roughnessFactor":0.699999988079071
 			}
 		}
 	],
@@ -58,19 +94,31 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"TEXCOORD_1":3
 					},
-					"indices":3,
+					"indices":4,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":4,
-						"NORMAL":5,
-						"TEXCOORD_0":6
+						"POSITION":5,
+						"NORMAL":6,
+						"TEXCOORD_0":7,
+						"TEXCOORD_1":8
 					},
-					"indices":7,
+					"indices":9,
 					"material":1
+				},
+				{
+					"attributes":{
+						"POSITION":10,
+						"NORMAL":11,
+						"TEXCOORD_0":12,
+						"TEXCOORD_1":13
+					},
+					"indices":14,
+					"material":2
 				}
 			]
 		}
@@ -86,143 +134,244 @@
 		},
 		{
 			"sampler":0,
-			"source":2
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		},
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
 		}
 	],
 	"images":[
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_normal",
-			"uri":"texturen/beton_normal.jpg"
+			"name":"kegel-150_normal",
+			"uri":"texturen/kegel-150_normal.jpg"
 		},
 		{
 			"mimeType":"image/jpeg",
-			"name":"beton_farbe",
-			"uri":"texturen/beton_farbe.jpg"
-		},
-		{
-			"mimeType":"image/jpeg",
-			"name":"beton_rauheit",
-			"uri":"texturen/beton_rauheit.jpg"
+			"name":"kegel-150_farbe",
+			"uri":"texturen/kegel-150_farbe.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":439,
+			"count":1429,
 			"max":[
-				0.9750469326972961,
-				1.4799997806549072,
-				0.9748984575271606
+				0.9750470519065857,
+				1.4799998998641968,
+				0.9748985171318054
 			],
 			"min":[
-				-0.9750508069992065,
-				0,
-				-0.9750000238418579
+				-0.9750508666038513,
+				-7.938842117027889e-08,
+				-0.9750000834465027
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":439,
+			"count":1429,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":439,
+			"count":1429,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5123,
-			"count":1206,
-			"type":"SCALAR"
+			"componentType":5126,
+			"count":1429,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
-			"componentType":5126,
-			"count":592,
-			"max":[
-				0.9750469326972961,
-				1.489999771118164,
-				0.9748984575271606
-			],
-			"min":[
-				-0.9750508069992065,
-				0,
-				-0.9750000238418579
-			],
-			"type":"VEC3"
+			"componentType":5123,
+			"count":2079,
+			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":592,
+			"count":1586,
+			"max":[
+				0.9750469923019409,
+				1.489999771118164,
+				0.9748985171318054
+			],
+			"min":[
+				-0.9750508666038513,
+				-7.938841406485153e-08,
+				-0.9750000834465027
+			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":592,
-			"type":"VEC2"
+			"count":1586,
+			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
+			"componentType":5126,
+			"count":1586,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":8,
+			"componentType":5126,
+			"count":1586,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":9,
 			"componentType":5123,
-			"count":2262,
+			"count":2286,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":10,
+			"componentType":5126,
+			"count":112,
+			"max":[
+				0.9771682620048523,
+				1.4821317195892334,
+				0.3036404252052307
+			],
+			"min":[
+				-0.3036874234676361,
+				0.1493605673313141,
+				-0.9771216511726379
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":11,
+			"componentType":5126,
+			"count":112,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":12,
+			"componentType":5126,
+			"count":112,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":13,
+			"componentType":5126,
+			"count":112,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":14,
+			"componentType":5123,
+			"count":168,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":5268,
+			"byteLength":17148,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":5268,
-			"byteOffset":5268,
+			"byteLength":17148,
+			"byteOffset":17148,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3512,
-			"byteOffset":10536,
+			"byteLength":11432,
+			"byteOffset":34296,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2412,
-			"byteOffset":14048,
+			"byteLength":11432,
+			"byteOffset":45728,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":4158,
+			"byteOffset":57160,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":7104,
-			"byteOffset":16460,
+			"byteLength":19032,
+			"byteOffset":61320,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":7104,
-			"byteOffset":23564,
+			"byteLength":19032,
+			"byteOffset":80352,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4736,
-			"byteOffset":30668,
+			"byteLength":12688,
+			"byteOffset":99384,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4524,
-			"byteOffset":35404,
+			"byteLength":12688,
+			"byteOffset":112072,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":4572,
+			"byteOffset":124760,
+			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":1344,
+			"byteOffset":129332,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1344,
+			"byteOffset":130676,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":896,
+			"byteOffset":132020,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":896,
+			"byteOffset":132916,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":336,
+			"byteOffset":133812,
 			"target":34963
 		}
 	],
@@ -234,7 +383,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":39928,
+			"byteLength":134148,
 			"uri":"kegel-150.bin"
 		}
 	]

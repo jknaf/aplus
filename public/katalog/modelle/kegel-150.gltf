@@ -110,7 +110,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":448,
+			"count":439,
 			"max":[
 				0.9750469326972961,
 				1.4799997806549072,
@@ -126,13 +126,13 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":448,
+			"count":439,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":448,
+			"count":439,
 			"type":"VEC2"
 		},
 		{
@@ -179,50 +179,50 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":5376,
+			"byteLength":5268,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":5376,
-			"byteOffset":5376,
+			"byteLength":5268,
+			"byteOffset":5268,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3584,
-			"byteOffset":10752,
+			"byteLength":3512,
+			"byteOffset":10536,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":2412,
-			"byteOffset":14336,
+			"byteOffset":14048,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":7104,
-			"byteOffset":16748,
+			"byteOffset":16460,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":7104,
-			"byteOffset":23852,
+			"byteOffset":23564,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":4736,
-			"byteOffset":30956,
+			"byteOffset":30668,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":4524,
-			"byteOffset":35692,
+			"byteOffset":35404,
 			"target":34963
 		}
 	],
@@ -234,7 +234,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":40216,
+			"byteLength":39928,
 			"uri":"kegel-150.bin"
 		}
 	]

@@ -110,7 +110,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":101,
+			"count":92,
 			"max":[
 				1.4450000524520874,
 				0.940000057220459,
@@ -126,13 +126,13 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":101,
+			"count":92,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":101,
+			"count":92,
 			"type":"VEC2"
 		},
 		{
@@ -179,50 +179,50 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":1212,
+			"byteLength":1104,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1212,
-			"byteOffset":1212,
+			"byteLength":1104,
+			"byteOffset":1104,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":808,
-			"byteOffset":2424,
+			"byteLength":736,
+			"byteOffset":2208,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":372,
-			"byteOffset":3232,
+			"byteOffset":2944,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":600,
-			"byteOffset":3604,
+			"byteOffset":3316,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":600,
-			"byteOffset":4204,
+			"byteOffset":3916,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":400,
-			"byteOffset":4804,
+			"byteOffset":4516,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":168,
-			"byteOffset":5204,
+			"byteOffset":4916,
 			"target":34963
 		}
 	],
@@ -234,7 +234,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":5372,
+			"byteLength":5084,
 			"uri":"railslide-98-38.bin"
 		}
 	]

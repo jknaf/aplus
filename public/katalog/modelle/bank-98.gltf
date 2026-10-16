@@ -239,41 +239,41 @@
 		{
 			"bufferView":10,
 			"componentType":5126,
-			"count":80,
+			"count":40,
 			"max":[
 				0.8551526069641113,
-				0.9950000643730164,
-				0.628000020980835
+				0.9621213674545288,
+				0.6271213293075562
 			],
 			"min":[
-				-1.0671392679214478,
-				0.019964102655649185,
-				-0.628000020980835
+				-1.0660696029663086,
+				0.06652116775512695,
+				-0.6271213293075562
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":11,
 			"componentType":5126,
-			"count":80,
+			"count":40,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":12,
 			"componentType":5126,
-			"count":80,
+			"count":40,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":13,
 			"componentType":5126,
-			"count":80,
+			"count":40,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":14,
 			"componentType":5123,
-			"count":120,
+			"count":60,
 			"type":"SCALAR"
 		}
 	],
@@ -340,32 +340,32 @@
 		},
 		{
 			"buffer":0,
-			"byteLength":960,
+			"byteLength":480,
 			"byteOffset":27120,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":960,
+			"byteLength":480,
+			"byteOffset":27600,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":320,
 			"byteOffset":28080,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":640,
-			"byteOffset":29040,
+			"byteLength":320,
+			"byteOffset":28400,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":640,
-			"byteOffset":29680,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":240,
-			"byteOffset":30320,
+			"byteLength":120,
+			"byteOffset":28720,
 			"target":34963
 		}
 	],
@@ -377,7 +377,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":30560,
+			"byteLength":28840,
 			"uri":"bank-98.bin"
 		}
 	]

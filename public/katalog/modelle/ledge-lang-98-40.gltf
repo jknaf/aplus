@@ -58,20 +58,18 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2,
-						"TEXCOORD_1":3
+						"TEXCOORD_0":2
 					},
-					"indices":4,
+					"indices":3,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":5,
-						"NORMAL":6,
-						"TEXCOORD_0":7,
-						"TEXCOORD_1":8
+						"POSITION":4,
+						"NORMAL":5,
+						"TEXCOORD_0":6
 					},
-					"indices":9,
+					"indices":7,
 					"material":1
 				}
 			]
@@ -112,7 +110,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":84,
+			"count":89,
 			"max":[
 				1.4449492692947388,
 				0.9500000476837158,
@@ -128,31 +126,25 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":84,
+			"count":89,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":84,
+			"count":89,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5126,
-			"count":84,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":4,
 			"componentType":5123,
-			"count":150,
+			"count":156,
 			"type":"SCALAR"
 		},
 		{
-			"bufferView":5,
+			"bufferView":4,
 			"componentType":5126,
-			"count":903,
+			"count":643,
 			"max":[
 				1.445050835609436,
 				0.9591000080108643,
@@ -166,89 +158,71 @@
 			"type":"VEC3"
 		},
 		{
-			"bufferView":6,
+			"bufferView":5,
 			"componentType":5126,
-			"count":903,
+			"count":643,
 			"type":"VEC3"
 		},
 		{
+			"bufferView":6,
+			"componentType":5126,
+			"count":643,
+			"type":"VEC2"
+		},
+		{
 			"bufferView":7,
-			"componentType":5126,
-			"count":903,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":8,
-			"componentType":5126,
-			"count":903,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":9,
 			"componentType":5123,
-			"count":1785,
+			"count":1683,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":1008,
+			"byteLength":1068,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1008,
-			"byteOffset":1008,
+			"byteLength":1068,
+			"byteOffset":1068,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":672,
-			"byteOffset":2016,
+			"byteLength":712,
+			"byteOffset":2136,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":672,
-			"byteOffset":2688,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":300,
-			"byteOffset":3360,
+			"byteLength":312,
+			"byteOffset":2848,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":10836,
-			"byteOffset":3660,
+			"byteLength":7716,
+			"byteOffset":3160,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":10836,
-			"byteOffset":14496,
+			"byteLength":7716,
+			"byteOffset":10876,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":7224,
-			"byteOffset":25332,
+			"byteLength":5144,
+			"byteOffset":18592,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":7224,
-			"byteOffset":32556,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":3570,
-			"byteOffset":39780,
+			"byteLength":3366,
+			"byteOffset":23736,
 			"target":34963
 		}
 	],
@@ -260,7 +234,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":43352,
+			"byteLength":27104,
 			"uri":"ledge-lang-98-40.bin"
 		}
 	]

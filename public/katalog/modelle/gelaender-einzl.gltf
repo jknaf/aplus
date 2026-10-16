@@ -41,10 +41,9 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2,
-						"TEXCOORD_1":3
+						"TEXCOORD_0":2
 					},
-					"indices":4,
+					"indices":3,
 					"material":0
 				}
 			]
@@ -54,7 +53,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":10558,
+			"count":5668,
 			"max":[
 				0.6255488395690918,
 				1.1200000047683716,
@@ -70,63 +69,51 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":10558,
+			"count":5668,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":10558,
+			"count":5668,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5126,
-			"count":10558,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":4,
 			"componentType":5123,
-			"count":18540,
+			"count":17772,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":126696,
+			"byteLength":68016,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":126696,
-			"byteOffset":126696,
+			"byteLength":68016,
+			"byteOffset":68016,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":84464,
-			"byteOffset":253392,
+			"byteLength":45344,
+			"byteOffset":136032,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":84464,
-			"byteOffset":337856,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":37080,
-			"byteOffset":422320,
+			"byteLength":35544,
+			"byteOffset":181376,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":459400,
+			"byteLength":216920,
 			"uri":"gelaender-einzl.bin"
 		}
 	]

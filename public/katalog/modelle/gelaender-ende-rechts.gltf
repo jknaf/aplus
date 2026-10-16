@@ -41,10 +41,9 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2,
-						"TEXCOORD_1":3
+						"TEXCOORD_0":2
 					},
-					"indices":4,
+					"indices":3,
 					"material":0
 				}
 			]
@@ -54,7 +53,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":6728,
+			"count":3943,
 			"max":[
 				0.6075000166893005,
 				1.1200000047683716,
@@ -70,63 +69,51 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":6728,
+			"count":3943,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":6728,
+			"count":3943,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5126,
-			"count":6728,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":4,
 			"componentType":5123,
-			"count":12108,
+			"count":11724,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":80736,
+			"byteLength":47316,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":80736,
-			"byteOffset":80736,
+			"byteLength":47316,
+			"byteOffset":47316,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":53824,
-			"byteOffset":161472,
+			"byteLength":31544,
+			"byteOffset":94632,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":53824,
-			"byteOffset":215296,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":24216,
-			"byteOffset":269120,
+			"byteLength":23448,
+			"byteOffset":126176,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":293336,
+			"byteLength":149624,
 			"uri":"gelaender-ende-rechts.bin"
 		}
 	]

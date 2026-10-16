@@ -16,6 +16,7 @@ export const NAV_LINKS = [
       { name: 'Hockey-Banden', href: '/produkte/hockey-banden' },
     ]
   },
+  { name: 'Katalog', href: '/katalog' },
   { name: 'Planung', href: '/planung' },
   { name: 'Projekte', href: '/projekte' },
   { name: 'Presse', href: '/referenzen-presse' },

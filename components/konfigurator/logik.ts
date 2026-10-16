@@ -6,7 +6,8 @@ export interface V { x: number; z: number }
 export interface Masse { l: number; b: number; h: number; hoch: V | null; niedrig: number }
 export interface Info { name: string; code: string; gruppe: string; kg?: number }
 export interface Ctx { masse: Record<string, Masse>; info: Record<string, Info> }
-export interface Teil { id: string; slug: string; x: number; z: number; rot: number }
+// gel: Geländer erzwingen (true) oder abschalten (false); ohne Angabe gilt die Automatik (G01/G02)
+export interface Teil { id: string; slug: string; x: number; z: number; rot: number; gel?: boolean }
 export interface Flaeche { l: number; b: number; angeboescht: boolean }
 export interface Park { flaeche: Flaeche; teile: Teil[] }
 export type Art = 'plattform' | 'rampe' | 'street' | 'wand' | 'auto';
@@ -368,14 +369,15 @@ export interface Abgeleitet { gelaender: Zusatz[]; verbinder: number; keile: Zus
 
 const GELAENDER: [number, string][] = [[5, 'gelaender-500'], [3.75, 'gelaender-375'], [2.5, 'gelaender-250'], [1.25, 'gelaender-125']];
 
+const braucht = (t: Teil, m: Masse, park: Park) => (t.gel !== undefined ? t.gel : !park.flaeche.angeboescht && m.h >= 1.0);
 export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
   const strecken: { a: V; b: V; n: V; y: number }[] = [];
   const keile: Zusatz[] = [];
   for (const t of park.teile) {
     const m = ctx.masse[t.slug];
     const a = art(t.slug, ctx);
-    // G01/G02: Plattformen über 1 m Fallhöhe, bei Rampen nur die hohe Rückseite
-    if (!park.flaeche.angeboescht && m.h >= 1.0 && !istKurve(t.slug) && (a === 'plattform' || (a === 'rampe' && m.hoch && hochAchsig(m)))) {
+    // G01/G02: Plattformen über 1 m Fallhöhe, bei Rampen nur die hohe Rückseite; per Schalter erzwingen oder abschalten
+    if (braucht(t, m, park) && !istKurve(t.slug) && (a === 'plattform' || (a === 'rampe' && m.hoch && hochAchsig(m)))) {
       const kandidaten = a === 'plattform' ? seiten(t, m) : [seiteIn(t, m, hochWelt(t, m)!)];
       for (const s of kandidaten) {
         if (anliegend(s, t.id, park, ctx)) continue; // G06: wo etwas andockt, kein Geländer
@@ -404,17 +406,25 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
   }
   // G01 an Kurven: Rundgeländer SGER-150 außen am Table Corner 150. Lage im Modell: Sehne unter -14,2°, Bogen nach -z
   const rund: Zusatz[] = [];
-  if (!park.flaeche.angeboescht && ctx.masse['gelaender-sger-150']) {
-    for (const t of park.teile) {
-      if (t.slug !== 'corner-table-150') continue;
-      const k = KURVE[t.slug];
-      const halb = (k.von + k.bis) / 2;
-      const aussen = drehe(polar(halb, 1), t.rot);
-      const mitteAussen = plus(t, drehe(plus(k.c, polar(halb, k.R)), t.rot));
-      if (park.teile.some((o) => o.id !== t.id && innen(plus(mitteAussen, mal(aussen, 0.1)), umriss(o, ctx)))) continue;
+  for (const t of park.teile) {
+    if (!t.slug.startsWith('corner-table') || !braucht(t, ctx.masse[t.slug], park)) continue;
+    const k = KURVE[t.slug];
+    const halb = (k.von + k.bis) / 2;
+    const aussen = drehe(polar(halb, 1), t.rot);
+    const mitteAussen = plus(t, drehe(plus(k.c, polar(halb, k.R)), t.rot));
+    if (park.teile.some((o) => o.id !== t.id && innen(plus(mitteAussen, mal(aussen, 0.1)), umriss(o, ctx)))) continue;
+    if (t.slug === 'corner-table-150' && ctx.masse['gelaender-sger-150']) {
       const rot = norm360(winkel(aussen) - 75.8);
       const p = minus(plus(mitteAussen, mal(aussen, -0.08)), drehe({ x: 0, z: -0.13 }, rot));
       rund.push({ slug: 'gelaender-sger-150', x: r3(p.x), z: r3(p.z), rot, y: ctx.masse[t.slug].h });
+    } else if (ctx.masse['gelaender-125']) {
+      // ponytail: für den Table Corner 98 gibt es im Katalog kein Rundgeländer; zwei gerade 125er entlang des Bogens, A+ prüft im Angebot
+      for (const w of [k.von + (k.bis - k.von) / 4, k.von + (3 * (k.bis - k.von)) / 4]) {
+        const r = drehe(polar(w, 1), t.rot);
+        const p = plus(plus(t, drehe(plus(k.c, polar(w, k.R)), t.rot)), mal(r, -0.06));
+        const mg = ctx.masse['gelaender-125'];
+        rund.push({ slug: 'gelaender-125', x: r3(p.x), z: r3(p.z), rot: norm360(winkel({ x: -r.z, z: r.x }) - (mg.l >= mg.b ? 0 : 90)), y: ctx.masse[t.slug].h });
+      }
     }
   }
   // Gleich ausgerichtete, aneinander stoßende Strecken zu Läufen verbinden
@@ -787,6 +797,13 @@ export const anbauMoeglich = (id: string, park: Park, ctx: Ctx): Anbau => {
   return { kurve: KURVEN_HOEHEN[t.slug] ? frei : [], gerade: frei };
 };
 
+// Angebaute Stücke übernehmen den Geländer-Schalter der Gruppe, an die sie angebaut werden
+const erben = (neu: Teil[], von: Teil, park: Park, ctx: Ctx): Teil[] => {
+  const modus = gelaenderModus(von.id, park, ctx);
+  if (!modus || modus === 'auto') return neu;
+  return neu.map((t) => (traegtGelaender(t, ctx) ? { ...t, gel: modus === 'an' } : t));
+};
+
 // Neue Teile einfügen: Fläche bei Bedarf vergrößern, Überlappung verhindern
 const anbauen = (park: Park, neu: Teil[], ctx: Ctx): Park | null => {
   if (neu.some((t) => kollidiert(t, park, ctx))) return null;
@@ -806,7 +823,7 @@ export const geradeAnhaengen = (id: string, r: Richtung, park: Park, ctx: Ctx): 
   const neu = [teil(t.slug, r3(t.x + s.x * l.breite), r3(t.z + s.z * l.breite), t.rot)];
   const tisch = anliegend(seiteIn(t, l.m, l.hw), t.id, park, ctx, ['plattform']);
   if (tisch && !istKurve(tisch.slug)) neu.push(teil(tisch.slug, r3(tisch.x + s.x * l.breite), r3(tisch.z + s.z * l.breite), tisch.rot));
-  return anbauen(park, neu, ctx);
+  return anbauen(park, erben(neu, t, park, ctx), ctx);
 };
 
 // Innenkurve 90°: drei Corner um einen gemeinsamen Mittelpunkt, dahinter drei Table Corner, danach eine gerade Coping Ramp
@@ -837,7 +854,7 @@ export const kurveAnhaengen = (id: string, r: Richtung, park: Park, ctx: Ctx): P
     const tischSlug = t.slug === 'coping-ramp-98' ? 'table-98' : 'table-150';
     neu.push(teil(tischSlug, r3(tt.x), r3(tt.z), rot));
   }
-  return anbauen(park, neu, ctx);
+  return anbauen(park, erben(neu, t, park, ctx), ctx);
 };
 
 // Bowl: Rechteck mit runden Innenecken; nl × nb gerade Coping Ramps je Seite, an jeder Ecke 3 Corner, dahinter Tables und Table Corner
@@ -874,6 +891,24 @@ export const bowl = (h: 98 | 150, nl: number, nb: number, ctx: Ctx): Teil[] | nu
     }
   }
   return out;
+};
+
+// Geländer-Schalter für die Gruppe eines Teils: 'auto' (Regel), 'an', 'aus'
+export type GelaenderModus = 'auto' | 'an' | 'aus';
+const traegtGelaender = (t: Teil, ctx: Ctx) => art(t.slug, ctx) === 'plattform' || (art(t.slug, ctx) === 'rampe' && !istKurve(t.slug) && !!ctx.masse[t.slug]?.hoch);
+export const gelaenderModus = (id: string, park: Park, ctx: Ctx): GelaenderModus | null => {
+  const g = gruppen(park, ctx).find((x) => x.some((t) => t.id === id))?.filter((t) => traegtGelaender(t, ctx)) ?? [];
+  if (!g.length) return null;
+  return g.every((t) => t.gel === true) ? 'an' : g.every((t) => t.gel === false) ? 'aus' : 'auto';
+};
+export const gelaenderSetzen = (id: string, modus: GelaenderModus, park: Park, ctx: Ctx): Park => {
+  const ids = new Set((gruppen(park, ctx).find((x) => x.some((t) => t.id === id)) ?? []).filter((t) => traegtGelaender(t, ctx)).map((t) => t.id));
+  return { ...park, teile: park.teile.map((t) => {
+    if (!ids.has(t.id)) return t;
+    const neu = { ...t };
+    delete neu.gel;
+    return modus === 'auto' ? neu : { ...neu, gel: modus === 'an' };
+  }) };
 };
 
 // ---------- Vorschläge beim Ziehen (A02–A05) ----------
@@ -1130,15 +1165,15 @@ const unb64 = (s: string) => atob(s.replace(/-/g, '+').replace(/_/g, '/'));
 
 export const kodieren = (park: Park) => b64(JSON.stringify({
   f: [park.flaeche.l, park.flaeche.b, park.flaeche.angeboescht ? 1 : 0],
-  t: park.teile.map((t) => [t.slug, Math.round(t.x * 100), Math.round(t.z * 100), Math.round(t.rot * 10)]),
+  t: park.teile.map((t) => [t.slug, Math.round(t.x * 100), Math.round(t.z * 100), Math.round(t.rot * 10), ...(t.gel === undefined ? [] : [t.gel ? 1 : 0])]),
 }));
 export const dekodieren = (s: string, ctx: Ctx): Park | null => {
   try {
     const d = JSON.parse(unb64(s));
     const [l, b, a] = d.f;
-    const teile: Teil[] = (d.t as [string, number, number, number][])
+    const teile: Teil[] = (d.t as [string, number, number, number, number?][])
       .filter(([slug]) => ctx.masse[slug])
-      .map(([slug, x, z, r]) => ({ id: neueId(), slug, x: x / 100, z: z / 100, rot: r / 10 }));
+      .map(([slug, x, z, r, g]) => ({ id: neueId(), slug, x: x / 100, z: z / 100, rot: r / 10, ...(g === undefined ? {} : { gel: g === 1 }) }));
     if (!(l > 0 && b > 0)) return null;
     return { flaeche: { l: Math.min(l, 200), b: Math.min(b, 200), angeboescht: !!a }, teile };
   } catch {

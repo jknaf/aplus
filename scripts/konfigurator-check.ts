@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import {
   BAUSTEINE, VORLAGEN, vorlageBauen, gruppen, pruefen, abgeleitet, einrasten, stueckliste, kodieren, dekodieren,
-  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, type Ctx, type Park,
+  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, gelaenderSetzen, gelaenderModus, type Ctx, type Park,
 } from '../components/konfigurator/logik.ts';
 
 const katalog = JSON.parse(readFileSync(new URL('../public/katalog/katalog.json', import.meta.url), 'utf8'));
@@ -86,6 +86,21 @@ for (const [h, nl, nb] of [[98, 1, 0], [98, 3, 1], [150, 3, 1]] as const) {
   const xs = t.flatMap((x) => umriss(x, ctx)).map((q) => q.x);
   const zs = t.flatMap((x) => umriss(x, ctx)).map((q) => q.z);
   console.log(`Bowl ${h} ${nl}×${nb}: ${t.length} Teile, außen ${(Math.max(...xs) - Math.min(...xs)).toFixed(2)} × ${(Math.max(...zs) - Math.min(...zs)).toFixed(2)} m`);
+}
+
+// Geländer-Schalter: Bowl 98 mit Geländer, Bowl 150 ohne, bleibt im Teilen-Link erhalten
+{
+  const b98: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: bowl(98, 3, 1, ctx)! };
+  const an = gelaenderSetzen(b98.teile[0].id, 'an', b98, ctx);
+  assert.equal(gelaenderModus(an.teile[0].id, an, ctx), 'an');
+  const ga = abgeleitet(an, ctx).gelaender;
+  assert.ok(ga.filter((g) => g.slug === 'gelaender-125').length >= 24, 'Bowl 98 mit Geländer: Rundung fehlt');
+  assert.ok(ga.some((g) => g.slug === 'gelaender-375'), 'Bowl 98 mit Geländer: gerade Seiten fehlen');
+  const zurueck = dekodieren(kodieren(an), ctx)!;
+  assert.equal(abgeleitet(zurueck, ctx).gelaender.length, ga.length);
+  const b150: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: bowl(150, 3, 1, ctx)! };
+  assert.equal(abgeleitet(gelaenderSetzen(b150.teile[0].id, 'aus', b150, ctx), ctx).gelaender.length, 0);
+  assert.ok(abgeleitet(gelaenderSetzen(gelaenderSetzen(b150.teile[0].id, 'aus', b150, ctx).teile[0].id, 'auto', gelaenderSetzen(b150.teile[0].id, 'aus', b150, ctx), ctx), ctx).gelaender.length > 0);
 }
 
 // Kein Platz frei: Fläche wächst, nichts überlappt

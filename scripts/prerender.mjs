@@ -33,6 +33,7 @@ const STATIC_ROUTES = [
   '/ueber-uns',
   '/kontakt',
   '/planung',
+  '/katalog',
   '/referenzen-presse',
   '/produkte',
   '/produkte/skate-anlagen',

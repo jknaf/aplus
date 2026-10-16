@@ -314,8 +314,11 @@ export const freierPlatz = (gruppe: Teil[], park: Park, ctx: Ctx, abstandMin = S
   const b = box(gruppe.flatMap((t) => umriss(t, ctx)));
   const mitte = { x: (b.x0 + b.x1) / 2, z: (b.z0 + b.z1) / 2 };
   const andere = park.teile.map((o) => teilBox(o, ctx));
+  // Anlaufzonen (F03) freihalten: die vorhandenen Zonen und die Zonen der neuen Gruppe
+  const fremdeZonen = anlaufZonen(park.teile, park, ctx).map(box);
+  const eigeneZonen = anlaufZonen(gruppe, { flaeche: park.flaeche, teile: gruppe }, ctx).map(box);
   const f = park.flaeche;
-  const rand = Math.min(abstandMin, 1);
+  const rand = abstandMin; // gleicher Randabstand wie in der Prüfung (F01), sonst entsteht sofort ein Hinweis
   const ringe = Math.ceil(Math.max(f.l, f.b) / FEIN / 2) + 1;
   // ponytail: das Rechteck der Gruppe ist etwas größer als die Teile selbst; bei Bedarf genauer prüfen
   for (let r = 0; r <= ringe; r++) {
@@ -324,7 +327,10 @@ export const freierPlatz = (gruppe: Teil[], park: Park, ctx: Ctx, abstandMin = S
         const d = { x: ix * FEIN - mitte.x, z: iz * FEIN - mitte.z };
         const g = { x0: b.x0 + d.x, x1: b.x1 + d.x, z0: b.z0 + d.z, z1: b.z1 + d.z };
         if (g.x0 < -f.l / 2 + rand || g.x1 > f.l / 2 - rand || g.z0 < -f.b / 2 + rand || g.z1 > f.b / 2 - rand) continue;
-        if (!andere.some((o) => nah(g, o, abstandMin))) return d;
+        if (andere.some((o) => nah(g, o, abstandMin)) || fremdeZonen.some((z) => nah(g, z))) continue;
+        const zonen = eigeneZonen.map((z) => ({ x0: z.x0 + d.x, x1: z.x1 + d.x, z0: z.z0 + d.z, z1: z.z1 + d.z }));
+        if (zonen.some((z) => z.x0 < -f.l / 2 - 0.3 || z.x1 > f.l / 2 + 0.3 || z.z0 < -f.b / 2 - 0.3 || z.z1 > f.b / 2 + 0.3 || andere.some((o) => nah(z, o)))) continue;
+        return d;
       }
     }
   }

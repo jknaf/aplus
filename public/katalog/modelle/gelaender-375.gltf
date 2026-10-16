@@ -58,20 +58,18 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2,
-						"TEXCOORD_1":3
+						"TEXCOORD_0":2
 					},
-					"indices":4,
+					"indices":3,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":5,
-						"NORMAL":6,
-						"TEXCOORD_0":7,
-						"TEXCOORD_1":8
+						"POSITION":4,
+						"NORMAL":5,
+						"TEXCOORD_0":6
 					},
-					"indices":9,
+					"indices":7,
 					"material":1
 				}
 			]
@@ -112,7 +110,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":48,
+			"count":28,
 			"max":[
 				-0.027000000700354576,
 				0.0005699463072232902,
@@ -128,31 +126,25 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":48,
+			"count":28,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":48,
+			"count":28,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5126,
-			"count":48,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":4,
 			"componentType":5123,
-			"count":72,
+			"count":42,
 			"type":"SCALAR"
 		},
 		{
-			"bufferView":5,
+			"bufferView":4,
 			"componentType":5126,
-			"count":12264,
+			"count":8639,
 			"max":[
 				0.05100000277161598,
 				1.1200000047683716,
@@ -166,89 +158,71 @@
 			"type":"VEC3"
 		},
 		{
-			"bufferView":6,
+			"bufferView":5,
 			"componentType":5126,
-			"count":12264,
+			"count":8639,
 			"type":"VEC3"
 		},
 		{
+			"bufferView":6,
+			"componentType":5126,
+			"count":8639,
+			"type":"VEC2"
+		},
+		{
 			"bufferView":7,
-			"componentType":5126,
-			"count":12264,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":8,
-			"componentType":5126,
-			"count":12264,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":9,
 			"componentType":5123,
-			"count":23952,
+			"count":23208,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":576,
+			"byteLength":336,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":576,
-			"byteOffset":576,
+			"byteLength":336,
+			"byteOffset":336,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":384,
-			"byteOffset":1152,
+			"byteLength":224,
+			"byteOffset":672,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":384,
-			"byteOffset":1536,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":144,
-			"byteOffset":1920,
+			"byteLength":84,
+			"byteOffset":896,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":147168,
-			"byteOffset":2064,
+			"byteLength":103668,
+			"byteOffset":980,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":147168,
-			"byteOffset":149232,
+			"byteLength":103668,
+			"byteOffset":104648,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":98112,
-			"byteOffset":296400,
+			"byteLength":69112,
+			"byteOffset":208316,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":98112,
-			"byteOffset":394512,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":47904,
-			"byteOffset":492624,
+			"byteLength":46416,
+			"byteOffset":277428,
 			"target":34963
 		}
 	],
@@ -260,7 +234,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":540528,
+			"byteLength":323844,
 			"uri":"gelaender-375.bin"
 		}
 	]

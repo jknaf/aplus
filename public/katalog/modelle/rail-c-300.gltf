@@ -41,10 +41,9 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2,
-						"TEXCOORD_1":3
+						"TEXCOORD_0":2
 					},
-					"indices":4,
+					"indices":3,
 					"material":0
 				}
 			]
@@ -54,7 +53,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":4032,
+			"count":1774,
 			"max":[
 				1.597175121307373,
 				0.4000000059604645,
@@ -70,63 +69,51 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":4032,
+			"count":1774,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":4032,
+			"count":1774,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
-			"componentType":5126,
-			"count":4032,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":4,
 			"componentType":5123,
-			"count":6624,
+			"count":6318,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":48384,
+			"byteLength":21288,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":48384,
-			"byteOffset":48384,
+			"byteLength":21288,
+			"byteOffset":21288,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":32256,
-			"byteOffset":96768,
+			"byteLength":14192,
+			"byteOffset":42576,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":32256,
-			"byteOffset":129024,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":13248,
-			"byteOffset":161280,
+			"byteLength":12636,
+			"byteOffset":56768,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":174528,
+			"byteLength":69404,
 			"uri":"rail-c-300.bin"
 		}
 	]

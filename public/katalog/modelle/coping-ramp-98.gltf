@@ -58,20 +58,18 @@
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2,
-						"TEXCOORD_1":3
+						"TEXCOORD_0":2
 					},
-					"indices":4,
+					"indices":3,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":5,
-						"NORMAL":6,
-						"TEXCOORD_0":7,
-						"TEXCOORD_1":8
+						"POSITION":4,
+						"NORMAL":5,
+						"TEXCOORD_0":6
 					},
-					"indices":9,
+					"indices":7,
 					"material":1
 				}
 			]
@@ -139,20 +137,14 @@
 		},
 		{
 			"bufferView":3,
-			"componentType":5126,
-			"count":126,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":4,
 			"componentType":5123,
-			"count":234,
+			"count":240,
 			"type":"SCALAR"
 		},
 		{
-			"bufferView":5,
+			"bufferView":4,
 			"componentType":5126,
-			"count":256,
+			"count":192,
 			"max":[
 				0.8450000286102295,
 				0.9782000780105591,
@@ -166,27 +158,21 @@
 			"type":"VEC3"
 		},
 		{
-			"bufferView":6,
+			"bufferView":5,
 			"componentType":5126,
-			"count":256,
+			"count":192,
 			"type":"VEC3"
 		},
 		{
+			"bufferView":6,
+			"componentType":5126,
+			"count":192,
+			"type":"VEC2"
+		},
+		{
 			"bufferView":7,
-			"componentType":5126,
-			"count":256,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":8,
-			"componentType":5126,
-			"count":256,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":9,
 			"componentType":5123,
-			"count":504,
+			"count":498,
 			"type":"SCALAR"
 		}
 	],
@@ -211,44 +197,32 @@
 		},
 		{
 			"buffer":0,
-			"byteLength":1008,
+			"byteLength":480,
 			"byteOffset":4032,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":468,
-			"byteOffset":5040,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":3072,
-			"byteOffset":5508,
+			"byteLength":2304,
+			"byteOffset":4512,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3072,
-			"byteOffset":8580,
+			"byteLength":2304,
+			"byteOffset":6816,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2048,
-			"byteOffset":11652,
+			"byteLength":1536,
+			"byteOffset":9120,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2048,
-			"byteOffset":13700,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":1008,
-			"byteOffset":15748,
+			"byteLength":996,
+			"byteOffset":10656,
 			"target":34963
 		}
 	],
@@ -260,7 +234,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":16756,
+			"byteLength":11652,
 			"uri":"coping-ramp-98.bin"
 		}
 	]

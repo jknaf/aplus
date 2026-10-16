@@ -312,15 +312,15 @@
 		{
 			"bufferView":15,
 			"componentType":5126,
-			"count":312,
+			"count":320,
 			"max":[
 				1.5723216533660889,
 				1.6482013463974,
-				0.9725000858306885
+				0.9396213889122009
 			],
 			"min":[
 				-1.572394847869873,
-				0.11704441905021667,
+				0,
 				-0.9396213889122009
 			],
 			"type":"VEC3"
@@ -328,25 +328,25 @@
 		{
 			"bufferView":16,
 			"componentType":5126,
-			"count":312,
+			"count":320,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":17,
 			"componentType":5126,
-			"count":312,
+			"count":320,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":18,
 			"componentType":5126,
-			"count":312,
+			"count":320,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":19,
 			"componentType":5123,
-			"count":468,
+			"count":480,
 			"type":"SCALAR"
 		}
 	],
@@ -443,32 +443,32 @@
 		},
 		{
 			"buffer":0,
-			"byteLength":3744,
+			"byteLength":3840,
 			"byteOffset":110852,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3744,
-			"byteOffset":114596,
+			"byteLength":3840,
+			"byteOffset":114692,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2496,
-			"byteOffset":118340,
+			"byteLength":2560,
+			"byteOffset":118532,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2496,
-			"byteOffset":120836,
+			"byteLength":2560,
+			"byteOffset":121092,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":936,
-			"byteOffset":123332,
+			"byteLength":960,
+			"byteOffset":123652,
 			"target":34963
 		}
 	],
@@ -480,7 +480,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":124268,
+			"byteLength":124612,
 			"uri":"quarterramp-165.bin"
 		}
 	]

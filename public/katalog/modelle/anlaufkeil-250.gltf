@@ -110,15 +110,15 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":28,
+			"count":24,
 			"max":[
 				0.6067500114440918,
 				0.15000000596046448,
 				1.25
 			],
 			"min":[
-				-0.6067500114440918,
-				0,
+				-0.22585158050060272,
+				1.486120364748854e-16,
 				-1.25
 			],
 			"type":"VEC3"
@@ -126,19 +126,19 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":28,
+			"count":24,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":28,
+			"count":24,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":42,
+			"count":36,
 			"type":"SCALAR"
 		},
 		{
@@ -179,50 +179,50 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":336,
+			"byteLength":288,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":336,
-			"byteOffset":336,
+			"byteLength":288,
+			"byteOffset":288,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":224,
-			"byteOffset":672,
+			"byteLength":192,
+			"byteOffset":576,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":84,
-			"byteOffset":896,
+			"byteLength":72,
+			"byteOffset":768,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":132,
-			"byteOffset":980,
+			"byteOffset":840,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":132,
-			"byteOffset":1112,
+			"byteOffset":972,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":88,
-			"byteOffset":1244,
+			"byteOffset":1104,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":30,
-			"byteOffset":1332,
+			"byteOffset":1192,
 			"target":34963
 		}
 	],
@@ -234,7 +234,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":1364,
+			"byteLength":1224,
 			"uri":"anlaufkeil-250.bin"
 		}
 	]

@@ -6,7 +6,7 @@ import Buehne, { type BuehnenApi } from '../components/konfigurator/Buehne';
 import Druck, { Plan, type DruckOptionen } from '../components/konfigurator/Druck';
 import { PARK_SPEICHER, leeren, warteschlange } from '../components/konfigurator/merkliste';
 import {
-  BAUSTEINE, LEER, RASTER, gruppen, gruppeVerschieben, anbauMoeglich, bowl, drehenGruppe, geradeAnhaengen, kurveAnhaengen, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
+  BAUSTEINE, LEER, RASTER, gruppen, gruppeVerschieben, anbauMoeglich, bowl, drehenGruppe, geradeAnhaengen, kurveAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
   hinzufuegen, kodieren, kollidiert, neueId, pruefen, stueckliste, vorlageBauen, vorschlag as vorschlagFuer, waehlbar,
   type Ctx, type Hinweis, type Park, type Teil, type Vorschlag,
 } from '../components/konfigurator/logik';
@@ -367,6 +367,8 @@ const KonfiguratorPage: React.FC = () => {
     if (letzte) setAuswahl(letzte.id);
     setVorschlag(null);
   };
+  const gelModus = useMemo(() => (ctx && park && auswahl ? gelaenderModus(auswahl, park, ctx) : null), [ctx, park, auswahl]);
+  const gelSetzen = (m: GelaenderModus) => { if (ctx && park && auswahl) aendern(gelaenderSetzen(auswahl, m, park, ctx)); };
   const [bowlMass, setBowlMass] = useState<{ h: 98 | 150; l: number; b: number }>({ h: 98, l: 3, b: 1 });
   const hinweisBeheben = (h: Hinweis) => {
     if (!ctx || !park) return;
@@ -686,6 +688,16 @@ const KonfiguratorPage: React.FC = () => {
                     {anbau.gerade.includes('links') && <Knopf icon="west" onClick={() => anbauen('gerade', 'links')}>Gerade</Knopf>}
                     {anbau.gerade.includes('rechts') && <Knopf icon="east" onClick={() => anbauen('gerade', 'rechts')}>Gerade</Knopf>}
                     {anbau.kurve.includes('rechts') && <Knopf icon="turn_right" onClick={() => anbauen('kurve', 'rechts')}>Kurve rechts</Knopf>}
+                  </div>
+                )}
+                {gelModus && (
+                  <div className="mt-2 flex items-center gap-2 text-xs">
+                    <span className="text-brand-muted">Geländer</span>
+                    <div className="inline-flex rounded-lg border border-brand-dark/10 overflow-hidden" role="group" aria-label="Geländer für diese Gruppe">
+                      {([['auto', 'Automatisch'], ['an', 'An'], ['aus', 'Aus']] as [GelaenderModus, string][]).map(([m, t]) => (
+                        <button key={m} type="button" onClick={() => gelSetzen(m)} aria-pressed={gelModus === m} className={`px-2.5 py-1 font-semibold ${gelModus === m ? 'bg-brand-dark text-white' : 'bg-white/80 text-brand-dark hover:bg-white'}`}>{t}</button>
+                      ))}
+                    </div>
                   </div>
                 )}
                 <p className="mt-2 text-[11px] text-brand-muted">Ziehen und R wirken auf die ganze Gruppe, mit gedrückter Alt-Taste nur auf dieses Element. Entf löscht.</p>

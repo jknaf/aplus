@@ -16,6 +16,7 @@ interface Element {
   gdl_standard_m: Record<string, number>; gdl_parameter: Parameter[];
   materialien: string[]; makros: string[]; gsm_datei: string; gsm_version: string; gsm_datum: string;
   modell: string; bild: string;
+  gewicht: { kg: number; hinweis: string } | null;
 }
 interface Katalog { stand: string; quelle: string; gruppen: string[]; elemente: Element[] }
 
@@ -46,8 +47,8 @@ const kurzMasse = (e: Element) => {
 // Die CAD-Oberflächen (z. B. „Anstrich“, „Kiefer“) sind nur Archicad-Darstellung, nicht das Produktmaterial.
 const material = (e: Element) => {
   const metall = (m: string) => /stahl|zink|alu/i.test(m);
-  if (e.materialien.length && e.materialien.every(metall)) return 'Stahl';
-  return e.materialien.some(metall) ? 'Beton, Stahl' : 'Beton';
+  if (e.materialien.length && e.materialien.every(metall)) return 'Stahl, verzinkt';
+  return e.materialien.some(metall) ? 'Stahlbeton C35/45, Stahl (verzinkt / Edelstahl)' : 'Stahlbeton C35/45';
 };
 
 const wertText = (p: Parameter) => {
@@ -174,6 +175,7 @@ const Detail: React.FC<{
             <Zeile label="Code Preisliste">{e.preisliste_code || '–'}</Zeile>
             <Zeile label="Kürzel Planung (2D-Symbol)">{e.kuerzel || '–'}</Zeile>
             <Zeile label="Material">{material(e)}</Zeile>
+            <Zeile label="Gewicht">{e.gewicht ? `ca. ${e.gewicht.kg.toLocaleString('de-DE')} kg${e.gewicht.hinweis ? ` (${e.gewicht.hinweis})` : ''}` : 'auf Anfrage'}</Zeile>
             <Zeile label="Bibliothekselement">{e.gsm_datei}</Zeile>
           </dl>
 
@@ -301,6 +303,27 @@ const KatalogPage: React.FC = () => {
           );
         })}
         {katalog && !treffer.length && <p className="text-center text-brand-muted py-24">Keine Elemente zu „{suche}“ gefunden.</p>}
+        {katalog && (
+          <div className="mt-8 mb-16 grid md:grid-cols-2 gap-8 border-t border-brand-dark/10 pt-12">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-widest text-brand-orange">Eigenschaften</span>
+              <h2 className="text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mt-2">Gebaut für Jahrzehnte.</h2>
+              <p className="text-brand-muted mt-4">Alle Elemente sind modular im 125-cm-Raster aufgebaut und lassen sich frei kombinieren, erweitern und umstellen.</p>
+            </div>
+            <ul className="space-y-3 text-sm text-brand-dark">
+              {[
+                'Bewehrter Beton C35/45, Wandstärke 8 bis 16 cm',
+                'Aufstellen ohne Fundament, höhenverstellbare Füße gleichen Unebenheiten aus',
+                'Durchgehender, einbetonierter Hartgummi-Kantenschutz an allen Fahrkanten',
+                'Verzinkte Copingrohre mit Alukappen, Anlaufbleche aus Edelstahl',
+                'Offenporige Oberfläche: bei Nässe nicht rutschig, kaum Lärm',
+                'TÜV-geprüft nach DIN EN 14974, GS-Zeichen',
+              ].map((t) => (
+                <li key={t} className="flex gap-3"><span className="material-symbols-outlined text-brand-orange text-lg">check</span>{t}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         {katalog && (
           <p className="text-xs text-brand-muted text-center mt-8">
             Stand {new Date(katalog.stand).toLocaleDateString('de-DE')}. Darstellung schematisch, maßgeblich sind Preisliste und Angebot. Preise netto zzgl. MwSt.

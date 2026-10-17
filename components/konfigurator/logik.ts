@@ -365,7 +365,7 @@ export const gruppen = (park: Park, ctx: Ctx): Teil[][] => {
 // ---------- Automatik: Geländer, Anlaufkeile, Pflichtteile (Abschnitte 3, 4, 7) ----------
 
 export interface Zusatz { slug: string; x: number; z: number; rot: number; y?: number }
-export interface Abgeleitet { gelaender: Zusatz[]; verbinder: number; keile: Zusatz[] }
+export interface Abgeleitet { gelaender: Zusatz[]; keile: Zusatz[] }
 
 const GELAENDER: [number, string][] = [[5, 'gelaender-500'], [3.75, 'gelaender-375'], [2.5, 'gelaender-250'], [1.25, 'gelaender-125']];
 
@@ -445,13 +445,11 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
     laeufe.push(lauf);
   }
   const gelaender: Zusatz[] = [];
-  let verbinder = 0;
   for (const l of laeufe) {
     const richtung = minus(l.b, l.a);
     const gesamt = laenge(richtung);
     const t = mal(richtung, 1 / (gesamt || 1));
     let pos = 0;
-    let teile = 0;
     while (gesamt - pos > 0.3) {
       const frei = gesamt - pos;
       const [len, slug] = GELAENDER.find(([g]) => g <= frei + 0.05) ?? GELAENDER[GELAENDER.length - 1];
@@ -462,11 +460,43 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
         gelaender.push({ slug, x: r3(mitte.x), z: r3(mitte.z), rot, y: l.y });
       }
       pos += len;
-      teile++;
     }
-    verbinder += Math.max(0, teile - 1); // ponytail: Endteile und 90°-Ecken fehlen noch, A+ ergänzt im Angebot
   }
-  return { gelaender: [...gelaender, ...rund], verbinder, keile };
+  return { gelaender: [...gelaender, ...rund, ...verbinder([...gelaender, ...rund], ctx)], keile };
+};
+
+// Die Geländerfelder sind kürzer als ihr Rastermaß (375er: 3,53 m), die Lücke schließt der Verbinder (22 cm).
+// Er sitzt an jedem Stoß zweier Felder, auch zwischen geraden und runden Geländern; knickt der Lauf, der 90°-Verbinder.
+// ponytail: Stoß = Feldenden näher als 40 cm, Verbinder mittig dazwischen; Endteile an freien Enden fehlen noch, A+ ergänzt im Angebot
+const SEHNE: Record<string, number> = { 'gelaender-sger-150': -14.2 }; // Rundgeländer: Lage der Sehne im Modell
+const feldEnden = (z: Zusatz, ctx: Ctx): { p: V; r: V }[] => {
+  const m = ctx.masse[z.slug];
+  const w = z.rot + (SEHNE[z.slug] ?? (m.l >= m.b ? 0 : 90));
+  const r = polar(w, 1);
+  const halb = mal(r, Math.max(m.l, m.b) / 2);
+  return [{ p: plus(z, halb), r }, { p: minus(z, halb), r }];
+};
+const verbinder = (felder: Zusatz[], ctx: Ctx): Zusatz[] => {
+  const enden = felder.flatMap((z, i) => feldEnden(z, ctx).map((e) => ({ ...e, i, y: z.y ?? 0 })));
+  const paare: { a: number; b: number; d: number }[] = [];
+  for (let a = 0; a < enden.length; a++) for (let b = a + 1; b < enden.length; b++) {
+    const d = laenge(minus(enden[a].p, enden[b].p));
+    if (enden[a].i !== enden[b].i && d < 0.4) paare.push({ a, b, d });
+  }
+  const belegt = new Set<number>();
+  const out: Zusatz[] = [];
+  for (const { a, b } of paare.sort((x, y) => x.d - y.d)) {
+    if (belegt.has(a) || belegt.has(b)) continue;
+    belegt.add(a); belegt.add(b);
+    const ea = enden[a], eb = enden[b];
+    const knick = Math.abs(skalar(ea.r, eb.r)) < 0.7;
+    const slug = knick ? 'gelaender-verbindung-90' : 'gelaender-verbindung-gerade';
+    if (!ctx.masse[slug]) continue;
+    const mitte = mal(plus(ea.p, eb.p), 0.5);
+    const rot = knick ? norm360(winkel(ea.r)) : norm360(winkel(skalar(ea.r, eb.r) > 0 ? plus(ea.r, eb.r) : minus(ea.r, eb.r)));
+    out.push({ slug, x: r3(mitte.x), z: r3(mitte.z), rot, y: Math.max(ea.y, eb.y) });
+  }
+  return out;
 };
 
 // ---------- Prüfregeln (Abschnitt 5) ----------
@@ -1136,7 +1166,6 @@ export const stueckliste = (park: Park, ctx: Ctx): Zeile[] => {
   park.teile.forEach((t) => zaehle(t.slug, false));
   ab.gelaender.forEach((g) => zaehle(g.slug, true));
   ab.keile.forEach((k) => zaehle(k.slug, true));
-  for (let i = 0; i < ab.verbinder; i++) zaehle('gelaender-verbindung-gerade', true);
   const reihenfolge = (slug: string) => { const g = ctx.info[slug]?.gruppe ?? ''; return GRUPPEN.indexOf(g); };
   const zeilen: Zeile[] = [...mengen.entries()]
     .sort(([a], [b]) => reihenfolge(a) - reihenfolge(b) || (ctx.info[a]?.code ?? a).localeCompare(ctx.info[b]?.code ?? b))

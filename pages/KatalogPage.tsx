@@ -3,7 +3,8 @@ import { createPortal } from 'react-dom';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import ModellAnsicht from '../components/katalog/ModellAnsicht';
-import { usePreise } from '../components/katalog/usePreise';
+import { konfiguratorFrei, useKonfiguratorFrei, usePreise } from '../components/katalog/usePreise';
+import CodeDialog, { KONFIGURATOR_ANFRAGE, KONFIGURATOR_TEXT, KONFIGURATOR_TITEL } from '../components/katalog/CodeDialog';
 import { anzahlImPark, merken } from '../components/konfigurator/merkliste';
 
 // Daten: public/katalog/katalog.json, erzeugt aus der Archicad-Skate-Bibliothek
@@ -70,45 +71,8 @@ const PreisBadge: React.FC<{ preis: string | null; gross?: boolean; onSperre: ()
     </button>
   );
 
-const CodeDialog: React.FC<{ offen: boolean; onClose: () => void; freischalten: (c: string) => Promise<string | null> }> = ({ offen, onClose, freischalten }) => {
-  const [code, setCode] = useState('');
-  const [fehler, setFehler] = useState<string | null>(null);
-  const [laeuft, setLaeuft] = useState(false);
-  if (!offen) return null;
-  const senden = async (ev: React.FormEvent) => {
-    ev.preventDefault();
-    setLaeuft(true); setFehler(null);
-    const f = await freischalten(code);
-    setLaeuft(false);
-    if (f) setFehler(f); else { setCode(''); onClose(); }
-  };
-  return createPortal(
-    <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-brand-dark/50 backdrop-blur-sm" onClick={onClose}>
-      <form onSubmit={senden} onClick={(e) => e.stopPropagation()} className="w-full max-w-md bg-brand-bg rounded-2xl border border-brand-dark/10 shadow-2xl p-8">
-        <span className="material-symbols-outlined text-brand-orange text-4xl mb-4">lock_open</span>
-        <h2 className="text-2xl font-extrabold font-heading text-brand-dark uppercase tracking-tight mb-2">Preise freischalten</h2>
-        <p className="text-brand-muted text-sm mb-6">Die Nettopreise 2026 sehen Sie mit Ihrem persönlichen Code. Der Code gilt einmal: Nach dem Neuladen der Seite sind die Preise wieder ausgeblendet. Sie haben noch keinen? Wir senden ihn Ihnen gern zu.</p>
-        <label className="block font-mono text-xs uppercase tracking-widest text-brand-muted mb-2" htmlFor="preis-code">Code</label>
-        <input
-          id="preis-code" value={code} onChange={(e) => setCode(e.target.value)} autoFocus autoComplete="off"
-          className="w-full px-4 py-3 rounded-lg border border-brand-dark/15 bg-white font-mono tracking-widest uppercase focus:outline-none focus:border-brand-orange"
-        />
-        {fehler && <p className="mt-3 text-sm text-red-700" role="alert">{fehler}</p>}
-        <div className="mt-6 flex flex-wrap items-center gap-4">
-          <button type="submit" disabled={!code.trim() || laeuft} className="px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm disabled:opacity-50 hover:bg-brand-dark transition-colors">
-            {laeuft ? 'Prüfe …' : 'Freischalten'}
-          </button>
-          <a href={ANFRAGE} className="text-sm text-brand-orange underline underline-offset-4">Code anfordern</a>
-          <button type="button" onClick={onClose} className="ml-auto text-sm text-brand-muted hover:text-brand-dark">Abbrechen</button>
-        </div>
-      </form>
-    </div>,
-    document.body,
-  );
-};
-
 // Element in den eigenen Park legen; der Konfigurator setzt es beim nächsten Öffnen an einen freien Platz
-const ParkKnopf: React.FC<{ slug: string }> = ({ slug }) => {
+const ParkKnopf: React.FC<{ slug: string; onSperre: () => void }> = ({ slug, onSperre }) => {
   const [drin, setDrin] = useState(false);
   useEffect(() => setDrin(false), [slug]);
   return drin ? (
@@ -116,7 +80,7 @@ const ParkKnopf: React.FC<{ slug: string }> = ({ slug }) => {
       <span className="material-symbols-outlined text-lg">check</span> Im Park · zum Konfigurator
     </Link>
   ) : (
-    <button type="button" onClick={() => { merken(slug); setDrin(true); }} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-brand-dark text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-orange transition-colors">
+    <button type="button" onClick={() => { if (!konfiguratorFrei()) { onSperre(); return; } merken(slug); setDrin(true); }} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-brand-dark text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-orange transition-colors">
       <span className="material-symbols-outlined text-lg">add</span> In meinen Park legen
     </button>
   );
@@ -147,8 +111,8 @@ const Zeile: React.FC<{ label: string; children: React.ReactNode }> = ({ label, 
 );
 
 const Detail: React.FC<{
-  e: Element; preis: string | null; onSperre: () => void; onClose: () => void; vor?: Element; zurueck?: Element;
-}> = ({ e, preis, onSperre, onClose, vor, zurueck }) => {
+  e: Element; preis: string | null; onSperre: () => void; onParkSperre: () => void; onClose: () => void; vor?: Element; zurueck?: Element;
+}> = ({ e, preis, onSperre, onParkSperre, onClose, vor, zurueck }) => {
   const p = masseAusPreisliste(e.preisliste_masse_cm);
   const m = e.modell_masse_cm;
   useEffect(() => {
@@ -174,7 +138,7 @@ const Detail: React.FC<{
           <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mb-2">{e.name}</h2>
           <p className="font-mono text-sm text-brand-muted mb-6">{e.preisliste_code || e.kuerzel || 'ohne Code'}{e.preisliste_produkt && ` · ${e.preisliste_produkt}`}</p>
           <div className="mb-6"><PreisBadge preis={preis} gross onSperre={onSperre} /></div>
-          <div className="mb-8"><ParkKnopf slug={e.slug} /></div>
+          <div className="mb-8"><ParkKnopf slug={e.slug} onSperre={onParkSperre} /></div>
 
           <h3 className="font-mono text-xs uppercase tracking-widest text-brand-muted mb-1">Bemaßung</h3>
           <dl className="mb-8">
@@ -223,6 +187,8 @@ const KatalogPage: React.FC = () => {
   const [dialog, setDialog] = useState(false);
   const { preise, freischalten, betreiber, kundencode, abmelden } = usePreise();
   const [neuCode, setNeuCode] = useState<string | null>(null);
+  const [konfigDialog, setKonfigDialog] = useState(false);
+  const konfig = useKonfiguratorFrei();
 
   useEffect(() => {
     fetch('/katalog/katalog.json').then((r) => r.json()).then(setKatalog).catch(() => setKatalog(null));
@@ -283,9 +249,14 @@ const KatalogPage: React.FC = () => {
             {preise ? 'Preise freigeschaltet' : 'Preise freischalten'}
           </button>
           {betreiber && (
-            <button type="button" onClick={async () => setNeuCode((await kundencode()) ?? 'Fehler, bitte erneut versuchen')} className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider bg-brand-dark text-white hover:bg-brand-orange transition-colors">
-              <span className="material-symbols-outlined text-lg">key</span>Kundencode erzeugen
-            </button>
+            <>
+              <button type="button" onClick={async () => setNeuCode((await kundencode('preise')) ?? 'Fehler, bitte erneut versuchen')} className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider bg-brand-dark text-white hover:bg-brand-orange transition-colors" title="Kundencode für die Preise erzeugen">
+                <span className="material-symbols-outlined text-lg">key</span>Code Preise
+              </button>
+              <button type="button" onClick={async () => setNeuCode((await kundencode('konfigurator')) ?? 'Fehler, bitte erneut versuchen')} className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider bg-brand-dark text-white hover:bg-brand-orange transition-colors" title="Kundencode für den Konfigurator erzeugen">
+                <span className="material-symbols-outlined text-lg">key</span>Code Konfigurator
+              </button>
+            </>
           )}
         </div>
       </div>
@@ -355,7 +326,7 @@ const KatalogPage: React.FC = () => {
 
       {aktiv && (
         <Detail
-          e={aktiv} preis={preise ? preisText(preise[aktiv.slug]) ?? 'auf Anfrage' : null} onSperre={() => setDialog(true)} onClose={schliessen}
+          e={aktiv} preis={preise ? preisText(preise[aktiv.slug]) ?? 'auf Anfrage' : null} onSperre={() => setDialog(true)} onParkSperre={() => setKonfigDialog(true)} onClose={schliessen}
           zurueck={katalog!.elemente[index - 1]} vor={katalog!.elemente[index + 1]}
         />
       )}
@@ -363,7 +334,9 @@ const KatalogPage: React.FC = () => {
         <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-brand-dark/50 backdrop-blur-sm" onClick={() => setNeuCode(null)}>
           <div onClick={(ev) => ev.stopPropagation()} className="w-full max-w-md bg-brand-bg rounded-2xl border border-brand-dark/10 shadow-2xl p-8">
             <h2 className="text-2xl font-extrabold font-heading text-brand-dark uppercase tracking-tight mb-2">Kundencode</h2>
-            <p className="text-brand-muted text-sm mb-4">Gilt einmal und 7 Tage lang. Nach dem Einlösen sieht der Kunde die Preise, bis er die Seite neu lädt.</p>
+            <p className="text-brand-muted text-sm mb-4">{neuCode.startsWith('C-')
+              ? 'Für den Konfigurator. Einlösbar einmal innerhalb von 7 Tagen, danach kann der Kunde 2 Tage lang planen.'
+              : 'Für die Preise. Gilt einmal und 7 Tage lang. Nach dem Einlösen sieht der Kunde die Preise, bis er die Seite neu lädt.'}</p>
             <p className="font-mono text-lg tracking-wider bg-white border border-brand-dark/15 rounded-lg px-4 py-3 select-all break-all">{neuCode}</p>
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <button type="button" onClick={() => navigator.clipboard?.writeText(neuCode)} className="px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors">Kopieren</button>
@@ -374,7 +347,11 @@ const KatalogPage: React.FC = () => {
         </div>,
         document.body,
       )}
-      <CodeDialog offen={dialog} onClose={() => setDialog(false)} freischalten={freischalten} />
+      <CodeDialog
+        offen={dialog} onClose={() => setDialog(false)} freischalten={freischalten} anfrage={ANFRAGE} titel="Preise freischalten"
+        text="Die Nettopreise 2026 sehen Sie mit Ihrem persönlichen Code. Der Code gilt einmal: Nach dem Neuladen der Seite sind die Preise wieder ausgeblendet. Sie haben noch keinen? Wir senden ihn Ihnen gern zu."
+      />
+      <CodeDialog offen={konfigDialog} onClose={() => setKonfigDialog(false)} freischalten={konfig.freischalten} anfrage={KONFIGURATOR_ANFRAGE} titel={KONFIGURATOR_TITEL} text={KONFIGURATOR_TEXT} />
     </PageShell>
   );
 };

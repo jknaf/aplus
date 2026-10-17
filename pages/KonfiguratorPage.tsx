@@ -7,6 +7,8 @@ import QRCode from 'qrcode';
 import Druck, { Plan, type DruckOptionen } from '../components/konfigurator/Druck';
 import { ladeNetz, type Netz } from '../components/konfigurator/plan2d';
 import { PARK_SPEICHER, leeren, warteschlange } from '../components/konfigurator/merkliste';
+import { konfiguratorFrei, useKonfiguratorFrei } from '../components/katalog/usePreise';
+import CodeDialog, { KONFIGURATOR_ANFRAGE, KONFIGURATOR_TEXT, KONFIGURATOR_TITEL } from '../components/katalog/CodeDialog';
 import {
   BAUSTEINE, LEER, RASTER, gruppen, gruppeVerschieben, anbauMoeglich, bowl, drehenGruppe, geradeAnhaengen, kurveAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
   hinzufuegen, kodieren, kollidiert, neueId, pruefen, stueckliste, vorlageBauen, vorschlag as vorschlagFuer, waehlbar,
@@ -177,6 +179,10 @@ const KonfiguratorPage: React.FC = () => {
   const [listeOffen, setListeOffen] = useState(() => { try { return localStorage.getItem('aplus-konfigurator-liste') !== 'zu'; } catch { return true; } });
   const listeUmschalten = () => setListeOffen((o) => { try { localStorage.setItem('aplus-konfigurator-liste', o ? 'zu' : 'offen'); } catch { /* ohne Speicher nur für diese Sitzung */ } return !o; });
   const api = useRef<BuehnenApi | null>(null);
+  // Ohne Freischaltung: Vorlage wählen, ansehen, Plan und Stückliste; jede Bearbeitung öffnet den Code-Dialog
+  const { frei, freischalten } = useKonfiguratorFrei();
+  const [sperre, setSperre] = useState(false);
+  const gesperrt = useCallback(() => { if (frei) return false; setSperre(true); return true; }, [frei]);
 
   const melden = useCallback((text: string) => { setMeldung(text); window.setTimeout(() => setMeldung((x) => (x === text ? null : x)), 3500); }, []);
 
@@ -192,7 +198,7 @@ const KonfiguratorPage: React.FC = () => {
       let gespeichert: Park | null = null;
       try { const s = localStorage.getItem(PARK_SPEICHER); gespeichert = s ? dekodieren(s, c) : null; } catch { gespeichert = null; }
       let p = ausLink ?? gespeichert;
-      const neu = warteschlange().filter((s) => c.masse[s]);
+      const neu = konfiguratorFrei() ? warteschlange().filter((s) => c.masse[s]) : [];
       if (neu.length) {
         p = p ?? LEER;
         for (const s of neu) p = hinzufuegen(p, [{ id: neueId(), slug: s, x: 0, z: 0, rot: 0 }], c);
@@ -210,9 +216,10 @@ const KonfiguratorPage: React.FC = () => {
   }, [park]);
 
   const aendern = useCallback((neu: Park, vorher?: Park) => {
+    if (gesperrt()) return;
     setVerlauf((v) => ({ zurueck: [...v.zurueck.slice(-49), vorher ?? park!], vor: [] }));
     setPark(neu);
-  }, [park]);
+  }, [park, gesperrt]);
 
   const zeigeVorschlag = useCallback((id: string, p: Park) => {
     if (!ctx || abgelehnt.current.has(id)) { setVorschlag(null); return; }
@@ -239,7 +246,7 @@ const KonfiguratorPage: React.FC = () => {
     if (!ctx) return;
     const v = VORLAGEN.find((x) => x.id === id);
     const neu = v ? vorlageBauen(v, ctx) : LEER;
-    if (park) aendern(neu); else setPark(neu);
+    if (park && frei) aendern(neu); else setPark(neu);
     setStart(false); setAuswahl(null); setVorschlag(null);
     setAnsicht('3d');
   };
@@ -294,7 +301,7 @@ const KonfiguratorPage: React.FC = () => {
   }, [park, verlauf]);
 
   const ziehenUpdate = useCallback((roh: Teil, einzeln: boolean) => {
-    if (!ctx || !park) return;
+    if (!ctx || !park || gesperrt()) return;
     const gruppe = einzeln ? [] : gruppen(park, ctx).find((g) => g.some((t) => t.id === roh.id)) ?? [];
     let zug: Zug;
     if (gruppe.length > 1) {
@@ -307,7 +314,7 @@ const KonfiguratorPage: React.FC = () => {
     ziehenAktuell.current = zug;
     setZiehen(zug);
     setVorschlag(null);
-  }, [ctx, park]);
+  }, [ctx, park, gesperrt]);
   const ablegen = useCallback(() => {
     const z = ziehenAktuell.current;
     ziehenAktuell.current = null;
@@ -358,6 +365,7 @@ const KonfiguratorPage: React.FC = () => {
     aendern({ ...park, flaeche: { l: runden(l), b: runden(b), angeboescht } });
   };
   const csvLaden = () => {
+    if (gesperrt()) return;
     const blob = new Blob(['﻿' + csv(zeilen)], { type: 'text/csv;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
@@ -386,6 +394,7 @@ const KonfiguratorPage: React.FC = () => {
     }, 400);
   };
   const teilen = () => {
+    if (gesperrt()) return;
     navigator.clipboard?.writeText(link).then(() => melden('Link kopiert. Wer ihn öffnet, sieht genau diesen Park.'), () => melden(link));
   };
   // ponytail: mailto statt Server-Versand; sehr große Parks können lange Links ergeben, die manche Mailprogramme kürzen
@@ -551,7 +560,7 @@ const KonfiguratorPage: React.FC = () => {
       <div className="p-4 border-t border-brand-dark/10 space-y-2 text-sm">
         {gewicht > 0 && <div className="flex justify-between text-brand-muted"><span>Gewicht ca.</span><span>{(gewicht / 1000).toLocaleString('de-DE', { maximumFractionDigits: 1 })} t</span></div>}
         <p className="text-[11px] text-brand-muted leading-snug">Preise erhalten Sie mit dem Angebot, inklusive Fracht und Montage. Bauseitige Leistungen (Fläche, Gullys, Fundamente) sind nicht Teil der Lieferung.</p>
-        <button type="button" disabled={!park?.teile.length} onClick={() => setAnfrage(true)} className="w-full py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors disabled:opacity-40">
+        <button type="button" disabled={!park?.teile.length} onClick={() => { if (!gesperrt()) setAnfrage(true); }} className="w-full py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors disabled:opacity-40">
           Angebot anfragen
         </button>
         <button type="button" disabled={!zeilen.length} onClick={csvLaden} className="w-full text-xs text-brand-muted hover:text-brand-dark disabled:opacity-40">Stückliste als CSV</button>
@@ -587,7 +596,7 @@ const KonfiguratorPage: React.FC = () => {
               ansicht={ansicht}
               rundflug={rundflug}
               modellPfad={modellPfad}
-              onAuswahl={(id) => { setAuswahl(id); if (!id) setVorschlag(null); }}
+              onAuswahl={(id) => { if (id && gesperrt()) return; setAuswahl(id); if (!id) setVorschlag(null); }}
               onZiehen={ziehenUpdate}
               onAblegen={ablegen}
               onBereit={(a) => { api.current = a; }}
@@ -601,6 +610,7 @@ const KonfiguratorPage: React.FC = () => {
             <div className="absolute top-3 left-3 right-3 flex flex-wrap items-start gap-2 pointer-events-none">
               <div className="flex flex-wrap gap-2 pointer-events-auto">
                 <Gruppe><LKnopf icon="dashboard_customize" label="Vorlage" onClick={() => setStart(true)} /></Gruppe>
+                {!frei && <Gruppe><LKnopf icon="lock" label="Freischalten" labelAb="sm:inline" title="Konfigurator mit Code freischalten" onClick={() => setSperre(true)} /></Gruppe>}
                 <Gruppe>
                   <label className="inline-flex items-center gap-1 px-2 text-[13px] font-semibold text-brand-dark" title="Fläche in Metern (Raster 1,25 m)">
                     <span className="material-symbols-outlined text-[18px] text-brand-muted">square_foot</span>
@@ -633,8 +643,8 @@ const KonfiguratorPage: React.FC = () => {
                   <span className="hidden lg:contents">
                     <LKnopf icon="list_alt" label="Liste" aktiv={listeOffen} title={listeOffen ? 'Stückliste ausblenden' : 'Stückliste einblenden'} onClick={listeUmschalten} />
                   </span>
-                  {!listeOffen && <span className="hidden lg:contents"><LKnopf icon="send" label="Anfrage" title="Angebot anfragen" onClick={() => setAnfrage(true)} disabled={!park.teile.length} /></span>}
-                  <LKnopf icon="print" label="PDF" title="Drucken oder als PDF sichern" onClick={() => setDruckDialog(true)} disabled={!park.teile.length} />
+                  {!listeOffen && <span className="hidden lg:contents"><LKnopf icon="send" label="Anfrage" title="Angebot anfragen" onClick={() => { if (!gesperrt()) setAnfrage(true); }} disabled={!park.teile.length} /></span>}
+                  <LKnopf icon="print" label="PDF" title="Drucken oder als PDF sichern" onClick={() => { if (!gesperrt()) setDruckDialog(true); }} disabled={!park.teile.length} />
                   <LKnopf icon="share" label="Teilen" labelAb="2xl:inline" title="Link zu diesem Park kopieren" onClick={teilen} />
                 </Gruppe>
               </div>
@@ -740,6 +750,15 @@ const KonfiguratorPage: React.FC = () => {
       <DruckDialog offen={druckDialog} onClose={() => setDruckDialog(false)} onDrucken={drucken} />
       {druck && ctx && park && ab && (
         <Druck park={park} ctx={ctx} zusatz={[...ab.gelaender, ...ab.keile]} zeilen={zeilen} hinweise={hinweise.map((h) => h.text)} optionen={druck.optionen} bild3d={druck.bild} netze={druck.netze} qr={druck.qr} />
+      )}
+      <CodeDialog offen={sperre} onClose={() => setSperre(false)} freischalten={freischalten} anfrage={KONFIGURATOR_ANFRAGE} titel={KONFIGURATOR_TITEL} text={KONFIGURATOR_TEXT} />
+      {!frei && createPortal(
+        <div className="druck-sperre hidden p-16 text-black" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
+          <style>{'@media print { body > *:not(.druck-sperre) { display: none !important; } .druck-sperre { display: block !important; } }'}</style>
+          <p className="text-2xl font-bold mb-4">Skatepark-Konfigurator von A+ Urban Design</p>
+          <p>Drucken und PDF sind nach der Freischaltung möglich. Den Code erhalten Sie unter post@aplusurbandesign.com.</p>
+        </div>,
+        document.body,
       )}
       <AnfrageDialog offen={anfrage} onClose={() => setAnfrage(false)} mailto={mailto} link={link} />
     </PageShell>

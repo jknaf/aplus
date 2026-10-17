@@ -136,7 +136,7 @@ const ProductPavilionPage: React.FC = () => {
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/ueberdachung/pavillon-wetterschutz.jpg" alt="Pavillon Varianten" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 1: Varianten der Anordnung</div>
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 1: Anordnungsvarianten mit Bepflanzung (Zeichnung)</div>
                     </div>
                     
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
@@ -153,7 +153,7 @@ const ProductPavilionPage: React.FC = () => {
 
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/ueberdachung/ueberdachung-beton-01.jpg" alt="Beton-Pavillon Strukturdetail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 2: Überdachung aus Beton mit Sitzbank</div>
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 2: Überdachung aus Beton mit Sitzbänken</div>
                     </div>
                 </div>
             </div>

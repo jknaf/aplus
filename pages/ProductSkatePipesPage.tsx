@@ -141,9 +141,9 @@ const ProductSkatePipesPage: React.FC = () => {
                 </div>
 
                 <div className="lg:w-7/12 flex flex-col gap-6">
-                    <GalleryImage src="/images/skate-pipes/skate-pipe-02.jpg" alt="Beton Skate-Pipe in Standardaufstellung" label="Abb. 1: Standard-Pipe" />
-                    <GalleryImage src="/images/skate-pipes/skate-pipe-bank-03.jpg" alt="Skate-Pipe mit Bank-Anfahrt" label="Abb. 2: Pipe mit Bank" />
-                    <GalleryImage src="/images/skate-pipes/skate-pipe-kombi-04.jpg" alt="Combi-Pipe mit mehreren Höhen und Banks" label="Abb. 3: Pipe-Kombination" />
+                    <GalleryImage src="/images/skate-pipes/skate-pipe-02.jpg" alt="Beton Skate-Pipe in Standardaufstellung" label="Abb. 1: Standard-Pipe mit Geländer" />
+                    <GalleryImage src="/images/skate-pipes/skate-pipe-bank-03.jpg" alt="Skate-Pipe mit Bank-Anfahrt" label="Abb. 2: Pipe mit angesetzter Bank" />
+                    <GalleryImage src="/images/skate-pipes/skate-pipe-kombi-04.jpg" alt="Combi-Pipe mit mehreren Höhen und Banks" label="Abb. 3: Pipe-Kombination mit Box" />
                 </div>
             </div>
 

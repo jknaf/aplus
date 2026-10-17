@@ -194,6 +194,31 @@ const ProductGrillPage: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Für Betreiber: Belege Montageanleitung Grillplatz, stuttgart.de/leben/natur/grillplaetze */}
+                <div className="mb-12">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Für Kommunen und Vereine</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
+                        Ein fester Ort <span className="text-brand-orange">fürs Feuer.</span>
+                    </h2>
+                    <p className="text-lg text-brand-muted leading-relaxed max-w-3xl mb-8">
+                        Viele Städte lassen das Grillen in Parks nur an fest eingerichteten Feuerstellen zu. Stuttgart etwa verbietet mitgebrachte Grills und Einweggrills in Wald und Parks aus Brandschutzgründen. Ein fester Grillplatz gibt Badegästen, Campern und Vereinsmitgliedern einen erlaubten Ort zum Grillen. Gegrillt wird über Beton, nicht über der Wiese.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                            <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Regeln mit der Feuerwehr</h3>
+                            <p className="text-sm text-brand-muted leading-relaxed">Die Nutzungsbedingungen legt der Betreiber mit der örtlichen Feuerwehr fest. Ein Schild am Grillplatz macht sie für alle sichtbar. Als Brennstoff ist nur Grillkohle vorgesehen.</p>
+                        </div>
+                        <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                            <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Kurzer Pflegeplan</h3>
+                            <p className="text-sm text-brand-muted leading-relaxed">Alle zwei Wochen reinigen, zweimal im Jahr prüfen. Abplatzungen am Beton lassen sich mit Reparaturmörtel ausbessern. Ein Müllbehälter und eine Aschentonne in der Nähe halten den Platz sauber.</p>
+                        </div>
+                        <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                            <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Bündig oder erhöht</h3>
+                            <p className="text-sm text-brand-muted leading-relaxed">Die Bodenplatte liegt wahlweise bündig mit dem Gelände oder darüber. Die Aussparung für den Träger wird verklebt. So dringen weder Schmutz noch Wasser ein, und der Träger ist gegen Diebstahl gesichert.</p>
+                        </div>
+                    </div>
+                </div>
+
                  <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
                         Technische <span className="text-brand-orange">Daten</span>

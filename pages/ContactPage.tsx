@@ -37,7 +37,7 @@ const CATALOG_BODY = `Guten Tag,
 
 ich würde gerne Ihren Produktkatalog erhalten.
 
-Interessiert mich besonders (z. B. Skate-Anlagen, Pumptrack, Möblierung):
+Besonders interessiert mich (z. B. Skate-Anlagen, Pumptracks, Möblierung):
 [bitte ergänzen]
 
 Versand an:
@@ -70,11 +70,11 @@ const ContactPage: React.FC = () => {
 
                 <div className="text-center mb-16 animate-fade-in-up">
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-brand-dark leading-[0.85]">
-                        Gemeinsam<br/><span className="text-brand-orange">Planen.</span>
+                        Gemeinsam<br/><span className="text-brand-orange">planen.</span>
                     </h1>
                     <p className="mt-8 text-xl text-brand-muted max-w-2xl mx-auto font-light">
-                        Bereit für das nächste Projekt? Erzählen Sie uns von Ihrer Vision. <br/>
-                        Wir liefern die passende Beton-Lösung.
+                        Sie planen eine Anlage? Beschreiben Sie uns kurz Fläche und Vorhaben. <br/>
+                        Wir machen Ihnen einen Vorschlag.
                     </p>
                 </div>
 

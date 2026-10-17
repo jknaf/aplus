@@ -33,7 +33,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                     <div className="absolute bottom-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-sm p-4 border-t border-brand-dark/10 flex justify-between items-center">
                         <div className="flex flex-col">
                             <span className="text-[10px] font-mono text-brand-orange tracking-widest uppercase">Datei</span>
-                            <span className="text-white font-bold text-xs">PDF DOCUMENT</span>
+                            <span className="text-white font-bold text-xs">PDF-DOKUMENT</span>
                         </div>
                         <div className="flex flex-col text-right">
                             <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase">Größe</span>
@@ -44,7 +44,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
 
                 <div className="absolute top-4 right-4 flex items-center gap-2 z-30 bg-brand-dark/60 px-2 py-1 rounded backdrop-blur-md border border-brand-dark/10">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                    <span className="text-[10px] font-mono text-white uppercase tracking-wider">Available</span>
+                    <span className="text-[10px] font-mono text-white uppercase tracking-wider">Verfügbar</span>
                 </div>
             </div>
 
@@ -83,7 +83,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                             </h2>
 
                             <p className="text-lg text-brand-muted mb-8 max-w-xl leading-relaxed">
-                                Planen Sie Ihr nächstes Projekt mit allen Details zur Hand. Unser Katalog enthält technische Zeichnungen, Ausschreibungstexte und inspirierende Case Studies unserer Beton-Skateparks und Stadtmöbel.
+                                Unser Katalog enthält alle Elemente mit Maßen, Beispielkombinationen und Normhinweisen sowie die Montage- und Wartungsanleitung.
                             </p>
 
                             <Link
@@ -115,7 +115,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
 
                 <h3 className="text-2xl font-extrabold font-heading text-brand-dark uppercase mb-2">Produktkatalog</h3>
                 <p className="text-sm text-brand-muted mb-6 leading-relaxed">
-                    Alle technischen Daten, Maße und Zertifikate zu diesem Produkt in einer Datei. Ein Klick öffnet Ihr E-Mail-Programm mit einer vorbereiteten Anfrage. Wir schicken den Katalog persönlich zu.
+                    Alle technischen Daten, Maße und Zertifikate zu diesem Produkt. Ein Klick öffnet Ihr E-Mail-Programm mit einer vorbereiteten Anfrage. Wir schicken den Katalog persönlich zu.
                 </p>
 
                 <Link

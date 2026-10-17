@@ -12,7 +12,7 @@ const ProjectsPage: React.FC = () => {
   const filteredProjects = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
 
   return (
-    <PageShell title="Referenzen & Projekte" description="Realisierte Projekte von A+ Urban Design: Beton-Skateparks, Pumptracks, Hockey-Banden und urbane Freiraumlösungen quer durch Europa.">
+    <PageShell title="Referenzen & Projekte" description="Realisierte Projekte von A+ Urban Design: Beton-Skateparks, Pumptracks, Hockey-Banden und urbane Freiraumlösungen in ganz Europa.">
       
       {/* 1. HEADER SECTION - Updated Typography */}
       <div className="relative pt-12 pb-24 text-center">
@@ -23,7 +23,7 @@ const ProjectsPage: React.FC = () => {
             </span>
         </div>
         <h1 className="text-6xl md:text-9xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.85] mb-8">
-            Work<br/><span className="text-brand-orange">Selection.</span>
+            Ausgewählte<br/><span className="text-brand-orange">Projekte.</span>
         </h1>
       </div>
 
@@ -50,7 +50,7 @@ const ProjectsPage: React.FC = () => {
                         filter === category ? 'text-brand-orange' : 'text-brand-muted hover:text-brand-dark'
                     }`}
                     >
-                    <span className="relative z-10">{category.replace('-', ' ')}</span>
+                    <span className="relative z-10">{category}</span>
                     {filter === category && (
                         <span className="absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange shadow-[0_0_15px_rgba(249,115,22,0.8)]"></span>
                     )}

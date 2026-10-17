@@ -46,12 +46,11 @@ const ProductPavilionPage: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Überdachung & Pavillon aus Beton",
-    "description": "C-Profil-Überdachung aus bewehrtem Beton C35/45. 240 x 200 x 262 cm. Einzeln oder als Pavillon-Gruppe. Fundamentfrei, mit integrierter Sitzfläche.",
+    "description": "C-Profil-Überdachung aus bewehrtem Beton C35/45. 240 × 200 × 262 cm. Einzeln oder als Pavillon-Gruppe. Fundamentfrei, mit integrierter Sitzfläche.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
     "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
-    "category": "Stadtmöblierung / Urban Furniture",
+    "category": "Stadtmöblierung",
     "material": "Bewehrter Beton C35/45",
-    "countryOfOrigin": "DE",
     "image": "https://www.aplusurbandesign.com/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg",
     "offers": {
       "@type": "Offer",
@@ -67,13 +66,13 @@ const ProductPavilionPage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Beton-Überdachung & Pavillon: Unterstellplatz öffentlich" description="Überdachung, Pavillon und Unterstellplatz aus Beton: wetterfest, fundamentfrei und vandalismussicher. Stadtmöbel und Wetterschutz für öffentliche Parks, Sportanlagen und Freizeitbereiche." schema={productSchema}>
+    <PageShell title="Überdachung und Pavillon aus Beton" description="Überdachung, Pavillon und Unterstellplatz aus Beton: wetterfest, fundamentfrei und vandalismussicher. Stadtmöbel und Wetterschutz für öffentliche Parks, Sportanlagen und Freizeitbereiche." schema={productSchema}>
 
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
                  <img src="/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg"
-                        alt="Hero Pavillon"
+                        alt="Überdachung aus Beton als Unterstellplatz"
                         className="w-full h-full object-cover animate-kenburns-1"
                         loading="eager"
                         fetchPriority="high" />
@@ -87,14 +86,14 @@ const ProductPavilionPage: React.FC = () => {
             <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
-                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">Wetterschutz</span>
+                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">Öffentlicher Raum</span>
                          <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider bg-black/40 backdrop-blur-sm px-2 py-1">
                             <span className="material-symbols-outlined text-base">umbrella</span> Wetterschutz
                          </span>
                     </div>
                     {/* INDUSTRIAL HEADER UPDATE */}
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
-                        Beton<br/>
+                        Beton-<br/>
                         <span className="text-brand-orange">Pavillon</span>
                     </h1>
                 </div>
@@ -113,13 +112,13 @@ const ProductPavilionPage: React.FC = () => {
                         </span>
                         {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Schutz. <span className="text-brand-orange">Raum.</span> Ästhetik.
+                            Ein Element, <span className="text-brand-orange">vier Einsätze.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Ein einziges Betonelement, vier Funktionen: Einzeln als Unterstellplatz, nebeneinander als Haltestellenüberdachung, gegenüber für überdachte Sitznischen, oder als Dreier-/Vierergruppe zum Pavillon.
+                            Ein Betonelement, vier Einsatzarten: einzeln als Unterstellplatz, in einer Reihe als Haltestellenüberdachung, paarweise gegenüber als überdachte Sitznische oder zu dritt oder viert als Pavillon.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Bei 240 cm Länge, 200 cm Tiefe und 262 cm Höhe deckt das C-Profil aus bewehrtem Beton C35/45 diverse Einsatzzwecke ab. Abstände zwischen Elementen können mit Edelstahlseilen oder Kletterpflanzen-Netzen begrünt werden. Inklusive Sitzfläche und Bodenplatte, keine Vorarbeiten nötig.
+                            Das C-Profil aus bewehrtem Beton C35/45 ist 240 cm lang, 200 cm tief und 262 cm hoch. Die Zwischenräume lassen sich mit Edelstahlseilen oder Rankgittern begrünen. Sitzfläche und Bodenplatte sind Teil des Elements. Nötig ist nur ein verdichtetes Schotterbett.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -135,7 +134,7 @@ const ProductPavilionPage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/ueberdachung/pavillon-wetterschutz.jpg" alt="Pavillon Varianten" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/ueberdachung/pavillon-wetterschutz.jpg" alt="Zeichnung: Anordnungsvarianten der Überdachung mit Bepflanzung" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 1: Anordnungsvarianten mit Bepflanzung (Zeichnung)</div>
                     </div>
                     
@@ -147,12 +146,12 @@ const ProductPavilionPage: React.FC = () => {
                             <li>Pavillons</li>
                         </ul>
                         <p className="text-xs font-mono uppercase tracking-widest text-brand-muted mt-4 pt-3 border-t border-brand-dark/5">
-                            Schotterbett-Aufbau · fundamentfrei · ohne TÜV-Zertifizierung für Pavillons
+                            Auf Schotterbett · fundamentfrei
                         </p>
                     </div>
 
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/ueberdachung/ueberdachung-beton-01.jpg" alt="Beton-Pavillon Strukturdetail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/ueberdachung/ueberdachung-beton-01.jpg" alt="Überdachung aus Beton mit Sitzbänken" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 2: Überdachung aus Beton mit Sitzbänken</div>
                     </div>
                 </div>
@@ -167,7 +166,7 @@ const ProductPavilionPage: React.FC = () => {
                         Wetterschutz im <span className="text-brand-orange">öffentlichen Raum.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed">
-                        Typische Einsatzorte unserer Überdachung / Pavillon als Wetterschutz sind Haltestellen, Schulhöfe, Parks, Campingplätze, Sportanlagen, Friedhöfe, Rastplätze und allgemein der öffentliche Raum. Das Beton-Element mit 240 × 200 × 262 cm hat eine integrierte Sitzfläche für 4-5 Personen und schützt insgesamt ca. 10 Personen vor Regen und Sonne. Sie kann einzeln oder nebeneinander aufgestellt werden, so entsteht eine durchgehende Haltestellenüberdachung, gegenüber aufgestellt entsteht eine Sitznische mit Sichtschutz, als Dreier- oder Viererkombination entsteht ein vollwertiger Pavillon mit Sitzfläche für bis zu 16 Personen und Schutz für bis zu 40 Personen. Abstände zwischen den Elementen lassen sich mit Edelstahlseilen oder Netzen für Kletterpflanzen begrünen.
+                        Typische Einsatzorte sind Haltestellen, Schulhöfe, Parks, Campingplätze, Sportanlagen, Friedhöfe und Rastplätze. Das Betonelement mit 240 × 200 × 262 cm hat eine Sitzfläche für 4–5 Personen und schützt insgesamt ca. 10 Personen vor Regen und Sonne. Das Element kann einzeln stehen. Nebeneinander ergibt sich eine durchgehende Haltestellenüberdachung, gegenüber eine Sitznische mit Sichtschutz. Drei oder vier Elemente bilden einen Pavillon mit Sitzfläche für bis zu 16 Personen und Schutz für bis zu 40 Personen.
                     </p>
                 </div>
 
@@ -176,14 +175,14 @@ const ProductPavilionPage: React.FC = () => {
                         Montage & Lebensdauer
                     </span>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
-                        Positionieren. <span className="text-brand-orange">Nutzen.</span> Versetzen.
+                        Aufstellen und <span className="text-brand-orange">versetzen.</span>
                     </h2>
                     <div className="space-y-5 text-lg text-brand-muted leading-relaxed">
                         <p>
-                            Ein Modul wird mit Autokran schnell an den Standort auf ein verdichtetes Kies- oder Schotterbett positioniert, ohne Fundamentarbeiten und ohne Pflasterarbeiten. Da keine Verschraubungen und keine beweglichen Teile verbaut sind, ist das modulare Fertigteil-Element wartungsarm und lässt sich einfach an einen anderen Standort verlegen oder zurückbauen und abtransportieren.
+                            Das Element wird mit dem Autokran auf ein verdichtetes Kies- oder Schotterbett gesetzt, ohne Fundament- und Pflasterarbeiten. Es hat keine Verschraubungen und keine beweglichen Teile. Deshalb ist es wartungsarm und lässt sich einfach versetzen oder abbauen.
                         </p>
                         <p>
-                            Im Vergleich zu Stahl- oder Holzvarianten altert bewehrter Beton langsamer und muss nicht ständig vor Rost oder Fäulnis geschützt werden. Beton ist nicht brennbar und benötigt über die gesamte Lebensdauer kaum Wartung. Außerdem lässt sich die fugenlose Oberfläche leicht reinigen. Argumente, die besonders im öffentlichen Raum, an Haltestellen und auf Schulhöfen zählen.
+                            Im Vergleich zu Stahl- oder Holzvarianten altert bewehrter Beton langsamer und muss nicht ständig vor Rost oder Fäulnis geschützt werden. Beton ist nicht brennbar und benötigt über die gesamte Lebensdauer kaum Wartung. Außerdem lässt sich die fugenlose Oberfläche leicht reinigen. Das zählt besonders an Haltestellen und auf Schulhöfen.
                         </p>
                     </div>
                 </div>
@@ -197,26 +196,26 @@ const ProductPavilionPage: React.FC = () => {
                         Überdachungselement <span className="text-brand-orange">Bogen.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
-                        Das Überdachungselement von A+ Urban Design ist multifunktional: Einsetzbar als Überdachung für Haltestellen und Sitznischen sowie Pavillons. Das Modul wird inklusive Bodenplatte und Sitzbank mit Autokran versetzt. Es sind keine Teile zusammenzubauen, und es sind keine Fundament- oder Pflasterarbeiten notwendig. Die Aufstellung erfolgt auf verdichtetem Kies- oder Schotterbett.
+                        Das Element dient als Überdachung an Haltestellen, als Sitznische oder als Pavillon. Bodenplatte und Sitzbank sind angeformt. Der Autokran setzt das Element in einem Stück. Fundament- und Pflasterarbeiten entfallen. Die Aufstellung erfolgt auf verdichtetem Kies- oder Schotterbett.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Multifunktional</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Einzeln als Unterstellplatz, nebeneinander als Haltestellenüberdachung, gegenüber als überdachte Sitznische, oder als Dreier-/Vierergruppe zum Pavillon konfigurierbar.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Einzeln als Unterstellplatz, nebeneinander als Haltestellenüberdachung, gegenüber als überdachte Sitznische oder zu dritt oder viert als Pavillon.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Fundamentfrei</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen ohne Fundament auf verdichtetem Kies- oder Schotterbett. Geringe Vorarbeiten, keine Fundamentarbeiten oder Pflasterarbeiten notwendig.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen ohne Fundament auf verdichtetem Kies- oder Schotterbett. Pflaster- und Fundamentarbeiten entfallen.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Robust</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Kann nicht verbogen, angezündet oder zerschlagen werden. Aus bewehrtem Beton C 35/45, witterungsbeständig und auch unter Dauernutzung im öffentlichen Raum stabil.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Bewehrter Beton C35/45 brennt nicht, verbiegt nicht und ist kaum zu beschädigen. Er ist witterungsbeständig und auch unter Dauernutzung im öffentlichen Raum stabil.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Wartungsarm</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Keine Verschraubungen, keine zerbrechlichen Teile. Der Boden ist einfach zu reinigen. Materialien recycelbar. Das Modul lässt sich jederzeit versetzen oder zurückbauen.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Keine Schrauben, keine empfindlichen Teile. Der Boden ist leicht zu reinigen. Die Materialien sind recycelbar. Das Modul lässt sich jederzeit versetzen oder zurückbauen.</p>
                     </div>
                 </div>
 
@@ -233,13 +232,13 @@ const ProductPavilionPage: React.FC = () => {
                     <TechSpecCard title="Höhe" value="246 + 16 cm" icon="vertical_align_top" />
                     <TechSpecCard title="Material" value="Bewehrter Beton C35/45" icon="architecture" />
                     <TechSpecCard title="Montage" value="Autokran, fundamentfrei" icon="layers" />
-                    <TechSpecCard title="Konfiguration" value="Einzel / Gruppe / Arkade" icon="view_column" />
+                    <TechSpecCard title="Konfiguration" value="Einzeln, Reihe, Gruppe" icon="view_column" />
                     <TechSpecCard title="Sitzfläche" value="Integriert" icon="event_seat" />
-                    <TechSpecCard title="Begrünung" value="Stahlseile / Netze" icon="eco" />
-                    <TechSpecCard title="Aufbauen" value="Keine Teile zusammenbauen" icon="build" />
-                    <TechSpecCard title="Witterung" value="Wetterbeständig" icon="thermostat" />
+                    <TechSpecCard title="Begrünung" value="Edelstahlseile, Rankgitter" icon="eco" />
+                    <TechSpecCard title="Aufbau" value="Ein Stück, kein Zusammenbau" icon="build" />
+                    <TechSpecCard title="Witterung" value="Witterungsbeständig" icon="thermostat" />
                     <TechSpecCard title="Recycelbar" value="Ja" icon="recycling" />
-                    <TechSpecCard title="Einsatz" value="Haltestellen / Sitznischen / Pavillons" icon="public" />
+                    <TechSpecCard title="Einsatz" value="Haltestelle, Sitznische, Pavillon" icon="public" />
                 </div>
             </div>
 

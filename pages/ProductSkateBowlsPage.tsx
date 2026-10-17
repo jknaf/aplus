@@ -69,9 +69,8 @@ const ProductSkateBowlsPage: React.FC = () => {
     "description": "Skate-Bowls und Skate-Pools aus modularen Beton-Fertigteilen: Standard-Bowls im Erdreich, offene Bowls oberirdisch, Tiefen 98 und 150 cm. TÜV-zertifiziert nach DIN EN 14974, seit 2002 europaweit im Einsatz.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
     "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
-    "category": "Sportanlagen / Urban Sports",
+    "category": "Sportanlagen",
     "material": "Beton",
-    "countryOfOrigin": "DE",
     "image": "https://www.aplusurbandesign.com/images/skate-bowls/skate-bowl-01.jpg",
     "offers": {
       "@type": "Offer",
@@ -84,7 +83,7 @@ const ProductSkateBowlsPage: React.FC = () => {
 
   return (
     <PageShell
-        title="Modulare Skate-Bowls aus Beton: Standard- und Open-Bowls"
+        title="Modulare Skate-Bowls aus Beton: geschlossen und offen"
         description="Skate-Bowls aus modularen Beton-Fertigteilen: geschlossene Standard-Bowls im Erdreich, offene Bowls oberirdisch. Tiefen 98 und 150 cm. TÜV-zertifiziert nach DIN EN 14974. Planung, Fertigung und Lieferung aus einer Hand."
         schema={productSchema}
     >
@@ -117,15 +116,15 @@ const ProductSkateBowlsPage: React.FC = () => {
             <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mb-32">
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32 relative z-20">
-                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Das Erbe der Pools</span>
+                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Herkunft</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Vom leeren <span className="text-brand-orange">Pool.</span>
+                            Aus dem leeren <span className="text-brand-orange">Pool.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            In den 50er Jahren entdeckten kalifornische Surfer leere Swimmingpools als Skateflächen. Die charakteristischen geschwungenen Transitions, das Flat und das Copingrohr an der Oberkante sind bis heute die DNA jedes Skate-Bowls.
+                            In den 1950er-Jahren entdeckten Surfer leere Swimmingpools als Skateflächen. Die geschwungenen Transitions, das Flat und das Copingrohr an der Oberkante prägen bis heute jeden Skate-Bowl.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Mit unseren modularen Skate-Elementen aus bewehrtem Beton realisieren wir Skate-Bowls und Skate-Pools in beliebigen Größen und Formen, geschlossen im Erdreich oder offen oberirdisch. Die Skate-Bowls bestehen aus einer horizontalen Fläche an der unteren Seite (Flat), die seitlich von einer gekrümmten Fläche (Transition) begrenzt wird. Entlang der Transition und der oberen Plattform befindet sich ein Copingrohr. Tiefen: <strong className="text-brand-dark">98 cm und 150 cm</strong>.
+                            Mit unseren modularen Skate-Elementen aus bewehrtem Beton bauen wir Bowls und Pools in vielen Größen und Formen, geschlossen im Erdreich oder offen auf der Fläche. Ein Bowl besteht aus einem ebenen Boden (Flat), den gekrümmte Wände (Transitions) umschließen. An der Oberkante, wo die Transition auf die Plattform trifft, sitzt das Copingrohr. Lieferbar in <strong className="text-brand-dark">98 und 150 cm</strong> Tiefe.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
                             2002 wurde der erste Bowl mit unseren modularen Skateelementen auf Gran Canaria gebaut. Unsere Skateelemente sind im Bereich von 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz, von Norwegen bis zu den Kanaren, von England bis zur Türkei.
@@ -135,7 +134,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                             <Link to="/kontakt?projectType=Skatepark" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 Bowl planen lassen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
-                            <span className="text-xs text-brand-muted font-mono text-center">Kostenlose 3D-Voranalyse, schlüsselfertige Lieferung und Montage</span>
+                            <span className="text-xs text-brand-muted font-mono text-center">Kostenlose 3D-Voranalyse. Lieferung und Montage schlüsselfertig.</span>
                         </div>
                     </div>
                 </div>
@@ -160,35 +159,35 @@ const ProductSkateBowlsPage: React.FC = () => {
 
                 <div className="grid lg:grid-cols-2 gap-12 mb-12">
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">Standard Bowl</span>
+                        <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">Standard-Bowl</span>
                         <h3 className="text-3xl font-bold font-heading text-brand-dark uppercase mt-2 mb-6">Geschlossen · im Erdreich</h3>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Der klassische Skate-Bowl: rundum geschlossen, eingegraben, Einstieg über die obere Plattform. Die Elemente werden auf gesonderte Fundamente gestellt und anbetoniert. So wird die Anlage dauerhaft mit dem Untergrund verbunden.
+                            Der klassische Bowl ist rundum geschlossen und eingegraben, man fährt über die obere Plattform ein. Die Elemente werden auf gesonderte Fundamente gestellt und anbetoniert. So wird die Anlage dauerhaft mit dem Untergrund verbunden.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Im Flat ist mindestens ein Gully Pflicht. Wir empfehlen einen zweiten als Sicherheit. Größen und Formen sind frei wählbar: Kidney-Pools, Clover-Bowls, Kombi-Pools mit mehreren Tiefen.
+                            Im Flat ist mindestens ein Gully Pflicht. Wir empfehlen zur Sicherheit einen zweiten. Größen und Formen sind frei wählbar: Kidney-Pools, Clover-Bowls, Kombi-Pools mit mehreren Tiefen.
                         </p>
                         <ul className="text-sm text-brand-muted font-mono space-y-2 mt-6">
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Tiefen 98 und 150 cm</li>
-                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Gully 1 (Minimum) oder 2 (Sicherheit)</li>
+                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> 1 Gully Pflicht, 2 empfohlen</li>
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Anbetoniert auf gesondertem Fundament</li>
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Copingrohr verzinkt, fortlaufend</li>
                         </ul>
                     </div>
 
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">Open Bowl</span>
+                        <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">Offener Bowl</span>
                         <h3 className="text-3xl font-bold font-heading text-brand-dark uppercase mt-2 mb-6">Offen · oberirdisch</h3>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Der offene Bowl ist an mindestens einer Seite geöffnet: Man fährt direkt aufs Flat. Damit funktioniert er wie ein klassischer Bowl und zugleich wie ein Street-Parcours-Element: Pumpen, Grinden, Transfer zurück ins Flat.
+                            Der offene Bowl ist an mindestens einer Seite geöffnet: Man fährt direkt aufs Flat. Er lässt sich wie ein Bowl fahren und zugleich wie ein Street-Element: pumpen, grinden, zurück ins Flat.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Oberirdische Bowls werden direkt auf die vorhandene Rollfläche gestellt. Übergangsbleche überbrücken den Radius zur Plattform. Kein Aushub, kein Fundament, keine Drainage nötig.
+                            Oberirdische Bowls werden direkt auf die vorhandene Rollfläche gestellt. Übergangsbleche aus Edelstahl gleichen den Übergang vom Boden zum Element aus. Kein Aushub und kein Fundament. Die Fläche braucht nur ein leichtes Gefälle.
                         </p>
                         <ul className="text-sm text-brand-muted font-mono space-y-2 mt-6">
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Direkt auf Bestandsfläche oder Asphalt</li>
-                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ab 1,00 m Höhe Tables + Absturzsicherung</li>
-                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ohne Fundamentaushub, fundamentfrei</li>
+                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ab 1,00 m Höhe: Plattform (Table) und Absturzsicherung</li>
+                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ohne Fundament und Aushub</li>
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Versetzbar, erweiterbar, abbaubar</li>
                         </ul>
                     </div>
@@ -215,7 +214,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-12">
                     <div>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Als Kunde haben Sie eine <strong className="text-brand-dark">bessere Kontrolle der Qualität</strong> als bei Ortbeton: Betonstärken, Bewehrung, Fugen sind im Werk unter kontrollierten Bedingungen gefertigt. Die Ausführung ist schneller, fast wetterunabhängig und meistens auch noch günstiger.
+                            Fertigteile lassen sich <strong className="text-brand-dark">besser prüfen</strong> als Ortbeton: Wandstärke, Bewehrung und Fugen entstehen im Werk unter gleichbleibenden Bedingungen. Der Bau geht schneller, ist kaum wetterabhängig und meist günstiger.
                         </p>
                         <p className="text-brand-muted leading-relaxed">
                             Wichtig ist aber eine gute Vorplanung der Anlage. <strong className="text-brand-dark">Bitte nehmen Sie vor Beginn der Planung mit uns Kontakt auf.</strong>
@@ -248,18 +247,18 @@ const ProductSkateBowlsPage: React.FC = () => {
                         value="DIN EN 14974 / TÜV / GS"
                         icon="verified"
                         href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/?q=Z1A+056616+0012+Rev.+00"
-                        linkLabel="TÜV-SÜD Zertifikat"
+                        linkLabel="Zertifikat TÜV SÜD"
                     />
                     <TechSpecCard title="Bowl-Tiefen" value="98 / 150 cm" icon="straighten" />
                     <TechSpecCard title="Bauweisen" value="Geschlossen · Offen" icon="view_in_ar" />
-                    <TechSpecCard title="Material" value="C35/45 Beton" icon="architecture" />
+                    <TechSpecCard title="Material" value="Bewehrter Beton C35/45" icon="architecture" />
                     <TechSpecCard title="Copingrohr" value="Verzinkt · fortlaufend" icon="commit" />
                     <TechSpecCard title="Gully" value="min. 1 (Pflicht)" icon="water_drop" />
-                    <TechSpecCard title="Übergang offen" value="Blechprofil" icon="shield" />
+                    <TechSpecCard title="Übergang (offener Bowl)" value="Übergangsblech" icon="shield" />
                     <TechSpecCard title="Absturzsicherung" value="ab 1,00 m Höhe" icon="safety_check" />
-                    <TechSpecCard title="Freiformen" value="modulweise lösbar" icon="extension" />
+                    <TechSpecCard title="Freiformen" value="aus Modulen möglich" icon="extension" />
                     <TechSpecCard title="Witterung" value="Frostsicher · UV-beständig" icon="ac_unit" />
-                    <TechSpecCard title="Versetzbar" value="Ja (Open Bowl)" icon="unfold_more" />
+                    <TechSpecCard title="Versetzbar" value="Ja (offener Bowl)" icon="unfold_more" />
                     <TechSpecCard title="Montage" value="Durch A+ Urban Design" icon="build" />
                 </div>
             </div>

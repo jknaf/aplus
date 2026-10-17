@@ -35,7 +35,7 @@ const PageShell: React.FC<PageShellProps> = ({ title, description, children, sch
 
   useEffect(() => {
     const pageTitle = `${title} | A+ Urban Design`;
-    const pageDesc = description ?? 'TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei und langlebig.';
+    const pageDesc = description ?? 'Skateparks, Pumptracks und Hockey-Banden aus Beton, mit TÜV-zertifizierten Skate-Elementen. Modular, fundamentfrei und langlebig.';
     const pageUrl = `${BASE_URL}${location.pathname}`;
     const pageImage = absoluteImageUrl(ogImage);
 

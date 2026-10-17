@@ -45,13 +45,12 @@ const ProductHockeyRinkPage: React.FC = () => {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Inline-Hockey-Banden",
+    "name": "Hockey-Banden aus Beton",
     "description": "Modulare Hockey-Banden aus Beton, Edelstahl, HPL-Platten und Gummi. Fundamentfrei, in 40 cm oder 110 cm Höhe. Ganzjährig einsetzbar für Inline-, Roll- und Eishockey.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
     "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
-    "category": "Sportanlagen / Urban Sports",
+    "category": "Sportanlagen",
     "material": "Beton, Edelstahl, HPL-Platten, Gummi",
-    "countryOfOrigin": "DE",
     "image": "https://www.aplusurbandesign.com/images/hockey/roll-hockey-bande.jpg",
     "offers": {
       "@type": "Offer",
@@ -67,14 +66,14 @@ const ProductHockeyRinkPage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Hockey-Banden kaufen: Inline- & Streethockey-Feld" description="Hockey-Banden und Hockeyfeld aus Beton und Stahl: fundamentfrei, in 40 cm oder 110 cm Höhe. Für Inline-Hockey, Streethockey und Rollhockey. Wartungsfrei und sofort einsatzbereit, auch für Kommunen und Vereine." schema={productSchema}>
+    <PageShell title="Hockey-Banden für Inline-, Roll- und Eishockey" description="Hockey-Banden und Hockeyfeld aus Beton und Stahl: fundamentfrei, in 40 cm oder 110 cm Höhe. Für Inline-Hockey, Streethockey und Rollhockey. Wartungsarm und schnell aufgebaut, für Kommunen und Vereine." schema={productSchema}>
 
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
                  {/* OPTIMIZED HERO IMAGE for Mobile Speed */}
                  <img src="/images/hockey/roll-hockey-bande.jpg"
-                        alt="Hero Hockey Rink"
+                        alt="Rollhockey-Feld mit Beton-Bande"
                         className="w-full h-full object-cover animate-kenburns-1"
                         loading="eager"
                         fetchPriority="high" />
@@ -89,13 +88,13 @@ const ProductHockeyRinkPage: React.FC = () => {
                     <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
                          <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">Ganzjährig</span>
                          <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider bg-black/40 backdrop-blur-sm px-2 py-1">
-                            <span className="material-symbols-outlined text-base">verified_user</span> Inline & Eishockey
+                            <span className="material-symbols-outlined text-base">verified_user</span> Inline- und Eishockey
                          </span>
                     </div>
                     {/* INDUSTRIAL HEADER UPDATE */}
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
-                        Hockey<br/>
-                        <span className="text-brand-orange">System</span>
+                        Banden-<br/>
+                        <span className="text-brand-orange">system</span>
                     </h1>
                 </div>
             </div>
@@ -113,16 +112,16 @@ const ProductHockeyRinkPage: React.FC = () => {
                         </span>
                         {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Game On. <span className="text-brand-orange">All Year.</span>
+                            Spielen. <span className="text-brand-orange">Das ganze Jahr.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Ein Feld, alle Möglichkeiten. Unser modulares Bandensystem verwandelt jeden Platz in eine Arena für Inline-/Rollhockey und im Winter sogar für Eishockey, durch ein Abdichtungsprofil unter der Einfassung.
+                            Mit unserem Bandensystem wird ein Hartplatz zum Spielfeld für Inline- und Rollhockey. Mit einem Abdichtungsprofil unter der Einfassung lässt sich im Winter auch Eis anlegen.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-4">
-                            Zwei Varianten: 40 cm hohe Einfassungselemente (niedrige Bande) aus Beton mit Gummikappen oder 110 cm hohe Profil-Banden mit Edelstahl-Handlauf für Rollhockey oder Eishockey. Beide Varianten können modular in 1,5-m-Schritten erweitert oder verkleinert werden.
+                            Es gibt zwei Höhen: 40 cm hohe Einfassungselemente aus Beton mit Gummikappe und 110 cm hohe Profilbanden mit Edelstahl-Handlauf für Roll- und Eishockey. Beide Varianten können modular in 1,5-m-Schritten erweitert oder verkleinert werden.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            <strong className="text-brand-dark">Die Konstruktionsweise benötigt keine Bodenbefestigung.</strong> Die fundamentfreie Installation erfolgt auf bestehenden Hartplätzen ohne Beschädigung des Bodens. Die am stärksten beanspruchte Fläche besteht aus massivem Beton.
+                            <strong className="text-brand-dark">Die Banden brauchen keine Bodenbefestigung.</strong> Sie werden ohne Fundament auf bestehende Hartplätze gestellt. Der Belag bleibt unbeschädigt. Die am stärksten beanspruchte Fläche besteht aus massivem Beton.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -138,14 +137,14 @@ const ProductHockeyRinkPage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/hockey/inline-hockey-bande-02.jpg" alt="Modular Rink Element" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/hockey/inline-hockey-bande-02.jpg" alt="Inline-Hockey auf einem Feld mit niedriger Einfassung" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 1: Inline-Hockey auf einem Feld mit niedriger Einfassung</div>
                     </div>
                     
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Materialien</h3>
                         <p className="text-brand-muted mb-4 font-mono text-sm border-l-2 border-brand-orange pl-4">
-                            Witterungsbeständige Materialien: Beton, Edelstahl, HPL-Platten und Gummi. Die am stärksten beanspruchte Fläche ist aus Beton.
+                            Beton, Edelstahl, HPL-Platten und Gummi, alle witterungsbeständig.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             <span className="text-xs uppercase tracking-widest text-brand-orange border border-brand-orange px-2 py-1">Beton</span>
@@ -156,12 +155,12 @@ const ProductHockeyRinkPage: React.FC = () => {
                     </div>
 
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/hockey/inline-hockey-bande-03.jpg" alt="Hockey Action View" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/hockey/inline-hockey-bande-03.jpg" alt="Spielfeld mit Bande und Edelstahl-Handlauf" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 2: Spielfeld mit gelber Bande und Edelstahl-Handlauf</div>
                     </div>
 
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/hockey/hockey-einfassung-01.jpg" alt="40cm Beton-Einfassung" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/hockey/hockey-einfassung-01.jpg" alt="40 cm hohe Beton-Einfassung mit Gummikappe" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 3: Niedrige Einfassung mit roter Gummikappe</div>
                     </div>
                 </div>
@@ -175,7 +174,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                         40 cm oder <span className="text-brand-orange">110 cm.</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                        Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen: bodeneben, stapelbar und vandalismusresistent. Die 110-cm-Bande mit Edelstahl-Handlauf schafft eine vollständige Arena für intensiven Spielbetrieb. Beide Varianten sind untereinander kombinierbar und auf jedem Untergrund fundamentfrei aufstellbar.
+                        Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen: stapelbar und vandalismussicher. Die 110-cm-Bande mit Edelstahl-Handlauf umschließt das ganze Spielfeld und ist für regelmäßigen Spielbetrieb gebaut. Beide Varianten lassen sich kombinieren und auf Asphalt- oder Betonflächen fundamentfrei aufstellen.
                     </p>
                 </div>
                 {/* Roland §8.7: Klarstellung Profil-Bande vs. Einfassung als getrennte Systeme noch final abstimmen */}
@@ -183,7 +182,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-8">
                         <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">40 cm</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">Einfassungselemente (niedrige Bande)</h3>
-                        <p className="text-sm text-brand-muted mb-3">Auch als Einfassung auf Hartplätzen einsetzbar.</p>
+                        <p className="text-sm text-brand-muted mb-3">Spielfeldbegrenzung für bestehende Hartplätze.</p>
                         <ul className="space-y-2 text-sm text-brand-muted">
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Gummikappen als Aufprallschutz</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Modular erweiterbar in 1,5-m-Schritten</li>
@@ -218,10 +217,10 @@ const ProductHockeyRinkPage: React.FC = () => {
                     <TechSpecCard title="Raster" value="1,50 Meter" icon="grid_view" />
                     <TechSpecCard title="Einsatz" value="Ganzjährig" icon="calendar_month" />
                     <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
-                    <TechSpecCard title="Eignung" value="Inline & Eis" icon="ice_skating" />
+                    <TechSpecCard title="Eignung" value="Inline-, Roll- und Eishockey" icon="ice_skating" />
                     <TechSpecCard title="Material" value="Beton, Edelstahl, HPL, Gummi" icon="science" />
                     <TechSpecCard title="Schutz" value="Gummikappe an Einfassung" icon="shield" />
-                    <TechSpecCard title="Am beanspruchtesten" value="Beton" icon="layers" />
+                    <TechSpecCard title="Prallfläche" value="Beton" icon="layers" />
                 </div>
             </div>
 

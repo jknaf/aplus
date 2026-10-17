@@ -24,7 +24,7 @@ interface PressProject {
 const PRESS_PROJECTS: PressProject[] = [
   {
     title: 'Skatepark Friedrichsdorf',
-    summary: 'Skateanlage auf zwei Ebenen, 2.000 m², mit Fun-Boxen, Stairs, Ledges und einer Pipe aus Betonfertigteilen.',
+    summary: '2.000 m² große Skateanlage auf zwei Ebenen mit Funboxen, Stairs, Ledges und einer Pipe aus Betonfertigteilen.',
     articleIds: [
       'kommunaldirekt-skatepark-friedrichsdorf-2024',
       'kommunaldirekt-skatepark-friedrichsdorf',
@@ -44,8 +44,8 @@ const PRESS_PROJECTS: PressProject[] = [
     projectPath: '/projekte/schnecke-umkleidekabine',
   },
   {
-    title: 'Pump-Track Berlin-Reinickendorf',
-    summary: 'Erster Pump-Track im Bezirk, teilweise über dem Tegel Tunnel.',
+    title: 'Pumptrack Berlin-Reinickendorf',
+    summary: 'Erster Pumptrack im Bezirk, teilweise über dem Tegel-Tunnel.',
     articleIds: ['kommunaldirekt-pumptrack-berlin', 'freiraum-gestalten-pumptracken-berlin-2022'],
     projectPath: '/projekte/pumptrack-berlin-reinickendorf',
   },
@@ -57,7 +57,7 @@ const PRESS_PROJECTS: PressProject[] = [
   },
   {
     title: 'Skatebowl Bönnigheim',
-    summary: 'Offene Bowl aus Betonfertigteilen, Rampen ohne Übergangsblech zum Asphalt.',
+    summary: 'Offener Bowl aus Betonfertigteilen. Die Rampen gehen ohne Übergangsblech in den Asphalt über.',
     articleIds: [
       'kommunaldirekt-offener-skatebowl-bonnigheim',
       'kommunalclick24-offene-skatebowl-betonfertigteile',

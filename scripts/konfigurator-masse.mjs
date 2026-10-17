@@ -69,7 +69,7 @@ export const aufKatalogmass = (m, preisliste) => {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const masse = {};
   for (const e of katalog.elemente) {
-    masse[e.slug] = aufKatalogmass(vermessen(punkte(join(root, 'public', e.modell))), e.preisliste_masse_cm);
+    masse[e.slug] = aufKatalogmass(vermessen(punkte(join(root, 'public/konfigurator/modelle', `${e.slug}.gltf`))), e.preisliste_masse_cm);
   }
   mkdirSync(join(root, 'public/konfigurator'), { recursive: true });
   writeFileSync(join(root, 'public/konfigurator/masse.json'), JSON.stringify(masse));

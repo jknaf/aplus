@@ -442,7 +442,8 @@ const KonfiguratorPage: React.FC = () => {
     return () => window.removeEventListener('keydown', taste);
   }, [auswahl, anfrage, druckDialog, loeschen, drehen, duplizieren, rueckgaengig, wiederholen]);
 
-  const modellPfad = useCallback((slug: string) => katalog?.elemente.find((e) => e.slug === slug)?.modell ?? `/katalog/modelle/${slug}.gltf`, [katalog]);
+  // Eigener Modellsatz ohne eingebackenes Licht: Elemente werden hier gedreht und von der Bühne beleuchtet (Katalogmodelle tragen Licht und Schattenplatte fest)
+  const modellPfad = useCallback((slug: string) => `/konfigurator/modelle/${slug}.gltf`, []);
   const ausgewaehlt = park?.teile.find((t) => t.id === auswahl);
   const auswahlHinweise = hinweise.filter((h) => auswahl && h.teile.includes(auswahl));
   const einzelteile = useMemo(() => {

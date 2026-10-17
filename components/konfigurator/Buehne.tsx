@@ -225,7 +225,7 @@ const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansic
       <fog attach="fog" args={['#e9ebe4', 80, 260]} />
       <ModellFehler ersatz={null}>
         <Suspense fallback={null}>
-          <Environment files="/katalog/tageslicht.hdr" environmentIntensity={0.9} />
+          <Environment files="/konfigurator/tageslicht.hdr" environmentIntensity={0.9} />
         </Suspense>
       </ModellFehler>
       <hemisphereLight args={['#ffffff', '#9aa38a', 0.5]} />

@@ -159,7 +159,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":522,
+			"count":192,
 			"max":[
 				1.0011345148086548,
 				0.5800000429153442,
@@ -175,31 +175,31 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":522,
+			"count":192,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":522,
+			"count":192,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":522,
+			"count":192,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":798,
+			"count":192,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":12,
+			"count":18,
 			"max":[
 				1.0011345148086548,
 				0.0804426372051239,
@@ -215,19 +215,19 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":12,
+			"count":18,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":12,
+			"count":18,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":12,
+			"count":18,
 			"type":"VEC2"
 		},
 		{
@@ -239,7 +239,7 @@
 		{
 			"bufferView":10,
 			"componentType":5126,
-			"count":40,
+			"count":54,
 			"max":[
 				0.7416017055511475,
 				0.5821213722229004,
@@ -255,117 +255,117 @@
 		{
 			"bufferView":11,
 			"componentType":5126,
-			"count":40,
+			"count":54,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":12,
 			"componentType":5126,
-			"count":40,
+			"count":54,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":13,
 			"componentType":5126,
-			"count":40,
+			"count":54,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":14,
 			"componentType":5123,
-			"count":60,
+			"count":54,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":6264,
+			"byteLength":2304,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6264,
-			"byteOffset":6264,
+			"byteLength":2304,
+			"byteOffset":2304,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4176,
-			"byteOffset":12528,
+			"byteLength":1536,
+			"byteOffset":4608,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4176,
-			"byteOffset":16704,
+			"byteLength":1536,
+			"byteOffset":6144,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1596,
-			"byteOffset":20880,
+			"byteLength":384,
+			"byteOffset":7680,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":144,
-			"byteOffset":22476,
+			"byteLength":216,
+			"byteOffset":8064,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":216,
+			"byteOffset":8280,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":144,
-			"byteOffset":22620,
+			"byteOffset":8496,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":96,
-			"byteOffset":22764,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":96,
-			"byteOffset":22860,
+			"byteLength":144,
+			"byteOffset":8640,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":36,
-			"byteOffset":22956,
+			"byteOffset":8784,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":480,
-			"byteOffset":22992,
+			"byteLength":648,
+			"byteOffset":8820,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":480,
-			"byteOffset":23472,
+			"byteLength":648,
+			"byteOffset":9468,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":320,
-			"byteOffset":23952,
+			"byteLength":432,
+			"byteOffset":10116,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":320,
-			"byteOffset":24272,
+			"byteLength":432,
+			"byteOffset":10548,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":120,
-			"byteOffset":24592,
+			"byteLength":108,
+			"byteOffset":10980,
 			"target":34963
 		}
 	],
@@ -377,7 +377,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":24712,
+			"byteLength":11088,
 			"uri":"bank-60l.bin"
 		}
 	]

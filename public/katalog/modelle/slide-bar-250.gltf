@@ -120,7 +120,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":648,
+			"count":609,
 			"max":[
 				0.15000000596046448,
 				0.30000001192092896,
@@ -136,31 +136,31 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":648,
+			"count":609,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":648,
+			"count":609,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":648,
+			"count":609,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":1068,
+			"count":609,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":411,
+			"count":459,
 			"max":[
 				0.04000000283122063,
 				0.30000001192092896,
@@ -176,87 +176,87 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":411,
+			"count":459,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":411,
+			"count":459,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":411,
+			"count":459,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":9,
 			"componentType":5123,
-			"count":693,
+			"count":459,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":7776,
+			"byteLength":7308,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":7776,
-			"byteOffset":7776,
+			"byteLength":7308,
+			"byteOffset":7308,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":5184,
-			"byteOffset":15552,
+			"byteLength":4872,
+			"byteOffset":14616,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":5184,
-			"byteOffset":20736,
+			"byteLength":4872,
+			"byteOffset":19488,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2136,
-			"byteOffset":25920,
+			"byteLength":1218,
+			"byteOffset":24360,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":4932,
-			"byteOffset":28056,
+			"byteLength":5508,
+			"byteOffset":25580,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4932,
-			"byteOffset":32988,
+			"byteLength":5508,
+			"byteOffset":31088,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3288,
-			"byteOffset":37920,
+			"byteLength":3672,
+			"byteOffset":36596,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3288,
-			"byteOffset":41208,
+			"byteLength":3672,
+			"byteOffset":40268,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1386,
-			"byteOffset":44496,
+			"byteLength":918,
+			"byteOffset":43940,
 			"target":34963
 		}
 	],
@@ -268,7 +268,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":45884,
+			"byteLength":44860,
 			"uri":"slide-bar-250.bin"
 		}
 	]

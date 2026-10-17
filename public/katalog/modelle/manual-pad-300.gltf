@@ -120,7 +120,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":621,
+			"count":912,
 			"max":[
 				1.499000072479248,
 				0.22100001573562622,
@@ -136,31 +136,31 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":621,
+			"count":912,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":621,
+			"count":912,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":621,
+			"count":912,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":915,
+			"count":912,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":306,
+			"count":567,
 			"max":[
 				1.5000001192092896,
 				0.22800001502037048,
@@ -176,87 +176,87 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":306,
+			"count":567,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":306,
+			"count":567,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":306,
+			"count":567,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":9,
 			"componentType":5123,
-			"count":570,
+			"count":567,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":7452,
+			"byteLength":10944,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":7452,
-			"byteOffset":7452,
+			"byteLength":10944,
+			"byteOffset":10944,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4968,
-			"byteOffset":14904,
+			"byteLength":7296,
+			"byteOffset":21888,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4968,
-			"byteOffset":19872,
+			"byteLength":7296,
+			"byteOffset":29184,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1830,
-			"byteOffset":24840,
+			"byteLength":1824,
+			"byteOffset":36480,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":3672,
-			"byteOffset":26672,
+			"byteLength":6804,
+			"byteOffset":38304,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3672,
-			"byteOffset":30344,
+			"byteLength":6804,
+			"byteOffset":45108,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2448,
-			"byteOffset":34016,
+			"byteLength":4536,
+			"byteOffset":51912,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2448,
-			"byteOffset":36464,
+			"byteLength":4536,
+			"byteOffset":56448,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1140,
-			"byteOffset":38912,
+			"byteLength":1134,
+			"byteOffset":60984,
 			"target":34963
 		}
 	],
@@ -268,7 +268,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":40052,
+			"byteLength":62120,
 			"uri":"manual-pad-300.bin"
 		}
 	]

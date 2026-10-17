@@ -120,143 +120,143 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":452,
+			"count":789,
 			"max":[
 				1.6500000953674316,
-				0.9600000381469727,
-				0.24000000953674316
+				0.9610000252723694,
+				0.2410000115633011
 			],
 			"min":[
 				-1.6560001373291016,
 				0,
-				-0.24000000953674316
+				-0.2410000115633011
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":452,
+			"count":789,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":452,
+			"count":789,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":452,
+			"count":789,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":660,
+			"count":789,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":236,
+			"count":360,
 			"max":[
 				1.6500000953674316,
-				0.9600000381469727,
-				0.24000000953674316
+				0.9610000252723694,
+				0.2410000115633011
 			],
 			"min":[
 				-1.6560001373291016,
-				0,
-				-0.24000000953674316
+				0.004000000189989805,
+				-0.2410000115633011
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":236,
+			"count":360,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":236,
+			"count":360,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":236,
+			"count":360,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":9,
 			"componentType":5123,
-			"count":420,
+			"count":360,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":5424,
+			"byteLength":9468,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":5424,
-			"byteOffset":5424,
+			"byteLength":9468,
+			"byteOffset":9468,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3616,
-			"byteOffset":10848,
+			"byteLength":6312,
+			"byteOffset":18936,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3616,
-			"byteOffset":14464,
+			"byteLength":6312,
+			"byteOffset":25248,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1320,
-			"byteOffset":18080,
+			"byteLength":1578,
+			"byteOffset":31560,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":2832,
-			"byteOffset":19400,
+			"byteLength":4320,
+			"byteOffset":33140,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2832,
-			"byteOffset":22232,
+			"byteLength":4320,
+			"byteOffset":37460,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1888,
-			"byteOffset":25064,
+			"byteLength":2880,
+			"byteOffset":41780,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1888,
-			"byteOffset":26952,
+			"byteLength":2880,
+			"byteOffset":44660,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":840,
-			"byteOffset":28840,
+			"byteLength":720,
+			"byteOffset":47540,
 			"target":34963
 		}
 	],
@@ -268,7 +268,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":29680,
+			"byteLength":48260,
 			"uri":"ledge-slg-98.bin"
 		}
 	]

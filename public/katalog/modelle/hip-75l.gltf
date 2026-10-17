@@ -29,7 +29,7 @@
 					"specularFactor":0.4000000059604645
 				}
 			},
-			"name":"Beton_web.003",
+			"name":"Beton_web.063",
 			"normalTexture":{
 				"index":0,
 				"texCoord":1
@@ -45,7 +45,7 @@
 		},
 		{
 			"doubleSided":true,
-			"name":"Stahl_web.004",
+			"name":"Stahl_web.051",
 			"normalTexture":{
 				"index":2,
 				"texCoord":1
@@ -65,7 +65,7 @@
 					"specularFactor":0.699999988079071
 				}
 			},
-			"name":"Kantenwinkel_web.003",
+			"name":"Kantenwinkel_web.038",
 			"normalTexture":{
 				"index":4,
 				"texCoord":1
@@ -159,7 +159,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":813,
+			"count":327,
 			"max":[
 				1.001395583152771,
 				0.7300000190734863,
@@ -175,31 +175,31 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":813,
+			"count":327,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":813,
+			"count":327,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":813,
+			"count":327,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":1233,
+			"count":327,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":28,
+			"count":42,
 			"max":[
 				1.001395583152771,
 				0.10016858577728271,
@@ -215,19 +215,19 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":28,
+			"count":42,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":28,
+			"count":42,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":28,
+			"count":42,
 			"type":"VEC2"
 		},
 		{
@@ -239,133 +239,133 @@
 		{
 			"bufferView":10,
 			"componentType":5126,
-			"count":64,
+			"count":48,
 			"max":[
-				0.7623201012611389,
-				0.7321213483810425,
-				0.7652969360351562
+				0.7417401671409607,
+				0.7328713536262512,
+				0.7417401671409607
 			],
 			"min":[
-				-1.018918752670288,
-				0.06460849195718765,
-				-1.0153634548187256
+				-1.0021213293075562,
+				0.06560710817575455,
+				-1.0021213293075562
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":11,
 			"componentType":5126,
-			"count":64,
+			"count":48,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":12,
 			"componentType":5126,
-			"count":64,
+			"count":48,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":13,
 			"componentType":5126,
-			"count":64,
+			"count":48,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":14,
 			"componentType":5123,
-			"count":96,
+			"count":48,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":9756,
+			"byteLength":3924,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":9756,
-			"byteOffset":9756,
+			"byteLength":3924,
+			"byteOffset":3924,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6504,
-			"byteOffset":19512,
+			"byteLength":2616,
+			"byteOffset":7848,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6504,
-			"byteOffset":26016,
+			"byteLength":2616,
+			"byteOffset":10464,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2466,
-			"byteOffset":32520,
+			"byteLength":654,
+			"byteOffset":13080,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":336,
-			"byteOffset":34988,
+			"byteLength":504,
+			"byteOffset":13736,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":504,
+			"byteOffset":14240,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":336,
-			"byteOffset":35324,
+			"byteOffset":14744,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":224,
-			"byteOffset":35660,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":224,
-			"byteOffset":35884,
+			"byteLength":336,
+			"byteOffset":15080,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":84,
-			"byteOffset":36108,
+			"byteOffset":15416,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":768,
-			"byteOffset":36192,
+			"byteLength":576,
+			"byteOffset":15500,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":768,
-			"byteOffset":36960,
+			"byteLength":576,
+			"byteOffset":16076,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":512,
-			"byteOffset":37728,
+			"byteLength":384,
+			"byteOffset":16652,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":512,
-			"byteOffset":38240,
+			"byteLength":384,
+			"byteOffset":17036,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":192,
-			"byteOffset":38752,
+			"byteLength":96,
+			"byteOffset":17420,
 			"target":34963
 		}
 	],
@@ -377,7 +377,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":38944,
+			"byteLength":17516,
 			"uri":"hip-75l.bin"
 		}
 	]

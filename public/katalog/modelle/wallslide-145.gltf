@@ -120,7 +120,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":412,
+			"count":690,
 			"max":[
 				2.049975633621216,
 				1.4500000476837158,
@@ -136,31 +136,31 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":412,
+			"count":690,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":412,
+			"count":690,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":412,
+			"count":690,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":642,
+			"count":690,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":73,
+			"count":93,
 			"max":[
 				2.049975633621216,
 				1.4500000476837158,
@@ -168,7 +168,7 @@
 			],
 			"min":[
 				-2.0499746799468994,
-				4.070908371837744e-16,
+				0.03115900047123432,
 				-0.06000000238418579
 			],
 			"type":"VEC3"
@@ -176,87 +176,87 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":73,
+			"count":93,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":73,
+			"count":93,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":73,
+			"count":93,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":9,
 			"componentType":5123,
-			"count":111,
+			"count":93,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":4944,
+			"byteLength":8280,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4944,
-			"byteOffset":4944,
+			"byteLength":8280,
+			"byteOffset":8280,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3296,
-			"byteOffset":9888,
+			"byteLength":5520,
+			"byteOffset":16560,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3296,
-			"byteOffset":13184,
+			"byteLength":5520,
+			"byteOffset":22080,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1284,
-			"byteOffset":16480,
+			"byteLength":1380,
+			"byteOffset":27600,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":876,
-			"byteOffset":17764,
+			"byteLength":1116,
+			"byteOffset":28980,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":876,
-			"byteOffset":18640,
+			"byteLength":1116,
+			"byteOffset":30096,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":584,
-			"byteOffset":19516,
+			"byteLength":744,
+			"byteOffset":31212,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":584,
-			"byteOffset":20100,
+			"byteLength":744,
+			"byteOffset":31956,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":222,
-			"byteOffset":20684,
+			"byteLength":186,
+			"byteOffset":32700,
 			"target":34963
 		}
 	],
@@ -268,7 +268,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":20908,
+			"byteLength":32888,
 			"uri":"wallslide-145.bin"
 		}
 	]

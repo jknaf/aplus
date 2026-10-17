@@ -78,7 +78,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":528,
+			"count":804,
 			"max":[
 				1.7100002765655518,
 				0.9600000381469727,
@@ -94,57 +94,57 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":528,
+			"count":804,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":528,
+			"count":804,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":528,
+			"count":804,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":864,
+			"count":804,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":6336,
+			"byteLength":9648,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6336,
-			"byteOffset":6336,
+			"byteLength":9648,
+			"byteOffset":9648,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4224,
-			"byteOffset":12672,
+			"byteLength":6432,
+			"byteOffset":19296,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4224,
-			"byteOffset":16896,
+			"byteLength":6432,
+			"byteOffset":25728,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1728,
-			"byteOffset":21120,
+			"byteLength":1608,
+			"byteOffset":32160,
 			"target":34963
 		}
 	],
@@ -156,7 +156,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":22848,
+			"byteLength":33768,
 			"uri":"rail-bt-bank-table.bin"
 		}
 	]

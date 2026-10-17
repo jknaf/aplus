@@ -1,275 +1,367 @@
 {
-	"asset":{
-		"generator":"Khronos glTF Blender I/O v5.2.40",
-		"version":"2.0"
-	},
-	"extensionsUsed":[
-		"KHR_materials_specular"
-	],
-	"scene":0,
-	"scenes":[
-		{
-			"name":"Katalog",
-			"nodes":[
-				0
-			]
-		}
-	],
-	"nodes":[
-		{
-			"mesh":0,
-			"name":"SK0032_Gel\u00e4nder-Verbindung_90\u00b0.001"
-		}
-	],
-	"materials":[
-		{
-			"doubleSided":true,
-			"extensions":{
-				"KHR_materials_specular":{
-					"specularFactor":0.4000000059604645
-				}
-			},
-			"name":"Beton_web.058",
-			"normalTexture":{
-				"index":0,
-				"texCoord":1
-			},
-			"pbrMetallicRoughness":{
-				"baseColorTexture":{
-					"index":1,
-					"texCoord":1
-				},
-				"metallicFactor":0,
-				"roughnessFactor":0.9200000166893005
-			}
-		},
-		{
-			"doubleSided":true,
-			"name":"Stahl_web.046",
-			"normalTexture":{
-				"index":2,
-				"texCoord":1
-			},
-			"pbrMetallicRoughness":{
-				"baseColorTexture":{
-					"index":3,
-					"texCoord":1
-				},
-				"roughnessFactor":0.15000000596046448
-			}
-		}
-	],
-	"meshes":[
-		{
-			"name":"SK0032_Gel\u00e4nder-Verbindung_90\u00b0.001",
-			"primitives":[
-				{
-					"attributes":{
-						"POSITION":0,
-						"NORMAL":1,
-						"TEXCOORD_0":2,
-						"TEXCOORD_1":3
-					},
-					"indices":4,
-					"material":0
-				},
-				{
-					"attributes":{
-						"POSITION":5,
-						"NORMAL":6,
-						"TEXCOORD_0":7,
-						"TEXCOORD_1":8
-					},
-					"indices":9,
-					"material":1
-				}
-			]
-		}
-	],
-	"textures":[
-		{
-			"sampler":0,
-			"source":0
-		},
-		{
-			"sampler":0,
-			"source":1
-		},
-		{
-			"sampler":0,
-			"source":0
-		},
-		{
-			"sampler":0,
-			"source":1
-		}
-	],
-	"images":[
-		{
-			"mimeType":"image/jpeg",
-			"name":"gelaender-verbindung-90_normal",
-			"uri":"texturen/gelaender-verbindung-90_normal.jpg"
-		},
-		{
-			"mimeType":"image/jpeg",
-			"name":"gelaender-verbindung-90_farbe",
-			"uri":"texturen/gelaender-verbindung-90_farbe.jpg"
-		}
-	],
-	"accessors":[
-		{
-			"bufferView":0,
-			"componentType":5126,
-			"count":36,
-			"max":[
-				-0.06339844316244125,
-				0.0010000000474974513,
-				-0.06360156834125519
-			],
-			"min":[
-				-0.06450000405311584,
-				0,
-				-0.06450000405311584
-			],
-			"type":"VEC3"
-		},
-		{
-			"bufferView":1,
-			"componentType":5126,
-			"count":36,
-			"type":"VEC3"
-		},
-		{
-			"bufferView":2,
-			"componentType":5126,
-			"count":36,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":3,
-			"componentType":5126,
-			"count":36,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":4,
-			"componentType":5123,
-			"count":36,
-			"type":"SCALAR"
-		},
-		{
-			"bufferView":5,
-			"componentType":5126,
-			"count":5046,
-			"max":[
-				0.06450000405311584,
-				1.1200000047683716,
-				0.06450000405311584
-			],
-			"min":[
-				-0.06450000405311584,
-				0.20000000298023224,
-				-0.06450000405311584
-			],
-			"type":"VEC3"
-		},
-		{
-			"bufferView":6,
-			"componentType":5126,
-			"count":5046,
-			"type":"VEC3"
-		},
-		{
-			"bufferView":7,
-			"componentType":5126,
-			"count":5046,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":8,
-			"componentType":5126,
-			"count":5046,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":9,
-			"componentType":5123,
-			"count":5046,
-			"type":"SCALAR"
-		}
-	],
-	"bufferViews":[
-		{
-			"buffer":0,
-			"byteLength":432,
-			"byteOffset":0,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":432,
-			"byteOffset":432,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":288,
-			"byteOffset":864,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":288,
-			"byteOffset":1152,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":72,
-			"byteOffset":1440,
-			"target":34963
-		},
-		{
-			"buffer":0,
-			"byteLength":60552,
-			"byteOffset":1512,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":60552,
-			"byteOffset":62064,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":40368,
-			"byteOffset":122616,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":40368,
-			"byteOffset":162984,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":10092,
-			"byteOffset":203352,
-			"target":34963
-		}
-	],
-	"samplers":[
-		{
-			"magFilter":9729,
-			"minFilter":9987
-		}
-	],
-	"buffers":[
-		{
-			"byteLength":213444,
-			"uri":"gelaender-verbindung-90.bin"
-		}
-	]
+ "asset": {
+  "generator": "Khronos glTF Blender I/O v5.2.40",
+  "version": "2.0",
+  "extras": {
+   "kamera": {
+    "ziel": [
+     0.0,
+     0.56,
+     -0.0
+    ],
+    "abstand": 2.178
+   }
+  }
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "name": "Katalog",
+   "nodes": [
+    0,
+    1
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "mesh": 0,
+   "name": "Schatten"
+  },
+  {
+   "mesh": 1,
+   "name": "SK0032_Gel\u00e4nder-Verbindung_90\u00b0.001"
+  }
+ ],
+ "materials": [
+  {
+   "alphaMode": "BLEND",
+   "doubleSided": false,
+   "name": "Schatten.025",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 0
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "doubleSided": true,
+   "name": "Beton_web.027",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 1,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "doubleSided": true,
+   "name": "Stahl_web.018",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 2,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  }
+ ],
+ "meshes": [
+  {
+   "name": "Schatten",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2
+     },
+     "indices": 3,
+     "material": 0
+    }
+   ]
+  },
+  {
+   "name": "SK0032_Gel\u00e4nder-Verbindung_90\u00b0.001",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 4,
+      "NORMAL": 5,
+      "TEXCOORD_0": 6,
+      "TEXCOORD_1": 7
+     },
+     "indices": 8,
+     "material": 1
+    },
+    {
+     "attributes": {
+      "POSITION": 9,
+      "NORMAL": 10,
+      "TEXCOORD_0": 11,
+      "TEXCOORD_1": 12
+     },
+     "indices": 13,
+     "material": 2
+    }
+   ]
+  }
+ ],
+ "textures": [
+  {
+   "sampler": 0,
+   "source": 0
+  },
+  {
+   "sampler": 0,
+   "source": 1
+  },
+  {
+   "sampler": 0,
+   "source": 1
+  }
+ ],
+ "images": [
+  {
+   "mimeType": "image/png",
+   "name": "gelaender-verbindung-90_schatten",
+   "uri": "texturen/gelaender-verbindung-90_schatten.png"
+  },
+  {
+   "mimeType": "image/jpeg",
+   "name": "gelaender-verbindung-90_licht",
+   "uri": "texturen/gelaender-verbindung-90_licht.jpg"
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 4,
+   "max": [
+    1.0958399772644043,
+    0.0020000000949949026,
+    0.07533899694681168
+   ],
+   "min": [
+    0.07533899694681168,
+    0.0020000000949949026,
+    -0.2054699957370758
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 4,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 4,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5123,
+   "count": 6,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5126,
+   "count": 36,
+   "max": [
+    -0.06339844316244125,
+    0.0010000000474974513,
+    -0.06360156834125519
+   ],
+   "min": [
+    -0.06450000405311584,
+    0,
+    -0.06450000405311584
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5126,
+   "count": 36,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 6,
+   "componentType": 5126,
+   "count": 36,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 7,
+   "componentType": 5126,
+   "count": 36,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 8,
+   "componentType": 5123,
+   "count": 36,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 9,
+   "componentType": 5126,
+   "count": 5046,
+   "max": [
+    0.06450000405311584,
+    1.1200000047683716,
+    0.06450000405311584
+   ],
+   "min": [
+    -0.06450000405311584,
+    0.20000000298023224,
+    -0.06450000405311584
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 10,
+   "componentType": 5126,
+   "count": 5046,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 11,
+   "componentType": 5126,
+   "count": 5046,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 12,
+   "componentType": 5126,
+   "count": 5046,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 13,
+   "componentType": 5123,
+   "count": 5046,
+   "type": "SCALAR"
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 0,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 48,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 32,
+   "byteOffset": 96,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 12,
+   "byteOffset": 128,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 432,
+   "byteOffset": 140,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 432,
+   "byteOffset": 572,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 288,
+   "byteOffset": 1004,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 288,
+   "byteOffset": 1292,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 72,
+   "byteOffset": 1580,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 60552,
+   "byteOffset": 1652,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 60552,
+   "byteOffset": 62204,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 40368,
+   "byteOffset": 122756,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 40368,
+   "byteOffset": 163124,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 10092,
+   "byteOffset": 203492,
+   "target": 34963
+  }
+ ],
+ "samplers": [
+  {
+   "magFilter": 9729,
+   "minFilter": 9987
+  }
+ ],
+ "buffers": [
+  {
+   "byteLength": 213584,
+   "uri": "gelaender-verbindung-90.bin"
+  }
+ ],
+ "extensionsUsed": [
+  "KHR_materials_unlit"
+ ]
 }

@@ -1,275 +1,367 @@
 {
-	"asset":{
-		"generator":"Khronos glTF Blender I/O v5.2.40",
-		"version":"2.0"
-	},
-	"extensionsUsed":[
-		"KHR_materials_specular"
-	],
-	"scene":0,
-	"scenes":[
-		{
-			"name":"Katalog",
-			"nodes":[
-				0
-			]
-		}
-	],
-	"nodes":[
-		{
-			"mesh":0,
-			"name":"SK1545_Gel\u00e4nder-SGER-150.001"
-		}
-	],
-	"materials":[
-		{
-			"doubleSided":true,
-			"extensions":{
-				"KHR_materials_specular":{
-					"specularFactor":0.4000000059604645
-				}
-			},
-			"name":"Beton_web.057",
-			"normalTexture":{
-				"index":0,
-				"texCoord":1
-			},
-			"pbrMetallicRoughness":{
-				"baseColorTexture":{
-					"index":1,
-					"texCoord":1
-				},
-				"metallicFactor":0,
-				"roughnessFactor":0.9200000166893005
-			}
-		},
-		{
-			"doubleSided":true,
-			"name":"Stahl_web.045",
-			"normalTexture":{
-				"index":2,
-				"texCoord":1
-			},
-			"pbrMetallicRoughness":{
-				"baseColorTexture":{
-					"index":3,
-					"texCoord":1
-				},
-				"roughnessFactor":0.15000000596046448
-			}
-		}
-	],
-	"meshes":[
-		{
-			"name":"SK1545_Gel\u00e4nder-SGER-150.001",
-			"primitives":[
-				{
-					"attributes":{
-						"POSITION":0,
-						"NORMAL":1,
-						"TEXCOORD_0":2,
-						"TEXCOORD_1":3
-					},
-					"indices":4,
-					"material":0
-				},
-				{
-					"attributes":{
-						"POSITION":5,
-						"NORMAL":6,
-						"TEXCOORD_0":7,
-						"TEXCOORD_1":8
-					},
-					"indices":9,
-					"material":1
-				}
-			]
-		}
-	],
-	"textures":[
-		{
-			"sampler":0,
-			"source":0
-		},
-		{
-			"sampler":0,
-			"source":1
-		},
-		{
-			"sampler":0,
-			"source":0
-		},
-		{
-			"sampler":0,
-			"source":1
-		}
-	],
-	"images":[
-		{
-			"mimeType":"image/jpeg",
-			"name":"gelaender-sger-150_normal",
-			"uri":"texturen/gelaender-sger-150_normal.jpg"
-		},
-		{
-			"mimeType":"image/jpeg",
-			"name":"gelaender-sger-150_farbe",
-			"uri":"texturen/gelaender-sger-150_farbe.jpg"
-		}
-	],
-	"accessors":[
-		{
-			"bufferView":0,
-			"componentType":5126,
-			"count":165,
-			"max":[
-				1.0921015739440918,
-				0.13200004398822784,
-				0.3197968900203705
-			],
-			"min":[
-				-1.0921015739440918,
-				0.13100001215934753,
-				-0.26639845967292786
-			],
-			"type":"VEC3"
-		},
-		{
-			"bufferView":1,
-			"componentType":5126,
-			"count":165,
-			"type":"VEC3"
-		},
-		{
-			"bufferView":2,
-			"componentType":5126,
-			"count":165,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":3,
-			"componentType":5126,
-			"count":165,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":4,
-			"componentType":5123,
-			"count":165,
-			"type":"SCALAR"
-		},
-		{
-			"bufferView":5,
-			"componentType":5126,
-			"count":7800,
-			"max":[
-				1.00600004196167,
-				1.1200000047683716,
-				0.28050002455711365
-			],
-			"min":[
-				-0.9821016192436218,
-				0,
-				-0.3197968900203705
-			],
-			"type":"VEC3"
-		},
-		{
-			"bufferView":6,
-			"componentType":5126,
-			"count":7800,
-			"type":"VEC3"
-		},
-		{
-			"bufferView":7,
-			"componentType":5126,
-			"count":7800,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":8,
-			"componentType":5126,
-			"count":7800,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":9,
-			"componentType":5123,
-			"count":7800,
-			"type":"SCALAR"
-		}
-	],
-	"bufferViews":[
-		{
-			"buffer":0,
-			"byteLength":1980,
-			"byteOffset":0,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":1980,
-			"byteOffset":1980,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":1320,
-			"byteOffset":3960,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":1320,
-			"byteOffset":5280,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":330,
-			"byteOffset":6600,
-			"target":34963
-		},
-		{
-			"buffer":0,
-			"byteLength":93600,
-			"byteOffset":6932,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":93600,
-			"byteOffset":100532,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":62400,
-			"byteOffset":194132,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":62400,
-			"byteOffset":256532,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":15600,
-			"byteOffset":318932,
-			"target":34963
-		}
-	],
-	"samplers":[
-		{
-			"magFilter":9729,
-			"minFilter":9987
-		}
-	],
-	"buffers":[
-		{
-			"byteLength":334532,
-			"uri":"gelaender-sger-150.bin"
-		}
-	]
+ "asset": {
+  "generator": "Khronos glTF Blender I/O v5.2.40",
+  "version": "2.0",
+  "extras": {
+   "kamera": {
+    "ziel": [
+     0.0,
+     0.56,
+     -0.0
+    ],
+    "abstand": 4.868
+   }
+  }
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "name": "Katalog",
+   "nodes": [
+    0,
+    1
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "mesh": 0,
+   "name": "Schatten"
+  },
+  {
+   "mesh": 1,
+   "name": "SK1545_Gel\u00e4nder-SGER-150.001"
+  }
+ ],
+ "materials": [
+  {
+   "alphaMode": "BLEND",
+   "doubleSided": false,
+   "name": "Schatten.024",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 0
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "doubleSided": true,
+   "name": "Beton_web.026",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 1,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "doubleSided": true,
+   "name": "Stahl_web.017",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 2,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  }
+ ],
+ "meshes": [
+  {
+   "name": "Schatten",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2
+     },
+     "indices": 3,
+     "material": 0
+    }
+   ]
+  },
+  {
+   "name": "SK1545_Gel\u00e4nder-SGER-150.001",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 4,
+      "NORMAL": 5,
+      "TEXCOORD_0": 6,
+      "TEXCOORD_1": 7
+     },
+     "indices": 8,
+     "material": 1
+    },
+    {
+     "attributes": {
+      "POSITION": 9,
+      "NORMAL": 10,
+      "TEXCOORD_0": 11,
+      "TEXCOORD_1": 12
+     },
+     "indices": 13,
+     "material": 2
+    }
+   ]
+  }
+ ],
+ "textures": [
+  {
+   "sampler": 0,
+   "source": 0
+  },
+  {
+   "sampler": 0,
+   "source": 1
+  },
+  {
+   "sampler": 0,
+   "source": 1
+  }
+ ],
+ "images": [
+  {
+   "mimeType": "image/png",
+   "name": "gelaender-sger-150_schatten",
+   "uri": "texturen/gelaender-sger-150_schatten.png"
+  },
+  {
+   "mimeType": "image/jpeg",
+   "name": "gelaender-sger-150_licht",
+   "uri": "texturen/gelaender-sger-150_licht.jpg"
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 4,
+   "max": [
+    2.056870937347412,
+    0.0020000000949949026,
+    0.32945552468299866
+   ],
+   "min": [
+    -0.8458992838859558,
+    0.0020000000949949026,
+    -0.4630185663700104
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 4,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 4,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5123,
+   "count": 6,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5126,
+   "count": 165,
+   "max": [
+    1.0921015739440918,
+    0.13200004398822784,
+    0.3197968900203705
+   ],
+   "min": [
+    -1.0921015739440918,
+    0.13100001215934753,
+    -0.26639845967292786
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5126,
+   "count": 165,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 6,
+   "componentType": 5126,
+   "count": 165,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 7,
+   "componentType": 5126,
+   "count": 165,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 8,
+   "componentType": 5123,
+   "count": 165,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 9,
+   "componentType": 5126,
+   "count": 7800,
+   "max": [
+    1.00600004196167,
+    1.1200000047683716,
+    0.28050002455711365
+   ],
+   "min": [
+    -0.9821016192436218,
+    0,
+    -0.3197968900203705
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 10,
+   "componentType": 5126,
+   "count": 7800,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 11,
+   "componentType": 5126,
+   "count": 7800,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 12,
+   "componentType": 5126,
+   "count": 7800,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 13,
+   "componentType": 5123,
+   "count": 7800,
+   "type": "SCALAR"
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 0,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 48,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 32,
+   "byteOffset": 96,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 12,
+   "byteOffset": 128,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1980,
+   "byteOffset": 140,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1980,
+   "byteOffset": 2120,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1320,
+   "byteOffset": 4100,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1320,
+   "byteOffset": 5420,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 330,
+   "byteOffset": 6740,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 93600,
+   "byteOffset": 7072,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 93600,
+   "byteOffset": 100672,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 62400,
+   "byteOffset": 194272,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 62400,
+   "byteOffset": 256672,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 15600,
+   "byteOffset": 319072,
+   "target": 34963
+  }
+ ],
+ "samplers": [
+  {
+   "magFilter": 9729,
+   "minFilter": 9987
+  }
+ ],
+ "buffers": [
+  {
+   "byteLength": 334672,
+   "uri": "gelaender-sger-150.bin"
+  }
+ ],
+ "extensionsUsed": [
+  "KHR_materials_unlit"
+ ]
 }

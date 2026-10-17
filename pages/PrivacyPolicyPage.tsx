@@ -53,7 +53,7 @@ const PrivacyPolicyPage: React.FC = () => {
             <div>
                 <h2 className="text-2xl font-bold font-heading text-brand-dark uppercase tracking-wider border-b border-brand-dark/10 pb-4 mb-6">Kontaktaufnahme per E-Mail</h2>
                 <p className="text-lg mb-4">
-                Die Kontaktaufnahme auf dieser Website erfolgt über <strong>mailto-Links</strong> (Ausnahme: Anfragen aus dem Skatepark-Konfigurator, siehe nächster Abschnitt). Ein Klick auf einen Anfrage-Button öffnet das auf Ihrem Gerät eingerichtete E-Mail-Programm mit einer vorbereiteten Nachricht an <strong>post@aplusurbandesign.com</strong>. Es wird kein Formular ausgefüllt, keine Daten an diese Website übermittelt und kein Dienstleister zwischengeschaltet. Ihre Daten gelangen ausschließlich über Ihren eigenen E-Mail-Anbieter an uns.
+                Die Kontaktaufnahme auf dieser Website erfolgt über <strong>mailto-Links</strong>. Ein Klick auf einen Anfrage-Button öffnet das auf Ihrem Gerät eingerichtete E-Mail-Programm mit einer vorbereiteten Nachricht an <strong>post@aplusurbandesign.com</strong>. Es wird kein Formular ausgefüllt, keine Daten an diese Website übermittelt und kein Dienstleister zwischengeschaltet. Ihre Daten gelangen ausschließlich über Ihren eigenen E-Mail-Anbieter an uns.
                 </p>
                 <p className="text-lg">
                 Die von Ihnen in der E-Mail übermittelten Daten (Name, E-Mail-Adresse, Telefonnummer, Projektbeschreibung) verarbeiten wir zur Bearbeitung Ihrer Anfrage und für eventuelle Anschlussfragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an effizienter Kommunikation). Diese Daten werden nicht ohne Ihre Einwilligung an Dritte weitergegeben.
@@ -66,7 +66,7 @@ const PrivacyPolicyPage: React.FC = () => {
                 Ihren im Konfigurator geplanten Park speichern wir nur in Ihrem eigenen Browser (Local Storage), damit er beim Wechsel zum Katalog erhalten bleibt. Diese Daten verlassen Ihr Gerät nicht, solange Sie keine Anfrage senden oder den Teilen-Link weitergeben. Sie können sie jederzeit über die Browser-Einstellungen löschen.
                 </p>
                 <p className="text-lg">
-                Wenn Sie über den Konfigurator ein Angebot anfragen, übermitteln wir Ihre Angaben im Formular (Name, Organisation, E-Mail-Adresse, Telefonnummer, Ort, Angaben zur Fläche, Nachricht) zusammen mit der Stückliste, einer Draufsicht und dem Link zu Ihrem Park per E-Mail an uns und senden Ihnen eine Eingangsbestätigung. Für den Versand nutzen wir den Dienst <strong>Resend</strong> (Resend, Inc., USA); dabei werden die genannten Daten an Resend übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) sowie Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO, die Sie jederzeit widerrufen können. Wir verwenden die Daten nur zur Bearbeitung Ihrer Anfrage.
+                Wenn Sie über den Konfigurator ein Angebot anfragen, öffnet sich Ihr E-Mail-Programm mit einer vorbereiteten Nachricht (Link zu Ihrem Park und Stückliste). Die Website selbst übermittelt dabei keine Daten; die Nachricht erreicht uns erst, wenn Sie sie über Ihren eigenen E-Mail-Anbieter absenden.
                 </p>
             </div>
 

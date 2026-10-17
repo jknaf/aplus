@@ -85,9 +85,6 @@ const Start: React.FC<{ onWahl: (id: string) => void; onSchliessen?: () => void 
 
 // ---------- Anfrage ----------
 
-interface Kontakt { name: string; organisation: string; email: string; telefon: string; ort: string; flaeche: string; untergrund: string; zeitraum: string; nachricht: string; firma2: string; ok: boolean }
-const LEER_KONTAKT: Kontakt = { name: '', organisation: '', email: '', telefon: '', ort: '', flaeche: 'vorhanden', untergrund: 'Asphalt', zeitraum: '', nachricht: '', firma2: '', ok: false };
-
 const Feld: React.FC<{ label: string; pflicht?: boolean; children: React.ReactNode }> = ({ label, pflicht, children }) => (
   <label className="block">
     <span className="block font-mono text-[11px] uppercase tracking-widest text-brand-muted mb-1">{label}{pflicht && ' *'}</span>
@@ -96,83 +93,27 @@ const Feld: React.FC<{ label: string; pflicht?: boolean; children: React.ReactNo
 );
 const eingabe = 'w-full px-3 py-2.5 rounded-lg border border-brand-dark/15 bg-white focus:outline-none focus:border-brand-orange text-sm';
 
-const AnfrageDialog: React.FC<{
-  offen: boolean; onClose: () => void; senden: (k: Kontakt) => Promise<string | null>; offeneHinweise: number; csvLaden: () => void; link: string;
-}> = ({ offen, onClose, senden, offeneHinweise, csvLaden, link }) => {
-  const [k, setK] = useState<Kontakt>(LEER_KONTAKT);
-  const [status, setStatus] = useState<'bereit' | 'laeuft' | 'fertig'>('bereit');
-  const [fehler, setFehler] = useState<string | null>(null);
+const AnfrageDialog: React.FC<{ offen: boolean; onClose: () => void; mailto: string; link: string }> = ({ offen, onClose, mailto, link }) => {
+  const [kopiert, setKopiert] = useState(false);
   if (!offen) return null;
-  const set = (f: keyof Kontakt) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
-    setK({ ...k, [f]: e.target.type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value });
-  const absenden = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('laeuft'); setFehler(null);
-    const f = await senden(k);
-    if (f) { setFehler(f); setStatus('bereit'); } else setStatus('fertig');
-  };
   return createPortal(
     <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-brand-dark/50 backdrop-blur-sm" onClick={onClose}>
-      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-2xl bg-brand-bg rounded-2xl shadow-2xl p-6 md:p-8 max-h-[92vh] overflow-y-auto">
-        {status === 'fertig' ? (
-          <div>
-            <span className="material-symbols-outlined text-brand-orange text-5xl">check_circle</span>
-            <h2 className="text-2xl font-extrabold font-heading uppercase text-brand-dark mt-3 mb-2">Danke für Ihre Anfrage.</h2>
-            <p className="text-brand-muted mb-6">Wir haben Ihren Park mit Stückliste erhalten und melden uns mit einem Angebot. Eine Bestätigung ist an {k.email} unterwegs.</p>
-            <div className="flex flex-wrap gap-3">
-              <Knopf icon="link" onClick={() => navigator.clipboard?.writeText(link)}>Park-Link kopieren</Knopf>
-              <Knopf onClick={onClose}>Schließen</Knopf>
-            </div>
-          </div>
-        ) : (
-          <form onSubmit={absenden}>
-            <h2 className="text-2xl font-extrabold font-heading uppercase text-brand-dark mb-1">Angebot anfragen</h2>
-            <p className="text-sm text-brand-muted mb-6">Wir erhalten Ihren Park mit Stückliste, Draufsicht und Link und erstellen daraus ein Angebot. Unverbindlich.</p>
-            {offeneHinweise > 0 && (
-              <p className="mb-5 text-sm bg-amber-50 border border-amber-200 text-amber-900 rounded-lg p-3">
-                {offeneHinweise} {offeneHinweise === 1 ? 'Hinweis ist' : 'Hinweise sind'} noch offen. Sie können trotzdem senden, wir prüfen das im Angebot.
-              </p>
-            )}
-            <div className="grid sm:grid-cols-2 gap-4">
-              <Feld label="Name" pflicht><input required maxLength={120} className={eingabe} value={k.name} onChange={set('name')} autoComplete="name" /></Feld>
-              <Feld label="Kommune / Organisation"><input maxLength={160} className={eingabe} value={k.organisation} onChange={set('organisation')} autoComplete="organization" /></Feld>
-              <Feld label="E-Mail" pflicht><input required type="email" maxLength={160} className={eingabe} value={k.email} onChange={set('email')} autoComplete="email" /></Feld>
-              <Feld label="Telefon"><input maxLength={60} className={eingabe} value={k.telefon} onChange={set('telefon')} autoComplete="tel" /></Feld>
-              <Feld label="Ort der Anlage" pflicht><input required maxLength={160} className={eingabe} value={k.ort} onChange={set('ort')} /></Feld>
-              <Feld label="Gewünschter Zeitraum"><input maxLength={80} className={eingabe} value={k.zeitraum} onChange={set('zeitraum')} placeholder="z. B. Frühjahr 2027" /></Feld>
-              <Feld label="Fläche">
-                <select className={eingabe} value={k.flaeche} onChange={set('flaeche')}>
-                  <option value="vorhanden">Fahrfläche ist vorhanden</option>
-                  <option value="geplant">Fahrfläche wird neu gebaut</option>
-                  <option value="unklar">Noch offen</option>
-                </select>
-              </Feld>
-              <Feld label="Untergrund">
-                <select className={eingabe} value={k.untergrund} onChange={set('untergrund')}>
-                  <option>Asphalt</option><option>Beton</option><option>Pflaster</option><option>Noch offen</option>
-                </select>
-              </Feld>
-            </div>
-            <div className="mt-4"><Feld label="Nachricht"><textarea maxLength={3000} rows={3} className={eingabe} value={k.nachricht} onChange={set('nachricht')} /></Feld></div>
-            <input tabIndex={-1} autoComplete="off" value={k.firma2} onChange={set('firma2')} className="hidden" aria-hidden="true" />
-            <label className="flex items-start gap-2 mt-4 text-sm text-brand-muted">
-              <input type="checkbox" required checked={k.ok} onChange={set('ok')} className="mt-1" />
-              <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert und per E-Mail an A+ Urban Design übermittelt werden. <Link to="/datenschutz" className="underline" target="_blank">Datenschutz</Link></span>
-            </label>
-            {fehler && (
-              <div className="mt-4 text-sm text-red-800 bg-red-50 border border-red-200 rounded-lg p-3" role="alert">
-                <p className="mb-2">{fehler}</p>
-                <p>Ihr Park geht nicht verloren: <button type="button" className="underline" onClick={csvLaden}>Stückliste herunterladen</button> oder <button type="button" className="underline" onClick={() => navigator.clipboard?.writeText(link)}>Park-Link kopieren</button>.</p>
-              </div>
-            )}
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <button type="submit" disabled={status === 'laeuft'} className="px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm disabled:opacity-50 hover:bg-brand-dark transition-colors">
-                {status === 'laeuft' ? 'Sende …' : 'Anfrage senden'}
-              </button>
-              <button type="button" onClick={onClose} className="text-sm text-brand-muted hover:text-brand-dark">Abbrechen</button>
-            </div>
-          </form>
-        )}
+      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-lg bg-brand-bg rounded-2xl shadow-2xl p-6 md:p-8">
+        <h2 className="text-2xl font-extrabold font-heading uppercase text-brand-dark mb-2">Angebot anfragen</h2>
+        <p className="text-sm text-brand-muted mb-6">
+          Ihr E-Mail-Programm öffnet sich mit einer fertigen Nachricht an A+ Urban Design. Darin stehen der Link zu Ihrer Planung und die Stückliste.
+          Ergänzen Sie Ort und Kontaktdaten und senden Sie die Mail ab. Unverbindlich.
+        </p>
+        <div className="flex flex-wrap items-center gap-4">
+          <a href={mailto} onClick={() => window.setTimeout(onClose, 300)} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors">
+            <span className="material-symbols-outlined text-lg">mail</span>E-Mail öffnen
+          </a>
+          <button type="button" onClick={onClose} className="text-sm text-brand-muted hover:text-brand-dark">Abbrechen</button>
+        </div>
+        <p className="mt-6 text-xs text-brand-muted">
+          Kein E-Mail-Programm? Schreiben Sie an <a href="mailto:post@aplusurbandesign.com" className="underline">post@aplusurbandesign.com</a> und fügen Sie den{' '}
+          <button type="button" className="underline" onClick={() => navigator.clipboard?.writeText(link).then(() => setKopiert(true))}>Link zu Ihrer Planung</button> ein.{kopiert && ' Link kopiert.'}
+        </p>
       </div>
     </div>,
     document.body,
@@ -447,27 +388,15 @@ const KonfiguratorPage: React.FC = () => {
   const teilen = () => {
     navigator.clipboard?.writeText(link).then(() => melden('Link kopiert. Wer ihn öffnet, sieht genau diesen Park.'), () => melden(link));
   };
-  const senden = async (k: Kontakt): Promise<string | null> => {
-    if (!park) return 'Kein Park vorhanden.';
-    let bild = '';
-    try { bild = api.current?.bild() ?? ''; } catch { bild = ''; }
-    try {
-      const res = await fetch('/api/konfigurator-anfrage', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          kontakt: k, link, bild,
-          flaeche: park.flaeche,
-          zeilen: zeilen.map((z) => ({ code: z.code, name: z.name, menge: z.menge, kg: z.kg, auto: z.auto })),
-          hinweise: hinweise.map((h) => h.text),
-        }),
-      });
-      const d = await res.json().catch(() => ({}));
-      return res.ok ? null : d.fehler ?? 'Die Anfrage konnte nicht gesendet werden.';
-    } catch {
-      return 'Keine Verbindung. Bitte später erneut versuchen.';
-    }
-  };
+  // ponytail: mailto statt Server-Versand; sehr große Parks können lange Links ergeben, die manche Mailprogramme kürzen
+  const mailto = park ? `mailto:post@aplusurbandesign.com?subject=${encodeURIComponent('Angebotsanfrage Skatepark (Konfigurator)')}&body=${encodeURIComponent([
+    'Guten Tag,', '', 'ich bitte um ein Angebot für meinen Skatepark aus dem Konfigurator.', '',
+    'Link zur Planung:', link, '',
+    `Fläche: ${park.flaeche.l.toLocaleString('de-DE')} × ${park.flaeche.b.toLocaleString('de-DE')} m, ${park.flaeche.angeboescht ? 'angeböscht' : 'freistehend'}`, '',
+    'Stückliste:', ...zeilen.map((z) => `${z.menge} × ${z.code} ${z.name}`), '',
+    ...(hinweise.length ? ['Offene Hinweise:', ...hinweise.map((h) => `- ${h.text}`), ''] : []),
+    'Ort der Anlage:', 'Gewünschter Zeitraum:', 'Name / Organisation:', 'Telefon:', '', 'Vielen Dank.',
+  ].join('\n'))}` : '';
 
   // Sidebar-Elemente per Ziehen auf die Bühne
   const fallenLassen = (e: React.DragEvent) => {
@@ -811,7 +740,7 @@ const KonfiguratorPage: React.FC = () => {
       {druck && ctx && park && ab && (
         <Druck park={park} ctx={ctx} zusatz={[...ab.gelaender, ...ab.keile]} zeilen={zeilen} hinweise={hinweise.map((h) => h.text)} optionen={druck.optionen} bild3d={druck.bild} netze={druck.netze} qr={druck.qr} />
       )}
-      <AnfrageDialog offen={anfrage} onClose={() => setAnfrage(false)} senden={senden} offeneHinweise={hinweise.length} csvLaden={csvLaden} link={link} />
+      <AnfrageDialog offen={anfrage} onClose={() => setAnfrage(false)} mailto={mailto} link={link} />
     </PageShell>
   );
 };

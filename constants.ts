@@ -268,7 +268,7 @@ export const PRODUCTS: Product[] = [
     tuvCertified: true,
     usp: 'Das A+ Original: TÜV-zertifizierte Skate-Elemente aus Beton für Skate-Anlagen, Bowls und Pipes. Die Fertigteile lassen sich kombinieren und später erweitern. Sie sind wartungsarm und halten Vandalismus und Witterung stand. Beton dämpft das Rollgeräusch.',
     material: 'Bewehrter Beton',
-    details: 'Arretierungsfüße, Kantenschutzprofil'
+    details: 'Nach DIN EN 14974 geprüft, mit Hubwagen umbaubar'
   },
   {
     id: 'skate-bowls',
@@ -279,7 +279,7 @@ export const PRODUCTS: Product[] = [
     tuvCertified: true,
     usp: 'Das A+ Original: TÜV-zertifizierte Skate-Elemente aus Beton für geschlossene Bowls im Erdreich und offene Bowls auf vorhandener Fläche, 98 oder 150 cm tief. Die Elemente sind wartungsarm, vandalismussicher und erweiterbar.',
     material: 'Bewehrter Beton',
-    details: 'Arretierungsfüße, Kantenschutzprofil'
+    details: 'Verzinkte Copingrohre, die nicht eindellen'
   },
   {
     id: 'skate-pipes',
@@ -290,7 +290,7 @@ export const PRODUCTS: Product[] = [
     tuvCertified: true,
     usp: 'Das A+ Original: TÜV-zertifizierte Pipes aus Beton in drei Höhen: als Standard-Pipe, seitlich erweiterbar, oder als Kombi-Pipe mit Coping-Ramps, Banks und Spines. Die Pipes sind wartungsarm, vandalismussicher und leise.',
     material: 'Bewehrter Beton',
-    details: 'Arretierungsfüße, Kantenschutzprofil'
+    details: '165, 200 oder 255 cm hoch, Stützen nachstellbar'
   },
   {
     id: 'pumptrack',
@@ -301,7 +301,7 @@ export const PRODUCTS: Product[] = [
     tuvCertified: true,
     usp: 'Das A+ Original: TÜV-zertifizierte Steilkurven, Wellen und Rampen aus Beton für Pumptracks. Sie werden aufgestellt, einbetoniert oder einasphaltiert und eignen sich für Bikes, Scooter, Inliner und Skateboards.',
     material: 'Bewehrter Beton',
-    details: 'Arretierungsfüße, Kantenschutzprofil'
+    details: 'Rund 5–8 dB(A) leiser als Holz, Metall oder Kunststoff'
   },
   {
     id: 'ueberdachung',

@@ -234,7 +234,7 @@ const ProductScrollytelling: React.FC = () => {
                                                                 <div className="text-sm font-bold text-brand-dark">{product.material}</div>
                                                             </div>
                                                             <div className="bg-brand-surface/40 p-3 rounded-xl border border-brand-dark/5 shadow-sm">
-                                                                <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">Details</div>
+                                                                <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">Besonderheit</div>
                                                                 <div className="text-sm font-bold text-brand-dark">{product.details}</div>
                                                             </div>
                                                         </div>

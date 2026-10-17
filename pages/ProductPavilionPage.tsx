@@ -196,18 +196,18 @@ const ProductPavilionPage: React.FC = () => {
                         Das <span className="text-brand-orange">Überdachungselement.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
-                        Das Element dient als Überdachung an Haltestellen, als Sitznische oder als Pavillon. Bodenplatte und Sitzbank sind angeformt. Der Autokran setzt das Element in einem Stück. Fundament- und Pflasterarbeiten entfallen. Die Aufstellung erfolgt auf verdichtetem Kies- oder Schotterbett.
+                        Unser Überdachungselement ist ein einziges Fertigteil aus bewehrtem Beton. Bodenplatte und Sitzbank sind angeformt. Der Autokran setzt das Element in einem Stück, es wiegt rund 6,3 t. Zusammenbauen muss man nichts.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Multifunktional</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Das Element dient einzeln als Unterstellplatz, nebeneinander als Haltestellenüberdachung, gegenüber als überdachte Sitznische oder zu dritt oder viert als Pavillon.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Mehrere Elemente lassen sich frei anordnen und später neu gruppieren. Abgebaut werden muss dafür nichts.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Fundamentfrei</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Das Element steht ohne Fundament auf verdichtetem Kies- oder Schotterbett. Pflaster- und Fundamentarbeiten entfallen.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Kein Fundament und kein Pflaster: Die Vorarbeiten vor Ort sind gering.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Robust</h3>
@@ -215,7 +215,7 @@ const ProductPavilionPage: React.FC = () => {
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Wartungsarm</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Das Element hat keine Schrauben und keine empfindlichen Teile. Der Boden ist leicht zu reinigen. Die Materialien sind recycelbar. Das Modul lässt sich jederzeit versetzen oder zurückbauen.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Das Element hat keine Schrauben und keine empfindlichen Teile. Der Boden ist leicht zu reinigen. Die Materialien sind recycelbar.</p>
                     </div>
                 </div>
 

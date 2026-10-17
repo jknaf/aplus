@@ -180,7 +180,7 @@ const ProductSkatePipesPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 rounded-xl">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Standard-Aufstellung</h3>
                         <p className="text-brand-muted leading-relaxed">
-                            Die Pipe steht frei, mit Flat auf beiden Seiten, Plattform und Copingrohr. Die kleine Pipe ist mindestens 375 cm breit, die mittlere und die große mindestens 500 cm. Freistehende Skate-Pipes müssen eine <strong className="text-brand-dark">Absturzsicherung (Geländer)</strong> und auf beiden Seiten einen Sicherheitsbereich von mindestens 2 m haben.
+                            Die Pipe steht frei, mit Flat auf beiden Seiten, Plattform und Copingrohr. Komplett aufgebaut ist eine Pipe je nach Höhe 862 bis 1.143 cm lang. Freistehende Skate-Pipes müssen eine <strong className="text-brand-dark">Absturzsicherung (Geländer)</strong> und auf beiden Seiten einen Sicherheitsbereich von mindestens 2 m haben.
                         </p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 rounded-xl">
@@ -216,7 +216,7 @@ const ProductSkatePipesPage: React.FC = () => {
                     <div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-4">Montage</h3>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Die Pipes werden als vorgefertigte Betonmodule geliefert. Unter jeder Plattform sitzt eine arretierbare Stütze, mit der sich das Modul an leichte Unebenheiten anpassen lässt. Die Montage erfolgt fundamentfrei auf Asphalt, Beton oder verdichtetem Schotterbett.
+                            Die Pipes werden als vorgefertigte Betonmodule geliefert. Jede Pipe gibt es in zwei Ausführungen: mit Geländer zum freien Aufstellen oder in eine Böschung gebaut. Der Radius beträgt 240 cm bei der Pipe 165 und 280 cm bei den Pipes 200 und 255.
                         </p>
                         <p className="text-brand-muted leading-relaxed">
                             Alle Module sind nach DIN EN 14974 geprüft, vom TÜV zertifiziert und tragen das GS-Zeichen. Das Copingrohr ist verzinkt, alle Fahrkanten haben einen Kantenschutz aus Hartgummi.

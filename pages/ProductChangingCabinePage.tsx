@@ -170,7 +170,7 @@ const ProductChangingCabinePage: React.FC = () => {
                             Herkömmliche Umkleidekabinen halten im öffentlichen Raum oft nicht lange: Verriegelungen brechen, Scharniere korrodieren, Holz verrottet. Die Schnecke hat nichts davon. Sie schützt durch ihre Form statt durch Mechanik und besteht aus Beton und Edelstahl. Die spiralförmige Wand führt in einen geschützten Innenraum, ganz ohne bewegliche Teile. Unten bleibt ein Abstand von 30 cm zur Bodenplatte, oben ist die Kabine offen. Das sorgt für Luft.
                         </p>
                         <p>
-                            Eine Kabine bietet Platz für eine Person mit Kleidung und Tasche. Die Spiralform schützt vor Blicken. Von außen sieht man aber, ob die Kabine belegt ist. Die Kabine besteht aus zwei Teilen ohne Verschraubung und steht ohne Fundament auf verdichtetem Schotterbett. Bei Bedarf wird sie mit Autokran, Radlader oder Gabelstapler an einen anderen Ort versetzt.
+                            Eine Kabine bietet Platz für eine Person mit Kleidung und Tasche. Die Spiralform schützt vor Blicken. Von außen sieht man aber, ob die Kabine belegt ist. Die beiden Teile wiegen rund 1,0 t und 2,3 t und sind nicht miteinander verschraubt. Bei Bedarf wird sie mit Autokran, Radlader oder Gabelstapler an einen anderen Ort versetzt.
                         </p>
                     </div>
                 </div>
@@ -183,7 +183,7 @@ const ProductChangingCabinePage: React.FC = () => {
                         Umkleide <span className="text-brand-orange">oder Dusche.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed">
-                        Die Schnecke ist für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen gedacht. Sie steht frei als Außenkabine und ist wahlweise auch als Duschkabine erhältlich. Die fugenlose Innenfläche ist in wenigen Minuten gereinigt. Es gibt keine Fugen, in denen sich Schmutz oder Schimmel festsetzt. Im Winter bleibt die Kabine stehen. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.
+                        Die Schnecke ist für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen gedacht. Sie steht frei als Außenkabine und ist wahlweise auch als Duschkabine erhältlich. Die Duschkabine gibt es fertig mit Bodenablauf und Dusche: Die Bodenplatte wird über die Abwasserleitung gesetzt, dann wird nur noch die Wasserzuleitung angeschlossen. Alternativ gibt es die Kabine nur mit Aussparungen für Gully und Wasserleitung. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.
                     </p>
                 </div>
             </div>
@@ -196,7 +196,7 @@ const ProductChangingCabinePage: React.FC = () => {
                         Freibad und <span className="text-brand-orange">Badesee.</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                        Die Umkleidekabine steht frei im Freibad oder am Badesee. Die Bodenplatte wird auf ein verdichtetes Schotterbett gelegt. Pflaster- und Fundamentarbeiten entfallen.
+                        Die Umkleidekabine steht frei im Freibad oder am Badesee. Vor Ort genügt ein verdichtetes, frostsicheres Kiesbett mit 5–20 mm Körnung. Die Bodenplatte kann bündig mit dem Boden oder etwas höher liegen.
                     </p>
                 </div>
                 <div className="relative w-full aspect-[21/9] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">

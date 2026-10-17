@@ -216,7 +216,7 @@ const ProductPavilionPage: React.FC = () => {
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Wartungsarm</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Keine Verschraubungen, keine zerbrechlichen Teile. Der Boden ist einfach zu reinigen. Materialien recycelbar, das Modul lässt sich jederzeit versetzen oder zurückbauen.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Keine Verschraubungen, keine zerbrechlichen Teile. Der Boden ist einfach zu reinigen. Materialien recycelbar. Das Modul lässt sich jederzeit versetzen oder zurückbauen.</p>
                     </div>
                 </div>
 

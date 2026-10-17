@@ -122,7 +122,7 @@ const ProductSkatePipesPage: React.FC = () => {
                             Die Pipe. <br/><span className="text-brand-orange">In Beton.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            Die Halfpipe entstand in den 1970er Jahren aus leeren Schwimmbecken. Heute ist sie das prägende Element jedes Skateparks, und in Beton die dauerhafteste Ausführung überhaupt.
+                            Die Halfpipe entstand in den 1970er Jahren aus leeren Schwimmbecken. Heute ist sie das prägende Element jedes Skateparks. In Beton ist sie die dauerhafteste Ausführung überhaupt.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
                             Unsere Skate-Pipes sind aus bewehrtem Beton gefertigt. Unter jeder Plattform sitzt eine arretierbare Stütze, die Fugen sind mit verzinktem Copingrohr abgedeckt. Lieferbar in <strong className="text-brand-dark">165, 240 und 255 cm</strong> Gesamthöhe (inkl. Flat = 15 cm), als Standard oder als Combi-Pipe mit Banks, Coping-Ramps und Spines.

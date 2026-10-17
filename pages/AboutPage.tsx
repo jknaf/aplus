@@ -256,7 +256,7 @@ const AboutPage: React.FC = () => {
                         <h3 className="text-4xl font-extrabold font-heading text-brand-dark uppercase mb-2 tracking-tight">Dipl.-Ing. Cüneyit Akcakoca</h3>
                         <p className="text-brand-orange font-bold mb-6 text-lg">Architekt · A+ Urban Design</p>
                         <p className="text-brand-muted leading-relaxed text-lg max-w-lg">
-                            "Architektur endet nicht an der Gebäudekante. Der Raum dazwischen, dort, wo das Leben stattfindet, verdient dieselbe Qualität und Aufmerksamkeit."
+                            "Architektur endet nicht an der Gebäudekante. Der Raum dazwischen, wo das Leben stattfindet, verdient dieselbe Qualität und Aufmerksamkeit."
                         </p>
                         <p className="text-brand-muted leading-relaxed text-lg max-w-lg mt-6">
                             Das Unternehmen hat bis heute über 350 Skate-Anlagen europaweit realisiert: von den Kanaren bis Norwegen und von Großbritannien bis zur Türkei. Entwickelt, gefertigt und logistisch gesteuert wird alles seit 2025 aus Stuttgart.

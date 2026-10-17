@@ -48,7 +48,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'kommunaldirekt.de',
     url: 'https://www.kommunaldirekt.de/skateanlage-mit-serpent/',
     teaser:
-      'Die Altdorfer Skateanlage wurde grunderneuert und um einen „Serpent" erweitert, eine offene Bowl, die zugleich als Startrampe dient. Der Serpent wurde in die Fläche eingebaut, angeböscht und begrünt; sanierte Bestandselemente wurden mit neuen TÜV-zertifizierten Betonfertigteilen kombiniert.',
+      'Die Altdorfer Skateanlage wurde grunderneuert und um einen „Serpent" erweitert: eine offene Bowl, die zugleich als Startrampe dient. Der Serpent wurde in die Fläche eingebaut, angeböscht und begrünt; sanierte Bestandselemente wurden mit neuen TÜV-zertifizierten Betonfertigteilen kombiniert.',
   },
   {
     id: 'kommunaldirekt-skatepark-friedrichsdorf-2024',
@@ -115,7 +115,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
   },
   {
     id: 'kommunalclick24-duschkabine-so-frei',
-    title: 'Duschkabine: wir sind so frei',
+    title: 'Duschkabine: Wir sind so frei',
     publisher: 'kommunalclick24.de',
     url: 'https://kommunalclick24.de/kommunen/duschkabine-wir-sind-so-frei/',
     teaser:
@@ -253,7 +253,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'flaechenmanager.com',
     url: 'https://www.flaechenmanager.com/aktuelles/produkte/article-6840410-203909/beruehrungsfreie-umkleidekabine-fuer-freibaeder-.html',
     teaser:
-      'A+ Urban Design präsentiert eine wartungsarme Umkleidekabine für Freibäder: fugenlose Betonbodenplatte mit schneckenförmigem Oberteil auf Edelstahlfüßen. Beim Betreten und Verlassen ist kein Kabinenkontakt nötig. Ein hygienischer Vorteil, besonders während der Pandemie entwickelt.',
+      'A+ Urban Design präsentiert eine wartungsarme Umkleidekabine für Freibäder: fugenlose Betonbodenplatte mit schneckenförmigem Oberteil auf Edelstahlfüßen. Beim Betreten und Verlassen ist kein Kabinenkontakt nötig. Das ist ein hygienischer Vorteil; die Kabine wurde während der Pandemie entwickelt.',
     year: 2021,
   },
 ];
@@ -381,11 +381,11 @@ export const PROJECTS: Project[] = [
         ],
         description: "Der erste Pump-Track im Bezirk Reinickendorf, neben dem Humboldt-Gymnasium, realisiert mit modularen, TÜV-zertifizierten Betonelementen von A+ Urban Design. Die Trasse erstreckt sich teilweise über dem Tegel-Tunnel und musste zwischen bestehenden Bäumen geführt werden.",
         longDescription: [
-            "Im Berliner Bezirk Reinickendorf entstand neben dem Humboldt-Gymnasium der erste Pump-Track des Bezirks. Die Anlage erstreckt sich teilweise über dem Tegel-Tunnel und musste zwischen bestehendem Baumbestand geführt werden. Eine anspruchsvolle Trassenplanung mit beengten Bau- und Tragwerksbedingungen.",
+            "Im Berliner Bezirk Reinickendorf entstand neben dem Humboldt-Gymnasium der erste Pump-Track des Bezirks. Die Anlage erstreckt sich teilweise über dem Tegel-Tunnel und musste zwischen bestehendem Baumbestand geführt werden. Das erforderte eine anspruchsvolle Trassenplanung mit beengten Bau- und Tragwerksbedingungen.",
             "Die Lösung waren modular aufgebaute Pump-Track-Elemente aus Beton: schräge Kurventeile und gerade Strecken mit Hindernissen, die Fahrern erlauben, allein durch Gewichtsverlagerung Geschwindigkeit aufzubauen, ohne Antrieb, ohne Pedale. A+ Urban Design lieferte speziell entwickelte, wartungsarme Betonelemente und unterstützte die Trassenplanung.",
             "Quellen: kommunaldirekt.de (»Pump-Track in Berlin«, 2022), freiraum-gestalten.info (»Pumptracken in Berlin«, FREIRAUM GESTALTEN 05/2022)."
         ],
-        altText: "Pump-Track Berlin-Reinickendorf am Humboldt-Gymnasium, über dem Tegel-Tunnel, modulare Beton-Elemente.",
+        altText: "Pump-Track Berlin-Reinickendorf am Humboldt-Gymnasium, über dem Tegel-Tunnel: modulare Beton-Elemente.",
         productsUsed: [
             { name: "Modulare Pumptrack-Elemente", path: "/produkte/pumptrack-beton" },
         ]
@@ -403,7 +403,7 @@ export const PROJECTS: Project[] = [
         description: "Stationärer Grillplatz aus Betonfertigteilen mit Edelstahl-Rost, höhenverstellbarer Grillfläche und Windschutzring, Durchmesser 420 cm, fundamentfrei. Eine A+-Lösung für Freibäder, Sportanlagen und Schrebergärten: robust, vandalismussicher und ohne bewegliche Teile.",
         longDescription: [
             "Der Grillplatz aus A+-Betonfertigteilen besteht aus mehreren Betonteilen, die zusammengebaut eine Einheit mit 420 cm Durchmesser bilden. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl, höhenverstellbar und gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert.",
-            "Konzipiert für den öffentlichen Raum: Freibäder, Campingplätze, Sportanlagen und Schrebergärten. Die Installation erfolgt fundamentfrei auf einem verdichteten Schotterbett, ohne Pflasterarbeiten, keine Erdarbeiten. Die Bodenplatte ist 16 cm stark und Teil der Grillstelle.",
+            "Konzipiert für den öffentlichen Raum: Freibäder, Campingplätze, Sportanlagen und Schrebergärten. Die Installation erfolgt fundamentfrei auf einem verdichteten Schotterbett, ohne Pflaster- und Erdarbeiten. Die Bodenplatte ist 16 cm stark und Teil der Grillstelle.",
             "Quelle: kommunaldirekt.de, »Grillplatz für öffentlichen Raum« (2020)."
         ],
         altText: "Grillplatz aus A+-Betonfertigteilen, Durchmesser 420 cm, Edelstahlrost, fundamentfrei.",
@@ -447,9 +447,9 @@ export const PROJECTS: Project[] = [
         ],
         description: "Die Umkleide- und Duschkabine von A+ Urban Design besteht aus zwei aufeinandergesetzten Betonfertigteilen mit charakteristisch schneckenförmiger Sichtschutzwand auf Edelstahlfüßen. Wahlweise mit integrierter Dusche oder nur mit Aussparungen für Gully und Wasserleitungen, komplett ohne aufwendige Fundamentarbeit.",
         longDescription: [
-            "Die Schnecke ist eine wartungsarme Umkleidekabine für Freibäder: fugenlose Betonbodenplatte, schneckenförmiges Oberteil auf Edelstahlfüßen. Beim Betreten und Verlassen ist kein Kabinenkontakt nötig. Ein hygienischer Vorteil, der besonders während der Pandemie von Bedeutung war.",
+            "Die Schnecke ist eine wartungsarme Umkleidekabine für Freibäder: fugenlose Betonbodenplatte, schneckenförmiges Oberteil auf Edelstahlfüßen. Beim Betreten und Verlassen ist kein Kabinenkontakt nötig. Das ist ein hygienischer Vorteil, der besonders während der Pandemie wichtig war.",
             "Die Sichtschutzwand ab 30 cm Höhe ermöglicht Sichtkontrolle gegen Missbrauch. Wartungsarme Materialien ohne bewegliche Teile garantieren langjährige Haltbarkeit. Die Kabine besteht aus nur zwei Teilen ohne Verschraubungen und lässt sich einfach aufstellen, umsetzen oder versetzen.",
-            "Quellen: kommunaldirekt.de (»Umkleidekabine für Freibäder«), kommunalclick24.de (»Ein Schneckenhaus als Duschkabine«, »Duschkabine: wir sind so frei«), flaechenmanager.com (»Berührungsfreie Umkleidekabine für Freibäder«, 2021)."
+            "Quellen: kommunaldirekt.de (»Umkleidekabine für Freibäder«), kommunalclick24.de (»Ein Schneckenhaus als Duschkabine«, »Duschkabine: Wir sind so frei«), flaechenmanager.com (»Berührungsfreie Umkleidekabine für Freibäder«, 2021)."
         ],
         altText: "Schnecke: Umkleide- und Duschkabine aus zwei Betonfertigteilen mit schneckenförmigem Sichtschutz.",
         productsUsed: [
@@ -464,7 +464,7 @@ export const PROJECTS: Project[] = [
         imageUrl: "/images/skate-anlagen/skate-anlage-01.jpg",
         description: "Skatepark im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia (Rumänien): mehrstufige Anlage aus modularen Beton-Skateelementen, die aus mehr als 50 m Entfernung unsichtbar bleibt. Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert.",
         longDescription: [
-            "Im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia, Rumänien, entstand ein Skatepark, der aus mehr als 50 m Entfernung unsichtbar bleibt. Ein bewusster Entwurf, um die historische Gesamtwirkung der Sternfestung nicht zu stören.",
+            "Im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia, Rumänien, entstand ein Skatepark, der aus mehr als 50 m Entfernung unsichtbar bleibt. Das ist bewusst so entworfen, um die historische Gesamtwirkung der Sternfestung nicht zu stören.",
             "Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert; die mehrstufige Skateanlage verbindet zugleich Ober- und Unterstadt und zeigt, wie Freizeitnutzung und Denkmalschutz zusammengehen können. A+ Urban Design lieferte die modularen Betonelemente und begleitete die Einbindung in den Denkmalschutz-Kontext.",
             "Quelle: freiraum-gestalten.info, »Skaten und Denkmalschutz vereinen«."
         ],

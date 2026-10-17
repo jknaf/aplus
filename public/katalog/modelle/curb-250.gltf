@@ -37,7 +37,7 @@
   {
    "alphaMode": "BLEND",
    "doubleSided": false,
-   "name": "Schatten.042",
+   "name": "Schatten.039",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 0
@@ -66,7 +66,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Beton_web.048",
+   "name": "Beton_web.045",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 2,
@@ -189,7 +189,7 @@
    "min": [
     -0.25857600569725037,
     0.0020000000949949026,
-    -1.3839590549468994
+    -1.3785719871520996
    ],
    "type": "VEC3"
   },

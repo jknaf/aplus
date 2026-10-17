@@ -37,7 +37,7 @@
   {
    "alphaMode": "BLEND",
    "doubleSided": false,
-   "name": "Schatten",
+   "name": "Schatten.051",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 0
@@ -51,7 +51,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Beton_web",
+   "name": "Beton_web.057",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 1,
@@ -66,7 +66,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Stahl_web",
+   "name": "Stahl_web.048",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 2,
@@ -81,7 +81,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Kantenwinkel_web",
+   "name": "Kantenwinkel_web.033",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 3,
@@ -189,7 +189,7 @@
    "min": [
     -0.8436013460159302,
     0.0019999975338578224,
-    -0.9978484511375427
+    -1.0029900074005127
    ],
    "type": "VEC3"
   },

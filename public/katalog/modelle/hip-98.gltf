@@ -37,7 +37,7 @@
   {
    "alphaMode": "BLEND",
    "doubleSided": false,
-   "name": "Schatten.030",
+   "name": "Schatten.008",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 0
@@ -51,7 +51,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Beton_web.032",
+   "name": "Beton_web.010",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 1,
@@ -66,7 +66,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Stahl_web.023",
+   "name": "Stahl_web.008",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 2,
@@ -81,7 +81,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Kantenwinkel_web.011",
+   "name": "Kantenwinkel_web.008",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 3,
@@ -189,7 +189,7 @@
    "min": [
     -1.1583466529846191,
     0.001999802887439728,
-    -1.4088616371154785
+    -1.4007805585861206
    ],
    "type": "VEC3"
   },
@@ -254,7 +254,7 @@
   {
    "bufferView": 9,
    "componentType": 5126,
-   "count": 42,
+   "count": 30,
    "max": [
     1.121084213256836,
     0.100090391933918,
@@ -262,7 +262,7 @@
    ],
    "min": [
     -1.11899995803833,
-    0.002384789288043976,
+    0.002384796505793929,
     -1.11899995803833
    ],
    "type": "VEC3"
@@ -270,25 +270,25 @@
   {
    "bufferView": 10,
    "componentType": 5126,
-   "count": 42,
+   "count": 30,
    "type": "VEC3"
   },
   {
    "bufferView": 11,
    "componentType": 5126,
-   "count": 42,
+   "count": 30,
    "type": "VEC2"
   },
   {
    "bufferView": 12,
    "componentType": 5126,
-   "count": 42,
+   "count": 30,
    "type": "VEC2"
   },
   {
    "bufferView": 13,
    "componentType": 5123,
-   "count": 42,
+   "count": 30,
    "type": "SCALAR"
   },
   {
@@ -389,62 +389,62 @@
   },
   {
    "buffer": 0,
-   "byteLength": 504,
+   "byteLength": 360,
    "byteOffset": 43232,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 504,
-   "byteOffset": 43736,
+   "byteLength": 360,
+   "byteOffset": 43592,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 336,
-   "byteOffset": 44240,
+   "byteLength": 240,
+   "byteOffset": 43952,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 336,
-   "byteOffset": 44576,
+   "byteLength": 240,
+   "byteOffset": 44192,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 84,
-   "byteOffset": 44912,
+   "byteLength": 60,
+   "byteOffset": 44432,
    "target": 34963
   },
   {
    "buffer": 0,
    "byteLength": 576,
-   "byteOffset": 44996,
+   "byteOffset": 44492,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 576,
-   "byteOffset": 45572,
+   "byteOffset": 45068,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 384,
-   "byteOffset": 46148,
+   "byteOffset": 45644,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 384,
-   "byteOffset": 46532,
+   "byteOffset": 46028,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 96,
-   "byteOffset": 46916,
+   "byteOffset": 46412,
    "target": 34963
   }
  ],
@@ -456,7 +456,7 @@
  ],
  "buffers": [
   {
-   "byteLength": 47012,
+   "byteLength": 46508,
    "uri": "hip-98.bin"
   }
  ],

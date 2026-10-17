@@ -37,7 +37,7 @@
   {
    "alphaMode": "BLEND",
    "doubleSided": false,
-   "name": "Schatten.011",
+   "name": "Schatten",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 0
@@ -51,7 +51,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Beton_web.013",
+   "name": "Beton_web",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 1,
@@ -66,7 +66,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Stahl_web.008",
+   "name": "Stahl_web",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 2,
@@ -81,7 +81,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Kantenwinkel_web.002",
+   "name": "Kantenwinkel_web",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 3,
@@ -189,7 +189,7 @@
    "min": [
     -2.513838291168213,
     0.0020000000949949026,
-    -1.4356310367584229
+    -1.4208307266235352
    ],
    "type": "VEC3"
   },
@@ -254,7 +254,7 @@
   {
    "bufferView": 9,
    "componentType": 5126,
-   "count": 966,
+   "count": 960,
    "max": [
     1.9641504287719727,
     1.5510001182556152,
@@ -262,7 +262,7 @@
    ],
    "min": [
     -2.4410364627838135,
-    0.0023873760364949703,
+    0.0060570985078811646,
     -0.9315000772476196
    ],
    "type": "VEC3"
@@ -270,25 +270,25 @@
   {
    "bufferView": 10,
    "componentType": 5126,
-   "count": 966,
+   "count": 960,
    "type": "VEC3"
   },
   {
    "bufferView": 11,
    "componentType": 5126,
-   "count": 966,
+   "count": 960,
    "type": "VEC2"
   },
   {
    "bufferView": 12,
    "componentType": 5126,
-   "count": 966,
+   "count": 960,
    "type": "VEC2"
   },
   {
    "bufferView": 13,
    "componentType": 5123,
-   "count": 966,
+   "count": 960,
    "type": "SCALAR"
   },
   {
@@ -389,62 +389,62 @@
   },
   {
    "buffer": 0,
-   "byteLength": 11592,
+   "byteLength": 11520,
    "byteOffset": 60244,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 11592,
-   "byteOffset": 71836,
+   "byteLength": 11520,
+   "byteOffset": 71764,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 7728,
-   "byteOffset": 83428,
+   "byteLength": 7680,
+   "byteOffset": 83284,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 7728,
-   "byteOffset": 91156,
+   "byteLength": 7680,
+   "byteOffset": 90964,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 1932,
-   "byteOffset": 98884,
+   "byteLength": 1920,
+   "byteOffset": 98644,
    "target": 34963
   },
   {
    "buffer": 0,
    "byteLength": 720,
-   "byteOffset": 100816,
+   "byteOffset": 100564,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 720,
-   "byteOffset": 101536,
+   "byteOffset": 101284,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 480,
-   "byteOffset": 102256,
+   "byteOffset": 102004,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 480,
-   "byteOffset": 102736,
+   "byteOffset": 102484,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 120,
-   "byteOffset": 103216,
+   "byteOffset": 102964,
    "target": 34963
   }
  ],
@@ -456,7 +456,7 @@
  ],
  "buffers": [
   {
-   "byteLength": 103336,
+   "byteLength": 103084,
    "uri": "bigbank-165.bin"
   }
  ],

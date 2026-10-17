@@ -197,7 +197,7 @@ const ProductPumptrackPage: React.FC = () => {
                     </div>
                 </div>
                 <div className="mt-6 bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-muted">
-                    <strong className="text-brand-dark">Aufbauvarianten:</strong> (1) auf vorhandener befahrbarer Fläche mit Markierung der Trasse, (2) auf neu erstellter Trassenfläche aus Beton oder Asphalt, (3) aufgestellt auf Fundamentplatten mit anbetonierter oder anasphaltierter Trasse. Elemente können angeböscht werden.
+                    Der Pumptrack lässt sich auf <strong className="text-brand-dark">drei Arten</strong> aufbauen: auf einer vorhandenen befahrbaren Fläche, auf der die Trasse markiert wird, auf einer neu angelegten Trasse aus Beton oder Asphalt oder auf Fundamentplatten, an die die Trasse anbetoniert oder anasphaltiert wird. Die Elemente können auch angeböscht werden.
                 </div>
             </div>
 

@@ -142,7 +142,7 @@ const Voraussetzungen: React.FC = () => {
           <h2>Der Aufbau <span className="accent">unter</span> dem Grillplatz.</h2>
           <p>
             Der Grillplatz benötigt keine Fundamente. Die Tragfähigkeit kommt aus einem
-            schichtweise aufgebauten Unterbau, bauseits auszuführen, Durchmesser 4,50 m.
+            schichtweise aufgebauten Unterbau (bauseits auszuführen, Durchmesser 4,50 m).
             Für eine mangelhafte Ausführung des Kiesbetts übernehmen wir keine Haftung.
           </p>
         </div>
@@ -293,7 +293,7 @@ const Montage: React.FC = () => (
                 <div className="lbl">Kritisch</div>
                 <div className="txt">
                   Die Aussparung für den Träger ist nur an <strong>einer</strong> Platte
-                  vorhanden. Position vor dem Absetzen prüfen, nachträgliches Drehen ist
+                  vorhanden. Position vor dem Absetzen prüfen. Nachträgliches Drehen ist
                   mit 3,3 t pro Teil nicht sinnvoll.
                 </div>
               </div>
@@ -327,7 +327,7 @@ const Montage: React.FC = () => (
             <p>
               Der Träger wird in die vorhandene Aussparung in der Bodenplatte gesteckt.
               Arretieren Sie ihn mithilfe eines <strong>Schnurlotes</strong>, das über die
-              Rolle des Trägers geführt wird, so, dass das Lot genau in der Mitte des
+              Rolle des Trägers geführt wird, und zwar so, dass das Lot genau in der Mitte des
               Grills hängt.
             </p>
             <p>

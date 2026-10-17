@@ -166,7 +166,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                             Der klassische Skate-Bowl: rundum geschlossen, eingegraben, Einstieg über die obere Plattform. Die Elemente werden auf gesonderte Fundamente gestellt und anbetoniert. So wird die Anlage dauerhaft mit dem Untergrund verbunden.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Im Flat ist mindestens ein Gully Pflicht, wir empfehlen einen zweiten als Sicherheit. Größen und Formen sind frei wählbar: Kidney-Pools, Clover-Bowls, Kombi-Pools mit mehreren Tiefen.
+                            Im Flat ist mindestens ein Gully Pflicht. Wir empfehlen einen zweiten als Sicherheit. Größen und Formen sind frei wählbar: Kidney-Pools, Clover-Bowls, Kombi-Pools mit mehreren Tiefen.
                         </p>
                         <ul className="text-sm text-brand-muted font-mono space-y-2 mt-6">
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Tiefen 98 und 150 cm</li>
@@ -183,7 +183,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                             Der offene Bowl ist an mindestens einer Seite geöffnet: Man fährt direkt aufs Flat. Damit funktioniert er wie ein klassischer Bowl und zugleich wie ein Street-Parcours-Element: Pumpen, Grinden, Transfer zurück ins Flat.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Oberirdische Bowls werden direkt auf die vorhandene Rollfläche gestellt, Übergangsbleche überbrücken den Radius zur Plattform. Kein Aushub, kein Fundament, keine Drainage nötig.
+                            Oberirdische Bowls werden direkt auf die vorhandene Rollfläche gestellt. Übergangsbleche überbrücken den Radius zur Plattform. Kein Aushub, kein Fundament, keine Drainage nötig.
                         </p>
                         <ul className="text-sm text-brand-muted font-mono space-y-2 mt-6">
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Direkt auf Bestandsfläche oder Asphalt</li>

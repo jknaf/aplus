@@ -89,10 +89,10 @@ const ProjectsPage: React.FC = () => {
             </div>
 
             {/* Content Layer */}
-            <div className="absolute inset-0 z-20 p-8 flex flex-col justify-between">
+            <div className="absolute inset-0 z-20 p-6 md:p-8 flex flex-col justify-end">
                 
                 {/* Top Label */}
-                <div className="flex justify-between items-start opacity-100 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="mb-auto flex justify-between items-start opacity-100 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="inline-block py-1 px-2 bg-black/60 backdrop-blur-md text-[10px] font-mono uppercase tracking-widest text-brand-orange border border-brand-orange/20">
                         REF-{String(index + 1).padStart(3, '0')}
                     </span>
@@ -100,12 +100,12 @@ const ProjectsPage: React.FC = () => {
 
                 {/* Bottom Info */}
                 <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-3xl md:text-5xl font-extrabold font-heading text-white uppercase tracking-tighter mb-2 leading-[0.9] drop-shadow-xl">
+                    <h3 className="text-2xl lg:text-3xl xl:text-5xl font-extrabold font-heading text-white uppercase tracking-tighter mb-2 leading-[0.9] drop-shadow-xl line-clamp-3">
                         {project.title}
                     </h3>
                     <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
-                        <p className="text-gray-200 text-sm md:text-base leading-relaxed max-w-lg mt-4 border-l-2 border-brand-orange pl-4 bg-black/40 p-2 backdrop-blur-sm">
-                            {project.description}
+                        <p className="text-gray-200 text-sm md:text-base leading-relaxed max-w-lg mt-4 border-l-2 border-brand-orange pl-4 bg-black/40 p-2 backdrop-blur-sm hidden lg:block">
+                            <span className="line-clamp-2">{project.description}</span>
                         </p>
                         <div className="mt-4 flex items-center gap-2 text-brand-orange text-xs font-bold uppercase tracking-widest">
                             Projekt ansehen <span className="material-symbols-outlined text-sm">arrow_forward</span>

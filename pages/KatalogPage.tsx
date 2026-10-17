@@ -55,7 +55,7 @@ const material = (e: Element) => {
 const PreisBadge: React.FC<{ preis: string | null; gross?: boolean; onSperre: () => void }> = ({ preis, gross, onSperre }) =>
   preis ? (
     <span className={`font-heading font-extrabold text-brand-dark ${gross ? 'text-3xl' : 'text-base'}`}>
-      {preis} <span className="text-xs font-sans font-normal text-brand-muted">netto</span>
+      {preis}{preis.includes('€') && <span className="text-xs font-sans font-normal text-brand-muted"> netto</span>}
     </span>
   ) : (
     <button
@@ -86,7 +86,7 @@ const CodeDialog: React.FC<{ offen: boolean; onClose: () => void; freischalten: 
       <form onSubmit={senden} onClick={(e) => e.stopPropagation()} className="w-full max-w-md bg-brand-bg rounded-2xl border border-brand-dark/10 shadow-2xl p-8">
         <span className="material-symbols-outlined text-brand-orange text-4xl mb-4">lock_open</span>
         <h2 className="text-2xl font-extrabold font-heading text-brand-dark uppercase tracking-tight mb-2">Preise freischalten</h2>
-        <p className="text-brand-muted text-sm mb-6">Die Nettopreise 2026 sehen Sie mit Ihrem persönlichen Code. Sie haben noch keinen? Wir senden ihn Ihnen gern zu.</p>
+        <p className="text-brand-muted text-sm mb-6">Die Nettopreise 2026 sehen Sie mit Ihrem persönlichen Code. Der Code gilt einmal: Nach dem Neuladen der Seite sind die Preise wieder ausgeblendet. Sie haben noch keinen? Wir senden ihn Ihnen gern zu.</p>
         <label className="block font-mono text-xs uppercase tracking-widest text-brand-muted mb-2" htmlFor="preis-code">Code</label>
         <input
           id="preis-code" value={code} onChange={(e) => setCode(e.target.value)} autoFocus autoComplete="off"
@@ -220,7 +220,8 @@ const KatalogPage: React.FC = () => {
   const [katalog, setKatalog] = useState<Katalog | null>(null);
   const [suche, setSuche] = useState('');
   const [dialog, setDialog] = useState(false);
-  const { preise, freischalten } = usePreise();
+  const { preise, freischalten, betreiber, kundencode, abmelden } = usePreise();
+  const [neuCode, setNeuCode] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/katalog/katalog.json').then((r) => r.json()).then(setKatalog).catch(() => setKatalog(null));
@@ -280,6 +281,11 @@ const KatalogPage: React.FC = () => {
             <span className="material-symbols-outlined text-lg">{preise ? 'lock_open' : 'lock'}</span>
             {preise ? 'Preise freigeschaltet' : 'Preise freischalten'}
           </button>
+          {betreiber && (
+            <button type="button" onClick={async () => setNeuCode((await kundencode()) ?? 'Fehler, bitte erneut versuchen')} className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider bg-brand-dark text-white hover:bg-brand-orange transition-colors">
+              <span className="material-symbols-outlined text-lg">key</span>Kundencode erzeugen
+            </button>
+          )}
         </div>
       </div>
 
@@ -309,7 +315,7 @@ const KatalogPage: React.FC = () => {
                       <h3 className="font-extrabold font-heading text-brand-dark uppercase tracking-tight leading-tight group-hover:text-brand-orange transition-colors">{e.name}</h3>
                       <p className="font-mono text-[11px] text-brand-muted mt-1">{e.preisliste_code || e.kuerzel || '–'}</p>
                       <p className="text-xs text-brand-muted mt-2">{kurzMasse(e)}</p>
-                      <div className="mt-3"><PreisBadge preis={preisText(preise?.[e.slug])} onSperre={() => setDialog(true)} /></div>
+                      <div className="mt-3"><PreisBadge preis={preise ? preisText(preise[e.slug]) ?? 'auf Anfrage' : null} onSperre={() => setDialog(true)} /></div>
                     </div>
                   </Link>
                 ))}
@@ -348,9 +354,24 @@ const KatalogPage: React.FC = () => {
 
       {aktiv && (
         <Detail
-          e={aktiv} preis={preisText(preise?.[aktiv.slug])} onSperre={() => setDialog(true)} onClose={schliessen}
+          e={aktiv} preis={preise ? preisText(preise[aktiv.slug]) ?? 'auf Anfrage' : null} onSperre={() => setDialog(true)} onClose={schliessen}
           zurueck={katalog!.elemente[index - 1]} vor={katalog!.elemente[index + 1]}
         />
+      )}
+      {neuCode && createPortal(
+        <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-brand-dark/50 backdrop-blur-sm" onClick={() => setNeuCode(null)}>
+          <div onClick={(ev) => ev.stopPropagation()} className="w-full max-w-md bg-brand-bg rounded-2xl border border-brand-dark/10 shadow-2xl p-8">
+            <h2 className="text-2xl font-extrabold font-heading text-brand-dark uppercase tracking-tight mb-2">Kundencode</h2>
+            <p className="text-brand-muted text-sm mb-4">Gilt einmal und 7 Tage lang. Nach dem Einlösen sieht der Kunde die Preise, bis er die Seite neu lädt.</p>
+            <p className="font-mono text-lg tracking-wider bg-white border border-brand-dark/15 rounded-lg px-4 py-3 select-all break-all">{neuCode}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <button type="button" onClick={() => navigator.clipboard?.writeText(neuCode)} className="px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors">Kopieren</button>
+              <button type="button" onClick={abmelden} className="text-sm text-brand-muted hover:text-brand-dark">Auf diesem Gerät abmelden</button>
+              <button type="button" onClick={() => setNeuCode(null)} className="ml-auto text-sm text-brand-muted hover:text-brand-dark">Schließen</button>
+            </div>
+          </div>
+        </div>,
+        document.body,
       )}
       <CodeDialog offen={dialog} onClose={() => setDialog(false)} freischalten={freischalten} />
     </PageShell>

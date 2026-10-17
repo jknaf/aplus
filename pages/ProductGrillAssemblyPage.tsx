@@ -76,8 +76,8 @@ const Hero: React.FC = () => (
         </h1>
 
         <p className="hero-lead">
-          Modulare Betonanlage aus drei Fertigteilen: fundamentfrei, vandalismussicher,
-          in wenigen Stunden montiert. Diese Anleitung führt Sie Schritt für Schritt vom
+          Der Grillplatz ist eine modulare Betonanlage aus drei Fertigteilen. Er braucht kein Fundament,
+          ist vandalismussicher und in wenigen Stunden montiert. Diese Anleitung führt Sie Schritt für Schritt vom
           Unterbau bis zur Inbetriebnahme.
         </p>
 
@@ -142,7 +142,7 @@ const Voraussetzungen: React.FC = () => {
           <h2>Der Aufbau <span className="accent">unter</span> dem Grillplatz.</h2>
           <p>
             Der Grillplatz benötigt keine Fundamente. Die Tragfähigkeit kommt aus einem
-            schichtweise aufgebauten Unterbau (bauseits auszuführen, Durchmesser 4,50 m).
+            schichtweise aufgebauten Unterbau mit 4,50 m Durchmesser. Diesen Unterbau stellt der Auftraggeber selbst her.
           </p>
         </div>
 
@@ -453,7 +453,7 @@ const HandoverCard: React.FC = () => {
 
 const Werkzeuge: React.FC = () => {
   const items = [
-    { num: '01', ico: 'precision_manufacturing', ttl: 'Hubgerät', spec: '≥ 3,5 t Hublast', desc: 'Autokran, Radlader oder Gabelstapler. Für die 3,3 t schweren halbrunden Betonteile dimensionieren.' },
+    { num: '01', ico: 'precision_manufacturing', ttl: 'Hubgerät', spec: '≥ 3,5 t Hublast', desc: 'Geeignet sind Autokran, Radlader oder Gabelstapler. Das Gerät muss für die 3,3 t schweren halbrunden Betonteile ausgelegt sein.' },
     { num: '02', ico: 'construction', ttl: '3× Seilöse M 24', spec: 'stirnseitig · halbrund', desc: 'Zum Anhängen der halbrunden Betonteile an den 3 stirnseitigen M24-Ankerhülsen.' },
     { num: '03', ico: 'link', ttl: '3× Seilöse M 16', spec: 'Mittelteil · 1,0 t', desc: 'Zum Anhängen des mittleren, runden Betonteils. Dreipunkt-Anschlag wie oben.' },
     { num: '04', ico: 'stairs', ttl: 'Leiter', spec: 'Kette aufhängen', desc: 'Nötig zum Auflegen der Kette über die Rolle und zum Einhängen am Arretierungshaken.' },

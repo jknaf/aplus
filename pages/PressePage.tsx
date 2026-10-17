@@ -166,7 +166,7 @@ const PressePage: React.FC = () => {
                 A+ in der <span className="text-brand-orange">Fachpresse.</span>
               </h1>
               <p className="text-brand-muted mt-6 max-w-xl text-lg leading-relaxed">
-                Kommunale Fachmedien berichten seit über zehn Jahren über Anlagen und Produkte von A+ Urban Design. Hier die Projektberichte und Fachbeiträge.
+                Kommunale Fachmedien berichten seit über zehn Jahren über Anlagen und Produkte von A+ Urban Design. Hier finden Sie die Projektberichte und Fachbeiträge.
               </p>
             </div>
           </header>

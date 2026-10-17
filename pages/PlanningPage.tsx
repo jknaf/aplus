@@ -160,14 +160,14 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange mt-1">architecture</span>
                                 <div>
                                     <strong className="text-brand-dark block uppercase text-sm tracking-wide mb-1">25+ Jahre Erfahrung</strong>
-                                    Wir planen Skateanlagen und entwickeln Skateelemente seit über 25 Jahren. Draufsicht, 3D-Rendering und Kostenübersicht inklusive.
+                                    Wir planen Skateanlagen und entwickeln Skateelemente seit über 25 Jahren. Draufsicht, 3D-Rendering und Kostenübersicht sind inklusive.
                                 </div>
                             </li>
                             <li className="flex items-start gap-4">
                                 <span className="material-symbols-outlined text-brand-orange mt-1">compare</span>
                                 <div>
                                     <strong className="text-brand-dark block uppercase text-sm tracking-wide mb-1">Modulbau statt Ortbeton</strong>
-                                    Bessere Kontrolle von Wandstärke, Bewehrung und Fugen, schnellerer Bau, kaum wetterabhängig und meist günstiger.
+                                    Wandstärke, Bewehrung und Fugen lassen sich besser kontrollieren. Der Bau geht schneller, ist kaum wetterabhängig und meist günstiger.
                                 </div>
                             </li>
                             <li className="flex items-start gap-4">
@@ -225,7 +225,7 @@ const PlanningPage: React.FC = () => {
             </div>
 
             <div className="bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-muted">
-                <strong className="text-brand-dark">Hinweis zur Montage:</strong> Für bestehende Flächen werden die Module mit Übergangsblechen aufgestellt. Bei neuen Flächen können Module ohne Übergangsbleche zum Anbetonieren verwendet werden.
+                Auf bestehenden Flächen werden die Module mit Übergangsblechen aufgestellt, die einen stolperfreien Übergang zum Boden schaffen. Bei neuen Flächen können Module ohne Übergangsbleche verwendet und anbetoniert werden.
             </div>
         </div>
 
@@ -283,7 +283,7 @@ const PlanningPage: React.FC = () => {
                             <div>
                                 <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 1: Befestigte Fläche</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
-                                    Aufstellung auf einer bestehenden, befestigten Fläche (Beton oder Asphalt). Die Module werden montiert und die Strecke markiert. Der Belag bleibt unbeschädigt.
+                                    Die Module stehen auf einer bestehenden, befestigten Fläche aus Beton oder Asphalt. Wir montieren sie und markieren die Strecke. Der Belag bleibt unbeschädigt.
                                 </p>
                             </div>
                         </div>
@@ -333,7 +333,7 @@ const PlanningPage: React.FC = () => {
                     </div>
 
                     <p className="text-xs text-brand-muted italic pt-3 border-t border-brand-dark/5">
-                        Hinweis: Um Skateelemente besser in die Umgebung zu integrieren und zusätzliche Geländer zu vermeiden, können die Skateelemente angeböscht werden. Angeböschte Elemente erhalten an der Rückseite einen bauseitigen Ringanker aus Beton.
+                        Skateelemente lassen sich anböschen, also seitlich mit Erde anschütten. So fügen sie sich besser in die Umgebung ein, und zusätzliche Geländer entfallen. Angeböschte Elemente erhalten an der Rückseite einen Ringanker aus Beton, den der Auftraggeber vor Ort herstellt.
                     </p>
                 </div>
             </div>

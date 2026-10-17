@@ -144,7 +144,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Materialien</h3>
                         <p className="text-brand-muted mb-4 font-mono text-sm border-l-2 border-brand-orange pl-4">
-                            Beton, Edelstahl, HPL-Platten und Gummi, alle witterungsbeständig.
+                            Alle Materialien sind witterungsbeständig: Beton, Edelstahl, HPL-Platten und Gummi.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             <span className="text-xs uppercase tracking-widest text-brand-orange border border-brand-orange px-2 py-1">Beton</span>
@@ -174,7 +174,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                         40 cm oder <span className="text-brand-orange">110 cm.</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                        Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen: stapelbar und vandalismussicher. Die 110-cm-Bande mit Edelstahl-Handlauf umschließt das ganze Spielfeld und ist für regelmäßigen Spielbetrieb gebaut. Beide Varianten lassen sich kombinieren und auf Asphalt- oder Betonflächen fundamentfrei aufstellen.
+                        Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen. Sie ist stapelbar und vandalismussicher. Die 110-cm-Bande mit Edelstahl-Handlauf umschließt das ganze Spielfeld und ist für regelmäßigen Spielbetrieb gebaut. Beide Varianten lassen sich kombinieren und auf Asphalt- oder Betonflächen fundamentfrei aufstellen.
                     </p>
                 </div>
                 {/* Roland §8.7: Klarstellung Profil-Bande vs. Einfassung als getrennte Systeme noch final abstimmen */}
@@ -182,7 +182,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-8">
                         <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">40 cm</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">Einfassungselemente (niedrige Bande)</h3>
-                        <p className="text-sm text-brand-muted mb-3">Spielfeldbegrenzung für bestehende Hartplätze.</p>
+                        <p className="text-sm text-brand-muted mb-3">Sie begrenzen das Spielfeld auf bestehenden Hartplätzen.</p>
                         <ul className="space-y-2 text-sm text-brand-muted">
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Gummikappen als Aufprallschutz</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Modular erweiterbar in 1,5-m-Schritten</li>
@@ -193,8 +193,8 @@ const ProductHockeyRinkPage: React.FC = () => {
                         <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">110 cm</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">Profil-Bande für Rollhockey oder Eishockey</h3>
                         <ul className="space-y-2 text-sm text-brand-muted">
-                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Edelstahl-Handlauf integriert</li>
-                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Eishockey-Abdichtungsprofil optional</li>
+                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Mit integriertem Edelstahl-Handlauf</li>
+                            <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Optional mit Abdichtungsprofil für Eishockey</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Nachrüstbar auf bestehende 40-cm-Einfassung</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>Für intensive Beanspruchung</li>
                         </ul>

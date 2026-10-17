@@ -124,17 +124,17 @@ const ProductSkatePipesPage: React.FC = () => {
                             Die Halfpipe entstand in den 1970er-Jahren aus leeren Schwimmbecken. Heute gehört eine Pipe in fast jeden Skatepark. Aus Beton gebaut hält sie besonders lange.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Unsere Skate-Pipes sind aus bewehrtem Beton gefertigt. Unter jeder Plattform sitzt eine arretierbare Stütze, an der Oberkante läuft ein verzinktes Copingrohr durch. Lieferbar in <strong className="text-brand-dark">165, 200 und 255 cm</strong> Gesamthöhe (inklusive 15 cm Flat), als Standard- oder als Kombi-Pipe mit Banks, Coping-Ramps und Spines.
+                            Unsere Skate-Pipes sind aus bewehrtem Beton gefertigt. Unter jeder Plattform sitzt eine arretierbare Stütze, an der Oberkante läuft ein verzinktes Copingrohr durch. Wir liefern sie in <strong className="text-brand-dark">165, 200 und 255 cm</strong> Gesamthöhe, jeweils inklusive 15 cm Flat. Es gibt sie als Standard-Pipe oder als Kombi-Pipe mit Banks, Coping-Ramps und Spines.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
-                            Mindestbreite: 375 cm für die kleine Pipe (erweiterbar in 187,5-cm-Schritten), 500 cm für mittlere und große Pipes (Modulraster 250 cm). Fundamentfreie Montage auf Asphalt, Beton oder verdichtetem Schotterbett.
+                            Die kleine Pipe ist mindestens 375 cm breit und lässt sich in Schritten von 187,5 cm erweitern. Mittlere und große Pipes sind mindestens 500 cm breit und folgen einem Modulraster von 250 cm. Montiert wird ohne Fundament auf Asphalt, Beton oder verdichtetem Schotterbett.
                         </p>
 
                         <div className="flex flex-col gap-4">
                             <Link to="/kontakt?projectType=Skatepark" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 Pipe anfragen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
-                            <span className="text-xs text-brand-muted font-mono text-center">Mit 3D-Voranalyse. Lieferung und Montage schlüsselfertig.</span>
+                            <span className="text-xs text-brand-muted font-mono text-center">Mit 3D-Voranalyse. Wir liefern und montieren schlüsselfertig.</span>
                         </div>
                     </div>
                 </div>
@@ -180,7 +180,7 @@ const ProductSkatePipesPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 rounded-xl">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Standard-Aufstellung</h3>
                         <p className="text-brand-muted leading-relaxed">
-                            Die Pipe steht frei, mit Flat auf beiden Seiten, Plattform und Copingrohr. Mindestbreite: 375 cm bei der kleinen Pipe, 500 cm bei mittlerer und großer. Freistehende Skate-Pipes müssen eine <strong className="text-brand-dark">Absturzsicherung (Geländer)</strong> und auf beiden Seiten einen Sicherheitsbereich von mindestens 2 m haben.
+                            Die Pipe steht frei, mit Flat auf beiden Seiten, Plattform und Copingrohr. Die kleine Pipe ist mindestens 375 cm breit, die mittlere und die große mindestens 500 cm. Freistehende Skate-Pipes müssen eine <strong className="text-brand-dark">Absturzsicherung (Geländer)</strong> und auf beiden Seiten einen Sicherheitsbereich von mindestens 2 m haben.
                         </p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 rounded-xl">
@@ -210,7 +210,7 @@ const ProductSkatePipesPage: React.FC = () => {
                             Die Halfpipe besteht aus einer halben Röhre mit Radius über 3 m, unten in zwei Transitions geteilt und durch ein Flat verbunden. Die Transition wird oben um einen 30–70 cm hohen senkrechten Teil (Vert) verlängert; an der Oberkante sitzt das Copingrohr. Komplette Halfpipes haben Höhen von 3,5 bis 5 m.
                         </p>
                         <p className="text-brand-muted leading-relaxed">
-                            Unsere Mini-Pipes sind vereinfachte Halfpipes: kleinere Radien, kein Vert, niedrigere Plattform. Sie sind dadurch leichter zu fahren, für Einsteiger wie für Fortgeschrittene, und lassen sich als Fertigteil liefern.
+                            Unsere Mini-Pipes sind vereinfachte Halfpipes mit kleineren Radien, niedrigerer Plattform und ohne Vert. Sie sind dadurch leichter zu fahren, für Einsteiger wie für Fortgeschrittene, und lassen sich als Fertigteil liefern.
                         </p>
                     </div>
                     <div>

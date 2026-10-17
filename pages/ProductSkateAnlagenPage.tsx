@@ -179,7 +179,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             <Link to="/kontakt?projectType=Skatepark" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 3D-Planung anfragen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
-                            <span className="text-xs text-brand-muted font-mono text-center">Mit Kostenschätzung. Lieferung und Montage schlüsselfertig.</span>
+                            <span className="text-xs text-brand-muted font-mono text-center">Mit Kostenschätzung. Wir liefern und montieren schlüsselfertig.</span>
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Unsere Skate-Module sind aus bewehrtem Beton hergestellt. Elemente von 35 bis 150 cm Höhe haben <strong className="text-brand-dark">höhenverstellbare Füße</strong> und sind in <strong className="text-brand-dark">Hohlkörperbauweise</strong> gebaut. Das spart Gewicht. Module bis 150 cm haben unten Aussparungen für Hubwagen oder Gabelstapler, durch die auch Regenwasser abläuft.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-6">
-                            Die Elemente gibt es in den Höhen <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 und 150 cm</strong>, die Wände sind 8 bis 16 cm stark. Die Pipes sind inklusive Flat 165, 200 oder 255 cm hoch und stehen auf arretierbaren Stützen. Kleine Pipes lassen sich auch aus den niedrigeren Elementen zusammenstellen. Mehr dazu auf der Seite <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">Skate-Pipes</Link>.
+                            Die Elemente gibt es in den Höhen <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 und 150 cm</strong>, die Wände sind 8 bis 16 cm stark. Die Pipes sind 165, 200 oder 255 cm hoch. Darin ist das Flat, also der ebene Boden, schon eingerechnet. Sie stehen auf arretierbaren Stützen. Kleine Pipes lassen sich auch aus den niedrigeren Elementen zusammenstellen. Mehr dazu auf der Seite <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">Skate-Pipes</Link>.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-6">
                             Die Skate-Elemente aus Beton sind UV- und witterungsbeständig und durch die konische Form auch auf leicht unebenem Untergrund montierbar. Die eingebauten Kantenschutzprofile ermöglichen es, die Skate-Elemente mit offenen Fugen aufzustellen. Auf Wunsch schließen wir die Fugen mit unserem eigenen Verfahren.
@@ -240,12 +240,12 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-6">
                         <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">01</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">Standard mit variabler Breite</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Grundaufstellung mit beidseitigem Flat und Plattform, Breite flexibel im Modulraster.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Die Grundaufstellung hat auf beiden Seiten ein Flat und eine Plattform. Die Breite ist im Modulraster flexibel.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-6">
                         <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">02</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">Kombi mit Spine</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Zwei Rampen Rücken an Rücken, verbunden über einen gemeinsamen Grat (Spine).</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Zwei Rampen stehen Rücken an Rücken und sind über einen gemeinsamen Grat verbunden, den Spine.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-6">
                         <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">03</div>
@@ -255,7 +255,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-6">
                         <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">04</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">Kombi mit Coping-Ramps</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Coping-Ramps mit durchlaufendem Copingrohr: Rundung zum Fahren, Rohr zum Grinden.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Coping-Ramps haben ein durchlaufendes Copingrohr. Die Rundung ist zum Fahren da, das Rohr zum Grinden.</p>
                     </div>
                 </div>
             </div>
@@ -307,7 +307,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         <div className="p-6">
                             <h3 className="text-lg font-bold font-heading text-brand-dark uppercase mb-2">Arretierungsfuß</h3>
                             <p className="text-sm text-brand-muted leading-relaxed">
-                                Elemente ab 35 cm haben Arretierungsfüße zur Höheneinstellung an Unebenheiten der Aufstellfläche. Keine Verankerungen oder Mörtelbett erforderlich, was den Auf-, Um- und Abbau der Skate-Elemente erleichtert.
+                                Elemente ab 35 cm haben Arretierungsfüße. Mit ihnen gleicht man Unebenheiten der Aufstellfläche in der Höhe aus. Verankerungen oder ein Mörtelbett sind nicht nötig. Das erleichtert den Auf-, Um- und Abbau der Skate-Elemente.
                             </p>
                         </div>
                     </div>

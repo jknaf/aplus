@@ -19,7 +19,7 @@ const ProductOverviewPage: React.FC = () => {
               Unsere <span className="text-brand-orange">Produkte.</span>
             </h1>
             <p className="text-brand-muted mt-6 max-w-2xl mx-auto text-lg">
-              Modulare Betonfertigteile für den öffentlichen Raum: fundamentfrei aufgestellt und auf Jahrzehnte ausgelegt. Die Skate- und Pumptrack-Elemente sind TÜV-zertifiziert.
+              Unsere modularen Betonfertigteile für den öffentlichen Raum werden ohne Fundament aufgestellt und sind auf Jahrzehnte ausgelegt. Die Skate- und Pumptrack-Elemente sind TÜV-zertifiziert.
             </p>
           </div>
 

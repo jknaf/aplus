@@ -3,7 +3,9 @@ import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import Buehne, { type BuehnenApi } from '../components/konfigurator/Buehne';
+import QRCode from 'qrcode';
 import Druck, { Plan, type DruckOptionen } from '../components/konfigurator/Druck';
+import { ladeNetz, type Netz } from '../components/konfigurator/plan2d';
 import { PARK_SPEICHER, leeren, warteschlange } from '../components/konfigurator/merkliste';
 import {
   BAUSTEINE, LEER, RASTER, gruppen, gruppeVerschieben, anbauMoeglich, bowl, drehenGruppe, geradeAnhaengen, kurveAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
@@ -13,7 +15,7 @@ import {
 
 // Konzept: 08_CAD_Blender/12_Konfigurator/…_Konfigurator_Konzept_V01.md, Regeln: …_Regelwerk_V01.md
 
-interface KatalogElement { slug: string; name: string; gruppe: string; kuerzel: string; preisliste_code: string; modell: string; bild: string; gewicht: { kg: number } | null }
+interface KatalogElement { slug: string; name: string; gruppe: string; kuerzel: string; preisliste_code: string; preisliste_masse_cm?: string; modell: string; bild: string; gewicht: { kg: number } | null }
 interface Katalog { gruppen: string[]; elemente: KatalogElement[] }
 
 const m = (x: number) => x.toLocaleString('de-DE', { maximumFractionDigits: 2 });
@@ -180,25 +182,24 @@ const AnfrageDialog: React.FC<{
 // ---------- Drucken ----------
 
 const DruckDialog: React.FC<{ offen: boolean; onClose: () => void; onDrucken: (o: DruckOptionen) => void }> = ({ offen, onClose, onDrucken }) => {
-  const [o, setO] = useState<DruckOptionen>({ titel: '', bemassung: true, bezeichnungen: true, ansicht3d: true, liste: true });
+  const [o, setO] = useState<DruckOptionen>({ titel: '', ansicht3d: true, plan: true, liste: true });
   if (!offen) return null;
-  const haken = (f: 'bemassung' | 'bezeichnungen' | 'ansicht3d' | 'liste', text: string) => (
+  const haken = (f: 'ansicht3d' | 'plan' | 'liste', text: string) => (
     <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={o[f]} onChange={(e) => setO({ ...o, [f]: e.target.checked })} />{text}</label>
   );
   return createPortal(
     <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-brand-dark/50 backdrop-blur-sm" onClick={onClose}>
       <form onClick={(e) => e.stopPropagation()} onSubmit={(e) => { e.preventDefault(); onDrucken(o); }} className="w-full max-w-md bg-brand-bg rounded-2xl shadow-2xl p-8">
-        <h2 className="text-2xl font-extrabold font-heading uppercase text-brand-dark mb-1">Drucken / PDF</h2>
-        <p className="text-sm text-brand-muted mb-5">Mit Logo und Datum. Im Druckfenster „Als PDF sichern“ wählen.</p>
-        <Feld label="Titel (z. B. Ort oder Projekt)"><input className={eingabe} value={o.titel} maxLength={80} onChange={(e) => setO({ ...o, titel: e.target.value })} placeholder="Skatepark" /></Feld>
+        <h2 className="text-2xl font-extrabold font-heading uppercase text-brand-dark mb-1">Planung als PDF speichern</h2>
+        <p className="text-sm text-brand-muted mb-5">Sie erhalten ein PDF mit 3D-Ansicht, Bauplan mit Maßen und Stückliste. Im nächsten Fenster wählen Sie „Als PDF sichern“.</p>
+        <Feld label="Name Ihres Projekts"><input className={eingabe} value={o.titel} maxLength={60} onChange={(e) => setO({ ...o, titel: e.target.value })} placeholder="z. B. Skatepark Musterstadt" /></Feld>
         <div className="mt-4 space-y-2">
-          {haken('bemassung', 'Plan mit Bemaßung')}
-          {haken('bezeichnungen', 'Plan mit Bezeichnungen (Name und Kürzel)')}
-          {haken('ansicht3d', '3D-Ansicht (aktueller Blickwinkel)')}
+          {haken('ansicht3d', '3D-Ansicht')}
+          {haken('plan', 'Bauplan mit Maßen')}
           {haken('liste', 'Stückliste')}
         </div>
         <div className="mt-6 flex gap-4 items-center">
-          <button type="submit" className="px-5 py-2.5 rounded-lg bg-brand-orange text-white font-bold uppercase text-sm hover:bg-brand-dark">PDF erstellen</button>
+          <button type="submit" disabled={!(o.ansicht3d || o.plan || o.liste)} className="px-5 py-2.5 rounded-lg bg-brand-orange text-white font-bold uppercase text-sm hover:bg-brand-dark disabled:opacity-40">PDF erstellen</button>
           <button type="button" onClick={onClose} className="text-sm text-brand-muted">Abbrechen</button>
         </div>
       </form>
@@ -229,7 +230,7 @@ const KonfiguratorPage: React.FC = () => {
   const [start, setStart] = useState(false);
   const [anfrage, setAnfrage] = useState(false);
   const [druckDialog, setDruckDialog] = useState(false);
-  const [druck, setDruck] = useState<{ optionen: DruckOptionen; bild: string } | null>(null);
+  const [druck, setDruck] = useState<{ optionen: DruckOptionen; bild: string; netze: Record<string, Netz>; qr: string } | null>(null);
   const [panel, setPanel] = useState<'katalog' | 'liste' | null>(null);
   // Stückliste am Desktop ein- und ausblenden; die Wahl merkt sich der Browser
   const [listeOffen, setListeOffen] = useState(() => { try { return localStorage.getItem('aplus-konfigurator-liste') !== 'zu'; } catch { return true; } });
@@ -242,7 +243,7 @@ const KonfiguratorPage: React.FC = () => {
   useEffect(() => {
     Promise.all([fetch('/katalog/katalog.json').then((r) => r.json()), fetch('/konfigurator/masse.json').then((r) => r.json())]).then(([k, masse]: [Katalog, Ctx['masse']]) => {
       const info: Ctx['info'] = {};
-      for (const e of k.elemente) info[e.slug] = { name: e.name, code: e.preisliste_code || e.kuerzel, gruppe: e.gruppe, kg: e.gewicht?.kg };
+      for (const e of k.elemente) info[e.slug] = { name: e.name, code: e.preisliste_code || e.kuerzel, gruppe: e.gruppe, kg: e.gewicht?.kg, masse: e.preisliste_masse_cm };
       const c = { masse, info };
       setKatalog(k);
       setCtx(c);
@@ -423,11 +424,19 @@ const KonfiguratorPage: React.FC = () => {
     a.click();
     URL.revokeObjectURL(a.href);
   };
-  const drucken = (o: DruckOptionen) => {
+  const drucken = async (o: DruckOptionen) => {
+    if (!park) return;
     let bild = '';
     try { bild = o.ansicht3d ? api.current?.foto() ?? '' : ''; } catch { bild = ''; }
     setDruckDialog(false);
-    setDruck({ optionen: o, bild });
+    // Für den Bauplan die Modelle laden; fehlt eins, zeichnet der Plan dort nur den Umriss
+    const netze: Record<string, Netz> = {};
+    if (o.plan) {
+      const slugs = [...new Set([...park.teile.map((t) => t.slug), ...(ab ? [...ab.gelaender, ...ab.keile].map((z) => z.slug) : [])])];
+      await Promise.all(slugs.map((s) => ladeNetz(modellPfad(s)).then((n) => { netze[s] = n; }, () => undefined)));
+    }
+    const qr = o.liste ? await QRCode.toString(link, { type: 'svg', margin: 0, errorCorrectionLevel: 'L' }).catch(() => '') : '';
+    setDruck({ optionen: o, bild, netze, qr });
     // erst rendern lassen, dann das Druckfenster öffnen; danach die Druckansicht wieder entfernen
     window.setTimeout(() => {
       const weg = () => { setDruck(null); window.removeEventListener('afterprint', weg); };
@@ -636,7 +645,7 @@ const KonfiguratorPage: React.FC = () => {
                     : 'Die 3D-Ansicht konnte nicht geladen werden. Planen, Stückliste, PDF und Anfrage funktionieren trotzdem.'}
                   {grund === 'fehler' && <button type="button" onClick={neu} className="ml-2 font-semibold text-brand-orange underline">Erneut versuchen</button>}
                 </p>
-                <Plan park={park} ctx={ctx} zusatz={[...ab.gelaender, ...ab.keile]} bemassung={false} />
+                <Plan park={park} ctx={ctx} zusatz={[...ab.gelaender, ...ab.keile]} />
               </div>
             )}>
             <Buehne
@@ -800,7 +809,7 @@ const KonfiguratorPage: React.FC = () => {
       </div>
       <DruckDialog offen={druckDialog} onClose={() => setDruckDialog(false)} onDrucken={drucken} />
       {druck && ctx && park && ab && (
-        <Druck park={park} ctx={ctx} zusatz={[...ab.gelaender, ...ab.keile]} zeilen={zeilen} hinweise={hinweise.map((h) => h.text)} optionen={druck.optionen} bild3d={druck.bild} link={link} />
+        <Druck park={park} ctx={ctx} zusatz={[...ab.gelaender, ...ab.keile]} zeilen={zeilen} hinweise={hinweise.map((h) => h.text)} optionen={druck.optionen} bild3d={druck.bild} netze={druck.netze} qr={druck.qr} />
       )}
       <AnfrageDialog offen={anfrage} onClose={() => setAnfrage(false)} senden={senden} offeneHinweise={hinweise.length} csvLaden={csvLaden} link={link} />
     </PageShell>

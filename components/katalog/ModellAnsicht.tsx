@@ -11,14 +11,13 @@ declare global {
 
 type Kamera = { ziel: [number, number, number]; abstand: number };
 
-// 3D-Ansicht eines Katalog-Elements. Das 3D-Modell lädt schon beim Öffnen unsichtbar unter dem Vorschaubild.
-// Das Bild bleibt stehen, bis man selbst zieht, klickt oder scrollt; dann übernimmt das Modell ohne Sprung:
+// 3D-Ansicht eines Katalog-Elements. Das 3D-Modell lädt beim Öffnen unsichtbar unter dem Vorschaubild,
+// übernimmt nach dem Laden ohne Sprung und dreht sich nach 1,5 s langsam:
 // Licht und Schatten sind aus dem Vorschaubild eingebacken (unbeleuchtete Materialien, Schattenplatte),
 // Blickpunkt und Abstand kommen aus Blender (kamera), Bildwinkel wie dort (50 mm = 39,6°).
 const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string; kamera?: Kamera }> = ({ src, poster, alt, kamera }) => {
   const [bereit, setBereit] = useState(false);
   const [geladen, setGeladen] = useState(false);
-  const [aktiv, setAktiv] = useState(false);
   const ansicht = useRef<HTMLElement & Record<string, any>>(null);
   useEffect(() => {
     import('@google/model-viewer').then(() => setBereit(true));
@@ -38,16 +37,13 @@ const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string; kamera
       mv.jumpCameraToGoal();
       setGeladen(true);
     };
-    const bewegt = (ev: Event) => (ev as CustomEvent).detail?.source === 'user-interaction' && setAktiv(true);
     mv.addEventListener('load', fertig);
-    mv.addEventListener('camera-change', bewegt);
-    return () => { mv.removeEventListener('load', fertig); mv.removeEventListener('camera-change', bewegt); };
+    return () => mv.removeEventListener('load', fertig);
   }, [bereit]);
 
   const k = kamera ?? { ziel: [0, 0, 0], abstand: 5 };
-  const zeigeModell = geladen && aktiv;
   return (
-    <div className="relative w-full h-full cursor-grab" onPointerDown={() => setAktiv(true)} onWheel={() => setAktiv(true)}>
+    <div className="relative w-full h-full cursor-grab">
       {bereit && (
         <model-viewer
           ref={ansicht}
@@ -56,6 +52,9 @@ const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string; kamera
           loading="eager"
           camera-controls=""
           interaction-prompt="none"
+          auto-rotate=""
+          auto-rotate-delay="1500"
+          rotation-per-second="18deg"
           shadow-intensity="0"
           tone-mapping="none"
           camera-target={kamera ? k.ziel.map((v) => `${v}m`).join(' ') : 'auto auto auto'}
@@ -65,7 +64,7 @@ const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string; kamera
           max-camera-orbit="auto auto 100m"
           // sonst rechnet model-viewer den Mindestabstand aus der Schattenplatte und startet bei Geländern zu weit weg
           min-camera-orbit="auto auto 0.3m"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', background: 'transparent', opacity: zeigeModell ? 1 : 0 } as React.CSSProperties}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', background: 'transparent', opacity: geladen ? 1 : 0 } as React.CSSProperties}
         />
       )}
       <img
@@ -73,7 +72,7 @@ const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string; kamera
         alt={alt}
         draggable={false}
         className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-        style={{ opacity: zeigeModell ? 0 : 1 }}
+        style={{ opacity: geladen ? 0 : 1 }}
       />
     </div>
   );

@@ -50,7 +50,7 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string; href?
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${title}: ${value} – ${linkLabel ?? 'Zertifikat in der TÜV-SÜD-Datenbank ansehen'}`}
+                aria-label={`${title}: ${value}, ${linkLabel ?? 'Zertifikat in der TÜV-SÜD-Datenbank ansehen'}`}
                 className={`${baseClass} block group hover:shadow-md`}
             >
                 {content}
@@ -128,7 +128,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
 
   return (
     <PageShell
-        title="Skatepark-Hersteller — Beton-Skateparks planen & bauen"
+        title="Skatepark-Hersteller: Beton-Skateparks planen & bauen"
         description="A+ Urban Design plant und baut modulare Beton-Skateparks. TÜV-zertifizierte Skate-Elemente wie Ramps, Bowls & Rails. Fundamentfrei, europaweite Lieferung."
         schema={productSchema}
     >
@@ -136,7 +136,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
        {/* 1. IMMERSIVE HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
-                 <img src="/images/homepage/hero-anlage-01.jpg" alt="Hero Beton Skatepark — Totalaufnahme" className="w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />
+                 <img src="/images/homepage/hero-anlage-01.jpg" alt="Hero Beton Skatepark, Totalaufnahme" className="w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
@@ -173,7 +173,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. 2002 folgte der erste Bowl auf Gran Canaria.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
-                            Unsere Skateelemente sind im Bereich von ca. 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz — von Norden in Norwegen bis Süden auf den Kanaren, von Westen in England bis Osten in der Türkei.
+                            Unsere Skateelemente sind im Bereich von ca. 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz, von Norden in Norwegen bis Süden auf den Kanaren, von Westen in England bis Osten in der Türkei.
                         </p>
 
                         <div className="flex flex-col gap-4">
@@ -212,7 +212,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             Unsere Skate-Module sind aus bewehrtem Beton hergestellt. Elemente von 35 cm bis 150 cm Höhe sind mit <strong className="text-brand-dark">höhenverstellbaren Füßen</strong> hergestellt und in <strong className="text-brand-dark">Hohlkörperbauweise</strong> ausgeführt, um das Gewicht zu verringern. Module bis 150 cm sind mit Aussparungen für Gabelstapler zum Abladen und Montieren ausgestattet.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-6">
-                            <strong className="text-brand-dark">Höhenraster:</strong> 35, 45, 60, 75, 98, 125 und 149 cm (Wandstärke 8–16 cm). Die Pipes mit Gesamthöhen von 165, 240 und 255 cm inklusive Flat haben Arretierungsfüße. Minipipes können auch aus den niedrigeren Skate-Elementen zusammengestellt werden — siehe auch die eigene <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">Pipes-Produktseite</Link>.
+                            <strong className="text-brand-dark">Höhenraster:</strong> 35, 45, 60, 75, 98, 125 und 149 cm (Wandstärke 8–16 cm). Die Pipes mit Gesamthöhen von 165, 240 und 255 cm inklusive Flat haben Arretierungsfüße. Minipipes können auch aus den niedrigeren Skate-Elementen zusammengestellt werden. Siehe auch die eigene <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">Pipes-Produktseite</Link>.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-6">
                             Die Skate-Elemente aus Beton sind UV- und witterungsbeständig und durch die konische Ausführung auch auf leichte Unebenheiten montierbar. Die eingebauten Kantenschutzprofile ermöglichen es, die Skate-Elemente mit offenen Fugen aufzustellen. Auf Wunsch oder bei Bedarf können Fugen mit unserem speziellen Verfahren auch geschlossen werden.
@@ -230,7 +230,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 </div>
             </div>
 
-            {/* 4b. CORE ELEMENTS — 4 Kombinationstypen */}
+            {/* 4b. CORE ELEMENTS: 4 Kombinationstypen */}
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
@@ -244,7 +244,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-6">
                         <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">01</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">Standard mit variabler Breite</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Grundaufstellung mit beidseitigem Flat und Plattform — Breite flexibel im Modulraster.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Grundaufstellung mit beidseitigem Flat und Plattform, Breite flexibel im Modulraster.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-6">
                         <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">02</div>
@@ -264,7 +264,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 </div>
             </div>
 
-            {/* 5. TECHNISCHE DETAILS — alle 3 Detail-Bilder */}
+            {/* 5. TECHNISCHE DETAILS: alle 3 Detail-Bilder */}
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
@@ -281,7 +281,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         <div className="p-6">
                             <h3 className="text-lg font-bold font-heading text-brand-dark uppercase mb-2">Kantenschutzprofil</h3>
                             <p className="text-sm text-brand-muted leading-relaxed">
-                                Alle Rollflächen ohne Gleitkanten sind mit einem gerundeten Hartgummi-Kantenschutzprofil versehen. Längs einbetoniert auf allen Seiten der Fahrfläche — auch auf konkaven Flächen.
+                                Alle Rollflächen ohne Gleitkanten sind mit einem gerundeten Hartgummi-Kantenschutzprofil versehen. Längs einbetoniert auf allen Seiten der Fahrfläche, auch auf konkaven Flächen.
                             </p>
                         </div>
                     </div>
@@ -352,8 +352,8 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         linkLabel="TÜV-SÜD Zertifikat"
                     />
                     <TechSpecCard title="Material" value="C35/45 Beton" icon="architecture" />
-                    <TechSpecCard title="Höhenraster" value="35 – 149 cm" icon="straighten" />
-                    <TechSpecCard title="Wandstärke" value="8 – 16 cm" icon="square_foot" />
+                    <TechSpecCard title="Höhenraster" value="35–149 cm" icon="straighten" />
+                    <TechSpecCard title="Wandstärke" value="8–16 cm" icon="square_foot" />
                     <TechSpecCard title="Bauweise" value="Hohlkörper" icon="view_in_ar" />
                     <TechSpecCard title="Kantenschutz" value="Hartgummi / Stahl" icon="shield" />
                     <TechSpecCard title="Coping" value="Verzinkt + Alu-Kappen" icon="commit" />
@@ -361,7 +361,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <TechSpecCard title="Oberfläche" value="Offenporig / rutschfest" icon="texture" />
                     <TechSpecCard title="Lärmschutz" value="Massiv schalldämpfend" icon="volume_off" />
                     <TechSpecCard title="Modularität" value="Erweiterbar / versetzbar" icon="extension" />
-                    <TechSpecCard title="Einsatzgebiet" value="0 – 1000+ m ü. NN" icon="landscape" />
+                    <TechSpecCard title="Einsatzgebiet" value="0–1000+ m ü. NN" icon="landscape" />
                 </div>
             </div>
 

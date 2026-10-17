@@ -76,7 +76,7 @@ const Hero: React.FC = () => (
         </h1>
 
         <p className="hero-lead">
-          Modulare Betonanlage aus drei Fertigteilen — fundamentfrei, vandalismussicher,
+          Modulare Betonanlage aus drei Fertigteilen: fundamentfrei, vandalismussicher,
           in wenigen Stunden montiert. Diese Anleitung führt Sie Schritt für Schritt vom
           Kiesbett bis zur Inbetriebnahme.
         </p>
@@ -127,8 +127,8 @@ const Hero: React.FC = () => (
 const Voraussetzungen: React.FC = () => {
   const layers = [
     { num: '01', ttl: 'Erdplanum', spec: 'frostsicher', desc: 'Tragfähig verdichtet, frostsicher ausgebildet.' },
-    { num: '02', ttl: 'Kiesbett', spec: '40 – 60 cm · Körnung 10 – 40 mm', desc: 'Verdichtet eingebaut, Durchmesser ≥ 4,50 m.' },
-    { num: '03', ttl: 'Rieselschicht', spec: '5 cm · Körnung 5 – 10 mm', desc: 'Glatt abgezogen, 15 cm unter der endgültigen Gehfläche.' },
+    { num: '02', ttl: 'Kiesbett', spec: '40–60 cm · Körnung 10–40 mm', desc: 'Verdichtet eingebaut, Durchmesser ≥ 4,50 m.' },
+    { num: '03', ttl: 'Rieselschicht', spec: '5 cm · Körnung 5–10 mm', desc: 'Glatt abgezogen, 15 cm unter der endgültigen Gehfläche.' },
     { num: '04', ttl: 'Bodenplatte', spec: '16 cm · bündig oder aufgesetzt', desc: 'Wird auf die vorbereitete Rieselschicht gesetzt.' },
   ];
   return (
@@ -142,7 +142,7 @@ const Voraussetzungen: React.FC = () => {
           <h2>Der Aufbau <span className="accent">unter</span> dem Grillplatz.</h2>
           <p>
             Der Grillplatz benötigt keine Fundamente. Die Tragfähigkeit kommt aus einem
-            schichtweise aufgebauten Unterbau — bauseits auszuführen, Durchmesser 4,50 m.
+            schichtweise aufgebauten Unterbau, bauseits auszuführen, Durchmesser 4,50 m.
             Für eine mangelhafte Ausführung des Kiesbetts übernehmen wir keine Haftung.
           </p>
         </div>
@@ -206,7 +206,7 @@ const Abladen: React.FC = () => (
         <h2>Drei Seilösen. <span className="accent">Null Kompromisse.</span></h2>
         <p>
           Die Fertigteile werden mit Autokran, Radlader oder Gabelstapler (Hublast ≥ 3,5 t) abgeladen.
-          Jedes halbrunde Betonteil wiegt rund 3,3 t — das runde Mittelteil rund 1,0 t.
+          Jedes halbrunde Betonteil wiegt rund 3,3 t, das runde Mittelteil rund 1,0 t.
         </p>
       </div>
 
@@ -228,7 +228,7 @@ const Abladen: React.FC = () => (
               <div>
                 <div className="lbl">Achtung</div>
                 <div className="txt">
-                  Niemals an den Ankerhülsen der Bänke anhängen — diese sind nicht für
+                  Niemals an den Ankerhülsen der Bänke anhängen. Diese sind nicht für
                   Hublasten ausgelegt.
                 </div>
               </div>
@@ -263,7 +263,7 @@ const Montage: React.FC = () => (
         </div>
         <h2>Drei Teile. <span className="accent">Eine Reihenfolge.</span></h2>
         <p>
-          Die Bodenplatte kann bündig oder über dem Erdreich montiert werden — bei bündiger
+          Die Bodenplatte kann bündig oder über dem Erdreich montiert werden. Bei bündiger
           Ausführung muss die Plattenstärke von 16 cm im Kiesbett berücksichtigt werden.
           Danach wird in klarer Reihenfolge gesetzt.
         </p>
@@ -275,7 +275,7 @@ const Montage: React.FC = () => (
             <span className="step-number">02</span>
             <span className="step-tag"><span className="phase">Phase 03</span> · Setzen</span>
           </div>
-          <h3 className="step-title">Halbrunde zuerst — <span className="accent">dann die Mitte.</span></h3>
+          <h3 className="step-title">Halbrunde zuerst, <span className="accent">dann die Mitte.</span></h3>
           <div className="step-body">
             <p>
               Zuerst werden die beiden halbrunden Betonteile gesetzt, sodass sie einen Kreis
@@ -293,7 +293,7 @@ const Montage: React.FC = () => (
                 <div className="lbl">Kritisch</div>
                 <div className="txt">
                   Die Aussparung für den Träger ist nur an <strong>einer</strong> Platte
-                  vorhanden. Position vor dem Absetzen prüfen — nachträgliches Drehen ist
+                  vorhanden. Position vor dem Absetzen prüfen, nachträgliches Drehen ist
                   mit 3,3 t pro Teil nicht sinnvoll.
                 </div>
               </div>
@@ -327,13 +327,13 @@ const Montage: React.FC = () => (
             <p>
               Der Träger wird in die vorhandene Aussparung in der Bodenplatte gesteckt.
               Arretieren Sie ihn mithilfe eines <strong>Schnurlotes</strong>, das über die
-              Rolle des Trägers geführt wird — so, dass das Lot genau in der Mitte des
+              Rolle des Trägers geführt wird, so, dass das Lot genau in der Mitte des
               Grills hängt.
             </p>
             <p>
               Zur Feinjustage schieben Sie die mitgelieferten <strong>Edelstahlplatten</strong>
-              {' '}unterhalb des Trägers in die Aussparung, um das Lot Richtung Träger zu bewegen —
-              oder ziehen Sie den Träger 1 – 2 cm heraus, um es in die andere Richtung zu bewegen.
+              {' '}unterhalb des Trägers in die Aussparung, um das Lot Richtung Träger zu bewegen,
+              oder ziehen Sie den Träger 1–2 cm heraus, um es in die andere Richtung zu bewegen.
             </p>
           </div>
         </div>
@@ -368,7 +368,7 @@ const Montage: React.FC = () => (
             <p>
               An diesem kürzeren Ende wird mithilfe des <strong>Kettenverbinders</strong>
               {' '}das Gegengewicht befestigt. Das Gewinde des Kettenverbindungsteils mit dem
-              mitgelieferten Kleber verkleben — derselbe Kleber dient auch zum Ausfüllen
+              mitgelieferten Kleber verkleben. Derselbe Kleber dient auch zum Ausfüllen
               der Trägeraussparung.
             </p>
             <div className="callout tip">
@@ -394,8 +394,8 @@ const Montage: React.FC = () => (
           <h3 className="step-title">In Betrieb. <span className="accent">Bereit.</span></h3>
           <div className="step-body">
             <p>
-              Bevor der Grillplatz in Betrieb genommen wird, ist — falls bündig zur Umgebung
-              gesetzt — der offene Spalt rund um die Bodenplatte zu schließen. In der Nähe
+              Bevor der Grillplatz in Betrieb genommen wird, ist, falls bündig zur Umgebung
+              gesetzt, der offene Spalt rund um die Bodenplatte zu schließen. In der Nähe
               des Grillplatzes ist ein <strong>Nutzungsschild</strong> anzubringen.
             </p>
             <div className="callout warning">
@@ -435,9 +435,9 @@ const HandoverCard: React.FC = () => {
         <div className="ring-1" aria-hidden="true"></div>
         <div className="ring-2" aria-hidden="true"></div>
         <div className="status">STATUS</div>
-        <div className="title">Funktions—<br />fähig.</div>
+        <div className="title">Funktions-<br />fähig.</div>
         <div className="desc">
-          Bodenplatte verschlossen, Nutzungsschild montiert — die Anlage ist bereit zur Übergabe.
+          Bodenplatte verschlossen, Nutzungsschild montiert: Die Anlage ist bereit zur Übergabe.
         </div>
       </div>
       <div className="checklist">
@@ -459,7 +459,7 @@ const Werkzeuge: React.FC = () => {
     { num: '03', ico: 'link', ttl: '3× Seilöse M 16', spec: 'Mittelteil · 1,0 t', desc: 'Zum Anhängen des mittleren, runden Betonteils. Dreipunkt-Anschlag wie oben.' },
     { num: '04', ico: 'stairs', ttl: 'Leiter', spec: 'Kette aufhängen', desc: 'Nötig zum Auflegen der Kette über die Rolle und zum Einhängen am Arretierungshaken.' },
     { num: '05', ico: 'straighten', ttl: 'Schnurlot', spec: 'Träger mittig loten', desc: 'Über die Rolle des Trägers führen, bis das Lot exakt in der Mitte des Grills hängt.' },
-    { num: '06', ico: 'palette', ttl: 'Spachtel', spec: 'Klebemasse anrühren', desc: 'Zum Anrühren und Verspachteln der mitgelieferten Klebemasse — für Kettenverbinder und Aussparung.' },
+    { num: '06', ico: 'palette', ttl: 'Spachtel', spec: 'Klebemasse anrühren', desc: 'Zum Anrühren und Verspachteln der mitgelieferten Klebemasse, für Kettenverbinder und Aussparung.' },
   ];
   return (
     <section id="werkzeuge" className="am-section tools">
@@ -472,7 +472,7 @@ const Werkzeuge: React.FC = () => {
           <h2>Alles, was <span className="accent">mitkommt.</span></h2>
           <p>
             Die komplette Liste der Geräte und Werkzeuge, die Sie vor Ort benötigen.
-            Vor Montagebeginn prüfen — spart Zeit und verhindert Leerfahrten.
+            Vor Montagebeginn prüfen. Das spart Zeit und verhindert Leerfahrten.
           </p>
         </div>
         <div className="tools-grid fade-stagger">
@@ -494,7 +494,7 @@ const Werkzeuge: React.FC = () => {
 
 const Wartung: React.FC = () => {
   const items = [
-    { freq: '2×', per: 'pro Jahr', ttl: 'Sichtprüfung', desc: 'Die gesamte Anlage auf Schäden prüfen — auch auf mutwillig verursachte. Betonabplatzungen mit Reparaturmörtel beseitigen.' },
+    { freq: '2×', per: 'pro Jahr', ttl: 'Sichtprüfung', desc: 'Die gesamte Anlage auf Schäden prüfen, auch auf mutwillig verursachte. Betonabplatzungen mit Reparaturmörtel beseitigen.' },
     { freq: '2×', per: 'pro Jahr', ttl: 'Rolle ölen', desc: 'Die Rolle am Trägerkopf mindestens zweimal jährlich ölen, damit die Kette leichtgängig bleibt.' },
     { freq: 'alle 2', per: 'Wochen', ttl: 'Reinigung', desc: 'Anlage reinigen. Aschetonne und Müllbehälter in der Nähe regelmäßig leeren.' },
     { freq: 'nur', per: 'Grillkohle', ttl: 'Brennstoff', desc: 'Als Brennstoff darf ausschließlich Grillkohle verwendet werden.' },
@@ -509,7 +509,7 @@ const Wartung: React.FC = () => {
           </div>
           <h2>Wartungsarm. <span className="accent">Nicht wartungsfrei.</span></h2>
           <p>
-            Der Grillplatz benötigt keine besondere Wartung und Pflege — regelmäßige
+            Der Grillplatz benötigt keine besondere Wartung und Pflege. Regelmäßige
             Kontrollen verlängern jedoch die Lebensdauer erheblich. Die Zeitintervalle
             können je nach örtlichen Gegebenheiten angepasst werden.
           </p>
@@ -575,7 +575,7 @@ const ProductGrillAssemblyPage: React.FC = () => {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
-    headline: 'Montageanleitung Grillplatz — A+ Urban Design',
+    headline: 'Montageanleitung Grillplatz | A+ Urban Design',
     description:
       'Schritt-für-Schritt-Anleitung zur Montage des runden A+ Beton-Grillplatzes: Kiesbett, Abladen, Setzreihenfolge, Träger mit Schnurlot, Kette und Gegengewicht, Wartung.',
     inLanguage: 'de-DE',
@@ -598,7 +598,7 @@ const ProductGrillAssemblyPage: React.FC = () => {
   return (
     <PageShell
       title="Montageanleitung Grillplatz"
-      description="Modulare Betonanlage aus drei Fertigteilen — fundamentfrei, vandalismussicher, in wenigen Stunden montiert. Komplette Montageanleitung mit Diagrammen, Werkzeugliste und Wartungsplan."
+      description="Modulare Betonanlage aus drei Fertigteilen: fundamentfrei, vandalismussicher, in wenigen Stunden montiert. Komplette Montageanleitung mit Diagrammen, Werkzeugliste und Wartungsplan."
       schema={schema}
       fullWidth
     >

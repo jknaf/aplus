@@ -198,7 +198,7 @@ const ProjectDetailPage: React.FC = () => {
                              <div className="md:col-span-2 row-span-2 relative group overflow-hidden rounded-sm border border-brand-dark/10 bg-brand-surface/60">
                                 <img
                                     src={project.imageUrl}
-                                    alt={`${project.title} — Projektübersicht`}
+                                    alt={`${project.title}, Projektübersicht`}
                                     loading="lazy"
                                     decoding="async"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

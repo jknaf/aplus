@@ -67,7 +67,7 @@ const ProductGrillPage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Öffentlicher Grillplatz aus Beton — vandalismussicher" description="Öffentliche Grillstelle und Grillplatz aus Beton: vandalismussicher, wartungsfrei und langlebig. Ideal als Stadtmöbel für Parks, Campingplätze und kommunale Freiflächen. Mit diebstahlsicherem Edelstahlrost." schema={productSchema}>
+    <PageShell title="Öffentlicher Grillplatz aus Beton, vandalismussicher" description="Öffentliche Grillstelle und Grillplatz aus Beton: vandalismussicher, wartungsfrei und langlebig. Ideal als Stadtmöbel für Parks, Campingplätze und kommunale Freiflächen. Mit diebstahlsicherem Edelstahlrost." schema={productSchema}>
 
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
@@ -115,10 +115,10 @@ const ProductGrillPage: React.FC = () => {
                             Feuer & <span className="text-brand-orange">Beton.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Konzipiert für den öffentlichen Raum — Freibäder, Campingplätze, Sportanlagen und Schrebergärten. Der runde Beton-Grillplatz mit 4,20 m Durchmesser und 2,70 m Höhe schafft eine Lagerfeuer-Atmosphäre und bietet Platz für 12–16 Personen.
+                            Konzipiert für den öffentlichen Raum: Freibäder, Campingplätze, Sportanlagen und Schrebergärten. Der runde Beton-Grillplatz mit 4,20 m Durchmesser und 2,70 m Höhe schafft eine Lagerfeuer-Atmosphäre und bietet Platz für 12–16 Personen.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Der massive Rost aus Edelstahl ist höhenverstellbar, leicht zu reinigen und gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert. Die 16 cm starke Bodenplatte ist integriert — keine Pflasterarbeiten nötig. Einfach auf verdichtetes Schotterbett aufbauen, fundamentfrei.
+                            Der massive Rost aus Edelstahl ist höhenverstellbar, leicht zu reinigen und gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert. Die 16 cm starke Bodenplatte ist integriert, keine Pflasterarbeiten nötig. Einfach auf verdichtetes Schotterbett aufbauen, fundamentfrei.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -172,22 +172,22 @@ const ProductGrillPage: React.FC = () => {
                         Das Original <span className="text-brand-orange">A+ Urban Design.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
-                        Der Grillplatz besteht aus mehreren Betonfertigteilen, die zusammengebaut eine Einheit bilden. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl gefertigt. Die höhenverstellbare Grillfläche wird gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert. Der Grillplatz benötigt keine Fundamente — er wird direkt auf ein verdichtetes Schotterbett 5/30 mm aufgebaut. Bei einem Durchmesser von 420 cm und einer Höhe von 2,40 m wurde die Konstruktion so entwickelt, dass sie einfach zu bedienen ist und wenig Verschleißteile hat.
+                        Der Grillplatz besteht aus mehreren Betonfertigteilen, die zusammengebaut eine Einheit bilden. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl gefertigt. Die höhenverstellbare Grillfläche wird gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert. Der Grillplatz benötigt keine Fundamente. Er wird direkt auf ein verdichtetes Schotterbett 5/30 mm aufgebaut. Bei einem Durchmesser von 420 cm und einer Höhe von 2,40 m wurde die Konstruktion so entwickelt, dass sie einfach zu bedienen ist und wenig Verschleißteile hat.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Materialien</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Beton, Edelstahl und verzinkter Stahl — durchweg witterungsbeständig und recycelbar. Der Grillrost aus Edelstahl hält auch dauerhafter Nutzung stand.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Beton, Edelstahl und verzinkter Stahl, durchweg witterungsbeständig und recycelbar. Der Grillrost aus Edelstahl hält auch dauerhafter Nutzung stand.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Ohne Fundamente</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen auf verdichtetem Kies- oder Schotterbett. Die 16 cm starke Bodenplatte ist integriert — keine Pflasterarbeiten, keine Erdarbeiten, keine lange Bauzeit.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen auf verdichtetem Kies- oder Schotterbett. Die 16 cm starke Bodenplatte ist integriert: keine Pflasterarbeiten, keine Erdarbeiten, keine lange Bauzeit.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Vandalismussicher</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Die A+-Lösung für Freibäder, Sportanlagen, Campingplätze und Schrebergärten: robust, vandalismussicher und ohne bewegliche Teile — ausgelegt für den öffentlichen Raum.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Die A+-Lösung für Freibäder, Sportanlagen, Campingplätze und Schrebergärten: robust, vandalismussicher und ohne bewegliche Teile, ausgelegt für den öffentlichen Raum.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Höhenverstellbar</h3>
@@ -217,7 +217,7 @@ const ProductGrillPage: React.FC = () => {
                     <TechSpecCard title="Bauweise" value="Betonfertigteile" icon="view_in_ar" />
                 </div>
 
-                {/* Montageanleitung — CTA */}
+                {/* Montageanleitung: CTA */}
                 <div className="mt-16 rounded-2xl border border-brand-dark/10 bg-brand-surface/50 p-8 lg:p-10 backdrop-blur-sm">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                         <div>

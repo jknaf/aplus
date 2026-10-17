@@ -67,7 +67,7 @@ const ProductHockeyRinkPage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Hockey-Banden kaufen — Inline- & Streethockey-Feld" description="Hockey-Banden und Hockeyfeld aus Beton und Stahl: fundamentfrei, in 40 cm oder 110 cm Höhe. Für Inline-Hockey, Streethockey und Rollhockey. Wartungsfrei und sofort einsatzbereit — auch für Kommunen und Vereine." schema={productSchema}>
+    <PageShell title="Hockey-Banden kaufen: Inline- & Streethockey-Feld" description="Hockey-Banden und Hockeyfeld aus Beton und Stahl: fundamentfrei, in 40 cm oder 110 cm Höhe. Für Inline-Hockey, Streethockey und Rollhockey. Wartungsfrei und sofort einsatzbereit, auch für Kommunen und Vereine." schema={productSchema}>
 
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
@@ -116,7 +116,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                             Game On. <span className="text-brand-orange">All Year.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Ein Feld, alle Möglichkeiten. Unser modulares Bandensystem verwandelt jeden Platz in eine Arena für Inline-/Rollhockey und im Winter sogar für Eishockey — durch ein Abdichtungsprofil unter der Einfassung.
+                            Ein Feld, alle Möglichkeiten. Unser modulares Bandensystem verwandelt jeden Platz in eine Arena für Inline-/Rollhockey und im Winter sogar für Eishockey, durch ein Abdichtungsprofil unter der Einfassung.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-4">
                             Zwei Varianten: 40 cm hohe Einfassungselemente (niedrige Bande) aus Beton mit Gummikappen oder 110 cm hohe Profil-Banden mit Edelstahl-Handlauf für Rollhockey oder Eishockey. Beide Varianten können modular in 1,5-m-Schritten erweitert oder verkleinert werden.
@@ -175,7 +175,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                         40 cm oder <span className="text-brand-orange">110 cm.</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                        Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen — bodeneben, stapelbar und vandalismusresistent. Die 110-cm-Bande mit Edelstahl-Handlauf schafft eine vollständige Arena für intensiven Spielbetrieb. Beide Varianten sind untereinander kombinierbar und auf jedem Untergrund fundamentfrei aufstellbar.
+                        Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen: bodeneben, stapelbar und vandalismusresistent. Die 110-cm-Bande mit Edelstahl-Handlauf schafft eine vollständige Arena für intensiven Spielbetrieb. Beide Varianten sind untereinander kombinierbar und auf jedem Untergrund fundamentfrei aufstellbar.
                     </p>
                 </div>
                 {/* Roland §8.7: Klarstellung Profil-Bande vs. Einfassung als getrennte Systeme noch final abstimmen */}

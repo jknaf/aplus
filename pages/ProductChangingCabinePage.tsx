@@ -67,7 +67,7 @@ const ProductChangingCabinePage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Umkleidekabine Beton — Freibad, Sportplatz & Outdoor" description="Vandalismussichere Outdoor-Umkleidekabine aus Beton: türlos, zweiteilig und fundamentfrei. Ideal für Freibäder, Sportplätze, Schwimmbäder und öffentliche Parks. Das Schnecken-Prinzip — hygienisch und wartungsfrei." schema={productSchema}>
+    <PageShell title="Umkleidekabine Beton für Freibad, Sportplatz & Outdoor" description="Vandalismussichere Outdoor-Umkleidekabine aus Beton: türlos, zweiteilig und fundamentfrei. Ideal für Freibäder, Sportplätze, Schwimmbäder und öffentliche Parks. Das Schnecken-Prinzip: hygienisch und wartungsfrei." schema={productSchema}>
 
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
@@ -116,10 +116,10 @@ const ProductChangingCabinePage: React.FC = () => {
                             Privatsphäre <span className="text-brand-orange">ohne Türen.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung: „Die Schnecke" — kein Kabinenkontakt beim Betreten und Verlassen. Oben und unten offener Freiraum zur Einsicht, nicht verschließbar, missbrauchshemmend. Die fugenlose Oberfläche ist leicht zu reinigen.
+                            In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung: „Die Schnecke". Kein Kabinenkontakt beim Betreten und Verlassen. Oben und unten offener Freiraum zur Einsicht, nicht verschließbar, missbrauchshemmend. Die fugenlose Oberfläche ist leicht zu reinigen.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Die Kabine ist einfach aufgestellt, umsetzbar oder versetzbar — die hygienische Bodenplatte dient zugleich als Fundamentschutz auf verdichtetem Schotterbett. Aus bewehrtem Beton auf Edelstahl gefertigt: witterungsbeständig und extrem widerstandsfähig gegen Vandalismus. Schotterbett-Aufbau, ganz ohne Bodenbefestigung.
+                            Die Kabine ist einfach aufgestellt, umsetzbar oder versetzbar. Die hygienische Bodenplatte dient zugleich als Fundamentschutz auf verdichtetem Schotterbett. Aus bewehrtem Beton auf Edelstahl gefertigt: witterungsbeständig und extrem widerstandsfähig gegen Vandalismus. Schotterbett-Aufbau, ganz ohne Bodenbefestigung.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -198,12 +198,12 @@ const ProductChangingCabinePage: React.FC = () => {
                         Freibad & <span className="text-brand-orange">Baggersee.</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                        Umkleidekabine für Freibad und Baggersee — als freistehende Kabine für den Außenbereich konzipiert. Die Bodenplatte wird auf verdichtetes Schotterbett aufgestellt; keine Pflasterarbeiten oder Fundamentarbeiten notwendig.
+                        Umkleidekabine für Freibad und Baggersee, als freistehende Kabine für den Außenbereich konzipiert. Die Bodenplatte wird auf verdichtetes Schotterbett aufgestellt; keine Pflasterarbeiten oder Fundamentarbeiten notwendig.
                     </p>
                 </div>
                 <div className="relative w-full aspect-[21/9] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
                     <img src="/images/umkleide/umkleide-panorama.jpg" alt="Schnecken-Kabinen im Freibad Panorama" loading="lazy" className="w-full h-full object-cover" />
-                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 04. PANORAMA — TYPISCHE AUFSTELLUNG</div>
+                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 04. PANORAMA: TYPISCHE AUFSTELLUNG</div>
                 </div>
             </div>
 

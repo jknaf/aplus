@@ -1,5 +1,5 @@
 /**
- * A+ Urban Design — Bild & Video Download Script (v2 - korrigierte URLs)
+ * A+ Urban Design: Bild & Video Download Script (v2 - korrigierte URLs)
  * Usage: node scripts/scrape-images.mjs
  */
 import { writeFile, mkdir } from 'fs/promises';

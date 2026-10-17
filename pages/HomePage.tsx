@@ -36,20 +36,20 @@ const FAQSection: React.FC = () => {
             a: "Die Kosten für einen Skatepark hängen von Größe, Elementauswahl und Untergrund ab. Modulare Betonfertigteile sind in vielen Projekten kostengünstiger als Ortbeton-Lösungen, weil teure Erdarbeiten, Bodenplatten und aufwendige Vorbereitungen weitgehend entfallen. Kommunen und Gemeinden können über die Sportstättenförderung Fördermittel beantragen. Wir bieten eine unverbindliche Erstberatung mit projektbezogener Kostenschätzung an."
         },
         {
-            q: "Skatepark, Skateanlage oder Skaterpark — was ist der Unterschied?",
-            a: "Die korrekte Bezeichnung ist Skatepark oder Skateanlage — umgangssprachlich wird oft auch Skaterpark, Skaterbahn oder Skaterplatz gesagt. Gemeint ist dasselbe: eine speziell gestaltete Fläche mit Obstacles wie Ramps, Bowls, Rails und Halfpipes für Skateboard, BMX, Scooter und Inline-Skates. Wir als Skatepark-Hersteller bauen diese Anlagen aus modularen Betonfertigteilen."
+            q: "Skatepark, Skateanlage oder Skaterpark: Was ist der Unterschied?",
+            a: "Die korrekte Bezeichnung ist Skatepark oder Skateanlage. Umgangssprachlich wird oft auch Skaterpark, Skaterbahn oder Skaterplatz gesagt. Gemeint ist dasselbe: eine speziell gestaltete Fläche mit Obstacles wie Ramps, Bowls, Rails und Halfpipes für Skateboard, BMX, Scooter und Inline-Skates. Wir als Skatepark-Hersteller bauen diese Anlagen aus modularen Betonfertigteilen."
         },
         {
             q: "Sind die Anlagen auch für BMX und Scooter geeignet?",
-            a: "Ja. Unsere Betonoberflächen sind robust und halten den Punktbelastungen von BMX-Pegs und Scooter-Decks dauerhaft stand. Der massive Beton bietet zuverlässigen Grip für alle Rollsportarten – Skateboard, BMX, Scooter oder Inline-Skates. Ob Skatepark, BMX-Park oder Pumptrack: Alle Anlagen sind multisportfähig ausgelegt."
+            a: "Ja. Unsere Betonoberflächen sind robust und halten den Punktbelastungen von BMX-Pegs und Scooter-Decks dauerhaft stand. Der massive Beton bietet zuverlässigen Grip für alle Rollsportarten: Skateboard, BMX, Scooter oder Inline-Skates. Ob Skatepark, BMX-Park oder Pumptrack: Alle Anlagen sind multisportfähig ausgelegt."
         },
         {
             q: "Warum Beton statt Holz oder Asphalt?",
-            a: "Beton ist formstabil, wartungsfrei und vandalismussicher — selbst bei extremen Temperaturen. Unsere Skaterampen und Pumptrack-Elemente aus Hochleistungsbeton C35/45 überdauern Holz und Asphalt um Jahrzehnte. Das modulare System ermöglicht zudem maximale Flexibilität: Elemente können umgestellt, entfernt oder ergänzt werden, ohne Fundamente aufzubrechen."
+            a: "Beton ist formstabil, wartungsfrei und vandalismussicher, selbst bei extremen Temperaturen. Unsere Skaterampen und Pumptrack-Elemente aus Hochleistungsbeton C35/45 überdauern Holz und Asphalt um Jahrzehnte. Das modulare System ermöglicht zudem maximale Flexibilität: Elemente können umgestellt, entfernt oder ergänzt werden, ohne Fundamente aufzubrechen."
         },
         {
             q: "Gibt es Fördermittel für Skateparks und Pumptracks?",
-            a: "Ja. Kommunen und Gemeinden können Fördermittel über die Sportstättenförderung von Bund und Ländern beantragen. Auch Programme für urbane Freiräume und Bewegungsförderung kommen infrage. Wir unterstützen bei der Ausschreibung und liefern alle technischen Unterlagen, die für den Förderantrag benötigt werden — von der DIN-EN-14974-Zertifizierung bis zur statischen Berechnung."
+            a: "Ja. Kommunen und Gemeinden können Fördermittel über die Sportstättenförderung von Bund und Ländern beantragen. Auch Programme für urbane Freiräume und Bewegungsförderung kommen infrage. Wir unterstützen bei der Ausschreibung und liefern alle technischen Unterlagen, die für den Förderantrag benötigt werden, von der DIN-EN-14974-Zertifizierung bis zur statischen Berechnung."
         },
         {
             q: "Wie steht es um Lärmschutz und Baugenehmigung?",
@@ -57,11 +57,11 @@ const FAQSection: React.FC = () => {
         },
         {
             q: "Können wir klein anfangen und die Anlage später erweitern?",
-            a: "Ja, das ist der Kern unseres A+ Modulsystems. Viele Kommunen starten mit einem Starter-Kit — zum Beispiel Quarter, Bank und Rail — und erweitern den Skatepark über Jahre hinweg. Ob Skateanlage, Pumptrack oder BMX-Park: Da keine Fundamente gegossen werden müssen, bleibt die Fläche jederzeit flexibel und erweiterbar. Elemente können auch umgestellt oder an einen neuen Standort versetzt werden."
+            a: "Ja, das ist der Kern unseres A+ Modulsystems. Viele Kommunen starten mit einem Starter-Kit (zum Beispiel Quarter, Bank und Rail) und erweitern den Skatepark über Jahre hinweg. Ob Skateanlage, Pumptrack oder BMX-Park: Da keine Fundamente gegossen werden müssen, bleibt die Fläche jederzeit flexibel und erweiterbar. Elemente können auch umgestellt oder an einen neuen Standort versetzt werden."
         },
         {
             q: "Wie läuft die Planung und der Bau eines Skateparks ab?",
-            a: "Der Prozess beginnt mit einer Bedarfsanalyse vor Ort. Als Skatepark-Hersteller übernehmen wir die komplette Architektenleistung: vom Entwurf über die 3D-Planung und TÜV-konforme Ausarbeitung bis zur schlüsselfertigen Montage. Die fundamentfreien Betonfertigteile werden per LKW angeliefert und mit einem Kran aufgestellt — eine typische Skateanlage steht innerhalb weniger Tage."
+            a: "Der Prozess beginnt mit einer Bedarfsanalyse vor Ort. Als Skatepark-Hersteller übernehmen wir die komplette Architektenleistung: vom Entwurf über die 3D-Planung und TÜV-konforme Ausarbeitung bis zur schlüsselfertigen Montage. Die fundamentfreien Betonfertigteile werden per LKW angeliefert und mit einem Kran aufgestellt. Eine typische Skateanlage steht innerhalb weniger Tage."
         }
     ];
 
@@ -92,7 +92,7 @@ const FAQSection: React.FC = () => {
                         Häufige <span className="text-brand-orange">Fragen.</span>
                     </h2>
                     <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
-                        Alles über Planung, Kosten, Fördermittel und Bau von Skateparks, Pumptracks und BMX-Anlagen — von Ihrem Skatepark-Hersteller.
+                        Alles über Planung, Kosten, Fördermittel und Bau von Skateparks, Pumptracks und BMX-Anlagen, von Ihrem Skatepark-Hersteller.
                     </p>
                 </AnimatedSection>
                 <div className="max-w-4xl mx-auto space-y-4">
@@ -273,12 +273,12 @@ const ServiceOverviewSection: React.FC = () => {
         {
             icon: "design_services",
             title: "Planung & Beratung",
-            desc: "Von der ersten Idee bis zur TÜV-konformen Ausführungsplanung. Wir erstellen Draufsichten und 3D-Entwürfe auf Basis Ihrer Fläche und Ihres Budgets — individuell abgestimmt, DIN EN 14974 konform, ideal für Kommunen, Architekten und Landschaftsplaner."
+            desc: "Von der ersten Idee bis zur TÜV-konformen Ausführungsplanung. Wir erstellen Draufsichten und 3D-Entwürfe auf Basis Ihrer Fläche und Ihres Budgets: individuell abgestimmt, DIN EN 14974 konform, ideal für Kommunen, Architekten und Landschaftsplaner."
         },
         {
             icon: "construction",
             title: "Bau & Montage",
-            desc: "Schneller, günstiger und wetterunabhängiger als Ortbeton: Unsere modularen Fertigteile werden direkt auf Asphalt, Beton oder Fundamentplatte montiert. Eine typische Anlage steht in wenigen Tagen — schlüsselfertig durch unser Team."
+            desc: "Schneller, günstiger und wetterunabhängiger als Ortbeton: Unsere modularen Fertigteile werden direkt auf Asphalt, Beton oder Fundamentplatte montiert. Eine typische Anlage steht in wenigen Tagen, schlüsselfertig durch unser Team."
         },
         {
             icon: "build_circle",
@@ -299,7 +299,7 @@ const ServiceOverviewSection: React.FC = () => {
                         & <span className="text-brand-orange">Service.</span>
                     </h2>
                     <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
-                        Seit über 25 Jahren begleiten wir Kommunen, Architekten und Landschaftsplaner durch jede Phase eines Skatepark-Projekts — von der Beratung bis zur langfristigen Wartung.
+                        Seit über 25 Jahren begleiten wir Kommunen, Architekten und Landschaftsplaner durch jede Phase eines Skatepark-Projekts, von der Beratung bis zur langfristigen Wartung.
                     </p>
                 </AnimatedSection>
 
@@ -411,7 +411,7 @@ const VIDEO_START_TIME = 15;
 const SLIDES: Slide[] = [
   { type: 'image', src: '/images/homepage/hero-banner.jpg', alt: 'A+ Urban Design Skatepark', duration: 5000 },
   { type: 'video', src: '/videos/skateparks/contest-skateboard.mp4', poster: '/videos/skateparks/poster-contest-skateboard.jpg', duration: 10000 },
-  { type: 'image', src: '/images/homepage/hero-anlage-01.jpg', alt: 'Beton-Skatepark — Totalaufnahme', duration: 5000 },
+  { type: 'image', src: '/images/homepage/hero-anlage-01.jpg', alt: 'Beton-Skatepark, Totalaufnahme', duration: 5000 },
   { type: 'image', src: '/images/homepage/hero-anlage-panorama.jpg', alt: 'Skatepark-Panorama mit Bowl und Street-Area', duration: 5000 },
   { type: 'video', src: '/videos/skateparks/contest-bmx.mp4', poster: '/videos/skateparks/poster-contest-bmx.jpg', duration: 10000 },
   { type: 'image', src: '/images/homepage/hero-anlage-02.jpg', alt: 'Skatepark-Anlage komplett', duration: 5000 },
@@ -438,7 +438,7 @@ const Hero: React.FC = () => {
                     // Video ist ausreichend gepuffert (HAVE_FUTURE_DATA)
                     seekAndPlay();
                 } else {
-                    // Noch nicht genug gepuffert — auf canplay warten
+                    // Noch nicht genug gepuffert, auf canplay warten
                     video.addEventListener('canplay', seekAndPlay, { once: true });
                     video.load();
                     cleanupListener = () => video.removeEventListener('canplay', seekAndPlay);
@@ -474,7 +474,7 @@ const Hero: React.FC = () => {
     return (
         <div className="relative h-[85svh] md:h-[90vh] w-full overflow-hidden bg-black">
 
-            {/* LAYER 1: KARUSSELL — alle Slides mit Crossfade */}
+            {/* LAYER 1: KARUSSELL: alle Slides mit Crossfade */}
             <div className="absolute inset-0 z-0">
                 {SLIDES.map((slide, index) => (
                     <div
@@ -521,7 +521,7 @@ const Hero: React.FC = () => {
                             <span className="text-[clamp(2rem,6vw,6rem)] text-brand-orange">Freiräume</span>
                         </h1>
                         <p className="mt-6 md:mt-8 text-lg md:text-2xl text-white/80 max-w-xl md:max-w-2xl font-light border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
-                            {/* Roland §3.2: 30-Jahre-Jubiläums-Claim noch klären — vorläufig */}
+                            {/* Roland §3.2: 30-Jahre-Jubiläums-Claim noch klären, vorläufig */}
                             Skateparks, Pumptracks und urbane Anlagen aus Beton und Stahl. <span className="text-white font-bold">Modular. Robust. Fundamentfrei. Recycelbar.</span>
                         </p>
                     </div>
@@ -536,7 +536,7 @@ const HomePage: React.FC = () => {
   return (
     <PageShell 
         title="Skatepark-Hersteller | Beton-Skateparks & Pumptracks"
-        description="A+ Urban Design — Ihr Skatepark-Hersteller aus Stuttgart. Wir planen und bauen TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei, seit 1999."
+        description="A+ Urban Design: Ihr Skatepark-Hersteller aus Stuttgart. Wir planen und bauen TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei, seit 1999."
         fullWidth={true}
     >
       <Hero />

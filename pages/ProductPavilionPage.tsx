@@ -67,7 +67,7 @@ const ProductPavilionPage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Beton-Überdachung & Pavillon — Unterstellplatz öffentlich" description="Überdachung, Pavillon und Unterstellplatz aus Beton: wetterfest, fundamentfrei und vandalismussicher. Stadtmöbel und Wetterschutz für öffentliche Parks, Sportanlagen und Freizeitbereiche." schema={productSchema}>
+    <PageShell title="Beton-Überdachung & Pavillon: Unterstellplatz öffentlich" description="Überdachung, Pavillon und Unterstellplatz aus Beton: wetterfest, fundamentfrei und vandalismussicher. Stadtmöbel und Wetterschutz für öffentliche Parks, Sportanlagen und Freizeitbereiche." schema={productSchema}>
 
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
@@ -119,7 +119,7 @@ const ProductPavilionPage: React.FC = () => {
                             Ein einziges Betonelement, vier Funktionen: Einzeln als Unterstellplatz, nebeneinander als Haltestellenüberdachung, gegenüber für überdachte Sitznischen, oder als Dreier-/Vierergruppe zum Pavillon.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Bei 240 cm Länge, 200 cm Tiefe und 262 cm Höhe deckt das C-Profil aus bewehrtem Beton C35/45 diverse Einsatzzwecke ab. Abstände zwischen Elementen können mit Edelstahlseilen oder Kletterpflanzen-Netzen begrünt werden. Inklusive Sitzfläche und Bodenplatte — keine Vorarbeiten nötig.
+                            Bei 240 cm Länge, 200 cm Tiefe und 262 cm Höhe deckt das C-Profil aus bewehrtem Beton C35/45 diverse Einsatzzwecke ab. Abstände zwischen Elementen können mit Edelstahlseilen oder Kletterpflanzen-Netzen begrünt werden. Inklusive Sitzfläche und Bodenplatte, keine Vorarbeiten nötig.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -197,7 +197,7 @@ const ProductPavilionPage: React.FC = () => {
                         Überdachungselement <span className="text-brand-orange">Bogen.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
-                        Das Überdachungselement von A+ Urban Design ist multifunktional: Einsetzbar als Überdachung für Haltestellen und Sitznischen sowie Pavillons. Das Modul wird inklusive Bodenplatte und Sitzbank mit Autokran versetzt — es sind keine Teile zusammenzubauen, und es sind keine Fundament- oder Pflasterarbeiten notwendig. Die Aufstellung erfolgt auf verdichtetem Kies- oder Schotterbett.
+                        Das Überdachungselement von A+ Urban Design ist multifunktional: Einsetzbar als Überdachung für Haltestellen und Sitznischen sowie Pavillons. Das Modul wird inklusive Bodenplatte und Sitzbank mit Autokran versetzt. Es sind keine Teile zusammenzubauen, und es sind keine Fundament- oder Pflasterarbeiten notwendig. Die Aufstellung erfolgt auf verdichtetem Kies- oder Schotterbett.
                     </p>
                 </div>
 
@@ -208,15 +208,15 @@ const ProductPavilionPage: React.FC = () => {
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Fundamentfrei</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen ohne Fundament auf verdichtetem Kies- oder Schotterbett. Geringe Vorarbeiten — keine Fundamentarbeiten oder Pflasterarbeiten notwendig.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen ohne Fundament auf verdichtetem Kies- oder Schotterbett. Geringe Vorarbeiten, keine Fundamentarbeiten oder Pflasterarbeiten notwendig.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Robust</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Kann nicht verbogen, angezündet oder zerschlagen werden. Aus bewehrtem Beton C 35/45 — witterungsbeständig und auch unter Dauernutzung im öffentlichen Raum stabil.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Kann nicht verbogen, angezündet oder zerschlagen werden. Aus bewehrtem Beton C 35/45, witterungsbeständig und auch unter Dauernutzung im öffentlichen Raum stabil.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Wartungsarm</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Keine Verschraubungen, keine zerbrechlichen Teile. Der Boden ist einfach zu reinigen. Materialien recycelbar — das Modul lässt sich jederzeit versetzen oder zurückbauen.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Keine Verschraubungen, keine zerbrechlichen Teile. Der Boden ist einfach zu reinigen. Materialien recycelbar, das Modul lässt sich jederzeit versetzen oder zurückbauen.</p>
                     </div>
                 </div>
 

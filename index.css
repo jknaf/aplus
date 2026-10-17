@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Material Symbols Outlined — lokal eingebettet (DSGVO-konform) */
+/* Material Symbols Outlined: lokal eingebettet (DSGVO-konform) */
 @font-face {
   font-family: 'Material Symbols Outlined';
   font-style: normal;

@@ -4,7 +4,7 @@
 
 export interface V { x: number; z: number }
 export interface Masse { l: number; b: number; h: number; hoch: V | null; niedrig: number }
-export interface Info { name: string; code: string; gruppe: string; kg?: number }
+export interface Info { name: string; code: string; gruppe: string; kg?: number; masse?: string }
 export interface Ctx { masse: Record<string, Masse>; info: Record<string, Info> }
 // gel: Geländer erzwingen (true) oder abschalten (false); ohne Angabe gilt die Automatik (G01/G02)
 export interface Teil { id: string; slug: string; x: number; z: number; rot: number; gel?: boolean }

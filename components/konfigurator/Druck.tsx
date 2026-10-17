@@ -1,52 +1,31 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { gruppen, umriss, type Ctx, type Park, type V, type Zeile, type Zusatz } from './logik';
+import { umriss, type Ctx, type Park, type V, type Zeile, type Zusatz } from './logik';
+import { bildBlatt, planBlatt, type Netz } from './plan2d';
 
-// Druckansicht für „Drucken / PDF“: Kopf mit Logo und Datum, 3D-Ansicht, Plan als Vektorgrafik (wahlweise bemaßt), Stückliste.
+// Druckansicht für „PDF erstellen“, alles A4 quer: 3D-Ansicht, Bauplan (Grundriss und Schnitt aus den Modellen), Stückliste im Angebotslook.
 // Gedruckt wird über den Browser (Ziel „Als PDF sichern“); im Bildschirm ist der Bereich unsichtbar.
 
-export interface DruckOptionen { titel: string; bemassung: boolean; bezeichnungen: boolean; ansicht3d: boolean; liste: boolean }
+export interface DruckOptionen { titel: string; ansicht3d: boolean; plan: boolean; liste: boolean }
 
-interface Props { park: Park; ctx: Ctx; zusatz: Zusatz[]; zeilen: Zeile[]; hinweise: string[]; optionen: DruckOptionen; bild3d: string; link: string }
+interface Props {
+  park: Park; ctx: Ctx; zusatz: Zusatz[]; zeilen: Zeile[]; hinweise: string[]; optionen: DruckOptionen
+  bild3d: string; netze: Record<string, Netz>; qr: string
+}
 
-const m = (x: number) => x.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const box = (p: V[]) => ({
   x0: Math.min(...p.map((q) => q.x)), x1: Math.max(...p.map((q) => q.x)),
   z0: Math.min(...p.map((q) => q.z)), z1: Math.max(...p.map((q) => q.z)),
 });
 
-// Maßlinie mit Endstrichen und Text in der Mitte (Koordinaten in Metern)
-const Mass: React.FC<{ a: V; b: V; text: string; s: number; quer?: boolean }> = ({ a, b, text, s, quer }) => {
-  const dx = b.x - a.x;
-  const dz = b.z - a.z;
-  const len = Math.hypot(dx, dz) || 1;
-  const n = { x: -dz / len, z: dx / len };
-  const strich = 0.18 * s;
-  const mx = (a.x + b.x) / 2;
-  const mz = (a.z + b.z) / 2;
-  const winkel = (Math.atan2(dz, dx) * 180) / Math.PI;
-  return (
-    <g stroke="#2C3530" strokeWidth={0.02 * s} fill="none">
-      <line x1={a.x} y1={a.z} x2={b.x} y2={b.z} />
-      {[a, b].map((p, i) => (
-        <line key={i} x1={p.x - n.x * strich} y1={p.z - n.z * strich} x2={p.x + n.x * strich} y2={p.z + n.z * strich} />
-      ))}
-      <text
-        x={mx} y={mz} dy={-0.12 * s} fontSize={0.32 * s} fill="#2C3530" stroke="none" textAnchor="middle"
-        transform={quer ? `rotate(${winkel} ${mx} ${mz})` : undefined}
-      >{text}</text>
-    </g>
-  );
-};
-
-export const Plan: React.FC<{ park: Park; ctx: Ctx; zusatz: Zusatz[]; bemassung: boolean; bezeichnungen?: boolean }> = ({ park, ctx, zusatz, bemassung, bezeichnungen = true }) => {
+// Draufsicht für den Bildschirm (Ersatz, wenn die 3D-Bühne ausfällt)
+export const Plan: React.FC<{ park: Park; ctx: Ctx; zusatz: Zusatz[]; bezeichnungen?: boolean }> = ({ park, ctx, zusatz, bezeichnungen = true }) => {
   const { l, b } = park.flaeche;
-  const rand = bemassung ? 2.2 : 0.6;
+  const rand = 0.6;
   const s = Math.max(l, b) / 30; // Strichstärken und Schrift mit der Größe skalieren
   const raster: React.ReactNode[] = [];
   for (let x = -l / 2; x <= l / 2 + 1e-6; x += 1.25) raster.push(<line key={`x${x}`} x1={x} y1={-b / 2} x2={x} y2={b / 2} />);
   for (let z = -b / 2; z <= b / 2 + 1e-6; z += 1.25) raster.push(<line key={`z${z}`} x1={-l / 2} y1={z} x2={l / 2} y2={z} />);
-  const gs = gruppen(park, ctx);
   return (
     <svg viewBox={`${-l / 2 - rand} ${-b / 2 - rand} ${l + 2 * rand} ${b + 2 * rand}`} className="w-full h-auto" style={{ maxHeight: '150mm' }}>
       <rect x={-l / 2} y={-b / 2} width={l} height={b} fill="#F2F0EB" stroke="#8A8A80" strokeWidth={0.03 * s} />
@@ -78,111 +57,110 @@ export const Plan: React.FC<{ park: Park; ctx: Ctx; zusatz: Zusatz[]; bemassung:
         const p = umriss({ id: `g${i}`, slug: z.slug, x: z.x, z: z.z, rot: z.rot }, ctx);
         return <polygon key={i} points={p.map((q) => `${q.x},${q.z}`).join(' ')} fill="#6B8F4A" stroke="none" />;
       })}
-      {bemassung && (
-        <g>
-          <Mass a={{ x: -l / 2, z: -b / 2 - 1.3 }} b={{ x: l / 2, z: -b / 2 - 1.3 }} text={`${m(l)} m`} s={s} />
-          <Mass a={{ x: -l / 2 - 1.3, z: b / 2 }} b={{ x: -l / 2 - 1.3, z: -b / 2 }} text={`${m(b)} m`} s={s} quer />
-          {gs.map((g, i, alle) => {
-            const bb = box(g.flatMap((t) => umriss(t, ctx)));
-            const andere = alle.filter((x) => x !== g).map((x) => box(x.flatMap((t) => umriss(t, ctx))));
-            // Lagemaß nur zeichnen, wenn die Linie keine andere Gruppe kreuzt
-            const frei = (a: V, c: V) => !andere.some((o) => Math.max(a.x, c.x) > o.x0 && Math.min(a.x, c.x) < o.x1 && Math.max(a.z, c.z) > o.z0 && Math.min(a.z, c.z) < o.z1);
-            const zm = (bb.z0 + bb.z1) / 2;
-            const xm = (bb.x0 + bb.x1) / 2;
-            const waagrecht = [
-              { a: { x: -l / 2, z: zm }, c: { x: bb.x0, z: zm }, d: bb.x0 + l / 2 },
-              { a: { x: bb.x1, z: zm }, c: { x: l / 2, z: zm }, d: l / 2 - bb.x1 },
-            ].filter((x) => frei(x.a, x.c)).sort((x, y) => x.d - y.d)[0];
-            const senkrecht = [
-              { a: { x: xm, z: -b / 2 }, c: { x: xm, z: bb.z0 }, d: bb.z0 + b / 2 },
-              { a: { x: xm, z: bb.z1 }, c: { x: xm, z: b / 2 }, d: b / 2 - bb.z1 },
-            ].filter((x) => frei(x.a, x.c)).sort((x, y) => x.d - y.d)[0];
-            const o = 0.45;
-            return (
-              <g key={i}>
-                {/* Größe der Gruppe */}
-                <Mass a={{ x: bb.x0, z: bb.z0 - o }} b={{ x: bb.x1, z: bb.z0 - o }} text={m(bb.x1 - bb.x0)} s={s * 0.8} />
-                <Mass a={{ x: bb.x1 + o, z: bb.z0 }} b={{ x: bb.x1 + o, z: bb.z1 }} text={m(bb.z1 - bb.z0)} s={s * 0.8} quer />
-                {/* Lage: Abstand zum näheren freien Flächenrand */}
-                <g opacity={0.6}>
-                  {waagrecht && waagrecht.d > 0.05 && <Mass a={waagrecht.a} b={waagrecht.c} text={m(waagrecht.d)} s={s * 0.7} />}
-                  {senkrecht && senkrecht.d > 0.05 && <Mass a={senkrecht.a} b={senkrecht.c} text={m(senkrecht.d)} s={s * 0.7} quer />}
-                </g>
-              </g>
-            );
-          })}
-        </g>
-      )}
     </svg>
   );
 };
 
-const Druck: React.FC<Props> = ({ park, ctx, zusatz, zeilen, hinweise, optionen, bild3d, link }) => {
+const ZEILEN_JE_SEITE = 11;
+const kg = (x: number) => `${x.toLocaleString('de-DE')} kg`;
+// „H / L / B“ der Preisliste in cm
+const masse = (cm?: string) => {
+  const [h, l, b] = (cm ?? '').split('/').map((x) => x.trim());
+  return h && l && b ? `H ${h} · L ${l} · B ${b} cm` : '';
+};
+
+const Druck: React.FC<Props> = ({ park, ctx, zusatz, zeilen, hinweise, optionen, bild3d, netze, qr }) => {
   const datum = new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
-  const anzahl = park.teile.length;
-  const kopf = (
-    <header className="flex items-end justify-between border-b-2 border-[#2C3530] pb-3 mb-5">
-      <img src="/aplus-logo.svg" alt="A+ Urban Design" style={{ height: '14mm' }} />
-      <div className="text-right text-[10pt] leading-snug">
-        <div className="font-bold uppercase tracking-wider">Skatepark-Planung</div>
-        <div>{datum}</div>
-      </div>
-    </header>
-  );
+  const titel = optionen.titel.trim() || 'Skatepark';
+  const kopf = { titel, datum };
+  const gewicht = zeilen.reduce((s, z) => s + (z.kg ?? 0), 0);
+  const seiten: Zeile[][] = [];
+  for (let i = 0; i < zeilen.length; i += ZEILEN_JE_SEITE) seiten.push(zeilen.slice(i, i + ZEILEN_JE_SEITE));
+  const fuss = <footer className="absolute left-[12mm] right-[12mm] bottom-[8mm] border-t border-black pt-1.5 text-[7.5pt] text-[#555] flex justify-between">
+    <span>A+ Urban Design · Talstraße 41 · 70188 Stuttgart</span><span>post@aplusurbandesign.com · www.aplusurbandesign.com</span>
+  </footer>;
   return createPortal(
-    <div className="druck-bereich hidden text-[#2C3530] bg-white" style={{ fontFamily: 'Arial, sans-serif' }}>
+    <div className="druck-bereich hidden text-black bg-white" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
       <style>{`
-        @page { size: A4 landscape; margin: 12mm; }
+        @page { size: A4 landscape; margin: 0; }
         @media print {
+          html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
           body > *:not(.druck-bereich) { display: none !important; }
           .druck-bereich { display: block !important; }
-          .druck-seite { break-after: page; }
+          .druck-seite { width: 297mm; height: 210mm; overflow: hidden; position: relative; break-after: page; }
           .druck-seite:last-child { break-after: auto; }
+          .druck-bereich * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
       `}</style>
-      <section className="druck-seite">
-        {kopf}
-        <div className="flex justify-between items-baseline mb-4">
-          <h1 className="text-[20pt] font-extrabold uppercase">{optionen.titel || 'Skatepark'}</h1>
-          <p className="text-[10pt]">Fläche {m(park.flaeche.l)} × {m(park.flaeche.b)} m · {anzahl} Elemente · {park.flaeche.angeboescht ? 'angeböscht' : 'freistehend'}</p>
-        </div>
-        {optionen.ansicht3d && bild3d ? (
-          <div className="grid grid-cols-2 gap-5 items-start">
-            <figure><img src={bild3d} alt="3D-Ansicht" className="w-full border border-[#D0CEC7]" /><figcaption className="text-[8pt] mt-1">3D-Ansicht</figcaption></figure>
-            <figure><Plan park={park} ctx={ctx} zusatz={zusatz} bemassung={optionen.bemassung} bezeichnungen={optionen.bezeichnungen} /><figcaption className="text-[8pt] mt-1">Draufsicht{optionen.bemassung ? ', Maße in Metern' : ''}, Raster 1,25 m</figcaption></figure>
+      {optionen.ansicht3d && bild3d && (
+        <section className="druck-seite" dangerouslySetInnerHTML={{ __html: bildBlatt(bild3d, { ...kopf, planinhalt: `3D-Ansicht · ${park.teile.length} Elemente`, massstab: 'OHNE MASSSTAB' }) }} />
+      )}
+      {optionen.plan && (
+        <section className="druck-seite" dangerouslySetInnerHTML={{ __html: planBlatt({ park, ctx, zusatz, netze, kopf }) }} />
+      )}
+      {optionen.liste && seiten.map((zs, s) => (
+        <section key={s} className="druck-seite px-[12mm] pt-[10mm]">
+          <header className="flex items-end justify-between">
+            <img src="/aplus-logo.svg" alt="A+ Urban Design" style={{ height: '13mm' }} />
+            <div className="text-right text-[8pt] text-[#555]">www.aplusurbandesign.com</div>
+          </header>
+          <div className="border-t border-black mt-2 mb-4" />
+          <div className="flex justify-between items-baseline text-[9pt] mb-3">
+            <div><span className="text-[14pt] font-bold mr-3">Stückliste</span>Projekt: {titel}</div>
+            <div>{datum} · Seite {s + 1}/{seiten.length}</div>
           </div>
-        ) : (
-          <figure><Plan park={park} ctx={ctx} zusatz={zusatz} bemassung={optionen.bemassung} bezeichnungen={optionen.bezeichnungen} /><figcaption className="text-[8pt] mt-1">Draufsicht{optionen.bemassung ? ', Maße in Metern' : ''}, Raster 1,25 m</figcaption></figure>
-        )}
-      </section>
-      {optionen.liste && (
-        <section className="druck-seite">
-          {kopf}
-          <h2 className="text-[14pt] font-extrabold uppercase mb-3">Stückliste</h2>
+          {s === 0 && (
+            <p className="text-[9pt] mb-3">
+              Fläche {park.flaeche.l.toLocaleString('de-DE')} × {park.flaeche.b.toLocaleString('de-DE')} m, {park.teile.length} Elemente,{' '}
+              {park.flaeche.angeboescht ? 'angeböscht' : 'freistehend'}. Geländer und Hinweisschild sind nach DIN EN 14974 automatisch ergänzt.
+            </p>
+          )}
           <table className="w-full text-[9pt] border-collapse">
-            <thead><tr className="border-b border-[#2C3530] text-left"><th className="py-1 pr-3">Code</th><th className="py-1 pr-3">Bezeichnung</th><th className="py-1 text-right">Menge</th><th className="py-1 pl-3 text-right">Gewicht ca.</th></tr></thead>
+            <thead>
+              <tr className="border-y border-black text-left">
+                <th className="py-1 pr-3 w-[12mm] font-normal">Pos.</th>
+                <th className="py-1 pr-3 font-normal">Bezeichnung</th>
+                <th className="py-1 pr-3 text-right w-[22mm] font-normal">Menge</th>
+                <th className="py-1 text-right w-[30mm] font-normal">Gewicht ca.</th>
+              </tr>
+            </thead>
             <tbody>
-              {zeilen.map((z) => (
-                <tr key={z.code + z.name} className="border-b border-[#E5E3DC]">
-                  <td className="py-1 pr-3 font-mono">{z.code}</td>
-                  <td className="py-1 pr-3">{z.name}{z.auto ? ' (automatisch ergänzt)' : ''}</td>
-                  <td className="py-1 text-right font-bold">{z.menge}</td>
-                  <td className="py-1 pl-3 text-right">{z.kg ? `${z.kg.toLocaleString('de-DE')} kg` : ''}</td>
-                </tr>
-              ))}
+              {zs.map((z, i) => {
+                const m = masse(z.slug ? ctx.info[z.slug]?.masse : undefined);
+                return (
+                  <tr key={z.code + z.name} className="border-b border-[#ccc] align-top">
+                    <td className="py-1.5 pr-3">{String(s * ZEILEN_JE_SEITE + i + 1).padStart(3, '0')}</td>
+                    <td className="py-1.5 pr-3">
+                      <div><span className="font-bold">{z.code}</span><span className="text-[#888]"> ____ </span>{z.name}</div>
+                      {(m || z.auto) && <div className="text-[8pt] text-[#555]">{[m, z.auto ? 'automatisch ergänzt' : ''].filter(Boolean).join(' · ')}</div>}
+                    </td>
+                    <td className="py-1.5 pr-3 text-right whitespace-nowrap">{z.menge} St.</td>
+                    <td className="py-1.5 text-right whitespace-nowrap">{z.kg ? kg(z.kg) : ''}</td>
+                  </tr>
+                );
+              })}
+              {s === seiten.length - 1 && gewicht > 0 && (
+                <tr className="border-b border-black"><td /><td className="py-1.5 font-bold">Gesamtgewicht ca.</td><td /><td className="py-1.5 text-right font-bold whitespace-nowrap">{kg(gewicht)}</td></tr>
+              )}
             </tbody>
           </table>
-          {hinweise.length > 0 && (
-            <div className="mt-4 text-[9pt]"><strong>Offene Hinweise:</strong><ul className="list-disc ml-5">{hinweise.map((h) => <li key={h}>{h}</li>)}</ul></div>
+          {s === seiten.length - 1 && (
+            <div className="mt-4 flex gap-6 items-start text-[8pt] text-[#333]">
+              <div className="flex-1">
+                {hinweise.length > 0 && <div className="mb-2"><strong>Offene Hinweise:</strong><ul className="list-disc ml-4">{hinweise.map((h) => <li key={h}>{h}</li>)}</ul></div>}
+                <p>Planung schematisch, erstellt mit dem Konfigurator von A+ Urban Design. Preise, Fracht und Montage erhalten Sie mit dem Angebot; bauseitige Leistungen sind nicht enthalten. Maßgeblich ist das Angebot.</p>
+              </div>
+              {qr && (
+                <div className="flex items-center gap-2 shrink-0">
+                  <div style={{ width: '26mm', height: '26mm' }} dangerouslySetInnerHTML={{ __html: qr }} />
+                  <div className="w-[28mm]">Planung online öffnen: Code mit dem Handy scannen.</div>
+                </div>
+              )}
+            </div>
           )}
-          <p className="mt-5 text-[8pt] text-[#5A5A54]">
-            Planung schematisch, erstellt mit dem Konfigurator von A+ Urban Design. Preise, Fracht und Montage erhalten Sie mit dem Angebot;
-            bauseitige Leistungen sind nicht enthalten. Maßgeblich ist das Angebot.
-          </p>
-          <p className="mt-2 text-[8pt] break-all">Park online öffnen: {link}</p>
-          <p className="mt-2 text-[8pt]">A+ Urban Design · post@aplusurbandesign.com · www.aplusurbandesign.com</p>
+          {fuss}
         </section>
-      )}
+      ))}
     </div>,
     document.body,
   );

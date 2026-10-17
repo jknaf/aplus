@@ -86,7 +86,7 @@ const FAQSection: React.FC = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                  <AnimatedSection className="mb-16 text-center">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                        Wissen & Technik
+                        Wissen und Technik
                     </span>
                     <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
                         Häufige <span className="text-brand-orange">Fragen.</span>
@@ -143,7 +143,7 @@ const ProductScrollytelling: React.FC = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <AnimatedSection className="mb-24 text-center">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                        Unser Portfolio
+                        Portfolio
                     </span>
                     <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
                         Unsere<br/>

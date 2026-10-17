@@ -116,7 +116,7 @@ const ProductSkatePipesPage: React.FC = () => {
             <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mb-32">
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32 relative z-20">
-                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Klein · Mittel · Groß</span>
+                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Aufbau</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
                             Pipes <br/><span className="text-brand-orange">aus Beton.</span>
                         </h2>
@@ -150,9 +150,9 @@ const ProductSkatePipesPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
-                        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Höhenraster</span>
+                        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Höhen</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                            Drei <span className="text-brand-orange">Höhen.</span>
+                            165, 200 und <span className="text-brand-orange">255 cm.</span>
                         </h2>
                     </div>
                 </div>
@@ -196,9 +196,9 @@ const ProductSkatePipesPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
-                        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Konstruktion</span>
+                        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Halfpipe und Mini-Pipe</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                            Die Pipe<span className="text-brand-orange">.</span>
+                            So ist eine Pipe <span className="text-brand-orange">gebaut.</span>
                         </h2>
                     </div>
                 </div>

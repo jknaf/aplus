@@ -111,7 +111,7 @@ const ProductGrillPage: React.FC = () => {
                         </span>
                         {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Feuer & <span className="text-brand-orange">Beton.</span>
+                            Feuer und <span className="text-brand-orange">Beton.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
                             Der runde Grillplatz ist für Freibäder, Campingplätze, Sportanlagen und Kleingartenanlagen gedacht. Er hat 4,20 m Durchmesser, ist 2,70 m hoch und bietet 12–16 Personen Platz.

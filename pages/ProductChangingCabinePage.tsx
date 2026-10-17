@@ -163,7 +163,7 @@ const ProductChangingCabinePage: React.FC = () => {
                         Schnecken-Prinzip
                     </span>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
-                        Geometrie statt <span className="text-brand-orange">Mechanik.</span>
+                        Form statt <span className="text-brand-orange">Mechanik.</span>
                     </h2>
                     <div className="space-y-5 text-lg text-brand-muted leading-relaxed">
                         <p>
@@ -177,10 +177,10 @@ const ProductChangingCabinePage: React.FC = () => {
 
                 <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                        Einsatz & Varianten
+                        Einsatz
                     </span>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
-                        Außenkabine. <span className="text-brand-orange">Optional Dusche.</span>
+                        Umkleide <span className="text-brand-orange">oder Dusche.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed">
                         Die Schnecke ist für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen gedacht. Sie steht frei als Außenkabine und ist wahlweise auch als Duschkabine erhältlich. Die fugenlose Innenfläche ist in wenigen Minuten gereinigt. Es gibt keine Fugen, in denen sich Schmutz oder Schimmel festsetzt. Im Winter bleibt die Kabine stehen. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.

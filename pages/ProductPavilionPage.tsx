@@ -219,6 +219,27 @@ const ProductPavilionPage: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Für Kommunen: Belege Pressemitteilung Stadt Wedel 01.06.2023, Archivtext ueberdachung-pavillon */}
+                <div className="mb-12">
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Für Kommunen und Vereine</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
+                        Keine Scheibe, <span className="text-brand-orange">die zerbricht.</span>
+                    </h2>
+                    <p className="text-lg text-brand-muted leading-relaxed max-w-3xl mb-8">
+                        Wartehallen aus Glas sind ein häufiges Ziel von Vandalismus. Die Stadt Wedel ließ 2023 nach einer Vandalismuswelle 29 zerschlagene Glasscheiben an 18 Buswartehäuschen ersetzen, für etwa 20.000 Euro. Unser Überdachungselement hat keine Scheiben, die man zerschlagen oder ersetzen müsste.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                            <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Picknickplatz</h3>
+                            <p className="text-sm text-brand-muted leading-relaxed">Auf Rastplätzen, Campingplätzen oder dem Vereinsgelände wird das Element zum überdachten Picknickplatz für 8 Personen.</p>
+                        </div>
+                        <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
+                            <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Sportanlagen</h3>
+                            <p className="text-sm text-brand-muted leading-relaxed">Am Spielfeldrand schützt das Element Zuschauer und Wartende vor Regen und Sonne.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
                         Technische <span className="text-brand-orange">Daten</span>

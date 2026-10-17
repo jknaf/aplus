@@ -128,7 +128,7 @@ const AboutPage: React.FC = () => {
               <div className="lg:w-1/2">
                   <div className="relative rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                       <img src="/images/montage/transport-01.jpg" alt="Logistik und Montage" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700"/>
-                      <div className="absolute bottom-4 right-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-brand-orange">Abb. 1: Anlieferung per Lkw</div>
+                      <div className="absolute bottom-4 right-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-brand-orange">Abb. 1: Gabelstapler entlädt Betonelemente vom Lkw</div>
                   </div>
               </div>
               <div className="lg:w-1/2">

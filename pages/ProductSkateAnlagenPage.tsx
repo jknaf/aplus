@@ -186,9 +186,9 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 </div>
 
                 <div className="lg:w-7/12 flex flex-col gap-6">
-                    <GalleryImage src="/images/skateparks/skatepark-01.jpg" alt="Skatepark aus modularen Beton-Elementen" label="Abb. 1: Skateanlage aus Fertigteilen" />
-                    <GalleryImage src="/images/skate-anlagen/skate-anlage-01.jpg" alt="Skate-Anlage mit offenen und geschlossenen Bowls" label="Abb. 2: Anlage mit Bowl und Street-Bereich" />
-                    <GalleryImage src="/images/skateparks/skatepark-04.jpg" alt="Skatepark mit Pipe und Bowl aus Beton-Fertigteilen" label="Abb. 3: Anlage mit Rampen und Bowl" />
+                    <GalleryImage src="/images/skateparks/skatepark-01.jpg" alt="Skatepark aus modularen Beton-Elementen" label="Abb. 1: Anlage mit Pipes, Quarterpipes und Funbox" />
+                    <GalleryImage src="/images/skate-anlagen/skate-anlage-01.jpg" alt="Skate-Anlage mit offenen und geschlossenen Bowls" label="Abb. 2: Große Anlage mit Bowls und Street-Bereich, von oben" />
+                    <GalleryImage src="/images/skateparks/skatepark-04.jpg" alt="Skatepark mit Pipe und Bowl aus Beton-Fertigteilen" label="Abb. 3: Funbox und Bowl in einer Grünanlage" />
                 </div>
             </div>
 
@@ -219,10 +219,10 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         </p>
                     </div>
                     <div className="lg:col-span-3 grid grid-cols-2 gap-4">
-                        <GalleryImage src="/images/skate-elemente/skate-elemente-beton-01.jpg" alt="Skate-Elemente: Ramps und Skateteile" label="Rampen und Boxen" />
-                        <GalleryImage src="/images/skate-elemente/skate-elemente-beton-02.jpg" alt="Skate-Elemente als Beton-Fertigteil-Module" label="Rampenelemente" />
-                        <GalleryImage src="/images/skate-elemente/skateelemente-beton-03.jpg" alt="Skatemodule mit Übergangsblech" label="Rampen mit Übergangsblech" />
-                        <GalleryImage src="/images/skate-elemente/skate-module-beton-04.jpg" alt="Zusammengebaute Beton-Skatemodule" label="Beton-Elemente" />
+                        <GalleryImage src="/images/skate-elemente/skate-elemente-beton-01.jpg" alt="Skate-Elemente: Ramps und Skateteile" label="Rampen und Boxen an einer Strandpromenade" />
+                        <GalleryImage src="/images/skate-elemente/skate-elemente-beton-02.jpg" alt="Skate-Elemente als Beton-Fertigteil-Module" label="Quarterpipes in einer Reihe" />
+                        <GalleryImage src="/images/skate-elemente/skateelemente-beton-03.jpg" alt="Skatemodule mit Übergangsblech" label="Quarterpipes und Boxen" />
+                        <GalleryImage src="/images/skate-elemente/skate-module-beton-04.jpg" alt="Zusammengebaute Beton-Skatemodule" label="Fertigteile auf dem Lagerplatz" />
                     </div>
                 </div>
             </div>
@@ -324,10 +324,10 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <span className="font-mono text-brand-muted text-xs hidden sm:block">REFERENZEN</span>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <GalleryImage src="/images/skate-anlagen/skate-anlagen-02.jpg" alt="Skateanlage mit offenem Bowl" label="Anlage mit Bowl" />
-                    <GalleryImage src="/images/skate-anlagen/skateanlage-03.jpg" alt="Skatepark mit Bowl und Pipe" label="Bowl und weitere Elemente" />
-                    <GalleryImage src="/images/skate-anlagen/skateanlagen-04.jpg" alt="Skatepark aus Beton-Fertigteilen" label="Anlage aus Fertigteilen" />
-                    <GalleryImage src="/images/skateparks/skatepark-02.jpg" alt="Skatepark aus modularen Elementen" label="Modulare Anlage" />
+                    <GalleryImage src="/images/skate-anlagen/skate-anlagen-02.jpg" alt="Skateanlage mit offenem Bowl" label="Anlage mit Bowl, von oben" />
+                    <GalleryImage src="/images/skate-anlagen/skateanlage-03.jpg" alt="Skatepark mit Bowl und Pipe" label="Skatepark mit Bowl in einer Parkanlage" />
+                    <GalleryImage src="/images/skate-anlagen/skateanlagen-04.jpg" alt="Skatepark aus Beton-Fertigteilen" label="Anlage mit Pipe und farbiger Bowl" />
+                    <GalleryImage src="/images/skateparks/skatepark-02.jpg" alt="Skatepark aus modularen Elementen" label="Sprung über eine Funbox" />
                 </div>
             </div>
 

@@ -141,7 +141,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                 </div>
 
                 <div className="lg:w-7/12 flex flex-col gap-6">
-                    <GalleryImage src="/images/skate-bowls/skate-bowl-02.jpg" alt="Skate-Bowl aus modularen Beton-Fertigteilen" label="Abb. 1: Modularer Bowl" />
+                    <GalleryImage src="/images/skate-bowls/skate-bowl-02.jpg" alt="Skate-Bowl aus modularen Beton-Fertigteilen" label="Abb. 1: Bowl mit Steilwand" />
                     <GalleryImage src="/images/skate-bowls/skate-pool-03.jpg" alt="Skate-Pool im Erdreich, geschlossene Bauweise" label="Abb. 2: Pool im Erdreich" />
                     <GalleryImage src="/images/skate-bowls/skate-bowl-pool-05.jpg" alt="S-Form Skate-Bowl aus Beton-Modulen" label="Abb. 3: Bowl in S-Form (3D-Modell)" />
                 </div>
@@ -195,9 +195,9 @@ const ProductSkateBowlsPage: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <GalleryImage src="/images/skate-bowls/skate-bowl-01.jpg" alt="Offener Skate-Bowl aus Beton" label="Offener Bowl" />
-                    <GalleryImage src="/images/skate-bowls/skate-pool-04.jpg" alt="Skate-Pool aus Beton-Fertigteil-Modulen" label="Skate-Pool" />
-                    <GalleryImage src="/images/skate-bowls/skate-bowls-pools-06.jpg" alt="Bowl-Varianten aus modularen Beton-Elementen" label="Varianten (3D-Modell)" />
+                    <GalleryImage src="/images/skate-bowls/skate-bowl-01.jpg" alt="Offener Skate-Bowl aus Beton" label="Offener Bowl mit BMX-Fahrer" />
+                    <GalleryImage src="/images/skate-bowls/skate-pool-04.jpg" alt="Skate-Pool aus Beton-Fertigteil-Modulen" label="Innenansicht eines Pools" />
+                    <GalleryImage src="/images/skate-bowls/skate-bowls-pools-06.jpg" alt="Bowl-Varianten aus modularen Beton-Elementen" label="Bowl-Varianten (3D-Modell)" />
                 </div>
             </div>
 

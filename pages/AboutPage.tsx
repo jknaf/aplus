@@ -215,7 +215,7 @@ const AboutPage: React.FC = () => {
                         Der A+ Standard
                   </span>
                   <h2 className="text-6xl md:text-8xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                      Das <span className="text-brand-orange">Prinzip.</span>
+                      So arbeiten <span className="text-brand-orange">wir.</span>
                   </h2>
               </div>
               

@@ -112,8 +112,8 @@ const ProductPumptrackPage: React.FC = () => {
                     </div>
                     {/* INDUSTRIAL HEADER UPDATE */}
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
-                        Beton<br/>
-                        <span className="text-brand-orange">Pumptracks</span>
+                        Pumptracks<br/>
+                        <span className="text-brand-orange">aus Beton</span>
                     </h1>
                 </div>
             </div>
@@ -180,7 +180,7 @@ const ProductPumptrackPage: React.FC = () => {
                 <div className="mb-10">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Modulsystem</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
-                        Bauteile & <span className="text-brand-orange">Elemente.</span>
+                        Kurven, Wellen, <span className="text-brand-orange">Rampen.</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
                         Jede Kurve, jede Welle und jeder Roller ist ein im Werk gefertigtes Betonteil mit fester Geometrie. Die Module lassen sich frei zu eigenen Streckenverläufen kombinieren.

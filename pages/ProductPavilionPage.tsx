@@ -108,7 +108,7 @@ const ProductPavilionPage: React.FC = () => {
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                            Architektur
+                            Einsatzarten
                         </span>
                         {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
@@ -172,7 +172,7 @@ const ProductPavilionPage: React.FC = () => {
 
                 <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                        Montage & Lebensdauer
+                        Montage
                     </span>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
                         Aufstellen und <span className="text-brand-orange">versetzen.</span>
@@ -193,7 +193,7 @@ const ProductPavilionPage: React.FC = () => {
                 <div className="mb-8">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Das Original</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
-                        Überdachungselement <span className="text-brand-orange">Bogen.</span>
+                        Das <span className="text-brand-orange">Überdachungselement.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
                         Das Element dient als Überdachung an Haltestellen, als Sitznische oder als Pavillon. Bodenplatte und Sitzbank sind angeformt. Der Autokran setzt das Element in einem Stück. Fundament- und Pflasterarbeiten entfallen. Die Aufstellung erfolgt auf verdichtetem Kies- oder Schotterbett.

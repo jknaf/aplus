@@ -254,9 +254,9 @@ const PlanningPage: React.FC = () => {
 
                 {/* Left: Text */}
                 <div>
-                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Bau & Umsetzung</span>
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Bau und Umsetzung</span>
                     <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-4">
-                        Schneller und <span className="text-brand-orange">wetterunabhängig.</span>
+                        Schneller gebaut <span className="text-brand-orange">als Ortbeton.</span>
                     </h2>
                     <p className="text-sm font-mono text-brand-muted uppercase tracking-widest mb-8">Mit regelmäßiger TÜV-Überprüfung der Fertigungsstätte</p>
                     <div className="space-y-6 text-lg text-brand-muted leading-relaxed">

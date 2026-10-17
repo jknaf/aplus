@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
                    </div>
                 </Link>
                 <p className="text-brand-muted leading-relaxed mb-8 max-w-sm">
-                  Hersteller modularer Betonelemente für den öffentlichen Raum. Robust und für Jahrzehnte gebaut.
+                  Wir stellen modulare Betonelemente für den öffentlichen Raum her. Sie sind robust und für Jahrzehnte gebaut.
                 </p>
             </div>
              <div className="flex gap-4">

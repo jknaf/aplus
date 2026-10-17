@@ -115,7 +115,7 @@ const ProductPavilionPage: React.FC = () => {
                             Ein Element, <span className="text-brand-orange">vier Einsätze.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Ein Betonelement, vier Einsatzarten: einzeln als Unterstellplatz, in einer Reihe als Haltestellenüberdachung, paarweise gegenüber als überdachte Sitznische oder zu dritt oder viert als Pavillon.
+                            Ein einziges Betonelement lässt sich auf vier Arten einsetzen: einzeln als Unterstellplatz, in einer Reihe als Haltestellenüberdachung, paarweise gegenüber als überdachte Sitznische oder zu dritt oder viert als Pavillon.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
                             Das C-Profil aus bewehrtem Beton C35/45 ist 240 cm lang, 200 cm tief und 262 cm hoch. Die Zwischenräume lassen sich mit Edelstahlseilen oder Rankgittern begrünen. Sitzfläche und Bodenplatte sind Teil des Elements. Nötig ist nur ein verdichtetes Schotterbett.
@@ -203,11 +203,11 @@ const ProductPavilionPage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Multifunktional</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Einzeln als Unterstellplatz, nebeneinander als Haltestellenüberdachung, gegenüber als überdachte Sitznische oder zu dritt oder viert als Pavillon.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Das Element dient einzeln als Unterstellplatz, nebeneinander als Haltestellenüberdachung, gegenüber als überdachte Sitznische oder zu dritt oder viert als Pavillon.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Fundamentfrei</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen ohne Fundament auf verdichtetem Kies- oder Schotterbett. Pflaster- und Fundamentarbeiten entfallen.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Das Element steht ohne Fundament auf verdichtetem Kies- oder Schotterbett. Pflaster- und Fundamentarbeiten entfallen.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Robust</h3>
@@ -215,7 +215,7 @@ const ProductPavilionPage: React.FC = () => {
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Wartungsarm</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Keine Schrauben, keine empfindlichen Teile. Der Boden ist leicht zu reinigen. Die Materialien sind recycelbar. Das Modul lässt sich jederzeit versetzen oder zurückbauen.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Das Element hat keine Schrauben und keine empfindlichen Teile. Der Boden ist leicht zu reinigen. Die Materialien sind recycelbar. Das Modul lässt sich jederzeit versetzen oder zurückbauen.</p>
                     </div>
                 </div>
 

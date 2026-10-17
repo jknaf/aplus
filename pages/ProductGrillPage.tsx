@@ -114,7 +114,7 @@ const ProductGrillPage: React.FC = () => {
                             Feuer & <span className="text-brand-orange">Beton.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Für Freibäder, Campingplätze, Sportanlagen und Kleingartenanlagen. Der runde Grillplatz hat 4,20 m Durchmesser, ist 2,70 m hoch und bietet 12–16 Personen Platz.
+                            Der runde Grillplatz ist für Freibäder, Campingplätze, Sportanlagen und Kleingartenanlagen gedacht. Er hat 4,20 m Durchmesser, ist 2,70 m hoch und bietet 12–16 Personen Platz.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
                             Der Edelstahlrost ist höhenverstellbar, leicht zu reinigen und über eine zentrale Öse gegen Schwenken und Diebstahl gesichert. Die 16 cm starke Bodenplatte gehört dazu. Pflasterarbeiten entfallen. Der Grillplatz steht ohne Fundament auf einem verdichteten Schotterbett.
@@ -148,7 +148,7 @@ const ProductGrillPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 flex rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] items-center justify-between backdrop-blur-sm">
                          <div>
                             <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase">Abmessungen</h3>
-                            <p className="text-brand-muted mt-2">Platz für 12–16 Personen.</p>
+                            <p className="text-brand-muted mt-2">Der Grillplatz bietet 12–16 Personen Platz.</p>
                          </div>
                          <div className="text-right">
                              <div className="text-4xl font-mono text-brand-orange font-bold">4,20 m</div>
@@ -178,11 +178,11 @@ const ProductGrillPage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Materialien</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Beton, Edelstahl und verzinkter Stahl, durchweg witterungsbeständig und recycelbar. Der Edelstahlrost ist für Dauernutzung ausgelegt.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Beton, Edelstahl und verzinkter Stahl sind durchweg witterungsbeständig und recycelbar. Der Edelstahlrost ist für Dauernutzung ausgelegt.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Ohne Fundamente</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen auf einem verdichteten Kies- oder Schotterbett. Die 16 cm starke Bodenplatte gehört dazu: keine Fundamente, keine Pflasterarbeiten, kurze Bauzeit.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Der Grillplatz steht auf einem verdichteten Kies- oder Schotterbett. Die 16 cm starke Bodenplatte gehört dazu. Fundamente und Pflasterarbeiten entfallen, und die Bauzeit ist kurz.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Vandalismussicher</h3>
@@ -227,8 +227,8 @@ const ProductGrillPage: React.FC = () => {
                                 Montageanleitung <span className="text-brand-orange">Grillplatz.</span>
                             </h3>
                             <p className="mt-3 text-brand-muted max-w-xl leading-relaxed">
-                                Vollständige Aufbauanleitung: Unterbau, Abladen, Setzreihenfolge, Träger mit Schnurlot,
-                                Kette &amp; Gegengewicht, Werkzeugliste und Wartungsplan. Online lesen oder als PDF herunterladen.
+                                Die vollständige Aufbauanleitung erklärt Unterbau, Abladen, Setzreihenfolge, das Ausrichten des Trägers mit dem Schnurlot,
+                                Kette und Gegengewicht. Dazu kommen Werkzeugliste und Wartungsplan. Sie können die Anleitung online lesen oder als PDF herunterladen.
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-3 shrink-0">

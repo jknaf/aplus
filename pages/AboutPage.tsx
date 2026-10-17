@@ -117,7 +117,7 @@ const AboutPage: React.FC = () => {
                   Geprüfte <span className="text-brand-orange">Skate-Elemente.</span>
               </h2>
               <p className="text-lg text-brand-muted leading-relaxed">
-                  Unsere ersten modularen Skate-Elemente entstanden 1998. Im Jahr 2000 erhielten sie das TÜV-Zertifikat und das GS-Zeichen für geprüfte Sicherheit. Heute sind sie nach DIN EN 14974 („Skateparks: Sicherheitstechnische Anforderungen und Prüfverfahren“), nach PPP 63126B und weiteren Normen geprüft. Zertifikatsnummer: Z1A 056616 0012. Damit waren wir weltweit vermutlich die ersten Hersteller modularer Beton-Skate-Elemente mit TÜV-Siegel. 27 Fachartikel berichten über Anlagen mit unserem System. Gebaut wurden inzwischen mehr als 350.
+                  Unsere ersten modularen Skate-Elemente entstanden 1998. Im Jahr 2000 erhielten sie das TÜV-Zertifikat und das GS-Zeichen für geprüfte Sicherheit. Heute sind sie nach DIN EN 14974 („Skateparks: Sicherheitstechnische Anforderungen und Prüfverfahren“), nach PPP 63126B und weiteren Normen geprüft. Die Zertifikatsnummer lautet Z1A 056616 0012. Damit waren wir weltweit vermutlich die ersten Hersteller modularer Beton-Skate-Elemente mit TÜV-Siegel. 27 Fachartikel berichten über Anlagen mit unserem System. Inzwischen wurden mehr als 350 Anlagen mit unserem System gebaut.
               </p>
           </div>
       </div>
@@ -153,7 +153,7 @@ const AboutPage: React.FC = () => {
                           <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/5 shadow-sm">
                               <span className="material-symbols-outlined text-brand-orange mb-2 text-3xl">eco</span>
                               <h4 className="font-bold text-brand-dark uppercase text-sm mb-1">Nachhaltig</h4>
-                              <p className="text-xs text-brand-muted">Beton und Stahl weitgehend recycelbar</p>
+                              <p className="text-xs text-brand-muted">Beton und Stahl sind weitgehend recycelbar.</p>
                           </div>
                           <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/5 shadow-sm">
                               <span className="material-symbols-outlined text-brand-orange mb-2 text-3xl">engineering</span>
@@ -172,7 +172,7 @@ const AboutPage: React.FC = () => {
                   Vom Lkw zum fertigen <span className="text-brand-orange">Park.</span>
               </h3>
               <p className="text-brand-muted max-w-2xl mb-8">
-                  Die Montage unserer Skate-Elemente erfolgt direkt auf einer betonierten oder asphaltierten Rollfläche mit Übergangsblechen oder auf einer Fundamentplatte zum Anbetonieren. Wir stellen eine Montage- und Wartungsanleitung zur Verfügung.
+                  Wir montieren unsere Skate-Elemente entweder mit Übergangsblechen direkt auf einer betonierten oder asphaltierten Rollfläche oder auf einer Fundamentplatte, an die sie anbetoniert werden. Wir stellen eine Montage- und Wartungsanleitung zur Verfügung.
               </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -229,7 +229,7 @@ const AboutPage: React.FC = () => {
                   <PrincipleCard
                       number="02"
                       title="Fertigung"
-                      desc="C35/45 Stahlbeton aus kontrollierter Werksumgebung. Wandstärke, Bewehrung und Fugen werden im Werk geprüft, unabhängig vom Wetter. Der TÜV überwacht die Fertigung regelmäßig."
+                      desc="Die Elemente entstehen aus Stahlbeton C35/45 unter kontrollierten Bedingungen im Werk. Wandstärke, Bewehrung und Fugen werden im Werk geprüft, unabhängig vom Wetter. Der TÜV überwacht die Fertigung regelmäßig."
                   />
                   <PrincipleCard
                       number="03"
@@ -239,7 +239,7 @@ const AboutPage: React.FC = () => {
                   <PrincipleCard
                       number="04"
                       title="Montage"
-                      desc="In wenigen Tagen aufgestellt, ohne Bodenbefestigung. Später versetzbar und am Ende recycelbar."
+                      desc="Die Elemente sind in wenigen Tagen aufgestellt und brauchen keine Bodenbefestigung. Später lassen sie sich versetzen und am Ende recyceln."
                   />
               </div>
           </div>

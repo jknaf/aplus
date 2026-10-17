@@ -124,7 +124,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                             In den 1950er-Jahren entdeckten Surfer leere Swimmingpools als Skateflächen. Die geschwungenen Transitions, das Flat und das Copingrohr an der Oberkante prägen bis heute jeden Skate-Bowl.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Mit unseren modularen Skate-Elementen aus bewehrtem Beton bauen wir Bowls und Pools in vielen Größen und Formen, geschlossen im Erdreich oder offen auf der Fläche. Ein Bowl besteht aus einem ebenen Boden (Flat), den gekrümmte Wände (Transitions) umschließen. An der Oberkante, wo die Transition auf die Plattform trifft, sitzt das Copingrohr. Lieferbar in <strong className="text-brand-dark">98 und 150 cm</strong> Tiefe.
+                            Mit unseren modularen Skate-Elementen aus bewehrtem Beton bauen wir Bowls und Pools in vielen Größen und Formen, geschlossen im Erdreich oder offen auf der Fläche. Ein Bowl besteht aus einem ebenen Boden (Flat), den gekrümmte Wände (Transitions) umschließen. An der Oberkante, wo die Transition auf die Plattform trifft, sitzt das Copingrohr. Wir liefern Bowls in <strong className="text-brand-dark">98 und 150 cm</strong> Tiefe.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
                             2002 wurde der erste Bowl mit unseren modularen Skateelementen auf Gran Canaria gebaut. Unsere Skateelemente sind im Bereich von 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz, von Norwegen bis zu den Kanaren, von England bis zur Türkei.
@@ -134,7 +134,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                             <Link to="/kontakt?projectType=Skatepark" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 Bowl planen lassen <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
-                            <span className="text-xs text-brand-muted font-mono text-center">Kostenlose 3D-Voranalyse. Lieferung und Montage schlüsselfertig.</span>
+                            <span className="text-xs text-brand-muted font-mono text-center">Mit kostenloser 3D-Voranalyse. Wir liefern und montieren schlüsselfertig.</span>
                         </div>
                     </div>
                 </div>
@@ -165,13 +165,13 @@ const ProductSkateBowlsPage: React.FC = () => {
                             Der klassische Bowl ist rundum geschlossen und eingegraben, man fährt über die obere Plattform ein. Die Elemente werden auf gesonderte Fundamente gestellt und anbetoniert. So wird die Anlage dauerhaft mit dem Untergrund verbunden.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Im Flat ist mindestens ein Gully Pflicht. Wir empfehlen zur Sicherheit einen zweiten. Größen und Formen sind frei wählbar: Kidney-Pools, Clover-Bowls, Kombi-Pools mit mehreren Tiefen.
+                            Im Flat ist mindestens ein Gully Pflicht. Wir empfehlen zur Sicherheit einen zweiten. Größen und Formen sind frei wählbar, zum Beispiel nierenförmige Kidney-Pools, kleeblattförmige Clover-Bowls oder Kombi-Pools mit mehreren Tiefen.
                         </p>
                         <ul className="text-sm text-brand-muted font-mono space-y-2 mt-6">
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Tiefen 98 und 150 cm</li>
-                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> 1 Gully Pflicht, 2 empfohlen</li>
+                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ein Gully ist Pflicht, zwei sind empfohlen</li>
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Anbetoniert auf gesondertem Fundament</li>
-                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Copingrohr verzinkt, fortlaufend</li>
+                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Durchlaufendes, verzinktes Copingrohr</li>
                         </ul>
                     </div>
 
@@ -179,16 +179,16 @@ const ProductSkateBowlsPage: React.FC = () => {
                         <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">Offener Bowl</span>
                         <h3 className="text-3xl font-bold font-heading text-brand-dark uppercase mt-2 mb-6">Offen · oberirdisch</h3>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Der offene Bowl ist an mindestens einer Seite geöffnet: Man fährt direkt aufs Flat. Er lässt sich wie ein Bowl fahren und zugleich wie ein Street-Element: pumpen, grinden, zurück ins Flat.
+                            Der offene Bowl ist an mindestens einer Seite geöffnet: Man fährt direkt aufs Flat. Er lässt sich wie ein Bowl fahren und zugleich wie ein Street-Element. Man kann darin pumpen, grinden und wieder zurück ins Flat fahren.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Oberirdische Bowls werden direkt auf die vorhandene Rollfläche gestellt. Übergangsbleche aus Edelstahl gleichen den Übergang vom Boden zum Element aus. Kein Aushub und kein Fundament. Die Fläche braucht nur ein leichtes Gefälle.
+                            Oberirdische Bowls werden direkt auf die vorhandene Rollfläche gestellt. Übergangsbleche aus Edelstahl gleichen den Übergang vom Boden zum Element aus. Aushub und Fundament sind nicht nötig. Die Fläche braucht nur ein leichtes Gefälle.
                         </p>
                         <ul className="text-sm text-brand-muted font-mono space-y-2 mt-6">
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Direkt auf Bestandsfläche oder Asphalt</li>
-                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ab 1,00 m Höhe: Plattform (Table) und Absturzsicherung</li>
+                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ab 1,00 m Höhe mit Plattform (Table) und Absturzsicherung</li>
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ohne Fundament und Aushub</li>
-                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Versetzbar, erweiterbar, abbaubar</li>
+                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Lässt sich versetzen, erweitern und abbauen</li>
                         </ul>
                     </div>
                 </div>

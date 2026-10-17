@@ -141,7 +141,7 @@ const ProductChangingCabinePage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 relative rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Wartungsarm</h3>
                         <p className="text-brand-muted">
-                            Keine Scharniere, keine Schlösser, kein Holz. Die Kabine bleibt im Winter stehen und verrottet nicht.
+                            Es gibt keine Scharniere, keine Schlösser und kein Holz. Die Kabine bleibt im Winter stehen und verrottet nicht.
                         </p>
                     </div>
 
@@ -183,7 +183,7 @@ const ProductChangingCabinePage: React.FC = () => {
                         Außenkabine. <span className="text-brand-orange">Optional Dusche.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed">
-                        Gedacht für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen: als freistehende Außenkabine, wahlweise auch als Duschkabine. Die fugenlose Innenfläche ist in wenigen Minuten gereinigt. Es gibt keine Fugen, in denen sich Schmutz oder Schimmel festsetzt. Im Winter bleibt die Kabine stehen. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.
+                        Die Schnecke ist für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen gedacht. Sie steht frei als Außenkabine und ist wahlweise auch als Duschkabine erhältlich. Die fugenlose Innenfläche ist in wenigen Minuten gereinigt. Es gibt keine Fugen, in denen sich Schmutz oder Schimmel festsetzt. Im Winter bleibt die Kabine stehen. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.
                     </p>
                 </div>
             </div>
@@ -196,7 +196,7 @@ const ProductChangingCabinePage: React.FC = () => {
                         Freibad und <span className="text-brand-orange">Badesee.</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                        Freistehende Umkleidekabine für Freibad und Badesee. Die Bodenplatte wird auf ein verdichtetes Schotterbett gelegt. Pflaster- und Fundamentarbeiten entfallen.
+                        Die Umkleidekabine steht frei im Freibad oder am Badesee. Die Bodenplatte wird auf ein verdichtetes Schotterbett gelegt. Pflaster- und Fundamentarbeiten entfallen.
                     </p>
                 </div>
                 <div className="relative w-full aspect-[21/9] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">

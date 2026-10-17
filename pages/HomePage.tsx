@@ -57,7 +57,7 @@ const FAQSection: React.FC = () => {
         },
         {
             q: "Können wir klein anfangen und die Anlage später erweitern?",
-            a: "Ja, genau dafür ist das A+-Modulsystem gemacht. Viele Kommunen starten mit einem Starter-Kit (zum Beispiel Quarter, Bank und Rail) und erweitern den Skatepark über Jahre. Weil keine Fundamente gegossen werden, ist das jederzeit möglich. Elemente können auch umgestellt oder an einen neuen Standort versetzt werden."
+            a: "Ja, genau dafür ist das A+-Modulsystem gemacht. Viele Kommunen starten mit einem Starter-Kit, zum Beispiel aus Quarterpipe, Bank und Rail, und erweitern den Skatepark über Jahre. Weil keine Fundamente gegossen werden, ist das jederzeit möglich. Elemente können auch umgestellt oder an einen neuen Standort versetzt werden."
         },
         {
             q: "Wie laufen Planung und Bau eines Skateparks ab?",
@@ -273,7 +273,7 @@ const ServiceOverviewSection: React.FC = () => {
         {
             icon: "design_services",
             title: "Planung & Beratung",
-            desc: "Von der ersten Idee bis zur Ausführungsplanung nach DIN EN 14974. Auf Grundlage Ihrer Fläche und Ihres Budgets erstellen wir Draufsichten und 3D-Entwürfe."
+            desc: "Wir begleiten Sie von der ersten Idee bis zur Ausführungsplanung nach DIN EN 14974. Auf Grundlage Ihrer Fläche und Ihres Budgets erstellen wir Draufsichten und 3D-Entwürfe."
         },
         {
             icon: "construction",
@@ -564,7 +564,7 @@ const HomePage: React.FC = () => {
                     <div className="lg:w-7/12 pt-12 lg:pt-0">
                         <div className="flex flex-col">
                             <ScrollyFeature icon="layers" animationType="float" title="Fundamentfrei" desc="Vor Ort wird nicht betoniert. Die Elemente stehen ohne Fundament direkt auf Asphalt oder Beton." />
-                            <ScrollyFeature icon="shield" animationType="glow-pulse" title="Vandalismussicher" desc="Stahlbeton C35/45: lässt sich nicht zerschneiden, brennt nicht und hält Schlägen stand." />
+                            <ScrollyFeature icon="shield" animationType="glow-pulse" title="Vandalismussicher" desc="Unser Stahlbeton der Festigkeitsklasse C35/45 lässt sich nicht zerschneiden, brennt nicht und hält Schlägen stand." />
                             <ScrollyFeature icon="verified" animationType="stamp" title="TÜV-zertifiziert" desc="Unsere Skate- und BMX-Elemente sind nach DIN EN 14974 vom TÜV geprüft und zertifiziert und tragen das GS-Zeichen." />
                             <ScrollyFeature icon="recycling" animationType="spin-slow" title="Wiederverwendbar" desc="Die Module lassen sich abbauen, versetzen und an anderer Stelle wieder aufbauen. Am Ende sind Beton und Stahl weitgehend recycelbar." />
                         </div>

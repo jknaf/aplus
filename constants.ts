@@ -41,7 +41,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'kommunaldirekt.de',
     url: 'https://www.kommunaldirekt.de/umkleidekabine-fuer-freibaeder/',
     teaser:
-      'Robuste, wartungsarme Umkleidekabine aus einer fugenlosen Beton-Bodenplatte und einer schneckenförmigen Betonwand auf Edelstahlfüßen. Optional erweiterbar um Haken, Sitzflächen oder als Duschkabine. Ohne bewegliche Teile und deshalb langlebig, gedacht für kommunale Bäder.',
+      'Die robuste, wartungsarme Umkleidekabine besteht aus einer fugenlosen Beton-Bodenplatte und einer schneckenförmigen Betonwand auf Edelstahlfüßen. Auf Wunsch lässt sie sich um Haken und Sitzflächen erweitern oder als Duschkabine ausführen. Sie hat keine beweglichen Teile, ist deshalb langlebig und für kommunale Bäder gedacht.',
   },
   {
     id: 'kommunaldirekt-skateanlage-serpent',
@@ -57,7 +57,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'kommunaldirekt.de',
     url: 'https://www.kommunaldirekt.de/skatepark-friedrichsdorf-2/',
     teaser:
-      'Aktualisierte Berichterstattung zur 2.000 m² großen Skateanlage in Friedrichsdorf: zwei verbundene Ebenen mit Fun-Boxen, Jump-Ramps, Stairs, Pyramid-Hip, Ledges und Rail-Slides aus TÜV-zertifizierten Betonelementen von A+ Urban Design, integriert in das Freizeit- und Sportgebiet.',
+      'Der aktualisierte Bericht stellt die 2.000 m² große Skateanlage in Friedrichsdorf vor. Sie hat zwei verbundene Ebenen mit Fun-Boxen, Jump-Ramps, Stairs, Pyramid-Hip, Ledges und Rail-Slides aus TÜV-zertifizierten Betonelementen von A+ Urban Design und ist in das Freizeit- und Sportgebiet eingebunden.',
     year: 2024,
   },
   {
@@ -93,7 +93,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'kommunaldirekt.de',
     url: 'https://www.kommunaldirekt.de/grillplatz-fuer-oeffentlichen-raum/',
     teaser:
-      'Ein stationärer Grillplatz aus Betonfertigteilen mit Edelstahl-Rost, höhenverstellbarer Grillfläche und Windschutzring, Durchmesser 420 cm, fundamentfrei. Für Freibäder, Sportanlagen und Kleingartenanlagen.',
+      'Der stationäre Grillplatz besteht aus Betonfertigteilen und hat einen Edelstahl-Rost, eine höhenverstellbare Grillfläche und einen Windschutzring. Er misst 420 cm im Durchmesser und steht ohne Fundament. Gedacht ist er für Freibäder, Sportanlagen und Kleingartenanlagen.',
     year: 2020,
   },
   {
@@ -102,7 +102,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'kommunaldirekt.de',
     url: 'https://www.kommunaldirekt.de/modulare-skateelemente-aus-beton/',
     teaser:
-      'Fachvorstellung der TÜV-zertifizierten Skateelemente von A+ Urban Design: Beton mit eingebauten Stahlteilen, modular, wartungsarm und langlebig. Zu jedem Angebot gibt es eine 3D-Visualisierung. Die Module lassen sich später abbauen und wiederverwenden.',
+      'Der Fachbeitrag stellt die TÜV-zertifizierten Skateelemente von A+ Urban Design vor. Sie bestehen aus Beton mit eingebauten Stahlteilen und sind modular, wartungsarm und langlebig. Zu jedem Angebot gibt es eine 3D-Visualisierung. Die Module lassen sich später abbauen und wiederverwenden.',
     year: 2018,
   },
   {
@@ -111,7 +111,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'kommunaldirekt.de',
     url: 'https://www.kommunaldirekt.de/modulare-skateelemente-aus-beton-2/',
     teaser:
-      'Aktualisierte Vorstellung der zertifizierten Skateelemente: Beton mit verzinktem Stahl, fundamentfrei installierbar, wartungsarm und auch bei Nässe griffig. Die modulare Bauweise ermöglicht mehrfache Verwendung und einfaches Recycling.',
+      'Die aktualisierte Vorstellung zeigt die zertifizierten Skateelemente aus Beton mit verzinktem Stahl. Sie lassen sich ohne Fundament installieren, sind wartungsarm und auch bei Nässe griffig. Die modulare Bauweise ermöglicht mehrfache Verwendung und einfaches Recycling.',
     year: 2020,
   },
   {
@@ -136,7 +136,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'kommunalclick24.de',
     url: 'https://kommunalclick24.de/gebauede/instandhaltung-technik/ein-schneckenhaus-als-duschkabine/',
     teaser:
-      'Die Umkleide- und Duschkabine von A+ Urban Design besteht aus zwei aufeinandergesetzten Betonfertigteilen mit charakteristisch schneckenförmiger Sichtschutzwand auf Edelstahlfüßen. Wahlweise mit eingebauter Dusche oder nur mit Aussparungen für Gully und Wasserleitungen, ganz ohne Fundament.',
+      'Die Umkleide- und Duschkabine von A+ Urban Design besteht aus zwei aufeinandergesetzten Betonfertigteilen mit charakteristisch schneckenförmiger Sichtschutzwand auf Edelstahlfüßen. Sie ist wahlweise mit eingebauter Dusche oder nur mit Aussparungen für Gully und Wasserleitungen erhältlich und braucht kein Fundament.',
   },
   {
     id: 'treffpunkt-kommune-nachhaltig-oekologisch-sport',
@@ -152,7 +152,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'freiraum-gestalten.info',
     url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-7779922-208098/skatepark-friedrichsdorf-.html',
     teaser:
-      'Fachbeitrag zur 2.000 m² großen Skateanlage in Friedrichsdorf: zwei verbundene Ebenen mit in die Fläche integrierten Betonskateelementen von A+ Urban Design. Die TÜV-zertifizierten Fertigteile umfassen Rampen, Treppen, Schienen und eine knapp zwei Meter hohe Pipe, teils angeböscht und so ins Gelände eingebunden.',
+      'Der Fachbeitrag stellt die 2.000 m² große Skateanlage in Friedrichsdorf vor. Sie hat zwei verbundene Ebenen mit Betonskateelementen von A+ Urban Design, die in die Fläche integriert sind. Die TÜV-zertifizierten Fertigteile umfassen Rampen, Treppen, Schienen und eine knapp zwei Meter hohe Pipe, teils angeböscht und so ins Gelände eingebunden.',
   },
   {
     id: 'freiraum-gestalten-nachhaltig-sport-treiben',
@@ -209,7 +209,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'freiraum-gestalten.info',
     url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-7271021-208098/pumptracken-in-berlin-.html',
     teaser:
-      'Fachbeitrag zum Pumptrack in Berlin-Reinickendorf neben dem Humboldt-Gymnasium: Die Trasse schlängelt sich durch den Baumbestand und führt teilweise über den Tegel Tunnel. A+ Urban Design lieferte speziell entwickelte, wartungsarme Betonelemente und unterstützte die Trassenplanung. (FREIRAUM GESTALTEN 05/2022)',
+      'Der Fachbeitrag beschreibt den Pumptrack in Berlin-Reinickendorf neben dem Humboldt-Gymnasium. Die Trasse schlängelt sich durch den Baumbestand und führt teilweise über den Tegel Tunnel. A+ Urban Design lieferte speziell entwickelte, wartungsarme Betonelemente und unterstützte die Trassenplanung. (FREIRAUM GESTALTEN 05/2022)',
     year: 2022,
   },
   {
@@ -218,7 +218,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'freiraum-gestalten.info',
     url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-7133612-208098/mobil-und-geraeuscharm-.html',
     teaser:
-      'Modulare Betonelemente für Skateboard, Inline und BMX: Pools, Rampen und Funboxen ohne Bodenbefestigung. Durch die hohe Masse des Betons sind sie besonders leise. Sie erfüllen DIN EN 14974 und sind TÜV-zertifiziert. (FREIRAUM GESTALTEN 02/2022)',
+      'Die modularen Betonelemente für Skateboard, Inline und BMX umfassen Pools, Rampen und Funboxen und kommen ohne Bodenbefestigung aus. Durch die hohe Masse des Betons sind sie besonders leise. Sie erfüllen DIN EN 14974 und sind TÜV-zertifiziert. (FREIRAUM GESTALTEN 02/2022)',
     year: 2022,
   },
   {
@@ -227,7 +227,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'freiraum-gestalten.info',
     url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-5191212-208098/pump-track-fuer-skater-und-biker-.html',
     teaser:
-      'Erstvorstellung der modular aufgebauten Pumptracks von A+ Urban Design: Nachbildungen unebener Pisten aus festen Betonelementen, die sich auf bestehenden Hartbelagsflächen oder speziellen Unterlagen installieren lassen. (FREIRAUM GESTALTEN 01/2015)',
+      'Hier wurden die modular aufgebauten Pumptracks von A+ Urban Design erstmals vorgestellt. Sie bilden unebene Pisten aus festen Betonelementen nach, die sich auf bestehenden Hartbelagsflächen oder speziellen Unterlagen installieren lassen. (FREIRAUM GESTALTEN 01/2015)',
     year: 2015,
   },
   {
@@ -236,7 +236,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'freiraum-gestalten.info',
     url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-5190957-208098/ohne-fundament-und-bodenbefestigung-.html',
     teaser:
-      'A+ Urban Design präsentiert ein Bandensystem für Sportfelder, das ohne Fundamente und ohne Bodenbefestigungen aufgestellt wird. Witterungsbeständige Materialien mit Edelstahlkomponenten, flexibel anpassbar an verschiedene Feldgrößen. (FREIRAUM GESTALTEN 02/2015)',
+      'A+ Urban Design präsentiert ein Bandensystem für Sportfelder, das ohne Fundamente und ohne Bodenbefestigungen aufgestellt wird. Es besteht aus witterungsbeständigen Materialien mit Edelstahlkomponenten und lässt sich flexibel an verschiedene Feldgrößen anpassen. (FREIRAUM GESTALTEN 02/2015)',
     year: 2015,
   },
   {
@@ -245,7 +245,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'freiraum-gestalten.info',
     url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-5190799-208098/modulare-skateelemente-aus-beton-.html',
     teaser:
-      'Frühe Vorstellung der A+-Skateelemente: keine Verschraubungen auf der Oberfläche, keine Verschleißplatten zum Austauschen. Nach DIN EN 14974 geprüft, vom TÜV SÜD zertifiziert und mit GS-Zeichen für geprüfte Sicherheit. (FREIRAUM GESTALTEN 01/2014)',
+      'Dieser frühe Beitrag stellt die A+-Skateelemente vor. Sie haben keine Verschraubungen auf der Oberfläche und keine Verschleißplatten, die ausgetauscht werden müssen. Sie sind nach DIN EN 14974 geprüft, vom TÜV SÜD zertifiziert und tragen das GS-Zeichen für geprüfte Sicherheit. (FREIRAUM GESTALTEN 01/2014)',
     year: 2014,
   },
   {
@@ -254,7 +254,7 @@ export const PRESS_ARTICLES: PressArticle[] = [
     publisher: 'flaechenmanager.com',
     url: 'https://www.flaechenmanager.com/aktuelles/produkte/article-6840410-203909/beruehrungsfreie-umkleidekabine-fuer-freibaeder-.html',
     teaser:
-      'A+ Urban Design präsentiert eine wartungsarme Umkleidekabine für Freibäder: fugenlose Betonbodenplatte mit schneckenförmigem Oberteil auf Edelstahlfüßen. Beim Betreten und Verlassen muss man die Kabine nicht berühren. Das ist hygienisch und war der Grund für die Entwicklung während der Pandemie.',
+      'A+ Urban Design präsentiert eine wartungsarme Umkleidekabine für Freibäder. Sie besteht aus einer fugenlosen Betonbodenplatte und einem schneckenförmigen Oberteil auf Edelstahlfüßen. Beim Betreten und Verlassen muss man die Kabine nicht berühren. Das ist hygienisch und war der Grund für die Entwicklung während der Pandemie.',
     year: 2021,
   },
 ];
@@ -278,7 +278,7 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/skate-bowls-beton',
     altText: 'Modulare Skate-Bowls aus Beton-Fertigteilen, geschlossen und offen, TÜV-zertifiziert.',
     tuvCertified: true,
-    usp: 'Das A+ Original: TÜV-zertifizierte Skate-Elemente aus Beton für geschlossene Bowls im Erdreich und offene Bowls auf vorhandener Fläche, 98 oder 150 cm tief. Wartungsarm, vandalismussicher und erweiterbar.',
+    usp: 'Das A+ Original: TÜV-zertifizierte Skate-Elemente aus Beton für geschlossene Bowls im Erdreich und offene Bowls auf vorhandener Fläche, 98 oder 150 cm tief. Die Elemente sind wartungsarm, vandalismussicher und erweiterbar.',
     material: 'Bewehrter Beton',
     details: 'Arretierungsfüße, Kantenschutzprofil'
   },
@@ -289,7 +289,7 @@ export const PRODUCTS: Product[] = [
     path: '/produkte/skate-pipes-beton',
     altText: 'Skate-Pipes aus Beton in drei Höhen: 165, 200 und 255 cm.',
     tuvCertified: true,
-    usp: 'Das A+ Original: TÜV-zertifizierte Pipes aus Beton in drei Höhen: als Standard-Pipe, seitlich erweiterbar, oder als Kombi-Pipe mit Coping-Ramps, Banks und Spines. Wartungsarm, vandalismussicher und leise.',
+    usp: 'Das A+ Original: TÜV-zertifizierte Pipes aus Beton in drei Höhen: als Standard-Pipe, seitlich erweiterbar, oder als Kombi-Pipe mit Coping-Ramps, Banks und Spines. Die Pipes sind wartungsarm, vandalismussicher und leise.',
     material: 'Bewehrter Beton',
     details: 'Arretierungsfüße, Kantenschutzprofil'
   },
@@ -310,7 +310,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/ueberdachung/ueberdachung-unterstellplatz-02.jpg',
     path: '/produkte/ueberdachung-beton',
     altText: 'Überdachung aus Beton mit Sitzbank.',
-    usp: 'Das A+ Original: Wetterschutz aus Sichtbeton mit Bodenplatte und Sitzfläche für Haltestellen, Sportanlagen und Grünflächen. Einzeln oder in Gruppen aufstellbar, auf Schotterbett, Beton oder Asphalt. Wartungsarm und vandalismussicher.',
+    usp: 'Das A+ Original: Wetterschutz aus Sichtbeton mit Bodenplatte und Sitzfläche für Haltestellen, Sportanlagen und Grünflächen. Der Wetterschutz lässt sich einzeln oder in Gruppen auf Schotterbett, Beton oder Asphalt aufstellen. Er ist wartungsarm und vandalismussicher.',
     material: 'Bewehrter Beton',
     details: 'Fundamentfreie Aufstellung'
   },
@@ -320,7 +320,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/grill/grillstelle-background.jpg',
     path: '/produkte/grillstelle-beton',
     altText: 'Runder Beton-Grillplatz im Park mit Edelstahl-Rost, Platz für 12–16 Personen.',
-    usp: 'Das A+ Original: Grillplatz mit höhenverstellbarem Edelstahlrost, Bodenplatte und Sitzfläche für 12–16 Personen. Zum Aufstellen auf Schotterbett, Beton oder Asphalt. Aus Betonfertigteilen, wartungsarm und vandalismussicher.',
+    usp: 'Das A+ Original: Grillplatz mit höhenverstellbarem Edelstahlrost, Bodenplatte und Sitzfläche für 12–16 Personen. Er wird auf Schotterbett, Beton oder Asphalt aufgestellt. Der Grillplatz besteht aus Betonfertigteilen und ist wartungsarm und vandalismussicher.',
     material: 'Bewehrter Beton, Edelstahlrost',
     details: 'Fundamentfreie Aufstellung, höhenverstellbare Grillfläche'
   },
@@ -330,7 +330,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/umkleide/umkleide-panorama.jpg',
     path: '/produkte/umkleidekabine-beton',
     altText: 'Schnecken-Umkleidekabine aus Beton im Freibad.',
-    usp: 'Das A+ Original: Umkleidekabine aus Sichtbeton und Edelstahl ohne bewegliche Teile. Mit Bodenplatte, auf Wunsch mit Sitzfläche und Kleiderhaken aus Edelstahl. Zum Aufstellen auf Schotterbett, Beton oder Asphalt. Zwei Betonfertigteile, wartungsarm und vandalismussicher.',
+    usp: 'Das A+ Original: Umkleidekabine aus Sichtbeton und Edelstahl ohne bewegliche Teile. Sie hat eine Bodenplatte und auf Wunsch eine Sitzfläche und Kleiderhaken aus Edelstahl. Die Kabine wird auf Schotterbett, Beton oder Asphalt aufgestellt. Sie besteht aus zwei Betonfertigteilen und ist wartungsarm und vandalismussicher.',
     material: 'Bewehrter Beton, Edelstahl',
     details: 'Fundamentfreie Aufstellung'
   },
@@ -340,7 +340,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: '/images/hockey/roll-hockey-bande.jpg',
     path: '/produkte/hockey-banden',
     altText: 'Outdoor Hockey-Spielfeld mit robusten Beton-Banden für Inline- und Rollhockey.',
-    usp: 'Das A+ Original: fundamentfreie Einfassungen und Banden für Inline-, Roll- und Eishockey, in 1,5-m-Schritten erweiterbar, ohne bewegliche Teile. Zum Aufstellen auf Beton- oder Asphaltflächen. Wartungsarm und witterungsbeständig.',
+    usp: 'Das A+ Original: fundamentfreie Einfassungen und Banden für Inline-, Roll- und Eishockey, in 1,5-m-Schritten erweiterbar, ohne bewegliche Teile. Sie werden auf Beton- oder Asphaltflächen aufgestellt und sind wartungsarm und witterungsbeständig.',
     material: 'Bewehrter Beton, recycelbarer Gummi, Edelstahl, HPL-Platten',
     details: 'Fundamentfreie Aufstellung'
   },
@@ -357,7 +357,7 @@ export const PROJECTS: Project[] = [
             "/images/skateparks/skatepark-02.jpg",
             "/images/skateparks/skatepark-03.jpg",
         ],
-        description: "2.000 m² große Skateanlage auf zwei Ebenen mit TÜV-zertifizierten Skateelementen aus Beton: Fun-Boxen, Stairs, Pyramid-Hip, Ledges, Rail-Slides sowie eine knapp zwei Meter hohe Pipe. Die Anlage ist teilweise angeböscht und in das Gelände des Sport- und Freizeitgebiets eingebunden.",
+        description: "Die 2.000 m² große Skateanlage liegt auf zwei Ebenen und besteht aus TÜV-zertifizierten Skateelementen aus Beton: Fun-Boxen, Stairs, Pyramid-Hip, Ledges, Rail-Slides sowie eine knapp zwei Meter hohe Pipe. Die Anlage ist teilweise angeböscht und in das Gelände des Sport- und Freizeitgebiets eingebunden.",
         longDescription: [
             "In Friedrichsdorf entstand eine 2.000 m² große Skateanlage auf zwei verbundenen Ebenen mit TÜV-zertifizierten Betonelementen von A+ Urban Design. Die Anlage umfasst Fun-Boxen, Stairs, Pyramid-Hip, Ledges, Rail-Slides und eine knapp zwei Meter hohe Pipe.",
             "Die Skateelemente sind teilweise angeböscht und in das Gelände des bestehenden Sport- und Freizeitgebiets eingebunden.",
@@ -401,10 +401,10 @@ export const PROJECTS: Project[] = [
              "/images/grill/grill-stelle-02.jpg",
              "/images/grill/grillstelle-background.jpg",
         ],
-        description: "Stationärer Grillplatz aus Betonfertigteilen mit Edelstahl-Rost, höhenverstellbarer Grillfläche und Windschutzring, Durchmesser 420 cm, fundamentfrei. Gedacht für Freibäder, Sportanlagen und Kleingartenanlagen: robust und vandalismussicher.",
+        description: "Der stationäre Grillplatz besteht aus Betonfertigteilen und hat einen Edelstahl-Rost, eine höhenverstellbare Grillfläche und einen Windschutzring. Er misst 420 cm im Durchmesser und steht ohne Fundament. Der robuste, vandalismussichere Grillplatz ist für Freibäder, Sportanlagen und Kleingartenanlagen gedacht.",
         longDescription: [
             "Der Grillplatz besteht aus drei Betonfertigteilen und hat zusammengesetzt 420 cm Durchmesser. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl. Der Rost ist höhenverstellbar und über eine zentrale Öse gegen Schwenken und Diebstahl gesichert.",
-            "Gedacht für Freibäder, Campingplätze, Sportanlagen und Kleingartenanlagen. Der Grillplatz steht ohne Fundament auf einem verdichteten Kiesbett. Pflasterarbeiten entfallen. Die 16 cm starke Bodenplatte gehört zum Lieferumfang.",
+            "Er ist für Freibäder, Campingplätze, Sportanlagen und Kleingartenanlagen gedacht. Der Grillplatz steht ohne Fundament auf einem verdichteten Kiesbett. Pflasterarbeiten entfallen. Die 16 cm starke Bodenplatte gehört zum Lieferumfang.",
             "Quelle: kommunaldirekt.de, »Grillplatz für öffentlichen Raum« (2020)."
         ],
         altText: "Grillplatz aus A+-Betonfertigteilen, Durchmesser 420 cm, Edelstahlrost, fundamentfrei.",
@@ -423,7 +423,7 @@ export const PROJECTS: Project[] = [
              "/images/hockey/inline-hockey-bande-02.jpg",
              "/images/hockey/roll-hockey-bande.jpg",
         ],
-        description: "Ein Bandensystem für Sportfelder, das ohne Fundamente und ohne Bodenbefestigungen aufgestellt wird. Witterungsbeständige Materialien mit Edelstahlkomponenten, flexibel anpassbar an verschiedene Feldgrößen.",
+        description: "Ein Bandensystem für Sportfelder, das ohne Fundamente und ohne Bodenbefestigungen aufgestellt wird. Es besteht aus witterungsbeständigen Materialien mit Edelstahlkomponenten und lässt sich flexibel an verschiedene Feldgrößen anpassen.",
         longDescription: [
             "A+ Urban Design hat ein Bandensystem für Sportfelder entwickelt, das ohne Fundamente und ohne Bodenbefestigungen aufgestellt wird. Anders als bei verankerten Banden bleibt der Bodenbelag unbeschädigt.",
             "Das System besteht aus witterungsbeständigen Materialien: Beton, Edelstahl, HPL-Platten und Gummi. Die am stärksten beanspruchte Einfassungsfläche ist aus Beton. In 1,5-m-Schritten lässt sich die Bande an Kleinfeld, Halbfeld oder ganzes Spielfeld anpassen.",
@@ -446,9 +446,9 @@ export const PROJECTS: Project[] = [
             "/images/umkleide/umkleide-kabine-02.jpg",
             "/images/umkleide/umkleide-panorama.jpg",
         ],
-        description: "Die Umkleide- und Duschkabine von A+ Urban Design besteht aus zwei aufeinandergesetzten Betonfertigteilen mit charakteristisch schneckenförmiger Sichtschutzwand auf Edelstahlfüßen. Wahlweise mit eingebauter Dusche oder nur mit Aussparungen für Gully und Wasserleitungen, ganz ohne Fundament.",
+        description: "Die Umkleide- und Duschkabine von A+ Urban Design besteht aus zwei aufeinandergesetzten Betonfertigteilen mit charakteristisch schneckenförmiger Sichtschutzwand auf Edelstahlfüßen. Sie ist wahlweise mit eingebauter Dusche oder nur mit Aussparungen für Gully und Wasserleitungen erhältlich und braucht kein Fundament.",
         longDescription: [
-            "Die Schnecke ist eine wartungsarme Umkleidekabine für Freibäder: fugenlose Betonbodenplatte, schneckenförmiges Oberteil auf Edelstahlfüßen. Beim Betreten und Verlassen muss man die Kabine nicht berühren. Das war besonders während der Pandemie wichtig.",
+            "Die Schnecke ist eine wartungsarme Umkleidekabine für Freibäder. Sie besteht aus einer fugenlosen Betonbodenplatte und einem schneckenförmigen Oberteil auf Edelstahlfüßen. Beim Betreten und Verlassen muss man die Kabine nicht berühren. Das war besonders während der Pandemie wichtig.",
             "Die Sichtschutzwand beginnt 30 cm über dem Boden. So sieht man von außen, ob die Kabine belegt ist, und Missbrauch wird erschwert. Die Kabine hat keine beweglichen Teile und braucht kaum Wartung. Sie besteht aus nur zwei Teilen ohne Verschraubungen und lässt sich einfach aufstellen und später versetzen.",
             "Quellen: kommunaldirekt.de (»Umkleidekabine für Freibäder«), kommunalclick24.de (»Ein Schneckenhaus als Duschkabine«, »Duschkabine: Wir sind so frei«), flaechenmanager.com (»Berührungsfreie Umkleidekabine für Freibäder«, 2021)."
         ],
@@ -463,7 +463,7 @@ export const PROJECTS: Project[] = [
         category: "Skatepark",
         year: 2024,
         imageUrl: "/images/skate-anlagen/skate-anlage-01.jpg",
-        description: "Skatepark im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia (Rumänien): Anlage auf mehreren Ebenen aus modularen Beton-Skateelementen, die man ab etwa 50 m Entfernung nicht mehr sieht. Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert.",
+        description: "Der Skatepark liegt im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia (Rumänien). Die Anlage erstreckt sich über mehrere Ebenen und besteht aus modularen Beton-Skateelementen, die man ab etwa 50 m Entfernung nicht mehr sieht. Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert.",
         longDescription: [
             "Im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia, Rumänien, entstand ein Skatepark, der aus mehr als 50 m Entfernung unsichtbar bleibt. Das ist gewollt: Die Anlage soll das Bild der Sternfestung nicht stören.",
             "Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert. Die Skateanlage verbindet über mehrere Ebenen Ober- und Unterstadt und zeigt, wie Freizeitnutzung und Denkmalschutz zusammengehen können. A+ Urban Design lieferte die modularen Betonelemente und begleitete das Projekt im Umfeld des Denkmalschutzes.",

@@ -33,7 +33,7 @@ const FAQSection: React.FC = () => {
     const faqs = [
         {
             q: "Was kostet ein Beton-Skatepark oder Pumptrack?",
-            a: "Die Kosten für einen Skatepark oder Pumptrack hängen von Größe, Auswahl der Elemente und Untergrund ab. Modulare Betonfertigteile sind in vielen Projekten günstiger als Ortbeton, weil Erdarbeiten, Bodenplatten und aufwendige Vorarbeiten weitgehend entfallen. Kommunen können Fördermittel aus der Sportstättenförderung beantragen. Wir bieten eine unverbindliche Erstberatung mit Kostenschätzung für Ihr Projekt an."
+            a: "Die Kosten für einen Skatepark oder Pumptrack hängen von Größe, Auswahl der Elemente und Untergrund ab. Modulare Betonfertigteile sind in vielen Projekten günstiger als Ortbeton, weil Erdarbeiten, Bodenplatten und aufwendige Vorarbeiten weitgehend entfallen. Unsere Preisliste enthält Beispielanlagen mit Kosten, die wir Ihnen gern zusenden. Wir bieten eine unverbindliche Erstberatung mit Kostenschätzung für Ihr Projekt an."
         },
         {
             q: "Skatepark, Skateanlage oder Skaterpark: Was ist der Unterschied?",

@@ -167,7 +167,7 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange mt-1">compare</span>
                                 <div>
                                     <strong className="text-brand-dark block uppercase text-sm tracking-wide mb-1">Modulbau statt Ortbeton</strong>
-                                    Wandstärke, Bewehrung und Fugen lassen sich besser kontrollieren. Der Bau geht schneller, ist kaum wetterabhängig und meist günstiger.
+                                    Wandstärke, Bewehrung und Fugen lassen sich besser kontrollieren. Die Teile kommen fertig auf die Baustelle.
                                 </div>
                             </li>
                             <li className="flex items-start gap-4">

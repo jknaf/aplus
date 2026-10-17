@@ -148,7 +148,7 @@ const ProductGrillPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 flex rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] items-center justify-between backdrop-blur-sm">
                          <div>
                             <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase">Abmessungen</h3>
-                            <p className="text-brand-muted mt-2">Der Grillplatz bietet 12–16 Personen Platz.</p>
+                            <p className="text-brand-muted mt-2">Zwei halbrunde Teile mit je rund 3,3 t und ein Mittelteil mit rund 1,0 t.</p>
                          </div>
                          <div className="text-right">
                              <div className="text-4xl font-mono text-brand-orange font-bold">4,20 m</div>
@@ -171,7 +171,7 @@ const ProductGrillPage: React.FC = () => {
                         Aufbau und <span className="text-brand-orange">Material.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
-                        Der Grillplatz besteht aus drei Betonfertigteilen. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl. Die höhenverstellbare Grillfläche ist über eine zentrale Öse gegen Schwenken und Diebstahl gesichert. Der Grillplatz braucht kein Fundament. Er steht direkt auf einem verdichteten Schotterbett (Körnung 5/30 mm). Die Konstruktion ist einfach zu bedienen und hat wenige Verschleißteile.
+                        Der Grillplatz besteht aus drei Betonfertigteilen. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl. Der Rost hängt an einer Kette mit Gegengewicht. Gesetzt werden die Teile mit Autokran, Radlader oder Gabelstapler mit mindestens 3,5 t Hublast. Die Konstruktion ist einfach zu bedienen und hat wenige Verschleißteile.
                     </p>
                 </div>
 
@@ -182,7 +182,7 @@ const ProductGrillPage: React.FC = () => {
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Ohne Fundamente</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Der Grillplatz steht auf einem verdichteten Kies- oder Schotterbett. Die 16 cm starke Bodenplatte gehört dazu. Fundamente und Pflasterarbeiten entfallen, und die Bauzeit ist kurz.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Als Unterbau genügt ein verdichtetes Kies- oder Schotterbett (Körnung 5/30 mm). Fundamente entfallen, und die Bauzeit ist kurz.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Vandalismussicher</h3>
@@ -190,7 +190,7 @@ const ProductGrillPage: React.FC = () => {
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Höhenverstellbar</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Die Grillfläche lässt sich einfach in der Höhe einstellen. Der Windschutzring schützt die Glut vor Wind. Die Diebstahlsicherung über die zentrale Öse schützt den Edelstahlrost.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Die Grillfläche lässt sich einfach in der Höhe einstellen. Der Windschutzring schützt die Glut vor Wind. Zweimal im Jahr wird die Rolle geölt.</p>
                     </div>
                 </div>
 

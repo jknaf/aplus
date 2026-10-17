@@ -229,7 +229,7 @@ const AboutPage: React.FC = () => {
                   <PrincipleCard
                       number="02"
                       title="Fertigung"
-                      desc="Die Elemente entstehen aus Stahlbeton C35/45 unter kontrollierten Bedingungen im Werk. Wandstärke, Bewehrung und Fugen werden im Werk geprüft, unabhängig vom Wetter. Der TÜV überwacht die Fertigung regelmäßig."
+                      desc="Die Elemente bestehen aus Stahlbeton C35/45. Wandstärke, Bewehrung und Fugen werden im Werk geprüft, unabhängig vom Wetter. Der TÜV überwacht die Fertigung regelmäßig."
                   />
                   <PrincipleCard
                       number="03"
@@ -239,7 +239,7 @@ const AboutPage: React.FC = () => {
                   <PrincipleCard
                       number="04"
                       title="Montage"
-                      desc="Die Elemente sind in wenigen Tagen aufgestellt und brauchen keine Bodenbefestigung. Später lassen sie sich versetzen und am Ende recyceln."
+                      desc="Die Elemente sind in wenigen Tagen aufgestellt und brauchen keine Bodenbefestigung. Erweitern lässt sich die Anlage jederzeit mit weiteren Modulen."
                   />
               </div>
           </div>

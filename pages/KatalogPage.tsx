@@ -17,7 +17,7 @@ interface Element {
   modell_masse_cm: { laenge: number; breite: number; hoehe: number };
   kamera?: { ziel: [number, number, number]; abstand: number };
   gdl_standard_m: Record<string, number>; gdl_parameter: Parameter[];
-  materialien: string[]; makros: string[]; gsm_datei: string; gsm_version: string; gsm_datum: string;
+  materialien: string[]; makros: string[];
   modell: string; bild: string;
   gewicht: { kg: number; hinweis: string } | null;
 }
@@ -164,7 +164,6 @@ const Detail: React.FC<{
             <Zeile label="Kürzel Planung (2D-Symbol)">{e.kuerzel || '–'}</Zeile>
             <Zeile label="Material">{material(e)}</Zeile>
             <Zeile label="Gewicht">{e.gewicht ? `ca. ${e.gewicht.kg.toLocaleString('de-DE')} kg${e.gewicht.hinweis ? ` (${e.gewicht.hinweis})` : ''}` : 'auf Anfrage'}</Zeile>
-            <Zeile label="Bibliothekselement">{e.gsm_datei}</Zeile>
           </dl>
 
 
@@ -192,6 +191,9 @@ const KatalogPage: React.FC = () => {
 
   useEffect(() => {
     fetch('/katalog/katalog.json').then((r) => r.json()).then(setKatalog).catch(() => setKatalog(null));
+    // 3D-Code schon laden, während man die Übersicht ansieht: spart nach dem Klick bis zu 0,25 s
+    const t = setTimeout(() => import('@google/model-viewer'), 1500);
+    return () => clearTimeout(t);
   }, []);
 
   const treffer = useMemo(() => {

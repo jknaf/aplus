@@ -12,7 +12,7 @@ declare global {
 type Kamera = { ziel: [number, number, number]; abstand: number };
 
 // 3D-Ansicht eines Katalog-Elements. Das 3D-Modell lädt beim Öffnen unsichtbar unter dem Vorschaubild,
-// übernimmt nach dem Laden ohne Sprung und dreht sich nach 1,5 s langsam:
+// übernimmt nach dem Laden ohne Sprung und dreht sich gleich danach langsam:
 // Licht und Schatten sind aus dem Vorschaubild eingebacken (unbeleuchtete Materialien, Schattenplatte),
 // Blickpunkt und Abstand kommen aus Blender (kamera), Bildwinkel wie dort (50 mm = 39,6°).
 const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string; kamera?: Kamera }> = ({ src, poster, alt, kamera }) => {
@@ -53,7 +53,7 @@ const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string; kamera
           camera-controls=""
           interaction-prompt="none"
           auto-rotate=""
-          auto-rotate-delay="1500"
+          auto-rotate-delay="300"
           rotation-per-second="18deg"
           shadow-intensity="0"
           tone-mapping="none"

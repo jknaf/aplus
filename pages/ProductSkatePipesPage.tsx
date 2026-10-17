@@ -141,9 +141,9 @@ const ProductSkatePipesPage: React.FC = () => {
                 </div>
 
                 <div className="lg:w-7/12 flex flex-col gap-6">
-                    <GalleryImage src="/images/skate-pipes/skate-pipe-02.jpg" alt="Beton Skate-Pipe in Standardaufstellung" label="ABB 01. STANDARD-PIPE" />
-                    <GalleryImage src="/images/skate-pipes/skate-pipe-bank-03.jpg" alt="Skate-Pipe mit Bank-Anfahrt" label="ABB 02. PIPE + BANK" />
-                    <GalleryImage src="/images/skate-pipes/skate-pipe-kombi-04.jpg" alt="Combi-Pipe mit mehreren Höhen und Banks" label="ABB 03. COMBI-PIPE" />
+                    <GalleryImage src="/images/skate-pipes/skate-pipe-02.jpg" alt="Beton Skate-Pipe in Standardaufstellung" label="Abb. 1: Standard-Pipe" />
+                    <GalleryImage src="/images/skate-pipes/skate-pipe-bank-03.jpg" alt="Skate-Pipe mit Bank-Anfahrt" label="Abb. 2: Pipe mit Bank" />
+                    <GalleryImage src="/images/skate-pipes/skate-pipe-kombi-04.jpg" alt="Combi-Pipe mit mehreren Höhen und Banks" label="Abb. 3: Pipe-Kombination" />
                 </div>
             </div>
 
@@ -230,7 +230,7 @@ const ProductSkatePipesPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                        Tech<span className="text-brand-orange">Specs</span>
+                        Technische <span className="text-brand-orange">Daten</span>
                     </h2>
                     <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: PIPES</span>
                 </div>

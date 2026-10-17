@@ -76,7 +76,7 @@ const AboutPage: React.FC = () => {
         <div className="absolute inset-0 z-0">
              <img 
                 src="/images/planung/skateanlage-planung-02.jpg" 
-                alt="Architecture Planning" 
+                alt="3D-Planung eines Skateparks" 
                 className="w-full h-full object-cover grayscale opacity-40 scale-105 animate-[kenburns-1_30s_infinite_alternate]"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent"></div>
@@ -90,9 +90,9 @@ const AboutPage: React.FC = () => {
                 <span className="text-brand-orange">Bestform</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/95 font-light max-w-2xl mx-auto animate-fade-in-up [animation-delay:400ms]">
-                Skatepark-Hersteller und Planungsbüro aus Stuttgart. Wir verwandeln graue Flächen in lebendige Begegnungsorte.
+                Skatepark-Hersteller und Planungsbüro aus Stuttgart. Wir machen aus Asphaltflächen Orte für Sport und Bewegung.
                 {/* Roland §2.1: 30-Jahre-Jubiläums-Claim noch klären */}
-                <span className="text-white font-bold"> Präzise. Modular. Vandalismussicher. Für die Ewigkeit.</span>
+                <span className="text-white font-bold"> Modular, vandalismussicher, langlebig.</span>
             </p>
         </div>
       </div>
@@ -117,7 +117,7 @@ const AboutPage: React.FC = () => {
                   Geprüfte <span className="text-brand-orange">Skate-Elemente.</span>
               </h2>
               <p className="text-lg text-brand-muted leading-relaxed">
-                  Unsere ersten modularen Skate-Elemente wurden 1998 hergestellt. Im Jahr 2000 haben unsere modularen Skate-Elemente aus Beton das TÜV-Zertifikat und das GS-Zeichen für geprüfte Sicherheit erhalten. Aktuell sind unsere modularen Skate-Elemente aus Beton nach DIN EN 14974 („Skateparks: Sicherheitstechnische Anforderungen und Prüfverfahren“), nach PPP 63126B und anderen Normen geprüft und zertifiziert mit der Zertifikats-Nummer Z1A 056616 0012. Damit waren wir weltweit vermutlich die ersten Hersteller modularer Beton-Skate-Elemente mit TÜV-Siegel. Über 27 Fachartikel in einschlägigen Publikationen dokumentieren die über 350 Skate-Anlagen, bei denen unser modulares Skateelemente-System verwendet wurde.
+                  Unsere ersten modularen Skate-Elemente entstanden 1998. Im Jahr 2000 erhielten sie das TÜV-Zertifikat und das GS-Zeichen für geprüfte Sicherheit. Heute sind sie nach DIN EN 14974 („Skateparks: Sicherheitstechnische Anforderungen und Prüfverfahren“), nach PPP 63126B und weiteren Normen geprüft. Zertifikatsnummer: Z1A 056616 0012. Damit waren wir weltweit vermutlich die ersten Hersteller modularer Beton-Skate-Elemente mit TÜV-Siegel. 27 Fachartikel berichten über Anlagen mit unserem System. Gebaut wurden inzwischen mehr als 350.
               </p>
           </div>
       </div>
@@ -132,28 +132,28 @@ const AboutPage: React.FC = () => {
                   </div>
               </div>
               <div className="lg:w-1/2">
-                   <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Vision</span>
+                   <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Haltung</span>
                   <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-8 leading-none">
                       Unsere <span className="text-brand-orange">Philosophie.</span>
                   </h2>
                   <div className="space-y-6">
                       <p className="text-lg text-brand-muted leading-relaxed border-l-2 border-brand-orange pl-6">
-                          Nachhaltig, langlebig, wartungsarm, witterungsbeständig, wiederverwendbar, recycelbar und vandalismussicher. Modulare Elemente mit unendlich vielen Kombinationsmöglichkeiten, leichtes Versetzen und Umbauen bestehender Anlagen.
+                          Unsere Elemente sollen lange halten, wenig Pflege brauchen und sich später versetzen, umbauen oder recyceln lassen. Die Module lassen sich fast beliebig kombinieren.
                       </p>
                       <p className="text-lg text-brand-muted leading-relaxed">
-                          Wir fertigen im Werk unter kontrollierten Bedingungen und montieren vor Ort in Rekordzeit. Unsere TÜV-zertifizierten Module sind recycelbar, vandalismussicher und können umgebaut, erweitert, versetzt oder wiederverwendet werden.
+                          Wir fertigen im Werk unter kontrollierten Bedingungen und bauen vor Ort in wenigen Tagen auf.
                       </p>
                       <p className="text-lg text-brand-muted leading-relaxed">
-                          Genaue Fertigung der Skate-Elemente im Werk in lasergeschnittenen Stahlschalungen und nicht in Ortbeton auf der Baustelle: Das heißt Bewehrung, Betonstärken und Geometrie sind wetterunabhängig kontrollierbar. Unsere Kantenschutzprofile, eingeführt in den 1990er Jahren, werden in jede befahrbare Kante eingegossen. Ergebnis: Elemente, die nach 25 Jahren Dauerbetrieb im öffentlichen Raum immer noch befahrbar sind und keine Sanierung brauchen.
+                          Die Elemente entstehen im Werk in lasergeschnittenen Stahlschalungen, nicht als Ortbeton auf der Baustelle. Bewehrung, Wandstärke und Form lassen sich so unabhängig vom Wetter prüfen. Unsere Kantenschutzprofile, eingeführt in den 1990er-Jahren, werden in jede befahrbare Kante eingegossen. Die ersten Elemente sind nach 25 Jahren im öffentlichen Raum noch in Betrieb und mussten nicht saniert werden.
                       </p>
                       <p className="text-lg text-brand-muted leading-relaxed">
-                          Die gleiche Fertigungsphilosophie steht hinter unseren Hockey-Banden, Pumptrack-Modulen, Umkleidekabinen, Grillstellen und Überdachungen: ein System, robust, witterungsbeständig, fundamentfrei, wartungsarm, vandalismussicher, wiederverwendbar, recycelbar und nachhaltig für viele Anwendungen.
+                          Die gleiche Fertigungsphilosophie steht hinter unseren Hockey-Banden, Pumptrack-Modulen, Umkleidekabinen, Grillstellen und Überdachungen: massiv, fundamentfrei und wartungsarm.
                       </p>
                       <div className="grid grid-cols-2 gap-4 mt-8">
                           <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/5 shadow-sm">
                               <span className="material-symbols-outlined text-brand-orange mb-2 text-3xl">eco</span>
                               <h4 className="font-bold text-brand-dark uppercase text-sm mb-1">Nachhaltig</h4>
-                              <p className="text-xs text-brand-muted">Beton & Stahl weitgehend recycelbar</p>
+                              <p className="text-xs text-brand-muted">Beton und Stahl weitgehend recycelbar</p>
                           </div>
                           <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/5 shadow-sm">
                               <span className="material-symbols-outlined text-brand-orange mb-2 text-3xl">engineering</span>
@@ -169,7 +169,7 @@ const AboutPage: React.FC = () => {
           <div className="mb-8">
               <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Montage-Prozess</span>
               <h3 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
-                  Vom LKW zum fertigen <span className="text-brand-orange">Park.</span>
+                  Vom Lkw zum fertigen <span className="text-brand-orange">Park.</span>
               </h3>
               <p className="text-brand-muted max-w-2xl mb-8">
                   Die Montage unserer Skate-Elemente erfolgt direkt auf einer betonierten oder asphaltierten Rollfläche mit Übergangsblechen oder auf einer Fundamentplatte zum Anbetonieren. Wir stellen eine Montage- und Wartungsanleitung zur Verfügung.
@@ -177,14 +177,14 @@ const AboutPage: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                  <img src="/images/montage/transport-01.jpg" alt="Abladen der Skate-Elemente" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <img src="/images/montage/transport-01.jpg" alt="Transport der Skate-Elemente" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
                       <span className="text-brand-orange font-mono text-xs">01</span>
                       <span className="text-white text-sm font-bold ml-2">Transport</span>
                   </div>
               </div>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                  <img src="/images/montage/abladen-02.jpg" alt="Bewegen der Skate-Module" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <img src="/images/montage/abladen-02.jpg" alt="Abladen der Skate-Elemente" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
                       <span className="text-brand-orange font-mono text-xs">02</span>
                       <span className="text-white text-sm font-bold ml-2">Abladen</span>
@@ -224,22 +224,22 @@ const AboutPage: React.FC = () => {
                   <PrincipleCard
                       number="01"
                       title="Planung"
-                      desc="Individuelle 3D-Planung, bauliche Anpassung und Absteckung, inkl. ansatzfreiem Fundamentschutz und Abtrag Bewehrung (nur für Skate-Anlagen). Wir integrieren die Anlagen nahtlos in Ihre Umgebung."
+                      desc="Individuelle 3D-Planung, bauliche Anpassung und Absteckung, inkl. ansatzfreiem Fundamentschutz und Abtrag Bewehrung (nur für Skate-Anlagen)."
                   />
                   <PrincipleCard
                       number="02"
                       title="Fertigung"
-                      desc="C35/45 Stahlbeton aus kontrollierter Werksumgebung. Hohe Qualitätskontrolle bei Betonstärken, Bewehrung und Fugen, wetterunabhängig. TÜV-Überprüfung der Fertigungsstätte."
+                      desc="C35/45 Stahlbeton aus kontrollierter Werksumgebung. Wandstärke, Bewehrung und Fugen werden im Werk geprüft, unabhängig vom Wetter. Der TÜV überwacht die Fertigung regelmäßig."
                   />
                   <PrincipleCard
                       number="03"
                       title="Transport"
-                      desc="Module mit Gabelstapler oder Autokran abladen. Hohlkörperbauweise reduziert das Gewicht für einfache Logistik. Transport-Absicherung nach Produktanforderung."
+                      desc="Abgeladen wird mit Gabelstapler oder Autokran. Die Hohlkörperbauweise spart Gewicht. Die Ladung wird je nach Produkt gesichert."
                   />
                   <PrincipleCard
                       number="04"
                       title="Montage"
-                      desc="Aufstellen in wenigen Tagen. Keine Bodenbefestigung für Skate-Elemente erforderlich. TÜV-zertifiziert für Skate-Elemente. Recycelbar und versetzbar."
+                      desc="In wenigen Tagen aufgestellt, ohne Bodenbefestigung. Später versetzbar und am Ende recycelbar."
                   />
               </div>
           </div>
@@ -256,10 +256,10 @@ const AboutPage: React.FC = () => {
                         <h3 className="text-4xl font-extrabold font-heading text-brand-dark uppercase mb-2 tracking-tight">Dipl.-Ing. Cüneyit Akcakoca</h3>
                         <p className="text-brand-orange font-bold mb-6 text-lg">Architekt · A+ Urban Design</p>
                         <p className="text-brand-muted leading-relaxed text-lg max-w-lg">
-                            "Architektur endet nicht an der Gebäudekante. Der Raum dazwischen, wo das Leben stattfindet, verdient dieselbe Qualität und Aufmerksamkeit."
+                            „Architektur endet nicht an der Gebäudekante. Der Raum dazwischen, wo das Leben stattfindet, verdient dieselbe Qualität und Aufmerksamkeit.“
                         </p>
                         <p className="text-brand-muted leading-relaxed text-lg max-w-lg mt-6">
-                            Das Unternehmen hat bis heute über 350 Skate-Anlagen europaweit realisiert: von den Kanaren bis Norwegen und von Großbritannien bis zur Türkei. Entwickelt, gefertigt und logistisch gesteuert wird alles seit 2025 aus Stuttgart.
+                            Das Unternehmen hat bis heute über 350 Skate-Anlagen europaweit realisiert: von den Kanaren bis Norwegen und von Großbritannien bis zur Türkei. Entwicklung, Fertigung und Logistik steuern wir seit 2025 aus Stuttgart.
                         </p>
                          <div className="mt-8 flex justify-center md:justify-start gap-4">
                              <a href="mailto:post@aplusurbandesign.com" className="w-12 h-12 flex items-center justify-center rounded-full bg-brand-surface/60 hover:bg-brand-orange hover:text-white transition-all text-brand-muted"><span className="material-symbols-outlined">mail</span></a>

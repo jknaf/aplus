@@ -7,7 +7,7 @@ const ProductOverviewPage: React.FC = () => {
   return (
     <PageShell
       title="Produkte"
-      description="Alle Produkte von A+ Urban Design im Überblick: Skateparks, Pumptracks, BMX-Anlagen, Hockey-Banden und mehr aus Betonfertigteilen."
+      description="Alle Produkte von A+ Urban Design im Überblick: Skate-Anlagen, Pumptracks, Hockey-Banden, Umkleidekabinen, Grillplätze und Überdachungen aus Betonfertigteilen."
     >
       <section className="pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +19,7 @@ const ProductOverviewPage: React.FC = () => {
               Unsere <span className="text-brand-orange">Produkte.</span>
             </h1>
             <p className="text-brand-muted mt-6 max-w-2xl mx-auto text-lg">
-              Modulare Betonfertigteile für den öffentlichen Raum: TÜV-zertifiziert, fundamentfrei und gebaut für die Ewigkeit.
+              Modulare Betonfertigteile für den öffentlichen Raum: fundamentfrei aufgestellt und auf Jahrzehnte ausgelegt. Die Skate- und Pumptrack-Elemente sind TÜV-zertifiziert.
             </p>
           </div>
 
@@ -56,7 +56,7 @@ const ProductOverviewPage: React.FC = () => {
                   {product.tuvCertified && (
                     <div className="mt-4 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-brand-orange bg-brand-orange/5 border border-brand-orange/20 px-2 py-1 rounded">
                       <span className="material-symbols-outlined text-sm">verified</span>
-                      TÜV Zertifiziert
+                      TÜV-zertifiziert
                     </div>
                   )}
                 </div>

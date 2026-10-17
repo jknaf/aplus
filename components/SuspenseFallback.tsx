@@ -8,7 +8,7 @@ const SuspenseFallback: React.FC = () => {
                      <div className="absolute inset-0 border-t-2 border-brand-orange rounded-full animate-spin"></div>
                      <div className="absolute inset-2 border-r-2 border-white/20 rounded-full animate-spin [animation-direction:reverse]"></div>
                  </div>
-                 <span className="text-xs font-mono text-brand-orange uppercase tracking-widest animate-pulse">Lade Inhalte...</span>
+                 <span className="text-xs font-mono text-brand-orange uppercase tracking-widest animate-pulse">Inhalte werden geladen …</span>
             </div>
         </div>
     );

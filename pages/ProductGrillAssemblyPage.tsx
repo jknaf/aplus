@@ -65,20 +65,20 @@ const Hero: React.FC = () => (
         <div className="hero-eyebrow-row">
           <span className="hero-status">
             <span className="dot" aria-hidden="true"></span>
-            Montageanleitung · Freigegeben
+            Montageanleitung
           </span>
         </div>
 
         <h1>
           <span className="line"><span>Grillplatz.</span></span>
           <span className="line"><span>Gebaut</span></span>
-          <span className="line"><span>für die <span className="accent">Ewigkeit.</span></span></span>
+          <span className="line"><span>für <span className="accent">Jahrzehnte.</span></span></span>
         </h1>
 
         <p className="hero-lead">
           Modulare Betonanlage aus drei Fertigteilen: fundamentfrei, vandalismussicher,
           in wenigen Stunden montiert. Diese Anleitung führt Sie Schritt für Schritt vom
-          Kiesbett bis zur Inbetriebnahme.
+          Unterbau bis zur Inbetriebnahme.
         </p>
 
         <div className="hero-meta-grid">
@@ -143,7 +143,6 @@ const Voraussetzungen: React.FC = () => {
           <p>
             Der Grillplatz benötigt keine Fundamente. Die Tragfähigkeit kommt aus einem
             schichtweise aufgebauten Unterbau (bauseits auszuführen, Durchmesser 4,50 m).
-            Für eine mangelhafte Ausführung des Kiesbetts übernehmen wir keine Haftung.
           </p>
         </div>
 
@@ -203,7 +202,7 @@ const Abladen: React.FC = () => (
           <span className="num">02</span>
           <span>Abladen &amp; Anschlagen</span>
         </div>
-        <h2>Drei Seilösen. <span className="accent">Null Kompromisse.</span></h2>
+        <h2>Abladen und <span className="accent">Anschlagen.</span></h2>
         <p>
           Die Fertigteile werden mit Autokran, Radlader oder Gabelstapler (Hublast ≥ 3,5 t) abgeladen.
           Jedes halbrunde Betonteil wiegt rund 3,3 t, das runde Mittelteil rund 1,0 t.
@@ -220,8 +219,8 @@ const Abladen: React.FC = () => (
           <div className="step-body">
             <p>
               Die halbrunden Betonteile werden ausschließlich an den <strong>3 stirnseitigen
-              M 24-Ankerhülsen</strong> angehängt. Pro Teil drei Seilösen M 24, symmetrisch
-              verteilt, damit die Last in der Schwebe gleichmäßig liegt.
+              M24-Ankerhülsen</strong> angehängt. Pro Teil drei Seilösen M 24, symmetrisch
+              verteilt, damit sich die Last gleichmäßig verteilt.
             </p>
             <div className="callout warning">
               <span className="ico material-symbols-outlined" aria-hidden="true">warning</span>
@@ -261,11 +260,11 @@ const Montage: React.FC = () => (
           <span className="num">03</span>
           <span>Montage</span>
         </div>
-        <h2>Drei Teile. <span className="accent">Eine Reihenfolge.</span></h2>
+        <h2>Die <span className="accent">Setzreihenfolge.</span></h2>
         <p>
           Die Bodenplatte kann bündig oder über dem Erdreich montiert werden. Bei bündiger
           Ausführung muss die Plattenstärke von 16 cm im Kiesbett berücksichtigt werden.
-          Danach wird in klarer Reihenfolge gesetzt.
+          Danach werden die Teile in dieser Reihenfolge gesetzt:
         </p>
       </div>
 
@@ -279,8 +278,8 @@ const Montage: React.FC = () => (
           <div className="step-body">
             <p>
               Zuerst werden die beiden halbrunden Betonteile gesetzt, sodass sie einen Kreis
-              mit einem Loch in der Mitte bilden. Die Spalten zwischen den Teilen werden so
-              gering wie möglich gehalten.
+              mit einem Loch in der Mitte bilden. Die Fugen zwischen den Teilen werden so
+              schmal wie möglich gehalten.
             </p>
             <p>
               Anschließend wird das runde Mittelteil in das entstandene zentrale Loch gesetzt.
@@ -326,7 +325,7 @@ const Montage: React.FC = () => (
           <div className="step-body">
             <p>
               Der Träger wird in die vorhandene Aussparung in der Bodenplatte gesteckt.
-              Arretieren Sie ihn mithilfe eines <strong>Schnurlotes</strong>, das über die
+              Richten Sie ihn mit einem <strong>Schnurlot</strong> aus, das über die
               Rolle des Trägers geführt wird, und zwar so, dass das Lot genau in der Mitte des
               Grills hängt.
             </p>
@@ -367,8 +366,8 @@ const Montage: React.FC = () => (
             </p>
             <p>
               An diesem kürzeren Ende wird mithilfe des <strong>Kettenverbinders</strong>
-              {' '}das Gegengewicht befestigt. Das Gewinde des Kettenverbindungsteils mit dem
-              mitgelieferten Kleber verkleben. Derselbe Kleber dient auch zum Ausfüllen
+              {' '}das Gegengewicht befestigt. Verkleben Sie das Gewinde des Kettenverbinders mit dem
+              mitgelieferten Kleber. Derselbe Kleber dient auch zum Ausfüllen
               der Trägeraussparung.
             </p>
             <div className="callout tip">
@@ -377,7 +376,7 @@ const Montage: React.FC = () => (
                 <div className="lbl">Hinweis</div>
                 <div className="txt">
                   Das Verfüllen der Trägeraussparung mit Kleber schützt gegen Schmutz,
-                  Wasser und Diebstahl. Wer möchte, kann die Aussparung alternativ offen lassen.
+                  Wasser und Diebstahl. Die Aussparung kann auch offen bleiben.
                 </div>
               </div>
             </div>
@@ -391,11 +390,11 @@ const Montage: React.FC = () => (
             <span className="step-number">05</span>
             <span className="step-tag"><span className="phase">Phase 06</span> · Übergabe</span>
           </div>
-          <h3 className="step-title">In Betrieb. <span className="accent">Bereit.</span></h3>
+          <h3 className="step-title">Fertig zur <span className="accent">Übergabe.</span></h3>
           <div className="step-body">
             <p>
-              Bevor der Grillplatz in Betrieb genommen wird, ist, falls bündig zur Umgebung
-              gesetzt, der offene Spalt rund um die Bodenplatte zu schließen. In der Nähe
+              Wenn die Bodenplatte bündig sitzt, schließen Sie vor der Inbetriebnahme
+              den Spalt rund um die Platte. In der Nähe
               des Grillplatzes ist ein <strong>Nutzungsschild</strong> anzubringen.
             </p>
             <div className="callout warning">
@@ -404,7 +403,7 @@ const Montage: React.FC = () => (
                 <div className="lbl">Nutzungsbedingungen</div>
                 <div className="txt">
                   Das Nutzungsschild sollte die Nutzungsbedingungen enthalten, die der
-                  Betreiber zusammen mit der örtlichen Feuerwehr abgestimmt und entwickelt hat.
+                  Betreiber mit der örtlichen Feuerwehr erarbeitet und abgestimmt hat.
                 </div>
               </div>
             </div>
@@ -422,7 +421,7 @@ const Montage: React.FC = () => (
 const HandoverCard: React.FC = () => {
   const items = [
     'Bodenplatte gesetzt & nivelliert',
-    'Mittelteil mit Öffnung zur Aussparung ausgerichtet',
+    'Mittelteil gesetzt, Öffnung gegenüber der Trägeraussparung',
     'Träger gelotet & arretiert',
     'Kette & Gegengewicht montiert',
     'Aussparung verfüllt oder offen gelassen',
@@ -437,7 +436,7 @@ const HandoverCard: React.FC = () => {
         <div className="status">STATUS</div>
         <div className="title">Funktions-<br />fähig.</div>
         <div className="desc">
-          Bodenplatte verschlossen, Nutzungsschild montiert: Die Anlage ist bereit zur Übergabe.
+          Randspalt geschlossen, Nutzungsschild angebracht: Die Anlage ist bereit zur Übergabe.
         </div>
       </div>
       <div className="checklist">
@@ -455,7 +454,7 @@ const HandoverCard: React.FC = () => {
 const Werkzeuge: React.FC = () => {
   const items = [
     { num: '01', ico: 'precision_manufacturing', ttl: 'Hubgerät', spec: '≥ 3,5 t Hublast', desc: 'Autokran, Radlader oder Gabelstapler. Für die 3,3 t schweren halbrunden Betonteile dimensionieren.' },
-    { num: '02', ico: 'construction', ttl: '3× Seilöse M 24', spec: 'stirnseitig · halbrund', desc: 'Zum Anhängen der halbrunden Betonteile an den 3 stirnseitigen M 24-Ankerhülsen.' },
+    { num: '02', ico: 'construction', ttl: '3× Seilöse M 24', spec: 'stirnseitig · halbrund', desc: 'Zum Anhängen der halbrunden Betonteile an den 3 stirnseitigen M24-Ankerhülsen.' },
     { num: '03', ico: 'link', ttl: '3× Seilöse M 16', spec: 'Mittelteil · 1,0 t', desc: 'Zum Anhängen des mittleren, runden Betonteils. Dreipunkt-Anschlag wie oben.' },
     { num: '04', ico: 'stairs', ttl: 'Leiter', spec: 'Kette aufhängen', desc: 'Nötig zum Auflegen der Kette über die Rolle und zum Einhängen am Arretierungshaken.' },
     { num: '05', ico: 'straighten', ttl: 'Schnurlot', spec: 'Träger mittig loten', desc: 'Über die Rolle des Trägers führen, bis das Lot exakt in der Mitte des Grills hängt.' },
@@ -469,10 +468,10 @@ const Werkzeuge: React.FC = () => {
             <span className="num">04</span>
             <span>Geräte &amp; Werkzeuge</span>
           </div>
-          <h2>Alles, was <span className="accent">mitkommt.</span></h2>
+          <h2>Was Sie <span className="accent">brauchen.</span></h2>
           <p>
             Die komplette Liste der Geräte und Werkzeuge, die Sie vor Ort benötigen.
-            Vor Montagebeginn prüfen. Das spart Zeit und verhindert Leerfahrten.
+            Prüfen Sie die Liste vor Montagebeginn. Das spart Zeit und Leerfahrten.
           </p>
         </div>
         <div className="tools-grid fade-stagger">

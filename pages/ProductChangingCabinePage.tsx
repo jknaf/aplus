@@ -45,13 +45,12 @@ const ProductChangingCabinePage: React.FC = () => {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Umkleidekabine 'Die Schnecke'",
-    "description": "Vandalismussichere Umkleidekabine aus Beton und Edelstahl. Zweiteilig, ohne Türen, fundamentfrei. Ideal für Freibäder und Sportanlagen.",
+    "name": "Umkleidekabine „Schnecke“",
+    "description": "Vandalismussichere Umkleidekabine aus Beton und Edelstahl. Zweiteilig, ohne Tür, fundamentfrei. Für Freibäder und Sportanlagen.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
     "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
-    "category": "Stadtmöblierung / Urban Furniture",
+    "category": "Stadtmöblierung",
     "material": "Beton, Edelstahl",
-    "countryOfOrigin": "DE",
     "image": "https://www.aplusurbandesign.com/images/umkleide/umkleidekabine-schnecke-04.jpg",
     "offers": {
       "@type": "Offer",
@@ -67,13 +66,13 @@ const ProductChangingCabinePage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Umkleidekabine Beton für Freibad, Sportplatz & Outdoor" description="Vandalismussichere Outdoor-Umkleidekabine aus Beton: türlos, zweiteilig und fundamentfrei. Ideal für Freibäder, Sportplätze, Schwimmbäder und öffentliche Parks. Das Schnecken-Prinzip: hygienisch und wartungsfrei." schema={productSchema}>
+    <PageShell title="Umkleidekabine aus Beton für Freibad und Sportplatz" description="Vandalismussichere Outdoor-Umkleidekabine aus Beton: türlos, zweiteilig und fundamentfrei. Für Freibäder, Badeseen, Sportplätze und Parks. Ohne Tür, leicht zu reinigen und wartungsarm." schema={productSchema}>
 
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
                  <img src="/images/umkleide/umkleidekabine-schnecke-04.jpg"
-                        alt="Hero Umkleidekabine"
+                        alt="Umkleidekabine Schnecke aus Beton im Freien"
                         className="w-full h-full object-cover animate-kenburns-3"
                         loading="eager"
                         fetchPriority="high" />
@@ -109,17 +108,17 @@ const ProductChangingCabinePage: React.FC = () => {
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                            Innovation
+                            Prinzip
                         </span>
                          {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
                             Privatsphäre <span className="text-brand-orange">ohne Türen.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung: „Die Schnecke". Kein Kabinenkontakt beim Betreten und Verlassen. Oben und unten offener Freiraum zur Einsicht, nicht verschließbar, missbrauchshemmend. Die fugenlose Oberfläche ist leicht zu reinigen.
+                            In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung ist die Schnecke. Beim Betreten und Verlassen berührt man nichts. Oben und unten bleibt die Kabine offen und sie ist nicht abschließbar. Beides erschwert Missbrauch. Die fugenlose Oberfläche ist leicht zu reinigen.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Die Kabine ist einfach aufgestellt, umsetzbar oder versetzbar. Die hygienische Bodenplatte dient zugleich als Fundamentschutz auf verdichtetem Schotterbett. Aus bewehrtem Beton auf Edelstahl gefertigt: witterungsbeständig und extrem widerstandsfähig gegen Vandalismus. Schotterbett-Aufbau, ganz ohne Bodenbefestigung.
+                            Die Kabine ist schnell aufgestellt und lässt sich später versetzen. Die Bodenplatte ist fugenlos und liegt direkt auf einem verdichteten Schotterbett. Die Kabine besteht aus bewehrtem Beton und steht auf drei Edelstahlfüßen. Sie ist witterungsbeständig und vandalismussicher.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -135,20 +134,19 @@ const ProductChangingCabinePage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/umkleide/umkleide-kabine-01.jpg" alt="Umkleide Architektur" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/umkleide/umkleide-kabine-01.jpg" alt="Umkleidekabine auf Edelstahlfüßen, Eingang ohne Tür" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 1: Kabine auf Edelstahlfüßen, Eingang ohne Tür</div>
                     </div>
                     
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 relative rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <div className="absolute top-4 right-4 text-brand-orange opacity-20 text-6xl font-extrabold font-heading">0%</div>
-                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Wartungsfrei</h3>
+                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Wartungsarm</h3>
                         <p className="text-brand-muted">
-                            Keine Scharniere. Keine Schlösser. Keine Holzteile. Diese Kabine muss im Winter nicht abgebaut werden und verrottet nicht.
+                            Keine Scharniere, keine Schlösser, kein Holz. Die Kabine bleibt im Winter stehen und verrottet nicht.
                         </p>
                     </div>
 
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/umkleide/umkleide-kabine-02.jpg" alt="Bodenplatte Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/umkleide/umkleide-kabine-02.jpg" alt="Schnecke neben einem Spielplatz" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 2: Aufstellung neben einem Spielplatz</div>
                     </div>
 
@@ -169,10 +167,10 @@ const ProductChangingCabinePage: React.FC = () => {
                     </h2>
                     <div className="space-y-5 text-lg text-brand-muted leading-relaxed">
                         <p>
-                            Herkömmliche Umkleidekabinen scheitern im öffentlichen Raum an drei Problemen: Verriegelungen gehen kaputt, Scharniere korrodieren, Material verrottet oder rostet. „Die Schnecke“ löst alle drei Probleme auf einmal: durch Geometrie statt Mechanik und durch witterungsbeständige Materialien. Die spiralförmige Wand führt den Nutzer in einen geschützten Innenraum, ohne dass ein einziges bewegliches Teil verbaut werden muss. Oben und unten bleibt ein schmaler Spalt frei: für Luftzirkulation, gegen Missbrauch, für hygienische Kontrolle.
+                            Herkömmliche Umkleidekabinen halten im öffentlichen Raum oft nicht lange: Verriegelungen brechen, Scharniere korrodieren, Holz verrottet. Die Schnecke hat nichts davon. Sie schützt durch ihre Form statt durch Mechanik und besteht aus Beton und Edelstahl. Die spiralförmige Wand führt in einen geschützten Innenraum, ganz ohne bewegliche Teile. Unten bleibt ein Abstand von 30 cm zur Bodenplatte, oben ist die Kabine offen. Das sorgt für Luft.
                         </p>
                         <p>
-                            Eine Kabine bietet Platz für eine Person mit Kleidung und Tasche. Die Spiralgeometrie verhindert Einblicke von außen vollständig; der Spalt unten ist so dimensioniert, dass er nur Luft und Licht durchlässt. Und weil die Kabine aus zwei Teilen ohne Verschraubungen besteht und ohne Fundament auf verdichtetem Schotterbett steht, kann sie mit einem Radlader oder Autokran bei Bedarf einfach an einen anderen Standort bewegt und neu aufgestellt werden.
+                            Eine Kabine bietet Platz für eine Person mit Kleidung und Tasche. Die Spiralform schützt vor Blicken. Von außen sieht man aber, ob die Kabine belegt ist. Die Kabine besteht aus zwei Teilen ohne Verschraubung und steht ohne Fundament auf verdichtetem Schotterbett. Bei Bedarf wird sie mit Autokran, Radlader oder Gabelstapler an einen anderen Ort versetzt.
                         </p>
                     </div>
                 </div>
@@ -185,7 +183,7 @@ const ProductChangingCabinePage: React.FC = () => {
                         Außenkabine. <span className="text-brand-orange">Optional Dusche.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed">
-                        Konzipiert für Freibäder, Baggerseen, Strandbäder, Campingplätze und Sportanlagen: als freistehende Außenkabine, wahlweise auch als Duschkabine. Die fugenlose, geschlossene Innenoberfläche lässt sich in wenigen Minuten reinigen: kein Schimmelrisiko, keine Verbundstellen, an denen sich Schmutz absetzt oder Unkraut wächst. Im Winter bleibt die Kabine stehen. Keine Beschädigungen durch Wind, Wetter oder UV-Strahlen. Die Umkleidekabine-Schnecke muss nicht ständig überwacht werden, da sie solide gebaut, vandalismussicher ist und auch nicht angezündet werden kann.
+                        Gedacht für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen: als freistehende Außenkabine, wahlweise auch als Duschkabine. Die fugenlose Innenfläche ist in wenigen Minuten gereinigt. Es gibt keine Fugen, in denen sich Schmutz oder Schimmel festsetzt. Im Winter bleibt die Kabine stehen. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.
                     </p>
                 </div>
             </div>
@@ -195,14 +193,14 @@ const ProductChangingCabinePage: React.FC = () => {
                 <div className="mb-8">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Einsatzbereich</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
-                        Freibad & <span className="text-brand-orange">Baggersee.</span>
+                        Freibad und <span className="text-brand-orange">Badesee.</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                        Umkleidekabine für Freibad und Baggersee, als freistehende Kabine für den Außenbereich konzipiert. Die Bodenplatte wird auf verdichtetes Schotterbett aufgestellt; keine Pflasterarbeiten oder Fundamentarbeiten notwendig.
+                        Freistehende Umkleidekabine für Freibad und Badesee. Die Bodenplatte wird auf ein verdichtetes Schotterbett gelegt. Pflaster- und Fundamentarbeiten entfallen.
                     </p>
                 </div>
                 <div className="relative w-full aspect-[21/9] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
-                    <img src="/images/umkleide/umkleide-panorama.jpg" alt="Schnecken-Kabinen im Freibad Panorama" loading="lazy" className="w-full h-full object-cover" />
+                    <img src="/images/umkleide/umkleide-panorama.jpg" alt="Mehrere Schnecken-Kabinen auf einer gepflasterten Fläche" loading="lazy" className="w-full h-full object-cover" />
                     <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 4: Freistehend auf gepflasterter Fläche</div>
                 </div>
             </div>
@@ -223,8 +221,8 @@ const ProductChangingCabinePage: React.FC = () => {
                     <TechSpecCard title="Boden" value="Fugenlos integriert" icon="check_box_outline_blank" />
                     <TechSpecCard title="Material" value="Beton + Edelstahl" icon="wallpaper" />
                     <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
-                    <TechSpecCard title="Einsatz" value="Freibad / See" icon="water_drop" />
-                    <TechSpecCard title="Missbrauchschutz" value="Oben + unten offen" icon="shield" />
+                    <TechSpecCard title="Einsatz" value="Freibad, Badesee" icon="water_drop" />
+                    <TechSpecCard title="Missbrauchsschutz" value="Oben + unten offen" icon="shield" />
                     <TechSpecCard title="Winterbetrieb" value="Kein Abbau nötig" icon="ac_unit" />
                 </div>
             </div>

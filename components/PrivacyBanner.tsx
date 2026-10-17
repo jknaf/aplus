@@ -92,7 +92,7 @@ const PrivacyBanner: React.FC = () => {
     return (
         <>
             {/* Banner */}
-            <div role="region" aria-label="Cookie Consent Banner" className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-brand-dark/10 z-[100] animate-[fade-in-up_0.5s_ease-out] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+            <div role="region" aria-label="Datenschutzeinstellungen" className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-brand-dark/10 z-[100] animate-[fade-in-up_0.5s_ease-out] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
                 <div className="container mx-auto p-4 md:p-6 flex flex-col xl:flex-row items-center justify-between gap-4 md:gap-6">
                     <div className="text-center xl:text-left w-full xl:w-auto">
                         <h3 className="text-sm md:text-lg font-bold text-brand-dark uppercase tracking-wider mb-2">Datenschutzeinstellungen</h3>

@@ -22,7 +22,7 @@ const ProjectDetailPage: React.FC = () => {
       <PageShell title="Projekt nicht gefunden">
         <div className="h-[60vh] flex flex-col items-center justify-center text-center">
           <h1 className="text-6xl font-extrabold font-heading text-white uppercase">404</h1>
-          <p className="mt-4 text-brand-muted">Projektakte nicht gefunden.</p>
+          <p className="mt-4 text-brand-muted">Dieses Projekt gibt es nicht.</p>
           <Link to="/projekte" className="mt-8 text-brand-orange hover:text-white uppercase font-bold tracking-widest text-xs border-b border-brand-orange pb-1">
             Zurück zur Übersicht
           </Link>
@@ -124,7 +124,7 @@ const ProjectDetailPage: React.FC = () => {
                             {/* Project Description */}
                             <div>
                                 <h3 className="text-xs font-bold text-brand-orange uppercase tracking-widest mb-4 flex items-center gap-2">
-                                    <span className="w-8 h-px bg-brand-orange"></span> Briefing
+                                    <span className="w-8 h-px bg-brand-orange"></span> Projekt
                                 </h3>
                                 <p className="text-xl text-brand-muted leading-relaxed font-light mb-6">
                                     {project.description}
@@ -190,7 +190,7 @@ const ProjectDetailPage: React.FC = () => {
                     {/* RIGHT: MASONRY GALLERY */}
                     <div className="lg:w-8/12">
                          <h3 className="text-xs font-bold text-brand-orange uppercase tracking-widest mb-8 flex items-center gap-2">
-                            <span className="w-8 h-px bg-brand-orange"></span> Visual Documentation
+                            <span className="w-8 h-px bg-brand-orange"></span> Bilder
                         </h3>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
@@ -214,7 +214,7 @@ const ProjectDetailPage: React.FC = () => {
                                  >
                                     <img
                                         src={img}
-                                        alt={`Detail ${idx + 1}`}
+                                        alt={`${project.title}, Bild ${idx + 2}`}
                                         loading="lazy"
                                         decoding="async"
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -227,7 +227,7 @@ const ProjectDetailPage: React.FC = () => {
                          {/* CTA at bottom of gallery */}
                         <div className="mt-24 pt-12 border-t border-brand-dark/10">
                              <div className="bg-brand-surface/60 p-8 md:p-12 rounded-xl border border-brand-dark/5 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                                <h3 className="text-3xl font-extrabold font-heading text-brand-dark uppercase mb-4">Interesse geweckt?</h3>
+                                <h3 className="text-3xl font-extrabold font-heading text-brand-dark uppercase mb-4">Ein ähnliches Projekt?</h3>
                                 <p className="text-brand-muted mb-8 max-w-lg mx-auto">Planen Sie ein ähnliches Projekt? Wir unterstützen Sie von der ersten Skizze bis zur Fertigstellung.</p>
                                 <Link to="/kontakt" className="inline-block bg-brand-orange text-white font-bold uppercase tracking-widest py-4 px-8 rounded hover:bg-brand-dark transition-colors">
                                     Projekt anfragen

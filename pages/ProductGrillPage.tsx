@@ -49,9 +49,8 @@ const ProductGrillPage: React.FC = () => {
     "description": "Runder Beton-Grillplatz mit 4,20 m Durchmesser. Vandalismussicher, höhenverstellbarer Edelstahlrost, integrierte Bodenplatte. Fundamentfrei.",
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
     "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
-    "category": "Stadtmöblierung / Urban Furniture",
-    "material": "Beton, Edelstahl",
-    "countryOfOrigin": "DE",
+    "category": "Stadtmöblierung",
+    "material": "Beton, Edelstahl, verzinkter Stahl",
     "image": "https://www.aplusurbandesign.com/images/grill/grillstelle-background.jpg",
     "offers": {
       "@type": "Offer",
@@ -67,13 +66,13 @@ const ProductGrillPage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Öffentlicher Grillplatz aus Beton, vandalismussicher" description="Öffentliche Grillstelle und Grillplatz aus Beton: vandalismussicher, wartungsfrei und langlebig. Ideal als Stadtmöbel für Parks, Campingplätze und kommunale Freiflächen. Mit diebstahlsicherem Edelstahlrost." schema={productSchema}>
+    <PageShell title="Öffentlicher Grillplatz aus Beton, vandalismussicher" description="Öffentlicher Grillplatz aus Beton: vandalismussicher, wartungsarm und langlebig. Für Parks, Campingplätze und kommunale Freiflächen. Mit diebstahlsicherem Edelstahlrost." schema={productSchema}>
 
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
             <div className="absolute inset-0">
                  <img src="/images/grill/grillstelle-background.jpg"
-                        alt="Hero Grillstelle im Park"
+                        alt="Runder Grillplatz aus Beton im Park"
                         className="w-full h-full object-cover animate-kenburns-2"
                         loading="eager"
                         fetchPriority="high" />
@@ -93,8 +92,8 @@ const ProductGrillPage: React.FC = () => {
                     </div>
                     {/* INDUSTRIAL HEADER UPDATE */}
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
-                        Urban<br/>
-                        <span className="text-brand-orange">Grill</span>
+                        Grill-<br/>
+                        <span className="text-brand-orange">platz</span>
                     </h1>
                 </div>
             </div>
@@ -108,17 +107,17 @@ const ProductGrillPage: React.FC = () => {
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                            Begegnungsstätte
+                            Treffpunkt
                         </span>
                         {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
                             Feuer & <span className="text-brand-orange">Beton.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Konzipiert für den öffentlichen Raum: Freibäder, Campingplätze, Sportanlagen und Schrebergärten. Der runde Beton-Grillplatz mit 4,20 m Durchmesser und 2,70 m Höhe schafft eine Lagerfeuer-Atmosphäre und bietet Platz für 12–16 Personen.
+                            Für Freibäder, Campingplätze, Sportanlagen und Kleingartenanlagen. Der runde Grillplatz hat 4,20 m Durchmesser, ist 2,70 m hoch und bietet 12–16 Personen Platz.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Der massive Rost aus Edelstahl ist höhenverstellbar, leicht zu reinigen und gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert. Die 16 cm starke Bodenplatte ist integriert, keine Pflasterarbeiten nötig. Einfach auf verdichtetes Schotterbett aufbauen, fundamentfrei.
+                            Der Edelstahlrost ist höhenverstellbar, leicht zu reinigen und über eine zentrale Öse gegen Schwenken und Diebstahl gesichert. Die 16 cm starke Bodenplatte gehört dazu. Pflasterarbeiten entfallen. Der Grillplatz steht ohne Fundament auf einem verdichteten Schotterbett.
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -141,24 +140,24 @@ const ProductGrillPage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/grill/grillstelle-background.jpg" alt="Grill Detail Rost" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/grill/grillstelle-background.jpg" alt="Grillplatz mit Sitzring im Grünen" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          {/* Roland: Bildunterschriften pro Bild noch mit tatsächlichem Motiv abgleichen */}
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 1: Grillplatz mit Sitzring im Grünen</div>
                     </div>
                     
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 flex rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] items-center justify-between backdrop-blur-sm">
                          <div>
-                            <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase">Dimensionen</h3>
-                            <p className="text-brand-muted mt-2">Großzügiger Durchmesser für soziale Interaktion.</p>
+                            <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase">Abmessungen</h3>
+                            <p className="text-brand-muted mt-2">Platz für 12–16 Personen.</p>
                          </div>
                          <div className="text-right">
-                             <div className="text-4xl font-mono text-brand-orange font-bold">4,20m</div>
+                             <div className="text-4xl font-mono text-brand-orange font-bold">4,20 m</div>
                              <div className="text-xs uppercase tracking-widest text-brand-muted">Durchmesser</div>
                          </div>
                     </div>
 
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/grill/grill-platz-01.jpg" alt="Grill Installation Umgebung" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <img src="/images/grill/grill-platz-01.jpg" alt="Grillplatz unter Bäumen" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 2: Grillplatz unter Bäumen</div>
                     </div>
                 </div>
@@ -169,29 +168,29 @@ const ProductGrillPage: React.FC = () => {
                 <div className="mb-8">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Konstruktion & Eigenschaften</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
-                        Das Original <span className="text-brand-orange">A+ Urban Design.</span>
+                        Aufbau und <span className="text-brand-orange">Material.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
-                        Der Grillplatz besteht aus mehreren Betonfertigteilen, die zusammengebaut eine Einheit bilden. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl gefertigt. Die höhenverstellbare Grillfläche wird gegen Schwenken und Diebstahl durch eine zentrale Öse gesichert. Der Grillplatz benötigt keine Fundamente. Er wird direkt auf ein verdichtetes Schotterbett 5/30 mm aufgebaut. Bei einem Durchmesser von 420 cm und einer Höhe von 2,40 m wurde die Konstruktion so entwickelt, dass sie einfach zu bedienen ist und wenig Verschleißteile hat.
+                        Der Grillplatz besteht aus drei Betonfertigteilen. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl. Die höhenverstellbare Grillfläche ist über eine zentrale Öse gegen Schwenken und Diebstahl gesichert. Der Grillplatz braucht kein Fundament. Er steht direkt auf einem verdichteten Schotterbett (Körnung 5/30 mm). Die Konstruktion ist einfach zu bedienen und hat wenige Verschleißteile.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Materialien</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Beton, Edelstahl und verzinkter Stahl, durchweg witterungsbeständig und recycelbar. Der Grillrost aus Edelstahl hält auch dauerhafter Nutzung stand.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Beton, Edelstahl und verzinkter Stahl, durchweg witterungsbeständig und recycelbar. Der Edelstahlrost ist für Dauernutzung ausgelegt.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Ohne Fundamente</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen auf verdichtetem Kies- oder Schotterbett. Die 16 cm starke Bodenplatte ist integriert: keine Pflasterarbeiten, keine Erdarbeiten, keine lange Bauzeit.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Aufstellen auf einem verdichteten Kies- oder Schotterbett. Die 16 cm starke Bodenplatte gehört dazu: keine Fundamente, keine Pflasterarbeiten, kurze Bauzeit.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Vandalismussicher</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Die A+-Lösung für Freibäder, Sportanlagen, Campingplätze und Schrebergärten: robust, vandalismussicher und ohne bewegliche Teile, ausgelegt für den öffentlichen Raum.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Der Grillplatz ist massiv gebaut und für den unbeaufsichtigten Betrieb im öffentlichen Raum ausgelegt.</p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">
                         <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">Höhenverstellbar</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">Die Grillfläche lässt sich einfach in der Höhe einstellen. Der Windschutzring sorgt für kontrolliertes Feuer, die Diebstahlsicherung über die zentrale Öse schützt den Edelstahlrost.</p>
+                        <p className="text-sm text-brand-muted leading-relaxed">Die Grillfläche lässt sich einfach in der Höhe einstellen. Der Windschutzring schützt die Glut vor Wind. Die Diebstahlsicherung über die zentrale Öse schützt den Edelstahlrost.</p>
                     </div>
                 </div>
 
@@ -212,7 +211,7 @@ const ProductGrillPage: React.FC = () => {
                     <TechSpecCard title="Grillhöhe" value="Verstellbar" icon="tune" />
                     <TechSpecCard title="Einsatz" value="Öffentlicher Raum" icon="public" />
                     <TechSpecCard title="Stütze" value="Verzinkter Stahl" icon="construction" />
-                    <TechSpecCard title="Witterung" value="Wetterbeständig" icon="thermostat" />
+                    <TechSpecCard title="Witterung" value="Witterungsbeständig" icon="thermostat" />
                     <TechSpecCard title="Recycelbar" value="Ja" icon="recycling" />
                     <TechSpecCard title="Bauweise" value="Betonfertigteile" icon="view_in_ar" />
                 </div>
@@ -228,7 +227,7 @@ const ProductGrillPage: React.FC = () => {
                                 Montageanleitung <span className="text-brand-orange">Grillplatz.</span>
                             </h3>
                             <p className="mt-3 text-brand-muted max-w-xl leading-relaxed">
-                                Vollständige Aufbauanleitung: Kiesbett, Abladen, Setzreihenfolge, Träger mit Schnurlot,
+                                Vollständige Aufbauanleitung: Unterbau, Abladen, Setzreihenfolge, Träger mit Schnurlot,
                                 Kette &amp; Gegengewicht, Werkzeugliste und Wartungsplan. Online lesen oder als PDF herunterladen.
                             </p>
                         </div>

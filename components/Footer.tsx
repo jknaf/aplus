@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
                    <div className="flex items-center gap-3">
                         <img
                             src="/aplus-logo.svg"
-                            alt="A+ Urban Design Logo"
+                            alt="A+ Urban Design"
                             width={160}
                             height={45}
                             className="h-10 w-auto brightness-0 invert transition-transform duration-700 ease-in-out group-hover:scale-105"
@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
                    </div>
                 </Link>
                 <p className="text-brand-muted leading-relaxed mb-8 max-w-sm">
-                  Spezialisten für modulare Betonelemente im öffentlichen Raum. Robust, ästhetisch und für die Ewigkeit gebaut.
+                  Hersteller modularer Betonelemente für den öffentlichen Raum. Robust und für Jahrzehnte gebaut.
                 </p>
             </div>
              <div className="flex gap-4">
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
             
             {/* Navigation */}
             <div>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">Menu</h3>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">Menü</h3>
                 <ul className="space-y-4">
                     {NAV_LINKS.filter(l => !l.subLinks).map(link => (
                         <li key={link.name}>
@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
                          </a>
                     </li>
                     <li>
-                         <p className="text-xs text-brand-muted uppercase mb-1">Email</p>
+                         <p className="text-xs text-brand-muted uppercase mb-1">E-Mail</p>
                          <a href="mailto:post@aplusurbandesign.com" className="text-sm text-white font-medium hover:text-brand-orange transition-colors block">
                             post@aplusurbandesign.com
                          </a>

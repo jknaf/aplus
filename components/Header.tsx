@@ -69,10 +69,10 @@ const Header: React.FC = () => {
         >
           <div className="flex items-center justify-between h-14 md:h-20 px-4 md:px-8">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 flex-shrink-0 z-50 group" aria-label="A+ Urban Design Home">
+            <Link to="/" className="flex items-center gap-3 flex-shrink-0 z-50 group" aria-label="Zur Startseite">
               <img
                 src="/aplus-logo.svg"
-                alt="A+ Urban Design Logo"
+                alt="A+ Urban Design"
                 width={160}
                 height={45}
                 className="h-8 md:h-10 w-auto transition-transform duration-700 ease-in-out group-hover:scale-105"
@@ -80,7 +80,7 @@ const Header: React.FC = () => {
             </Link>
 
             {/* Desktop Nav - Semantic HTML Upgrade */}
-            <nav className="hidden md:block" aria-label="Main Navigation">
+            <nav className="hidden md:block" aria-label="Hauptnavigation">
               <ul className="flex items-center gap-8">
               {NAV_LINKS.map((link) =>
                 link.subLinks ? (
@@ -145,7 +145,7 @@ const Header: React.FC = () => {
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="md:hidden relative z-50 p-2 text-brand-dark hover:text-brand-orange transition-colors"
-                aria-label="Menu"
+                aria-label="Menü öffnen"
               >
                 <div className="w-6 flex flex-col items-end gap-1.5">
                   <span className={`block h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'w-6 rotate-45 translate-y-2' : 'w-6'}`}></span>
@@ -205,7 +205,7 @@ const Header: React.FC = () => {
               <a href="mailto:post@aplusurbandesign.com" className="block text-brand-dark font-bold text-lg">post@aplusurbandesign.com</a>
             </div>
             <div>
-              <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Social</span>
+              <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Netzwerke</span>
               <div className="flex gap-4">
                 <a href="https://www.linkedin.com/in/cüneyit-akcakoca-6577673/" target="_blank" rel="noopener noreferrer" className="text-brand-dark hover:text-brand-orange text-lg font-bold">LinkedIn</a>
               </div>

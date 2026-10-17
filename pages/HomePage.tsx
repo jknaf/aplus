@@ -33,35 +33,35 @@ const FAQSection: React.FC = () => {
     const faqs = [
         {
             q: "Was kostet ein Beton-Skatepark oder Pumptrack?",
-            a: "Die Kosten für einen Skatepark hängen von Größe, Elementauswahl und Untergrund ab. Modulare Betonfertigteile sind in vielen Projekten kostengünstiger als Ortbeton-Lösungen, weil teure Erdarbeiten, Bodenplatten und aufwendige Vorbereitungen weitgehend entfallen. Kommunen und Gemeinden können über die Sportstättenförderung Fördermittel beantragen. Wir bieten eine unverbindliche Erstberatung mit projektbezogener Kostenschätzung an."
+            a: "Die Kosten für einen Skatepark oder Pumptrack hängen von Größe, Auswahl der Elemente und Untergrund ab. Modulare Betonfertigteile sind in vielen Projekten günstiger als Ortbeton, weil Erdarbeiten, Bodenplatten und aufwendige Vorarbeiten weitgehend entfallen. Kommunen können Fördermittel aus der Sportstättenförderung beantragen. Wir bieten eine unverbindliche Erstberatung mit Kostenschätzung für Ihr Projekt an."
         },
         {
             q: "Skatepark, Skateanlage oder Skaterpark: Was ist der Unterschied?",
-            a: "Die korrekte Bezeichnung ist Skatepark oder Skateanlage. Umgangssprachlich wird oft auch Skaterpark, Skaterbahn oder Skaterplatz gesagt. Gemeint ist dasselbe: eine speziell gestaltete Fläche mit Obstacles wie Ramps, Bowls, Rails und Halfpipes für Skateboard, BMX, Scooter und Inline-Skates. Wir als Skatepark-Hersteller bauen diese Anlagen aus modularen Betonfertigteilen."
+            a: "Gebräuchlich sind „Skatepark“ und „Skateanlage“. Umgangssprachlich sagt man auch Skaterpark, Skaterbahn oder Skaterplatz. Gemeint ist immer dasselbe: eine Fläche mit Hindernissen (Obstacles) wie Rampen, Bowls, Rails und Pipes für Skateboard, BMX, Scooter und Inline-Skates. Wir bauen diese Anlagen aus modularen Betonfertigteilen."
         },
         {
             q: "Sind die Anlagen auch für BMX und Scooter geeignet?",
-            a: "Ja. Unsere Betonoberflächen sind robust und halten den Punktbelastungen von BMX-Pegs und Scooter-Decks dauerhaft stand. Der massive Beton bietet zuverlässigen Grip für alle Rollsportarten: Skateboard, BMX, Scooter oder Inline-Skates. Ob Skatepark, BMX-Park oder Pumptrack: Alle Anlagen sind multisportfähig ausgelegt."
+            a: "Ja. Die Betonoberflächen halten den Punktlasten von BMX-Pegs und Scooter-Decks dauerhaft stand. Der unversiegelte Beton bleibt auch bei Nässe griffig, für Skateboard, BMX, Scooter und Inline-Skates. Alle Anlagen sind für mehrere Sportarten ausgelegt."
         },
         {
             q: "Warum Beton statt Holz oder Asphalt?",
-            a: "Beton ist formstabil, wartungsfrei und vandalismussicher, selbst bei extremen Temperaturen. Unsere Skaterampen und Pumptrack-Elemente aus Hochleistungsbeton C35/45 überdauern Holz und Asphalt um Jahrzehnte. Das modulare System ermöglicht zudem maximale Flexibilität: Elemente können umgestellt, entfernt oder ergänzt werden, ohne Fundamente aufzubrechen."
+            a: "Beton ist formstabil, wartungsarm und vandalismussicher, auch bei Frost und Hitze. Unsere Skaterampen und Pumptrack-Elemente aus bewehrtem Beton C35/45 halten deutlich länger als Rampen aus Holz. Dazu kommt das Modulsystem: Elemente können umgestellt, entfernt oder ergänzt werden, ohne Fundamente aufzubrechen."
         },
         {
             q: "Gibt es Fördermittel für Skateparks und Pumptracks?",
-            a: "Ja. Kommunen und Gemeinden können Fördermittel über die Sportstättenförderung von Bund und Ländern beantragen. Auch Programme für urbane Freiräume und Bewegungsförderung kommen infrage. Wir unterstützen bei der Ausschreibung und liefern alle technischen Unterlagen, die für den Förderantrag benötigt werden, von der DIN-EN-14974-Zertifizierung bis zur statischen Berechnung."
+            a: "Ja. Kommunen können Fördermittel aus der Sportstättenförderung von Bund und Ländern beantragen. Auch Programme für urbane Freiräume und Bewegungsförderung kommen infrage. Wir unterstützen Sie bei Förderantrag und Ausschreibung und liefern die nötigen technischen Unterlagen, vom TÜV-Zertifikat nach DIN EN 14974 bis zur statischen Berechnung."
         },
         {
             q: "Wie steht es um Lärmschutz und Baugenehmigung?",
-            a: "Massive Betonelemente reduzieren Geräuschemissionen erheblich gegenüber leichteren Hohlkörper-Konstruktionen. Erfahrungswerte aus realisierten Projekten zeigen deutliche Pegelreduktionen, was Baugenehmigungen vereinfachen kann. Wir unterstützen im Genehmigungsverfahren mit statischen Berechnungen nach den einschlägigen Normen."
+            a: "Nach unseren Erfahrungswerten sind Betonelemente rund 5–8 dB(A) leiser als Rampen aus Holz, Metall oder Kunststoff. Das kann die Baugenehmigung erleichtern. Im Genehmigungsverfahren unterstützen wir Sie mit statischen Berechnungen und den nötigen Nachweisen."
         },
         {
             q: "Können wir klein anfangen und die Anlage später erweitern?",
-            a: "Ja, das ist der Kern unseres A+ Modulsystems. Viele Kommunen starten mit einem Starter-Kit (zum Beispiel Quarter, Bank und Rail) und erweitern den Skatepark über Jahre hinweg. Ob Skateanlage, Pumptrack oder BMX-Park: Da keine Fundamente gegossen werden müssen, bleibt die Fläche jederzeit flexibel und erweiterbar. Elemente können auch umgestellt oder an einen neuen Standort versetzt werden."
+            a: "Ja, genau dafür ist das A+-Modulsystem gemacht. Viele Kommunen starten mit einem Starter-Kit (zum Beispiel Quarter, Bank und Rail) und erweitern den Skatepark über Jahre. Weil keine Fundamente gegossen werden, ist das jederzeit möglich. Elemente können auch umgestellt oder an einen neuen Standort versetzt werden."
         },
         {
-            q: "Wie läuft die Planung und der Bau eines Skateparks ab?",
-            a: "Der Prozess beginnt mit einer Bedarfsanalyse vor Ort. Als Skatepark-Hersteller übernehmen wir die komplette Architektenleistung: vom Entwurf über die 3D-Planung und TÜV-konforme Ausarbeitung bis zur schlüsselfertigen Montage. Die fundamentfreien Betonfertigteile werden per LKW angeliefert und mit einem Kran aufgestellt. Eine typische Skateanlage steht innerhalb weniger Tage."
+            q: "Wie laufen Planung und Bau eines Skateparks ab?",
+            a: "Der Prozess beginnt mit einer Bedarfsanalyse vor Ort. Wir übernehmen die gesamte Planung: vom Entwurf über die 3D-Planung und die normgerechte Ausarbeitung nach DIN EN 14974 bis zur schlüsselfertigen Montage. Die Betonfertigteile kommen per Lkw und werden mit Gabelstapler, Hubwagen oder, bei Pipes und hohen Elementen, mit dem Autokran aufgestellt. Eine typische Skateanlage steht innerhalb weniger Tage."
         }
     ];
 
@@ -146,8 +146,8 @@ const ProductScrollytelling: React.FC = () => {
                         Unser Portfolio
                     </span>
                     <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-                        Technische<br/>
-                        <span className="text-brand-orange">Perfektion.</span>
+                        Unsere<br/>
+                        <span className="text-brand-orange">Produkte.</span>
                     </h2>
                 </AnimatedSection>
 
@@ -163,7 +163,7 @@ const ProductScrollytelling: React.FC = () => {
                                     <div className="flex justify-end">
                                         <div className="border border-white/20 px-2 py-1 bg-brand-dark/60 backdrop-blur-md rounded-sm">
                                             <span className="text-xs font-bold text-white uppercase tracking-wider">
-                                                TÜV ZERTIFIZIERT
+                                                TÜV-ZERTIFIZIERT
                                             </span>
                                         </div>
                                     </div>
@@ -218,7 +218,7 @@ const ProductScrollytelling: React.FC = () => {
                                             <Link to={product.path} className="block p-6 md:p-8">
                                                 <div className="flex justify-between items-start mb-4">
                                                     <span className={`font-mono text-xs tracking-widest uppercase mb-1 block transition-colors ${isActive ? 'text-brand-orange' : 'text-brand-muted'}`}>
-                                                        Modul 0{index + 1}
+                                                        Produkt 0{index + 1}
                                                     </span>
                                                     {isActive && <span className="material-symbols-outlined text-brand-orange animate-pulse">arrow_outward</span>}
                                                 </div>
@@ -273,17 +273,17 @@ const ServiceOverviewSection: React.FC = () => {
         {
             icon: "design_services",
             title: "Planung & Beratung",
-            desc: "Von der ersten Idee bis zur TÜV-konformen Ausführungsplanung. Wir erstellen Draufsichten und 3D-Entwürfe auf Basis Ihrer Fläche und Ihres Budgets: individuell abgestimmt, DIN EN 14974 konform, ideal für Kommunen, Architekten und Landschaftsplaner."
+            desc: "Von der ersten Idee bis zur Ausführungsplanung nach DIN EN 14974. Auf Grundlage Ihrer Fläche und Ihres Budgets erstellen wir Draufsichten und 3D-Entwürfe."
         },
         {
             icon: "construction",
             title: "Bau & Montage",
-            desc: "Schneller, günstiger und wetterunabhängiger als Ortbeton: Unsere modularen Fertigteile werden direkt auf Asphalt, Beton oder Fundamentplatte montiert. Eine typische Anlage steht in wenigen Tagen, schlüsselfertig durch unser Team."
+            desc: "Schneller, meist günstiger und weniger wetterabhängig als Ortbeton: Unsere modularen Fertigteile werden direkt auf Asphalt, Beton oder Fundamentplatte montiert. Eine typische Anlage baut unser Team in wenigen Tagen schlüsselfertig auf."
         },
         {
             icon: "build_circle",
             title: "Service & Wartung",
-            desc: "Nach der Eröffnung bleibt alles flexibel: Module lassen sich erweitern, versetzen, reparieren oder komplett umbauen. Wir liefern Wartungsanleitungen, unterstützen bei Erweiterungen und stehen langfristig als Partner zur Verfügung."
+            desc: "Auch nach der Eröffnung lässt sich die Anlage erweitern, umbauen oder versetzen. Einzelne Module können repariert werden. Wir liefern Wartungsanleitungen, unterstützen bei Erweiterungen und bleiben Ihr Ansprechpartner."
         }
     ];
 
@@ -536,7 +536,7 @@ const HomePage: React.FC = () => {
   return (
     <PageShell 
         title="Skatepark-Hersteller | Beton-Skateparks & Pumptracks"
-        description="A+ Urban Design: Ihr Skatepark-Hersteller aus Stuttgart. Wir planen und bauen TÜV-zertifizierte Skateparks, Pumptracks und Hockey-Banden aus Beton. Modular, fundamentfrei, seit 1999."
+        description="A+ Urban Design: Ihr Skatepark-Hersteller aus Stuttgart. Wir planen und bauen Skateparks, Pumptracks und Hockey-Banden aus Beton. Unsere Skate-Elemente sind TÜV-zertifiziert. Modular, fundamentfrei, seit 1999."
         fullWidth={true}
     >
       <Hero />
@@ -548,13 +548,13 @@ const HomePage: React.FC = () => {
                     <div className="lg:w-5/12">
                         <div className="lg:sticky lg:top-32 h-fit">
                              <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                                Unsere DNA
+                                Unser Anspruch
                              </span>
                              <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark leading-[0.9] mb-8 uppercase tracking-tighter">
-                                Gebaut<br/>für die<br/><span className="text-brand-orange">Ewigkeit.</span>
+                                Gebaut<br/>für<br/><span className="text-brand-orange">Jahrzehnte.</span>
                              </h2>
                              <p className="text-lg md:text-xl text-brand-muted leading-relaxed mb-8">
-                                 Wir schaffen urbane Landschaften aus Beton und Stahl, die jeder Belastung standhalten.
+                                 Wir bauen Anlagen aus Beton und Stahl für den Dauerbetrieb im öffentlichen Raum.
                              </p>
                              <Link to="/ueber-uns" className="inline-flex items-center gap-2 text-brand-dark font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider group">
                                  Mehr über unsere Philosophie <span className="text-xl group-hover:translate-x-1 transition-transform">&rarr;</span>
@@ -563,10 +563,10 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className="lg:w-7/12 pt-12 lg:pt-0">
                         <div className="flex flex-col">
-                            <ScrollyFeature icon="layers" animationType="float" title="Fundamentfrei" desc="Kein Betonieren vor Ort nötig. Unser modulares System erlaubt die Aufstellung auf einem einfachen Schotterbett." />
-                            <ScrollyFeature icon="shield" animationType="glow-pulse" title="Vandalismussicher" desc="Massiver C35/45 Stahlbeton. Schnittfest, schwer entflammbar und extrem widerstandsfähig." />
-                            <ScrollyFeature icon="verified" animationType="stamp" title="TÜV Zertifiziert" desc="Hohe Sicherheitsstandards. Unsere Skate- und BMX-Anlagen sind nach DIN EN 14974 geprüft." />
-                            <ScrollyFeature icon="recycling" animationType="spin-slow" title="Wiederverwendbar" desc="Beton- und Stahlbestandteile sind weitestgehend recycelbar. Unsere Module können demontiert, versetzt oder wiederaufgebaut werden." />
+                            <ScrollyFeature icon="layers" animationType="float" title="Fundamentfrei" desc="Vor Ort wird nicht betoniert. Die Elemente stehen ohne Fundament direkt auf Asphalt oder Beton." />
+                            <ScrollyFeature icon="shield" animationType="glow-pulse" title="Vandalismussicher" desc="Stahlbeton C35/45: lässt sich nicht zerschneiden, brennt nicht und hält Schlägen stand." />
+                            <ScrollyFeature icon="verified" animationType="stamp" title="TÜV-zertifiziert" desc="Unsere Skate- und BMX-Elemente sind nach DIN EN 14974 vom TÜV geprüft und zertifiziert und tragen das GS-Zeichen." />
+                            <ScrollyFeature icon="recycling" animationType="spin-slow" title="Wiederverwendbar" desc="Die Module lassen sich abbauen, versetzen und an anderer Stelle wieder aufbauen. Am Ende sind Beton und Stahl weitgehend recycelbar." />
                         </div>
                     </div>
                 </div>
@@ -588,15 +588,15 @@ const HomePage: React.FC = () => {
               <div className="inline-flex items-center gap-3 py-1 px-4 border border-brand-orange/30 bg-brand-orange/10 rounded-full mb-12 backdrop-blur-md">
                  <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
                  <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">
-                    Ready for Takeoff
+                    Ihr Projekt
                  </span>
               </div>
               <h2 className="text-6xl md:text-[10rem] font-extrabold font-heading uppercase tracking-tighter mb-12 leading-[0.85] text-brand-dark">
                 Start<br/>
-                <span className="text-brand-orange">Klar?</span>
+                <span className="text-brand-orange">klar?</span>
               </h2>
               <p className="text-lg md:text-2xl text-brand-muted max-w-2xl mx-auto mb-16 font-light">
-                  Lassen Sie uns gemeinsam etwas Großartiges schaffen. <br/>
+                  Sprechen Sie mit uns über Ihre Fläche. <br/>
                   <span className="text-brand-dark font-bold">Von der ersten Skizze bis zur Eröffnung.</span>
               </p>
               <Link

@@ -226,7 +226,7 @@ const ProductPavilionPage: React.FC = () => {
                         Keine Scheibe, <span className="text-brand-orange">die zerbricht.</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl mb-8">
-                        Wartehallen aus Glas sind ein häufiges Ziel von Vandalismus. Die Stadt Wedel ließ 2023 nach einer Vandalismuswelle 29 zerschlagene Glasscheiben an 18 Buswartehäuschen ersetzen, für etwa 20.000 Euro. Unser Überdachungselement hat keine Scheiben, die man zerschlagen oder ersetzen müsste.
+                        Wartehallen aus Glas sind ein häufiges Ziel von Vandalismus. In einer deutschen Stadt mussten nach einer Vandalismuswelle 29 zerschlagene Glasscheiben an 18 Buswartehäuschen ersetzt werden. Die Kosten lagen bei etwa 20.000 Euro. Unser Überdachungselement hat keine Scheiben, die man zerschlagen oder ersetzen müsste.
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-brand-surface/60 border border-brand-dark/10 p-6 rounded-xl">

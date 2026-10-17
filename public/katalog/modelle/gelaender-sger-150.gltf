@@ -120,10 +120,10 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":144,
+			"count":165,
 			"max":[
 				1.0921015739440918,
-				0.13199999928474426,
+				0.13200004398822784,
 				0.3197968900203705
 			],
 			"min":[
@@ -136,31 +136,31 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":144,
+			"count":165,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":144,
+			"count":165,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":144,
+			"count":165,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":264,
+			"count":165,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":4608,
+			"count":7800,
 			"max":[
 				1.00600004196167,
 				1.1200000047683716,
@@ -176,19 +176,19 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":4608,
+			"count":7800,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":4608,
+			"count":7800,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":4608,
+			"count":7800,
 			"type":"VEC2"
 		},
 		{
@@ -201,62 +201,62 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":1728,
+			"byteLength":1980,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1728,
-			"byteOffset":1728,
+			"byteLength":1980,
+			"byteOffset":1980,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1152,
-			"byteOffset":3456,
+			"byteLength":1320,
+			"byteOffset":3960,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1152,
-			"byteOffset":4608,
+			"byteLength":1320,
+			"byteOffset":5280,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":528,
-			"byteOffset":5760,
+			"byteLength":330,
+			"byteOffset":6600,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":55296,
-			"byteOffset":6288,
+			"byteLength":93600,
+			"byteOffset":6932,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":55296,
-			"byteOffset":61584,
+			"byteLength":93600,
+			"byteOffset":100532,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":36864,
-			"byteOffset":116880,
+			"byteLength":62400,
+			"byteOffset":194132,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":36864,
-			"byteOffset":153744,
+			"byteLength":62400,
+			"byteOffset":256532,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":15600,
-			"byteOffset":190608,
+			"byteOffset":318932,
 			"target":34963
 		}
 	],
@@ -268,7 +268,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":206208,
+			"byteLength":334532,
 			"uri":"gelaender-sger-150.bin"
 		}
 	]

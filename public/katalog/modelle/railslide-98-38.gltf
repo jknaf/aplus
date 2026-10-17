@@ -120,143 +120,143 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":750,
+			"count":171,
 			"max":[
 				1.4450000524520874,
-				0.9800000190734863,
-				0.06485158205032349
+				0.9800000786781311,
+				0.06485160440206528
 			],
 			"min":[
 				-1.4450000524520874,
-				-1.2517038072701325e-08,
-				-0.0648476779460907
+				-3.811633675354642e-08,
+				-0.06484770029783249
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":750,
+			"count":171,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":750,
+			"count":171,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":750,
+			"count":171,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":1158,
+			"count":171,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":69,
+			"count":72,
 			"max":[
 				1.4450000524520874,
-				0.9800000190734863,
-				0.06485158205032349
+				0.9800000786781311,
+				0.06485160440206528
 			],
 			"min":[
 				-1.4450000524520874,
-				8.660015618937908e-16,
-				-0.0648476779460907
+				0.037369001656770706,
+				-0.06484770029783249
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":69,
+			"count":72,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":69,
+			"count":72,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":69,
+			"count":72,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":9,
 			"componentType":5123,
-			"count":99,
+			"count":72,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":9000,
+			"byteLength":2052,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":9000,
-			"byteOffset":9000,
+			"byteLength":2052,
+			"byteOffset":2052,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6000,
-			"byteOffset":18000,
+			"byteLength":1368,
+			"byteOffset":4104,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6000,
-			"byteOffset":24000,
+			"byteLength":1368,
+			"byteOffset":5472,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2316,
-			"byteOffset":30000,
+			"byteLength":342,
+			"byteOffset":6840,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":828,
-			"byteOffset":32316,
+			"byteLength":864,
+			"byteOffset":7184,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":828,
-			"byteOffset":33144,
+			"byteLength":864,
+			"byteOffset":8048,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":552,
-			"byteOffset":33972,
+			"byteLength":576,
+			"byteOffset":8912,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":552,
-			"byteOffset":34524,
+			"byteLength":576,
+			"byteOffset":9488,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":198,
-			"byteOffset":35076,
+			"byteLength":144,
+			"byteOffset":10064,
 			"target":34963
 		}
 	],
@@ -268,7 +268,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":35276,
+			"byteLength":10208,
 			"uri":"railslide-98-38.bin"
 		}
 	]

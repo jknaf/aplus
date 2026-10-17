@@ -120,7 +120,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":6866,
+			"count":11415,
 			"max":[
 				0.6075000166893005,
 				1.1200000047683716,
@@ -136,34 +136,34 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":6866,
+			"count":11415,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":6866,
+			"count":11415,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":6866,
+			"count":11415,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":11838,
+			"count":11415,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":868,
+			"count":1056,
 			"max":[
 				-0.20210058987140656,
-				0.10379549860954285,
+				0.10405005514621735,
 				0.03569551929831505
 			],
 			"min":[
@@ -176,87 +176,87 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":868,
+			"count":1056,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":868,
+			"count":1056,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":868,
+			"count":1056,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":9,
 			"componentType":5123,
-			"count":1128,
+			"count":1056,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":82392,
+			"byteLength":136980,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":82392,
-			"byteOffset":82392,
+			"byteLength":136980,
+			"byteOffset":136980,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":54928,
-			"byteOffset":164784,
+			"byteLength":91320,
+			"byteOffset":273960,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":54928,
-			"byteOffset":219712,
+			"byteLength":91320,
+			"byteOffset":365280,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":23676,
-			"byteOffset":274640,
+			"byteLength":22830,
+			"byteOffset":456600,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":10416,
-			"byteOffset":298316,
+			"byteLength":12672,
+			"byteOffset":479432,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":10416,
-			"byteOffset":308732,
+			"byteLength":12672,
+			"byteOffset":492104,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6944,
-			"byteOffset":319148,
+			"byteLength":8448,
+			"byteOffset":504776,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6944,
-			"byteOffset":326092,
+			"byteLength":8448,
+			"byteOffset":513224,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2256,
-			"byteOffset":333036,
+			"byteLength":2112,
+			"byteOffset":521672,
 			"target":34963
 		}
 	],
@@ -268,7 +268,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":335292,
+			"byteLength":523784,
 			"uri":"gelaender-ende-rechts.bin"
 		}
 	]

@@ -9,14 +9,16 @@ declare global {
   }
 }
 
-// 3D-Ansicht eines Katalog-Elements. model-viewer wird erst geladen, wenn die Ansicht gebraucht wird.
-// Kamera wie beim Vorschaubild (Blender: Richtung 1/-1,25/0,62, 50 mm), damit der Wechsel vom Bild zum Modell nicht springt.
+// 3D-Ansicht eines Katalog-Elements. Zuerst steht das gerenderte Vorschaubild still; das 3D-Modell übernimmt erst,
+// wenn man selbst zieht, klickt oder scrollt. So springt beim Öffnen nichts.
+// Kamera wie beim Vorschaubild (Blender: Richtung 1/-1,25/0,62, 50 mm), damit der Wechsel vom Bild zum Modell deckungsgleich ist.
 const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string }> = ({ src, poster, alt }) => {
+  const [aktiv, setAktiv] = useState(false);
   const [bereit, setBereit] = useState(false);
   const ansicht = useRef<HTMLElement & Record<string, any>>(null);
   useEffect(() => {
-    import('@google/model-viewer').then(() => setBereit(true));
-  }, []);
+    if (aktiv) import('@google/model-viewer').then(() => setBereit(true));
+  }, [aktiv]);
   // Abstand wie in Blender: Radius der Bounding-Box / sin(halber Bildwinkel) * 1,3
   useEffect(() => {
     const mv = ansicht.current;
@@ -33,7 +35,18 @@ const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string }> = ({
   }, [bereit]);
 
   if (!bereit) {
-    return <img src={poster} alt={alt} className="w-full h-full object-contain" />;
+    return (
+      <button
+        type="button"
+        aria-label={`${alt} drehen`}
+        onPointerDown={() => setAktiv(true)}
+        onWheel={() => setAktiv(true)}
+        onClick={() => setAktiv(true)}
+        className="w-full h-full cursor-grab"
+      >
+        <img src={poster} alt={alt} className="w-full h-full object-contain" draggable={false} />
+      </button>
+    );
   }
   return (
     <model-viewer
@@ -42,9 +55,6 @@ const ModellAnsicht: React.FC<{ src: string; poster: string; alt: string }> = ({
       poster={poster}
       alt={alt}
       camera-controls=""
-      auto-rotate=""
-      auto-rotate-delay="1500"
-      rotation-per-second="18deg"
       interaction-prompt="none"
       shadow-intensity="1"
       shadow-softness="0.5"

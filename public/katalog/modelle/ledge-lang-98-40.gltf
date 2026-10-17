@@ -159,7 +159,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":580,
+			"count":798,
 			"max":[
 				1.4449492692947388,
 				0.9500000476837158,
@@ -175,38 +175,38 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":580,
+			"count":798,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":580,
+			"count":798,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":580,
+			"count":798,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":882,
+			"count":798,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":867,
+			"count":1536,
 			"max":[
-				1.445050835609436,
+				1.4460508823394775,
 				0.9591000080108643,
 				0.25
 			],
 			"min":[
-				-1.4450498819351196,
+				-1.4460499286651611,
 				0,
 				-0.25
 			],
@@ -215,31 +215,31 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":867,
+			"count":1536,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":867,
+			"count":1536,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":867,
+			"count":1536,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":9,
 			"componentType":5123,
-			"count":1683,
+			"count":1536,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":10,
 			"componentType":5126,
-			"count":16,
+			"count":24,
 			"max":[
 				1.447391152381897,
 				0.9521099328994751,
@@ -255,19 +255,19 @@
 		{
 			"bufferView":11,
 			"componentType":5126,
-			"count":16,
+			"count":24,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":12,
 			"componentType":5126,
-			"count":16,
+			"count":24,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":13,
 			"componentType":5126,
-			"count":16,
+			"count":24,
 			"type":"VEC2"
 		},
 		{
@@ -280,92 +280,92 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":6960,
+			"byteLength":9576,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6960,
-			"byteOffset":6960,
+			"byteLength":9576,
+			"byteOffset":9576,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4640,
-			"byteOffset":13920,
+			"byteLength":6384,
+			"byteOffset":19152,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4640,
-			"byteOffset":18560,
+			"byteLength":6384,
+			"byteOffset":25536,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1764,
-			"byteOffset":23200,
+			"byteLength":1596,
+			"byteOffset":31920,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":10404,
-			"byteOffset":24964,
+			"byteLength":18432,
+			"byteOffset":33516,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":10404,
-			"byteOffset":35368,
+			"byteLength":18432,
+			"byteOffset":51948,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6936,
-			"byteOffset":45772,
+			"byteLength":12288,
+			"byteOffset":70380,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6936,
-			"byteOffset":52708,
+			"byteLength":12288,
+			"byteOffset":82668,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3366,
-			"byteOffset":59644,
+			"byteLength":3072,
+			"byteOffset":94956,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":192,
-			"byteOffset":63012,
+			"byteLength":288,
+			"byteOffset":98028,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":288,
+			"byteOffset":98316,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":192,
-			"byteOffset":63204,
+			"byteOffset":98604,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":128,
-			"byteOffset":63396,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":128,
-			"byteOffset":63524,
+			"byteLength":192,
+			"byteOffset":98796,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":48,
-			"byteOffset":63652,
+			"byteOffset":98988,
 			"target":34963
 		}
 	],
@@ -377,7 +377,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":63700,
+			"byteLength":99036,
 			"uri":"ledge-lang-98-40.bin"
 		}
 	]

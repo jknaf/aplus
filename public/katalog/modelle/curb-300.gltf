@@ -153,35 +153,35 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":524,
+			"count":786,
 			"max":[
 				1.5000001192092896,
-				0.48000001907348633,
-				0.24000000953674316
+				0.48100000619888306,
+				0.2410000115633011
 			],
 			"min":[
 				-1.5000001192092896,
 				0,
-				-0.24000000953674316
+				-0.2410000115633011
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":524,
+			"count":786,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":524,
+			"count":786,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":524,
+			"count":786,
 			"type":"VEC2"
 		},
 		{
@@ -193,7 +193,7 @@
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":56,
+			"count":66,
 			"max":[
 				1.499000072479248,
 				0.4790000319480896,
@@ -209,19 +209,19 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":56,
+			"count":66,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":56,
+			"count":66,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":56,
+			"count":66,
 			"type":"VEC2"
 		},
 		{
@@ -233,35 +233,35 @@
 		{
 			"bufferView":10,
 			"componentType":5126,
-			"count":80,
+			"count":96,
 			"max":[
 				1.5000001192092896,
-				0.48000001907348633,
-				0.24000000953674316
+				0.48100000619888306,
+				0.2410000115633011
 			],
 			"min":[
 				-1.5000001192092896,
 				0.4400000274181366,
-				-0.24000000953674316
+				-0.2410000115633011
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":11,
 			"componentType":5126,
-			"count":80,
+			"count":96,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":12,
 			"componentType":5126,
-			"count":80,
+			"count":96,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":13,
 			"componentType":5126,
-			"count":80,
+			"count":96,
 			"type":"VEC2"
 		},
 		{
@@ -274,92 +274,92 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":6288,
+			"byteLength":9432,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
+			"byteLength":9432,
+			"byteOffset":9432,
+			"target":34962
+		},
+		{
+			"buffer":0,
 			"byteLength":6288,
-			"byteOffset":6288,
+			"byteOffset":18864,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":4192,
-			"byteOffset":12576,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":4192,
-			"byteOffset":16768,
+			"byteLength":6288,
+			"byteOffset":25152,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":1572,
-			"byteOffset":20960,
+			"byteOffset":31440,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":672,
-			"byteOffset":22532,
+			"byteLength":792,
+			"byteOffset":33012,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":672,
-			"byteOffset":23204,
+			"byteLength":792,
+			"byteOffset":33804,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":448,
-			"byteOffset":23876,
+			"byteLength":528,
+			"byteOffset":34596,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":448,
-			"byteOffset":24324,
+			"byteLength":528,
+			"byteOffset":35124,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":132,
-			"byteOffset":24772,
+			"byteOffset":35652,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":960,
-			"byteOffset":24904,
+			"byteLength":1152,
+			"byteOffset":35784,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":960,
-			"byteOffset":25864,
+			"byteLength":1152,
+			"byteOffset":36936,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":640,
-			"byteOffset":26824,
+			"byteLength":768,
+			"byteOffset":38088,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":640,
-			"byteOffset":27464,
+			"byteLength":768,
+			"byteOffset":38856,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":192,
-			"byteOffset":28104,
+			"byteOffset":39624,
 			"target":34963
 		}
 	],
@@ -371,7 +371,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":28296,
+			"byteLength":39816,
 			"uri":"curb-300.bin"
 		}
 	]

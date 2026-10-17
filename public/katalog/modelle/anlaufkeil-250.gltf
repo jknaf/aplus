@@ -126,7 +126,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":192,
+			"count":294,
 			"max":[
 				0.6067500114440918,
 				0.14927276968955994,
@@ -142,19 +142,19 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":192,
+			"count":294,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":192,
+			"count":294,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":192,
+			"count":294,
 			"type":"VEC2"
 		},
 		{
@@ -166,7 +166,7 @@
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":13,
+			"count":21,
 			"max":[
 				-0.22315235435962677,
 				0.048335000872612,
@@ -182,19 +182,19 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":13,
+			"count":21,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":13,
+			"count":21,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":13,
+			"count":21,
 			"type":"VEC2"
 		},
 		{
@@ -207,62 +207,62 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":2304,
+			"byteLength":3528,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2304,
-			"byteOffset":2304,
+			"byteLength":3528,
+			"byteOffset":3528,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1536,
-			"byteOffset":4608,
+			"byteLength":2352,
+			"byteOffset":7056,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1536,
-			"byteOffset":6144,
+			"byteLength":2352,
+			"byteOffset":9408,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":588,
-			"byteOffset":7680,
+			"byteOffset":11760,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":156,
-			"byteOffset":8268,
+			"byteLength":252,
+			"byteOffset":12348,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":156,
-			"byteOffset":8424,
+			"byteLength":252,
+			"byteOffset":12600,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":104,
-			"byteOffset":8580,
+			"byteLength":168,
+			"byteOffset":12852,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":104,
-			"byteOffset":8684,
+			"byteLength":168,
+			"byteOffset":13020,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":42,
-			"byteOffset":8788,
+			"byteOffset":13188,
 			"target":34963
 		}
 	],
@@ -274,7 +274,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":8832,
+			"byteLength":13232,
 			"uri":"anlaufkeil-250.bin"
 		}
 	]

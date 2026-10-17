@@ -120,7 +120,7 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":24,
+			"count":36,
 			"max":[
 				-0.06339844316244125,
 				0.0010000000474974513,
@@ -136,19 +136,19 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":24,
+			"count":36,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":24,
+			"count":36,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":24,
+			"count":36,
 			"type":"VEC2"
 		},
 		{
@@ -160,7 +160,7 @@
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":3168,
+			"count":5046,
 			"max":[
 				0.06450000405311584,
 				1.1200000047683716,
@@ -176,87 +176,87 @@
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":3168,
+			"count":5046,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":3168,
+			"count":5046,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":3168,
+			"count":5046,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":9,
 			"componentType":5123,
-			"count":5136,
+			"count":5046,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":288,
+			"byteLength":432,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
+			"byteLength":432,
+			"byteOffset":432,
+			"target":34962
+		},
+		{
+			"buffer":0,
 			"byteLength":288,
-			"byteOffset":288,
+			"byteOffset":864,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":192,
-			"byteOffset":576,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":192,
-			"byteOffset":768,
+			"byteLength":288,
+			"byteOffset":1152,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":72,
-			"byteOffset":960,
+			"byteOffset":1440,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":38016,
-			"byteOffset":1032,
+			"byteLength":60552,
+			"byteOffset":1512,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":38016,
-			"byteOffset":39048,
+			"byteLength":60552,
+			"byteOffset":62064,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":25344,
-			"byteOffset":77064,
+			"byteLength":40368,
+			"byteOffset":122616,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":25344,
-			"byteOffset":102408,
+			"byteLength":40368,
+			"byteOffset":162984,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":10272,
-			"byteOffset":127752,
+			"byteLength":10092,
+			"byteOffset":203352,
 			"target":34963
 		}
 	],
@@ -268,7 +268,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":138024,
+			"byteLength":213444,
 			"uri":"gelaender-verbindung-90.bin"
 		}
 	]

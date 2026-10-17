@@ -141,9 +141,9 @@ const ProductSkateBowlsPage: React.FC = () => {
                 </div>
 
                 <div className="lg:w-7/12 flex flex-col gap-6">
-                    <GalleryImage src="/images/skate-bowls/skate-bowl-02.jpg" alt="Skate-Bowl aus modularen Beton-Fertigteilen" label="ABB 01. MODULARER BOWL" />
-                    <GalleryImage src="/images/skate-bowls/skate-pool-03.jpg" alt="Skate-Pool im Erdreich, geschlossene Bauweise" label="ABB 02. POOL IM ERDREICH" />
-                    <GalleryImage src="/images/skate-bowls/skate-bowl-pool-05.jpg" alt="S-Form Skate-Bowl aus Beton-Modulen" label="ABB 03. S-FORM BOWL" />
+                    <GalleryImage src="/images/skate-bowls/skate-bowl-02.jpg" alt="Skate-Bowl aus modularen Beton-Fertigteilen" label="Abb. 1: Modularer Bowl" />
+                    <GalleryImage src="/images/skate-bowls/skate-pool-03.jpg" alt="Skate-Pool im Erdreich, geschlossene Bauweise" label="Abb. 2: Pool im Erdreich" />
+                    <GalleryImage src="/images/skate-bowls/skate-bowl-pool-05.jpg" alt="S-Form Skate-Bowl aus Beton-Modulen" label="Abb. 3: Bowl in S-Form (3D-Modell)" />
                 </div>
             </div>
 
@@ -195,9 +195,9 @@ const ProductSkateBowlsPage: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <GalleryImage src="/images/skate-bowls/skate-bowl-01.jpg" alt="Offener Skate-Bowl aus Beton" label="OPEN BOWL" />
-                    <GalleryImage src="/images/skate-bowls/skate-pool-04.jpg" alt="Skate-Pool aus Beton-Fertigteil-Modulen" label="SKATE-POOL" />
-                    <GalleryImage src="/images/skate-bowls/skate-bowls-pools-06.jpg" alt="Bowl-Varianten aus modularen Beton-Elementen" label="VARIANTEN" />
+                    <GalleryImage src="/images/skate-bowls/skate-bowl-01.jpg" alt="Offener Skate-Bowl aus Beton" label="Offener Bowl" />
+                    <GalleryImage src="/images/skate-bowls/skate-pool-04.jpg" alt="Skate-Pool aus Beton-Fertigteil-Modulen" label="Skate-Pool" />
+                    <GalleryImage src="/images/skate-bowls/skate-bowls-pools-06.jpg" alt="Bowl-Varianten aus modularen Beton-Elementen" label="Varianten (3D-Modell)" />
                 </div>
             </div>
 
@@ -237,7 +237,7 @@ const ProductSkateBowlsPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                        Tech<span className="text-brand-orange">Specs</span>
+                        Technische <span className="text-brand-orange">Daten</span>
                     </h2>
                     <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: BOWLS</span>
                 </div>

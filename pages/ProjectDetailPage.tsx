@@ -203,7 +203,7 @@ const ProjectDetailPage: React.FC = () => {
                                     decoding="async"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">FIG 01. OVERVIEW</div>
+                                <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">Abb. 1: Übersicht</div>
                              </div>
 
                              {/* Gallery Images */}
@@ -219,7 +219,7 @@ const ProjectDetailPage: React.FC = () => {
                                         decoding="async"
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
-                                    <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">FIG {String(idx + 2).padStart(2, '0')}. DETAIL</div>
+                                    <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">Abb. {idx + 2}</div>
                                  </div>
                              ))}
                         </div>

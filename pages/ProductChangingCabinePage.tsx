@@ -87,7 +87,7 @@ const ProductChangingCabinePage: React.FC = () => {
             <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
-                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">Sanitary Solution</span>
+                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">Freibad und Sport</span>
                          <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider bg-black/40 backdrop-blur-sm px-2 py-1">
                             <span className="material-symbols-outlined text-base">privacy_tip</span> Sichtschutz
                          </span>
@@ -136,12 +136,12 @@ const ProductChangingCabinePage: React.FC = () => {
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/umkleide/umkleide-kabine-01.jpg" alt="Umkleide Architektur" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 01. EXTERIOR</div>
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 1: Umkleidekabine auf einer Wiese</div>
                     </div>
                     
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 relative rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <div className="absolute top-4 right-4 text-brand-orange opacity-20 text-6xl font-extrabold font-heading">0%</div>
-                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Zero Maintenance</h3>
+                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Wartungsfrei</h3>
                         <p className="text-brand-muted">
                             Keine Scharniere. Keine Schlösser. Keine Holzteile. Diese Kabine muss im Winter nicht abgebaut werden und verrottet nicht.
                         </p>
@@ -149,12 +149,12 @@ const ProductChangingCabinePage: React.FC = () => {
 
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/umkleide/umkleide-kabine-02.jpg" alt="Bodenplatte Detail" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 02. CLEAN SURFACE</div>
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 2: Kabine neben einem Spielplatz</div>
                     </div>
 
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                          <img src="/images/umkleide/umkleidekabine-freibad-03.jpg" alt="Schnecken-Kabine im Freibad" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 03. FREIBAD-INSTALLATION</div>
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 3: Aufstellung im Freibad</div>
                     </div>
                 </div>
             </div>
@@ -203,7 +203,7 @@ const ProductChangingCabinePage: React.FC = () => {
                 </div>
                 <div className="relative w-full aspect-[21/9] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
                     <img src="/images/umkleide/umkleide-panorama.jpg" alt="Schnecken-Kabinen im Freibad Panorama" loading="lazy" className="w-full h-full object-cover" />
-                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">FIG 04. PANORAMA: TYPISCHE AUFSTELLUNG</div>
+                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 4: Aufstellung auf gepflasterter Fläche</div>
                 </div>
             </div>
 
@@ -212,7 +212,7 @@ const ProductChangingCabinePage: React.FC = () => {
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     {/* INDUSTRIAL HEADER UPDATE */}
                     <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                        Tech<span className="text-brand-orange">Specs</span>
+                        Technische <span className="text-brand-orange">Daten</span>
                     </h2>
                     <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: UMKLEIDE</span>
                 </div>

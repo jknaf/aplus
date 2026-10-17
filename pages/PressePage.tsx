@@ -132,7 +132,7 @@ const PressePage: React.FC = () => {
     () => ({
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      name: 'Referenzen & Presse – A+ Urban Design',
+      name: 'Referenzen & Presse | A+ Urban Design',
       description:
         'Fachpublikationen über Skateparks, Pumptracks, Umkleidekabinen und Beton-Fertigteile von A+ Urban Design in kommunalen Fachmedien.',
       url: 'https://www.aplusurbandesign.com/referenzen-presse',

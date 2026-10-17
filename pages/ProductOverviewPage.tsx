@@ -19,7 +19,7 @@ const ProductOverviewPage: React.FC = () => {
               Unsere <span className="text-brand-orange">Produkte.</span>
             </h1>
             <p className="text-brand-muted mt-6 max-w-2xl mx-auto text-lg">
-              Modulare Betonfertigteile für den öffentlichen Raum – TÜV-zertifiziert, fundamentfrei und gebaut für die Ewigkeit.
+              Modulare Betonfertigteile für den öffentlichen Raum: TÜV-zertifiziert, fundamentfrei und gebaut für die Ewigkeit.
             </p>
           </div>
 

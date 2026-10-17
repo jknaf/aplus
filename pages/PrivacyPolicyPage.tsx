@@ -78,7 +78,7 @@ const PrivacyPolicyPage: React.FC = () => {
                 <div className="bg-brand-surface/60 p-6 rounded-lg border border-brand-dark/10">
                     <p className="font-bold text-brand-dark mb-2 uppercase text-sm tracking-wider">Verwendete Cookies</p>
                     <ul className="text-sm space-y-2">
-                        <li><strong>aplus-cookie-consent</strong> (technisch notwendig) — Speichert Ihre Cookie-Einstellung. Speicherdauer: 12 Monate. Lokal im Browser (kein Drittanbieter).</li>
+                        <li><strong>aplus-cookie-consent</strong> (technisch notwendig): Speichert Ihre Cookie-Einstellung. Speicherdauer: 12 Monate. Lokal im Browser (kein Drittanbieter).</li>
                     </ul>
                 </div>
             </div>

@@ -49,7 +49,7 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string; href?
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${title}: ${value} – ${linkLabel ?? 'Zertifikat in der TÜV-SÜD-Datenbank ansehen'}`}
+                aria-label={`${title}: ${value}, ${linkLabel ?? 'Zertifikat in der TÜV-SÜD-Datenbank ansehen'}`}
                 className={`${baseClass} block group hover:shadow-md`}
             >
                 {content}
@@ -85,7 +85,7 @@ const ProductPumptrackPage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Pumptrack-Hersteller — Beton-Pumptrack planen & bauen" description="Pumptrack-Hersteller A+ Urban Design: Beton-Pumptracks — dauerhaft, wartungsfrei und TÜV-zertifiziert. Modulares System, sofort befahrbar, europaweit realisiert." schema={productSchema}>
+    <PageShell title="Pumptrack-Hersteller: Beton-Pumptrack planen & bauen" description="Pumptrack-Hersteller A+ Urban Design: Beton-Pumptracks, dauerhaft, wartungsfrei und TÜV-zertifiziert. Modulares System, sofort befahrbar, europaweit realisiert." schema={productSchema}>
        
        {/* 1. IMMERSIVE HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
@@ -133,7 +133,7 @@ const ProductPumptrackPage: React.FC = () => {
                             Endloser <span className="text-brand-orange">Flow.</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            Als Pumptrack-Hersteller wissen wir: Ein Pumptrack ist mehr als nur eine Strecke – er ist ein System aus Wellen und Kurven für alle Altersgruppen. Die ca. 1,25 m breite Fahrbahn wird ohne Treten, nur durch Gewichtsverlagerung („Pumpen"), befahren.
+                            Als Pumptrack-Hersteller wissen wir: Ein Pumptrack ist mehr als nur eine Strecke. Er ist ein System aus Wellen und Kurven für alle Altersgruppen. Die ca. 1,25 m breite Fahrbahn wird ohne Treten, nur durch Gewichtsverlagerung („Pumpen"), befahren.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
                             Im Gegensatz zu Asphaltpisten bieten unsere Beton-Pumptrack-Elemente eine dauerhaft perfekte Geometrie. Drei Aufbauvarianten möglich: auf vorhandener befahrbarer Fläche mit Markierung der Trasse, auf neu erstellter Trassenfläche aus Beton oder Asphalt oder aufgestellt auf Fundamentplatten mit anbetonierter bzw. anasphaltierter Trasse. Elemente können angeböscht werden.

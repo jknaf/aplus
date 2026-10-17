@@ -117,11 +117,11 @@ const ContactPage: React.FC = () => {
                             </span>
 
                             <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tight mb-6">
-                                Ein Klick — und los geht&rsquo;s.
+                                Ein Klick, und los geht&rsquo;s.
                             </h2>
 
                             <p className="text-brand-muted leading-relaxed mb-8">
-                                Ihr E-Mail-Programm öffnet sich mit einer vorbereiteten Nachricht. Beschreiben Sie kurz Ihr Projekt und was Sie brauchen — wir melden uns innerhalb von 48 Stunden.
+                                Ihr E-Mail-Programm öffnet sich mit einer vorbereiteten Nachricht. Beschreiben Sie kurz Ihr Projekt und was Sie brauchen. Wir melden uns innerhalb von 48 Stunden.
                             </p>
 
                             <a

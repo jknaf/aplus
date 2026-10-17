@@ -84,7 +84,7 @@ const ProductSkateBowlsPage: React.FC = () => {
 
   return (
     <PageShell
-        title="Modulare Skate-Bowls aus Beton — Standard- und Open-Bowls"
+        title="Modulare Skate-Bowls aus Beton: Standard- und Open-Bowls"
         description="Skate-Bowls aus modularen Beton-Fertigteilen: geschlossene Standard-Bowls im Erdreich, offene Bowls oberirdisch. Tiefen 98 und 150 cm. TÜV-zertifiziert nach DIN EN 14974. Planung, Fertigung und Lieferung aus einer Hand."
         schema={productSchema}
     >
@@ -125,10 +125,10 @@ const ProductSkateBowlsPage: React.FC = () => {
                             In den 50er Jahren entdeckten kalifornische Surfer leere Swimmingpools als Skateflächen. Die charakteristischen geschwungenen Transitions, das Flat und das Copingrohr an der Oberkante sind bis heute die DNA jedes Skate-Bowls.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Mit unseren modularen Skate-Elementen aus bewehrtem Beton realisieren wir Skate-Bowls und Skate-Pools in beliebigen Größen und Formen — geschlossen im Erdreich oder offen oberirdisch. Die Skate-Bowls bestehen aus einer horizontalen Fläche an der unteren Seite (Flat), die seitlich von einer gekrümmten Fläche (Transition) begrenzt wird. Entlang der Transition und der oberen Plattform befindet sich ein Copingrohr. Tiefen: <strong className="text-brand-dark">98 cm und 150 cm</strong>.
+                            Mit unseren modularen Skate-Elementen aus bewehrtem Beton realisieren wir Skate-Bowls und Skate-Pools in beliebigen Größen und Formen, geschlossen im Erdreich oder offen oberirdisch. Die Skate-Bowls bestehen aus einer horizontalen Fläche an der unteren Seite (Flat), die seitlich von einer gekrümmten Fläche (Transition) begrenzt wird. Entlang der Transition und der oberen Plattform befindet sich ein Copingrohr. Tiefen: <strong className="text-brand-dark">98 cm und 150 cm</strong>.
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-8">
-                            2002 wurde der erste Bowl mit unseren modularen Skateelementen auf Gran Canaria gebaut. Unsere Skateelemente sind im Bereich von 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz — von Norwegen bis zu den Kanaren, von England bis zur Türkei.
+                            2002 wurde der erste Bowl mit unseren modularen Skateelementen auf Gran Canaria gebaut. Unsere Skateelemente sind im Bereich von 0 m bis über 1.000 m über dem Meeresspiegel im Einsatz, von Norwegen bis zu den Kanaren, von England bis zur Türkei.
                         </p>
 
                         <div className="flex flex-col gap-4">
@@ -142,7 +142,7 @@ const ProductSkateBowlsPage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-6">
                     <GalleryImage src="/images/skate-bowls/skate-bowl-02.jpg" alt="Skate-Bowl aus modularen Beton-Fertigteilen" label="ABB 01. MODULARER BOWL" />
-                    <GalleryImage src="/images/skate-bowls/skate-pool-03.jpg" alt="Skate-Pool im Erdreich — geschlossene Bauweise" label="ABB 02. POOL IM ERDREICH" />
+                    <GalleryImage src="/images/skate-bowls/skate-pool-03.jpg" alt="Skate-Pool im Erdreich, geschlossene Bauweise" label="ABB 02. POOL IM ERDREICH" />
                     <GalleryImage src="/images/skate-bowls/skate-bowl-pool-05.jpg" alt="S-Form Skate-Bowl aus Beton-Modulen" label="ABB 03. S-FORM BOWL" />
                 </div>
             </div>
@@ -163,10 +163,10 @@ const ProductSkateBowlsPage: React.FC = () => {
                         <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">Standard Bowl</span>
                         <h3 className="text-3xl font-bold font-heading text-brand-dark uppercase mt-2 mb-6">Geschlossen · im Erdreich</h3>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Der klassische Skate-Bowl: rundum geschlossen, eingegraben, Einstieg über die obere Plattform. Die Elemente werden auf gesonderte Fundamente gestellt und anbetoniert — so wird die Anlage dauerhaft mit dem Untergrund verbunden.
+                            Der klassische Skate-Bowl: rundum geschlossen, eingegraben, Einstieg über die obere Plattform. Die Elemente werden auf gesonderte Fundamente gestellt und anbetoniert. So wird die Anlage dauerhaft mit dem Untergrund verbunden.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Im Flat ist mindestens ein Gully Pflicht — wir empfehlen einen zweiten als Sicherheit. Größen und Formen sind frei wählbar: Kidney-Pools, Clover-Bowls, Kombi-Pools mit mehreren Tiefen.
+                            Im Flat ist mindestens ein Gully Pflicht, wir empfehlen einen zweiten als Sicherheit. Größen und Formen sind frei wählbar: Kidney-Pools, Clover-Bowls, Kombi-Pools mit mehreren Tiefen.
                         </p>
                         <ul className="text-sm text-brand-muted font-mono space-y-2 mt-6">
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Tiefen 98 und 150 cm</li>
@@ -180,15 +180,15 @@ const ProductSkateBowlsPage: React.FC = () => {
                         <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">Open Bowl</span>
                         <h3 className="text-3xl font-bold font-heading text-brand-dark uppercase mt-2 mb-6">Offen · oberirdisch</h3>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Der offene Bowl ist an mindestens einer Seite geöffnet — man fährt direkt aufs Flat. Damit funktioniert er wie ein klassischer Bowl und zugleich wie ein Street-Parcours-Element: Pumpen, Grinden, Transfer zurück ins Flat.
+                            Der offene Bowl ist an mindestens einer Seite geöffnet: Man fährt direkt aufs Flat. Damit funktioniert er wie ein klassischer Bowl und zugleich wie ein Street-Parcours-Element: Pumpen, Grinden, Transfer zurück ins Flat.
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-4">
-                            Oberirdische Bowls werden direkt auf die vorhandene Rollfläche gestellt — Übergangsbleche überbrücken den Radius zur Plattform. Kein Aushub, kein Fundament, keine Drainage nötig.
+                            Oberirdische Bowls werden direkt auf die vorhandene Rollfläche gestellt, Übergangsbleche überbrücken den Radius zur Plattform. Kein Aushub, kein Fundament, keine Drainage nötig.
                         </p>
                         <ul className="text-sm text-brand-muted font-mono space-y-2 mt-6">
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Direkt auf Bestandsfläche oder Asphalt</li>
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ab 1,00 m Höhe Tables + Absturzsicherung</li>
-                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ohne Fundamentaushub — fundamentfrei</li>
+                            <li className="flex gap-2"><span className="text-brand-orange">▸</span> Ohne Fundamentaushub, fundamentfrei</li>
                             <li className="flex gap-2"><span className="text-brand-orange">▸</span> Versetzbar, erweiterbar, abbaubar</li>
                         </ul>
                     </div>
@@ -215,7 +215,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-12">
                     <div>
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            Als Kunde haben Sie eine <strong className="text-brand-dark">bessere Kontrolle der Qualität</strong> als bei Ortbeton: Betonstärken, Bewehrung, Fugen sind im Werk unter kontrollierten Bedingungen gefertigt. Die Ausführung ist schneller, fast wetterunabhängig — und meistens auch noch günstiger.
+                            Als Kunde haben Sie eine <strong className="text-brand-dark">bessere Kontrolle der Qualität</strong> als bei Ortbeton: Betonstärken, Bewehrung, Fugen sind im Werk unter kontrollierten Bedingungen gefertigt. Die Ausführung ist schneller, fast wetterunabhängig und meistens auch noch günstiger.
                         </p>
                         <p className="text-brand-muted leading-relaxed">
                             Wichtig ist aber eine gute Vorplanung der Anlage. <strong className="text-brand-dark">Bitte nehmen Sie vor Beginn der Planung mit uns Kontakt auf.</strong>

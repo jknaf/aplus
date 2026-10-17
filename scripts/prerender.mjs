@@ -1,5 +1,5 @@
 /**
- * A+ Urban Design — Puppeteer Prerender Script
+ * A+ Urban Design: Puppeteer Prerender Script
  *
  * Rendert die gebaute SPA (dist/) einmal pro Route in einem Headless-Chromium
  * und speichert das fertige HTML als statische Datei, damit Googlebot den
@@ -95,7 +95,7 @@ const gitLastmodFor = (route, fallbackIso) => {
     // Auf Datum kürzen (YYYY-MM-DD), reicht für Google und bleibt stabil bei Branch-Wechsel
     if (out) return out.slice(0, 10);
   } catch {
-    // Git nicht verfügbar oder keine Commits — Fallback
+    // Git nicht verfügbar oder keine Commits, Fallback
   }
   return fallbackIso.slice(0, 10);
 };
@@ -247,7 +247,7 @@ const main = async () => {
           if (abs) result.push(abs);
         });
         // Auf Produktionsdomain umschreiben (Puppeteer rendert via localhost:PORT) + dedupen.
-        // Logo/Icon gehören nicht in die Image-Sitemap — sie stecken ohnehin in jedem <header> und
+        // Logo/Icon gehören nicht in die Image-Sitemap, sie stecken ohnehin in jedem <header> und
         // verdrängen echte Content-Bilder aus dem 10er-Limit pro URL.
         const skipPaths = [
           '/aplus-logo.svg',
@@ -268,7 +268,7 @@ const main = async () => {
       console.log(`  ✓ ${route.padEnd(50)} → dist/${rel}  (${pageImages.length} Bilder)`);
       ok++;
     } catch (err) {
-      console.error(`  ✗ ${route} — ${err.message}`);
+      console.error(`  ✗ ${route}: ${err.message}`);
       errors.push({ route, message: err.message });
     } finally {
       await page.close();
@@ -281,7 +281,7 @@ const main = async () => {
   // Template-Backup wegräumen
   await unlink(join(DIST_DIR, TEMPLATE_FILE)).catch(() => {});
 
-  // Sitemap — lastmod pro Route aus git log, Image-Sitemap pro Route aus gerendertem HTML
+  // Sitemap: lastmod pro Route aus git log, Image-Sitemap pro Route aus gerendertem HTML
   const todayIso = new Date().toISOString();
   const sitemap = buildSitemap(routeData, todayIso);
   await writeFile(join(DIST_DIR, 'sitemap.xml'), sitemap, 'utf8');

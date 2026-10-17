@@ -1,5 +1,5 @@
 /* =============================================================
-   Montageanleitung Grillplatz — Page-spezifische Styles
+   Montageanleitung Grillplatz: Page-spezifische Styles
    Scope-isoliert unter `.assembly-page`, damit die bestehende
    Site (Header, Footer, Routen) nicht betroffen ist.
    Farben & Fonts kommen aus dem globalen Theme; zusätzliche

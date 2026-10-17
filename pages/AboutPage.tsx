@@ -68,7 +68,7 @@ const AboutPage: React.FC = () => {
   }, []);
 
   return (
-    <PageShell title="Über A+ Urban Design — Skatepark-Hersteller seit 1998" description="Skatepark-Hersteller mit über 25 Jahren Erfahrung: TÜV-zertifizierte Beton-Skateparks und urbane Anlagen. Ihr Ansprechpartner: Dipl.-Ing. Cüneyit Akcakoca, Stuttgart.">
+    <PageShell title="Über A+ Urban Design: Skatepark-Hersteller seit 1998" description="Skatepark-Hersteller mit über 25 Jahren Erfahrung: TÜV-zertifizierte Beton-Skateparks und urbane Anlagen. Ihr Ansprechpartner: Dipl.-Ing. Cüneyit Akcakoca, Stuttgart.">
       
       {/* 1. CINEMATIC HERO - UNIFIED STYLE */}
       <div className="relative w-full h-[80vh] -mt-16 mb-32 flex items-center justify-center overflow-hidden">
@@ -90,14 +90,14 @@ const AboutPage: React.FC = () => {
                 <span className="text-brand-orange">Bestform</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/95 font-light max-w-2xl mx-auto animate-fade-in-up [animation-delay:400ms]">
-                Skatepark-Hersteller und Planungsbüro aus Stuttgart — wir verwandeln graue Flächen in lebendige Begegnungsorte.
+                Skatepark-Hersteller und Planungsbüro aus Stuttgart. Wir verwandeln graue Flächen in lebendige Begegnungsorte.
                 {/* Roland §2.1: 30-Jahre-Jubiläums-Claim noch klären */}
                 <span className="text-white font-bold"> Präzise. Modular. Vandalismussicher. Für die Ewigkeit.</span>
             </p>
         </div>
       </div>
 
-      {/* 2. STATS GRID — Zahlen nach Rolands Screenshot-Anmerkungen */}
+      {/* 2. STATS GRID: Zahlen nach Rolands Screenshot-Anmerkungen */}
       <div className="container mx-auto px-4 mb-32">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
               <StatCounter end={350} suffix="+" label="Realisierte Skate-Anlagen" />
@@ -117,7 +117,7 @@ const AboutPage: React.FC = () => {
                   Geprüfte <span className="text-brand-orange">Skate-Elemente.</span>
               </h2>
               <p className="text-lg text-brand-muted leading-relaxed">
-                  Unsere ersten modularen Skate-Elemente wurden 1998 hergestellt. Im Jahr 2000 haben unsere modularen Skate-Elemente aus Beton das TÜV-Zertifikat und das GS-Zeichen für geprüfte Sicherheit erhalten. Aktuell sind unsere modularen Skate-Elemente aus Beton nach DIN EN 14974 („Skateparks — Sicherheitstechnische Anforderungen und Prüfverfahren“), nach PPP 63126B und anderen Normen geprüft und zertifiziert mit der Zertifikats-Nummer Z1A 056616 0012. Damit waren wir weltweit vermutlich die ersten Hersteller modularer Beton-Skate-Elemente mit TÜV-Siegel. Über 27 Fachartikel in einschlägigen Publikationen dokumentieren die über 350 Skate-Anlagen, bei denen unser modulares Skateelemente-System verwendet wurde.
+                  Unsere ersten modularen Skate-Elemente wurden 1998 hergestellt. Im Jahr 2000 haben unsere modularen Skate-Elemente aus Beton das TÜV-Zertifikat und das GS-Zeichen für geprüfte Sicherheit erhalten. Aktuell sind unsere modularen Skate-Elemente aus Beton nach DIN EN 14974 („Skateparks: Sicherheitstechnische Anforderungen und Prüfverfahren“), nach PPP 63126B und anderen Normen geprüft und zertifiziert mit der Zertifikats-Nummer Z1A 056616 0012. Damit waren wir weltweit vermutlich die ersten Hersteller modularer Beton-Skate-Elemente mit TÜV-Siegel. Über 27 Fachartikel in einschlägigen Publikationen dokumentieren die über 350 Skate-Anlagen, bei denen unser modulares Skateelemente-System verwendet wurde.
               </p>
           </div>
       </div>
@@ -165,14 +165,14 @@ const AboutPage: React.FC = () => {
               </div>
           </div>
 
-          {/* MONTAGE PROZESS — alle 4 Bilder */}
+          {/* MONTAGE PROZESS: alle 4 Bilder */}
           <div className="mb-8">
               <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Montage-Prozess</span>
               <h3 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
                   Vom LKW zum fertigen <span className="text-brand-orange">Park.</span>
               </h3>
               <p className="text-brand-muted max-w-2xl mb-8">
-                  Die Montage unserer Skate-Elemente erfolgt direkt auf einer betonierten oder asphaltierten Rollfläche mit Übergangsblechen — oder auf einer Fundamentplatte zum Anbetonieren. Wir stellen eine Montage- und Wartungsanleitung zur Verfügung.
+                  Die Montage unserer Skate-Elemente erfolgt direkt auf einer betonierten oder asphaltierten Rollfläche mit Übergangsblechen oder auf einer Fundamentplatte zum Anbetonieren. Wir stellen eine Montage- und Wartungsanleitung zur Verfügung.
               </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -224,12 +224,12 @@ const AboutPage: React.FC = () => {
                   <PrincipleCard
                       number="01"
                       title="Planung"
-                      desc="Individuelle 3D-Planung, bauliche Anpassung und Absteckung — inkl. ansatzfreiem Fundamentschutz und Abtrag Bewehrung (nur für Skate-Anlagen). Wir integrieren die Anlagen nahtlos in Ihre Umgebung."
+                      desc="Individuelle 3D-Planung, bauliche Anpassung und Absteckung, inkl. ansatzfreiem Fundamentschutz und Abtrag Bewehrung (nur für Skate-Anlagen). Wir integrieren die Anlagen nahtlos in Ihre Umgebung."
                   />
                   <PrincipleCard
                       number="02"
                       title="Fertigung"
-                      desc="C35/45 Stahlbeton aus kontrollierter Werksumgebung. Hohe Qualitätskontrolle bei Betonstärken, Bewehrung und Fugen — wetterunabhängig. TÜV-Überprüfung der Fertigungsstätte."
+                      desc="C35/45 Stahlbeton aus kontrollierter Werksumgebung. Hohe Qualitätskontrolle bei Betonstärken, Bewehrung und Fugen, wetterunabhängig. TÜV-Überprüfung der Fertigungsstätte."
                   />
                   <PrincipleCard
                       number="03"
@@ -256,7 +256,7 @@ const AboutPage: React.FC = () => {
                         <h3 className="text-4xl font-extrabold font-heading text-brand-dark uppercase mb-2 tracking-tight">Dipl.-Ing. Cüneyit Akcakoca</h3>
                         <p className="text-brand-orange font-bold mb-6 text-lg">Architekt · A+ Urban Design</p>
                         <p className="text-brand-muted leading-relaxed text-lg max-w-lg">
-                            "Architektur endet nicht an der Gebäudekante. Der Raum dazwischen – dort, wo das Leben stattfindet – verdient dieselbe Qualität und Aufmerksamkeit."
+                            "Architektur endet nicht an der Gebäudekante. Der Raum dazwischen, dort, wo das Leben stattfindet, verdient dieselbe Qualität und Aufmerksamkeit."
                         </p>
                         <p className="text-brand-muted leading-relaxed text-lg max-w-lg mt-6">
                             Das Unternehmen hat bis heute über 350 Skate-Anlagen europaweit realisiert: von den Kanaren bis Norwegen und von Großbritannien bis zur Türkei. Entwickelt, gefertigt und logistisch gesteuert wird alles seit 2025 aus Stuttgart.

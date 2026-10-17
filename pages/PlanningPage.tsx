@@ -77,7 +77,7 @@ const PlanningPage: React.FC = () => {
         "name": "Ist die Planung im Produktpreis enthalten?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ja. Die individuelle Planung mit Draufsicht, 3D-Zeichnung und Kostenübersicht ist im Produktpreis enthalten — keine zusätzlichen Architektenkosten."
+          "text": "Ja. Die individuelle Planung mit Draufsicht, 3D-Zeichnung und Kostenübersicht ist im Produktpreis enthalten. Keine zusätzlichen Architektenkosten."
         }
       },
       {
@@ -108,7 +108,7 @@ const PlanningPage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Skatepark planen lassen — Planung & Beratung inklusive" description="Skatepark planen und bauen lassen: Individuelle Planung für Beton-Skateparks, Pumptracks und urbane Anlagen — von der Entwurfsidee über TÜV-konforme Ausarbeitung bis zur schlüsselfertigen Realisierung." schema={faqSchema}>
+    <PageShell title="Skatepark planen lassen: Planung & Beratung inklusive" description="Skatepark planen und bauen lassen: Individuelle Planung für Beton-Skateparks, Pumptracks und urbane Anlagen, von der Entwurfsidee über TÜV-konforme Ausarbeitung bis zur schlüsselfertigen Realisierung." schema={faqSchema}>
         
         {/* 1. HERO SECTION */}
         <div className="relative w-full h-[80vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
@@ -135,7 +135,7 @@ const PlanningPage: React.FC = () => {
                         <span className="text-brand-orange">Planung</span>
                     </h1>
                     <p className="text-xl text-white/90 max-w-2xl border-l-4 border-brand-orange pl-6 leading-relaxed">
-                        Sie möchten einen Skatepark planen? Mehr als nur Beton — individuelle Skatepark-Planung von Skate-Anlagen, Skate-Bowls und Pump-Tracks mit unseren Produkten. Bei uns kaufen Sie kein Produkt von der Stange, sondern eine Architektenleistung maßgeschneidert auf Ihren Standort.
+                        Sie möchten einen Skatepark planen? Mehr als nur Beton: individuelle Skatepark-Planung von Skate-Anlagen, Skate-Bowls und Pump-Tracks mit unseren Produkten. Bei uns kaufen Sie kein Produkt von der Stange, sondern eine Architektenleistung maßgeschneidert auf Ihren Standort.
                     </p>
                 </div>
             </div>
@@ -167,7 +167,7 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange mt-1">compare</span>
                                 <div>
                                     <strong className="text-brand-dark block uppercase text-sm tracking-wide mb-1">Modulbau statt Ortbeton</strong>
-                                    Bessere Qualitätskontrolle (Betonstärken, Bewehrung, Fugen), schnellere Ausführung, nahezu wetterunabhängig — und meistens günstiger.
+                                    Bessere Qualitätskontrolle (Betonstärken, Bewehrung, Fugen), schnellere Ausführung, nahezu wetterunabhängig und meistens günstiger.
                                 </div>
                             </li>
                             <li className="flex items-start gap-4">
@@ -194,7 +194,7 @@ const PlanningPage: React.FC = () => {
             </div>
         </div>
 
-        {/* 3. PLANUNGSBEISPIELE — alle 4 Zeichnungen */}
+        {/* 3. PLANUNGSBEISPIELE: alle 4 Zeichnungen */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 relative z-20">
             <div className="mb-12">
                 <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Planungsbeispiele</span>
@@ -202,18 +202,18 @@ const PlanningPage: React.FC = () => {
                     So planen wir <span className="text-brand-orange">Ihren Skatepark.</span>
                 </h2>
                 <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                    Sie nennen uns die verfügbare Fläche und das Budget — wir erstellen einen individuellen Entwurf mit Draufsicht, 3D-Zeichnung und Kostenübersicht. Bei besonderen Wünschen senden Sie uns einfach eine Skizze als Vorlage.
+                    Sie nennen uns die verfügbare Fläche und das Budget. Wir erstellen einen individuellen Entwurf mit Draufsicht, 3D-Zeichnung und Kostenübersicht. Bei besonderen Wünschen senden Sie uns einfach eine Skizze als Vorlage.
                 </p>
             </div>
 
-            {/* Roland: Bildunterschriften + Entwurf/Umsetzung-Paarung pro Bild noch klären — Dateinamen unterscheiden das nicht */}
+            {/* Roland: Bildunterschriften + Entwurf/Umsetzung-Paarung pro Bild noch klären, Dateinamen unterscheiden das nicht */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                    <img src="/images/planung/skate-anlage-planung-01.jpg" alt="Skatepark-Planung — Beispiel 1" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img src="/images/planung/skate-anlage-planung-01.jpg" alt="Skatepark-Planung, Beispiel 1" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">PLANUNG 01</div>
                 </div>
                 <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                    <img src="/images/planung/skateanlage-planung-02.jpg" alt="Skatepark-Planung — Beispiel 2" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img src="/images/planung/skateanlage-planung-02.jpg" alt="Skatepark-Planung, Beispiel 2" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">PLANUNG 02</div>
                 </div>
                 <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
@@ -225,7 +225,7 @@ const PlanningPage: React.FC = () => {
             </div>
 
             <div className="bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-muted">
-                <strong className="text-brand-dark">Hinweis zur Montage:</strong> Für bestehende Flächen werden die Module mit Übergangsblechen aufgestellt — bei neuen Flächen können Module ohne Übergangsbleche zum Anbetonieren verwendet werden.
+                <strong className="text-brand-dark">Hinweis zur Montage:</strong> Für bestehende Flächen werden die Module mit Übergangsblechen aufgestellt. Bei neuen Flächen können Module ohne Übergangsbleche zum Anbetonieren verwendet werden.
             </div>
         </div>
 
@@ -235,20 +235,20 @@ const PlanningPage: React.FC = () => {
                 <div className="text-center mb-16">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Workflow</span>
                     <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
-                        Der Weg zum <span className="text-brand-orange">Skatepark</span> — in drei Schritten.
+                        Der Weg zum <span className="text-brand-orange">Skatepark</span> in drei Schritten.
                     </h2>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-                    <ProcessStep number="01" title="Analyse & Skizze" desc="Wir prüfen Ihren Standort (digital oder vor Ort) und erstellen erste Layout-Ideen basierend auf Budget und Zielgruppe. Bitte nehmen Sie vor Beginn der Planung Kontakt mit uns auf — nur so können wir Sie zielgerichtet beraten." />
+                    <ProcessStep number="01" title="Analyse & Skizze" desc="Wir prüfen Ihren Standort (digital oder vor Ort) und erstellen erste Layout-Ideen basierend auf Budget und Zielgruppe. Bitte nehmen Sie vor Beginn der Planung Kontakt mit uns auf. Nur so können wir Sie zielgerichtet beraten." />
                     {/* Roland §4.5: Wortlaut für 3D-Phase präzisieren (Skizze + 3D + Geländer) noch klären */}
                     <ProcessStep number="02" title="3D Visualisierung" desc="Sie erhalten eine Draufsicht und 3D-Zeichnung der vorgeschlagenen Anlage sowie ein Angebot mit den Kosten der eingeplanten Elemente." />
-                    <ProcessStep number="03" title="Ausführung" desc="Nach Freigabe erstellen wir die exakten Werkpläne. Die Module werden im Werk gefertigt — nicht gleich geliefert, sondern zu einem geplanten Liefertermin. Sie erhalten den geplanten Termin rechtzeitig von uns." />
+                    <ProcessStep number="03" title="Ausführung" desc="Nach Freigabe erstellen wir die exakten Werkpläne. Die Module werden im Werk gefertigt, nicht gleich geliefert, sondern zu einem geplanten Liefertermin. Sie erhalten den geplanten Termin rechtzeitig von uns." />
                 </div>
             </div>
         </div>
 
-        {/* 5. BAU & UMSETZUNG — Inhalte aus skateanlage-bauen */}
+        {/* 5. BAU & UMSETZUNG: Inhalte aus skateanlage-bauen */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 relative z-20">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -261,10 +261,10 @@ const PlanningPage: React.FC = () => {
                     <p className="text-sm font-mono text-brand-muted uppercase tracking-widest mb-8">Mit regelmäßiger TÜV-Überprüfung der Fertigungsstätte</p>
                     <div className="space-y-6 text-lg text-brand-muted leading-relaxed">
                         <p>
-                            Der Bau eines Skateparks mit modularen Beton-Fertigteilen ist <strong className="text-brand-dark">schneller, einfacher und witterungsunabhängiger</strong> als eine vor Ort gegossene Ortbeton-Konstruktion. Unsere TÜV-zertifizierten Module werden im Werk unter kontrollierten Bedingungen produziert — mit konstanter Qualität und ohne Wetterrisiko.
+                            Der Bau eines Skateparks mit modularen Beton-Fertigteilen ist <strong className="text-brand-dark">schneller, einfacher und witterungsunabhängiger</strong> als eine vor Ort gegossene Ortbeton-Konstruktion. Unsere TÜV-zertifizierten Module werden im Werk unter kontrollierten Bedingungen produziert, mit konstanter Qualität und ohne Wetterrisiko.
                         </p>
                         <p>
-                            Für die Aufstellung wird lediglich ein <strong className="text-brand-dark">fester Unterbau</strong> benötigt. Die Elemente lassen sich auf bestehende Setzbeton- oder Asphaltflächen montieren — oder auf Fundamentplatten oder Schotterbett.
+                            Für die Aufstellung wird lediglich ein <strong className="text-brand-dark">fester Unterbau</strong> benötigt. Die Elemente lassen sich auf bestehende Setzbeton- oder Asphaltflächen montieren oder auf Fundamentplatten oder Schotterbett.
                         </p>
                         <p>
                             {/* Roland §4.10: "Verfügungssystem" vs. "Verfugungssystem" oder "Montagesystem" noch klären */}
@@ -281,7 +281,7 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange">layers</span>
                             </div>
                             <div>
-                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 1 — Befestigte Fläche</h3>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 1: Befestigte Fläche</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
                                     Aufstellung auf einer bestehenden, befestigten Fläche (Beton oder Asphalt). Die Module werden montiert und die Strecke markiert. Der Belag bleibt unbeschädigt (Quelle: pump-tracks.md und skate-anlagen.md).
                                 </p>
@@ -296,7 +296,7 @@ const PlanningPage: React.FC = () => {
                             </div>
                             <div>
                                 {/* Roland §4.13: präziser Wortlaut 'sehr liegende Fundamentplatte / einrahmendes Fugensystem' noch klären */}
-                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 2 — Neue Fundamentplatte</h3>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 2: Neue Fundamentplatte</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
                                     Auf einer gesondert hergestellten Strecke werden die Elemente zuerst auf Fundamentplatten aufgestellt und anschließend anbetoniert oder anasphaltiert (Quelle: pump-tracks.md).
                                 </p>
@@ -310,9 +310,9 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange">tune</span>
                             </div>
                             <div>
-                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 3 — Schotterbett</h3>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 3: Schotterbett</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
-                                    Start-Rampen und Pipes auf verdichtetem Schotterbett außerhalb der Fläche — auch für Grill-Plätze und Umkleidekabinen. Gehwegplatten unter den Arretierungsfüßen. So aufgebaut, dass einfacher Abbau jederzeit möglich ist (Roland §4.14).
+                                    Start-Rampen und Pipes auf verdichtetem Schotterbett außerhalb der Fläche, auch für Grill-Plätze und Umkleidekabinen. Gehwegplatten unter den Arretierungsfüßen. So aufgebaut, dass einfacher Abbau jederzeit möglich ist (Roland §4.14).
                                 </p>
                             </div>
                         </div>
@@ -324,9 +324,9 @@ const PlanningPage: React.FC = () => {
                                 <span className="material-symbols-outlined text-brand-orange">landscape</span>
                             </div>
                             <div>
-                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 4 — Erdeinbau & Anböschung</h3>
+                                <h3 className="font-bold font-heading text-brand-dark uppercase mb-2">Variante 4: Erdeinbau & Anböschung</h3>
                                 <p className="text-sm text-brand-muted leading-relaxed">
-                                    Skate-Elemente sind für Erdeinbau und Erdmodellierungen geeignet (Quelle: skate-anlagen.md). Durch Böschungen und Geländeintegration fügen sich die Anlagen harmonisch ein — in Friedrichsdorf wurden Teile der Anlage angeböscht, in Altdorf der Serpent eingebaut und begrünt (Quellen: kommunaldirekt.de, freiraum-gestalten.info).
+                                    Skate-Elemente sind für Erdeinbau und Erdmodellierungen geeignet (Quelle: skate-anlagen.md). Durch Böschungen und Geländeintegration fügen sich die Anlagen harmonisch ein. In Friedrichsdorf wurden Teile der Anlage angeböscht, in Altdorf der Serpent eingebaut und begrünt (Quellen: kommunaldirekt.de, freiraum-gestalten.info).
                                 </p>
                             </div>
                         </div>

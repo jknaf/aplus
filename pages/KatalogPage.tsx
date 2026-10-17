@@ -13,6 +13,7 @@ interface Element {
   slug: string; name: string; gruppe: string; element: string; kuerzel: string;
   preisliste_code: string; preisliste_produkt: string; preisliste_masse_cm: string;
   modell_masse_cm: { laenge: number; breite: number; hoehe: number };
+  kamera?: { ziel: [number, number, number]; abstand: number };
   gdl_standard_m: Record<string, number>; gdl_parameter: Parameter[];
   materialien: string[]; makros: string[]; gsm_datei: string; gsm_version: string; gsm_datum: string;
   modell: string; bild: string;
@@ -130,7 +131,7 @@ const Detail: React.FC<{
           <span className="material-symbols-outlined">close</span>
         </button>
         <div className="relative aspect-square md:aspect-auto md:min-h-[560px] bg-[radial-gradient(ellipse_at_50%_40%,#ffffff_0%,#E5E3DC_75%)]">
-          <ModellAnsicht key={e.slug} src={e.modell} poster={e.bild} alt={`3D-Modell ${e.name}`} />
+          <ModellAnsicht key={e.slug} src={e.modell} poster={e.bild} kamera={e.kamera} alt={`3D-Modell ${e.name}`} />
           <div className="absolute bottom-4 left-4 flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-brand-muted pointer-events-none">
             <span className="material-symbols-outlined text-base">3d_rotation</span> Ziehen zum Drehen · Scrollen zum Zoomen
           </div>

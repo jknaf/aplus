@@ -37,7 +37,7 @@
   {
    "alphaMode": "BLEND",
    "doubleSided": false,
-   "name": "Schatten.086",
+   "name": "Schatten.079",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 0
@@ -51,7 +51,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Beton_web.104",
+   "name": "Beton_web.086",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 1,
@@ -66,7 +66,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Kantenwinkel_web.056",
+   "name": "Kantenwinkel_web.054",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 2,

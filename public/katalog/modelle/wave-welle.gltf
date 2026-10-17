@@ -37,7 +37,7 @@
   {
    "alphaMode": "BLEND",
    "doubleSided": false,
-   "name": "Schatten.044",
+   "name": "Schatten.009",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 0
@@ -51,7 +51,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Beton_web.046",
+   "name": "Beton_web.011",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 1,
@@ -66,7 +66,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Stahl_web.036",
+   "name": "Stahl_web.009",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 2,
@@ -81,7 +81,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Kantenwinkel_web.020",
+   "name": "Kantenwinkel_web.009",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 3,
@@ -254,7 +254,7 @@
   {
    "bufferView": 9,
    "componentType": 5126,
-   "count": 72,
+   "count": 48,
    "max": [
     1.2803174257278442,
     0.06537549942731857,
@@ -262,7 +262,7 @@
    ],
    "min": [
     -1.2803106307983398,
-    1.7063219274859875e-05,
+    0.0039901649579405785,
     -0.6248511075973511
    ],
    "type": "VEC3"
@@ -270,25 +270,25 @@
   {
    "bufferView": 10,
    "componentType": 5126,
-   "count": 72,
+   "count": 48,
    "type": "VEC3"
   },
   {
    "bufferView": 11,
    "componentType": 5126,
-   "count": 72,
+   "count": 48,
    "type": "VEC2"
   },
   {
    "bufferView": 12,
    "componentType": 5126,
-   "count": 72,
+   "count": 48,
    "type": "VEC2"
   },
   {
    "bufferView": 13,
    "componentType": 5123,
-   "count": 72,
+   "count": 48,
    "type": "SCALAR"
   },
   {
@@ -389,62 +389,62 @@
   },
   {
    "buffer": 0,
-   "byteLength": 864,
+   "byteLength": 576,
    "byteOffset": 40712,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 864,
-   "byteOffset": 41576,
-   "target": 34962
-  },
-  {
-   "buffer": 0,
    "byteLength": 576,
-   "byteOffset": 42440,
+   "byteOffset": 41288,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 576,
-   "byteOffset": 43016,
+   "byteLength": 384,
+   "byteOffset": 41864,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 144,
-   "byteOffset": 43592,
+   "byteLength": 384,
+   "byteOffset": 42248,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 96,
+   "byteOffset": 42632,
    "target": 34963
   },
   {
    "buffer": 0,
    "byteLength": 3456,
-   "byteOffset": 43736,
+   "byteOffset": 42728,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 3456,
-   "byteOffset": 47192,
+   "byteOffset": 46184,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 2304,
-   "byteOffset": 50648,
+   "byteOffset": 49640,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 2304,
-   "byteOffset": 52952,
+   "byteOffset": 51944,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 576,
-   "byteOffset": 55256,
+   "byteOffset": 54248,
    "target": 34963
   }
  ],
@@ -456,7 +456,7 @@
  ],
  "buffers": [
   {
-   "byteLength": 55832,
+   "byteLength": 54824,
    "uri": "wave-welle.bin"
   }
  ],

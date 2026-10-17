@@ -37,7 +37,7 @@
   {
    "alphaMode": "BLEND",
    "doubleSided": false,
-   "name": "Schatten.040",
+   "name": "Schatten.006",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 0
@@ -51,7 +51,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Beton_web.046",
+   "name": "Beton_web.008",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 1,
@@ -66,7 +66,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Stahl_web.032",
+   "name": "Stahl_web.006",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 2,
@@ -81,7 +81,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Kantenwinkel_web.031",
+   "name": "Kantenwinkel_web.006",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 3,
@@ -254,15 +254,15 @@
   {
    "bufferView": 9,
    "componentType": 5126,
-   "count": 36,
+   "count": 24,
    "max": [
     0.7979931831359863,
     0.06389018893241882,
     1.2499274015426636
    ],
    "min": [
-    0.4598623812198639,
-    2.5386591460119234e-06,
+    0.4607931971549988,
+    0.003975518047809601,
     -1.2499982118606567
    ],
    "type": "VEC3"
@@ -270,25 +270,25 @@
   {
    "bufferView": 10,
    "componentType": 5126,
-   "count": 36,
+   "count": 24,
    "type": "VEC3"
   },
   {
    "bufferView": 11,
    "componentType": 5126,
-   "count": 36,
+   "count": 24,
    "type": "VEC2"
   },
   {
    "bufferView": 12,
    "componentType": 5126,
-   "count": 36,
+   "count": 24,
    "type": "VEC2"
   },
   {
    "bufferView": 13,
    "componentType": 5123,
-   "count": 36,
+   "count": 24,
    "type": "SCALAR"
   },
   {
@@ -389,62 +389,62 @@
   },
   {
    "buffer": 0,
-   "byteLength": 432,
+   "byteLength": 288,
    "byteOffset": 41596,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 432,
-   "byteOffset": 42028,
-   "target": 34962
-  },
-  {
-   "buffer": 0,
    "byteLength": 288,
-   "byteOffset": 42460,
+   "byteOffset": 41884,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 288,
-   "byteOffset": 42748,
+   "byteLength": 192,
+   "byteOffset": 42172,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 72,
-   "byteOffset": 43036,
+   "byteLength": 192,
+   "byteOffset": 42364,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 42556,
    "target": 34963
   },
   {
    "buffer": 0,
    "byteLength": 3744,
-   "byteOffset": 43108,
+   "byteOffset": 42604,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 3744,
-   "byteOffset": 46852,
+   "byteOffset": 46348,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 2496,
-   "byteOffset": 50596,
+   "byteOffset": 50092,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 2496,
-   "byteOffset": 53092,
+   "byteOffset": 52588,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 624,
-   "byteOffset": 55588,
+   "byteOffset": 55084,
    "target": 34963
   }
  ],
@@ -456,7 +456,7 @@
  ],
  "buffers": [
   {
-   "byteLength": 56212,
+   "byteLength": 55708,
    "uri": "cross-ramp-98l.bin"
   }
  ],

@@ -37,7 +37,7 @@
   {
    "alphaMode": "BLEND",
    "doubleSided": false,
-   "name": "Schatten.032",
+   "name": "Schatten.002",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 0
@@ -51,7 +51,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Beton_web.034",
+   "name": "Beton_web.002",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 1,
@@ -66,7 +66,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Stahl_web.028",
+   "name": "Stahl_web.002",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 2,
@@ -81,7 +81,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Kantenwinkel_web.023",
+   "name": "Kantenwinkel_web.002",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 3,
@@ -254,7 +254,7 @@
   {
    "bufferView": 9,
    "componentType": 5126,
-   "count": 3288,
+   "count": 3216,
    "max": [
     0.8583984971046448,
     0.9778000116348267,
@@ -270,25 +270,25 @@
   {
    "bufferView": 10,
    "componentType": 5126,
-   "count": 3288,
+   "count": 3216,
    "type": "VEC3"
   },
   {
    "bufferView": 11,
    "componentType": 5126,
-   "count": 3288,
+   "count": 3216,
    "type": "VEC2"
   },
   {
    "bufferView": 12,
    "componentType": 5126,
-   "count": 3288,
+   "count": 3216,
    "type": "VEC2"
   },
   {
    "bufferView": 13,
    "componentType": 5123,
-   "count": 3288,
+   "count": 3216,
    "type": "SCALAR"
   },
   {
@@ -389,62 +389,62 @@
   },
   {
    "buffer": 0,
-   "byteLength": 39456,
+   "byteLength": 38592,
    "byteOffset": 76748,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 39456,
-   "byteOffset": 116204,
+   "byteLength": 38592,
+   "byteOffset": 115340,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 26304,
-   "byteOffset": 155660,
+   "byteLength": 25728,
+   "byteOffset": 153932,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 26304,
-   "byteOffset": 181964,
+   "byteLength": 25728,
+   "byteOffset": 179660,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 6576,
-   "byteOffset": 208268,
+   "byteLength": 6432,
+   "byteOffset": 205388,
    "target": 34963
   },
   {
    "buffer": 0,
    "byteLength": 2592,
-   "byteOffset": 214844,
+   "byteOffset": 211820,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 2592,
-   "byteOffset": 217436,
+   "byteOffset": 214412,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 1728,
-   "byteOffset": 220028,
+   "byteOffset": 217004,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 1728,
-   "byteOffset": 221756,
+   "byteOffset": 218732,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 432,
-   "byteOffset": 223484,
+   "byteOffset": 220460,
    "target": 34963
   }
  ],
@@ -456,7 +456,7 @@
  ],
  "buffers": [
   {
-   "byteLength": 223916,
+   "byteLength": 220892,
    "uri": "corner-98.bin"
   }
  ],

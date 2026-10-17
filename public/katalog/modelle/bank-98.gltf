@@ -37,7 +37,7 @@
   {
    "alphaMode": "BLEND",
    "doubleSided": false,
-   "name": "Schatten.025",
+   "name": "Schatten.001",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 0
@@ -51,7 +51,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Beton_web.027",
+   "name": "Beton_web.001",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 1,
@@ -66,7 +66,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Stahl_web.021",
+   "name": "Stahl_web.001",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 2,
@@ -81,7 +81,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Kantenwinkel_web.016",
+   "name": "Kantenwinkel_web.001",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 3,
@@ -184,7 +184,7 @@
    "max": [
     1.1117498874664307,
     0.0020000000949949026,
-    0.7347411513328552
+    0.7268407344818115
    ],
    "min": [
     -1.0687721967697144,
@@ -254,7 +254,7 @@
   {
    "bufferView": 9,
    "componentType": 5126,
-   "count": 18,
+   "count": 12,
    "max": [
     1.0612083673477173,
     0.10005635023117065,
@@ -262,7 +262,7 @@
    ],
    "min": [
     0.8542700409889221,
-    0.002496369183063507,
+    0.006133710034191608,
     -0.6190000176429749
    ],
    "type": "VEC3"
@@ -270,25 +270,25 @@
   {
    "bufferView": 10,
    "componentType": 5126,
-   "count": 18,
+   "count": 12,
    "type": "VEC3"
   },
   {
    "bufferView": 11,
    "componentType": 5126,
-   "count": 18,
+   "count": 12,
    "type": "VEC2"
   },
   {
    "bufferView": 12,
    "componentType": 5126,
-   "count": 18,
+   "count": 12,
    "type": "VEC2"
   },
   {
    "bufferView": 13,
    "componentType": 5123,
-   "count": 18,
+   "count": 12,
    "type": "SCALAR"
   },
   {
@@ -389,62 +389,62 @@
   },
   {
    "buffer": 0,
-   "byteLength": 216,
+   "byteLength": 144,
    "byteOffset": 34916,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 216,
-   "byteOffset": 35132,
-   "target": 34962
-  },
-  {
-   "buffer": 0,
    "byteLength": 144,
-   "byteOffset": 35348,
+   "byteOffset": 35060,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 144,
-   "byteOffset": 35492,
+   "byteLength": 96,
+   "byteOffset": 35204,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 36,
-   "byteOffset": 35636,
+   "byteLength": 96,
+   "byteOffset": 35300,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 24,
+   "byteOffset": 35396,
    "target": 34963
   },
   {
    "buffer": 0,
    "byteLength": 648,
-   "byteOffset": 35672,
+   "byteOffset": 35420,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 648,
-   "byteOffset": 36320,
+   "byteOffset": 36068,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 432,
-   "byteOffset": 36968,
+   "byteOffset": 36716,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 432,
-   "byteOffset": 37400,
+   "byteOffset": 37148,
    "target": 34962
   },
   {
    "buffer": 0,
    "byteLength": 108,
-   "byteOffset": 37832,
+   "byteOffset": 37580,
    "target": 34963
   }
  ],
@@ -456,7 +456,7 @@
  ],
  "buffers": [
   {
-   "byteLength": 37940,
+   "byteLength": 37688,
    "uri": "bank-98.bin"
   }
  ],

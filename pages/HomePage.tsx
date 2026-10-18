@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../constants';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import PageShell from '../components/PageShell';
+import Bild from '../components/Bild';
 
 // --- Animated Section Utility ---
 const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}> = ({ children, className }) => {
@@ -174,7 +175,7 @@ const ProductScrollytelling: React.FC = () => {
                                     key={product.id}
                                     className={`absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${activeId === product.id ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}
                                 >
-                                    <img 
+                                    <Bild sizes="(min-width: 1024px) 60vw, 100vw" 
                                         src={product.imageUrl} 
                                         alt={product.altText} 
                                         width="800"
@@ -205,7 +206,7 @@ const ProductScrollytelling: React.FC = () => {
                                         <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange shadow-[0_0_15px_rgba(107,143,74,0.4)] scale-125' : 'bg-brand-bg border-brand-dark/20'}`}></div>
                                         <div className={`relative rounded-2xl border transition-all duration-500 overflow-hidden ${isActive ? 'bg-white border-brand-orange/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)] scale-100' : 'bg-white/40 border-brand-dark/5 scale-[0.98]'}`}>
                                             <div className="lg:hidden h-48 relative overflow-hidden border-b border-brand-dark/10">
-                                                <img 
+                                                <Bild 
                                                     src={product.imageUrl}
                                                     alt={product.title}
                                                     className="w-full h-full object-cover opacity-60" 
@@ -482,7 +483,7 @@ const Hero: React.FC = () => {
                         }`}
                     >
                         {slide.type === 'image' ? (
-                            <img
+                            <Bild hoch
                                 src={slide.src}
                                 alt={slide.alt}
                                 className="w-full h-full object-cover"

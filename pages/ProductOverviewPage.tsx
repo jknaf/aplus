@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { PRODUCTS } from '../constants';
 import PageShell from '../components/PageShell';
+import Bild from '../components/Bild';
 
 const ProductOverviewPage: React.FC = () => {
   return (
@@ -31,7 +32,7 @@ const ProductOverviewPage: React.FC = () => {
                 className="group relative rounded-2xl overflow-hidden border border-brand-dark/5 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.05)] hover:border-brand-orange/40 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1"
               >
                 <div className="aspect-square overflow-hidden">
-                  <img
+                  <Bild hoch sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     src={product.imageUrl}
                     alt={product.altText}
                     loading="lazy"

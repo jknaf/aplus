@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PROJECTS } from '../constants';
+import Bild from '../components/Bild';
 
 const ProjectDetailPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
@@ -76,7 +77,7 @@ const ProjectDetailPage: React.FC = () => {
       
       {/* 1. CINEMATIC HERO (Fixed/Parallax feel) */}
       <div className="fixed inset-0 z-0 h-[80vh] w-full pointer-events-none">
-         <img
+         <Bild hoch
             src={project.imageUrl}
             alt={project.altText}
             fetchPriority="high"
@@ -196,7 +197,7 @@ const ProjectDetailPage: React.FC = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
                             {/* Main Large Image */}
                              <div className="md:col-span-2 row-span-2 relative group overflow-hidden rounded-sm border border-brand-dark/10 bg-brand-surface/60">
-                                <img
+                                <Bild sizes="(min-width: 1024px) 60vw, 100vw"
                                     src={project.imageUrl}
                                     alt={`${project.title}, Projektübersicht`}
                                     loading="lazy"

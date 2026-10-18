@@ -210,8 +210,6 @@ const ProductScrollytelling: React.FC = () => {
                                                     alt={product.title}
                                                     className="w-full h-full object-cover opacity-60" 
                                                     loading="lazy"
-                                                    srcSet={`${product.imageUrl}?auto=compress&cs=tinysrgb&w=400 400w, ${product.imageUrl}?auto=compress&cs=tinysrgb&w=800 800w`}
-                                                    sizes="(max-width: 600px) 100vw, 800px" 
                                                 />
                                                 <div className="absolute inset-0 bg-black/40"></div>
                                             </div>

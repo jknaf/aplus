@@ -6,7 +6,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 export interface ParkTeil { slug: string; m: number[] }
 // Erdböschung wie boeschung() in heft_szenen.py: Oberkante [x0, y0, x1, y1] auf Höhe h, Fuß auf z = 0, offen = Seiten ohne Fläche
 export type Boeschung = [number[], number[], number | number[], (string | string[] | null)?, number[][][]?];
-interface Props { teile: ParkTeil[]; extra: string | null; flaeche: number[] | null; boeschung?: Boeschung[] | null; alt: string }
+// beiHover: dreht sich nur, solange die Maus darüber ist (Geräte ohne Maus: dauerhaft, bis jemand das Modell berührt)
+interface Props { teile: ParkTeil[]; extra: string | null; flaeche: number[] | null; boeschung?: Boeschung[] | null; alt: string; beiHover?: boolean }
 
 // Drehbarer Skatepark aus den fertigen Katalogmodellen: jedes Teil ist ein Katalog-glTF, die Matrix kommt aus Blender
 // (08_Preisliste/heft_szenen.py, LAGE). Licht ist eingebacken (unbeleuchtete Materialien), deshalb ohne Lampen.
@@ -62,7 +63,7 @@ const boeschungBauen = ([a, b, h, offen, dreiecke = []]: Boeschung) => {
   return new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide }));
 };
 
-const ParkAnsicht: React.FC<Props> = ({ teile, extra, flaeche, boeschung, alt }) => {
+const ParkAnsicht: React.FC<Props> = ({ teile, extra, flaeche, boeschung, alt, beiHover }) => {
   const feld = useRef<HTMLDivElement>(null);
   const [geladen, setGeladen] = useState(false);
   const [fertig, setFertig] = useState(0);
@@ -121,12 +122,15 @@ const ParkAnsicht: React.FC<Props> = ({ teile, extra, flaeche, boeschung, alt })
       await r.compileAsync(sc, cam);
       if (aus) return;
       r.render(sc, cam); r.domElement.style.opacity = '1'; setGeladen(true);
-      setTimeout(() => { ctl.autoRotate = true; }, 300);
+      if (!nurHover) setTimeout(() => { ctl.autoRotate = true; }, 300);
     });
     ctl.addEventListener('start', () => { ctl.autoRotate = false; });
+    const nurHover = !!beiHover && matchMedia('(hover: hover)').matches;
+    const an = () => { ctl.autoRotate = true; }, ab = () => { ctl.autoRotate = false; };
+    if (nurHover) { el.addEventListener('pointerenter', an); el.addEventListener('pointerleave', ab); }
     r.setAnimationLoop(() => { ctl.update(); r.render(sc, cam); });
-    return () => { aus = true; ro.disconnect(); r.setAnimationLoop(null); ctl.dispose(); r.dispose(); el.removeChild(r.domElement); };
-  }, [teile, extra, flaeche, boeschung]);
+    return () => { aus = true; el.removeEventListener('pointerenter', an); el.removeEventListener('pointerleave', ab); ro.disconnect(); r.setAnimationLoop(null); ctl.dispose(); r.dispose(); el.removeChild(r.domElement); };
+  }, [teile, extra, flaeche, boeschung, beiHover]);
 
   return (
     <div ref={feld} className="relative w-full h-full cursor-grab">

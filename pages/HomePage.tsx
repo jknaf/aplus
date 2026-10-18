@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, useT } from '../i18n';
 import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import PageShell from '../components/PageShell';
 import Bild from '../components/Bild';
+import parkStart from '../components/katalog/park-startseite.json';
 
 // --- Animated Section Utility ---
 const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}> = ({ children, className }) => {
@@ -279,17 +280,14 @@ const ServiceOverviewSection: React.FC = () => {
     const t = useT();
     const services = [
         {
-            icon: "design_services",
             title: t("Planung & Beratung", "Design & Advice", "Conception & conseil"),
             desc: t("Wir begleiten Sie von der ersten Idee bis zur Ausführungsplanung nach DIN EN 14974. Auf Grundlage Ihrer Fläche und Ihres Budgets erstellen wir Draufsichten und 3D-Entwürfe.", "We guide you from the first idea to the detailed design to EN 14974. Based on your site and budget, we produce plan views and 3D designs.", "Nous vous accompagnons de la première idée jusqu'à l'étude d'exécution selon la norme EN 14974. À partir de votre terrain et de votre budget, nous établissons des plans de masse et des esquisses 3D.")
         },
         {
-            icon: "construction",
             title: t("Bau & Montage", "Build & Installation", "Construction & montage"),
             desc: t("Schneller, meist günstiger und weniger wetterabhängig als Ortbeton: Unsere modularen Fertigteile werden direkt auf Asphalt, Beton oder Fundamentplatte montiert. Eine typische Anlage baut unser Team in wenigen Tagen schlüsselfertig auf.", "Faster, usually cheaper and less weather-dependent than in-situ concrete: our modular precast units are installed directly on asphalt, concrete or a foundation slab. Our team typically completes a turnkey park in a few days.", "Plus rapides, le plus souvent moins chers et moins dépendants de la météo que le béton coulé en place : nos éléments préfabriqués modulaires se posent directement sur l'asphalte, le béton ou une dalle de fondation. Notre équipe monte une installation courante clé en main en quelques jours.")
         },
         {
-            icon: "build_circle",
             title: t("Service & Wartung", "Service & Maintenance", "Service & entretien"),
             desc: t("Auch nach der Eröffnung lässt sich die Anlage erweitern, umbauen oder versetzen. Einzelne Module können repariert werden. Wir liefern Wartungsanleitungen, unterstützen bei Erweiterungen und bleiben Ihr Ansprechpartner.", "Even after opening, the park can be extended, rearranged or moved. Individual modules can be repaired. We supply maintenance instructions, support extensions and remain your point of contact.", "Même après l'inauguration, l'installation peut être agrandie, réaménagée ou déplacée. Les modules peuvent être réparés individuellement. Nous fournissons les instructions d'entretien, vous accompagnons pour les extensions et restons votre interlocuteur.")
         }
@@ -302,7 +300,7 @@ const ServiceOverviewSection: React.FC = () => {
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
                         {t("Alles aus einer Hand", "One partner from design to aftercare", "Un seul interlocuteur")}
                     </span>
-                    <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+                    <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t(<>Planung, Bau<br />& <span className="text-brand-orange">Service</span></>, <>Design, build<br />& <span className="text-brand-orange">service</span></>, <>Conception, réalisation<br />& <span className="text-brand-orange">service</span></>)}
                     </h2>
                     <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
@@ -310,45 +308,83 @@ const ServiceOverviewSection: React.FC = () => {
                     </p>
                 </AnimatedSection>
 
-                <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    {services.map((service, index) => (
-                        <AnimatedSection
-                            key={service.title}
-                            className={`bg-white rounded-2xl border border-brand-dark/5 shadow-[0_2px_12px_rgba(0,0,0,0.05)] p-8 hover:border-brand-orange/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 group`}
-                        >
-                            <div className="flex items-start gap-5 mb-5">
-                                <div className="p-4 rounded-xl bg-brand-surface/60 border border-brand-dark/5 text-brand-orange shadow-sm group-hover:border-brand-orange/30 group-hover:shadow-[0_4px_12px_rgba(107,143,74,0.15)] transition-all duration-300 shrink-0">
-                                    <span className="material-symbols-outlined text-4xl">{service.icon}</span>
-                                </div>
-                                <div>
-                                    <span className="font-mono text-xs tracking-widest uppercase text-brand-muted block mb-2">
-                                        {t('Phase', 'Phase', 'Phase')} 0{index + 1}
-                                    </span>
-                                    <h3 className="text-2xl font-extrabold font-heading uppercase text-brand-dark tracking-tight leading-tight">
-                                        {service.title}
-                                    </h3>
-                                </div>
-                            </div>
-                            <p className="text-brand-muted leading-relaxed text-sm md:text-base border-l-2 border-brand-dark/10 group-hover:border-brand-orange/40 pl-4 transition-colors duration-300">
-                                {service.desc}
-                            </p>
-                        </AnimatedSection>
-                    ))}
-                </div>
 
-                <AnimatedSection className="text-center mt-16">
-                    <Link
-                        to="/planung"
-                        className="inline-flex items-center gap-2 text-brand-dark font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider group"
-                    >
+            <div className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[440px_240px] gap-4 max-w-6xl mx-auto">
+                <PhaseKachel className="lg:col-span-4" nr={1} info="DIN EN 14974" service={services[0]} unten={false}>
+                    <Park3D alt={t("3D-Modell eines Skateparks aus Katalogelementen", "3D model of a skatepark made of catalogue elements", "Modèle 3D d'un skatepark en éléments du catalogue")} />
+                </PhaseKachel>
+                <PhaseKachel className="lg:col-span-4" nr={2} info={t("Montage", "Installation", "Montage")} service={services[1]} unten
+                    foto="/images/leistungen/bau-montage-kran.jpg" alt={t("Montage einer Skate-Pipe mit Autokran", "Installing a skate pipe with a mobile crane", "Montage d'une pipe de skate à la grue mobile")} pos="50% 55%"
+                    plan={<circle cx="400" cy="170" r="44" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />} />
+                <PhaseKachel className="lg:col-span-4" nr={3} info={t("Wartung", "Maintenance", "Entretien")} service={services[2]} unten={false}
+                    foto="/images/leistungen/service-anlage-abend.jpg" alt={t("Luftaufnahme einer Skateanlage am Abend", "Aerial view of a skatepark in the evening", "Vue aérienne d'un skatepark en soirée")} pos="50% 50%"
+                    plan={<rect x="470" y="230" width="150" height="90" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />} />
+
+                <article className="lg:col-span-8 rounded-2xl bg-brand-orange text-white p-7 flex flex-col justify-between gap-6 min-h-[200px]">
+                    <span className="font-mono text-xs tracking-[0.18em] uppercase text-[#F2F7EC]">{t("Bauzeit", "Build time", "Durée du chantier")}</span>
+                    <div className="flex flex-col gap-3">
+                        <strong className="font-heading font-extrabold uppercase text-5xl md:text-6xl leading-[1.05] [word-spacing:0.12em]">{t("Wenige Tage", "A few days", "Quelques jours")}</strong>
+                        <span className="text-[#F2F7EC]">{t("bis zur schlüsselfertigen Anlage, bei einer typischen Anlage", "to a turnkey park, for a typical park", "jusqu'à l'installation clé en main, pour une installation type")}</span>
+                    </div>
+                </article>
+                <article className="lg:col-span-4 rounded-2xl bg-brand-bg border-[1.5px] border-brand-dark p-7 flex flex-col justify-between gap-6 min-h-[200px]">
+                    <span className="font-mono text-xs tracking-[0.18em] uppercase text-[#4F6E34]">{t("Planung", "Design", "Conception")}</span>
+                    <Link to="/planung" className="inline-flex items-center gap-2 min-h-12 self-start text-brand-dark font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider group">
                         {t("Kompletten Planungsprozess ansehen", "See the complete planning process", "Voir tout le processus de planification")}
                         <span className="text-xl group-hover:translate-x-1 transition-transform">&rarr;</span>
                     </Link>
-                </AnimatedSection>
+                </article>
+            </div>
             </div>
         </section>
     );
 };
+
+// Phase 01: der Park aus dem Katalog dreht sich beim Überfahren (am Handy dauerhaft langsam). Three.js lädt erst, wenn der Abschnitt nahe ist.
+const ParkAnsicht3D = lazy(() => import('../components/katalog/ParkAnsicht'));
+const Park3D: React.FC<{ alt: string }> = ({ alt }) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const [nah, setNah] = useState(false);
+    useEffect(() => {
+        const el = ref.current;
+        if (!el || typeof IntersectionObserver === 'undefined') { setNah(true); return; }
+        const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setNah(true); io.disconnect(); } }, { rootMargin: '400px' });
+        io.observe(el);
+        return () => io.disconnect();
+    }, []);
+    return (
+        <div ref={ref} className="relative h-[260px] lg:absolute lg:inset-x-0 lg:bottom-0 lg:h-[54%]">
+            {nah && <Suspense fallback={null}><ParkAnsicht3D beiHover teile={parkStart.teile} extra={parkStart.extra} flaeche={parkStart.flaeche} boeschung={null} alt={alt} /></Suspense>}
+            <span className="absolute left-4 bottom-3 flex items-center gap-2 px-3 py-2 rounded-full border border-brand-dark/45 bg-brand-bg/85 font-mono text-[11px] uppercase tracking-[0.14em] text-brand-dark pointer-events-none">
+                <span className="material-symbols-outlined text-base group-hover:animate-spin">3d_rotation</span>
+                <Dreh />
+            </span>
+        </div>
+    );
+};
+const Dreh: React.FC = () => { const t = useT(); return <>{t("3D, drehbar", "3D, rotatable", "3D, rotatif")}</>; };
+
+type Service = { title: string; desc: string };
+const PhaseKachel: React.FC<{ className: string; nr: number; info: string; service: Service; unten: boolean; foto?: string; alt?: string; pos?: string; plan?: React.ReactNode; children?: React.ReactNode }> = ({ className, nr, info, service, unten, foto, alt, pos, plan, children }) => (
+    <article className={`group relative rounded-2xl overflow-hidden flex flex-col lg:block ${foto ? 'bg-brand-dark' : 'bg-[#D3DDC6] bg-[linear-gradient(rgba(44,53,48,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(44,53,48,.07)_1px,transparent_1px),radial-gradient(ellipse_at_65%_75%,#F2F5EC,#C6D3B8_75%)] bg-[length:40px_40px,40px_40px,100%_100%]'} ${className}`}>
+        {foto && (
+            <div className="relative h-[260px] lg:absolute lg:inset-0 lg:h-full">
+                <img src={foto} alt={alt} loading="lazy" style={{ objectPosition: pos }} className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 transition-[filter,transform] duration-700 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.04]" />
+                <div className="absolute inset-0 bg-[#33502B] mix-blend-multiply opacity-60 transition-opacity duration-700 group-hover:opacity-0 pointer-events-none" />
+                {plan && <div className="hidden lg:block"><Plan>{plan}</Plan></div>}
+            </div>
+        )}
+        {children}
+        <div className={`relative m-4 lg:absolute lg:left-5 lg:right-5 lg:m-0 ${unten ? 'lg:bottom-5' : 'lg:top-5'} bg-brand-bg text-brand-dark border-[1.5px] border-brand-dark grid grid-cols-2`}>
+            <span className="px-3 py-2 border-r border-b border-brand-dark font-mono text-[11px] tracking-[0.14em] uppercase">Phase 0{nr} / 03</span>
+            <span className="px-3 py-2 border-b border-brand-dark font-mono text-[11px] tracking-[0.14em] uppercase">{info}</span>
+            <div className="col-span-2 px-4 pt-3 pb-4 flex flex-col gap-2">
+                <h3 className="font-heading font-extrabold uppercase text-2xl leading-[1.08] [word-spacing:0.12em]">{service.title}</h3>
+                <p className="text-sm text-brand-dark/75 leading-snug">{service.desc}</p>
+            </div>
+        </div>
+    </article>
+);
 
 // --- Anspruch: Bild-Mosaik mit Werkplan-Layer ---
 // Fotos getönt, darüber Hinweislinien wie in einer Bauzeichnung, Text im Plankopf. Beim Überfahren wird das Foto farbig.

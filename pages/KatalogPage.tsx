@@ -217,8 +217,8 @@ const ParkDetail: React.FC<{
           <span className="material-symbols-outlined">close</span>
         </button>
         <div className="relative aspect-[4/3] md:aspect-auto bg-[radial-gradient(ellipse_at_50%_40%,#ffffff_0%,#E5E3DC_75%)]">
-          <Suspense fallback={<img src={p.bild} alt={p.name} className="absolute inset-0 w-full h-full object-contain p-6" />}>
-            <ParkAnsicht key={p.id} teile={p.teile} extra={p.extra} flaeche={p.flaeche} poster={p.bild} alt={`3D-Modell ${p.name}`} />
+          <Suspense fallback={null}>
+            <ParkAnsicht key={p.id} teile={p.teile} extra={p.extra} flaeche={p.flaeche} alt={`3D-Modell ${p.name}`} />
           </Suspense>
           <div className="absolute bottom-4 left-4 flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-brand-muted pointer-events-none">
             <span className="material-symbols-outlined text-base">3d_rotation</span> Ziehen zum Drehen · Scrollen zum Zoomen
@@ -277,9 +277,11 @@ const ParkDetail: React.FC<{
   );
 };
 
+const vorladen = (p: Beispiel) => import('../components/katalog/ParkAnsicht').then((m) => m.vorladen(p.teile, p.extra));
+
 const ParkKarte: React.FC<{ p: Beispiel; preis: string | null; onSperre: () => void }> = ({ p, preis, onSperre }) => (
   <Link
-    to={`/katalog/${p.id}`}
+    to={`/katalog/${p.id}`} onMouseEnter={() => vorladen(p)} onFocus={() => vorladen(p)} onTouchStart={() => vorladen(p)}
     className="group rounded-2xl overflow-hidden border border-brand-dark/5 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.05)] hover:border-brand-orange/40 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1"
   >
     <div className="aspect-[3/2] bg-[radial-gradient(ellipse_at_50%_40%,#ffffff_0%,#F2F0EB_80%)] overflow-hidden relative">

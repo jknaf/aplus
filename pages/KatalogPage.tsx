@@ -376,17 +376,35 @@ const KatalogPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Eine Leiste für alles: Ansicht, Suche, Filter, Planen, Preise. Codes für Kunden gibt es nur auf /codes. */}
+      {/* Große Schalter: Parks oder Einzelteile, damit man die Wahl sofort sieht */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-6 md:pb-8">
+        <div className="max-w-3xl mx-auto grid grid-cols-2 gap-3 md:gap-4" role="tablist" aria-label="Ansicht">
+          {([
+            ['parks', 'Beispielparks', 'landscape', `${parks.length || ''} fertige Anlagen mit Preis`],
+            ['einzelteile', 'Einzelteile', 'deployed_code', `${katalog?.elemente.length ?? ''} Elemente einzeln in 3D`],
+          ] as const).map(([id, text, icon, unter]) => {
+            const an = ansicht === id;
+            return (
+              <button
+                key={id} type="button" role="tab" aria-selected={an} onClick={() => zeigen(id)}
+                className={`flex items-center gap-3 md:gap-5 p-3 md:p-4 rounded-2xl border-2 text-left transition-colors ${an ? 'bg-brand-dark border-brand-dark text-white' : 'bg-white border-brand-dark/15 text-brand-dark hover:border-brand-orange'}`}
+              >
+                <span className={`shrink-0 w-11 h-11 md:w-16 md:h-16 rounded-xl flex items-center justify-center ${an ? 'bg-white/10' : 'bg-brand-surface'}`}>
+                  <span className="material-symbols-outlined text-2xl md:text-4xl">{icon}</span>
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-heading font-extrabold uppercase tracking-tight text-base md:text-xl">{text}</span>
+                  <span className={`block text-xs md:text-sm mt-0.5 ${an ? 'text-white/75' : 'text-brand-muted'}`}>{unter}</span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Leiste: Suche, Filter, Planen, Preise. Codes für Kunden gibt es nur auf /codes. */}
       <div ref={leiste} className="sticky top-14 md:top-20 z-30 bg-brand-bg/95 backdrop-blur-md border-y border-brand-dark/5 scroll-mt-14 md:scroll-mt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap xl:flex-nowrap items-center gap-2 md:gap-3">
-          <div className="w-full sm:w-auto grid grid-cols-2 p-1 bg-brand-surface rounded-xl" role="tablist" aria-label="Ansicht">
-            {([['parks', 'Parks', parks.length], ['einzelteile', 'Einzelteile', katalog?.elemente.length]] as const).map(([id, text, n]) => (
-              <button
-                key={id} type="button" role="tab" aria-selected={ansicht === id} onClick={() => zeigen(id)}
-                className={`h-10 px-4 rounded-lg text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-colors ${ansicht === id ? 'bg-brand-dark text-white' : 'text-brand-dark hover:text-brand-orange'}`}
-              >{text} <span className="font-mono text-xs opacity-70">{n || ''}</span></button>
-            ))}
-          </div>
           <div className="relative flex-1 min-w-[10rem] xl:max-w-xs">
             <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted text-xl">search</span>
             <input

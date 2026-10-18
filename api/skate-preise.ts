@@ -1,7 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 import { put } from '@vercel/blob';
-import SKATE_PREISE from './_skate-preise.js';
+import ELEMENT_PREISE from './_skate-preise.js';
+import PARK_PREISE from './_park-preise.js';
+
+const SKATE_PREISE = { ...ELEMENT_PREISE, ...PARK_PREISE };
 
 // Gibt die Nettopreise des Skate-Katalogs nur gegen einen gültigen Code heraus. Zwei Arten:
 // - Betreiber-Code (Umgebungsvariable SKATE_PREIS_CODE): beliebig oft; mit {neu: true} erzeugt er Kundencodes.

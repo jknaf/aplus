@@ -66,8 +66,7 @@ const ohnePfeile = '[appearance:textfield] [&::-webkit-inner-spin-button]:appear
 const Start: React.FC<{ onWahl: (id: string) => void; onSchliessen?: () => void }> = ({ onWahl, onSchliessen }) => (
   <div className="absolute inset-0 z-30 flex items-center justify-center p-4 bg-brand-dark/40 backdrop-blur-sm">
     <div className="w-full max-w-4xl bg-brand-bg rounded-2xl shadow-2xl p-6 md:p-10 max-h-full overflow-y-auto">
-      <span className="font-mono text-xs uppercase tracking-widest text-brand-orange">Konfigurator</span>
-      <h1 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mt-2 mb-3">Skatepark planen.</h1>
+      <h1 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mb-3">Skatepark <span className="text-brand-orange">planen</span></h1>
       <p className="text-brand-muted mb-8 max-w-2xl">Starten Sie mit einer Vorlage und passen Sie sie an. Elemente docken passend an, Geländer und Pflichtteile ergänzt der Konfigurator selbst.</p>
       <div className="grid md:grid-cols-3 gap-4 mb-6">
         {VORLAGEN.map((v) => (

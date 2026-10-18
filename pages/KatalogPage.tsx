@@ -501,8 +501,7 @@ const KatalogPage: React.FC = () => {
         {katalog && (
           <div className="mt-8 mb-16 grid md:grid-cols-2 gap-8 border-t border-brand-dark/10 pt-12">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-brand-orange">Eigenschaften</span>
-              <h2 className="text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mt-2">Gebaut für Jahrzehnte.</h2>
+              <h2 className="text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">Gebaut für <span className="text-brand-orange">Jahrzehnte</span></h2>
               <p className="text-brand-muted mt-4">Alle Elemente sind modular im 125-cm-Raster aufgebaut und lassen sich frei kombinieren, erweitern und umstellen.</p>
             </div>
             <ul className="space-y-3 text-sm text-brand-dark">

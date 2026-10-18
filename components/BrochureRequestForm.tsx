@@ -78,8 +78,8 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                             </span>
 
                             <h2 className="text-5xl md:text-7xl font-extrabold font-heading uppercase tracking-tighter leading-[0.9] mb-6">
-                                <span className="text-brand-muted">Unser</span> <br/>
-                                <span className="text-brand-dark">Katalog.</span>
+                                <span className="text-brand-dark">Unser</span> <br/>
+                                <span className="text-brand-orange">Katalog</span>
                             </h2>
 
                             <p className="text-lg text-brand-muted mb-8 max-w-xl leading-relaxed">

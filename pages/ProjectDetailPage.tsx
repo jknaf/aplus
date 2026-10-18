@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Link, localizePath, prefixFor, useLang, useT } from '../i18n';
 import PageShell from '../components/PageShell';
-import { PROJECTS } from '../constants';
+import { useKategorie, useProjects } from '../localized';
 import Bild from '../components/Bild';
 
 const ProjectDetailPage: React.FC = () => {
+  const t = useT();
+  const lang = useLang();
+  const PROJECTS = useProjects();
+  const kategorie = useKategorie();
   const { projectId } = useParams<{ projectId: string }>();
   const project = PROJECTS.find(p => p.id === projectId);
   const [isCopied, setIsCopied] = useState(false);
@@ -20,12 +25,12 @@ const ProjectDetailPage: React.FC = () => {
 
   if (!project) {
     return (
-      <PageShell title="Projekt nicht gefunden">
+      <PageShell title={t("Projekt nicht gefunden", "Project not found", "Projet introuvable")}>
         <div className="h-[60vh] flex flex-col items-center justify-center text-center">
           <h1 className="text-6xl font-extrabold font-heading text-white uppercase">404</h1>
-          <p className="mt-4 text-brand-muted">Dieses Projekt gibt es nicht.</p>
+          <p className="mt-4 text-brand-muted">{t("Dieses Projekt gibt es nicht.", "This project does not exist.", "Ce projet n'existe pas.")}</p>
           <Link to="/projekte" className="mt-8 text-brand-orange hover:text-white uppercase font-bold tracking-widest text-xs border-b border-brand-orange pb-1">
-            Zurück zur Übersicht
+            {t("Zurück zur Übersicht", "Back to overview", "Retour à l'aperçu")}
           </Link>
         </div>
       </PageShell>
@@ -50,8 +55,8 @@ const ProjectDetailPage: React.FC = () => {
     "headline": project.title,
     "description": project.description,
     "image": allImages,
-    "keywords": project.category,
-    "inLanguage": "de-DE",
+    "keywords": kategorie(project.category),
+    "inLanguage": t("de-DE", "en-GB", "fr-FR"),
     "isAccessibleForFree": true,
     ...(project.year ? { "datePublished": String(project.year) } : {}),
     "creator": {
@@ -62,9 +67,9 @@ const ProjectDetailPage: React.FC = () => {
     "about": project.productsUsed.map((prod) => ({
       "@type": "Product",
       "name": prod.name,
-      "url": `${BASE_URL}${prod.path}`,
+      "url": `${BASE_URL}${localizePath(lang, prod.path)}`,
     })),
-    "mainEntityOfPage": `${BASE_URL}/projekte/${project.id}`,
+    "mainEntityOfPage": `${BASE_URL}${prefixFor(lang)}/projekte/${project.id}`,
   };
 
   return (
@@ -101,9 +106,7 @@ const ProjectDetailPage: React.FC = () => {
         <div className="container mx-auto px-4 mb-24">
              <div className="border-l-4 border-brand-orange pl-6 md:pl-12 backdrop-blur-sm">
                  <div className="flex items-center gap-4 mb-4">
-                    <span className="bg-brand-orange text-black text-xs font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
-                        {project.category}
-                    </span>
+                    <span className="bg-brand-orange text-black text-xs font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">{kategorie(project.category)}</span>
                  </div>
                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading text-white uppercase tracking-tighter leading-[0.85] shadow-black drop-shadow-2xl">
                     {project.title}
@@ -125,7 +128,7 @@ const ProjectDetailPage: React.FC = () => {
                             {/* Project Description */}
                             <div>
                                 <h3 className="text-xs font-bold text-brand-orange uppercase tracking-widest mb-4 flex items-center gap-2">
-                                    <span className="w-8 h-px bg-brand-orange"></span> Projekt
+                                    <span className="w-8 h-px bg-brand-orange"></span> {t("Projekt", "Project", "Projet")}
                                 </h3>
                                 <p className="text-xl text-brand-muted leading-relaxed font-light mb-6">
                                     {project.description}
@@ -142,16 +145,16 @@ const ProjectDetailPage: React.FC = () => {
                             {/* Tech Specs Table */}
                             <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-lg p-6">
                                 <h3 className="text-xs font-bold text-brand-dark uppercase tracking-widest mb-6 border-b border-brand-dark/10 pb-4">
-                                    Projektdaten
+                                    {t("Projektdaten", "Project data", "Données du projet")}
                                 </h3>
                                 <dl className="space-y-4 text-sm">
                                     <div className="flex justify-between">
-                                        <dt className="text-brand-muted font-mono uppercase">Typ</dt>
-                                        <dd className="text-brand-dark font-bold">{project.category}</dd>
+                                        <dt className="text-brand-muted font-mono uppercase">{t("Typ", "Type", "Type")}</dt>
+                                        <dd className="text-brand-dark font-bold">{kategorie(project.category)}</dd>
                                     </div>
                                     <div className="flex justify-between">
-                                        <dt className="text-brand-muted font-mono uppercase">Material</dt>
-                                        <dd className="text-brand-dark font-bold">Beton C35/45</dd>
+                                        <dt className="text-brand-muted font-mono uppercase">{t("Material", "Material", "Matériau")}</dt>
+                                        <dd className="text-brand-dark font-bold">{t("Beton C35/45", "Concrete C35/45", "Béton C35/45")}</dd>
                                     </div>
                                 </dl>
                             </div>
@@ -159,7 +162,7 @@ const ProjectDetailPage: React.FC = () => {
                             {/* Products Used */}
                             <div>
                                 <h3 className="text-xs font-bold text-brand-muted uppercase tracking-widest mb-4">
-                                    Verbaute Systeme
+                                    {t("Verbaute Systeme", "Systems used", "Systèmes utilisés")}
                                 </h3>
                                 <ul className="space-y-2">
                                     {project.productsUsed.map((prod, idx) => (
@@ -182,7 +185,7 @@ const ProjectDetailPage: React.FC = () => {
                                 className="flex items-center gap-3 text-xs font-bold text-brand-muted hover:text-brand-dark uppercase tracking-widest transition-colors"
                             >
                                 <span className="material-symbols-outlined text-lg">{isCopied ? 'check' : 'share'}</span>
-                                {isCopied ? 'Link kopiert' : 'Projekt teilen'}
+                                {isCopied ? t("Link kopiert", "Link copied", "Lien copié") : t("Projekt teilen", "Share project", "Partager le projet")}
                             </button>
 
                         </div>
@@ -191,7 +194,7 @@ const ProjectDetailPage: React.FC = () => {
                     {/* RIGHT: MASONRY GALLERY */}
                     <div className="lg:w-8/12">
                          <h3 className="text-xs font-bold text-brand-orange uppercase tracking-widest mb-8 flex items-center gap-2">
-                            <span className="w-8 h-px bg-brand-orange"></span> Bilder
+                            <span className="w-8 h-px bg-brand-orange"></span> {t("Bilder", "Images", "Images")}
                         </h3>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
@@ -199,12 +202,12 @@ const ProjectDetailPage: React.FC = () => {
                              <div className="md:col-span-2 row-span-2 relative group overflow-hidden rounded-sm border border-brand-dark/10 bg-brand-surface/60">
                                 <Bild sizes="(min-width: 1024px) 60vw, 100vw"
                                     src={project.imageUrl}
-                                    alt={`${project.title}, Projektübersicht`}
+                                    alt={`${project.title}, ${t('Projektübersicht', 'project overview', 'vue d\'ensemble du projet')}`}
                                     loading="lazy"
                                     decoding="async"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">Abb. 1: Übersicht</div>
+                                <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">{t("Abb. 1: Übersicht", "Fig. 1: Overview", "Fig. 1 : vue d'ensemble")}</div>
                              </div>
 
                              {/* Gallery Images */}
@@ -215,12 +218,12 @@ const ProjectDetailPage: React.FC = () => {
                                  >
                                     <img
                                         src={img}
-                                        alt={`${project.title}, Bild ${idx + 2}`}
+                                        alt={`${project.title}, ${t('Bild', 'image', 'image')} ${idx + 2}`}
                                         loading="lazy"
                                         decoding="async"
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
-                                    <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">Abb. {idx + 2}</div>
+                                    <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">{t('Abb.', 'Fig.', 'Fig.')} {idx + 2}</div>
                                  </div>
                              ))}
                         </div>
@@ -228,10 +231,10 @@ const ProjectDetailPage: React.FC = () => {
                          {/* CTA at bottom of gallery */}
                         <div className="mt-24 pt-12 border-t border-brand-dark/10">
                              <div className="bg-brand-surface/60 p-8 md:p-12 rounded-xl border border-brand-dark/5 text-center shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                                <h3 className="text-3xl font-extrabold font-heading text-brand-dark uppercase mb-4">Ein ähnliches Projekt?</h3>
-                                <p className="text-brand-muted mb-8 max-w-lg mx-auto">Planen Sie ein ähnliches Projekt? Wir unterstützen Sie von der ersten Skizze bis zur Fertigstellung.</p>
+                                <h3 className="text-3xl font-extrabold font-heading text-brand-dark uppercase mb-4">{t("Ein ähnliches Projekt?", "A similar project?", "Un projet similaire ?")}</h3>
+                                <p className="text-brand-muted mb-8 max-w-lg mx-auto">{t("Planen Sie ein ähnliches Projekt? Wir unterstützen Sie von der ersten Skizze bis zur Fertigstellung.", "Planning a similar project? We support you from the first sketch to completion.", "Vous prévoyez un projet similaire ? Nous vous accompagnons de la première esquisse à la livraison.")}</p>
                                 <Link to="/kontakt" className="inline-block bg-brand-orange text-white font-bold uppercase tracking-widest py-4 px-8 rounded hover:bg-brand-dark transition-colors">
-                                    Projekt anfragen
+                                    {t("Projekt anfragen", "Enquire about your project", "Demander un projet")}
                                 </Link>
                              </div>
                         </div>
@@ -243,11 +246,11 @@ const ProjectDetailPage: React.FC = () => {
             {/* 3. NEXT PROJECT NAV - Transparent BG */}
             <div className="grid grid-cols-2 border-t border-brand-dark/10 bg-brand-surface/60">
                 <Link to={`/projekte/${prevProject.id}`} className="group block p-12 border-r border-brand-dark/10 hover:bg-brand-surface transition-colors text-right relative overflow-hidden">
-                     <span className="block text-xs font-mono text-brand-muted uppercase tracking-widest mb-2 group-hover:text-brand-orange transition-colors">Vorheriges</span>
+                     <span className="block text-xs font-mono text-brand-muted uppercase tracking-widest mb-2 group-hover:text-brand-orange transition-colors">{t("Vorheriges", "Previous", "Précédent")}</span>
                      <span className="block text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter group-hover:translate-x-[-10px] transition-transform">{prevProject.title}</span>
                 </Link>
                 <Link to={`/projekte/${nextProject.id}`} className="group block p-12 hover:bg-brand-surface transition-colors relative overflow-hidden">
-                     <span className="block text-xs font-mono text-brand-muted uppercase tracking-widest mb-2 group-hover:text-brand-orange transition-colors">Nächstes</span>
+                     <span className="block text-xs font-mono text-brand-muted uppercase tracking-widest mb-2 group-hover:text-brand-orange transition-colors">{t("Nächstes", "Next", "Suivant")}</span>
                      <span className="block text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter group-hover:translate-x-[10px] transition-transform">{nextProject.title}</span>
                 </Link>
             </div>

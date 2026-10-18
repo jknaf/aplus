@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useT } from '../i18n';
 import PageShell from '../components/PageShell';
-import { PROJECTS } from '../constants';
+import { useKategorie, useProjects } from '../localized';
 import { ProjectCategory } from '../types';
 import Bild from '../components/Bild';
 
 const CATEGORIES: ProjectCategory[] = ['Skatepark', 'Pumptrack', 'Hockey-Bande', 'Grillstelle', 'Umkleidekabine'];
 
 const ProjectsPage: React.FC = () => {
+  const t = useT();
+  const PROJECTS = useProjects();
+  const kategorie = useKategorie();
   const [filter, setFilter] = useState<ProjectCategory | 'all'>('all');
 
   const filteredProjects = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
 
   return (
-    <PageShell title="Referenzen & Projekte" description="Realisierte Projekte von A+ Urban Design: Beton-Skateparks, Pumptracks, Hockey-Banden und urbane Freiraumlösungen in ganz Europa.">
+    <PageShell title={t("Referenzen & Projekte", "References & Projects", "Références et projets")} description={t("Realisierte Projekte von A+ Urban Design: Beton-Skateparks, Pumptracks, Hockey-Banden und urbane Freiraumlösungen in ganz Europa.", "Completed projects by A+ Urban Design: concrete skateparks, pump tracks, hockey boards and urban open-space solutions across Europe.", "Projets réalisés par A+ Urban Design : skateparks en béton, pumptracks, bandes de hockey et solutions d'aménagement d'espaces libres urbains dans toute l'Europe.")}>
       
       {/* 1. HEADER SECTION - Updated Typography */}
       <div className="relative pt-12 pb-24 text-center">
@@ -24,7 +27,7 @@ const ProjectsPage: React.FC = () => {
             </span>
         </div>
         <h1 className="text-6xl md:text-9xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.85] mb-8">
-            Ausgewählte<br/><span className="text-brand-orange">Projekte</span>
+            {t(<>Ausgewählte<br/><span className="text-brand-orange">Projekte</span></>, <>Selected<br/><span className="text-brand-orange">projects</span></>, <>Projets<br/><span className="text-brand-orange">sélectionnés</span></>)}
         </h1>
       </div>
 
@@ -38,7 +41,7 @@ const ProjectsPage: React.FC = () => {
                     filter === 'all' ? 'text-brand-orange' : 'text-brand-muted hover:text-brand-dark'
                     }`}
                 >
-                    <span className="relative z-10">Alle Projekte</span>
+                    <span className="relative z-10">{t("Alle Projekte", "All projects", "Tous les projets")}</span>
                     {filter === 'all' && (
                         <span className="absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange shadow-[0_0_15px_rgba(249,115,22,0.8)]"></span>
                     )}
@@ -51,7 +54,7 @@ const ProjectsPage: React.FC = () => {
                         filter === category ? 'text-brand-orange' : 'text-brand-muted hover:text-brand-dark'
                     }`}
                     >
-                    <span className="relative z-10">{category}</span>
+                    <span className="relative z-10">{kategorie(category)}</span>
                     {filter === category && (
                         <span className="absolute bottom-0 left-0 w-full h-0.5 bg-brand-orange shadow-[0_0_15px_rgba(249,115,22,0.8)]"></span>
                     )}
@@ -109,7 +112,7 @@ const ProjectsPage: React.FC = () => {
                             <span className="line-clamp-2">{project.description}</span>
                         </p>
                         <div className="mt-4 flex items-center gap-2 text-brand-orange text-xs font-bold uppercase tracking-widest">
-                            Projekt ansehen <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                            {t("Projekt ansehen", "View project", "Voir le projet")} <span className="material-symbols-outlined text-sm">arrow_forward</span>
                         </div>
                     </div>
                 </div>

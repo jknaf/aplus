@@ -27,7 +27,7 @@ const BASE_URL = 'https://www.aplusurbandesign.com';
 const PORT = 4321;
 
 // --- Routen-Quelle: muss mit App.tsx und constants.ts synchron sein ---
-const STATIC_ROUTES = [
+const BASE_STATIC_ROUTES = [
   '/',
   '/projekte',
   '/ueber-uns',
@@ -59,11 +59,20 @@ const PROJECT_IDS = [
 ];
 
 const PROJECT_ROUTES = PROJECT_IDS.map((id) => `/projekte/${id}`);
-const ALL_ROUTES = [...STATIC_ROUTES, ...PROJECT_ROUTES];
+const BASE_ROUTES = [...BASE_STATIC_ROUTES, ...PROJECT_ROUTES];
+
+// --- Sprachen: Deutsch ohne Präfix, Englisch unter /en, Französisch unter /fr (siehe i18n.tsx) ---
+const LANGS = ['de', 'en', 'fr'];
+const localize = (lang, route) => (lang === 'de' ? route : route === '/' ? `/${lang}` : `/${lang}${route}`);
+const stripLang = (route) => {
+  const rest = route.replace(/^\/(en|fr)(?=\/|$)/, '');
+  return rest === '' ? '/' : rest;
+};
+const ALL_ROUTES = LANGS.flatMap((lang) => BASE_ROUTES.map((r) => localize(lang, r)));
 
 // --- Pro Route: welche Source-Files bestimmen den "letzten Änderungszeitpunkt" ---
 const sourceFilesFor = (route) => {
-  const shared = ['components/PageShell.tsx', 'constants.ts'];
+  const shared = ['components/PageShell.tsx', 'constants.ts', 'localized.ts', 'i18n.tsx'];
   if (route === '/') return ['pages/HomePage.tsx', 'constants.ts'];
   if (route === '/projekte') return ['pages/ProjectsPage.tsx', 'constants.ts'];
   if (route === '/ueber-uns') return ['pages/AboutPage.tsx'];
@@ -137,15 +146,23 @@ const xmlEscape = (s) =>
 
 const buildSitemap = (routeData, fallbackIso) => {
   const urls = ALL_ROUTES.map((r) => {
-    const { changefreq, priority } = sitemapMetaFor(r);
+    const base = stripLang(r);
+    const { changefreq, priority } = sitemapMetaFor(base);
     const data = routeData[r] || {};
-    const lastmod = data.lastmod || gitLastmodFor(r, fallbackIso);
+    const lastmod = data.lastmod || gitLastmodFor(base, fallbackIso);
     const imageBlocks = (data.images || [])
       .slice(0, 10)
       .map((img) => `    <image:image>\n      <image:loc>${xmlEscape(img)}</image:loc>\n    </image:image>`)
       .join('\n');
+    // Jede Sprachfassung verweist auf alle Fassungen (hreflang), x-default ist Deutsch
+    const hrefOf = (lang) => `${BASE_URL}${lang === 'de' && base === '/' ? '/' : localize(lang, base)}`;
+    const alternates = [
+      ...LANGS.map((lang) => `    <xhtml:link rel="alternate" hreflang="${lang}" href="${hrefOf(lang)}"/>`),
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${hrefOf('de')}"/>`,
+    ].join('\n');
     return `  <url>
     <loc>${BASE_URL}${r === '/' ? '/' : r}</loc>
+${alternates}
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>${imageBlocks ? '\n' + imageBlocks : ''}
@@ -153,7 +170,8 @@ const buildSitemap = (routeData, fallbackIso) => {
   }).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}
 </urlset>
 `;

@@ -20,13 +20,14 @@ const abfragen = async (body: object) => {
 export const usePreise = () => {
   const [preise, setPreise] = useState<Record<string, string> | null>(null);
   const [betreiber, setBetreiber] = useState<string | null>(null);
+  const [katalog, setKatalog] = useState<{ ansehen: string; download: string } | null>(null);
 
   useEffect(() => {
     let code: string | null = null;
     try { code = localStorage.getItem(SPEICHER); } catch { /* kein Speicher */ }
     if (!code) return;
     abfragen({ code }).then(({ ok, daten }) => {
-      if (ok && daten.art === 'betreiber') { setPreise(daten.preise); setBetreiber(code); } else merken(null);
+      if (ok && daten.art === 'betreiber') { setPreise(daten.preise); setKatalog(daten.katalog ?? null); setBetreiber(code); } else merken(null);
     }, () => undefined);
   }, []);
 
@@ -35,6 +36,7 @@ export const usePreise = () => {
       const { ok, daten } = await abfragen({ code });
       if (!ok) return daten.fehler ?? 'Freischaltung fehlgeschlagen.';
       setPreise(daten.preise);
+      setKatalog(daten.katalog ?? null);
       if (daten.art === 'betreiber') { setBetreiber(code); merken(code); }
       return null;
     } catch {
@@ -48,9 +50,9 @@ export const usePreise = () => {
     return ok ? daten.kundencode ?? null : null;
   }, [betreiber]);
 
-  const abmelden = useCallback(() => { merken(null); setBetreiber(null); setPreise(null); }, []);
+  const abmelden = useCallback(() => { merken(null); setBetreiber(null); setPreise(null); setKatalog(null); }, []);
 
-  return { preise, freischalten, betreiber: !!betreiber, kundencode, abmelden };
+  return { preise, katalog, freischalten, betreiber: !!betreiber, kundencode, abmelden };
 };
 
 // Konfigurator: ohne Freischaltung nur Vorlagen ansehen. Frei mit Betreiber-Code (dauerhaft) oder C-Code (FREI_TAGE im Browser).

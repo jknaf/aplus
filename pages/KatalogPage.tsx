@@ -9,6 +9,7 @@ import { anzahlImPark, merken } from '../components/konfigurator/merkliste';
 import type { ParkTeil } from '../components/katalog/ParkAnsicht';
 
 const ParkAnsicht = lazy(() => import('../components/katalog/ParkAnsicht'));
+const Blaetterkatalog = lazy(() => import('../components/katalog/Blaetterkatalog'));
 
 // Daten: public/katalog/katalog.json, erzeugt aus der Archicad-Skate-Bibliothek
 // (08_CAD_Blender/10_Katalog/katalog_web.py). Preise kommen nur über /api/skate-preise.
@@ -304,7 +305,8 @@ const KatalogPage: React.FC = () => {
   const [katalog, setKatalog] = useState<Katalog | null>(null);
   const [suche, setSuche] = useState('');
   const [dialog, setDialog] = useState(false);
-  const { preise, freischalten, betreiber, kundencode, abmelden } = usePreise();
+  const { preise, katalog: katalogLinks, freischalten, betreiber, kundencode, abmelden } = usePreise();
+  const [blaettern, setBlaettern] = useState(false);
   const [neuCode, setNeuCode] = useState<string | null>(null);
   const [konfigDialog, setKonfigDialog] = useState(false);
   const konfig = useKonfiguratorFrei();
@@ -392,6 +394,14 @@ const KatalogPage: React.FC = () => {
             <span className="material-symbols-outlined text-lg">{preise ? 'lock_open' : 'lock'}</span>
             <span className="sm:hidden">Preise</span>
             <span className="hidden sm:inline">{preise ? 'Preise freigeschaltet' : 'Preise freischalten'}</span>
+          </button>
+          {/* Katalog und Preisliste zum Blättern: Link kommt mit den Preisen, ohne Code öffnet sich die Code-Eingabe */}
+          <button
+            type="button" onClick={() => (katalogLinks ? setBlaettern(true) : !preise && setDialog(true))}
+            className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider border border-brand-dark/15 text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-colors"
+            title="Katalog und Preisliste 2026 zum Blättern"
+          >
+            <span className="material-symbols-outlined text-lg">menu_book</span><span className="hidden sm:inline">Katalog</span>
           </button>
           {betreiber && (
             <>
@@ -531,9 +541,12 @@ const KatalogPage: React.FC = () => {
         </div>,
         document.body,
       )}
+      {blaettern && katalogLinks && (
+        <Suspense fallback={null}><Blaetterkatalog links={katalogLinks} onClose={() => setBlaettern(false)} /></Suspense>
+      )}
       <CodeDialog
         offen={dialog} onClose={() => setDialog(false)} freischalten={freischalten} anfrage={ANFRAGE} titel="Preise freischalten"
-        text="Die Nettopreise 2026 sehen Sie mit Ihrem persönlichen Code. Der Code gilt einmal: Nach dem Neuladen der Seite sind die Preise wieder ausgeblendet. Sie haben noch keinen? Wir senden ihn Ihnen gern zu."
+        text="Die Nettopreise 2026 und den Katalog zum Blättern sehen Sie mit Ihrem persönlichen Code. Der Code gilt einmal: Nach dem Neuladen der Seite sind die Preise wieder ausgeblendet. Sie haben noch keinen? Wir senden ihn Ihnen gern zu."
       />
       <CodeDialog offen={konfigDialog} onClose={() => setKonfigDialog(false)} freischalten={konfig.freischalten} anfrage={KONFIGURATOR_ANFRAGE} titel={KONFIGURATOR_TITEL} text={KONFIGURATOR_TEXT} />
     </PageShell>

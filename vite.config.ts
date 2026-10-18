@@ -34,6 +34,8 @@ export default defineConfig({
            if (id.includes('node_modules')) {
              // 3D-Viewer nur im Katalog nachladen, nicht im allgemeinen Vendor-Paket
              if (/node_modules\/(@google\/model-viewer|three|@monogrid|lit|@lit|lit-html|lit-element)\//.test(id)) return 'katalog-3d';
+             // Blätter-Katalog (PDF.js, page-flip) nur nach Freischaltung laden
+             if (/node_modules\/(pdfjs-dist|page-flip)\//.test(id)) return 'blaettern';
              // Konfigurator: React-three und Helfer nur mit der Konfigurator-Seite laden
              if (/node_modules\/(@react-three|three-stdlib|three-mesh-bvh|maath|camera-controls|troika-[^/]+|@react-spring|zustand|suspend-react|its-fine|react-reconciler|react-use-measure|tunnel-rat|detect-gpu|stats-gl|stats\.js|meshline|@use-gesture|hls\.js|glsl-noise|@mediapipe|bidi-js|webgl-sdf-generator|potpack|lamina)\//.test(id)) return 'konfigurator-3d';
              if (id.includes('react') || id.includes('/scheduler/') || id.includes('@remix-run') || id.includes('use-sync-external-store')) {

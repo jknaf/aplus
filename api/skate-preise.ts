@@ -3,6 +3,7 @@ import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 import { put } from '@vercel/blob';
 import ELEMENT_PREISE from './_skate-preise.js';
 import PARK_PREISE from './_park-preise.js';
+import { katalogLinks } from './_r2.js';
 
 const SKATE_PREISE = { ...ELEMENT_PREISE, ...PARK_PREISE };
 
@@ -12,6 +13,7 @@ const SKATE_PREISE = { ...ELEMENT_PREISE, ...PARK_PREISE };
 //   Eingelöste Codes merkt sich Vercel Blob (eine leere Datei je Code); ein zweites put() auf denselben Pfad schlägt fehl.
 // - Konfigurator-Code (C-…): wie der Kundencode, schaltet aber nicht die Preise frei, sondern das Bearbeiten im Konfigurator
 //   für FREI_TAGE (die Sperre selbst sitzt im Browser). Mit {neu: true, zweck: 'konfigurator'} erzeugt.
+// Mit den Preisen kommen zwei Links auf den Blätter-Katalog (PDF in Cloudflare R2), STUNDEN gültig, siehe _r2.ts.
 const TAGE = 7;
 const FREI_TAGE = 2;
 const ABC = '23456789ABCDEFGHJKMNPQRSTUVWXYZ'; // ohne 0/O, 1/I/L
@@ -48,7 +50,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const konfigurator = body.zweck === 'konfigurator';
   if (gleich(code, soll)) {
     if (body.neu) return res.status(200).json({ kundencode: kundencode(soll, konfigurator ? 'C' : 'K'), tage: TAGE });
-    return res.status(200).json({ preise: SKATE_PREISE, art: 'betreiber' });
+    return res.status(200).json({ preise: SKATE_PREISE, art: 'betreiber', katalog: katalogLinks() });
   }
 
   const m = /^([KC])-([2-9A-HJKMNP-Z]{15})-([0-9A-F]{8})$/.exec(code);
@@ -65,5 +67,5 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(503).json({ fehler: 'Die Freischaltung ist gerade nicht möglich. Bitte später erneut versuchen.' });
   }
   if (konfigurator) return res.status(200).json({ art: 'konfigurator', tage: FREI_TAGE });
-  return res.status(200).json({ preise: SKATE_PREISE, art: 'kunde' });
+  return res.status(200).json({ preise: SKATE_PREISE, art: 'kunde', katalog: katalogLinks() });
 }

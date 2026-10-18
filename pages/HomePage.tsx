@@ -347,7 +347,7 @@ const ServiceOverviewSection: React.FC = () => {
 // Linien im Koordinatensystem des Fotos (756 × 430); "slice" schneidet wie object-cover, die Linien bleiben auf dem Detail.
 const Plan: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <svg viewBox="0 0 756 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"
-        className="absolute inset-0 w-full h-full fill-none stroke-white group-hover:stroke-[#C9E3AE] transition-[stroke] duration-500 font-mono [&_text]:fill-white [&_text]:stroke-[#1F2622] [&_text]:[stroke-width:4px] [&_text]:[paint-order:stroke]">
+        className="absolute inset-0 w-full h-full fill-none stroke-white group-hover:stroke-[#C9E3AE] transition-[stroke] duration-500">
         {children}
     </svg>
 );
@@ -386,13 +386,6 @@ const Anspruch: React.FC = () => (
                 <Fotokachel src="/images/details/einstellung-04.jpg" alt="Höhenverstellbarer Fuß eines Betonelements auf Asphalt" className="h-[440px] lg:h-auto lg:col-span-7 lg:row-span-2">
                     <Plan>
                         <circle cx="368" cy="300" r="30" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
-                        <g className="hidden sm:inline">
-                            <path d="M392 282 L460 200 L630 200" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
-                            <text x="630" y="190" fontSize="14" letterSpacing="1.5" textAnchor="end">HÖHENVERSTELLBARER FUSS</text>
-                            <circle cx="590" cy="350" r="6" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-                            <path d="M590 344 L590 70 L630 70" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
-                            <text x="630" y="60" fontSize="14" letterSpacing="1.5" textAnchor="end">VORHANDENER ASPHALT</text>
-                        </g>
                     </Plan>
                     <Plankopf gross oben blatt="BLATT 01 / 04" info="Detail Fuß" titel="Fundamentfrei" text="Steht auf vorhandenem Asphalt oder Beton. Vor Ort wird nicht betoniert." />
                 </Fotokachel>
@@ -400,10 +393,6 @@ const Anspruch: React.FC = () => (
                 <Fotokachel src="/images/details/schutzkante-01.jpg" alt="Einbetonierter Kantenschutz an der Fahrkante" className="h-[320px] lg:h-auto lg:col-span-5">
                     <Plan>
                         <circle cx="340" cy="238" r="32" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
-                        <g className="hidden sm:inline">
-                            <path d="M366 258 L430 340 L660 340" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
-                            <text x="438" y="328" fontSize="22" letterSpacing="1.5">KANTENSCHUTZ HARTGUMMI</text>
-                        </g>
                     </Plan>
                     <Plankopf oben blatt="BLATT 02 / 04" info="C35/45" titel="Vandalismussicher" text="Wand 8 bis 16 cm. Nicht schneidbar, nicht brennbar." />
                 </Fotokachel>
@@ -420,10 +409,6 @@ const Anspruch: React.FC = () => (
                 <Fotokachel src="/images/montage/transport-01.jpg" alt="Gabelstapler hebt ein Betonelement vom Lkw" className="h-[320px] lg:h-auto lg:col-span-8">
                     <Plan>
                         <rect x="345" y="212" width="112" height="54" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
-                        <g className="hidden sm:inline">
-                            <path d="M457 212 L520 140 L740 140" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
-                            <text x="528" y="130" fontSize="14" letterSpacing="1.5">ELEMENT AM STÜCK</text>
-                        </g>
                     </Plan>
                     <Plankopf blatt="BLATT 04 / 04" info="KrWG § 6" titel="Versetzen statt abreißen" text="Kein Abbruch, kein Bauschutt. Ihre Investition zieht mit." />
                 </Fotokachel>

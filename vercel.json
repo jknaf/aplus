@@ -207,6 +207,7 @@
     { "source": "/katalog", "destination": "/index.html" },
     { "source": "/katalog/:slug", "destination": "/katalog/index.html" },
     { "source": "/konfigurator", "destination": "/index.html" },
+    { "source": "/codes", "destination": "/index.html" },
     { "source": "/referenzen-presse", "destination": "/index.html" },
     { "source": "/impressum", "destination": "/index.html" },
     { "source": "/datenschutz", "destination": "/index.html" }

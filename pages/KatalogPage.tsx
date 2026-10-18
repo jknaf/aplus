@@ -398,10 +398,11 @@ const KatalogPage: React.FC = () => {
           {/* Katalog und Preisliste zum Blättern: Link kommt mit den Preisen, ohne Code öffnet sich die Code-Eingabe */}
           <button
             type="button" onClick={() => (katalogLinks ? setBlaettern(true) : !preise && setDialog(true))}
-            className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider border border-brand-dark/15 text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-colors"
+            className={`shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${katalogLinks ? 'bg-brand-orange text-white shadow-lg shadow-brand-orange/30 hover:bg-brand-dark' : 'border border-brand-dark/15 text-brand-dark hover:border-brand-orange hover:text-brand-orange'}`}
             title="Katalog und Preisliste 2026 zum Blättern"
           >
-            <span className="material-symbols-outlined text-lg">menu_book</span><span className="hidden sm:inline">Katalog</span>
+            <span className="material-symbols-outlined text-lg">menu_book</span>
+            {katalogLinks ? <>Katalog<span className="hidden sm:inline">&nbsp;2026 blättern</span></> : <span className="hidden sm:inline">Katalog</span>}
           </button>
           {betreiber && (
             <>
@@ -417,6 +418,23 @@ const KatalogPage: React.FC = () => {
       </div>
 
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-32">
+        {katalogLinks && (
+          <div className="mb-16 flex flex-col md:flex-row md:items-center gap-6 bg-brand-dark text-white rounded-2xl p-6 md:p-8">
+            <span className="material-symbols-outlined text-5xl text-brand-orange">menu_book</span>
+            <div className="flex-1">
+              <h2 className="text-2xl md:text-3xl font-extrabold font-heading uppercase tracking-tight">Ihr Katalog 2026 ist freigeschaltet</h2>
+              <p className="text-white/70 mt-1">Alle Elemente mit Nettopreisen. Blättern Sie im Heft oder laden Sie es als PDF.</p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <button type="button" onClick={() => setBlaettern(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-brand-dark transition-colors">
+                <span className="material-symbols-outlined text-lg">auto_stories</span>Blättern
+              </button>
+              <a href={katalogLinks.download} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white/30 text-white font-bold uppercase tracking-wider text-sm hover:border-brand-orange hover:text-brand-orange transition-colors">
+                <span className="material-symbols-outlined text-lg">download</span>PDF laden
+              </a>
+            </div>
+          </div>
+        )}
         {parks.length > 0 && (
           <div id="parks" className="mb-24 scroll-mt-40">
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-3 mb-8 border-b border-brand-dark/10 pb-4">

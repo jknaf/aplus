@@ -17,7 +17,14 @@ export const NAV_LINKS = [
     ]
   },
   { name: 'Katalog', href: '/katalog' },
-  { name: 'Planung', href: '/planung' },
+  {
+    name: 'Planung',
+    href: '/planung',
+    subLinks: [
+      { name: 'Planung durch A+', href: '/planung' },
+      { name: 'Skatepark-Planer', href: '/konfigurator' },
+    ]
+  },
   { name: 'Projekte', href: '/projekte' },
   { name: 'Presse', href: '/referenzen-presse' },
   { name: 'Über uns', href: '/ueber-uns' },

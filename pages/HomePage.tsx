@@ -403,12 +403,14 @@ const Anspruch: React.FC = () => (
                     <Plankopf oben blatt="BLATT 02 / 04" info="C35/45" titel="Vandalismussicher" text="Wand 8 bis 16 cm. Nicht schneidbar, nicht brennbar." />
                 </Fotokachel>
 
-                <article className="lg:col-span-5 rounded-2xl bg-brand-bg text-brand-dark p-7 flex flex-col justify-between gap-6 min-h-[290px]">
-                    <div className="flex justify-between gap-4 font-mono text-[11px] tracking-[0.14em]"><span>BLATT 03 / 04</span><span>DIN EN 14974</span></div>
-                    <img src="/images/details/tuev-gs.png" alt="GS-Zeichen von TÜV SÜD" width="317" height="320" loading="lazy" className="h-[120px] w-auto self-center" />
-                    <div className="flex flex-col gap-1.5 border-t-[1.5px] border-brand-dark pt-3.5">
-                        <h3 className="font-heading font-extrabold uppercase text-2xl leading-none">Geprüfte Sicherheit</h3>
-                        <p className="text-sm text-brand-dark/75 leading-snug">TÜV-zertifiziert seit 2000. Der TÜV überwacht auch die Fertigung.</p>
+                <article className="lg:col-span-5 rounded-2xl bg-brand-bg text-brand-dark p-5 grid grid-cols-1 sm:grid-cols-[auto_minmax(0,1fr)] gap-5 lg:min-h-0">
+                    <img src="/images/details/tuev-gs.png" alt="GS-Zeichen von TÜV SÜD" width="317" height="320" loading="lazy" className="h-44 sm:h-full max-h-[250px] w-auto justify-self-center object-contain" />
+                    <div className="flex flex-col justify-between gap-5 sm:border-l-[1.5px] sm:border-brand-dark sm:pl-5 min-w-0">
+                        <div className="flex flex-col gap-1 font-mono text-[11px] tracking-[0.14em]"><span>BLATT 03 / 04</span><span>DIN EN 14974</span></div>
+                        <div className="flex flex-col gap-1.5">
+                            <h3 className="font-heading font-extrabold uppercase text-2xl leading-none">Geprüfte Sicherheit</h3>
+                            <p className="text-sm text-brand-dark/75 leading-snug">TÜV-zertifiziert seit 2000. Der TÜV überwacht auch die Fertigung.</p>
+                        </div>
                     </div>
                 </article>
 

@@ -15,7 +15,7 @@ const OtherProducts: React.FC = () => {
               Portfolio
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-              Weitere <span className="text-brand-orange">Lösungen.</span>
+              Weitere <span className="text-brand-orange">Lösungen</span>
           </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -113,7 +113,7 @@ const ProductPavilionPage: React.FC = () => {
                         </span>
                         {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Ein Element, <span className="text-brand-orange">vier Einsätze.</span>
+                            Ein Element, <span className="text-brand-orange">vier Einsätze</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
                             Ein einziges Betonelement lässt sich auf vier Arten einsetzen: einzeln als Unterstellplatz, in einer Reihe als Haltestellenüberdachung, paarweise gegenüber als überdachte Sitznische oder zu dritt oder viert als Pavillon.
@@ -164,7 +164,7 @@ const ProductPavilionPage: React.FC = () => {
                         Einsatzbereiche
                     </span>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
-                        Wetterschutz im <span className="text-brand-orange">öffentlichen Raum.</span>
+                        Wetterschutz im <span className="text-brand-orange">öffentlichen Raum</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed">
                         Typische Einsatzorte sind Haltestellen, Schulhöfe, Parks, Campingplätze, Sportanlagen, Friedhöfe und Rastplätze. Das Betonelement mit 240 × 200 × 262 cm hat eine Sitzfläche für 4–5 Personen und schützt insgesamt ca. 10 Personen vor Regen und Sonne. Das Element kann einzeln stehen. Nebeneinander ergibt sich eine durchgehende Haltestellenüberdachung, gegenüber eine Sitznische mit Sichtschutz. Drei oder vier Elemente bilden einen Pavillon mit Sitzfläche für bis zu 16 Personen und Schutz für bis zu 40 Personen.
@@ -176,7 +176,7 @@ const ProductPavilionPage: React.FC = () => {
                         Montage
                     </span>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
-                        Aufstellen und <span className="text-brand-orange">versetzen.</span>
+                        Aufstellen und <span className="text-brand-orange">versetzen</span>
                     </h2>
                     <div className="space-y-5 text-lg text-brand-muted leading-relaxed">
                         <p>
@@ -194,7 +194,7 @@ const ProductPavilionPage: React.FC = () => {
                 <div className="mb-8">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Das Original</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
-                        Das <span className="text-brand-orange">Überdachungselement.</span>
+                        Das <span className="text-brand-orange">Überdachungselement</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
                         Unser Überdachungselement ist ein einziges Fertigteil aus bewehrtem Beton. Bodenplatte und Sitzbank sind angeformt. Der Autokran setzt das Element in einem Stück, es wiegt rund 6,3 t. Zusammenbauen muss man nichts.
@@ -224,7 +224,7 @@ const ProductPavilionPage: React.FC = () => {
                 <div className="mb-12">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Für Kommunen und Vereine</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
-                        Keine Scheibe, <span className="text-brand-orange">die zerbricht.</span>
+                        Keine Scheibe, <span className="text-brand-orange">die zerbricht</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl mb-8">
                         Wartehallen aus Glas sind ein häufiges Ziel von Vandalismus. In einer deutschen Stadt mussten nach einer Vandalismuswelle 29 zerschlagene Glasscheiben an 18 Buswartehäuschen ersetzt werden. Die Kosten lagen bei etwa 20.000 Euro. Unser Überdachungselement hat keine Scheiben, die man zerschlagen oder ersetzen müsste.

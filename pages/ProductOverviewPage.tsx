@@ -17,7 +17,7 @@ const ProductOverviewPage: React.FC = () => {
               Produktübersicht
             </span>
             <h1 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-              Unsere <span className="text-brand-orange">Produkte.</span>
+              Unsere <span className="text-brand-orange">Produkte</span>
             </h1>
             <p className="text-brand-muted mt-6 max-w-2xl mx-auto text-lg">
               Unsere modularen Betonfertigteile für den öffentlichen Raum werden ohne Fundament aufgestellt und sind auf Jahrzehnte ausgelegt. Die Skate- und Pumptrack-Elemente sind TÜV-zertifiziert.

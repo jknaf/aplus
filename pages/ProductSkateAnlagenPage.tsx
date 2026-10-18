@@ -12,7 +12,7 @@ const OtherProducts: React.FC = () => {
     <div className="mt-32 border-t border-brand-dark/10 pt-24 relative z-20">
       <div className="text-center mb-16">
           <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Portfolio</span>
-          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">Weitere <span className="text-brand-orange">Lösungen.</span></h2>
+          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">Weitere <span className="text-brand-orange">Lösungen</span></h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -164,7 +164,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <div className="lg:sticky lg:top-32 relative z-20">
                          <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Das Original</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Seit den <span className="text-brand-orange">90ern.</span>
+                            Seit den <span className="text-brand-orange">90ern</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
                             Wir entwickeln modulare Skate-Elemente aus Beton für dauerhafte Skateparks im öffentlichen Raum. Unsere Elemente gehörten zu den ersten Beton-Skateelementen in Europa mit TÜV-Zertifikat.
@@ -270,7 +270,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <div>
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Konstruktion</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                            Details<span className="text-brand-orange">.</span>
+                            Details
                         </h2>
                     </div>
                 </div>
@@ -369,7 +369,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                        Videos<span className="text-brand-orange">.</span>
+                        Videos
                     </h2>
                     <span className="font-mono text-brand-muted text-xs hidden sm:block">CONTESTS & SESSIONS</span>
                 </div>

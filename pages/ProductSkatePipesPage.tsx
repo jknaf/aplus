@@ -12,7 +12,7 @@ const OtherProducts: React.FC = () => {
     <div className="mt-32 border-t border-brand-dark/10 pt-24 relative z-20">
       <div className="text-center mb-16">
           <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Portfolio</span>
-          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">Weitere <span className="text-brand-orange">Lösungen.</span></h2>
+          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">Weitere <span className="text-brand-orange">Lösungen</span></h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -119,7 +119,7 @@ const ProductSkatePipesPage: React.FC = () => {
                     <div className="lg:sticky lg:top-32 relative z-20">
                          <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Aufbau</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Pipes <br/><span className="text-brand-orange">aus Beton.</span>
+                            Pipes <br/><span className="text-brand-orange">aus Beton</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
                             Die Halfpipe entstand in den 1970er-Jahren aus leeren Schwimmbecken. Heute gehört eine Pipe in fast jeden Skatepark. Aus Beton gebaut hält sie besonders lange.
@@ -153,7 +153,7 @@ const ProductSkatePipesPage: React.FC = () => {
                     <div>
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Höhen</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                            165, 200 und <span className="text-brand-orange">255 cm.</span>
+                            165, 200 und <span className="text-brand-orange">255 cm</span>
                         </h2>
                     </div>
                 </div>
@@ -199,7 +199,7 @@ const ProductSkatePipesPage: React.FC = () => {
                     <div>
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Halfpipe und Mini-Pipe</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                            So ist eine Pipe <span className="text-brand-orange">gebaut.</span>
+                            So ist eine Pipe <span className="text-brand-orange">gebaut</span>
                         </h2>
                     </div>
                 </div>

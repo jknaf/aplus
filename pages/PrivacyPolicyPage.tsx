@@ -14,7 +14,7 @@ const PrivacyPolicyPage: React.FC = () => {
                 Rechtliches
             </span>
             <h1 className="text-5xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                Daten<span className="text-brand-orange">schutz.</span>
+                Daten<span className="text-brand-orange">schutz</span>
             </h1>
          </div>
 

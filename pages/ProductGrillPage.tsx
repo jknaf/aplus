@@ -15,7 +15,7 @@ const OtherProducts: React.FC = () => {
               Portfolio
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-              Weitere <span className="text-brand-orange">Lösungen.</span>
+              Weitere <span className="text-brand-orange">Lösungen</span>
           </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -112,7 +112,7 @@ const ProductGrillPage: React.FC = () => {
                         </span>
                         {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Feuer und <span className="text-brand-orange">Beton.</span>
+                            Feuer und <span className="text-brand-orange">Beton</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
                             Der runde Grillplatz ist für Freibäder, Campingplätze, Sportanlagen und Kleingartenanlagen gedacht. Er hat 4,20 m Durchmesser, ist 2,70 m hoch und bietet 12–16 Personen Platz.
@@ -169,7 +169,7 @@ const ProductGrillPage: React.FC = () => {
                 <div className="mb-8">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Konstruktion & Eigenschaften</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
-                        Aufbau und <span className="text-brand-orange">Material.</span>
+                        Aufbau und <span className="text-brand-orange">Material</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl">
                         Der Grillplatz besteht aus drei Betonfertigteilen. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl. Der Rost hängt an einer Kette mit Gegengewicht. Gesetzt werden die Teile mit Autokran, Radlader oder Gabelstapler mit mindestens 3,5 t Hublast. Die Konstruktion ist einfach zu bedienen und hat wenige Verschleißteile.
@@ -199,7 +199,7 @@ const ProductGrillPage: React.FC = () => {
                 <div className="mb-12">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Für Kommunen und Vereine</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
-                        Ein fester Ort <span className="text-brand-orange">fürs Feuer.</span>
+                        Ein fester Ort <span className="text-brand-orange">fürs Feuer</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed max-w-3xl mb-6">
                         Viele Städte erlauben das Grillen in Parks nur an fest eingerichteten Feuerstellen. Mitgebrachte Grills und Einweggrills sind dort aus Brandschutzgründen oft verboten. Ein fester Grillplatz gibt Badegästen, Campern und Vereinsmitgliedern einen erlaubten Ort zum Grillen. Gegrillt wird über Beton, nicht über der Wiese.
@@ -239,7 +239,7 @@ const ProductGrillPage: React.FC = () => {
                                 Dokumentation
                             </span>
                             <h3 className="font-heading text-2xl lg:text-3xl font-extrabold uppercase tracking-tighter text-brand-dark">
-                                Montageanleitung <span className="text-brand-orange">Grillplatz.</span>
+                                Montageanleitung <span className="text-brand-orange">Grillplatz</span>
                             </h3>
                             <p className="mt-3 text-brand-muted max-w-xl leading-relaxed">
                                 Die vollständige Aufbauanleitung erklärt Unterbau, Abladen, Setzreihenfolge, das Ausrichten des Trägers mit dem Schnurlot,

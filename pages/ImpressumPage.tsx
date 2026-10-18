@@ -14,7 +14,7 @@ const ImpressumPage: React.FC = () => {
                 Rechtliches
             </span>
             <h1 className="text-5xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                Impres<span className="text-brand-orange">sum.</span>
+                Impres<span className="text-brand-orange">sum</span>
             </h1>
          </div>
 

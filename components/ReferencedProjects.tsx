@@ -22,7 +22,7 @@ const ReferencedProjects: React.FC<ReferencedProjectsProps> = ({ productPath, li
           Referenzprojekte
         </span>
         <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-          Hier <span className="text-brand-orange">eingesetzt.</span>
+          Hier <span className="text-brand-orange">eingesetzt</span>
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

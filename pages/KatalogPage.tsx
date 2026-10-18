@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import PageShell from '../components/PageShell';
@@ -43,6 +43,15 @@ const GROESSEN = [
   { name: '300 bis 400 m²', passt: (p: Beispiel) => qm(p) > 300 && qm(p) <= 400 },
   { name: 'Über 400 m²', passt: (p: Beispiel) => qm(p) > 400 },
 ];
+const PARKS_JE_REIHE = 3; // Raster xl: 3 Spalten
+const TEILE_JE_REIHE = 4; // Raster xl: 4 Spalten
+const MehrLaden: React.FC<{ rest: number; onClick: () => void }> = ({ rest, onClick }) => rest > 0 ? (
+  <div className="text-center mt-8">
+    <button type="button" onClick={onClick} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-brand-dark/15 text-brand-dark font-bold uppercase tracking-wider text-sm hover:border-brand-orange hover:text-brand-orange transition-colors">
+      Mehr laden <span className="font-mono text-xs text-brand-muted">{rest} weitere</span><span className="material-symbols-outlined text-lg">expand_more</span>
+    </button>
+  </div>
+) : null;
 const sternchen = (p: Beispiel) => p.laenge_m.endsWith('*') || p.breite_m.endsWith('*');
 const hoehen = (p: Beispiel) => p.hoehe_cm[0] === p.hoehe_cm[1] ? `${p.hoehe_cm[0]} cm` : `${p.hoehe_cm[0]} bis ${p.hoehe_cm[1]} cm`;
 
@@ -305,14 +314,23 @@ const KatalogPage: React.FC = () => {
   const [katalog, setKatalog] = useState<Katalog | null>(null);
   const [suche, setSuche] = useState('');
   const [dialog, setDialog] = useState(false);
-  const { preise, katalog: katalogLinks, freischalten, betreiber, kundencode, abmelden } = usePreise();
+  const { preise, katalog: katalogLinks, freischalten } = usePreise();
   const [blaettern, setBlaettern] = useState(false);
-  const [neuCode, setNeuCode] = useState<string | null>(null);
   const [konfigDialog, setKonfigDialog] = useState(false);
   const konfig = useKonfiguratorFrei();
   const [parks, setParks] = useState<Beispiel[]>([]);
   const [groesse, setGroesse] = useState(0);
-  const [alleParks, setAlleParks] = useState(false);
+  const [gruppe, setGruppe] = useState('');
+  // Erst eine Reihe je Bereich, „Mehr laden“ klappt die nächste auf; bei einer Suche alle Treffer
+  const [reihenParks, setReihenParks] = useState(1);
+  const [reihenTeile, setReihenTeile] = useState<Record<string, number>>({});
+  // Parks oder Einzelteile; #einzelteile im Link und ein geöffnetes Element zeigen die Einzelteile
+  const [ansicht, setAnsicht] = useState<'parks' | 'einzelteile'>(() => (typeof window !== 'undefined' && window.location.hash === '#einzelteile' ? 'einzelteile' : 'parks'));
+  const leiste = useRef<HTMLDivElement>(null);
+  const zeigen = (a: 'parks' | 'einzelteile') => {
+    setAnsicht(a);
+    if (leiste.current && leiste.current.getBoundingClientRect().top <= 100) leiste.current.scrollIntoView();
+  };
 
   useEffect(() => {
     fetch('/katalog/katalog.json').then((r) => r.json()).then(setKatalog).catch(() => setKatalog(null));
@@ -333,12 +351,12 @@ const KatalogPage: React.FC = () => {
     return parks.filter((p) => GROESSEN[groesse].passt(p) && (!q || [p.name, ...p.stueckliste.map((t) => t.name)].join(' ').toLowerCase().includes(q)));
   }, [parks, suche, groesse]);
   // Erst sechs Parks, damit die Einzelteile nicht weit nach unten rutschen; mit Filter oder Suche alle Treffer
-  const parkListe = alleParks || groesse || suche.trim() ? parkTreffer : parkTreffer.slice(0, 6);
   const parkIndex = parks.findIndex((p) => p.id === slug);
   const aktivPark = parkIndex >= 0 ? parks[parkIndex] : undefined;
 
   const index = katalog?.elemente.findIndex((e) => e.slug === slug) ?? -1;
   const aktiv = index >= 0 ? katalog!.elemente[index] : undefined;
+  useEffect(() => { if (aktiv) setAnsicht('einzelteile'); }, [aktiv]);
   const schliessen = () => navigate('/katalog', { replace: false });
 
   return (
@@ -346,74 +364,61 @@ const KatalogPage: React.FC = () => {
       title={aktivPark ? `${aktivPark.name} · Skate-Katalog` : aktiv ? `${aktiv.name} · Skate-Katalog` : 'Skate-Katalog in 3D'}
       description="Skatepark-Beispiele und alle Skate-Elemente von A+ Urban Design in 3D: Parks mit Fläche und Stückliste, dazu Tables, Banks, Hips, Ramps, Rails und mehr."
     >
-      <section className="pt-32 pb-10 md:pt-40">
+      <section className="pt-32 pb-8 md:pt-40 md:pb-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Katalog</span>
           <h1 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-            Skate-<span className="text-brand-orange">Parks.</span>
+            Skate-<span className="text-brand-orange">Parks</span>
           </h1>
           <p className="text-brand-muted mt-6 max-w-2xl mx-auto text-lg">
-            {parks.length || 'Viele'} Beispielparks und {katalog ? katalog.elemente.length : 'alle'} Elemente in 3D. Erst den passenden Park finden, dann jedes Teil im Detail ansehen.
+            {parks.length || 'Viele'} Beispielparks und {katalog ? katalog.elemente.length : 'alle'} Einzelteile in 3D. Park aussuchen, Teile ansehen, eigenen Park planen.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a href="#parks" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors">
-              <span className="material-symbols-outlined text-lg">grid_view</span> Beispielparks ansehen
-            </a>
-            <Link to="/konfigurator" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-brand-dark/15 text-brand-dark font-bold uppercase tracking-wider text-sm hover:border-brand-orange hover:text-brand-orange transition-colors">
-              <span className="material-symbols-outlined text-lg">view_in_ar</span> Eigenen Skatepark planen
-            </Link>
-          </div>
         </div>
       </section>
 
-      <div className="sticky top-14 md:top-20 z-30 bg-brand-bg/95 backdrop-blur-md border-y border-brand-dark/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
-          <div className="relative flex-1 min-w-[120px] max-w-xs">
+      {/* Eine Leiste für alles: Ansicht, Suche, Filter, Planen, Preise. Codes für Kunden gibt es nur auf /codes. */}
+      <div ref={leiste} className="sticky top-14 md:top-20 z-30 bg-brand-bg/95 backdrop-blur-md border-y border-brand-dark/5 scroll-mt-14 md:scroll-mt-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap xl:flex-nowrap items-center gap-2 md:gap-3">
+          <div className="w-full sm:w-auto grid grid-cols-2 p-1 bg-brand-surface rounded-xl" role="tablist" aria-label="Ansicht">
+            {([['parks', 'Parks', parks.length], ['einzelteile', 'Einzelteile', katalog?.elemente.length]] as const).map(([id, text, n]) => (
+              <button
+                key={id} type="button" role="tab" aria-selected={ansicht === id} onClick={() => zeigen(id)}
+                className={`h-10 px-4 rounded-lg text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-colors ${ansicht === id ? 'bg-brand-dark text-white' : 'text-brand-dark hover:text-brand-orange'}`}
+              >{text} <span className="font-mono text-xs opacity-70">{n || ''}</span></button>
+            ))}
+          </div>
+          <div className="relative flex-1 min-w-[10rem] xl:max-w-xs">
             <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted text-xl">search</span>
             <input
-              value={suche} onChange={(e) => setSuche(e.target.value)} placeholder="Suchen, z. B. Bank 98 oder SCR"
+              type="search" value={suche} onChange={(e) => setSuche(e.target.value)}
+              placeholder={ansicht === 'parks' ? 'Park oder Element suchen' : 'Suchen, z. B. Bank 98 oder SCR'}
               aria-label="Katalog durchsuchen"
-              className="w-full pl-10 pr-4 py-2 rounded-lg border border-brand-dark/10 bg-white/70 text-sm focus:outline-none focus:border-brand-orange"
+              className="w-full h-11 pl-10 pr-3 rounded-lg border border-brand-dark/10 bg-white/70 text-sm focus:outline-none focus:border-brand-orange"
             />
           </div>
-          <nav className="hidden md:flex flex-1 min-w-0 gap-1.5 overflow-x-auto [scrollbar-width:none]" aria-label="Gruppen">
-            {[['parks', `Parks ${parks.length || ''}`], ['einzelteile', `Einzelteile ${katalog?.elemente.length ?? ''}`]].map(([id, text]) => (
-              <a key={id} href={`#${id}`} className="shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-brand-dark text-white hover:bg-brand-orange transition-colors">{text}</a>
-            ))}
-            <span className="shrink-0 w-px bg-brand-dark/10 mx-1" />
-            {katalog?.gruppen.map((g) => (
-              <a key={g} href={`#${gruppenId(g)}`} className="shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider text-brand-muted border border-brand-dark/10 hover:border-brand-orange hover:text-brand-orange transition-colors">{g}</a>
-            ))}
-          </nav>
-          <span className="ml-auto" />
+          <label className="shrink-0 h-11 flex items-center gap-2 px-3 rounded-lg border border-brand-dark/10 bg-white/70 text-sm">
+            <span className="hidden sm:inline text-brand-muted">{ansicht === 'parks' ? 'Fläche' : 'Gruppe'}</span>
+            {ansicht === 'parks' ? (
+              <select value={groesse} onChange={(e) => setGroesse(Number(e.target.value))} aria-label="Nach Fläche filtern" className="bg-transparent font-semibold text-brand-dark focus:outline-none max-w-[9rem]">
+                {GROESSEN.map((g, i) => <option key={g.name} value={i}>{g.name}</option>)}
+              </select>
+            ) : (
+              <select value={gruppe} onChange={(e) => setGruppe(e.target.value)} aria-label="Nach Gruppe filtern" className="bg-transparent font-semibold text-brand-dark focus:outline-none max-w-[9rem]">
+                <option value="">Alle</option>
+                {katalog?.gruppen.map((g) => <option key={g} value={g}>{g}</option>)}
+              </select>
+            )}
+          </label>
+          <span className="hidden xl:block flex-1" />
           <ParkZaehler />
           <button
-            type="button" onClick={() => !preise && setDialog(true)}
-            className={`shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${preise ? 'bg-brand-orange/10 text-brand-orange cursor-default' : 'bg-brand-dark text-white hover:bg-brand-orange'}`}
+            type="button" onClick={() => (katalogLinks ? setBlaettern(true) : setDialog(true))}
+            aria-label={katalogLinks ? 'Katalog 2026 blättern' : 'Preise und Katalog freischalten'}
+            className={`shrink-0 h-11 inline-flex items-center gap-2 px-3 md:px-4 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${katalogLinks ? 'bg-brand-orange text-white hover:bg-brand-dark' : 'bg-brand-dark text-white hover:bg-brand-orange'}`}
           >
-            <span className="material-symbols-outlined text-lg">{preise ? 'lock_open' : 'lock'}</span>
-            <span className="sm:hidden">Preise</span>
-            <span className="hidden sm:inline">{preise ? 'Preise freigeschaltet' : 'Preise freischalten'}</span>
+            <span className="material-symbols-outlined text-lg">{katalogLinks ? 'menu_book' : 'lock'}</span>
+            <span className="hidden lg:inline">{katalogLinks ? 'Katalog 2026 blättern' : 'Preise und Katalog'}</span>
           </button>
-          {/* Katalog und Preisliste zum Blättern: Link kommt mit den Preisen, ohne Code öffnet sich die Code-Eingabe */}
-          <button
-            type="button" onClick={() => (katalogLinks ? setBlaettern(true) : !preise && setDialog(true))}
-            className={`shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${katalogLinks ? 'bg-brand-orange text-white shadow-lg shadow-brand-orange/30 hover:bg-brand-dark' : 'border border-brand-dark/15 text-brand-dark hover:border-brand-orange hover:text-brand-orange'}`}
-            title="Katalog und Preisliste 2026 zum Blättern"
-          >
-            <span className="material-symbols-outlined text-lg">menu_book</span>
-            {katalogLinks ? <>Katalog<span className="hidden sm:inline">&nbsp;2026 blättern</span></> : <span className="hidden sm:inline">Katalog</span>}
-          </button>
-          {betreiber && (
-            <>
-              <button type="button" onClick={async () => setNeuCode((await kundencode('preise')) ?? 'Fehler, bitte erneut versuchen')} className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider bg-brand-dark text-white hover:bg-brand-orange transition-colors" title="Kundencode für die Preise erzeugen">
-                <span className="material-symbols-outlined text-lg">key</span>Code Preise
-              </button>
-              <button type="button" onClick={async () => setNeuCode((await kundencode('konfigurator')) ?? 'Fehler, bitte erneut versuchen')} className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider bg-brand-dark text-white hover:bg-brand-orange transition-colors" title="Kundencode für den Konfigurator erzeugen">
-                <span className="material-symbols-outlined text-lg">key</span>Code Konfigurator
-              </button>
-            </>
-          )}
         </div>
       </div>
 
@@ -435,49 +440,38 @@ const KatalogPage: React.FC = () => {
             </div>
           </div>
         )}
-        {parks.length > 0 && (
+        {ansicht === 'parks' && parks.length > 0 && (
           <div id="parks" className="mb-24 scroll-mt-40">
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-3 mb-8 border-b border-brand-dark/10 pb-4">
               <h2 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">Skatepark-Beispiele</h2>
               <span className="font-mono text-xs text-brand-muted">{parkTreffer.length} Parks</span>
-              <div className="w-full md:w-auto md:ml-auto flex flex-wrap gap-1.5" role="group" aria-label="Nach Fläche filtern">
-                {GROESSEN.map((g, i) => (
-                  <button
-                    key={g.name} type="button" onClick={() => setGroesse(i)} aria-pressed={groesse === i}
-                    className={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider border transition-colors ${groesse === i ? 'bg-brand-orange border-brand-orange text-white' : 'border-brand-dark/10 text-brand-muted hover:border-brand-orange hover:text-brand-orange'}`}
-                  >{g.name}</button>
-                ))}
-              </div>
             </div>
             <p className="text-brand-muted max-w-3xl mb-8">Jeder Park ist aus unseren Einzelelementen zusammengestellt, mit Fläche, Stückliste und Gesamtpreis. Im Detail drehen Sie die Anlage in 3D.</p>
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-              {parkListe.map((p) => <ParkKarte key={p.id} p={p} preis={preise ? preisText(preise[p.id]) ?? 'auf Anfrage' : null} onSperre={() => setDialog(true)} />)}
+              {(suche.trim() ? parkTreffer : parkTreffer.slice(0, reihenParks * PARKS_JE_REIHE)).map((p) => <ParkKarte key={p.id} p={p} preis={preise ? preisText(preise[p.id]) ?? 'auf Anfrage' : null} onSperre={() => setDialog(true)} />)}
             </div>
             {!parkTreffer.length && <p className="text-center text-brand-muted py-12">Kein Park passt zu diesem Filter.</p>}
-            {parkListe.length < parkTreffer.length && (
-              <div className="text-center mt-10">
-                <button type="button" onClick={() => setAlleParks(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-brand-dark/15 text-brand-dark font-bold uppercase tracking-wider text-sm hover:border-brand-orange hover:text-brand-orange transition-colors">
-                  Alle {parkTreffer.length} Parks zeigen <span className="material-symbols-outlined text-lg">expand_more</span>
-                </button>
-              </div>
-            )}
+            {!suche.trim() && <MehrLaden rest={parkTreffer.length - reihenParks * PARKS_JE_REIHE} onClick={() => setReihenParks((n) => n + 1)} />}
           </div>
         )}
 
+        {ansicht === 'einzelteile' && (<>
         <div id="einzelteile" className="scroll-mt-40 mb-10">
           <h2 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">Einzelteile</h2>
           <p className="text-brand-muted max-w-3xl mt-4">Alle Elemente modular im 125-cm-Raster. Jedes einzeln in 3D, mit Maßen und Planungsdaten.</p>
         </div>
         {!katalog && <p className="text-center text-brand-muted py-24">Katalog wird geladen …</p>}
         {katalog?.gruppen.map((g, gi) => {
-          const liste = treffer.filter((e) => e.gruppe === g);
-          if (!liste.length) return null;
+          if (gruppe && g !== gruppe) return null;
+          const alle = treffer.filter((e) => e.gruppe === g);
+          if (!alle.length) return null;
+          const liste = suche.trim() ? alle : alle.slice(0, (reihenTeile[g] ?? 1) * TEILE_JE_REIHE);
           return (
             <div key={g} id={gruppenId(g)} className="mb-20 scroll-mt-40">
               <div className="flex items-baseline gap-4 mb-8 border-b border-brand-dark/10 pb-4">
                 <span className="font-mono text-xs text-brand-orange">{String(gi + 1).padStart(2, '0')}</span>
                 <h2 className="text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">{g}</h2>
-                <span className="ml-auto font-mono text-xs text-brand-muted">{liste.length} Elemente</span>
+                <span className="ml-auto font-mono text-xs text-brand-muted">{alle.length} Elemente</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                 {liste.map((e) => (
@@ -498,10 +492,12 @@ const KatalogPage: React.FC = () => {
                   </Link>
                 ))}
               </div>
+              {!suche.trim() && <MehrLaden rest={alle.length - liste.length} onClick={() => setReihenTeile((r) => ({ ...r, [g]: (r[g] ?? 1) + 1 }))} />}
             </div>
           );
         })}
         {katalog && !treffer.length && <p className="text-center text-brand-muted py-24">Keine Elemente zu „{suche}“ gefunden.</p>}
+        </>)}
         {katalog && (
           <div className="mt-8 mb-16 grid md:grid-cols-2 gap-8 border-t border-brand-dark/10 pt-12">
             <div>
@@ -541,23 +537,6 @@ const KatalogPage: React.FC = () => {
           e={aktiv} preis={preise ? preisText(preise[aktiv.slug]) ?? 'auf Anfrage' : null} onSperre={() => setDialog(true)} onParkSperre={() => setKonfigDialog(true)} onClose={schliessen}
           zurueck={katalog!.elemente[index - 1]} vor={katalog!.elemente[index + 1]}
         />
-      )}
-      {neuCode && createPortal(
-        <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-brand-dark/50 backdrop-blur-sm" onClick={() => setNeuCode(null)}>
-          <div onClick={(ev) => ev.stopPropagation()} className="w-full max-w-md bg-brand-bg rounded-2xl border border-brand-dark/10 shadow-2xl p-8">
-            <h2 className="text-2xl font-extrabold font-heading text-brand-dark uppercase tracking-tight mb-2">Kundencode</h2>
-            <p className="text-brand-muted text-sm mb-4">{neuCode.startsWith('C-')
-              ? 'Für den Konfigurator. Einlösbar einmal innerhalb von 7 Tagen, danach kann der Kunde 2 Tage lang planen.'
-              : 'Für die Preise. Gilt einmal und 7 Tage lang. Nach dem Einlösen sieht der Kunde die Preise, bis er die Seite neu lädt.'}</p>
-            <p className="font-mono text-lg tracking-wider bg-white border border-brand-dark/15 rounded-lg px-4 py-3 select-all break-all">{neuCode}</p>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <button type="button" onClick={() => navigator.clipboard?.writeText(neuCode)} className="px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors">Kopieren</button>
-              <button type="button" onClick={abmelden} className="text-sm text-brand-muted hover:text-brand-dark">Auf diesem Gerät abmelden</button>
-              <button type="button" onClick={() => setNeuCode(null)} className="ml-auto text-sm text-brand-muted hover:text-brand-dark">Schließen</button>
-            </div>
-          </div>
-        </div>,
-        document.body,
       )}
       {blaettern && katalogLinks && (
         <Suspense fallback={null}><Blaetterkatalog links={katalogLinks} onClose={() => setBlaettern(false)} /></Suspense>

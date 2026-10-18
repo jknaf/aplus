@@ -11,7 +11,7 @@ const OtherProducts: React.FC = () => {
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24">
       <h2 className="text-4xl font-extrabold font-heading text-center mb-16 uppercase tracking-widest text-brand-dark">
-        Weitere <span className="text-brand-orange">Lösungen.</span>
+        Weitere <span className="text-brand-orange">Lösungen</span>
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -130,7 +130,7 @@ const ProductPumptrackPage: React.FC = () => {
                     <div className="lg:sticky lg:top-32">
                         {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-3xl md:text-5xl font-bold font-heading text-brand-dark mb-8 uppercase tracking-tighter">
-                            Fahren ohne <span className="text-brand-orange">Treten.</span>
+                            Fahren ohne <span className="text-brand-orange">Treten</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
                             Ein Pumptrack ist ein Rundkurs aus Wellen und Steilkurven, nutzbar für alle Altersgruppen. Die ca. 1,25 m breite Fahrbahn wird ohne Treten, allein durch Gewichtsverlagerung („Pumpen“) befahren.
@@ -181,7 +181,7 @@ const ProductPumptrackPage: React.FC = () => {
                 <div className="mb-10">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Modulsystem</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
-                        Kurven, Wellen, <span className="text-brand-orange">Rampen.</span>
+                        Kurven, Wellen, <span className="text-brand-orange">Rampen</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
                         Jede Kurve, jede Welle und jeder Roller ist ein im Werk gefertigtes Betonteil mit fester Geometrie. Die Module lassen sich frei zu eigenen Streckenverläufen kombinieren.

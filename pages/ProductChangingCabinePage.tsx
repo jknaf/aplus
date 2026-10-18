@@ -15,7 +15,7 @@ const OtherProducts: React.FC = () => {
               Portfolio
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-              Weitere <span className="text-brand-orange">Lösungen.</span>
+              Weitere <span className="text-brand-orange">Lösungen</span>
           </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -113,7 +113,7 @@ const ProductChangingCabinePage: React.FC = () => {
                         </span>
                          {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Privatsphäre <span className="text-brand-orange">ohne Türen.</span>
+                            Privatsphäre <span className="text-brand-orange">ohne Türen</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
                             In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung ist die Schnecke. Beim Betreten und Verlassen berührt man nichts. Oben und unten bleibt die Kabine offen und sie ist nicht abschließbar. Beides erschwert Missbrauch. Die fugenlose Oberfläche ist leicht zu reinigen.
@@ -164,7 +164,7 @@ const ProductChangingCabinePage: React.FC = () => {
                         Schnecken-Prinzip
                     </span>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
-                        Form statt <span className="text-brand-orange">Mechanik.</span>
+                        Form statt <span className="text-brand-orange">Mechanik</span>
                     </h2>
                     <div className="space-y-5 text-lg text-brand-muted leading-relaxed">
                         <p>
@@ -181,7 +181,7 @@ const ProductChangingCabinePage: React.FC = () => {
                         Einsatz
                     </span>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
-                        Umkleide <span className="text-brand-orange">oder Dusche.</span>
+                        Umkleide <span className="text-brand-orange">oder Dusche</span>
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed">
                         Die Schnecke ist für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen gedacht. Sie steht frei als Außenkabine und ist wahlweise auch als Duschkabine erhältlich. Die Duschkabine gibt es fertig mit Bodenablauf und Dusche: Die Bodenplatte wird über die Abwasserleitung gesetzt, dann wird nur noch die Wasserzuleitung angeschlossen. Alternativ gibt es die Kabine nur mit Aussparungen für Gully und Wasserleitung. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.
@@ -194,7 +194,7 @@ const ProductChangingCabinePage: React.FC = () => {
                 <div className="mb-8">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Einsatzbereich</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
-                        Freibad und <span className="text-brand-orange">Badesee.</span>
+                        Freibad und <span className="text-brand-orange">Badesee</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
                         Die Umkleidekabine steht frei im Freibad oder am Badesee. Vor Ort genügt ein verdichtetes, frostsicheres Kiesbett mit 5–20 mm Körnung. Die Bodenplatte kann bündig mit dem Boden oder etwas höher liegen.

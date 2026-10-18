@@ -150,8 +150,8 @@ const PlanningPage: React.FC = () => {
                 {/* Left: Text */}
                 <div className="space-y-8">
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                        Vom Architekten <span className="text-brand-orange">gedacht.</span><br/>
-                        Nicht vom Verkäufer.
+                        Vom Architekten <span className="text-brand-orange">gedacht</span><br/>
+                        Nicht vom Verkäufer
                     </h2>
                     <div className="space-y-6 text-lg text-brand-muted leading-relaxed">
                         <p>
@@ -201,7 +201,7 @@ const PlanningPage: React.FC = () => {
             <div className="mb-12">
                 <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Planungsbeispiele</span>
                 <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
-                    So planen wir <span className="text-brand-orange">Ihren Skatepark.</span>
+                    So planen wir <span className="text-brand-orange">Ihren Skatepark</span>
                 </h2>
                 <p className="text-lg text-brand-muted mt-4 max-w-3xl">
                     Sie nennen uns die verfügbare Fläche und das Budget. Wir erstellen einen individuellen Entwurf mit Draufsicht, 3D-Zeichnung und Kostenübersicht. Bei besonderen Wünschen senden Sie uns einfach eine Skizze als Vorlage.
@@ -237,7 +237,7 @@ const PlanningPage: React.FC = () => {
                 <div className="text-center mb-16">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Ablauf</span>
                     <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
-                        Der Weg zum <span className="text-brand-orange">Skatepark</span> in drei Schritten.
+                        Der Weg zum <span className="text-brand-orange">Skatepark</span> in drei Schritten
                     </h2>
                 </div>
 
@@ -258,7 +258,7 @@ const PlanningPage: React.FC = () => {
                 <div>
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Bau und Umsetzung</span>
                     <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-4">
-                        Schneller gebaut <span className="text-brand-orange">als Ortbeton.</span>
+                        Schneller gebaut <span className="text-brand-orange">als Ortbeton</span>
                     </h2>
                     <p className="text-sm font-mono text-brand-muted uppercase tracking-widest mb-8">Mit regelmäßiger TÜV-Überprüfung der Fertigungsstätte</p>
                     <div className="space-y-6 text-lg text-brand-muted leading-relaxed">
@@ -347,7 +347,7 @@ const PlanningPage: React.FC = () => {
                 <div>
                     <span className="inline-block py-1 px-3 border border-brand-orange/50 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest rounded-md">Selbst entwerfen</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading uppercase tracking-tighter leading-none mb-6">
-                        Der <span className="text-brand-orange">Skatepark-Planer.</span>
+                        Der <span className="text-brand-orange">Skatepark-Planer</span>
                     </h2>
                     <p className="text-lg text-white/80 leading-relaxed mb-4">
                         Stellen Sie Ihren Park im Browser aus unseren Elementen zusammen, in 3D und als Draufsicht. Der Planer zeigt Maße und Stückliste. Ihren Entwurf senden Sie uns, und wir arbeiten ihn zur fertigen Planung aus.

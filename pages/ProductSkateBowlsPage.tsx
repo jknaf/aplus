@@ -12,7 +12,7 @@ const OtherProducts: React.FC = () => {
     <div className="mt-32 border-t border-brand-dark/10 pt-24 relative z-20">
       <div className="text-center mb-16">
           <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Portfolio</span>
-          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">Weitere <span className="text-brand-orange">Lösungen.</span></h2>
+          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">Weitere <span className="text-brand-orange">Lösungen</span></h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -119,7 +119,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                     <div className="lg:sticky lg:top-32 relative z-20">
                          <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Geschichte</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Vom Swimmingpool <span className="text-brand-orange">zum Bowl.</span>
+                            Vom Swimmingpool <span className="text-brand-orange">zum Bowl</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
                             In den 1950er-Jahren entdeckten Surfer leere Swimmingpools als Skateflächen. Die geschwungenen Transitions, das Flat und das Copingrohr an der Oberkante prägen bis heute jeden Skate-Bowl.
@@ -153,7 +153,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                     <div>
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Bauweisen</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                            Geschlossen <span className="text-brand-orange">oder offen.</span>
+                            Geschlossen <span className="text-brand-orange">oder offen</span>
                         </h2>
                     </div>
                 </div>
@@ -207,7 +207,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                     <div>
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">Bauweise</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                            Fertigteil statt <span className="text-brand-orange">Ortbeton.</span>
+                            Fertigteil statt <span className="text-brand-orange">Ortbeton</span>
                         </h2>
                     </div>
                 </div>

@@ -70,7 +70,7 @@ const ContactPage: React.FC = () => {
 
                 <div className="text-center mb-16 animate-fade-in-up">
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-brand-dark leading-[0.85]">
-                        Gemeinsam<br/><span className="text-brand-orange">planen.</span>
+                        Gemeinsam<br/><span className="text-brand-orange">planen</span>
                     </h1>
                     <p className="mt-8 text-xl text-brand-muted max-w-2xl mx-auto font-light">
                         Sie planen eine Anlage? Beschreiben Sie uns kurz Fläche und Vorhaben. <br/>

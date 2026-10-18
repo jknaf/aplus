@@ -15,7 +15,7 @@ const OtherProducts: React.FC = () => {
               Portfolio
           </span>
            <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-              Weitere <span className="text-brand-orange">Lösungen.</span>
+              Weitere <span className="text-brand-orange">Lösungen</span>
           </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -113,7 +113,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                         </span>
                         {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Spielen. <span className="text-brand-orange">Das ganze Jahr.</span>
+                            Spielen, <span className="text-brand-orange">das ganze Jahr</span>
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
                             Mit unserem Bandensystem wird ein Hartplatz zum Spielfeld für Inline- und Rollhockey. Mit einem Abdichtungsprofil unter der Einfassung lässt sich im Winter auch Eis anlegen.
@@ -172,7 +172,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                 <div className="mb-8">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Varianten</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
-                        40 cm oder <span className="text-brand-orange">110 cm.</span>
+                        40 cm oder <span className="text-brand-orange">110 cm</span>
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
                         Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen. Sie ist stapelbar und vandalismussicher. Die 110-cm-Bande mit Edelstahl-Handlauf umschließt das ganze Spielfeld und ist für regelmäßigen Spielbetrieb gebaut. Beide Varianten lassen sich kombinieren und auf Asphalt- oder Betonflächen fundamentfrei aufstellen.

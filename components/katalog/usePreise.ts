@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from 'react';
 // Kundencode: Preise nur im Speicher der Seite, nach dem Neuladen sind sie weg (der Code ist dann verbraucht).
 const SPEICHER = 'aplus-preis-betreiber';
 
+export interface CodeZeile { code: string; art: 'preise' | 'konfigurator'; fuer: string; erstellt: string; bis: string; eingeloest: string | null; abgelaufen: boolean }
+
 const merken = (code: string | null) => {
   try {
     if (code) localStorage.setItem(SPEICHER, code); else localStorage.removeItem(SPEICHER);
@@ -44,18 +46,25 @@ export const usePreise = () => {
     }
   }, []);
 
-  const kundencode = useCallback(async (zweck: 'preise' | 'konfigurator' = 'preise'): Promise<string | null> => {
+  // Nur für die Seite /codes: erzeugt einen Kundencode für eine Person bzw. liest die Liste aller Codes
+  const kundencode = useCallback(async (zweck: 'preise' | 'konfigurator', fuer: string): Promise<{ code?: string; bis?: string; fehler?: string }> => {
+    if (!betreiber) return { fehler: 'Nicht angemeldet.' };
+    const { ok, daten } = await abfragen({ code: betreiber, neu: true, zweck, fuer }).catch(() => ({ ok: false, daten: {} as Record<string, string> }));
+    return ok ? { code: daten.kundencode, bis: daten.bis } : { fehler: daten.fehler ?? 'Fehler, bitte erneut versuchen.' };
+  }, [betreiber]);
+
+  const codeliste = useCallback(async (): Promise<CodeZeile[] | null> => {
     if (!betreiber) return null;
-    const { ok, daten } = await abfragen({ code: betreiber, neu: true, zweck }).catch(() => ({ ok: false, daten: {} as { kundencode?: string } }));
-    return ok ? daten.kundencode ?? null : null;
+    const { ok, daten } = await abfragen({ code: betreiber, liste: true }).catch(() => ({ ok: false, daten: {} as { codes?: CodeZeile[] } }));
+    return ok ? daten.codes ?? [] : null;
   }, [betreiber]);
 
   const abmelden = useCallback(() => { merken(null); setBetreiber(null); setPreise(null); setKatalog(null); }, []);
 
-  return { preise, katalog, freischalten, betreiber: !!betreiber, kundencode, abmelden };
+  return { preise, katalog, freischalten, betreiber: !!betreiber, kundencode, codeliste, abmelden };
 };
 
-// Konfigurator: ohne Freischaltung nur Vorlagen ansehen. Frei mit Betreiber-Code (dauerhaft) oder C-Code (FREI_TAGE im Browser).
+// Konfigurator: ohne Freischaltung nur Vorlagen ansehen. Frei mit Betreiber-Code (dauerhaft) oder K-Code (FREI_TAGE im Browser).
 // ponytail: Sperre nur im Browser, wer die Seite zerlegt, kommt vorbei; Preise bleiben trotzdem auf dem Server
 const FREI_BIS = 'aplus-konfigurator-frei-bis';
 const lesen = (k: string) => { try { return localStorage.getItem(k); } catch { return null; } };

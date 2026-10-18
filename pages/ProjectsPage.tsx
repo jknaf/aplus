@@ -24,7 +24,7 @@ const ProjectsPage: React.FC = () => {
             </span>
         </div>
         <h1 className="text-6xl md:text-9xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.85] mb-8">
-            Ausgewählte<br/><span className="text-brand-orange">Projekte.</span>
+            Ausgewählte<br/><span className="text-brand-orange">Projekte</span>
         </h1>
       </div>
 

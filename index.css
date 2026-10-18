@@ -114,3 +114,7 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--brand-accent);
 }
+/* Enge Laufweite (tracking-tight/-tighter) schrumpft auch die Wortabstände; bei Versal-Überschriften kleben die Wörter dann.
+   Mehr Wortabstand gleicht das aus, ohne die Buchstaben auseinanderzuziehen. */
+.font-heading.tracking-tighter { word-spacing: 0.12em; }
+.font-heading.tracking-tight { word-spacing: 0.06em; }

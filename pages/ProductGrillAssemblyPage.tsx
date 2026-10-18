@@ -70,9 +70,9 @@ const Hero: React.FC = () => (
         </div>
 
         <h1>
-          <span className="line"><span>Grillplatz.</span></span>
+          <span className="line"><span>Grillplatz</span></span>
           <span className="line"><span>Gebaut</span></span>
-          <span className="line"><span>für <span className="accent">Jahrzehnte.</span></span></span>
+          <span className="line"><span>für <span className="accent">Jahrzehnte</span></span></span>
         </h1>
 
         <p className="hero-lead">
@@ -139,7 +139,7 @@ const Voraussetzungen: React.FC = () => {
             <span className="num">01</span>
             <span>Voraussetzungen</span>
           </div>
-          <h2>Der Aufbau <span className="accent">unter</span> dem Grillplatz.</h2>
+          <h2>Der Aufbau <span className="accent">unter</span> dem Grillplatz</h2>
           <p>
             Der Grillplatz benötigt keine Fundamente. Die Tragfähigkeit kommt aus einem
             schichtweise aufgebauten Unterbau mit 4,50 m Durchmesser. Diesen Unterbau stellt der Auftraggeber selbst her.
@@ -202,7 +202,7 @@ const Abladen: React.FC = () => (
           <span className="num">02</span>
           <span>Abladen &amp; Anschlagen</span>
         </div>
-        <h2>Abladen und <span className="accent">Anschlagen.</span></h2>
+        <h2>Abladen und <span className="accent">Anschlagen</span></h2>
         <p>
           Die Fertigteile werden mit Autokran, Radlader oder Gabelstapler (Hublast ≥ 3,5 t) abgeladen.
           Jedes halbrunde Betonteil wiegt rund 3,3 t, das runde Mittelteil rund 1,0 t.
@@ -215,7 +215,7 @@ const Abladen: React.FC = () => (
             <span className="step-number">01</span>
             <span className="step-tag"><span className="phase">Phase 02</span> · Anschlagen</span>
           </div>
-          <h3 className="step-title">Halbrunde <span className="accent">Betonteile.</span></h3>
+          <h3 className="step-title">Halbrunde <span className="accent">Betonteile</span></h3>
           <div className="step-body">
             <p>
               Die halbrunden Betonteile werden ausschließlich an den <strong>3 stirnseitigen
@@ -260,7 +260,7 @@ const Montage: React.FC = () => (
           <span className="num">03</span>
           <span>Montage</span>
         </div>
-        <h2>Die <span className="accent">Setzreihenfolge.</span></h2>
+        <h2>Die <span className="accent">Setzreihenfolge</span></h2>
         <p>
           Die Bodenplatte kann bündig oder über dem Erdreich montiert werden. Bei bündiger
           Ausführung muss die Plattenstärke von 16 cm im Kiesbett berücksichtigt werden.
@@ -274,7 +274,7 @@ const Montage: React.FC = () => (
             <span className="step-number">02</span>
             <span className="step-tag"><span className="phase">Phase 03</span> · Setzen</span>
           </div>
-          <h3 className="step-title">Halbrunde zuerst, <span className="accent">dann die Mitte.</span></h3>
+          <h3 className="step-title">Halbrunde zuerst, <span className="accent">dann die Mitte</span></h3>
           <div className="step-body">
             <p>
               Zuerst werden die beiden halbrunden Betonteile gesetzt, sodass sie einen Kreis
@@ -321,7 +321,7 @@ const Montage: React.FC = () => (
             <span className="step-number">03</span>
             <span className="step-tag"><span className="phase">Phase 04</span> · Träger</span>
           </div>
-          <h3 className="step-title">Träger setzen &amp; <span className="accent">loten.</span></h3>
+          <h3 className="step-title">Träger setzen &amp; <span className="accent">loten</span></h3>
           <div className="step-body">
             <p>
               Der Träger wird in die vorhandene Aussparung in der Bodenplatte gesteckt.
@@ -357,7 +357,7 @@ const Montage: React.FC = () => (
             <span className="step-number">04</span>
             <span className="step-tag"><span className="phase">Phase 05</span> · Kette</span>
           </div>
-          <h3 className="step-title">Kette, Haken, <span className="accent">Gegengewicht.</span></h3>
+          <h3 className="step-title">Kette, Haken, <span className="accent">Gegengewicht</span></h3>
           <div className="step-body">
             <p>
               Die Kette wird von außen nach innen über die Rolle des Trägers gezogen, sodass
@@ -390,7 +390,7 @@ const Montage: React.FC = () => (
             <span className="step-number">05</span>
             <span className="step-tag"><span className="phase">Phase 06</span> · Übergabe</span>
           </div>
-          <h3 className="step-title">Fertig zur <span className="accent">Übergabe.</span></h3>
+          <h3 className="step-title">Fertig zur <span className="accent">Übergabe</span></h3>
           <div className="step-body">
             <p>
               Wenn die Bodenplatte bündig sitzt, schließen Sie vor der Inbetriebnahme
@@ -468,7 +468,7 @@ const Werkzeuge: React.FC = () => {
             <span className="num">04</span>
             <span>Geräte &amp; Werkzeuge</span>
           </div>
-          <h2>Was Sie <span className="accent">brauchen.</span></h2>
+          <h2>Was Sie <span className="accent">brauchen</span></h2>
           <p>
             Die komplette Liste der Geräte und Werkzeuge, die Sie vor Ort benötigen.
             Prüfen Sie die Liste vor Montagebeginn. Das spart Zeit und Leerfahrten.
@@ -506,7 +506,7 @@ const Wartung: React.FC = () => {
             <span className="num">05</span>
             <span>Wartung &amp; Instandhaltung</span>
           </div>
-          <h2>Wartungsarm. <span className="accent">Nicht wartungsfrei.</span></h2>
+          <h2>Wartungsarm, <span className="accent">nicht wartungsfrei</span></h2>
           <p>
             Der Grillplatz benötigt keine besondere Wartung und Pflege. Regelmäßige
             Kontrollen verlängern jedoch die Lebensdauer erheblich. Die Zeitintervalle

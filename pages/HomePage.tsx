@@ -90,7 +90,7 @@ const FAQSection: React.FC = () => {
                         Wissen und Technik
                     </span>
                     <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-                        Häufige <span className="text-brand-orange">Fragen.</span>
+                        Häufige <span className="text-brand-orange">Fragen</span>
                     </h2>
                     <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
                         Alles über Planung, Kosten, Fördermittel und Bau von Skateparks, Pumptracks und BMX-Anlagen, von Ihrem Skatepark-Hersteller.
@@ -148,7 +148,7 @@ const ProductScrollytelling: React.FC = () => {
                     </span>
                     <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
                         Unsere<br/>
-                        <span className="text-brand-orange">Produkte.</span>
+                        <span className="text-brand-orange">Produkte</span>
                     </h2>
                 </AnimatedSection>
 
@@ -295,7 +295,7 @@ const ServiceOverviewSection: React.FC = () => {
                     </span>
                     <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
                         Planung, Bau<br />
-                        & <span className="text-brand-orange">Service.</span>
+                        & <span className="text-brand-orange">Service</span>
                     </h2>
                     <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
                         Seit über 25 Jahren begleiten wir Kommunen, Architekten und Landschaftsplaner durch jede Phase eines Skatepark-Projekts, von der Beratung bis zur langfristigen Wartung.
@@ -550,7 +550,7 @@ const HomePage: React.FC = () => {
                                 Unser Anspruch
                              </span>
                              <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark leading-[0.9] mb-8 uppercase tracking-tighter">
-                                Gebaut<br/>für<br/><span className="text-brand-orange">Jahrzehnte.</span>
+                                Gebaut<br/>für<br/><span className="text-brand-orange">Jahrzehnte</span>
                              </h2>
                              <p className="text-lg md:text-xl text-brand-muted leading-relaxed mb-8">
                                  Wir bauen Anlagen aus Beton und Stahl für den Dauerbetrieb im öffentlichen Raum.

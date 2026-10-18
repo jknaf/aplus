@@ -31,6 +31,7 @@ import KatalogPage from './pages/KatalogPage';
 
 // Konfigurator lädt three.js; deshalb als einzige Seite erst beim Aufruf
 const KonfiguratorPage = lazy(() => import('./pages/KonfiguratorPage'));
+const CodesPage = lazy(() => import('./pages/CodesPage'));
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -84,6 +85,7 @@ const App: React.FC = () => {
             <Route path="/referenzen-presse" element={<PressePage />} />
             <Route path="/katalog" element={<KatalogPage />} />
             <Route path="/katalog/:slug" element={<KatalogPage />} />
+            <Route path="/codes" element={<Suspense fallback={<div className="min-h-screen" />}><CodesPage /></Suspense>} />
             <Route path="/konfigurator" element={<Suspense fallback={<div className="min-h-screen" />}><KonfiguratorPage /></Suspense>} />
 
             {/* Product Pages */}

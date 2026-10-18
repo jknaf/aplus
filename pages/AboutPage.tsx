@@ -115,7 +115,7 @@ const AboutPage: React.FC = () => {
                   Qualitätsnachweise
               </span>
               <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-8 leading-none">
-                  Geprüfte <span className="text-brand-orange">Skate-Elemente.</span>
+                  Geprüfte <span className="text-brand-orange">Skate-Elemente</span>
               </h2>
               <p className="text-lg text-brand-muted leading-relaxed">
                   Unsere ersten modularen Skate-Elemente entstanden 1998. Im Jahr 2000 erhielten sie das TÜV-Zertifikat und das GS-Zeichen für geprüfte Sicherheit. Heute sind sie nach DIN EN 14974 („Skateparks: Sicherheitstechnische Anforderungen und Prüfverfahren“), nach PPP 63126B und weiteren Normen geprüft. Die Zertifikatsnummer lautet Z1A 056616 0012. Damit waren wir weltweit vermutlich die ersten Hersteller modularer Beton-Skate-Elemente mit TÜV-Siegel. 27 Fachartikel berichten über Anlagen mit unserem System. Inzwischen wurden mehr als 350 Anlagen mit unserem System gebaut.
@@ -135,7 +135,7 @@ const AboutPage: React.FC = () => {
               <div className="lg:w-1/2">
                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Haltung</span>
                   <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-8 leading-none">
-                      Unsere <span className="text-brand-orange">Philosophie.</span>
+                      Unsere <span className="text-brand-orange">Philosophie</span>
                   </h2>
                   <div className="space-y-6">
                       <p className="text-lg text-brand-muted leading-relaxed border-l-2 border-brand-orange pl-6">
@@ -170,7 +170,7 @@ const AboutPage: React.FC = () => {
           <div className="mb-8">
               <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Montage-Prozess</span>
               <h3 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-4">
-                  Vom Lkw zum fertigen <span className="text-brand-orange">Park.</span>
+                  Vom Lkw zum fertigen <span className="text-brand-orange">Park</span>
               </h3>
               <p className="text-brand-muted max-w-2xl mb-8">
                   Wir montieren unsere Skate-Elemente entweder mit Übergangsblechen direkt auf einer betonierten oder asphaltierten Rollfläche oder auf einer Fundamentplatte, an die sie anbetoniert werden. Wir stellen eine Montage- und Wartungsanleitung zur Verfügung.
@@ -216,7 +216,7 @@ const AboutPage: React.FC = () => {
                         Der A+ Standard
                   </span>
                   <h2 className="text-6xl md:text-8xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                      So arbeiten <span className="text-brand-orange">wir.</span>
+                      So arbeiten <span className="text-brand-orange">wir</span>
                   </h2>
               </div>
               

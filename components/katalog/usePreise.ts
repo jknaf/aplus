@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useT } from '../../i18n';
+import { useLang, useT } from '../../i18n';
 
 // Betreiber-Code: im Browser gemerkt, Preise bei jedem Besuch frisch vom Server.
 // Kundencode: Preise nur im Speicher der Seite, nach dem Neuladen sind sie weg (der Code ist dann verbraucht).
@@ -39,7 +39,9 @@ export const usePreise = () => {
   const t = useT();
   const [preise, setPreise] = useState<Record<string, string> | null>(null);
   const [betreiber, setBetreiber] = useState<string | null>(null);
-  const [katalog, setKatalog] = useState<{ ansehen: string; download: string } | null>(null);
+  const [katalogAlle, setKatalog] = useState<Record<'de' | 'en' | 'fr', { ansehen: string; download: string } | null> | null>(null);
+  const lang = useLang();
+  const katalog = katalogAlle?.[lang] ?? katalogAlle?.de ?? null;
 
   useEffect(() => {
     let code: string | null = null;

@@ -80,7 +80,7 @@ const Blaetterkatalog: React.FC<{ links: { ansehen: string; download: string }; 
   return createPortal(
     <div className="fixed inset-0 z-[80] flex flex-col bg-brand-dark" role="dialog" aria-label={t('Katalog und Preisliste 2026', 'Catalogue and price list 2026', 'Catalogue et liste de prix 2026')}>
       <div className="flex items-center gap-3 px-4 py-3 text-white">
-        <span className="font-heading font-extrabold uppercase tracking-tight truncate">{t('Katalog und Preisliste 2026', 'Catalogue and price list 2026 (in German)', 'Catalogue et liste de prix 2026 (en allemand)')}</span>
+        <span className="font-heading font-extrabold uppercase tracking-tight truncate">{t('Katalog und Preisliste 2026', 'Catalogue and price list 2026', 'Catalogue et tarifs 2026')}</span>
         <span className="font-mono text-xs text-white/60 shrink-0">{anzahl ? `${seite + 1} / ${anzahl}` : ''}{anzahl && fertig < anzahl ? ` · ${t('lädt', 'loading', 'chargement')} ${fertig}/${anzahl}` : ''}</span>
         <a href={links.download} className={`${knopf} ml-auto bg-brand-orange text-white hover:bg-white hover:text-brand-dark`}>
           <span className="material-symbols-outlined text-lg">download</span><span className="hidden sm:inline">{t('PDF laden', 'Download PDF', 'Télécharger le PDF')}</span>

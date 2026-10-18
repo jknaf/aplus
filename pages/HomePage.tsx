@@ -405,7 +405,7 @@ const Anspruch: React.FC = () => (
 
                 <article className="lg:col-span-5 rounded-2xl bg-brand-bg text-brand-dark p-7 flex flex-col justify-between gap-6 min-h-[290px]">
                     <div className="flex justify-between gap-4 font-mono text-[11px] tracking-[0.14em]"><span>BLATT 03 / 04</span><span>DIN EN 14974</span></div>
-                    <img src="/images/details/tuev-gs.png" alt="TÜV SÜD und GS-Zeichen für geprüfte Sicherheit" loading="lazy" className="w-[260px] max-w-full h-auto self-center" />
+                    <img src="/images/details/tuev-gs.png" alt="GS-Zeichen von TÜV SÜD" width="317" height="320" loading="lazy" className="h-[120px] w-auto self-center" />
                     <div className="flex flex-col gap-1.5 border-t-[1.5px] border-brand-dark pt-3.5">
                         <h3 className="font-heading font-extrabold uppercase text-2xl leading-none">Geprüfte Sicherheit</h3>
                         <p className="text-sm text-brand-dark/75 leading-snug">TÜV-zertifiziert seit 2000. Der TÜV überwacht auch die Fertigung.</p>

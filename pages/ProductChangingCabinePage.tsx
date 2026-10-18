@@ -4,6 +4,7 @@ import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
+import Bild from '../components/Bild';
 
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'umkleide' && p.id !== 'grillstelle').slice(0, 3);
@@ -20,7 +21,7 @@ const OtherProducts: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
           <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface/60 border border-brand-dark/5 backdrop-blur-sm">
-            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
+            <Bild hoch sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="absolute inset-0 flex flex-col justify-end p-8">
                <span className="text-brand-orange font-mono text-xs mb-2 hidden group-hover:block">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
@@ -71,7 +72,7 @@ const ProductChangingCabinePage: React.FC = () => {
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
-                 <img src="/images/umkleide/umkleidekabine-schnecke-04.jpg"
+                 <Bild hoch src="/images/umkleide/umkleidekabine-schnecke-04.jpg"
                         alt="Umkleidekabine Schnecke aus Beton im Freien"
                         className="w-full h-full object-cover animate-kenburns-3"
                         loading="eager"
@@ -134,7 +135,7 @@ const ProductChangingCabinePage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/umkleide/umkleide-kabine-01.jpg" alt="Umkleidekabine auf Edelstahlfüßen, Eingang ohne Tür" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <Bild sizes="(min-width: 1024px) 60vw, 100vw" src="/images/umkleide/umkleide-kabine-01.jpg" alt="Umkleidekabine auf Edelstahlfüßen, Eingang ohne Tür" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 1: Kabine auf Edelstahlfüßen, Eingang ohne Tür</div>
                     </div>
                     
@@ -200,7 +201,7 @@ const ProductChangingCabinePage: React.FC = () => {
                     </p>
                 </div>
                 <div className="relative w-full aspect-[21/9] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
-                    <img src="/images/umkleide/umkleide-panorama.jpg" alt="Mehrere Schnecken-Kabinen auf einer gepflasterten Fläche" loading="lazy" className="w-full h-full object-cover" />
+                    <Bild sizes="(min-width: 1024px) 60vw, 100vw" src="/images/umkleide/umkleide-panorama.jpg" alt="Mehrere Schnecken-Kabinen auf einer gepflasterten Fläche" loading="lazy" className="w-full h-full object-cover" />
                     <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 4: Freistehend auf gepflasterter Fläche</div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PageShell from '../components/PageShell';
 import BrochureRequestForm from '../components/BrochureRequestForm';
+import Bild from '../components/Bild';
 
 // --- Animated Counter Component ---
 const StatCounter: React.FC<{ end: number; suffix?: string; label: string }> = ({ end, suffix = '', label }) => {
@@ -74,7 +75,7 @@ const AboutPage: React.FC = () => {
       <div className="relative w-full h-[80vh] -mt-16 mb-32 flex items-center justify-center overflow-hidden">
         {/* Background Texture/Image */}
         <div className="absolute inset-0 z-0">
-             <img 
+             <Bild hoch 
                 src="/images/planung/skateanlage-planung-02.jpg" 
                 alt="3D-Planung eines Skateparks" 
                 className="w-full h-full object-cover grayscale opacity-40 scale-105 animate-[kenburns-1_30s_infinite_alternate]"

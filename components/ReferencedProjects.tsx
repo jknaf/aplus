@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PROJECTS } from '../constants';
+import Bild from './Bild';
 
 interface ReferencedProjectsProps {
   productPath: string;
@@ -31,7 +32,7 @@ const ReferencedProjects: React.FC<ReferencedProjectsProps> = ({ productPath, li
             to={`/projekte/${project.id}`}
             className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface/60 border border-brand-dark/5 backdrop-blur-sm"
           >
-            <img
+            <Bild hoch sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               loading="lazy"
               decoding="async"
               src={project.imageUrl}

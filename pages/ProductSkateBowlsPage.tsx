@@ -4,6 +4,7 @@ import PageShell from '../components/PageShell';
 import { PRODUCTS } from '../constants';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
+import Bild from '../components/Bild';
 
 const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'skate-bowls' && p.id !== 'skate-anlagen').slice(0, 3);
@@ -16,7 +17,7 @@ const OtherProducts: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
           <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface/60 border border-brand-dark/5 z-20 backdrop-blur-sm">
-            <img loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} width="600" height="800" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
+            <Bild hoch sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} width="600" height="800" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="absolute inset-0 flex flex-col justify-end p-8 z-30">
                <span className="text-brand-orange font-mono text-xs mb-2 hidden group-hover:block">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
@@ -56,7 +57,7 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string; href?
 
 const GalleryImage: React.FC<{ src: string; alt: string; label: string }> = ({ src, alt, label }) => (
     <div className="aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group relative shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-        <img src={src} alt={alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <Bild src={src} alt={alt} sizes="(min-width: 1024px) 60vw, 100vw" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{label}</div>
     </div>
 );
@@ -90,7 +91,7 @@ const ProductSkateBowlsPage: React.FC = () => {
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
-                 <img src="/images/skate-bowls/skate-bowl-01.jpg" alt="Offener Skate-Bowl aus modularen Beton-Fertigteilen" className="w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />
+                 <Bild hoch src="/images/skate-bowls/skate-bowl-01.jpg" alt="Offener Skate-Bowl aus modularen Beton-Fertigteilen" className="w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>

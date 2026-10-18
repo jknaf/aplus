@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import { PROJECTS } from '../constants';
 import { ProjectCategory } from '../types';
+import Bild from '../components/Bild';
 
 const CATEGORIES: ProjectCategory[] = ['Skatepark', 'Pumptrack', 'Hockey-Bande', 'Grillstelle', 'Umkleidekabine'];
 
@@ -70,7 +71,7 @@ const ProjectsPage: React.FC = () => {
           >
             {/* Image Layer */}
             <div className="absolute inset-0 z-0">
-                 <img 
+                 <Bild sizes="(min-width: 1024px) 60vw, 100vw" 
                     loading="lazy" 
                     decoding="async" 
                     src={project.imageUrl} 

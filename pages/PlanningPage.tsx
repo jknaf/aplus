@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import { KONFIGURATOR_ANFRAGE } from '../components/katalog/CodeDialog';
+import Bild from '../components/Bild';
 
 // --- ANIMATED BLUEPRINT COMPONENT ---
 // Simulates a technical scanner verifying the quality of the plan
@@ -114,7 +115,7 @@ const PlanningPage: React.FC = () => {
         {/* 1. HERO SECTION */}
         <div className="relative w-full h-[80vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
             <div className="absolute inset-0">
-                 <img 
+                 <Bild hoch 
                     src="/images/planung/skateanlage-planung-02.jpg" 
                     alt="3D-Planung eines Skateparks" 
                     className="w-full h-full object-cover animate-[kenburns-1_20s_infinite_alternate]"
@@ -214,7 +215,7 @@ const PlanningPage: React.FC = () => {
                     <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 1: Lageplan einer Skateanlage</div>
                 </div>
                 <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                    <img src="/images/planung/skateanlage-planung-02.jpg" alt="Skatepark-Planung, Beispiel 2" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <Bild sizes="(min-width: 1024px) 60vw, 100vw" src="/images/planung/skateanlage-planung-02.jpg" alt="Skatepark-Planung, Beispiel 2" loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 2: 3D-Ansicht derselben Planung</div>
                 </div>
                 <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">

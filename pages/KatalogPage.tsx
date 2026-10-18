@@ -380,21 +380,21 @@ const KatalogPage: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-6 md:pb-8">
         <div className="max-w-3xl mx-auto grid grid-cols-2 gap-3 md:gap-4" role="tablist" aria-label="Ansicht">
           {([
-            ['parks', 'Beispielparks', 'landscape', `${parks.length || ''} fertige Anlagen mit Preis`],
-            ['einzelteile', 'Einzelteile', 'deployed_code', `${katalog?.elemente.length ?? ''} Elemente einzeln in 3D`],
-          ] as const).map(([id, text, icon, unter]) => {
+            ['parks', 'Beispielparks', 'Parks', 'landscape', `${parks.length || ''} fertige Anlagen mit Preis`, `${parks.length || ''} Anlagen`],
+            ['einzelteile', 'Einzelteile', 'Einzelteile', 'deployed_code', `${katalog?.elemente.length ?? ''} Elemente einzeln in 3D`, `${katalog?.elemente.length ?? ''} Elemente`],
+          ] as const).map(([id, text, kurz, icon, unter, unterKurz]) => {
             const an = ansicht === id;
             return (
               <button
                 key={id} type="button" role="tab" aria-selected={an} onClick={() => zeigen(id)}
-                className={`flex items-center gap-3 md:gap-5 p-3 md:p-4 rounded-2xl border-2 text-left transition-colors ${an ? 'bg-brand-dark border-brand-dark text-white' : 'bg-white border-brand-dark/15 text-brand-dark hover:border-brand-orange'}`}
+                className={`flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 md:gap-5 p-3 md:p-4 rounded-2xl border-2 text-left transition-colors ${an ? 'bg-brand-dark border-brand-dark text-white' : 'bg-white border-brand-dark/15 text-brand-dark hover:border-brand-orange'}`}
               >
                 <span className={`shrink-0 w-11 h-11 md:w-16 md:h-16 rounded-xl flex items-center justify-center ${an ? 'bg-white/10' : 'bg-brand-surface'}`}>
                   <span className="material-symbols-outlined text-2xl md:text-4xl">{icon}</span>
                 </span>
                 <span className="min-w-0">
-                  <span className="block font-heading font-extrabold uppercase tracking-tight text-base md:text-xl">{text}</span>
-                  <span className={`block text-xs md:text-sm mt-0.5 ${an ? 'text-white/75' : 'text-brand-muted'}`}>{unter}</span>
+                  <span className="block font-heading font-extrabold uppercase tracking-tight text-base md:text-xl"><span className="sm:hidden">{kurz}</span><span className="hidden sm:inline">{text}</span></span>
+                  <span className={`block text-xs md:text-sm mt-0.5 ${an ? 'text-white/75' : 'text-brand-muted'}`}><span className="sm:hidden">{unterKurz}</span><span className="hidden sm:inline">{unter}</span></span>
                 </span>
               </button>
             );

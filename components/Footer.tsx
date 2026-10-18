@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
             <div>
                 <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">Menü</h3>
                 <ul className="space-y-4">
-                    {NAV_LINKS.filter(l => !l.subLinks).map(link => (
+                    {NAV_LINKS.filter(l => l.name !== 'Produkte').map(link => (
                         <li key={link.name}>
                             <Link to={link.href} className="text-sm font-bold text-gray-400 hover:text-white transition-colors uppercase tracking-wider block hover:translate-x-2 transition-transform duration-300">
                                 {link.name}

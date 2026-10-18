@@ -4,10 +4,10 @@ import { NAV_LINKS } from '../constants';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // Name des offenen Untermenüs (Produkte, Planung), sonst null
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const dropdownButtonRef = useRef<HTMLButtonElement>(null);
+  const navRef = useRef<HTMLElement>(null);
   const location = useLocation();
 
   // Handle scroll effect for floating navbar
@@ -22,26 +22,23 @@ const Header: React.FC = () => {
   // Close mobile menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
-    setIsDropdownOpen(false);
+    setOpenDropdown(null);
   }, [location]);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(prev => !prev);
-  };
-
-  const closeDropdown = () => {
-    setIsDropdownOpen(false);
-  };
-  
-  // Click outside handler
+  // Klick außerhalb der Navigation oder Escape schließt das Untermenü
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node) && !dropdownButtonRef.current?.contains(event.target as Node)) {
-        closeDropdown();
-      }
+      if (!navRef.current?.contains(event.target as Node)) setOpenDropdown(null);
+    };
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpenDropdown(null);
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKey);
+    };
   }, []);
 
   // Lock body scroll when mobile menu is open
@@ -80,31 +77,37 @@ const Header: React.FC = () => {
             </Link>
 
             {/* Desktop Nav - Semantic HTML Upgrade */}
-            <nav className="hidden md:block" aria-label="Hauptnavigation">
+            <nav ref={navRef} className="hidden md:block" aria-label="Hauptnavigation">
               <ul className="flex items-center gap-8">
               {NAV_LINKS.map((link) =>
-                link.subLinks ? (
-                  <li key={link.name} className="relative group">
-                    <button 
-                      ref={dropdownButtonRef}
-                      onClick={toggleDropdown}
-                      onMouseEnter={() => setIsDropdownOpen(true)}
+                link.subLinks ? (() => {
+                  const isOpen = openDropdown === link.name;
+                  return (
+                  <li
+                    key={link.name}
+                    className="relative group"
+                    onMouseEnter={() => setOpenDropdown(link.name)}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
+                    <button
+                      type="button"
+                      // Maus hat beim Überfahren schon geöffnet, Klick darf nicht wieder schließen.
+                      // Nur Tastatur (detail === 0) schaltet um.
+                      onClick={(e) => setOpenDropdown(isOpen && e.detail === 0 ? null : link.name)}
                       className="text-brand-dark/70 hover:text-brand-dark py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-200 flex items-center gap-1"
-                      aria-expanded={isDropdownOpen}
+                      aria-expanded={isOpen}
                     >
                       {link.name}
-                      <span className={`bg-brand-orange h-1 w-1 rounded-full transition-opacity ${isDropdownOpen ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></span>
+                      <span className={`bg-brand-orange h-1 w-1 rounded-full transition-opacity ${isOpen ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></span>
                     </button>
-                    
-                    {/* Modern Dropdown */}
+
+                    {/* Dropdown: pt-4 statt mt-4, damit die Maus auf dem Weg zum Menü im li bleibt */}
                     <div
-                      ref={dropdownRef}
-                      onMouseLeave={() => setIsDropdownOpen(false)}
-                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 p-2 bg-white border border-brand-dark/10 rounded-xl shadow-2xl backdrop-blur-md transition-all duration-300 origin-top transform ${
-                        isDropdownOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                      className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 transition-[opacity,transform] duration-300 origin-top transform ${
+                        isOpen ? 'visible opacity-100 scale-100 translate-y-0' : 'invisible opacity-0 scale-95 -translate-y-2 pointer-events-none'
                       }`}
                     >
-                      <ul className="flex flex-col gap-1">
+                      <ul className="flex flex-col gap-1 p-2 bg-white border border-brand-dark/10 rounded-xl shadow-2xl">
                         {link.subLinks.map(subLink => (
                            <li key={subLink.name}>
                              <Link
@@ -118,7 +121,8 @@ const Header: React.FC = () => {
                       </ul>
                     </div>
                   </li>
-                ) : (
+                  );
+                })() : (
                   <li key={link.name}>
                     <Link
                       to={link.href}
@@ -164,7 +168,7 @@ const Header: React.FC = () => {
           isMenuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="container mx-auto h-full flex flex-col justify-center px-6 pb-20 pt-32 overflow-y-auto">
+        <div className="container mx-auto h-full flex flex-col justify-start px-6 pb-20 pt-24 overflow-y-auto">
           <nav className="flex flex-col gap-6" aria-label="Mobile Navigation">
             {NAV_LINKS.map((link, idx) => (
               <div key={link.name} className="overflow-hidden">

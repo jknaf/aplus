@@ -230,32 +230,6 @@ const PlanningPage: React.FC = () => {
             </div>
         </div>
 
-        {/* 3b. SELBST ENTWERFEN: Skatepark-Planer (Konfigurator) */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 relative z-20">
-            <div className="grid lg:grid-cols-2 gap-10 items-center bg-brand-dark rounded-2xl p-8 md:p-12 text-white">
-                <div>
-                    <span className="inline-block py-1 px-3 border border-brand-orange/50 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest rounded-md">Selbst entwerfen</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading uppercase tracking-tighter leading-none mb-6">
-                        Der <span className="text-brand-orange">Skatepark-Planer.</span>
-                    </h2>
-                    <p className="text-lg text-white/80 leading-relaxed mb-4">
-                        Stellen Sie Ihren Park im Browser aus unseren Elementen zusammen, in 3D und als Draufsicht. Der Planer zeigt Maße und Stückliste. Ihren Entwurf senden Sie uns, und wir arbeiten ihn zur fertigen Planung aus.
-                    </p>
-                    <p className="text-sm text-white/60 leading-relaxed">
-                        Vorlagen ansehen geht ohne Code. Zum Bearbeiten brauchen Sie Ihren persönlichen Code, den wir Ihnen gern zusenden.
-                    </p>
-                </div>
-                <div className="flex flex-col gap-4">
-                    <Link to="/konfigurator" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-white hover:text-brand-dark transition-colors">
-                        <span className="material-symbols-outlined">view_in_ar</span> Planer öffnen
-                    </Link>
-                    <a href={KONFIGURATOR_ANFRAGE} className="inline-flex justify-center items-center gap-2 border border-white/30 text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:border-brand-orange hover:text-brand-orange transition-colors">
-                        Code anfragen
-                    </a>
-                </div>
-            </div>
-        </div>
-
         {/* 4. PROCESS STEPS */}
         <div className="bg-brand-surface border-y border-brand-dark/10 py-24 mb-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -366,6 +340,32 @@ const PlanningPage: React.FC = () => {
             </div>
         </div>
 
+        {/* 5b. SELBST ENTWERFEN: Skatepark-Planer (Konfigurator) */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 relative z-20">
+            <div className="grid lg:grid-cols-2 gap-10 items-center bg-brand-dark rounded-2xl p-8 md:p-12 text-white">
+                <div>
+                    <span className="inline-block py-1 px-3 border border-brand-orange/50 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest rounded-md">Selbst entwerfen</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading uppercase tracking-tighter leading-none mb-6">
+                        Der <span className="text-brand-orange">Skatepark-Planer.</span>
+                    </h2>
+                    <p className="text-lg text-white/80 leading-relaxed mb-4">
+                        Stellen Sie Ihren Park im Browser aus unseren Elementen zusammen, in 3D und als Draufsicht. Der Planer zeigt Maße und Stückliste. Ihren Entwurf senden Sie uns, und wir arbeiten ihn zur fertigen Planung aus.
+                    </p>
+                    <p className="text-sm text-white/60 leading-relaxed">
+                        Vorlagen ansehen geht ohne Code. Zum Bearbeiten brauchen Sie Ihren persönlichen Code, den wir Ihnen gern zusenden.
+                    </p>
+                </div>
+                <div className="flex flex-col gap-4">
+                    <Link to="/konfigurator" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-white hover:text-brand-dark transition-colors">
+                        <span className="material-symbols-outlined">view_in_ar</span> Planer öffnen
+                    </Link>
+                    <a href={KONFIGURATOR_ANFRAGE} className="inline-flex justify-center items-center gap-2 border border-white/30 text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:border-brand-orange hover:text-brand-orange transition-colors">
+                        Code anfragen
+                    </a>
+                </div>
+            </div>
+        </div>
+
         {/* 6. CTA */}
         <div className="max-w-4xl mx-auto px-4 text-center mb-24">
             <h2 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase mb-8">
@@ -377,9 +377,6 @@ const PlanningPage: React.FC = () => {
             <div className="flex flex-wrap justify-center gap-4">
                 <Link to="/kontakt?projectType=Beratung" className="px-8 py-4 bg-brand-orange text-white font-extrabold uppercase tracking-widest rounded hover:bg-brand-dark transition-colors shadow-lg hover:shadow-brand-orange/50">
                     Projekt anfragen
-                </Link>
-                <Link to="/konfigurator" className="px-8 py-4 border border-brand-dark/15 text-brand-dark font-extrabold uppercase tracking-widest rounded hover:border-brand-orange hover:text-brand-orange transition-colors">
-                    Selbst entwerfen
                 </Link>
             </div>
         </div>

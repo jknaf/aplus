@@ -2,6 +2,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { umriss, type Ctx, type Park, type V, type Zeile, type Zusatz } from './logik';
 import { bildBlatt, planBlatt, type Netz } from './plan2d';
+import { aktuelleLocale, tt, useT } from '../../i18n';
 
 // Druckansicht für „PDF erstellen“, alles A4 quer: 3D-Ansicht, Bauplan (Grundriss und Schnitt aus den Modellen), Stückliste im Angebotslook.
 // Gedruckt wird über den Browser (Ziel „Als PDF sichern“); im Bildschirm ist der Bereich unsichtbar.
@@ -62,16 +63,17 @@ export const Plan: React.FC<{ park: Park; ctx: Ctx; zusatz: Zusatz[]; bezeichnun
 };
 
 const ZEILEN_JE_SEITE = 11;
-const kg = (x: number) => `${x.toLocaleString('de-DE')} kg`;
+const kg = (x: number) => `${x.toLocaleString(aktuelleLocale())} kg`;
 // „H / L / B“ der Preisliste in cm
 const masse = (cm?: string) => {
   const [h, l, b] = (cm ?? '').split('/').map((x) => x.trim());
-  return h && l && b ? `H ${h} · L ${l} · B ${b} cm` : '';
+  return h && l && b ? `H ${h} · L ${l} · ${tt('B', 'W', 'l')} ${b} cm` : '';
 };
 
 const Druck: React.FC<Props> = ({ park, ctx, zusatz, zeilen, hinweise, optionen, bild3d, netze, qr }) => {
-  const datum = new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
-  const titel = optionen.titel.trim() || 'Skatepark';
+  const t = useT();
+  const datum = new Date().toLocaleDateString(aktuelleLocale(), { day: '2-digit', month: '2-digit', year: 'numeric' });
+  const titel = optionen.titel.trim() || t('Skatepark', 'Skatepark', 'Skatepark');
   const kopf = { titel, datum };
   const gewicht = zeilen.reduce((s, z) => s + (z.kg ?? 0), 0);
   const seiten: Zeile[][] = [];
@@ -93,7 +95,7 @@ const Druck: React.FC<Props> = ({ park, ctx, zusatz, zeilen, hinweise, optionen,
         }
       `}</style>
       {optionen.ansicht3d && bild3d && (
-        <section className="druck-seite" dangerouslySetInnerHTML={{ __html: bildBlatt(bild3d, { ...kopf, planinhalt: `3D-Ansicht · ${park.teile.length} Elemente`, massstab: 'OHNE MASSSTAB' }) }} />
+        <section className="druck-seite" dangerouslySetInnerHTML={{ __html: bildBlatt(bild3d, { ...kopf, planinhalt: `${t('3D-Ansicht', '3D view', 'Vue 3D')} · ${park.teile.length} ${t('Elemente', 'elements', 'éléments')}`, massstab: t('OHNE MASSSTAB', 'NOT TO SCALE', 'SANS ÉCHELLE') }) }} />
       )}
       {optionen.plan && (
         <section className="druck-seite" dangerouslySetInnerHTML={{ __html: planBlatt({ park, ctx, zusatz, netze, kopf }) }} />
@@ -106,22 +108,22 @@ const Druck: React.FC<Props> = ({ park, ctx, zusatz, zeilen, hinweise, optionen,
           </header>
           <div className="border-t border-black mt-2 mb-4" />
           <div className="flex justify-between items-baseline text-[9pt] mb-3">
-            <div><span className="text-[14pt] font-bold mr-3">Stückliste</span>Projekt: {titel}</div>
-            <div>{datum} · Seite {s + 1}/{seiten.length}</div>
+            <div><span className="text-[14pt] font-bold mr-3">{t("Stückliste", "Parts list", "Liste des pièces")}</span>{t('Projekt', 'Project', 'Projet')}: {titel}</div>
+            <div>{datum} · {t('Seite', 'Page', 'Page')} {s + 1}/{seiten.length}</div>
           </div>
           {s === 0 && (
             <p className="text-[9pt] mb-3">
-              Fläche {park.flaeche.l.toLocaleString('de-DE')} × {park.flaeche.b.toLocaleString('de-DE')} m, {park.teile.length} Elemente,{' '}
-              {park.flaeche.angeboescht ? 'angeböscht' : 'freistehend'}. Geländer und Hinweisschild sind nach DIN EN 14974 automatisch ergänzt.
+              {t('Fläche', 'Area', 'Surface')} {park.flaeche.l.toLocaleString(aktuelleLocale())} × {park.flaeche.b.toLocaleString(aktuelleLocale())} m, {park.teile.length} {t('Elemente', 'elements', 'éléments')},{' '}
+              {park.flaeche.angeboescht ? t('angeböscht', 'banked up', 'taluté') : t('freistehend', 'free-standing', 'autoportant')}. {t('Geländer und Hinweisschild sind nach DIN EN 14974 automatisch ergänzt.', 'Railings and the information sign are added automatically to EN 14974.', "Les garde-corps et le panneau d'information sont ajoutés automatiquement selon la norme EN 14974.")}
             </p>
           )}
           <table className="w-full text-[9pt] border-collapse">
             <thead>
               <tr className="border-y border-black text-left">
-                <th className="py-1 pr-3 w-[12mm] font-normal">Pos.</th>
-                <th className="py-1 pr-3 font-normal">Bezeichnung</th>
-                <th className="py-1 pr-3 text-right w-[22mm] font-normal">Menge</th>
-                <th className="py-1 text-right w-[30mm] font-normal">Gewicht ca.</th>
+                <th className="py-1 pr-3 w-[12mm] font-normal">{t("Pos.", "Item", "Pos.")}</th>
+                <th className="py-1 pr-3 font-normal">{t("Bezeichnung", "Description", "Désignation")}</th>
+                <th className="py-1 pr-3 text-right w-[22mm] font-normal">{t("Menge", "Quantity", "Quantité")}</th>
+                <th className="py-1 text-right w-[30mm] font-normal">{t("Gewicht ca.", "Weight approx.", "Poids env.")}</th>
               </tr>
             </thead>
             <tbody>
@@ -132,28 +134,28 @@ const Druck: React.FC<Props> = ({ park, ctx, zusatz, zeilen, hinweise, optionen,
                     <td className="py-1.5 pr-3">{String(s * ZEILEN_JE_SEITE + i + 1).padStart(3, '0')}</td>
                     <td className="py-1.5 pr-3">
                       <div><span className="font-bold">{z.code}</span><span className="text-[#888]"> ____ </span>{z.name}</div>
-                      {(m || z.auto) && <div className="text-[8pt] text-[#555]">{[m, z.auto ? 'automatisch ergänzt' : ''].filter(Boolean).join(' · ')}</div>}
+                      {(m || z.auto) && <div className="text-[8pt] text-[#555]">{[m, z.auto ? t('automatisch ergänzt', 'added automatically', 'ajouté automatiquement') : ''].filter(Boolean).join(' · ')}</div>}
                     </td>
-                    <td className="py-1.5 pr-3 text-right whitespace-nowrap">{z.menge} St.</td>
+                    <td className="py-1.5 pr-3 text-right whitespace-nowrap">{z.menge} {t('St.', 'pcs', 'pce')}</td>
                     <td className="py-1.5 text-right whitespace-nowrap">{z.kg ? kg(z.kg) : ''}</td>
                   </tr>
                 );
               })}
               {s === seiten.length - 1 && gewicht > 0 && (
-                <tr className="border-b border-black"><td /><td className="py-1.5 font-bold">Gesamtgewicht ca.</td><td /><td className="py-1.5 text-right font-bold whitespace-nowrap">{kg(gewicht)}</td></tr>
+                <tr className="border-b border-black"><td /><td className="py-1.5 font-bold">{t("Gesamtgewicht ca.", "Total weight approx.", "Poids total env.")}</td><td /><td className="py-1.5 text-right font-bold whitespace-nowrap">{kg(gewicht)}</td></tr>
               )}
             </tbody>
           </table>
           {s === seiten.length - 1 && (
             <div className="mt-4 flex gap-6 items-start text-[8pt] text-[#333]">
               <div className="flex-1">
-                {hinweise.length > 0 && <div className="mb-2"><strong>Offene Hinweise:</strong><ul className="list-disc ml-4">{hinweise.map((h) => <li key={h}>{h}</li>)}</ul></div>}
-                <p>Planung schematisch, erstellt mit dem Konfigurator von A+ Urban Design. Preise, Fracht und Montage erhalten Sie mit dem Angebot; bauseitige Leistungen sind nicht enthalten. Maßgeblich ist das Angebot.</p>
+                {hinweise.length > 0 && <div className="mb-2"><strong>{t('Offene Hinweise:', 'Open notes:', 'Remarques en suspens :')}</strong><ul className="list-disc ml-4">{hinweise.map((h) => <li key={h}>{h}</li>)}</ul></div>}
+                <p>{t('Planung schematisch, erstellt mit dem Konfigurator von A+ Urban Design. Preise, Fracht und Montage erhalten Sie mit dem Angebot; bauseitige Leistungen sind nicht enthalten. Maßgeblich ist das Angebot.', 'Schematic plan, created with the A+ Urban Design planner. You receive prices, freight and installation with the quote; work to be done by the client is not included. The quote is what counts.', "Plan schématique, établi avec le planificateur d'A+ Urban Design. Les prix, le transport et le montage figurent dans l'offre ; les prestations à la charge du client ne sont pas comprises. L'offre fait foi.")}</p>
               </div>
               {qr && (
                 <div className="flex items-center gap-2 shrink-0">
                   <div style={{ width: '26mm', height: '26mm' }} dangerouslySetInnerHTML={{ __html: qr }} />
-                  <div className="w-[28mm]">Planung online öffnen: Code mit dem Handy scannen.</div>
+                  <div className="w-[28mm]">{t('Planung online öffnen: Code mit dem Handy scannen.', 'Open the plan online: scan the code with your phone.', 'Ouvrir le plan en ligne : scannez le code avec votre téléphone.')}</div>
                 </div>
               )}
             </div>

@@ -38,9 +38,15 @@ export const localizePath = (lang: Lang, to: string): string => {
 
 const LangContext = createContext<Lang>('de');
 
+// Für Module ohne React (Regeln und Druckblätter des Planers): die Sprache der zuletzt gezeigten Seite
+let aktuelleSprache: Lang = 'de';
+export const tt = <T,>(de: T, en: T, fr: T): T => (aktuelleSprache === 'en' ? en : aktuelleSprache === 'fr' ? fr : de);
+export const aktuelleLocale = () => LOCALE[aktuelleSprache];
+
 export const LangProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { pathname } = useLocation();
   const lang = langFromPath(pathname);
+  aktuelleSprache = lang;
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
@@ -78,3 +84,8 @@ export const useNavigate = () => {
     [lang, navigate],
   );
 };
+
+export const LOCALE: Record<Lang, string> = { de: 'de-DE', en: 'en-GB', fr: 'fr-FR' };
+
+/** Dezimalzahlen aus den Katalogdaten ("18,5") im Englischen mit Punkt zeigen. */
+export const dezimal = (lang: Lang, s: string): string => (lang === 'en' ? s.replace(',', '.') : s);

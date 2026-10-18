@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { drehe, gruppen, umriss, type Ctx, type Park, type Teil, type V, type Zusatz } from './logik';
+import { aktuelleLocale, tt } from '../../i18n';
 
 // Druckblätter A4 quer als SVG (Einheit mm): Grundriss im Stil eines CAD-Plans und Schnitt durch die höchste Rampengruppe.
 // Die Linien kommen aus den glTF-Modellen: sichtbare Kanten von oben, Höhenlinien auf den Fahrflächen, Schnitt durch die Dreiecke.
@@ -119,7 +120,7 @@ const W = 297;
 const H = 210;
 const R = 8;
 const f = (n: number) => n.toFixed(2);
-const zahl = (m: number) => m.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const zahl = (m: number) => m.toLocaleString(aktuelleLocale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const linie = (x1: number, y1: number, x2: number, y2: number, cls: string) => `<line x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2)}" y2="${f(y2)}" class="${cls}"/>`;
 const box = (p: V[]) => ({
@@ -150,16 +151,16 @@ export const blatt = (inhalt: string, k: Kopf) => `<svg viewBox="0 0 ${W} ${H}" 
 <style>${STIL}</style>
 <rect x="${R}" y="${R}" width="${W - 2 * R}" height="${H - 2 * R}" class="rahmen"/>
 ${inhalt}
-<text x="${W - R - 1}" y="${H - R - 25.5}" class="lbl" text-anchor="end">Planung schematisch, erstellt mit dem A+ Konfigurator. Maßgeblich ist das Angebot.</text>
+<text x="${W - R - 1}" y="${H - R - 25.5}" class="lbl" text-anchor="end">${tt('Planung schematisch, erstellt mit dem A+ Konfigurator. Maßgeblich ist das Angebot.', 'Schematic plan, created with the A+ planner. The quote is what counts.', "Plan schématique, établi avec le planificateur A+. L'offre fait foi.")}</text>
 <g class="kopf">
   <rect x="${W - R - 110}" y="${H - R - 24}" width="110" height="24" class="rahmen" style="fill:#fff"/>
   <line x1="${W - R - 62}" y1="${H - R - 24}" x2="${W - R - 62}" y2="${H - R}" stroke="#000" stroke-width=".2"/>
   <image href="/aplus-logo.svg" x="${W - R - 107}" y="${H - R - 20}" width="42" height="12"/>
   <text x="${W - R - 106}" y="${H - R - 4.5}" class="lbl">post@aplusurbandesign.com</text>
   <text x="${W - R - 106}" y="${H - R - 2}" class="lbl">www.aplusurbandesign.com</text>
-  <text x="${W - R - 59}" y="${H - R - 19.5}" class="lbl">PROJEKT</text>
+  <text x="${W - R - 59}" y="${H - R - 19.5}" class="lbl">${tt('PROJEKT', 'PROJECT', 'PROJET')}</text>
   <text x="${W - R - 59}" y="${H - R - 15}" class="gross">${esc(k.titel.toUpperCase())}</text>
-  <text x="${W - R - 59}" y="${H - R - 10}" class="lbl">PLANINHALT</text>
+  <text x="${W - R - 59}" y="${H - R - 10}" class="lbl">${tt('PLANINHALT', 'PLAN CONTENT', 'CONTENU DU PLAN')}</text>
   <text x="${W - R - 59}" y="${H - R - 6.5}">${esc(k.planinhalt)}</text>
   <text x="${W - R - 59}" y="${H - R - 2}" class="lbl">${esc(k.massstab)}   ·   ${k.datum}</text>
 </g>
@@ -233,7 +234,7 @@ export const planBlatt = ({ park, ctx, zusatz, netze: nz, kopf }: PlanDaten) => 
     if (m.hoch) {
       const kx = tx + (quer ? 2.2 : 0);
       const ky = ty + (quer ? 0 : 2.2);
-      s += `<text x="${f(kx)}" y="${f(ky)}" class="kote"${dreh(kx, ky)}>OK +${zahl(m.h)}</text>`;
+      s += `<text x="${f(kx)}" y="${f(ky)}" class="kote"${dreh(kx, ky)}>${tt('OK', 'TOP', 'HAUT')} +${zahl(m.h)}</text>`;
     }
   }
   for (const z of zusatz) s += nz[z.slug] ? modell(z, 'mk') : poly(umriss({ id: 'z', ...z }, ctx), 'dr');
@@ -277,7 +278,7 @@ export const planBlatt = ({ park, ctx, zusatz, netze: nz, kopf }: PlanDaten) => 
   s += `<text x="${f(sx)}" y="${f(sy - 1.2)}" class="klein">0</text><text x="${f(sx + meter * k)}" y="${f(sy - 1.2)}" class="klein" text-anchor="middle">${meter} m</text>`;
 
   if (mitSchnitt) s += schnitt();
-  return blatt(s, { ...kopf, planinhalt: `Grundriss und Schnitt · ${zahl(l)} × ${zahl(b)} m · ${park.teile.length} Elemente`, massstab: `M 1:${N} (A4) · MASSE IN METERN` });
+  return blatt(s, { ...kopf, planinhalt: `${tt('Grundriss und Schnitt', 'Plan and section', 'Plan et coupe')} · ${zahl(l)} × ${zahl(b)} m · ${park.teile.length} ${tt('Elemente', 'elements', 'éléments')}`, massstab: `${tt('M', 'Scale', 'Éch.')} 1:${N} (A4) · ${tt('MASSE IN METERN', 'DIMENSIONS IN METRES', 'COTES EN MÈTRES')}` });
 
   // Schnitt A-A: senkrechte Ebene durch die Mitte der Referenzrampe, darunter links gezeichnet
   function schnitt() {
@@ -337,9 +338,9 @@ export const planBlatt = ({ park, ctx, zusatz, netze: nz, kopf }: PlanDaten) => 
       o += `<path d="M${f(px - 0.9)},${f(py - 1.4)} L${f(px + 0.9)},${f(py - 1.4)} L${f(px)},${f(py)} Z" class="dr"/>`;
       o += `<text x="${f(px - sg * 1.6)}" y="${f(py - 2)}" class="mz" text-anchor="${sg > 0 ? 'end' : 'start'}">+${zahl(h)}</text>`; // Zahl zur Rampe hin, weg vom Geländer
     }
-    o += `<text x="${f(gx1 + 1.2)}" y="${f(gy - 0.8)}" class="mz" text-anchor="start">±0,00</text>`;
+    o += `<text x="${f(gx1 + 1.2)}" y="${f(gy - 0.8)}" class="mz" text-anchor="start">${zahl(0).replace('0.00', '±0.00').replace('0,00', '±0,00')}</text>`;
     const ty = oy + (b + RE) * k + 6; // direkt unter dem Plan, Geländer im Schnitt ragen sonst hinein
-    o += `<text x="${f(sl)}" y="${f(ty)}" class="titel">SCHNITT A-A</text><text x="${f(sl + 26)}" y="${f(ty)}" class="klein">M 1:${KS}</text>`;
+    o += `<text x="${f(sl)}" y="${f(ty)}" class="titel">${tt('SCHNITT A-A', 'SECTION A-A', 'COUPE A-A')}</text><text x="${f(sl + 26)}" y="${f(ty)}" class="klein">${tt('M', 'Scale', 'Éch.')} 1:${KS}</text>`;
     // Schnittlinie im Grundriss: Strichpunkt, Blickrichtung und Kennbuchstabe
     const a = entlangX ? P(u0 - 1, w) : P(w, u0 - 1);
     const e = entlangX ? P(u1 + 1.7, w) : P(w, u1 + 1.7);

@@ -2,6 +2,8 @@
 // Regeln: 08_CAD_Blender/12_Konfigurator/…_Konfigurator_Regelwerk_V01.md (IDs wie A01, G02, F01 stehen an den Stellen).
 // Koordinaten in Metern, Fläche liegt mittig um (0, 0), x = Länge, z = Breite, Drehung in Grad um die Hochachse.
 
+import { tt, type Lang } from '../../i18n';
+
 export interface V { x: number; z: number }
 export interface Masse { l: number; b: number; h: number; hoch: V | null; niedrig: number }
 export interface Info { name: string; code: string; gruppe: string; kg?: number; masse?: string }
@@ -526,10 +528,10 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
   // F06: Überlappung und außerhalb der Fläche
   for (let i = 0; i < park.teile.length; i++) {
     const a = park.teile[i];
-    if (!imFeld(polys.get(a.id)!, park.flaeche, 0.02)) out.push({ id: `feld-${a.id}`, stufe: 'rot', teile: [a.id], text: `${name(a)} ragt über die Fläche hinaus.`, fix: 'zurueck' });
+    if (!imFeld(polys.get(a.id)!, park.flaeche, 0.02)) out.push({ id: `feld-${a.id}`, stufe: 'rot', teile: [a.id], text: tt(`${name(a)} ragt über die Fläche hinaus.`, `${name(a)} extends beyond the area.`, `${name(a)} dépasse de la surface.`), fix: 'zurueck' });
     for (let j = i + 1; j < park.teile.length; j++) {
       const b = park.teile[j];
-      if (nah(teilBox(a, ctx), teilBox(b, ctx)) && ueberlappt(polys.get(a.id)!, polys.get(b.id)!, tol(a, b))) out.push({ id: `ueber-${a.id}-${b.id}`, stufe: 'rot', teile: [b.id, a.id], text: `${name(b)} und ${name(a)} überlappen sich.`, fix: 'verschieben' });
+      if (nah(teilBox(a, ctx), teilBox(b, ctx)) && ueberlappt(polys.get(a.id)!, polys.get(b.id)!, tol(a, b))) out.push({ id: `ueber-${a.id}-${b.id}`, stufe: 'rot', teile: [b.id, a.id], text: tt(`${name(b)} und ${name(a)} überlappen sich.`, `${name(b)} and ${name(a)} overlap.`, `${name(b)} et ${name(a)} se chevauchent.`), fix: 'verschieben' });
     }
   }
   for (const t of park.teile) {
@@ -541,7 +543,7 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
     const ziel = anliegend(hinten, t.id, park, ctx, ['plattform']);
     // R02: Höhen müssen zusammenpassen
     if (ziel && Math.abs(ctx.masse[ziel.slug].h - m.h) >= 0.06) {
-      out.push({ id: `hoehe-${t.id}`, stufe: 'rot', teile: [t.id], text: `${name(t)} passt in der Höhe nicht zu ${name(ziel)}.`, fix: variante(t.slug, ctx.masse[ziel.slug].h, ctx) ? 'hoehe' : undefined });
+      out.push({ id: `hoehe-${t.id}`, stufe: 'rot', teile: [t.id], text: tt(`${name(t)} passt in der Höhe nicht zu ${name(ziel)}.`, `${name(t)} does not match ${name(ziel)} in height.`, `${name(t)} n'a pas la même hauteur que ${name(ziel)}.`), fix: variante(t.slug, ctx.masse[ziel.slug].h, ctx) ? 'hoehe' : undefined });
     }
     const istJump = familie(t.slug) === 'jump-ramp-sjr';
     // F02: hinter freistehender Jump-Ramp 5 m frei
@@ -555,7 +557,7 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
     if (!mitKurve.has(t.id) && !anliegend(vorne, t.id, park, ctx)) {
       const z = zoneVor(vorne, ANLAUF);
       if (!imFeld(z, park.flaeche, 0.3) || zoneBelegt(z, t.id)) {
-        out.push({ id: `anlauf-${t.id}`, stufe: 'gelb', teile: [t.id], text: `Vor ${name(t)} fehlen 5 m freie Anlauffläche.`, fix: 'verschieben' });
+        out.push({ id: `anlauf-${t.id}`, stufe: 'gelb', teile: [t.id], text: tt(`Vor ${name(t)} fehlen 5 m freie Anlauffläche.`, `${name(t)} needs 5 m of clear run-up area in front of it.`, `Il manque 5 m de zone d'élan dégagée devant ${name(t)}.`), fix: 'verschieben' });
       }
     }
   }
@@ -578,12 +580,12 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
       for (const a of gs[i]) for (const b of gs[j]) if (nah(teilBox(a, ctx), teilBox(b, ctx), SICHER)) d = Math.min(d, abstand(umriss(a, ctx), umriss(b, ctx)));
       if (d > BERUEHRT && d < SICHER - 0.05) {
         const klein = gs[i].length <= gs[j].length ? gs[i] : gs[j];
-        out.push({ id: `abst-${klein[0].id}`, stufe: 'gelb', teile: klein.map((t) => t.id), text: `Abstand ${d.toFixed(1).replace('.', ',')} m, mindestens 2 m Sicherheitsbereich nötig.`, fix: 'verschieben' });
+        out.push({ id: `abst-${klein[0].id}`, stufe: 'gelb', teile: klein.map((t) => t.id), text: tt(`Abstand ${d.toFixed(1).replace('.', ',')} m, mindestens 2 m Sicherheitsbereich nötig.`, `Distance ${d.toFixed(1)} m, a safety zone of at least 2 m is required.`, `Distance de ${d.toFixed(1).replace('.', ',')} m, une zone de sécurité d'au moins 2 m est nécessaire.`), fix: 'verschieben' });
       }
     }
     const rand = Math.min(...gp[i].map((p) => randAbstand(p, park.flaeche)));
     if (rand >= -0.02 && rand < SICHER - 0.05) {
-      out.push({ id: `rand-${gs[i][0].id}`, stufe: 'gelb', teile: gs[i].map((t) => t.id), text: 'Zu nah am Flächenrand, 2 m Sicherheitsbereich nötig.', fix: 'verschieben' });
+      out.push({ id: `rand-${gs[i][0].id}`, stufe: 'gelb', teile: gs[i].map((t) => t.id), text: tt('Zu nah am Flächenrand, 2 m Sicherheitsbereich nötig.', 'Too close to the edge of the area; a 2 m safety zone is required.', 'Trop près du bord de la surface ; une zone de sécurité de 2 m est nécessaire.'), fix: 'verschieben' });
     }
   }
   const gesehen = new Set<string>();
@@ -984,17 +986,17 @@ export const vorschlag = (id: string, park: Park, ctx: Ctx): Vorschlag | null =>
         const neu = teil(tisch, r3(mitte.x), r3(mitte.z), t.rot);
         return kollidiert(neu, p, ctx) ? p : { ...p, teile: [...p.teile, neu] };
       };
-      if (tisch) opt.push({ label: `${name(tisch)} dahinter`, anwenden: tischDahinter });
-      if (familie(t.slug) === 'coping-ramp') opt.push({ label: 'Zweite Coping Ramp (Spine)', anwenden: andocken(t.slug, t, hinten) });
-      if (opt.length) return { teil: id, text: 'Dahinter gehört ein Podest, sonst ist die Rückseite offen.', optionen: opt };
+      if (tisch) opt.push({ label: tt(`${name(tisch)} dahinter`, `${name(tisch)} behind it`, `${name(tisch)} derrière`), anwenden: tischDahinter });
+      if (familie(t.slug) === 'coping-ramp') opt.push({ label: tt('Zweite Coping Ramp (Spine)', 'Second coping ramp (spine)', 'Seconde rampe à coping (spine)'), anwenden: andocken(t.slug, t, hinten) });
+      if (opt.length) return { teil: id, text: tt('Dahinter gehört ein Podest, sonst ist die Rückseite offen.', 'A platform belongs behind it, otherwise the back is open.', "Une plateforme doit se trouver derrière, sinon l'arrière est ouvert."), optionen: opt };
     }
   }
   if (familie(t.slug) === 'hip' && hoehe && [60, 75, 98].includes(hoehe)) {
     const allein = !park.teile.some((o) => o.id !== t.id && abstand(umriss(o, ctx), umriss(t, ctx)) < BERUEHRT);
     if (allein) {
       return {
-        teil: id, text: 'Ein Pyramid Hip allein ist selten. Zur Pyramide ergänzen?', optionen: [{
-          label: `Pyramide ${hoehe} bauen`,
+        teil: id, text: tt('Ein Pyramid Hip allein ist selten. Zur Pyramide ergänzen?', 'A pyramid hip on its own is rare. Complete it to a pyramid?', 'Une pyramid hip seule est rare. La compléter pour en faire une pyramide ?'), optionen: [{
+          label: tt(`Pyramide ${hoehe} bauen`, `Build pyramid ${hoehe}`, `Construire la pyramide ${hoehe}`),
           anwenden: (p) => {
             const b = BAUSTEINE.find((x) => x.id === `pyramide-${hoehe}`)!.bauen(ctx);
             if (!b) return p;
@@ -1173,17 +1175,17 @@ export const stueckliste = (park: Park, ctx: Ctx): Zeile[] => {
       const i = ctx.info[slug];
       return { slug, code: i?.code ?? '', name: i?.name ?? slug, menge: z.menge, kg: i?.kg ? i.kg * z.menge : null, auto: z.auto };
     });
-  if (park.teile.length) zeilen.push({ slug: null, code: 'SHS', name: 'Hinweisschild nach DIN EN 14974', menge: 1, kg: null, auto: true }); // P01
+  if (park.teile.length) zeilen.push({ slug: null, code: 'SHS', name: tt('Hinweisschild nach DIN EN 14974', 'Information sign to EN 14974', "Panneau d'information selon EN 14974"), menge: 1, kg: null, auto: true }); // P01
   if (park.teile.filter((t) => t.slug.startsWith('corner-') && !t.slug.startsWith('corner-table')).length >= 12) {
-    zeilen.push({ slug: null, code: 'bauseits', name: 'Bowl: Bodenplatte 15 cm bewehrt, Innenfläche ausbetoniert, befahrbarer Gully', menge: 1, kg: null, auto: true });
+    zeilen.push({ slug: null, code: tt('bauseits', 'by client', 'client'), name: tt('Bowl: Bodenplatte 15 cm bewehrt, Innenfläche ausbetoniert, befahrbarer Gully', 'Bowl: reinforced base slab 15 cm, interior concreted, rideable drain', 'Bowl : dalle de fond armée de 15 cm, surface intérieure bétonnée, avaloir roulable'), menge: 1, kg: null, auto: true });
   }
   return zeilen;
 };
 const GRUPPEN = ['Tables', 'Banks', 'Pyramid Hips', 'Corner', 'Coping Ramps', 'Quarterramps und Walls', 'Kegel und Cross-Ramps', 'Jump-Ramps, Anlaufkeile, Wave', 'Stairs', 'Ledges, Curbs, Flats', 'Rails und Slides', 'Geländer'];
 
 export const csv = (zeilen: Zeile[]) => {
-  const kopf = ['Code', 'Bezeichnung', 'Menge', 'Gewicht kg', 'Automatisch ergänzt'];
-  const z = zeilen.map((r) => [r.code, r.name, r.menge, r.kg ?? '', r.auto ? 'ja' : '']);
+  const kopf = [tt('Code', 'Code', 'Code'), tt('Bezeichnung', 'Description', 'Désignation'), tt('Menge', 'Quantity', 'Quantité'), tt('Gewicht kg', 'Weight kg', 'Poids kg'), tt('Automatisch ergänzt', 'Added automatically', 'Ajouté automatiquement')];
+  const z = zeilen.map((r) => [r.code, r.name, r.menge, r.kg ?? '', r.auto ? tt('ja', 'yes', 'oui') : '']);
   return [kopf, ...z].map((r) => r.map((x) => `"${String(x).replace(/"/g, '""')}"`).join(';')).join('\r\n');
 };
 
@@ -1209,3 +1211,32 @@ export const dekodieren = (s: string, ctx: Ctx): Park | null => {
     return null;
   }
 };
+
+// Texte der Bausteine und Vorlagen stehen deutsch im Code; hier die englischen und französischen Fassungen
+const TEXTE: Record<string, [string, string]> = {
+  'Table, Bank und Jump-Ramp, 45 cm': ['Table, bank and jump ramp, 45 cm', 'Table, bank et jump ramp, 45 cm'],
+  'Table, Bank und Jump-Ramp, 60 cm': ['Table, bank and jump ramp, 60 cm', 'Table, bank et jump ramp, 60 cm'],
+  'Table, Bank und Jump-Ramp, 75 cm': ['Table, bank and jump ramp, 75 cm', 'Table, bank et jump ramp, 75 cm'],
+  '2 Coping Ramps Rücken an Rücken': ['2 coping ramps back to back', '2 rampes à coping dos à dos'],
+  '4 Coping Ramps, 2,5 m breit': ['4 coping ramps, 2.5 m wide', '4 rampes à coping, 2,5 m de large'],
+  '6 Coping Ramps, 3,75 m breit': ['6 coping ramps, 3.75 m wide', '6 rampes à coping, 3,75 m de large'],
+  '2 Tables, 6 Banks, 4 Pyramid Hips': ['2 tables, 6 banks, 4 pyramid hips', '2 tables, 6 banks, 4 pyramid hips'],
+  '3 Coping Ramps mit Podest, ohne Geländer': ['3 coping ramps with platform, no railing', '3 rampes à coping avec plateforme, sans garde-corps'],
+  '3 Coping Ramps mit Podest und Geländer': ['3 coping ramps with platform and railing', '3 rampes à coping avec plateforme et garde-corps'],
+  'Manual Pad mit Ledge': ['Manual pad with ledge', 'Manual pad avec ledge'],
+  'Wall mit Wall-Ramp': ['Wall with wall ramp', 'Mur avec wall ramp'],
+  '4 Quarterramps mit Flats, 3,75 m breit': ['4 quarter ramps with flats, 3.75 m wide', '4 quarters avec plats, 3,75 m de large'],
+  '4 Quarterramps mit Flats, 5 m breit': ['4 quarter ramps with flats, 5 m wide', '4 quarters avec plats, 5 m de large'],
+  '4 Quarterramps 255 mit Flats, 5 m breit': ['4 quarter ramps 255 with flats, 5 m wide', '4 quarters 255 avec plats, 5 m de large'],
+  'Runde Ecken aus Corners, außen ca. 9,0 × 7,7 m': ['Rounded corners made of corner elements, approx. 9.0 × 7.7 m outside', "Angles arrondis en éléments corner, env. 9,0 × 7,7 m à l'extérieur"],
+  'Runde Ecken aus Corners, außen ca. 11,5 × 9,0 m': ['Rounded corners made of corner elements, approx. 11.5 × 9.0 m outside', "Angles arrondis en éléments corner, env. 11,5 × 9,0 m à l'extérieur"],
+  'Runde Ecken aus Corners, außen ca. 12,5 × 10,0 m, mit Geländer': ['Rounded corners made of corner elements, approx. 12.5 × 10.0 m outside, with railing', "Angles arrondis en éléments corner, env. 12,5 × 10,0 m à l'extérieur, avec garde-corps"],
+  'Bowl 98 klein': ['Bowl 98 small', 'Bowl 98 petit'],
+  'Klein · Starter': ['Small · Starter', 'Petit · Starter'],
+  'Mittel · Plaza': ['Medium · Plaza', 'Moyen · Plaza'],
+  'Groß · Park': ['Large · Park', 'Grand · Park'],
+  'Für Schulhof oder Dorfplatz. Niedrige Höhen, eine Jump-Box und eine Street-Linie.': ['For a school playground or village square. Low heights, one jump box and one street line.', "Pour une cour d'école ou une place de village. Faibles hauteurs, une jump box et une ligne street."],
+  'Für Jugendzentrum und Freizeitgelände. Zwei Jump-Boxen, Spine und Street-Linie.': ['For a youth centre and leisure grounds. Two jump boxes, a spine and a street line.', 'Pour un centre de jeunesse et un site de loisirs. Deux jump boxes, une spine et une ligne street.'],
+  'Aufbau wie gebaute A+-Parks: Pyramide, Quarterramp, Spine, Wallride und eine lange Street-Linie.': ['Layout like built A+ parks: pyramid, quarter ramp, spine, wallride and a long street line.', 'Composition comme les parcs A+ réalisés : pyramide, quarter, spine, wallride et une longue ligne street.'],
+};
+export const ueberText = (de: string, lang: Lang): string => (lang === 'de' ? de : TEXTE[de]?.[lang === 'en' ? 0 : 1] ?? de);

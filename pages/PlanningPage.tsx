@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useT } from '../i18n';
 import PageShell from '../components/PageShell';
 import BrochureRequestForm from '../components/BrochureRequestForm';
-import { KONFIGURATOR_ANFRAGE } from '../components/katalog/CodeDialog';
+import { useKonfiguratorCode } from '../components/katalog/CodeDialog';
 import Bild from '../components/Bild';
 
 // --- ANIMATED BLUEPRINT COMPONENT ---
@@ -72,6 +72,7 @@ const ProcessStep: React.FC<{ number: string; title: string; desc: string }> = (
 
 const PlanningPage: React.FC = () => {
   const t = useT();
+  const konfigCode = useKonfiguratorCode();
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -362,7 +363,7 @@ const PlanningPage: React.FC = () => {
                     <Link to="/konfigurator" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-white hover:text-brand-dark transition-colors">
                         <span className="material-symbols-outlined">view_in_ar</span> {t("Planer öffnen", "Open the planner", "Ouvrir le planificateur")}
                     </Link>
-                    <a href={KONFIGURATOR_ANFRAGE} className="inline-flex justify-center items-center gap-2 border border-white/30 text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:border-brand-orange hover:text-brand-orange transition-colors">
+                    <a href={konfigCode.anfrage} className="inline-flex justify-center items-center gap-2 border border-white/30 text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:border-brand-orange hover:text-brand-orange transition-colors">
                         {t("Code anfragen", "Request a code", "Demander un code")}
                     </a>
                 </div>

@@ -391,3 +391,15 @@ export const useKategorie = () => {
   const lang = useLang();
   return (c: ProjectCategory): string => pick(lang, KATEGORIE[c], c);
 };
+
+// Gruppennamen: die Daten sind deutsch/englisch gemischt, hier nur die deutschen
+const GRUPPEN: Record<string, [string, string]> = {
+  'Quarterramps und Walls': ['Quarter ramps and walls', 'Quarters et murs'],
+  'Kegel und Cross-Ramps': ['Cones and cross ramps', 'Cônes et cross ramps'],
+  'Jump-Ramps, Anlaufkeile, Wave': ['Jump ramps, run-up wedges, wave', "Jump ramps, cales d'élan, wave"],
+  'Geländer': ['Railings', 'Garde-corps'],
+  'Sonstiges': ['Other', 'Divers'],
+  'Rails und Slides': ['Rails and slides', 'Rails et slides'],
+};
+export const gruppenName = (g: string, lang: string) => (lang === 'de' || !GRUPPEN[g] ? g : GRUPPEN[g][lang === 'en' ? 0 : 1]);
+

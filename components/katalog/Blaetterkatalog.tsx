@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useT } from '../../i18n';
 import * as pdfjs from 'pdfjs-dist';
 import worker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import { PageFlip } from 'page-flip';
@@ -11,6 +12,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = worker;
 const BREITE = 1100; // Pixel je Seite, scharf genug für Text auf großen Bildschirmen
 
 const Blaetterkatalog: React.FC<{ links: { ansehen: string; download: string }; onClose: () => void }> = ({ links, onClose }) => {
+  const t = useT();
   const buch = useRef<HTMLDivElement>(null);
   const [seite, setSeite] = useState(0);
   const [anzahl, setAnzahl] = useState(0);
@@ -76,26 +78,26 @@ const Blaetterkatalog: React.FC<{ links: { ansehen: string; download: string }; 
 
   const knopf = 'inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors';
   return createPortal(
-    <div className="fixed inset-0 z-[80] flex flex-col bg-brand-dark" role="dialog" aria-label="Katalog und Preisliste 2026">
+    <div className="fixed inset-0 z-[80] flex flex-col bg-brand-dark" role="dialog" aria-label={t('Katalog und Preisliste 2026', 'Catalogue and price list 2026', 'Catalogue et liste de prix 2026')}>
       <div className="flex items-center gap-3 px-4 py-3 text-white">
-        <span className="font-heading font-extrabold uppercase tracking-tight truncate">Katalog und Preisliste 2026</span>
-        <span className="font-mono text-xs text-white/60 shrink-0">{anzahl ? `${seite + 1} / ${anzahl}` : ''}{anzahl && fertig < anzahl ? ` · lädt ${fertig}/${anzahl}` : ''}</span>
+        <span className="font-heading font-extrabold uppercase tracking-tight truncate">{t('Katalog und Preisliste 2026', 'Catalogue and price list 2026 (in German)', 'Catalogue et liste de prix 2026 (en allemand)')}</span>
+        <span className="font-mono text-xs text-white/60 shrink-0">{anzahl ? `${seite + 1} / ${anzahl}` : ''}{anzahl && fertig < anzahl ? ` · ${t('lädt', 'loading', 'chargement')} ${fertig}/${anzahl}` : ''}</span>
         <a href={links.download} className={`${knopf} ml-auto bg-brand-orange text-white hover:bg-white hover:text-brand-dark`}>
-          <span className="material-symbols-outlined text-lg">download</span><span className="hidden sm:inline">PDF laden</span>
+          <span className="material-symbols-outlined text-lg">download</span><span className="hidden sm:inline">{t('PDF laden', 'Download PDF', 'Télécharger le PDF')}</span>
         </a>
-        <button type="button" onClick={onClose} aria-label="Schließen" className={`${knopf} text-white hover:text-brand-orange`}>
+        <button type="button" onClick={onClose} aria-label={t('Schließen', 'Close', 'Fermer')} className={`${knopf} text-white hover:text-brand-orange`}>
           <span className="material-symbols-outlined text-2xl">close</span>
         </button>
       </div>
       <div className="relative flex-1 min-h-0 flex items-center justify-center px-2 sm:px-14 pb-4">
         {fehler
-          ? <p className="text-white/80 text-center max-w-md">Der Katalog lässt sich gerade nicht öffnen. Der Link gilt einige Stunden; bitte die Seite neu laden und den Code erneut eingeben.</p>
+          ? <p className="text-white/80 text-center max-w-md">{t('Der Katalog lässt sich gerade nicht öffnen. Der Link gilt einige Stunden; bitte die Seite neu laden und den Code erneut eingeben.', 'The catalogue cannot be opened right now. The link is valid for a few hours; please reload the page and enter the code again.', 'Le catalogue ne peut pas être ouvert pour le moment. Le lien est valable quelques heures ; veuillez recharger la page et saisir à nouveau le code.')}</p>
           : <div className="w-full" style={{ maxWidth: 'min(1400px, calc((100dvh - 90px) * 1.41))' }}><div ref={buch} /></div>}
         {!fehler && <>
-          <button type="button" onClick={() => flip.current?.flipPrev()} aria-label="Zurückblättern" className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 text-white/70 hover:text-brand-orange">
+          <button type="button" onClick={() => flip.current?.flipPrev()} aria-label={t('Zurückblättern', 'Previous page', 'Page précédente')} className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 text-white/70 hover:text-brand-orange">
             <span className="material-symbols-outlined text-5xl">chevron_left</span>
           </button>
-          <button type="button" onClick={() => flip.current?.flipNext()} aria-label="Weiterblättern" className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 text-white/70 hover:text-brand-orange">
+          <button type="button" onClick={() => flip.current?.flipNext()} aria-label={t('Weiterblättern', 'Next page', 'Page suivante')} className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 text-white/70 hover:text-brand-orange">
             <span className="material-symbols-outlined text-5xl">chevron_right</span>
           </button>
         </>}

@@ -77,9 +77,10 @@ const Header: React.FC = () => {
             </Link>
 
             {/* Desktop Nav - Semantic HTML Upgrade */}
-            <nav ref={navRef} className="hidden md:block" aria-label="Hauptnavigation">
-              <ul className="flex items-center gap-8">
-              {NAV_LINKS.map((link) =>
+            <nav ref={navRef} className="hidden lg:block" aria-label="Hauptnavigation">
+              <ul className="flex items-center gap-4 xl:gap-8 whitespace-nowrap">
+              {/* Kontakt steht rechts als Knopf, darum hier nicht doppelt */}
+              {NAV_LINKS.filter((link) => link.href !== '/kontakt').map((link) =>
                 link.subLinks ? (() => {
                   const isOpen = openDropdown === link.name;
                   return (
@@ -141,14 +142,14 @@ const Header: React.FC = () => {
             <div className="flex items-center gap-4">
               <Link 
                 to="/kontakt" 
-                className="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-xs font-extrabold uppercase tracking-widest bg-brand-orange text-white hover:bg-brand-dark hover:text-white transition-all duration-300 rounded-lg transform hover:-translate-y-0.5 shadow-lg hover:shadow-brand-orange/20"
+                className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-xs font-extrabold uppercase tracking-widest bg-brand-orange text-white hover:bg-brand-dark hover:text-white transition-all duration-300 rounded-lg transform hover:-translate-y-0.5 shadow-lg hover:shadow-brand-orange/20"
               >
                 Kontakt
               </Link>
               
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="md:hidden relative z-50 p-2 text-brand-dark hover:text-brand-orange transition-colors"
+                className="lg:hidden relative z-50 p-2 text-brand-dark hover:text-brand-orange transition-colors"
                 aria-label="Menü öffnen"
               >
                 <div className="w-6 flex flex-col items-end gap-1.5">
@@ -164,7 +165,7 @@ const Header: React.FC = () => {
 
       {/* Full Screen Mobile Menu - Hidden on Desktop */}
       <div 
-        className={`fixed inset-0 z-40 bg-brand-bg transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden ${
+        className={`fixed inset-0 z-40 bg-brand-bg transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] lg:hidden ${
           isMenuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >

@@ -205,7 +205,7 @@ const Abladen: React.FC = () => {
       <div className="section-head reveal">
         <div className="section-eyebrow">
           <span className="num">02</span>
-          <span>{t("Abladen &amp; Anschlagen", "Unloading &amp; rigging", "Déchargement &amp; élingage")}</span>
+          <span>{t("Abladen & Anschlagen", "Unloading & rigging", "Déchargement & élingage")}</span>
         </div>
         <h2>{t(<>Abladen und <span className="accent">Anschlagen</span></>, <>Unloading and <span className="accent">rigging</span></>, <>Déchargement et <span className="accent">élingage</span></>)}</h2>
         <p>
@@ -468,7 +468,7 @@ const Werkzeuge: React.FC = () => {
         <div className="section-head reveal">
           <div className="section-eyebrow">
             <span className="num">04</span>
-            <span>{t("Geräte &amp; Werkzeuge", "Equipment &amp; tools", "Appareils &amp; outils")}</span>
+            <span>{t("Geräte & Werkzeuge", "Equipment & tools", "Appareils & outils")}</span>
           </div>
           <h2>{t(<>Was Sie <span className="accent">brauchen</span></>, <>What you <span className="accent">need</span></>, <>Ce dont vous <span className="accent">avez besoin</span></>)}</h2>
           <p>
@@ -506,7 +506,7 @@ const Wartung: React.FC = () => {
         <div className="section-head reveal">
           <div className="section-eyebrow">
             <span className="num">05</span>
-            <span>{t("Wartung &amp; Instandhaltung", "Maintenance &amp; upkeep", "Entretien &amp; maintenance")}</span>
+            <span>{t("Wartung & Instandhaltung", "Maintenance & upkeep", "Entretien & maintenance")}</span>
           </div>
           <h2>{t(<>Wartungsarm, <span className="accent">nicht wartungsfrei</span></>, <>Low-maintenance, <span className="accent">not maintenance-free</span></>, <>Entretien réduit, <span className="accent">mais pas nul</span></>)}</h2>
           <p>

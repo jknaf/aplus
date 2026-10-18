@@ -179,7 +179,7 @@ const ContactPage: React.FC = () => {
                             </span>
 
                             <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tight mb-6">
-                                {t("Ein Klick und los geht&rsquo;s", "One click and you&rsquo;re off", "Un clic et c&rsquo;est parti")}
+                                {t("Ein Klick und los geht’s", "One click and you’re off", "Un clic et c’est parti")}
                             </h2>
 
                             <p className="text-brand-muted leading-relaxed mb-8">

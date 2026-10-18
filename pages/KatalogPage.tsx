@@ -124,7 +124,7 @@ const ParkKnopf: React.FC<{ slug: string; onSperre: () => void }> = ({ slug, onS
   useEffect(() => setDrin(false), [slug]);
   return drin ? (
     <Link to="/konfigurator" className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-brand-orange/10 text-brand-orange font-bold uppercase tracking-wider text-sm hover:bg-brand-orange hover:text-white transition-colors">
-      <span className="material-symbols-outlined text-lg">check</span> {t("Im Park · zum Konfigurator", "In your park · go to the planner", "Dans votre parc · vers le planificateur")}
+      <span className="material-symbols-outlined text-lg">check</span> {t("Im Park · zum Konfigurator", "In your park · go to the planner", "Dans votre parc · vers le configurateur")}
     </Link>
   ) : (
     <button type="button" onClick={() => { if (!konfiguratorFrei()) { onSperre(); return; } merken(slug); setDrin(true); }} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-brand-dark text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-orange transition-colors">

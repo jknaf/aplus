@@ -127,7 +127,7 @@ const ContactPage: React.FC = () => {
     const mailtoHref = buildMailto(lang, projectType);
 
     return (
-        <PageShell title={t("Kontakt & Anfrage", "Contact & Enquiries", "Contact et demandes")} description={t("Projekt anfragen: Beratung, Planung und Umsetzung von Beton-Skateparks, Pumptracks und urbanen Anlagen. Jetzt Angebot anfordern.", "Enquire about a project: advice, design and delivery of concrete skateparks, pump tracks and urban facilities. Request a quote now.", "Demander un projet : conseil, conception et réalisation de skateparks en béton, de pumptracks et d'équipements urbains. Demandez votre offre dès maintenant.")}>
+        <PageShell title={t("Kontakt & Anfrage", "Contact & Enquiries", "Contact et demandes")} description={t("Projekt anfragen: Beratung, Planung und Umsetzung von Beton-Skateparks, Pumptracks und urbanen Anlagen. Jetzt Angebot anfordern.", "Enquire about a project: advice, design and delivery of concrete skateparks, pump tracks and urban facilities. Request a quote now.", "Parlez-nous de votre projet : conseil, conception et réalisation de skateparks en béton, de pumptracks et d'équipements urbains. Demandez un devis dès maintenant.")}>
             <div className="relative w-full min-h-[80vh] flex flex-col justify-center">
 
                 <div className="text-center mb-16 animate-fade-in-up">

@@ -47,21 +47,21 @@ export default CodeDialog;
 export const useKonfiguratorCode = () => {
   const t = useT();
   return {
-    titel: t('Konfigurator freischalten', 'Unlock the planner', 'Débloquer le planificateur'),
+    titel: t('Konfigurator freischalten', 'Unlock the planner', 'Débloquer le configurateur'),
     text: t(
       'Vorlagen, Bauplan und Stückliste sehen Sie ohne Code. Zum Planen, also Elemente hinzufügen, verschieben, löschen und als PDF speichern, brauchen Sie Ihren persönlichen Code. Er schaltet den Konfigurator in diesem Browser für 2 Tage frei. Sie haben noch keinen? Wir senden ihn Ihnen gern zu.',
       'You can see templates, the site plan and the parts list without a code. To plan, that is to add, move and delete elements and save as a PDF, you need your personal code. It unlocks the planner in this browser for 2 days. Don\'t have one yet? We are happy to send you one.',
-      'Les modèles, le plan et la liste des pièces sont visibles sans code. Pour planifier, c\'est-à-dire ajouter, déplacer et supprimer des éléments et enregistrer en PDF, vous avez besoin de votre code personnel. Il débloque le planificateur dans ce navigateur pendant 2 jours. Vous n\'en avez pas encore ? Nous vous en envoyons volontiers un.',
+      'Les modèles, le plan et la liste des pièces sont visibles sans code. Pour planifier, c\'est-à-dire ajouter, déplacer et supprimer des éléments et enregistrer en PDF, vous avez besoin de votre code personnel. Il débloque le configurateur dans ce navigateur pendant 2 jours. Vous n\'en avez pas encore ? Nous vous en envoyons volontiers un.',
     ),
     anfrage:
       'mailto:post@aplusurbandesign.com?subject=' +
-      encodeURIComponent(t('Code für den Skatepark-Konfigurator', 'Code for the skatepark planner', 'Code pour le planificateur de skatepark')) +
+      encodeURIComponent(t('Code für den Skatepark-Konfigurator', 'Code for the skatepark planner', 'Code pour le configurateur de skatepark')) +
       '&body=' +
       encodeURIComponent(
         t(
           'Guten Tag,\n\nbitte senden Sie mir den Code zur Freischaltung des Skatepark-Konfigurators.\n\nName:\nFirma / Kommune:\nTelefon:\n',
           'Hello,\n\nplease send me the code to unlock the skatepark planner.\n\nName:\nCompany / municipality:\nPhone:\n',
-          "Bonjour,\n\nmerci de m'envoyer le code de déblocage du planificateur de skatepark.\n\nNom :\nEntreprise / commune :\nTéléphone :\n",
+          "Bonjour,\n\nmerci de m'envoyer le code de déblocage du configurateur de skatepark.\n\nNom :\nEntreprise / commune :\nTéléphone :\n",
         ),
       ),
   };

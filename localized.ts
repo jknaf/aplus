@@ -19,10 +19,10 @@ const NAV: Record<string, Texte> = {
   '/produkte/grillstelle-beton': { en: 'Barbecue Area', fr: 'Aire de barbecue' },
   '/produkte/umkleidekabine-beton': { en: 'Changing Cubicle', fr: 'Cabine de change' },
   '/produkte/ueberdachung-beton': { en: 'Shelter / Pavilion', fr: 'Abri / Pavillon' },
-  '/produkte/hockey-banden': { en: 'Hockey Boards', fr: 'Bandes de hockey' },
+  '/produkte/hockey-banden': { en: 'Rink Boards', fr: 'Bandes de hockey' },
   '/katalog': { en: 'Catalogue', fr: 'Catalogue' },
   '/planung': { en: 'Design', fr: 'Conception' },
-  '/konfigurator': { en: 'Skatepark Planner', fr: 'Planificateur de skatepark' },
+  '/konfigurator': { en: 'Skatepark Planner', fr: 'Configurateur de skatepark' },
   '/projekte': { en: 'Projects', fr: 'Projets' },
   '/referenzen-presse': { en: 'Press', fr: 'Presse' },
   '/ueber-uns': { en: 'About us', fr: 'À propos' },
@@ -62,7 +62,7 @@ const PRODUKT: Record<string, { en: Partial<Product>; fr: Partial<Product> }> = 
       altText: 'Bowls de skate modulaires en éléments préfabriqués en béton, fermés ou ouverts, certifiés TÜV.',
       usp: "L'original A+ : des éléments de skate en béton certifiés TÜV, pour des bowls fermés enterrés ou des bowls ouverts posés sur une surface existante, de 98 ou 150 cm de profondeur. Les éléments demandent peu d'entretien, résistent au vandalisme et peuvent être agrandis.",
       material: 'Béton armé',
-      details: 'Tubes de coping galvanisés qui ne se bosselent pas',
+      details: 'Tubes de coping galvanisés qui ne se cabossent pas',
     },
   },
   'skate-pipes': {
@@ -85,7 +85,7 @@ const PRODUKT: Record<string, { en: Partial<Product>; fr: Partial<Product> }> = 
     en: {
       title: 'Concrete Pump Tracks',
       altText: 'Concrete pump track made of modular precast units, built by pump track manufacturer A+ Urban Design.',
-      usp: 'The A+ original: TÜV-certified berms, rollers and ramps in concrete for pump tracks. They can be set down, cast in or surfaced over with asphalt, and suit bikes, scooters, inline skates and skateboards.',
+      usp: 'The A+ original: TÜV-certified berms, rollers and ramps in concrete for pump tracks. They can be free-standing, set in concrete or set in asphalt, and suit bikes, scooters, inline skates and skateboards.',
       material: 'Reinforced concrete',
       details: 'Around 5–8 dB(A) quieter than timber, metal or plastic',
     },
@@ -101,7 +101,7 @@ const PRODUKT: Record<string, { en: Partial<Product>; fr: Partial<Product> }> = 
     en: {
       title: 'Shelter / Pavilion',
       altText: 'Concrete shelter with seating.',
-      usp: 'The A+ original: weather protection in exposed concrete, with a base slab and seating, for bus stops, sports grounds and green spaces. It can be placed singly or in groups on a gravel bed, concrete or asphalt. It needs little maintenance and resists vandalism.',
+      usp: 'The A+ original: a shelter in fair-faced concrete, with a base slab and seating, for bus stops, sports grounds and green spaces. It can be placed singly or in groups on a gravel bed, concrete or asphalt. It needs little maintenance and resists vandalism.',
       material: 'Reinforced concrete',
       details: 'Installed without foundations',
     },
@@ -147,9 +147,9 @@ const PRODUKT: Record<string, { en: Partial<Product>; fr: Partial<Product> }> = 
   },
   hockey: {
     en: {
-      title: 'Hockey Boards',
+      title: 'Rink Boards',
       altText: 'Outdoor hockey rink with robust concrete boards for inline and roller hockey.',
-      usp: 'The A+ original: foundation-free perimeters and boards for inline, roller and ice hockey, extendable in 1.5 m steps, with no moving parts. They are set up on concrete or asphalt surfaces, need little maintenance and weather well.',
+      usp: 'The A+ original: foundation-free perimeters and boards for inline, roller and ice hockey, extendable in 1.5 m steps, with no moving parts. They are set up on concrete or asphalt surfaces, need little maintenance and are weather-resistant.',
       material: 'Reinforced concrete, recyclable rubber, stainless steel, HPL panels',
       details: 'Installed without foundations',
     },
@@ -265,7 +265,7 @@ const PROJEKT: Record<string, { en: ProjektText; fr: ProjektText }> = {
         'A board system for sports courts that is installed without foundations or ground fixings. It is made of weather-resistant materials with stainless steel components and adapts flexibly to different court sizes.',
       longDescription: [
         'A+ Urban Design has developed a board system for sports courts that is installed without foundations or ground fixings. Unlike anchored boards, it leaves the surface undamaged.',
-        'The system is made of weather-resistant materials: concrete, stainless steel, HPL panels and rubber. The perimeter, which takes the heaviest wear, is concrete. In 1.5 m steps, the boards can be fitted to a small court, a half court or a full-size pitch.',
+        'The system is made of weather-resistant materials: concrete, stainless steel, HPL panels and rubber. The perimeter, which takes the heaviest wear, is concrete. In 1.5 m steps, the boards can be fitted to a small court, a half court or a full-size court.',
         'There are two heights: 40 cm as a perimeter with a rubber cap for inline hockey, and 110 cm as a profiled board with a stainless steel handrail for roller hockey, inline hockey and, with an optional sealing profile, ice hockey in winter.',
         'Source (in German): freiraum-gestalten.info, "Ohne Fundament und Bodenbefestigung" (FREIRAUM GESTALTEN 02/2015).',
       ],

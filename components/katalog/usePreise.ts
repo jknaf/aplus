@@ -24,8 +24,8 @@ const abfragen = async (body: object) => {
 const MELDUNGEN: Record<string, [string, string]> = {
   'Preisfreischaltung ist noch nicht eingerichtet.': ['Price unlocking has not been set up yet.', "Le déblocage des prix n'est pas encore configuré."],
   'Der Code ist leider nicht gültig.': ['Sorry, this code is not valid.', "Désolé, ce code n'est pas valide."],
-  'Das ist ein Code für die Preise im Katalog, nicht für den Konfigurator.': ['This is a code for the prices in the catalogue, not for the planner.', "Ce code sert à débloquer les prix du catalogue, pas le planificateur."],
-  'Das ist ein Code für den Konfigurator. Bitte dort eingeben.': ['This is a code for the planner. Please enter it there.', "Ce code sert au planificateur. Veuillez le saisir dans le planificateur."],
+  'Das ist ein Code für die Preise im Katalog, nicht für den Konfigurator.': ['This is a code for the prices in the catalogue, not for the planner.', "Ce code sert à débloquer les prix du catalogue, pas le configurateur."],
+  'Das ist ein Code für den Konfigurator. Bitte dort eingeben.': ['This is a code for the planner. Please enter it there.', "Ce code sert au planificateur. Veuillez le saisir dans le configurateur."],
   'Der Code ist abgelaufen. Bitte fordern Sie einen neuen an.': ['The code has expired. Please request a new one.', "Le code a expiré. Veuillez en demander un nouveau."],
   'Dieser Code wurde bereits verwendet. Bitte fordern Sie einen neuen an.': ['This code has already been used. Please request a new one.', "Ce code a déjà été utilisé. Veuillez en demander un nouveau."],
   'Die Freischaltung ist gerade nicht möglich. Bitte später erneut versuchen.': ['Unlocking is not possible right now. Please try again later.', "Le déblocage n'est pas possible pour le moment. Veuillez réessayer plus tard."],

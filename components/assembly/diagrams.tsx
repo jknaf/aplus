@@ -66,7 +66,7 @@ export const FoundationDiagram: React.FC = () => {
       <line x1="300" y1="180" x2="300" y2="220" stroke={Accent} strokeWidth="1" />
       <circle cx="300" cy="180" r="3" fill={Accent} />
       <text x="300" y="240" textAnchor="middle" fontWeight="700" fill={Accent}>{t("KIESBETT · KÖRNUNG 10–40 mm", "GRAVEL BED · GRADING 10–40 mm", "LIT DE GRAVIER · GRANULOMÉTRIE 10–40 mm")}</text>
-      <text x="300" y="256" textAnchor="middle" fill={Muted}>{t("VERDICHTET · FROSTSICHER", "COMPACTED · FROST-PROOF", "COMPACTÉ · RÉSISTANT AU GEL")}</text>
+      <text x="300" y="256" textAnchor="middle" fill={Muted}>{t("VERDICHTET · FROSTSICHER", "COMPACTED · FROST-PROOF", "COMPACTÉ · HORS GEL")}</text>
 
       <line x1="380" y1="145" x2="420" y2="108" stroke={Accent} strokeWidth="1" />
       <text x="430" y="106" fontWeight="700" fill={Accent}>{t("RIESELSCHICHT · 5–10 mm", "BEDDING LAYER · 5–10 mm", "LIT DE POSE · 5–10 mm")}</text>

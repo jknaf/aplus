@@ -234,7 +234,7 @@ const ProjectDetailPage: React.FC = () => {
                                 <h3 className="text-3xl font-extrabold font-heading text-brand-dark uppercase mb-4">{t("Ein ähnliches Projekt?", "A similar project?", "Un projet similaire ?")}</h3>
                                 <p className="text-brand-muted mb-8 max-w-lg mx-auto">{t("Planen Sie ein ähnliches Projekt? Wir unterstützen Sie von der ersten Skizze bis zur Fertigstellung.", "Planning a similar project? We support you from the first sketch to completion.", "Vous prévoyez un projet similaire ? Nous vous accompagnons de la première esquisse à la livraison.")}</p>
                                 <Link to="/kontakt" className="inline-block bg-brand-orange text-white font-bold uppercase tracking-widest py-4 px-8 rounded hover:bg-brand-dark transition-colors">
-                                    {t("Projekt anfragen", "Enquire about your project", "Demander un projet")}
+                                    {t("Projekt anfragen", "Enquire about your project", "Parlez-nous de votre projet")}
                                 </Link>
                              </div>
                         </div>

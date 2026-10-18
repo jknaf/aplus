@@ -81,7 +81,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                             </Link>
 
                             <p className="mt-4 text-xs text-brand-muted max-w-md">
-                                {t('Ein Klick öffnet Ihr E-Mail-Programm mit einer vorbereiteten Nachricht. Wir schicken den Katalog persönlich zu.', 'One click opens your email program with a prepared message. We send the catalogue to you personally.', 'Un clic ouvre votre messagerie avec un message prérempli. Nous vous envoyons le catalogue personnellement.')}
+                                {t('Ein Klick öffnet Ihr E-Mail-Programm mit einer vorbereiteten Nachricht. Wir schicken den Katalog persönlich zu.', 'One click opens your email app with a prepared message. We send the catalogue to you personally.', 'Un clic ouvre votre messagerie avec un message prérempli. Nous vous envoyons le catalogue personnellement.')}
                             </p>
                         </div>
 
@@ -101,7 +101,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
 
                 <h3 className="text-2xl font-extrabold font-heading text-brand-dark uppercase mb-2">{t('Produktkatalog', 'Product catalogue', 'Catalogue produit')}</h3>
                 <p className="text-sm text-brand-muted mb-6 leading-relaxed">
-                    {t('Alle technischen Daten, Maße und Zertifikate zu diesem Produkt. Ein Klick öffnet Ihr E-Mail-Programm mit einer vorbereiteten Anfrage. Wir schicken den Katalog persönlich zu.', 'All technical data, dimensions and certificates for this product. One click opens your email program with a prepared enquiry. We send the catalogue to you personally.', 'Toutes les données techniques, dimensions et certificats de ce produit. Un clic ouvre votre messagerie avec une demande préremplie. Nous vous envoyons le catalogue personnellement.')}
+                    {t('Alle technischen Daten, Maße und Zertifikate zu diesem Produkt. Ein Klick öffnet Ihr E-Mail-Programm mit einer vorbereiteten Anfrage. Wir schicken den Katalog persönlich zu.', 'All technical data, dimensions and certificates for this product. One click opens your email app with a prepared enquiry. We send the catalogue to you personally.', 'Toutes les données techniques, dimensions et certificats de ce produit. Un clic ouvre votre messagerie avec une demande préremplie. Nous vous envoyons le catalogue personnellement.')}
                 </p>
 
                 <Link

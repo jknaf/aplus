@@ -71,7 +71,7 @@ const Start: React.FC<{ onWahl: (id: string) => void; onSchliessen?: () => void 
   <div className="absolute inset-0 z-30 flex items-center justify-center p-4 bg-brand-dark/40 backdrop-blur-sm">
     <div className="w-full max-w-4xl bg-brand-bg rounded-2xl shadow-2xl p-6 md:p-10 max-h-full overflow-y-auto">
       <h1 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mb-3">{t(<>Skatepark <span className="text-brand-orange">planen</span></>, <>Plan your <span className="text-brand-orange">skatepark</span></>, <>Planifiez votre <span className="text-brand-orange">skatepark</span></>)}</h1>
-      <p className="text-brand-muted mb-8 max-w-2xl">{t("Starten Sie mit einer Vorlage und passen Sie sie an. Elemente docken passend an, Geländer und Pflichtteile ergänzt der Konfigurator selbst.", "Start with a template and adapt it. Elements dock together neatly; the planner adds railings and mandatory parts itself.", "Commencez avec un modèle et adaptez-le. Les éléments s'emboîtent automatiquement ; le planificateur ajoute lui-même les garde-corps et les pièces obligatoires.")}</p>
+      <p className="text-brand-muted mb-8 max-w-2xl">{t("Starten Sie mit einer Vorlage und passen Sie sie an. Elemente docken passend an, Geländer und Pflichtteile ergänzt der Konfigurator selbst.", "Start with a template and adapt it. Elements dock together neatly; the planner adds railings and mandatory parts itself.", "Commencez avec un modèle et adaptez-le. Les éléments s'emboîtent automatiquement ; le configurateur ajoute lui-même les garde-corps et les pièces obligatoires.")}</p>
       <div className="grid md:grid-cols-3 gap-4 mb-6">
         {VORLAGEN.map((v) => (
           <button key={v.id} type="button" onClick={() => onWahl(v.id)} className="text-left p-5 rounded-xl bg-white border border-brand-dark/10 hover:border-brand-orange hover:shadow-lg transition-all group">
@@ -106,7 +106,7 @@ const AnfrageDialog: React.FC<{ offen: boolean; onClose: () => void; mailto: str
   return createPortal(
     <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-brand-dark/50 backdrop-blur-sm" onClick={onClose}>
       <div onClick={(e) => e.stopPropagation()} className="w-full max-w-lg bg-brand-bg rounded-2xl shadow-2xl p-6 md:p-8">
-        <h2 className="text-2xl font-extrabold font-heading uppercase text-brand-dark mb-2">{t("Angebot anfragen", "Request a quote", "Demander une offre")}</h2>
+        <h2 className="text-2xl font-extrabold font-heading uppercase text-brand-dark mb-2">{t("Angebot anfragen", "Request a quote", "Demander un devis")}</h2>
         <p className="text-sm text-brand-muted mb-6">
           {t("Ihr E-Mail-Programm öffnet sich mit einer fertigen Nachricht an A+ Urban Design. Darin stehen der Link zu Ihrer Planung und die Stückliste. Ergänzen Sie Ort und Kontaktdaten und senden Sie die Mail ab. Unverbindlich.", "Your email program opens with a ready-made message to A+ Urban Design. It contains the link to your plan and the parts list. Add the location and your contact details and send the email. Non-binding.", "Votre messagerie s'ouvre avec un message prêt à l'envoi adressé à A+ Urban Design. Il contient le lien vers votre plan et la liste des pièces. Complétez le lieu et vos coordonnées, puis envoyez l'e-mail. Sans engagement.")}
         </p>
@@ -408,7 +408,7 @@ const KonfiguratorPage: React.FC = () => {
   };
   // ponytail: mailto statt Server-Versand; sehr große Parks können lange Links ergeben, die manche Mailprogramme kürzen
   const mailto = park ? `mailto:post@aplusurbandesign.com?subject=${encodeURIComponent(t('Angebotsanfrage Skatepark (Konfigurator)', 'Quote request: skatepark (planner)', 'Demande d\'offre : skatepark (planificateur)'))}&body=${encodeURIComponent([
-    t('Guten Tag,', 'Hello,', 'Bonjour,'), '', t('ich bitte um ein Angebot für meinen Skatepark aus dem Konfigurator.', 'I would like to request a quote for my skatepark from the planner.', 'Je souhaiterais recevoir une offre pour mon skatepark créé avec le planificateur.'), '',
+    t('Guten Tag,', 'Hello,', 'Bonjour,'), '', t('ich bitte um ein Angebot für meinen Skatepark aus dem Konfigurator.', 'I would like to request a quote for my skatepark from the planner.', 'Je souhaiterais recevoir une offre pour mon skatepark créé avec le configurateur.'), '',
     t('Link zur Planung:', 'Link to the plan:', 'Lien vers le plan :'), link, '',
     `${t('Fläche', 'Area', 'Surface')}: ${park.flaeche.l.toLocaleString(loc)} × ${park.flaeche.b.toLocaleString(loc)} m, ${park.flaeche.angeboescht ? t('angeböscht', 'banked up', 'taluté') : t('freistehend', 'free-standing', 'autoportant')}`, '',
     t('Stückliste:', 'Parts list:', 'Liste des pièces :'), ...zeilen.map((z) => `${z.menge} × ${z.code} ${z.name}`), '',
@@ -569,7 +569,7 @@ const KonfiguratorPage: React.FC = () => {
         {gewicht > 0 && <div className="flex justify-between text-brand-muted"><span>{t('Gewicht ca.', 'Weight approx.', 'Poids env.')}</span><span>{(gewicht / 1000).toLocaleString(loc, { maximumFractionDigits: 1 })} t</span></div>}
         <p className="text-[11px] text-brand-muted leading-snug">{t("Preise erhalten Sie mit dem Angebot, inklusive Fracht und Montage. Bauseitige Leistungen (Fläche, Gullys, Fundamente) sind nicht Teil der Lieferung.", "You receive prices with the quote, including freight and installation. Work to be done by the client (area, drains, foundations) is not part of the delivery.", "Vous recevez les prix avec l'offre, transport et montage compris. Les prestations à la charge du client (surface, avaloirs, fondations) ne font pas partie de la livraison.")}</p>
         <button type="button" disabled={!park?.teile.length} onClick={() => { if (!gesperrt()) setAnfrage(true); }} className="w-full py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors disabled:opacity-40">
-          {t("Angebot anfragen", "Request a quote", "Demander une offre")}
+          {t("Angebot anfragen", "Request a quote", "Demander un devis")}
         </button>
         <button type="button" disabled={!zeilen.length} onClick={csvLaden} className="w-full text-xs text-brand-muted hover:text-brand-dark disabled:opacity-40">{t("Stückliste als CSV", "Parts list as CSV", "Liste des pièces en CSV")}</button>
       </div>
@@ -577,7 +577,7 @@ const KonfiguratorPage: React.FC = () => {
   );
 
   return (
-    <PageShell title={t("Skatepark-Konfigurator", "Skatepark Planner", "Planificateur de skatepark")} description={t("Skatepark aus modularen Betonelementen in 3D planen: Vorlage wählen, Elemente andocken, Stückliste und Angebot anfragen.", "Plan a skatepark made of modular concrete elements in 3D: choose a template, dock elements together, get the parts list and request a quote.", "Planifiez en 3D un skatepark en éléments modulaires en béton : choisissez un modèle, assemblez les éléments, obtenez la liste des pièces et demandez une offre.")} fullWidth>
+    <PageShell title={t("Skatepark-Konfigurator", "Skatepark Planner", "Configurateur de skatepark")} description={t("Skatepark aus modularen Betonelementen in 3D planen: Vorlage wählen, Elemente andocken, Stückliste und Angebot anfragen.", "Plan a skatepark made of modular concrete elements in 3D: choose a template, dock elements together, get the parts list and request a quote.", "Planifiez en 3D un skatepark en éléments modulaires en béton : choisissez un modèle, assemblez les éléments, obtenez la liste des pièces et demandez une offre.")} fullWidth>
       {/* Feste Arbeitsfläche unter dem Seitenkopf: die Seite selbst scrollt nicht, Ziehen und Zoomen bleiben in der Bühne */}
       <div className="fixed inset-x-0 bottom-0 top-14 md:top-20 z-40 flex bg-brand-surface overflow-hidden">
         <aside className="hidden lg:flex w-72 shrink-0 flex-col bg-brand-bg border-r border-brand-dark/10">{seitenleiste}</aside>
@@ -618,7 +618,7 @@ const KonfiguratorPage: React.FC = () => {
             <div className="absolute top-3 left-3 right-3 flex flex-wrap items-start gap-2 pointer-events-none">
               <div className="flex flex-wrap gap-2 pointer-events-auto">
                 <Gruppe><LKnopf icon="dashboard_customize" label={t("Vorlage", "Template", "Modèle")} onClick={() => setStart(true)} /></Gruppe>
-                {!frei && <Gruppe><LKnopf icon="lock" label={t("Freischalten", "Unlock", "Débloquer")} labelAb="sm:inline" title={t("Konfigurator mit Code freischalten", "Unlock the planner with a code", "Débloquer le planificateur avec un code")} onClick={() => setSperre(true)} /></Gruppe>}
+                {!frei && <Gruppe><LKnopf icon="lock" label={t("Freischalten", "Unlock", "Débloquer")} labelAb="sm:inline" title={t("Konfigurator mit Code freischalten", "Unlock the planner with a code", "Débloquer le configurateur avec un code")} onClick={() => setSperre(true)} /></Gruppe>}
                 <Gruppe>
                   <label className="inline-flex items-center gap-1 px-2 text-[13px] font-semibold text-brand-dark" title={t("Fläche in Metern (Raster 1,25 m)", "Area in metres (1.25 m grid)", "Surface en mètres (trame de 1,25 m)")}>
                     <span className="material-symbols-outlined text-[18px] text-brand-muted">square_foot</span>
@@ -651,7 +651,7 @@ const KonfiguratorPage: React.FC = () => {
                   <span className="hidden lg:contents">
                     <LKnopf icon="list_alt" label={t("Liste", "List", "Liste")} aktiv={listeOffen} title={listeOffen ? t("Stückliste ausblenden", "Hide the parts list", "Masquer la liste des pièces") : t("Stückliste einblenden", "Show the parts list", "Afficher la liste des pièces")} onClick={listeUmschalten} />
                   </span>
-                  {!listeOffen && <span className="hidden lg:contents"><LKnopf icon="send" label={t("Anfrage", "Enquiry", "Demande")} title={t("Angebot anfragen", "Request a quote", "Demander une offre")} onClick={() => { if (!gesperrt()) setAnfrage(true); }} disabled={!park.teile.length} /></span>}
+                  {!listeOffen && <span className="hidden lg:contents"><LKnopf icon="send" label={t("Anfrage", "Enquiry", "Demande")} title={t("Angebot anfragen", "Request a quote", "Demander un devis")} onClick={() => { if (!gesperrt()) setAnfrage(true); }} disabled={!park.teile.length} /></span>}
                   <LKnopf icon="print" label="PDF" title={t("Drucken oder als PDF sichern", "Print or save as PDF", "Imprimer ou enregistrer en PDF")} onClick={() => { if (!gesperrt()) setDruckDialog(true); }} disabled={!park.teile.length} />
                   <LKnopf icon="share" label={t("Teilen", "Share", "Partager")} labelAb="2xl:inline" title={t("Link zu diesem Park kopieren", "Copy the link to this park", "Copier le lien vers ce parc")} onClick={teilen} />
                 </Gruppe>
@@ -763,7 +763,7 @@ const KonfiguratorPage: React.FC = () => {
       {!frei && createPortal(
         <div className="druck-sperre hidden p-16 text-black" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
           <style>{'@media print { body > *:not(.druck-sperre) { display: none !important; } .druck-sperre { display: block !important; } }'}</style>
-          <p className="text-2xl font-bold mb-4">{t("Skatepark-Konfigurator von A+ Urban Design", "Skatepark planner by A+ Urban Design", "Planificateur de skatepark d'A+ Urban Design")}</p>
+          <p className="text-2xl font-bold mb-4">{t("Skatepark-Konfigurator von A+ Urban Design", "Skatepark planner by A+ Urban Design", "Configurateur de skatepark d'A+ Urban Design")}</p>
           <p>{t("Drucken und PDF sind nach der Freischaltung möglich. Den Code erhalten Sie unter post@aplusurbandesign.com.", "Printing and PDF are possible after unlocking. You can get the code from post@aplusurbandesign.com.", "L'impression et le PDF sont possibles après le déblocage. Vous obtenez le code auprès de post@aplusurbandesign.com.")}</p>
         </div>,
         document.body,

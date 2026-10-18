@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
             <div className="val">{t("7,6", "7.6", "7,6")}<span className="u">t</span></div>
           </div>
           <div>
-            <div className="lbl">Durchmesser</div>
+            <div className="lbl">{t("Durchmesser", "Diameter", "Diamètre")}</div>
             <div className="val">{t("4,20", "4.20", "4,20")}<span className="u">m</span></div>
           </div>
           <div>
@@ -132,9 +132,9 @@ const Hero: React.FC = () => {
 const Voraussetzungen: React.FC = () => {
   const t = useT();
   const layers = [
-    { num: '01', ttl: t("Erdplanum", "Subgrade", "Fond de forme"), spec: t("frostsicher", "frost-proof", "résistant au gel"), desc: t("Tragfähig verdichtet, frostsicher ausgebildet.", "Compacted to bear loads, built frost-proof.", "Compacté pour être porteur, réalisé résistant au gel.") },
-    { num: '02', ttl: t("Kiesbett", "Gravel bed", "Lit de gravier"), spec: t("40–60 cm · Körnung 10–40 mm", "40–60 cm · grading 10–40 mm", "40–60 cm · granulométrie 10–40 mm"), desc: t("Verdichtet eingebaut, Durchmesser ≥ 4,50 m.", "Laid compacted, diameter ≥ 4.50 m.", "Mis en œuvre compacté, diamètre ≥ 4,50 m.") },
-    { num: '03', ttl: t("Rieselschicht", "Bedding layer", "Lit de pose"), spec: t("5 cm · Körnung 5–10 mm", "5 cm · grading 5–10 mm", "5 cm · granulométrie 5–10 mm"), desc: t("Glatt abgezogen, 15 cm unter der endgültigen Gehfläche.", "Screeded smooth, 15 cm below the final ground level.", "Réglé lisse, à 15 cm sous le niveau fini du sol.") },
+    { num: '01', ttl: t("Erdplanum", "Subgrade", "Fond de forme"), spec: t("frostsicher", "frost-proof", "résistant au gel"), desc: t("Tragfähig verdichtet, frostsicher ausgebildet.", "Compacted to bear loads, built frost-proof.", "Compacté pour être porteur, mis hors gel.") },
+    { num: '02', ttl: t("Kiesbett", "Gravel bed", "Lit de gravier"), spec: t("40–60 cm · Körnung 10–40 mm", "40–60 cm · grading 10–40 mm", "40–60 cm · granulométrie 10–40 mm"), desc: t("Verdichtet eingebaut, Durchmesser ≥ 4,50 m.", "Placed and compacted, diameter ≥ 4.50 m.", "Mis en place et compacté, diamètre ≥ 4,50 m.") },
+    { num: '03', ttl: t("Rieselschicht", "Bedding layer", "Lit de pose"), spec: t("5 cm · Körnung 5–10 mm", "5 cm · grading 5–10 mm", "5 cm · granulométrie 5–10 mm"), desc: t("Glatt abgezogen, 15 cm unter der endgültigen Gehfläche.", "Screeded smooth, 15 cm below the final ground level.", "Arasé et lissé, à 15 cm sous le niveau fini du sol.") },
     { num: '04', ttl: t("Bodenplatte", "Base slab", "Dalle de sol"), spec: t("16 cm · bündig oder aufgesetzt", "16 cm · flush or raised", "16 cm · à fleur ou en surélévation"), desc: t("Wird auf die vorbereitete Rieselschicht gesetzt.", "Set on the prepared bedding layer.", "Posée sur le lit de pose préparé.") },
   ];
   return (
@@ -231,7 +231,7 @@ const Abladen: React.FC = () => {
               <div>
                 <div className="lbl">{t("Achtung", "Warning", "Attention")}</div>
                 <div className="txt">
-                  {t("Niemals an den Ankerhülsen der Bänke anhängen. Diese sind nicht für Hublasten ausgelegt.", "Never attach to the anchor sockets of the benches. They are not designed for lifting loads.", "Ne jamais accrocher aux douilles d'ancrage des bancs. Elles ne sont pas conçues pour supporter des charges de levage.")}
+                  {t("Niemals an den Ankerhülsen der Bänke anhängen. Diese sind nicht für Hublasten ausgelegt.", "Never lift from the bench anchors. They are not designed for lifting loads.", "Ne jamais accrocher aux douilles d'ancrage des bancs. Elles ne sont pas conçues pour supporter des charges de levage.")}
                 </div>
               </div>
             </div>
@@ -240,7 +240,7 @@ const Abladen: React.FC = () => {
               <div>
                 <div className="lbl">{t("Sicherheit", "Safety", "Sécurité")}</div>
                 <div className="txt">
-                  {t("Während des Abladens und Versetzens grundsätzlich Abstand zu angehobenen Teilen halten.", "While unloading and moving, always keep your distance from raised parts.", "Pendant le déchargement et le déplacement, toujours garder ses distances avec les éléments soulevés.")}
+                  {t("Während des Abladens und Versetzens grundsätzlich Abstand zu angehobenen Teilen halten.", "While unloading and moving, always keep your distance from raised parts.", "Pendant le déchargement et le déplacement, toujours se tenir à distance des charges suspendues.")}
                 </div>
               </div>
             </div>
@@ -395,18 +395,18 @@ const Montage: React.FC = () => {
             <p>
               {t(<>Wenn die Bodenplatte bündig sitzt, schließen Sie vor der Inbetriebnahme
               den Spalt rund um die Platte. In der Nähe
-              des Grillplatzes ist ein <strong>Nutzungsschild</strong> anzubringen.</>, <>If the base slab sits flush, close the gap around the slab before commissioning. A <strong>notice board with the terms of use</strong> is to be fitted near the barbecue area.</>, <>Si la dalle de sol est posée à fleur, fermez le joint périphérique avant la mise en service. Un <strong>panneau d'utilisation</strong> doit être installé à proximité de l'aire de barbecue.</>)}
+              des Grillplatzes ist ein <strong>Nutzungsschild</strong> anzubringen.</>, <>If the base slab sits flush, close the gap around the slab before commissioning. A <strong>sign showing the rules of use</strong> is to be fitted near the barbecue area.</>, <>Si la dalle de sol est posée à fleur, fermez le joint périphérique avant la mise en service. Un <strong>panneau d'utilisation</strong> doit être installé à proximité de l'aire de barbecue.</>)}
             </p>
             <div className="callout warning">
               <span className="ico material-symbols-outlined" aria-hidden="true">local_fire_department</span>
               <div>
                 <div className="lbl">{t("Nutzungsbedingungen", "Terms of use", "Conditions d'utilisation")}</div>
                 <div className="txt">
-                  {t("Das Nutzungsschild sollte die Nutzungsbedingungen enthalten, die der Betreiber mit der örtlichen Feuerwehr erarbeitet und abgestimmt hat.", "The notice board should state the terms of use that the operator has drawn up and agreed with the local fire brigade.", "Le panneau doit indiquer les conditions d'utilisation que l'exploitant a élaborées et convenues avec les pompiers locaux.")}
+                  {t("Das Nutzungsschild sollte die Nutzungsbedingungen enthalten, die der Betreiber mit der örtlichen Feuerwehr erarbeitet und abgestimmt hat.", "The sign should show the rules of use that the operator has drawn up and agreed with the local fire brigade.", "Le panneau doit indiquer les conditions d'utilisation que l'exploitant a élaborées et convenues avec les pompiers locaux.")}
                 </div>
               </div>
             </div>
-            <p className="closing-line">{t("Wir wünschen Ihnen viel Erfolg bei der Montage.", "We wish you every success with the installation.", "Nous vous souhaitons une bonne réussite pour le montage.")}</p>
+            <p className="closing-line">{t("Wir wünschen Ihnen viel Erfolg bei der Montage.", "We wish you every success with the installation.", "Nous vous souhaitons un bon montage.")}</p>
           </div>
         </div>
         <div className="step-visual">
@@ -437,7 +437,7 @@ const HandoverCard: React.FC = () => {
         <div className="status">{t("STATUS", "STATUS", "STATUT")}</div>
         <div className="title">{t(<>Funktions-<br />fähig.</>, <>Ready<br />to use.</>, <>Prête à<br />l'emploi.</>)}</div>
         <div className="desc">
-          {t("Randspalt geschlossen, Nutzungsschild angebracht: Die Anlage ist bereit zur Übergabe.", "Edge gap closed, notice board fitted: the installation is ready for handover.", "Joint périphérique fermé, panneau d'utilisation installé : l'installation est prête à être remise.")}
+          {t("Randspalt geschlossen, Nutzungsschild angebracht: Die Anlage ist bereit zur Übergabe.", "Edge gap closed, sign put up: the installation is ready for handover.", "Joint périphérique fermé, panneau d'utilisation installé : l'installation est prête à être remise.")}
         </div>
       </div>
       <div className="checklist">
@@ -472,7 +472,7 @@ const Werkzeuge: React.FC = () => {
           </div>
           <h2>{t(<>Was Sie <span className="accent">brauchen</span></>, <>What you <span className="accent">need</span></>, <>Ce dont vous <span className="accent">avez besoin</span></>)}</h2>
           <p>
-            {t("Die komplette Liste der Geräte und Werkzeuge, die Sie vor Ort benötigen. Prüfen Sie die Liste vor Montagebeginn. Das spart Zeit und Leerfahrten.", "The complete list of equipment and tools you need on site. Check the list before installation starts. That saves time and wasted trips.", "La liste complète des appareils et outils dont vous avez besoin sur place. Vérifiez-la avant de commencer le montage. Cela fait gagner du temps et évite les trajets à vide.")}
+            {t("Die komplette Liste der Geräte und Werkzeuge, die Sie vor Ort benötigen. Prüfen Sie die Liste vor Montagebeginn. Das spart Zeit und Leerfahrten.", "The complete list of equipment and tools you need on site. Check the list before installation starts. That saves time and wasted trips.", "La liste complète des appareils et outils dont vous avez besoin sur place. Vérifiez-la avant de commencer le montage. Cela fait gagner du temps et évite les déplacements inutiles.")}
           </p>
         </div>
         <div className="tools-grid fade-stagger">
@@ -496,7 +496,7 @@ const Wartung: React.FC = () => {
   const t = useT();
   const items = [
     { freq: '2×', per: t("pro Jahr", "per year", "par an"), ttl: t("Sichtprüfung", "Visual inspection", "Contrôle visuel"), desc: t("Die gesamte Anlage auf Schäden prüfen, auch auf mutwillig verursachte. Betonabplatzungen mit Reparaturmörtel beseitigen.", "Check the whole installation for damage, including deliberate damage. Repair concrete spalling with repair mortar.", "Contrôler toute l'installation pour détecter les dommages, y compris volontaires. Réparer les éclats de béton avec du mortier de réparation.") },
-    { freq: '2×', per: t("pro Jahr", "per year", "par an"), ttl: t("Rolle ölen", "Oil the pulley", "Huiler la poulie"), desc: t("Die Rolle am Trägerkopf mindestens zweimal jährlich ölen, damit die Kette leichtgängig bleibt.", "Oil the pulley at the top of the support at least twice a year so that the chain keeps running smoothly.", "Huiler la poulie en tête de support au moins deux fois par an pour que la chaîne reste souple.") },
+    { freq: '2×', per: t("pro Jahr", "per year", "par an"), ttl: t("Rolle ölen", "Oil the pulley", "Huiler la poulie"), desc: t("Die Rolle am Trägerkopf mindestens zweimal jährlich ölen, damit die Kette leichtgängig bleibt.", "Oil the pulley at the top of the support at least twice a year so that the chain keeps running smoothly.", "Huiler la poulie en tête de support au moins deux fois par an pour que la chaîne coulisse facilement.") },
     { freq: t("alle 2", "every 2", "toutes les 2"), per: t("Wochen", "weeks", "semaines"), ttl: t("Reinigung", "Cleaning", "Nettoyage"), desc: t("Anlage reinigen. Aschetonne und Müllbehälter in der Nähe regelmäßig leeren.", "Clean the installation. Empty the ash bin and nearby waste bins regularly.", "Nettoyer l'installation. Vider régulièrement le bac à cendres et les poubelles à proximité.") },
     { freq: t("nur", "only", "uniquement"), per: t("Grillkohle", "charcoal", "charbon de bois"), ttl: t("Brennstoff", "Fuel", "Combustible"), desc: t("Als Brennstoff darf ausschließlich Grillkohle verwendet werden.", "Only charcoal may be used as fuel.", "Seul du charbon de bois peut être utilisé comme combustible.") },
   ];

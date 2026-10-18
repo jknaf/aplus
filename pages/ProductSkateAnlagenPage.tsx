@@ -76,7 +76,7 @@ const VIDEOS: { src: string; poster: string; title: [string, string, string] }[]
   { src: '/videos/skateparks/session-skate-bmx-inline-scooter.mp4', poster: '/videos/skateparks/poster-session-skate-bmx.jpg', title: ['Session: Skate / BMX / Inline / Scooter', 'Session: Skate / BMX / Inline / Scooter', 'Session : skate / BMX / roller / trottinette'] },
   { src: '/videos/skateparks/contest-skateboard.mp4', poster: '/videos/skateparks/poster-contest-skateboard.jpg', title: ['Contest: Skateboard', 'Contest: Skateboard', 'Contest : skateboard'] },
   { src: '/videos/skateparks/contest-bmx.mp4', poster: '/videos/skateparks/poster-contest-bmx.jpg', title: ['Contest: BMX', 'Contest: BMX', 'Contest : BMX'] },
-  { src: '/videos/skateparks/contest-inliner.mp4', poster: '/videos/skateparks/poster-contest-inliner.jpg', title: ['Contest: Inliner', 'Contest: Inline skates', 'Contest : roller'] },
+  { src: '/videos/skateparks/contest-inliner.mp4', poster: '/videos/skateparks/poster-contest-inliner.jpg', title: ['Contest: Inliner', 'Contest: Inline', 'Contest : roller'] },
   { src: '/videos/skateparks/contest-scooter.mp4', poster: '/videos/skateparks/poster-contest-scooter.jpg', title: ['Contest: Scooter', 'Contest: Scooter', 'Contest : trottinette'] },
 ];
 
@@ -183,10 +183,10 @@ const ProductSkateAnlagenPage: React.FC = () => {
 
                         <div className="flex flex-col gap-4">
                             <Link to="/konfigurator" className="inline-flex justify-center items-center gap-2 bg-white text-brand-dark border border-brand-dark/15 font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:border-brand-orange hover:text-brand-orange transition-all duration-300 relative z-30">
-                                <span className="material-symbols-outlined">view_in_ar</span> {t("Im Konfigurator planen", "Plan it in the planner", "Planifier avec le planificateur")}
+                                <span className="material-symbols-outlined">view_in_ar</span> {t("Im Konfigurator planen", "Plan it in the planner", "Concevoir avec le configurateur")}
                             </Link>
                             <Link to="/kontakt?projectType=Skatepark" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
-                                {t("3D-Planung anfragen", "Request 3D planning", "Demander une planification 3D")} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                {t("3D-Planung anfragen", "Request a 3D design", "Demander une étude 3D")} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
                             <span className="text-xs text-brand-muted font-mono text-center">{t("Mit Kostenschätzung. Wir liefern und montieren schlüsselfertig.", "With a cost estimate. We deliver and install turnkey.", "Avec estimation des coûts. Nous livrons et installons clé en main.")}</span>
                         </div>
@@ -214,7 +214,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                 <div className="grid lg:grid-cols-5 gap-8 mb-8">
                     <div className="lg:col-span-2">
                         <p className="text-lg text-brand-muted leading-relaxed mb-6">
-                            {t(<>Unsere Skate-Module sind aus bewehrtem Beton hergestellt. Elemente von 35 bis 150 cm Höhe haben <strong className="text-brand-dark">höhenverstellbare Füße</strong> und sind in <strong className="text-brand-dark">Hohlkörperbauweise</strong> gebaut. Das spart Gewicht. Module bis 150 cm haben unten Aussparungen für Hubwagen oder Gabelstapler, durch die auch Regenwasser abläuft.</>, <>Our skate modules are made of reinforced concrete. Elements from 35 to 150 cm high have <strong className="text-brand-dark">height-adjustable feet</strong> and are built as <strong className="text-brand-dark">hollow-core units</strong>, which saves weight. Modules up to 150 cm have recesses underneath for a pallet truck or forklift, which also let rainwater drain away.</>, <>Nos modules de skate sont fabriqués en béton armé. Les éléments de 35 à 150 cm de haut ont des <strong className="text-brand-dark">pieds réglables en hauteur</strong> et sont conçus en <strong className="text-brand-dark">construction creuse</strong>, ce qui allège le poids. Les modules jusqu'à 150 cm comportent en dessous des réservations pour un transpalette ou un chariot élévateur, qui permettent aussi l'écoulement de l'eau de pluie.</>)}
+                            {t(<>Unsere Skate-Module sind aus bewehrtem Beton hergestellt. Elemente von 35 bis 150 cm Höhe haben <strong className="text-brand-dark">höhenverstellbare Füße</strong> und sind in <strong className="text-brand-dark">Hohlkörperbauweise</strong> gebaut. Das spart Gewicht. Module bis 150 cm haben unten Aussparungen für Hubwagen oder Gabelstapler, durch die auch Regenwasser abläuft.</>, <>Our skate modules are made of reinforced concrete. Elements from 35 to 150 cm high have <strong className="text-brand-dark">height-adjustable feet</strong> and are built as <strong className="text-brand-dark">hollow-section units</strong>, which saves weight. Modules up to 150 cm have fork pockets underneath for a pallet truck or forklift, which also let rainwater drain away.</>, <>Nos modules de skate sont fabriqués en béton armé. Les éléments de 35 à 150 cm de haut ont des <strong className="text-brand-dark">pieds réglables en hauteur</strong> et sont conçus en <strong className="text-brand-dark">construction creuse</strong>, ce qui réduit le poids. Les modules jusqu'à 150 cm comportent en dessous des réservations pour un transpalette ou un chariot élévateur, qui permettent aussi l'écoulement de l'eau de pluie.</>)}
                         </p>
                         <p className="text-brand-muted leading-relaxed mb-6">
                             {t(<>Die Elemente gibt es in den Höhen <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 und 150 cm</strong>, die Wände sind 8 bis 16 cm stark. Die Pipes sind 165, 200 oder 255 cm hoch. Darin ist das Flat, also der ebene Boden, schon eingerechnet. Sie stehen auf arretierbaren Stützen. Kleine Pipes lassen sich auch aus den niedrigeren Elementen zusammenstellen. Mehr dazu auf der Seite <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">Skate-Pipes</Link>.</>, <>The elements come in heights of <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 and 150 cm</strong>, with walls 8 to 16 cm thick. The pipes are 165, 200 or 255 cm high, with the flat (the level floor) already included. They stand on lockable supports. Small pipes can also be put together from the lower elements. More on the <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">skate pipes</Link> page.</>, <>Les éléments existent en hauteurs de <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 et 150 cm</strong>, avec des parois de 8 à 16 cm d'épaisseur. Les pipes mesurent 165, 200 ou 255 cm de haut, le plat (le sol horizontal) étant déjà compris. Elles reposent sur des supports verrouillables. De petites pipes peuvent aussi être composées à partir des éléments plus bas. Plus d'informations sur la page <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">pipes de skate</Link>.</>)}
@@ -275,7 +275,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <div>
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">{t("Konstruktion", "Construction", "Construction")}</span>
                         <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                            Details
+                            {t("Details", "Details", "Détails")}
                         </h2>
                     </div>
                 </div>
@@ -356,10 +356,10 @@ const ProductSkateAnlagenPage: React.FC = () => {
                         href="https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung-und-produktzertifizierung/zertifikatsdatenbank/?q=Z1A+056616+0012+Rev.+00"
                         linkLabel={t("Zertifikat TÜV SÜD", "TÜV SÜD certificate", "Certificat TÜV SÜD")}
                     />
-                    <TechSpecCard title="Material" value={t("Bewehrter Beton C35/45", "Reinforced concrete C35/45", "Béton armé C35/45")} icon="architecture" />
-                    <TechSpecCard title={t("Höhenraster", "Height grid", "Trame de hauteurs")} value="35–150 cm" icon="straighten" />
+                    <TechSpecCard title={t("Material", "Material", "Matériau")} value={t("Bewehrter Beton C35/45", "Reinforced concrete C35/45", "Béton armé C35/45")} icon="architecture" />
+                    <TechSpecCard title={t("Höhenraster", "Height range", "Trame de hauteurs")} value="35–150 cm" icon="straighten" />
                     <TechSpecCard title={t("Wandstärke", "Wall thickness", "Épaisseur des parois")} value="8–16 cm" icon="square_foot" />
-                    <TechSpecCard title={t("Bauweise", "Construction", "Mode de construction")} value={t("Hohlkörper", "Hollow-core", "Corps creux")} icon="view_in_ar" />
+                    <TechSpecCard title={t("Bauweise", "Construction", "Mode de construction")} value={t("Hohlkörper", "Hollow-section", "Corps creux")} icon="view_in_ar" />
                     <TechSpecCard title={t("Kantenschutz", "Edge protection", "Protection d'arête")} value={t("Hartgummi", "Hard rubber", "Caoutchouc dur")} icon="shield" />
                     <TechSpecCard title="Coping" value={t("Verzinkt + Alu-Kappen", "Galvanised + aluminium caps", "Galvanisé + capuchons en aluminium")} icon="commit" />
                     <TechSpecCard title={t("Montage", "Installation", "Montage")} value={t("Fundamentfrei", "Foundation-free", "Sans fondation")} icon="layers" />

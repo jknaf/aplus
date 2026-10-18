@@ -137,16 +137,16 @@ const ProductSkatePipesPage: React.FC = () => {
 
                         <div className="flex flex-col gap-4">
                             <Link to="/kontakt?projectType=Skatepark" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
-                                {t("Pipe anfragen", "Enquire about a pipe", "Demander une pipe")} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                {t("Pipe anfragen", "Enquire about a pipe", "Demander un devis pour une pipe")} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
-                            <span className="text-xs text-brand-muted font-mono text-center">{t("Mit 3D-Voranalyse. Wir liefern und montieren schlüsselfertig.", "With a 3D preliminary analysis. We deliver and install turnkey.", "Avec analyse préalable 3D. Nous livrons et installons clé en main.")}</span>
+                            <span className="text-xs text-brand-muted font-mono text-center">{t("Mit 3D-Voranalyse. Wir liefern und montieren schlüsselfertig.", "Includes an initial 3D design. We deliver and install turnkey.", "Avec analyse préalable 3D. Nous livrons et installons clé en main.")}</span>
                         </div>
                     </div>
                 </div>
 
                 <div className="lg:w-7/12 flex flex-col gap-6">
                     <GalleryImage src="/images/skate-pipes/skate-pipe-02.jpg" alt={t("Skate-Pipe aus Beton in Standardaufstellung", "Concrete skate pipe in standard layout", "Pipe de skate en béton en disposition standard")} label={t("Abb. 1: Standard-Pipe mit Geländer", "Fig. 1: Standard pipe with railing", "Fig. 1 : pipe standard avec garde-corps")} />
-                    <GalleryImage src="/images/skate-pipes/skate-pipe-bank-03.jpg" alt={t("Skate-Pipe mit Bank-Anfahrt", "Skate pipe with bank approach", "Pipe de skate avec bank d'accès")} label={t("Abb. 2: Pipe mit angesetzter Bank", "Fig. 2: Pipe with attached bank", "Fig. 2 : pipe avec bank accolée")} />
+                    <GalleryImage src="/images/skate-pipes/skate-pipe-bank-03.jpg" alt={t("Skate-Pipe mit Bank-Anfahrt", "Skate pipe with bank approach", "Pipe de skate avec bank d'accès")} label={t("Abb. 2: Pipe mit angesetzter Bank", "Fig. 2: Pipe with attached bank", "Fig. 2 : pipe avec bank accolé")} />
                     <GalleryImage src="/images/skate-pipes/skate-pipe-kombi-04.jpg" alt={t("Kombi-Pipe mit mehreren Höhen und Banks", "Combi pipe with several heights and banks", "Pipe combi à plusieurs hauteurs et avec banks")} label={t("Abb. 3: Pipe-Kombination mit Box", "Fig. 3: Pipe combination with box", "Fig. 3 : combinaison de pipes avec box")} />
                 </div>
             </div>
@@ -185,7 +185,7 @@ const ProductSkatePipesPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 rounded-xl">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">{t("Standard-Aufstellung", "Standard layout", "Disposition standard")}</h3>
                         <p className="text-brand-muted leading-relaxed">
-                            {t(<>Die Pipe steht frei, mit Flat auf beiden Seiten, Plattform und Copingrohr. Komplett aufgebaut ist eine Pipe je nach Höhe 862 bis 1.143 cm lang. Freistehende Skate-Pipes müssen eine <strong className="text-brand-dark">Absturzsicherung (Geländer)</strong> und auf beiden Seiten einen Sicherheitsbereich von mindestens 2 m haben.</>, <>The pipe stands free, with a flat on both sides, a platform and a coping tube. Fully assembled, a pipe is 862 to 1,143 cm long, depending on its height. Free-standing skate pipes must have <strong className="text-brand-dark">fall protection (a railing)</strong> and a safety zone of at least 2 m on both sides.</>, <>La pipe est autoportante, avec un plat de chaque côté, une plateforme et un tube de coping. Entièrement montée, une pipe mesure de 862 à 1 143 cm de long selon sa hauteur. Les pipes de skate autoportantes doivent être équipées d'une <strong className="text-brand-dark">protection antichute (garde-corps)</strong> et d'une zone de sécurité d'au moins 2 m de chaque côté.</>)}
+                            {t(<>Die Pipe steht frei, mit Flat auf beiden Seiten, Plattform und Copingrohr. Komplett aufgebaut ist eine Pipe je nach Höhe 862 bis 1.143 cm lang. Freistehende Skate-Pipes müssen eine <strong className="text-brand-dark">Absturzsicherung (Geländer)</strong> und auf beiden Seiten einen Sicherheitsbereich von mindestens 2 m haben.</>, <>The pipe is free-standing, with a flat on both sides, a platform and a coping tube. Fully assembled, a pipe is 862 to 1,143 cm long, depending on its height. Free-standing skate pipes must have <strong className="text-brand-dark">fall protection (a railing)</strong> and a safety zone of at least 2 m on both sides.</>, <>La pipe est posée librement, avec un plat de chaque côté, une plateforme et un tube de coping. Entièrement montée, une pipe mesure de 862 à 1 143 cm de long selon sa hauteur. Les pipes de skate autoportantes doivent être équipées d'une <strong className="text-brand-dark">protection antichute (garde-corps)</strong> et d'une zone de sécurité d'au moins 2 m de chaque côté.</>)}
                         </p>
                     </div>
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 rounded-xl">
@@ -255,7 +255,7 @@ const ProductSkatePipesPage: React.FC = () => {
                     <TechSpecCard title={t("Copingrohr", "Coping tube", "Tube de coping")} value={t("Verzinkt · fortlaufend", "Galvanised · continuous", "Galvanisé · continu")} icon="commit" />
                     <TechSpecCard title={t("Aufstellung", "Installation", "Installation")} value={t("Fundamentfrei", "Foundation-free", "Sans fondation")} icon="layers" />
                     <TechSpecCard title={t("Sicherheitszone", "Safety zone", "Zone de sécurité")} value={t("2 m beidseitig", "2 m on both sides", "2 m de chaque côté")} icon="safety_check" />
-                    <TechSpecCard title={t("Absturzsicherung", "Fall protection", "Protection antichute")} value={t("freistehend: Geländer", "free-standing: railing", "autoportante : garde-corps")} icon="shield" />
+                    <TechSpecCard title={t("Absturzsicherung", "Fall protection", "Protection antichute")} value={t("freistehend: Geländer", "free-standing: railing", "posée librement : garde-corps")} icon="shield" />
                     <TechSpecCard title={t("Kombi-Elemente", "Combi elements", "Éléments combi")} value="Banks · Spines · Waves" icon="extension" />
                     <TechSpecCard title={t("Montage", "Installation", "Montage")} value={t("Durch A+ Urban Design", "By A+ Urban Design", "Par A+ Urban Design")} icon="build" />
                 </div>

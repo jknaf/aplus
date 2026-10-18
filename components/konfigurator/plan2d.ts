@@ -151,7 +151,7 @@ export const blatt = (inhalt: string, k: Kopf) => `<svg viewBox="0 0 ${W} ${H}" 
 <style>${STIL}</style>
 <rect x="${R}" y="${R}" width="${W - 2 * R}" height="${H - 2 * R}" class="rahmen"/>
 ${inhalt}
-<text x="${W - R - 1}" y="${H - R - 25.5}" class="lbl" text-anchor="end">${tt('Planung schematisch, erstellt mit dem A+ Konfigurator. Maßgeblich ist das Angebot.', 'Schematic plan, created with the A+ planner. The quote is what counts.', "Plan schématique, établi avec le planificateur A+. L'offre fait foi.")}</text>
+<text x="${W - R - 1}" y="${H - R - 25.5}" class="lbl" text-anchor="end">${tt('Planung schematisch, erstellt mit dem A+ Konfigurator. Maßgeblich ist das Angebot.', 'Schematic plan, created with the A+ planner. The quote is what counts.', "Plan schématique, établi avec le configurateur A+. L'offre fait foi.")}</text>
 <g class="kopf">
   <rect x="${W - R - 110}" y="${H - R - 24}" width="110" height="24" class="rahmen" style="fill:#fff"/>
   <line x1="${W - R - 62}" y1="${H - R - 24}" x2="${W - R - 62}" y2="${H - R}" stroke="#000" stroke-width=".2"/>

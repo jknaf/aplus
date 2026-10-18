@@ -49,7 +49,7 @@ const ProductHockeyRinkPage: React.FC = () => {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": t("Hockey-Banden aus Beton", "Concrete Hockey Boards", "Bandes de hockey en béton"),
+    "name": t("Hockey-Banden aus Beton", "Concrete Rink Boards", "Bandes de hockey en béton"),
     "description": t("Modulare Hockey-Banden aus Beton, Edelstahl, HPL-Platten und Gummi. Fundamentfrei, in 40 cm oder 110 cm Höhe. Ganzjährig einsetzbar für Inline-, Roll- und Eishockey.", "Modular hockey boards made of concrete, stainless steel, HPL panels and rubber. Foundation-free, in 40 cm or 110 cm heights. Usable all year round for inline, roller and ice hockey.", "Bandes de hockey modulaires en béton, inox, panneaux HPL et caoutchouc. Sans fondation, en hauteur de 40 cm ou de 110 cm. Utilisables toute l'année pour le hockey in-line, le roller hockey et le hockey sur glace."),
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
     "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
@@ -70,7 +70,7 @@ const ProductHockeyRinkPage: React.FC = () => {
   };
 
   return (
-    <PageShell title={t("Hockey-Banden für Inline-, Roll- und Eishockey", "Hockey Boards for Inline, Roller and Ice Hockey", "Bandes de hockey pour le hockey in-line, le roller hockey et le hockey sur glace")} description={t("Hockey-Banden und Hockeyfeld aus Beton und Stahl: fundamentfrei, in 40 cm oder 110 cm Höhe. Für Inline-Hockey, Streethockey und Rollhockey. Wartungsarm und schnell aufgebaut, für Kommunen und Vereine.", "Hockey boards and hockey courts in concrete and steel: foundation-free, in 40 cm or 110 cm heights. For inline hockey, street hockey and roller hockey. Low-maintenance and quick to install, for municipalities and clubs.", "Bandes de hockey et terrains de hockey en béton et en acier : sans fondation, en hauteur de 40 cm ou de 110 cm. Pour le hockey in-line, le street hockey et le roller hockey. Entretien réduit et montage rapide, pour les communes et les clubs.")} schema={productSchema}>
+    <PageShell title={t("Hockey-Banden für Inline-, Roll- und Eishockey", "Rink Boards for Inline, Roller and Ice Hockey", "Bandes de hockey pour le hockey in-line, le roller hockey et le hockey sur glace")} description={t("Hockey-Banden und Hockeyfeld aus Beton und Stahl: fundamentfrei, in 40 cm oder 110 cm Höhe. Für Inline-Hockey, Streethockey und Rollhockey. Wartungsarm und schnell aufgebaut, für Kommunen und Vereine.", "Hockey boards and hockey courts in concrete and steel: foundation-free, in 40 cm or 110 cm heights. For inline hockey, street hockey and roller hockey. Low-maintenance and quick to install, for municipalities and clubs.", "Bandes de hockey et terrains de hockey en béton et en acier : sans fondation, en hauteur de 40 cm ou de 110 cm. Pour le hockey in-line, le street hockey et le roller hockey. Entretien réduit et montage rapide, pour les communes et les clubs.")} schema={productSchema}>
 
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
@@ -119,7 +119,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                             {t(<>Spielen, <span className="text-brand-orange">das ganze Jahr</span></>, <>Play <span className="text-brand-orange">all year round</span></>, <>Jouer <span className="text-brand-orange">toute l'année</span></>)}
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-8">
-                            {t("Mit unserem Bandensystem wird ein Hartplatz zum Spielfeld für Inline- und Rollhockey. Mit einem Abdichtungsprofil unter der Einfassung lässt sich im Winter auch Eis anlegen.", "With our board system, a hard court becomes a playing field for inline and roller hockey. With a sealing profile under the perimeter, you can also make ice in winter.", "Avec notre système de bandes, un terrain en dur devient un terrain de hockey in-line et de roller hockey. Avec un profil d'étanchéité sous l'enceinte, on peut aussi y réaliser de la glace en hiver.")}
+                            {t("Mit unserem Bandensystem wird ein Hartplatz zum Spielfeld für Inline- und Rollhockey. Mit einem Abdichtungsprofil unter der Einfassung lässt sich im Winter auch Eis anlegen.", "With our board system, a hard court becomes a playing field for inline and roller hockey. With a sealing profile under the perimeter, you can also make ice in winter.", "Avec notre système de bandes, un terrain en dur devient un terrain de hockey in-line et de roller hockey. Avec un profil d'étanchéité sous l'enceinte, on peut aussi y aménager une patinoire en hiver.")}
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-4">
                             {t("Es gibt zwei Höhen: 40 cm hohe Einfassungselemente aus Beton mit Gummikappe und 110 cm hohe Profilbanden mit Edelstahl-Handlauf für Roll- und Eishockey. Beide Varianten können modular in 1,5-m-Schritten erweitert oder verkleinert werden.", "There are two heights: perimeter elements in concrete, 40 cm high with a rubber cap, and profiled boards, 110 cm high with a stainless steel handrail, for roller and ice hockey. Both versions can be extended or reduced in modular 1.5 m steps.", "Il existe deux hauteurs : des éléments d'enceinte en béton de 40 cm de haut avec capuchon en caoutchouc, et des bandes profilées de 110 cm de haut avec main courante en inox, pour le roller hockey et le hockey sur glace. Les deux variantes peuvent être agrandies ou réduites par modules de 1,5 m.")}
@@ -133,7 +133,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                                 to="/kontakt?projectType=Sonstiges"
                                 className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
                             >
-                                {t("Spielfeld anfragen", "Enquire about a court", "Demander un terrain")} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                {t("Spielfeld anfragen", "Enquire about a court", "Demander un devis pour un terrain")} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
                         </div>
                     </div>

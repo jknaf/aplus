@@ -143,7 +143,7 @@ const ProductPumptrackPage: React.FC = () => {
                             {t("Im Gegensatz zu Asphaltpisten behalten unsere Betonelemente dauerhaft ihre Form. Für den Aufbau gibt es drei Varianten. Die Elemente können auch angeböscht werden.", "Unlike asphalt tracks, our concrete elements keep their shape permanently. There are three ways to build it. The elements can also be banked up with soil.", "Contrairement aux pistes en asphalte, nos éléments en béton conservent leur forme durablement. Il existe trois variantes de montage. Les éléments peuvent aussi être talutés.")}
                         </p>
                         <div className="bg-brand-orange/10 border border-brand-orange/30 rounded-xl p-5 mb-12">
-                            <p className="text-brand-dark font-bold uppercase text-sm tracking-widest mb-2">{t("Lieferung & Montage aus einer Hand", "Delivery & installation from a single source", "Livraison et montage auprès d'un seul interlocuteur")}</p>
+                            <p className="text-brand-dark font-bold uppercase text-sm tracking-widest mb-2">{t("Lieferung & Montage aus einer Hand", "Delivery & installation from a single source", "Livraison et montage par un seul interlocuteur")}</p>
                             <p className="text-sm text-brand-muted leading-relaxed">
                                 {t("A+ Urban Design plant, fertigt, liefert und baut auf. Kommunen können Fördermittel aus der Sportstättenförderung nutzen.", "A+ Urban Design designs, manufactures, delivers and installs. In Germany, municipalities can use funding from sports facility programmes.", "A+ Urban Design conçoit, fabrique, livre et monte. En Allemagne, les communes peuvent recourir aux subventions des programmes de soutien aux équipements sportifs.")}
                             </p>
@@ -154,7 +154,7 @@ const ProductPumptrackPage: React.FC = () => {
                                 to="/kontakt?projectType=Pumptrack"
                                 className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
                             >
-                                {t("Strecke planen", "Plan your track", "Planifier votre piste")} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                {t("Strecke planen", "Plan your track", "Concevoir votre piste")} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
                         </div>
                     </div>
@@ -188,7 +188,7 @@ const ProductPumptrackPage: React.FC = () => {
                         {t(<>Kurven, Wellen, <span className="text-brand-orange">Rampen</span></>, <>Berms, rollers, <span className="text-brand-orange">ramps</span></>, <>Virages, bosses, <span className="text-brand-orange">rampes</span></>)}
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                        {t("Jede Kurve, jede Welle und jeder Roller ist ein im Werk gefertigtes Betonteil mit fester Geometrie. Die Module lassen sich frei zu eigenen Streckenverläufen kombinieren.", "Every berm, every wave and every roller is a concrete unit made in the factory to a fixed geometry. The modules can be combined freely into your own track layouts.", "Chaque virage, chaque vague et chaque bosse est une pièce en béton fabriquée en usine, à la géométrie définie. Les modules se combinent librement pour créer vos propres tracés.")}
+                        {t("Jede Kurve, jede Welle und jeder Roller ist ein im Werk gefertigtes Betonteil mit fester Geometrie. Die Module lassen sich frei zu eigenen Streckenverläufen kombinieren.", "Every berm, every wave and every roller is a concrete unit made in the factory to a fixed geometry. The modules can be combined freely into your own track layouts.", "Chaque virage, chaque bosse et chaque roller est une pièce en béton fabriquée en usine, à la géométrie définie. Les modules se combinent librement pour créer vos propres tracés.")}
                     </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

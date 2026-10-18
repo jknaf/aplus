@@ -71,7 +71,7 @@ const PRESS_PROJECTS: PressProject[] = [
   },
   {
     title: ["Skateanlage Altdorf", "Altdorf skatepark", "Skatepark d'Altdorf"],
-    summary: ["Bestehende Anlage saniert und um einen Serpent erweitert.", "Existing park refurbished and extended with a Serpent.", "Installation existante rénovée et agrandie d'un Serpent."],
+    summary: ["Bestehende Anlage saniert und um einen Serpent erweitert.", "Existing park refurbished and extended with a serpent run.", "Installation existante rénovée et agrandie d'un Serpent."],
     articleIds: ['kommunaldirekt-skateanlage-serpent'],
   },
   {
@@ -173,7 +173,7 @@ const PressePage: React.FC = () => {
                 {t(<>A+ in der <span className="text-brand-orange">Fachpresse</span></>, <>A+ in the <span className="text-brand-orange">trade press</span></>, <>A+ dans la <span className="text-brand-orange">presse spécialisée</span></>)}
               </h1>
               <p className="text-brand-muted mt-6 max-w-xl text-lg leading-relaxed">
-                {t("Kommunale Fachmedien berichten seit über zehn Jahren über Anlagen und Produkte von A+ Urban Design. Hier finden Sie die Projektberichte und Fachbeiträge.", "Municipal trade media have been reporting on A+ Urban Design parks and products for more than ten years. Here you will find the project reports and trade articles. The articles are in German.", "La presse communale spécialisée rend compte depuis plus de dix ans des installations et des produits d'A+ Urban Design. Vous trouverez ici les reportages sur les projets et les articles spécialisés. Les articles sont en allemand.")}
+                {t("Kommunale Fachmedien berichten seit über zehn Jahren über Anlagen und Produkte von A+ Urban Design. Hier finden Sie die Projektberichte und Fachbeiträge.", "Municipal trade media have been reporting on A+ Urban Design parks and products for more than ten years. Here you will find the project reports and trade articles. The articles are in German.", "La presse spécialisée destinée aux collectivités rend compte depuis plus de dix ans des installations et des produits d'A+ Urban Design. Vous trouverez ici les reportages sur les projets et les articles spécialisés. Les articles sont en allemand.")}
               </p>
             </div>
           </header>
@@ -228,7 +228,7 @@ const PressePage: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-6 p-8 md:p-10 rounded-2xl bg-brand-dark text-brand-bg">
-            <p className="font-heading font-extrabold text-xl md:text-2xl">{t("Presseanfrage oder Bildmaterial?", "Press enquiry or image material?", "Demande presse ou visuels ?")}</p>
+            <p className="font-heading font-extrabold text-xl md:text-2xl">{t("Presseanfrage oder Bildmaterial?", "Press enquiries or images?", "Demande presse ou visuels ?")}</p>
             <a
               href="mailto:post@aplusurbandesign.com"
               className="px-6 py-3 rounded-full border border-brand-bg/40 font-semibold hover:bg-brand-bg hover:text-brand-dark transition-colors"

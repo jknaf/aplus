@@ -7,7 +7,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
     const isHomepage = context === 'homepage';
 
     const TechCatalogVisual = () => (
-        <div className="relative w-72 h-96 mx-auto lg:mx-0 mt-12 lg:mt-0 perspective-1000 group">
+        <div className="relative w-72 h-[400px] mx-auto lg:mx-0 mt-12 lg:mt-0 perspective-1000 group">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 pointer-events-none z-0">
                 <div className="relative w-full h-full animate-[spin_10s_linear_infinite] transform-style-3d opacity-20 group-hover:opacity-40 transition-opacity duration-500">
                     <div className="absolute inset-0 border-2 border-brand-orange/50 transform translate-z-[32px]"></div>
@@ -30,21 +30,6 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                         className="w-full h-full object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-orange/20 to-transparent h-[20%] w-full animate-[scan_3s_linear_infinite] pointer-events-none mix-blend-screen border-b border-brand-orange/50"></div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-sm p-4 border-t border-brand-dark/10 flex justify-between items-center">
-                        <div className="flex flex-col">
-                            <span className="text-[10px] font-mono text-brand-orange tracking-widest uppercase">Datei</span>
-                            <span className="text-white font-bold text-xs">PDF-DOKUMENT</span>
-                        </div>
-                        <div className="flex flex-col text-right">
-                            <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase">Größe</span>
-                            <span className="text-white font-bold text-xs">~7 MB</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="absolute top-4 right-4 flex items-center gap-2 z-30 bg-brand-dark/60 px-2 py-1 rounded backdrop-blur-md border border-brand-dark/10">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                    <span className="text-[10px] font-mono text-white uppercase tracking-wider">Verfügbar</span>
                 </div>
             </div>
 

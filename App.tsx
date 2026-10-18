@@ -57,11 +57,11 @@ const App: React.FC = () => {
           {/* 1. Subtle Grid Pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(44,53,48,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(44,53,48,0.03)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_40%,transparent_100%)]"></div>
 
-          {/* 2. Warm Accent Glow (Top Left) */}
-          <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-brand-orange/5 rounded-full blur-[150px]"></div>
+          {/* 2. Warm Accent Glow (Top Left): Verlauf statt blur-[150px], Safari rendert große Blur-Filter sehr langsam */}
+          <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-[radial-gradient(closest-side,rgba(107,143,74,0.05),transparent)]"></div>
 
           {/* 3. Cool Green-Gray Glow (Bottom Right) */}
-          <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-[#7A9A7E]/5 rounded-full blur-[150px]"></div>
+          <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-[radial-gradient(closest-side,rgba(122,154,126,0.05),transparent)]"></div>
 
           {/* 4. Noise Texture */}
           <div className="absolute inset-0 bg-noise-overlay opacity-[0.08] mix-blend-multiply"></div>

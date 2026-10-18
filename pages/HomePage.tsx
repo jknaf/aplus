@@ -342,57 +342,107 @@ const ServiceOverviewSection: React.FC = () => {
     );
 };
 
-// --- ScrollyFeature Component ---
-const ScrollyFeature: React.FC<{
-    icon: string;
-    title: string;
-    desc: string;
-    animationType: 'float' | 'glow-pulse' | 'spin-slow' | 'stamp';
-}> = ({ icon, title, desc, animationType }) => {
-    const ref = useRef<HTMLDivElement>(null);
-    const [isActive, setIsActive] = useState(false);
+// --- Anspruch: Bild-Mosaik mit Werkplan-Layer ---
+// Fotos getönt, darüber Hinweislinien wie in einer Bauzeichnung, Text im Plankopf. Beim Überfahren wird das Foto farbig.
+// Linien im Koordinatensystem des Fotos (756 × 430); "slice" schneidet wie object-cover, die Linien bleiben auf dem Detail.
+const Plan: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+    <svg viewBox="0 0 756 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"
+        className="absolute inset-0 w-full h-full fill-none stroke-white group-hover:stroke-[#C9E3AE] transition-[stroke] duration-500 font-mono [&_text]:fill-white [&_text]:stroke-[#1F2622] [&_text]:[stroke-width:4px] [&_text]:[paint-order:stroke]">
+        {children}
+    </svg>
+);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    setIsActive(entry.isIntersecting);
-                });
-            },
-            { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
-        );
-        if (ref.current) observer.observe(ref.current);
-        return () => { if (ref.current) observer.unobserve(ref.current); };
-    }, []);
-
-    const containerClass = isActive
-        ? "border-brand-orange/40 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.08)] scale-100 opacity-100"
-        : "border-brand-dark/5 bg-white/40 opacity-30 scale-95";
-    
-    const animationClass = {
-        'float': 'animate-float',
-        'glow-pulse': 'animate-glow-pulse',
-        'spin-slow': 'animate-spin-slow',
-        'stamp': 'animate-stamp'
-    }[animationType];
-    
-    return (
-        <div ref={ref} className={`transition-all duration-700 ease-out p-8 md:p-10 rounded-2xl border mb-24 last:mb-0 relative overflow-hidden group ${containerClass}`}>
-            <div className="absolute inset-0 bg-[url('/images/noise.svg')] opacity-[0.05]"></div>
-            <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
-                <div className={`p-4 rounded-xl bg-brand-surface/60 border transition-all duration-500 shadow-sm ${isActive ? `text-brand-orange border-brand-orange/30 shadow-[0_4px_12px_rgba(107,143,74,0.15)] ${animationClass}` : 'text-brand-muted border-brand-dark/5'}`}>
-                    <span className="material-symbols-outlined text-4xl">{icon}</span>
-                </div>
-                <div>
-                    <h3 className={`text-2xl font-extrabold font-heading uppercase mb-3 transition-colors ${isActive ? 'text-brand-dark' : 'text-brand-muted'}`}>
-                        {title}
-                    </h3>
-                    <p className="text-base text-brand-muted leading-relaxed">{desc}</p>
-                </div>
-            </div>
+const Plankopf: React.FC<{ blatt: string; info: string; titel: string; text: string; gross?: boolean; oben?: boolean }> = ({ blatt, info, titel, text, gross, oben }) => (
+    <div className={`absolute left-4 sm:left-5 ${oben ? 'top-4 sm:top-5' : 'bottom-4 sm:bottom-5'} max-w-[calc(100%-2rem)] bg-brand-bg text-brand-dark border-[1.5px] border-brand-dark grid grid-cols-2 ${gross ? 'w-[380px]' : 'w-[330px]'}`}>
+        <span className="px-3 py-2 border-r border-b border-brand-dark font-mono text-[11px] tracking-[0.14em]">{blatt}</span>
+        <span className="px-3 py-2 border-b border-brand-dark font-mono text-[11px] tracking-[0.14em] uppercase">{info}</span>
+        <div className="col-span-2 px-4 pt-3 pb-4 flex flex-col gap-1.5">
+            <h3 className={`font-heading font-extrabold uppercase leading-[0.95] tracking-tight ${gross ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>{titel}</h3>
+            <p className="text-sm text-brand-dark/75 leading-snug">{text}</p>
         </div>
-    );
-};
+    </div>
+);
+
+const Fotokachel: React.FC<{ src: string; alt: string; className: string; children: React.ReactNode }> = ({ src, alt, className, children }) => (
+    <article className={`group relative rounded-2xl overflow-hidden bg-brand-dark ${className}`}>
+        <img src={src} alt={alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 transition-[filter,transform] duration-700 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.04]" />
+        <div className="absolute inset-0 bg-[#33502B] mix-blend-multiply opacity-60 transition-opacity duration-700 group-hover:opacity-0 pointer-events-none" />
+        {children}
+    </article>
+);
+
+const Anspruch: React.FC = () => (
+    <section id="philosophie" className="bg-[#1F2622] text-brand-bg py-24 lg:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col gap-12 lg:gap-14">
+            <div className="flex flex-wrap gap-x-16 gap-y-6 items-end justify-between">
+                <div className="flex flex-col gap-5">
+                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#A9C98A]">Unser Anspruch</span>
+                    <h2 className="text-5xl md:text-8xl font-extrabold font-heading uppercase leading-[0.88] tracking-tighter">Gebaut für<br /><span className="text-[#A9C98A]">Jahrzehnte</span></h2>
+                </div>
+                <p className="max-w-sm text-lg leading-relaxed text-[#C9CCC4]">Beton, Stahl und Gummi, im Werk gefertigt und vom TÜV geprüft. Und wenn sich der Ort ändert, ziehen die Elemente einfach mit.</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 lg:auto-rows-[290px] gap-4">
+                <Fotokachel src="/images/details/einstellung-04.jpg" alt="Höhenverstellbarer Fuß eines Betonelements auf Asphalt" className="h-[440px] lg:h-auto lg:col-span-7 lg:row-span-2">
+                    <Plan>
+                        <circle cx="368" cy="300" r="30" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
+                        <g className="hidden sm:inline">
+                            <path d="M392 282 L460 200 L630 200" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+                            <text x="630" y="190" fontSize="14" letterSpacing="1.5" textAnchor="end">HÖHENVERSTELLBARER FUSS</text>
+                            <circle cx="590" cy="350" r="6" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+                            <path d="M590 344 L590 70 L630 70" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+                            <text x="630" y="60" fontSize="14" letterSpacing="1.5" textAnchor="end">VORHANDENER ASPHALT</text>
+                        </g>
+                    </Plan>
+                    <Plankopf gross oben blatt="BLATT 01 / 04" info="Detail Fuß" titel="Fundamentfrei" text="Steht auf vorhandenem Asphalt oder Beton. Vor Ort wird nicht betoniert." />
+                </Fotokachel>
+
+                <Fotokachel src="/images/details/schutzkante-01.jpg" alt="Einbetonierter Kantenschutz an der Fahrkante" className="h-[320px] lg:h-auto lg:col-span-5">
+                    <Plan>
+                        <circle cx="340" cy="238" r="32" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
+                        <g className="hidden sm:inline">
+                            <path d="M366 258 L430 340 L660 340" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+                            <text x="438" y="328" fontSize="22" letterSpacing="1.5">KANTENSCHUTZ HARTGUMMI</text>
+                        </g>
+                    </Plan>
+                    <Plankopf oben blatt="BLATT 02 / 04" info="C35/45" titel="Vandalismussicher" text="Wand 8 bis 16 cm. Nicht schneidbar, nicht brennbar." />
+                </Fotokachel>
+
+                <article className="lg:col-span-5 rounded-2xl bg-brand-bg text-brand-dark p-7 flex flex-col justify-between gap-6 min-h-[290px]">
+                    <div className="flex justify-between gap-4 font-mono text-[11px] tracking-[0.14em]"><span>BLATT 03 / 04</span><span>DIN EN 14974</span></div>
+                    <img src="/images/details/tuev-gs.png" alt="TÜV SÜD und GS-Zeichen für geprüfte Sicherheit" loading="lazy" className="w-[260px] max-w-full h-auto self-center" />
+                    <div className="flex flex-col gap-1.5 border-t-[1.5px] border-brand-dark pt-3.5">
+                        <h3 className="font-heading font-extrabold uppercase text-2xl leading-none">Geprüfte Sicherheit</h3>
+                        <p className="text-sm text-brand-dark/75 leading-snug">TÜV-zertifiziert seit 2000. Der TÜV überwacht auch die Fertigung.</p>
+                    </div>
+                </article>
+
+                <Fotokachel src="/images/montage/transport-01.jpg" alt="Gabelstapler hebt ein Betonelement vom Lkw" className="h-[320px] lg:h-auto lg:col-span-8">
+                    <Plan>
+                        <rect x="345" y="212" width="112" height="54" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
+                        <g className="hidden sm:inline">
+                            <path d="M457 212 L520 140 L740 140" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+                            <text x="528" y="130" fontSize="14" letterSpacing="1.5">ELEMENT AM STÜCK</text>
+                        </g>
+                    </Plan>
+                    <Plankopf blatt="BLATT 04 / 04" info="KrWG § 6" titel="Versetzen statt abreißen" text="Kein Abbruch, kein Bauschutt. Ihre Investition zieht mit." />
+                </Fotokachel>
+
+                <article className="lg:col-span-4 rounded-2xl bg-brand-orange text-white p-7 flex flex-col justify-between gap-6 min-h-[240px]">
+                    <span className="font-mono text-xs tracking-[0.18em] text-[#F2F7EC]">IM EINSATZ</span>
+                    <div className="flex flex-col gap-1">
+                        <strong className="font-heading font-extrabold text-8xl leading-[0.85] tracking-tighter">350+</strong>
+                        <span className="text-[#F2F7EC]">Anlagen seit 1998</span>
+                    </div>
+                </article>
+            </div>
+
+            <Link to="/ueber-uns" className="self-start inline-flex items-center gap-2 min-h-12 font-bold uppercase tracking-wider border-b-2 border-[#A9C98A] pb-1 hover:text-[#C9DDB6] transition-colors group">
+                Mehr über unsere Philosophie <span className="text-xl group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </Link>
+        </div>
+    </section>
+);
 
 // --- HYBRID HERO COMPONENT (Mobile Optimized + Video) ---
 // Strategy: 
@@ -541,36 +591,7 @@ const HomePage: React.FC = () => {
       <Hero />
       <ProductScrollytelling />
 
-      <section id="philosophie" className="relative py-24 lg:py-48 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
-                    <div className="lg:w-5/12">
-                        <div className="lg:sticky lg:top-32 h-fit">
-                             <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                                Unser Anspruch
-                             </span>
-                             <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark leading-[0.9] mb-8 uppercase tracking-tighter">
-                                Gebaut<br/>für<br/><span className="text-brand-orange">Jahrzehnte</span>
-                             </h2>
-                             <p className="text-lg md:text-xl text-brand-muted leading-relaxed mb-8">
-                                 Wir bauen Anlagen aus Beton und Stahl für den Dauerbetrieb im öffentlichen Raum.
-                             </p>
-                             <Link to="/ueber-uns" className="inline-flex items-center gap-2 text-brand-dark font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors uppercase tracking-wider group">
-                                 Mehr über unsere Philosophie <span className="text-xl group-hover:translate-x-1 transition-transform">&rarr;</span>
-                             </Link>
-                        </div>
-                    </div>
-                    <div className="lg:w-7/12 pt-12 lg:pt-0">
-                        <div className="flex flex-col">
-                            <ScrollyFeature icon="layers" animationType="float" title="Fundamentfrei" desc="Vor Ort wird nicht betoniert. Die Elemente stehen ohne Fundament direkt auf Asphalt oder Beton." />
-                            <ScrollyFeature icon="shield" animationType="glow-pulse" title="Vandalismussicher" desc="Unser Stahlbeton der Festigkeitsklasse C35/45 lässt sich nicht zerschneiden, brennt nicht und hält Schlägen stand." />
-                            <ScrollyFeature icon="verified" animationType="stamp" title="TÜV-zertifiziert" desc="Unsere Skate- und BMX-Elemente sind nach DIN EN 14974 vom TÜV geprüft und zertifiziert und tragen das GS-Zeichen." />
-                            <ScrollyFeature icon="recycling" animationType="spin-slow" title="Wiederverwendbar" desc="Die Module lassen sich abbauen, versetzen und an anderer Stelle wieder aufbauen. Am Ende sind Beton und Stahl weitgehend recycelbar." />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <Anspruch />
 
       <ServiceOverviewSection />
 

@@ -87,8 +87,7 @@ const AboutPage: React.FC = () => {
         <div className="relative z-10 text-center px-4 max-w-6xl">
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] mb-8 animate-fade-in-up [animation-delay:200ms]">
                 Beton<br/>
-                <span className="text-brand-orange">in</span>
-                <span className="text-brand-orange">Bestform</span>
+                <span className="text-brand-orange">in Bestform</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/95 font-light max-w-2xl mx-auto animate-fade-in-up [animation-delay:400ms]">
                 Skatepark-Hersteller und Planungsbüro aus Stuttgart. Wir machen aus Asphaltflächen Orte für Sport und Bewegung.

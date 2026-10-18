@@ -26,8 +26,8 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                 <div className="relative w-full h-full bg-brand-dark/90 overflow-hidden group-hover:bg-brand-dark/80 transition-colors">
                     <img
                         src="/images/branding/katalog-cover.jpg"
-                        alt="A+ Urban Design Katalog Cover"
-                        className="w-full h-full object-cover opacity-80 mix-blend-normal filter contrast-125 grayscale group-hover:grayscale-0 transition-all duration-700"
+                        alt="Deckblatt Katalog 2026: Skate-Elemente aus Beton"
+                        className="w-full h-full object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-orange/20 to-transparent h-[20%] w-full animate-[scan_3s_linear_infinite] pointer-events-none mix-blend-screen border-b border-brand-orange/50"></div>
                     <div className="absolute bottom-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-sm p-4 border-t border-brand-dark/10 flex justify-between items-center">
@@ -37,7 +37,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                         </div>
                         <div className="flex flex-col text-right">
                             <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase">Größe</span>
-                            <span className="text-white font-bold text-xs">~12 MB</span>
+                            <span className="text-white font-bold text-xs">~7 MB</span>
                         </div>
                     </div>
                 </div>

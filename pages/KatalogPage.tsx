@@ -434,7 +434,7 @@ const KatalogPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Leiste: Suche, Filter, Planen, Preise. Codes für Kunden gibt es nur auf /codes. */}
+      {/* Leiste: Suche, Filter, Planen, Preise. Codes für Kunden gibt es nur auf /admin. */}
       <div ref={leiste} className="sticky top-14 md:top-20 z-30 bg-brand-bg/95 backdrop-blur-md border-y border-brand-dark/5 scroll-mt-14 md:scroll-mt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap xl:flex-nowrap items-center gap-2 md:gap-3">
           <div className="relative flex-1 min-w-[10rem] xl:max-w-xs">

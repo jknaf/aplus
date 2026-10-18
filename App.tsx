@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PrivacyBanner from './components/PrivacyBanner';
@@ -32,7 +32,7 @@ import KatalogPage from './pages/KatalogPage';
 
 // Konfigurator lädt three.js; deshalb als einzige Seite erst beim Aufruf
 const KonfiguratorPage = lazy(() => import('./pages/KonfiguratorPage'));
-const CodesPage = lazy(() => import('./pages/CodesPage'));
+const AdminPage = lazy(() => import('./pages/AdminPage'));
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -54,7 +54,8 @@ const ROUTES: [string, React.ReactNode][] = [
   ['/referenzen-presse', <PressePage />],
   ['/katalog', <KatalogPage />],
   ['/katalog/:slug', <KatalogPage />],
-  ['/codes', lazyFallback(<CodesPage />)],
+  ['/admin', lazyFallback(<AdminPage />)],
+  ['/codes', <Navigate to="/admin" replace />],
   ['/konfigurator', lazyFallback(<KonfiguratorPage />)],
   ['/produkte', <ProductOverviewPage />],
   ['/produkte/skate-anlagen', <ProductSkateAnlagenPage />],

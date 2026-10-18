@@ -65,7 +65,7 @@ export const usePreise = () => {
     }
   }, [t]);
 
-  // Nur für die Seite /codes: erzeugt einen Kundencode für eine Person bzw. liest die Liste aller Codes
+  // Nur für die Seite /admin: erzeugt einen Kundencode für eine Person bzw. liest die Liste aller Codes
   const kundencode = useCallback(async (zweck: 'preise' | 'konfigurator', fuer: string): Promise<{ code?: string; bis?: string; fehler?: string }> => {
     if (!betreiber) return { fehler: 'Nicht angemeldet.' };
     const { ok, daten } = await abfragen({ code: betreiber, neu: true, zweck, fuer }).catch(() => ({ ok: false, daten: {} as Record<string, string> }));

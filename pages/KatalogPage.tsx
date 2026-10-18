@@ -6,7 +6,7 @@ import ModellAnsicht from '../components/katalog/ModellAnsicht';
 import { konfiguratorFrei, useKonfiguratorFrei, usePreise } from '../components/katalog/usePreise';
 import CodeDialog, { KONFIGURATOR_ANFRAGE, KONFIGURATOR_TEXT, KONFIGURATOR_TITEL } from '../components/katalog/CodeDialog';
 import { anzahlImPark, merken } from '../components/konfigurator/merkliste';
-import type { ParkTeil } from '../components/katalog/ParkAnsicht';
+import type { ParkTeil, Boeschung } from '../components/katalog/ParkAnsicht';
 
 const ParkAnsicht = lazy(() => import('../components/katalog/ParkAnsicht'));
 const Blaetterkatalog = lazy(() => import('../components/katalog/Blaetterkatalog'));
@@ -33,7 +33,7 @@ interface Beispiel {
   id: string; nr: number; name: string; laenge_m: string; breite_m: string; hoehe_cm: [number, number]; anzahl: number;
   gruppen: { teil: string; h: string; l: number; b: number }[];
   stueckliste: { slug: string; name: string; anzahl: number }[];
-  bild: string; extra: string | null; flaeche: number[] | null; teile: ParkTeil[];
+  bild: string; extra: string | null; flaeche: number[] | null; boeschung?: Boeschung[] | null; teile: ParkTeil[];
 }
 
 const qm = (p: Beispiel) => Math.round(parseFloat(p.laenge_m.replace(',', '.')) * parseFloat(p.breite_m.replace(',', '.')));
@@ -228,7 +228,7 @@ const ParkDetail: React.FC<{
         </button>
         <div className="relative aspect-[4/3] md:aspect-auto bg-[radial-gradient(ellipse_at_50%_40%,#ffffff_0%,#E5E3DC_75%)]">
           <Suspense fallback={null}>
-            <ParkAnsicht key={p.id} teile={p.teile} extra={p.extra} flaeche={p.flaeche} alt={`3D-Modell ${p.name}`} />
+            <ParkAnsicht key={p.id} teile={p.teile} extra={p.extra} flaeche={p.flaeche} boeschung={p.boeschung} alt={`3D-Modell ${p.name}`} />
           </Suspense>
           <div className="absolute bottom-4 left-4 flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-brand-muted pointer-events-none">
             <span className="material-symbols-outlined text-base">3d_rotation</span> Ziehen zum Drehen · Scrollen zum Zoomen

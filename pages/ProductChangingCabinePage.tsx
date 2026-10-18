@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useT } from '../i18n';
 import PageShell from '../components/PageShell';
-import { PRODUCTS } from '../constants';
+import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
 
 const OtherProducts: React.FC = () => {
+  const t = useT();
+  const PRODUCTS = useProducts();
   const otherProducts = PRODUCTS.filter(p => p.id !== 'umkleide' && p.id !== 'grillstelle').slice(0, 3);
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24">
@@ -15,7 +17,7 @@ const OtherProducts: React.FC = () => {
               Portfolio
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-              Weitere <span className="text-brand-orange">Lösungen</span>
+              {t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}
           </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -24,7 +26,7 @@ const OtherProducts: React.FC = () => {
             <Bild hoch sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" src={product.imageUrl} alt={product.altText} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0"/>
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="absolute inset-0 flex flex-col justify-end p-8">
-               <span className="text-brand-orange font-mono text-xs mb-2 hidden group-hover:block">PRODUKT 0{PRODUCTS.indexOf(product) + 1}</span>
+               <span className="text-brand-orange font-mono text-xs mb-2 hidden group-hover:block">{t('PRODUKT', 'PRODUCT', 'PRODUIT')} 0{PRODUCTS.indexOf(product) + 1}</span>
               <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
           </Link>
@@ -43,15 +45,16 @@ const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = (
 );
 
 const ProductChangingCabinePage: React.FC = () => {
+  const t = useT();
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Umkleidekabine „Schnecke“",
-    "description": "Vandalismussichere Umkleidekabine aus Beton und Edelstahl. Zweiteilig, ohne Tür, fundamentfrei. Für Freibäder und Sportanlagen.",
+    "name": t("Umkleidekabine „Schnecke“", "Changing cubicle \"Schnecke\"", "Cabine de change « Schnecke »"),
+    "description": t("Vandalismussichere Umkleidekabine aus Beton und Edelstahl. Zweiteilig, ohne Tür, fundamentfrei. Für Freibäder und Sportanlagen.", "Vandal-resistant changing cubicle in concrete and stainless steel. Two parts, no door, no foundation needed. For outdoor pools and sports grounds.", "Cabine de change résistante au vandalisme, en béton et inox. En deux éléments, sans porte, sans fondation. Pour les piscines de plein air et les équipements sportifs."),
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
     "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
-    "category": "Stadtmöblierung",
-    "material": "Beton, Edelstahl",
+    "category": t("Stadtmöblierung", "Street furniture", "Mobilier urbain"),
+    "material": t("Beton, Edelstahl", "Concrete, stainless steel", "Béton, inox"),
     "image": "https://www.aplusurbandesign.com/images/umkleide/umkleidekabine-schnecke-04.jpg",
     "offers": {
       "@type": "Offer",
@@ -67,13 +70,13 @@ const ProductChangingCabinePage: React.FC = () => {
   };
 
   return (
-    <PageShell title="Umkleidekabine aus Beton für Freibad und Sportplatz" description="Vandalismussichere Outdoor-Umkleidekabine aus Beton: türlos, zweiteilig und fundamentfrei. Für Freibäder, Badeseen, Sportplätze und Parks. Ohne Tür, leicht zu reinigen und wartungsarm." schema={productSchema}>
+    <PageShell title={t("Umkleidekabine aus Beton für Freibad und Sportplatz", "Concrete Changing Cubicle for Outdoor Pools and Sports Grounds", "Cabine de change en béton pour piscine de plein air et terrain de sport")} description={t("Vandalismussichere Outdoor-Umkleidekabine aus Beton: türlos, zweiteilig und fundamentfrei. Für Freibäder, Badeseen, Sportplätze und Parks. Ohne Tür, leicht zu reinigen und wartungsarm.", "Vandal-resistant outdoor changing cubicle in concrete: doorless, two-part and foundation-free. For outdoor pools, swimming lakes, sports grounds and parks. No door, easy to clean and low-maintenance.", "Cabine de change d'extérieur en béton, résistante au vandalisme : sans porte, en deux éléments et sans fondation. Pour les piscines de plein air, les lacs de baignade, les terrains de sport et les parcs. Sans porte, facile à nettoyer et à entretien réduit.")} schema={productSchema}>
 
        {/* 1. HERO */}
        <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
             <div className="absolute inset-0">
                  <Bild hoch src="/images/umkleide/umkleidekabine-schnecke-04.jpg"
-                        alt="Umkleidekabine Schnecke aus Beton im Freien"
+                        alt={t("Umkleidekabine Schnecke aus Beton im Freien", "Schnecke concrete changing cubicle outdoors", "Cabine de change « Schnecke » en béton, en extérieur")}
                         className="w-full h-full object-cover animate-kenburns-3"
                         loading="eager"
                         fetchPriority="high" />
@@ -87,15 +90,15 @@ const ProductChangingCabinePage: React.FC = () => {
             <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
-                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">Freibad und Sport</span>
+                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">{t("Freibad und Sport", "Outdoor pool and sport", "Piscine de plein air et sport")}</span>
                          <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider bg-black/40 backdrop-blur-sm px-2 py-1">
-                            <span className="material-symbols-outlined text-base">privacy_tip</span> Sichtschutz
+                            <span className="material-symbols-outlined text-base">privacy_tip</span> {t("Sichtschutz", "Privacy screen", "Protection visuelle")}
                          </span>
                     </div>
                     {/* INDUSTRIAL HEADER UPDATE */}
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
-                        Die<br/>
-                        <span className="text-brand-orange">Schnecke</span>
+                        {t(<>Die<br/>
+                        <span className="text-brand-orange">Schnecke</span></>, <>The<br/> <span className="text-brand-orange">Schnecke</span></>, <>La<br/> <span className="text-brand-orange">Schnecke</span></>)}
                     </h1>
                 </div>
             </div>
@@ -109,17 +112,17 @@ const ProductChangingCabinePage: React.FC = () => {
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                            Prinzip
+                            {t("Prinzip", "Principle", "Principe")}
                         </span>
                          {/* INDUSTRIAL HEADER UPDATE */}
                         <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
-                            Privatsphäre <span className="text-brand-orange">ohne Türen</span>
+                            {t(<>Privatsphäre <span className="text-brand-orange">ohne Türen</span></>, <>Privacy <span className="text-brand-orange">without doors</span></>, <>Intimité <span className="text-brand-orange">sans porte</span></>)}
                         </h2>
                         <p className="text-xl text-brand-muted leading-relaxed mb-6">
-                            In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung ist die Schnecke. Beim Betreten und Verlassen berührt man nichts. Oben und unten bleibt die Kabine offen und sie ist nicht abschließbar. Beides erschwert Missbrauch. Die fugenlose Oberfläche ist leicht zu reinigen.
+                            {t("In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung ist die Schnecke. Beim Betreten und Verlassen berührt man nichts. Oben und unten bleibt die Kabine offen und sie ist nicht abschließbar. Beides erschwert Missbrauch. Die fugenlose Oberfläche ist leicht zu reinigen.", "At outdoor pools and swimming lakes, doors are often the first victims of vandalism. Our answer is the Schnecke (German for “snail”). You touch nothing when you enter or leave. The cubicle stays open at the top and bottom and cannot be locked. Both make misuse harder. The seamless surface is easy to clean.", "Dans les piscines de plein air et sur les lacs de baignade, les portes sont souvent les premières victimes du vandalisme. Notre solution est la Schnecke (« escargot » en allemand). On ne touche rien pour entrer ou sortir. La cabine reste ouverte en haut et en bas et ne peut pas être verrouillée. Les deux rendent les dégradations plus difficiles. La surface sans joint est facile à nettoyer.")}
                         </p>
                         <p className="text-lg text-brand-muted leading-relaxed mb-12">
-                            Die Kabine ist schnell aufgestellt und lässt sich später versetzen. Die Bodenplatte ist fugenlos und liegt direkt auf einem verdichteten Schotterbett. Die Kabine besteht aus bewehrtem Beton und steht auf drei Edelstahlfüßen. Sie ist witterungsbeständig und vandalismussicher.
+                            {t("Die Kabine ist schnell aufgestellt und lässt sich später versetzen. Die Bodenplatte ist fugenlos und liegt direkt auf einem verdichteten Schotterbett. Die Kabine besteht aus bewehrtem Beton und steht auf drei Edelstahlfüßen. Sie ist witterungsbeständig und vandalismussicher.", "The cubicle is quick to set up and can be moved later. The base slab is seamless and lies directly on a compacted gravel bed. The cubicle is made of reinforced concrete and stands on three stainless steel feet. It is weather-resistant and vandal-resistant.", "La cabine se met en place rapidement et peut être déplacée par la suite. La dalle de sol est sans joint et repose directement sur un lit de gravier compacté. La cabine est en béton armé et repose sur trois pieds en inox. Elle résiste aux intempéries et au vandalisme.")}
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -127,7 +130,7 @@ const ProductChangingCabinePage: React.FC = () => {
                                 to="/kontakt?projectType=Möblierung"
                                 className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
                             >
-                                Angebot anfordern <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                {t("Angebot anfordern", "Request a quote", "Demander une offre")} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
                         </div>
                     </div>
@@ -135,25 +138,25 @@ const ProductChangingCabinePage: React.FC = () => {
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <Bild sizes="(min-width: 1024px) 60vw, 100vw" src="/images/umkleide/umkleide-kabine-01.jpg" alt="Umkleidekabine auf Edelstahlfüßen, Eingang ohne Tür" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 1: Kabine auf Edelstahlfüßen, Eingang ohne Tür</div>
+                         <Bild sizes="(min-width: 1024px) 60vw, 100vw" src="/images/umkleide/umkleide-kabine-01.jpg" alt={t("Umkleidekabine auf Edelstahlfüßen, Eingang ohne Tür", "Changing cubicle on stainless steel feet, doorless entrance", "Cabine de change sur pieds en inox, entrée sans porte")} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 1: Kabine auf Edelstahlfüßen, Eingang ohne Tür", "Fig. 1: Cubicle on stainless steel feet, doorless entrance", "Fig. 1 : cabine sur pieds en inox, entrée sans porte")}</div>
                     </div>
                     
                     <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 relative rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">Wartungsarm</h3>
+                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">{t("Wartungsarm", "Low-maintenance", "Entretien réduit")}</h3>
                         <p className="text-brand-muted">
-                            Es gibt keine Scharniere, keine Schlösser und kein Holz. Die Kabine bleibt im Winter stehen und verrottet nicht.
+                            {t("Es gibt keine Scharniere, keine Schlösser und kein Holz. Die Kabine bleibt im Winter stehen und verrottet nicht.", "There are no hinges, no locks and no timber. The cubicle can stay in place over winter and does not rot.", "Il n'y a ni charnières, ni serrures, ni bois. La cabine reste en place l'hiver et ne pourrit pas.")}
                         </p>
                     </div>
 
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/umkleide/umkleide-kabine-02.jpg" alt="Schnecke neben einem Spielplatz" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 2: Aufstellung neben einem Spielplatz</div>
+                         <img src="/images/umkleide/umkleide-kabine-02.jpg" alt={t("Schnecke neben einem Spielplatz", "Schnecke next to a playground", "Schnecke à côté d'une aire de jeux")} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 2: Aufstellung neben einem Spielplatz", "Fig. 2: Installed next to a playground", "Fig. 2 : installation à côté d'une aire de jeux")}</div>
                     </div>
 
                     <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                         <img src="/images/umkleide/umkleidekabine-freibad-03.jpg" alt="Schnecken-Kabine im Freibad" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 3: Aufstellung im Freibad</div>
+                         <img src="/images/umkleide/umkleidekabine-freibad-03.jpg" alt={t("Schnecken-Kabine im Freibad", "Schnecke cubicle at an outdoor pool", "Cabine « Schnecke » dans une piscine de plein air")} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 3: Aufstellung im Freibad", "Fig. 3: Installed at an outdoor pool", "Fig. 3 : installation dans une piscine de plein air")}</div>
                     </div>
                 </div>
             </div>
@@ -161,30 +164,30 @@ const ProductChangingCabinePage: React.FC = () => {
             <div className="mb-32 grid lg:grid-cols-2 gap-8">
                 <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                        Schnecken-Prinzip
+                        {t("Schnecken-Prinzip", "The Schnecke principle", "Le principe de la Schnecke")}
                     </span>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
-                        Form statt <span className="text-brand-orange">Mechanik</span>
+                        {t(<>Form statt <span className="text-brand-orange">Mechanik</span></>, <>Form instead of <span className="text-brand-orange">mechanics</span></>, <>La forme plutôt que la <span className="text-brand-orange">mécanique</span></>)}
                     </h2>
                     <div className="space-y-5 text-lg text-brand-muted leading-relaxed">
                         <p>
-                            Herkömmliche Umkleidekabinen halten im öffentlichen Raum oft nicht lange: Verriegelungen brechen, Scharniere korrodieren, Holz verrottet. Die Schnecke hat nichts davon. Sie schützt durch ihre Form statt durch Mechanik und besteht aus Beton und Edelstahl. Die spiralförmige Wand führt in einen geschützten Innenraum, ganz ohne bewegliche Teile. Unten bleibt ein Abstand von 30 cm zur Bodenplatte, oben ist die Kabine offen. Das sorgt für Luft.
+                            {t("Herkömmliche Umkleidekabinen halten im öffentlichen Raum oft nicht lange: Verriegelungen brechen, Scharniere korrodieren, Holz verrottet. Die Schnecke hat nichts davon. Sie schützt durch ihre Form statt durch Mechanik und besteht aus Beton und Edelstahl. Die spiralförmige Wand führt in einen geschützten Innenraum, ganz ohne bewegliche Teile. Unten bleibt ein Abstand von 30 cm zur Bodenplatte, oben ist die Kabine offen. Das sorgt für Luft.", "Conventional changing cubicles often do not last long in public spaces: latches break, hinges corrode, timber rots. The Schnecke has none of that. It protects through its form instead of mechanics and is made of concrete and stainless steel. The spiral wall leads into a sheltered interior with no moving parts at all. There is a 30 cm gap between the wall and the base slab at the bottom, and the cubicle is open at the top. That keeps the air moving.", "Les cabines de change classiques tiennent souvent peu de temps dans l'espace public : les verrous cassent, les charnières se corrodent, le bois pourrit. La Schnecke n'a rien de tout cela. Elle protège par sa forme plutôt que par la mécanique et se compose de béton et d'inox. La paroi en spirale mène à un intérieur protégé, sans aucune pièce mobile. En bas, un espace de 30 cm sépare la paroi de la dalle de sol, et en haut la cabine est ouverte. L'air circule ainsi.")}
                         </p>
                         <p>
-                            Eine Kabine bietet Platz für eine Person mit Kleidung und Tasche. Die Spiralform schützt vor Blicken. Von außen sieht man aber, ob die Kabine belegt ist. Die beiden Teile wiegen rund 1,0 t und 2,3 t und sind nicht miteinander verschraubt. Bei Bedarf wird sie mit Autokran, Radlader oder Gabelstapler an einen anderen Ort versetzt.
+                            {t("Eine Kabine bietet Platz für eine Person mit Kleidung und Tasche. Die Spiralform schützt vor Blicken. Von außen sieht man aber, ob die Kabine belegt ist. Die beiden Teile wiegen rund 1,0 t und 2,3 t und sind nicht miteinander verschraubt. Bei Bedarf wird sie mit Autokran, Radlader oder Gabelstapler an einen anderen Ort versetzt.", "One cubicle has room for one person with their clothes and bag. The spiral shape blocks views in, yet from outside you can see whether the cubicle is occupied. The two parts weigh about 1.0 t and 2.3 t and are not bolted together. If needed, it is moved to another site with a mobile crane, wheel loader or forklift.", "Une cabine offre de la place pour une personne avec ses vêtements et son sac. La forme en spirale protège des regards, mais on voit de l'extérieur si la cabine est occupée. Les deux éléments pèsent environ 1,0 t et 2,3 t et ne sont pas vissés l'un à l'autre. Au besoin, la cabine est déplacée ailleurs avec une grue mobile, une chargeuse sur pneus ou un chariot élévateur.")}
                         </p>
                     </div>
                 </div>
 
                 <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                     <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                        Einsatz
+                        {t("Einsatz", "Use", "Utilisation")}
                     </span>
                     <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter mb-6">
-                        Umkleide <span className="text-brand-orange">oder Dusche</span>
+                        {t(<>Umkleide <span className="text-brand-orange">oder Dusche</span></>, <>Changing room <span className="text-brand-orange">or shower</span></>, <>Cabine de change <span className="text-brand-orange">ou douche</span></>)}
                     </h2>
                     <p className="text-lg text-brand-muted leading-relaxed">
-                        Die Schnecke ist für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen gedacht. Sie steht frei als Außenkabine und ist wahlweise auch als Duschkabine erhältlich. Die Duschkabine gibt es fertig mit Bodenablauf und Dusche: Die Bodenplatte wird über die Abwasserleitung gesetzt, dann wird nur noch die Wasserzuleitung angeschlossen. Alternativ gibt es die Kabine nur mit Aussparungen für Gully und Wasserleitung. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.
+                        {t("Die Schnecke ist für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen gedacht. Sie steht frei als Außenkabine und ist wahlweise auch als Duschkabine erhältlich. Die Duschkabine gibt es fertig mit Bodenablauf und Dusche: Die Bodenplatte wird über die Abwasserleitung gesetzt, dann wird nur noch die Wasserzuleitung angeschlossen. Alternativ gibt es die Kabine nur mit Aussparungen für Gully und Wasserleitung. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.", "The Schnecke is intended for outdoor pools, swimming lakes, lakeside lidos, campsites and sports grounds. It stands free as an outdoor cubicle and is also available as a shower cubicle if wanted. The shower cubicle comes ready-made with a floor drain and shower: the base slab is set over the waste-water pipe, and only the water supply then needs connecting. Alternatively, the cubicle is available with just recesses for a drain and water pipe. Wind, frost and UV radiation do not harm it. The Schnecke does not need constant supervision: it is vandal-resistant and does not burn.", "La Schnecke est destinée aux piscines de plein air, aux lacs de baignade, aux plages aménagées, aux campings et aux équipements sportifs. Elle se pose librement comme cabine d'extérieur et existe aussi, au choix, en cabine de douche. La cabine de douche est livrée prête à l'emploi, avec siphon de sol et douche : la dalle de sol est posée au-dessus de la conduite d'évacuation, il ne reste alors qu'à raccorder l'arrivée d'eau. La cabine existe aussi avec de simples réservations pour l'avaloir et la conduite d'eau. Le vent, le gel et les UV ne l'abîment pas. La Schnecke n'a pas besoin d'être surveillée en permanence : elle résiste au vandalisme et ne brûle pas.")}
                     </p>
                 </div>
             </div>
@@ -192,17 +195,17 @@ const ProductChangingCabinePage: React.FC = () => {
             {/* 2b. PANORAMA */}
             <div className="mb-32">
                 <div className="mb-8">
-                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Einsatzbereich</span>
+                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">{t("Einsatzbereich", "Where it is used", "Domaine d'utilisation")}</span>
                     <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
-                        Freibad und <span className="text-brand-orange">Badesee</span>
+                        {t(<>Freibad und <span className="text-brand-orange">Badesee</span></>, <>Outdoor pool and <span className="text-brand-orange">swimming lake</span></>, <>Piscine de plein air et <span className="text-brand-orange">lac de baignade</span></>)}
                     </h2>
                     <p className="text-lg text-brand-muted mt-4 max-w-3xl">
-                        Die Umkleidekabine steht frei im Freibad oder am Badesee. Vor Ort genügt ein verdichtetes, frostsicheres Kiesbett mit 5–20 mm Körnung. Die Bodenplatte kann bündig mit dem Boden oder etwas höher liegen.
+                        {t("Die Umkleidekabine steht frei im Freibad oder am Badesee. Vor Ort genügt ein verdichtetes, frostsicheres Kiesbett mit 5–20 mm Körnung. Die Bodenplatte kann bündig mit dem Boden oder etwas höher liegen.", "The changing cubicle stands free at an outdoor pool or swimming lake. On site, a compacted, frost-proof gravel bed with 5–20 mm grading is enough. The base slab can sit flush with the ground or slightly above it.", "La cabine de change se pose librement dans une piscine de plein air ou au bord d'un lac de baignade. Sur place, un lit de gravier compacté et résistant au gel, de granulométrie 5–20 mm, suffit. La dalle de sol peut être à fleur du sol ou légèrement au-dessus.")}
                     </p>
                 </div>
                 <div className="relative w-full aspect-[21/9] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
-                    <Bild sizes="(min-width: 1024px) 60vw, 100vw" src="/images/umkleide/umkleide-panorama.jpg" alt="Mehrere Schnecken-Kabinen auf einer gepflasterten Fläche" loading="lazy" className="w-full h-full object-cover" />
-                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">Abb. 4: Freistehend auf gepflasterter Fläche</div>
+                    <Bild sizes="(min-width: 1024px) 60vw, 100vw" src="/images/umkleide/umkleide-panorama.jpg" alt={t("Mehrere Schnecken-Kabinen auf einer gepflasterten Fläche", "Several Schnecke cubicles on a paved area", "Plusieurs cabines « Schnecke » sur une surface pavée")} loading="lazy" className="w-full h-full object-cover" />
+                    <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 4: Freistehend auf gepflasterter Fläche", "Fig. 4: Free-standing on a paved area", "Fig. 4 : autoportantes sur une surface pavée")}</div>
                 </div>
             </div>
 
@@ -211,20 +214,20 @@ const ProductChangingCabinePage: React.FC = () => {
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     {/* INDUSTRIAL HEADER UPDATE */}
                     <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
-                        Technische <span className="text-brand-orange">Daten</span>
+                        {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
                     </h2>
-                    <span className="font-mono text-brand-muted text-xs hidden sm:block">DATENBLATT: UMKLEIDE</span>
+                    <span className="font-mono text-brand-muted text-xs hidden sm:block">{t("DATENBLATT: UMKLEIDE", "DATA SHEET: CHANGING CUBICLE", "FICHE TECHNIQUE : CABINE DE CHANGE")}</span>
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <TechSpecCard title="Aufbau" value="2 Teile, ohne Schrauben" icon="view_in_ar" />
-                    <TechSpecCard title="Tür" value="Keine (Spirale)" icon="no_meeting_room" />
-                    <TechSpecCard title="Boden" value="Fugenlos integriert" icon="check_box_outline_blank" />
-                    <TechSpecCard title="Material" value="Beton + Edelstahl" icon="wallpaper" />
-                    <TechSpecCard title="Montage" value="Fundamentfrei" icon="layers" />
-                    <TechSpecCard title="Einsatz" value="Freibad, Badesee" icon="water_drop" />
-                    <TechSpecCard title="Missbrauchsschutz" value="Oben + unten offen" icon="shield" />
-                    <TechSpecCard title="Winterbetrieb" value="Kein Abbau nötig" icon="ac_unit" />
+                    <TechSpecCard title={t("Aufbau", "Construction", "Construction")} value={t("2 Teile, ohne Schrauben", "2 parts, no bolts", "2 éléments, sans vis")} icon="view_in_ar" />
+                    <TechSpecCard title={t("Tür", "Door", "Porte")} value={t("Keine (Spirale)", "None (spiral)", "Aucune (spirale)")} icon="no_meeting_room" />
+                    <TechSpecCard title={t("Boden", "Floor", "Sol")} value={t("Fugenlos integriert", "Seamless, integrated", "Intégré, sans joint")} icon="check_box_outline_blank" />
+                    <TechSpecCard title={t("Material", "Material", "Matériau")} value={t("Beton + Edelstahl", "Concrete + stainless steel", "Béton + inox")} icon="wallpaper" />
+                    <TechSpecCard title={t("Montage", "Installation", "Montage")} value={t("Fundamentfrei", "Foundation-free", "Sans fondation")} icon="layers" />
+                    <TechSpecCard title={t("Einsatz", "Use", "Utilisation")} value={t("Freibad, Badesee", "Outdoor pool, swimming lake", "Piscine de plein air, lac de baignade")} icon="water_drop" />
+                    <TechSpecCard title={t("Missbrauchsschutz", "Misuse protection", "Protection contre les dégradations")} value={t("Oben + unten offen", "Open at top + bottom", "Ouverte en haut et en bas")} icon="shield" />
+                    <TechSpecCard title={t("Winterbetrieb", "Winter", "Hiver")} value={t("Kein Abbau nötig", "No dismantling needed", "Aucun démontage nécessaire")} icon="ac_unit" />
                 </div>
             </div>
 

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PrivacyBanner from './components/PrivacyBanner';
+import { LANGS, LangProvider, localizePath } from './i18n';
 
 // --- CORE PAGES (ALL Static Imports for INSTANT Navigation) ---
 // Switching to Eager Loading to eliminate "Loading..." spinners during navigation.
@@ -41,6 +42,35 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
+const lazyFallback = (el: React.ReactNode) => <Suspense fallback={<div className="min-h-screen" />}>{el}</Suspense>;
+
+// Jede Route gibt es dreimal: ohne Präfix (Deutsch), unter /en und unter /fr.
+const ROUTES: [string, React.ReactNode][] = [
+  ['/', <HomePage />],
+  ['/projekte', <ProjectsPage />],
+  ['/ueber-uns', <AboutPage />],
+  ['/kontakt', <ContactPage />],
+  ['/planung', <PlanningPage />],
+  ['/referenzen-presse', <PressePage />],
+  ['/katalog', <KatalogPage />],
+  ['/katalog/:slug', <KatalogPage />],
+  ['/codes', lazyFallback(<CodesPage />)],
+  ['/konfigurator', lazyFallback(<KonfiguratorPage />)],
+  ['/produkte', <ProductOverviewPage />],
+  ['/produkte/skate-anlagen', <ProductSkateAnlagenPage />],
+  ['/produkte/skate-bowls-beton', <ProductSkateBowlsPage />],
+  ['/produkte/skate-pipes-beton', <ProductSkatePipesPage />],
+  ['/produkte/pumptrack-beton', <ProductPumptrackPage />],
+  ['/produkte/hockey-banden', <ProductHockeyRinkPage />],
+  ['/produkte/grillstelle-beton', <ProductGrillPage />],
+  ['/produkte/grillstelle-beton/montageanleitung', <ProductGrillAssemblyPage />],
+  ['/produkte/umkleidekabine-beton', <ProductChangingCabinePage />],
+  ['/produkte/ueberdachung-beton', <ProductPavilionPage />],
+  ['/projekte/:projectId', <ProjectDetailPage />],
+  ['/impressum', <ImpressumPage />],
+  ['/datenschutz', <PrivacyPolicyPage />],
+];
+
 const App: React.FC = () => {
   
   // Note: Background preloading logic removed as it is no longer needed 
@@ -48,6 +78,7 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
+      <LangProvider>
       <ScrollToTop />
       
       {/* --- GLOBAL ATMOSPHERE LAYER --- */}
@@ -76,42 +107,18 @@ const App: React.FC = () => {
         <Header />
         <main className="flex-grow">
           <Routes>
-            {/* Core Pages */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/projekte" element={<ProjectsPage />} />
-            <Route path="/ueber-uns" element={<AboutPage />} />
-            <Route path="/kontakt" element={<ContactPage />} />
-            <Route path="/planung" element={<PlanningPage />} /> {/* NEW ROUTE */}
-            <Route path="/referenzen-presse" element={<PressePage />} />
-            <Route path="/katalog" element={<KatalogPage />} />
-            <Route path="/katalog/:slug" element={<KatalogPage />} />
-            <Route path="/codes" element={<Suspense fallback={<div className="min-h-screen" />}><CodesPage /></Suspense>} />
-            <Route path="/konfigurator" element={<Suspense fallback={<div className="min-h-screen" />}><KonfiguratorPage /></Suspense>} />
-
-            {/* Product Pages */}
-            <Route path="/produkte" element={<ProductOverviewPage />} />
-            <Route path="/produkte/skate-anlagen" element={<ProductSkateAnlagenPage />} />
-            <Route path="/produkte/skate-bowls-beton" element={<ProductSkateBowlsPage />} />
-            <Route path="/produkte/skate-pipes-beton" element={<ProductSkatePipesPage />} />
-            <Route path="/produkte/pumptrack-beton" element={<ProductPumptrackPage />} />
-            <Route path="/produkte/hockey-banden" element={<ProductHockeyRinkPage />} />
-            <Route path="/produkte/grillstelle-beton" element={<ProductGrillPage />} />
-            <Route path="/produkte/grillstelle-beton/montageanleitung" element={<ProductGrillAssemblyPage />} />
-            <Route path="/produkte/umkleidekabine-beton" element={<ProductChangingCabinePage />} />
-            <Route path="/produkte/ueberdachung-beton" element={<ProductPavilionPage />} />
-            
-            {/* Detail Page */}
-            <Route path="/projekte/:projectId" element={<ProjectDetailPage />} />
-            
-            {/* Legal / System Pages */}
-            <Route path="/impressum" element={<ImpressumPage />} />
-            <Route path="/datenschutz" element={<PrivacyPolicyPage />} />
+            {LANGS.flatMap((l) =>
+              ROUTES.map(([path, element]) => (
+                <Route key={`${l}${path}`} path={localizePath(l, path)} element={element} />
+              )),
+            )}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer />
         <PrivacyBanner />
       </div>
+      </LangProvider>
     </BrowserRouter>
   );
 };

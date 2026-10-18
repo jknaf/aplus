@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { NAV_LINKS } from '../constants';
+import { Link, useT } from '../i18n';
+import { useNavLinks } from '../localized';
 
 const Footer: React.FC = () => {
-  const productLinks = NAV_LINKS.find(link => link.name === 'Produkte')?.subLinks || [];
+  const t = useT();
+  const NAV_LINKS = useNavLinks();
+  const productLinks = NAV_LINKS.find(link => link.href === '/produkte')?.subLinks || [];
 
   const handlePrivacySettingsClick = () => {
     window.dispatchEvent(new CustomEvent('showPrivacySettings'));
@@ -30,7 +32,7 @@ const Footer: React.FC = () => {
                    </div>
                 </Link>
                 <p className="text-brand-muted leading-relaxed mb-8 max-w-sm">
-                  Wir stellen modulare Betonelemente für den öffentlichen Raum her. Sie sind robust und für Jahrzehnte gebaut.
+                  {t('Wir stellen modulare Betonelemente für den öffentlichen Raum her. Sie sind robust und für Jahrzehnte gebaut.', 'We make modular concrete elements for public spaces. They are robust and built to last for decades.', "Nous fabriquons des éléments modulaires en béton pour l'espace public. Ils sont robustes et conçus pour durer des décennies.")}
                 </p>
             </div>
              <div className="flex gap-4">
@@ -48,9 +50,9 @@ const Footer: React.FC = () => {
             
             {/* Navigation */}
             <div>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">Menü</h3>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">{t('Menü', 'Menu', 'Menu')}</h3>
                 <ul className="space-y-4">
-                    {NAV_LINKS.filter(l => l.name !== 'Produkte').map(link => (
+                    {NAV_LINKS.filter(l => l.href !== '/produkte').map(link => (
                         <li key={link.name}>
                             <Link to={link.href} className="text-sm font-bold text-gray-400 hover:text-white transition-colors uppercase tracking-wider block hover:translate-x-2 transition-transform duration-300">
                                 {link.name}
@@ -62,7 +64,7 @@ const Footer: React.FC = () => {
 
             {/* Products */}
              <div>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">Produkte</h3>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">{t('Produkte', 'Products', 'Produits')}</h3>
                 <ul className="space-y-4">
                     {productLinks.slice(0, 5).map(link => (
                          <li key={link.name}>
@@ -73,7 +75,7 @@ const Footer: React.FC = () => {
                     ))}
                      <li>
                         <Link to="/produkte/skate-anlagen" className="text-sm font-bold text-brand-orange hover:text-white transition-colors uppercase tracking-wider block hover:translate-x-2 transition-transform duration-300">
-                            Alle ansehen &rarr;
+                            {t('Alle ansehen', 'View all', 'Tout voir')} &rarr;
                         </Link>
                     </li>
                 </ul>
@@ -81,20 +83,20 @@ const Footer: React.FC = () => {
 
              {/* Contact Info */}
             <div>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">Kontakt</h3>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-6">{t('Kontakt', 'Contact', 'Contact')}</h3>
                 <ul className="space-y-6">
                      <li>
-                        <p className="text-xs text-brand-muted uppercase mb-1">Adresse</p>
+                        <p className="text-xs text-brand-muted uppercase mb-1">{t('Adresse', 'Address', 'Adresse')}</p>
                         <p className="text-sm text-white font-medium">Talstrasse 41<br/>70188 Stuttgart</p>
                     </li>
                     <li>
-                         <p className="text-xs text-brand-muted uppercase mb-1">Telefon</p>
+                         <p className="text-xs text-brand-muted uppercase mb-1">{t('Telefon', 'Phone', 'Téléphone')}</p>
                          <a href="tel:+4915560090966" className="text-sm text-white font-medium hover:text-brand-orange transition-colors block">
                             +49 155 600 909 66
                          </a>
                     </li>
                     <li>
-                         <p className="text-xs text-brand-muted uppercase mb-1">E-Mail</p>
+                         <p className="text-xs text-brand-muted uppercase mb-1">{t('E-Mail', 'Email', 'E-mail')}</p>
                          <a href="mailto:post@aplusurbandesign.com" className="text-sm text-white font-medium hover:text-brand-orange transition-colors block">
                             post@aplusurbandesign.com
                          </a>
@@ -107,11 +109,11 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-white/60">
              <p className="text-xs text-brand-muted">
-                &copy; {new Date().getFullYear()} A+ Urban Design. Alle Rechte vorbehalten. Aus Stuttgart.
+                &copy; {new Date().getFullYear()} A+ Urban Design. {t('Alle Rechte vorbehalten. Aus Stuttgart.', 'All rights reserved. From Stuttgart.', 'Tous droits réservés. Depuis Stuttgart.')}
             </p>
             <div className="flex gap-6">
-                <Link to="/impressum" className="text-xs text-brand-muted hover:text-brand-orange transition-colors uppercase tracking-wider">Impressum</Link>
-                <Link to="/datenschutz" className="text-xs text-brand-muted hover:text-brand-orange transition-colors uppercase tracking-wider">Datenschutz</Link>
+                <Link to="/impressum" className="text-xs text-brand-muted hover:text-brand-orange transition-colors uppercase tracking-wider">{t('Impressum', 'Legal notice', 'Mentions légales')}</Link>
+                <Link to="/datenschutz" className="text-xs text-brand-muted hover:text-brand-orange transition-colors uppercase tracking-wider">{t('Datenschutz', 'Privacy', 'Confidentialité')}</Link>
                 <button onClick={handlePrivacySettingsClick} className="text-xs text-brand-muted hover:text-brand-orange transition-colors uppercase tracking-wider">Cookies</button>
             </div>
         </div>

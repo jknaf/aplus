@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { NAV_LINKS } from '../constants';
+import { useLocation } from 'react-router-dom';
+import { Link, useT } from '../i18n';
+import { useNavLinks } from '../localized';
+import LanguageSwitch from './LanguageSwitch';
 
 const Header: React.FC = () => {
+  const t = useT();
+  const NAV_LINKS = useNavLinks();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // Name des offenen Untermenüs (Produkte, Planung), sonst null
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -66,7 +70,7 @@ const Header: React.FC = () => {
         >
           <div className="flex items-center justify-between h-14 md:h-20 px-4 md:px-8">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 flex-shrink-0 z-50 group" aria-label="Zur Startseite">
+            <Link to="/" className="flex items-center gap-3 flex-shrink-0 z-50 group" aria-label={t('Zur Startseite', 'Go to the home page', "Aller à l'accueil")}>
               <img
                 src="/aplus-logo.svg"
                 alt="A+ Urban Design"
@@ -77,7 +81,7 @@ const Header: React.FC = () => {
             </Link>
 
             {/* Desktop Nav - Semantic HTML Upgrade */}
-            <nav ref={navRef} className="hidden lg:block" aria-label="Hauptnavigation">
+            <nav ref={navRef} className="hidden lg:block" aria-label={t('Hauptnavigation', 'Main navigation', 'Navigation principale')}>
               <ul className="flex items-center gap-4 xl:gap-8 whitespace-nowrap">
               {/* Kontakt steht rechts als Knopf, darum hier nicht doppelt */}
               {NAV_LINKS.filter((link) => link.href !== '/kontakt').map((link) =>
@@ -140,17 +144,18 @@ const Header: React.FC = () => {
 
             {/* CTA & Mobile Toggle */}
             <div className="flex items-center gap-4">
+              <LanguageSwitch className="hidden lg:flex" />
               <Link 
                 to="/kontakt" 
                 className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-xs font-extrabold uppercase tracking-widest bg-brand-orange text-white hover:bg-brand-dark hover:text-white transition-all duration-300 rounded-lg transform hover:-translate-y-0.5 shadow-lg hover:shadow-brand-orange/20"
               >
-                Kontakt
+                {t('Kontakt', 'Contact', 'Contact')}
               </Link>
               
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="lg:hidden relative z-50 p-2 text-brand-dark hover:text-brand-orange transition-colors"
-                aria-label="Menü öffnen"
+                aria-label={t('Menü öffnen', 'Open menu', 'Ouvrir le menu')}
               >
                 <div className="w-6 flex flex-col items-end gap-1.5">
                   <span className={`block h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'w-6 rotate-45 translate-y-2' : 'w-6'}`}></span>
@@ -170,7 +175,7 @@ const Header: React.FC = () => {
         }`}
       >
         <div className="container mx-auto h-full flex flex-col justify-start px-6 pb-20 pt-24 overflow-y-auto">
-          <nav className="flex flex-col gap-6" aria-label="Mobile Navigation">
+          <nav className="flex flex-col gap-6" aria-label={t('Mobile Navigation', 'Mobile navigation', 'Navigation mobile')}>
             {NAV_LINKS.map((link, idx) => (
               <div key={link.name} className="overflow-hidden">
                 {link.subLinks ? (
@@ -205,12 +210,13 @@ const Header: React.FC = () => {
           </nav>
 
           <div className="mt-12 pt-8 border-t border-brand-dark/10 grid grid-cols-1 gap-8 animate-fade-in-up [animation-delay:600ms]">
+            <LanguageSwitch />
             <div>
-              <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Kontakt</span>
+              <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">{t('Kontakt', 'Contact', 'Contact')}</span>
               <a href="mailto:post@aplusurbandesign.com" className="block text-brand-dark font-bold text-lg">post@aplusurbandesign.com</a>
             </div>
             <div>
-              <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">Netzwerke</span>
+              <span className="block text-xs text-brand-muted uppercase tracking-widest mb-2">{t('Netzwerke', 'Networks', 'Réseaux')}</span>
               <div className="flex gap-4">
                 <a href="https://www.linkedin.com/in/cüneyit-akcakoca-6577673/" target="_blank" rel="noopener noreferrer" className="text-brand-dark hover:text-brand-orange text-lg font-bold">LinkedIn</a>
               </div>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { PROJECTS } from '../constants';
+import { Link, useT } from '../i18n';
+import { useKategorie, useProjects } from '../localized';
 import Bild from './Bild';
 
 interface ReferencedProjectsProps {
@@ -9,7 +9,9 @@ interface ReferencedProjectsProps {
 }
 
 const ReferencedProjects: React.FC<ReferencedProjectsProps> = ({ productPath, limit = 3 }) => {
-  const matches = PROJECTS.filter((project) =>
+  const t = useT();
+  const kategorie = useKategorie();
+  const matches = useProjects().filter((project) =>
     project.productsUsed.some((used) => used.path === productPath)
   ).slice(0, limit);
 
@@ -19,10 +21,10 @@ const ReferencedProjects: React.FC<ReferencedProjectsProps> = ({ productPath, li
     <section className="mt-32 border-t border-brand-dark/10 pt-24">
       <div className="text-center mb-16">
         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
-          Referenzprojekte
+          {t('Referenzprojekte', 'Reference projects', 'Projets de référence')}
         </span>
         <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-          Hier <span className="text-brand-orange">eingesetzt</span>
+          {t(<>Hier <span className="text-brand-orange">eingesetzt</span></>, <>Used <span className="text-brand-orange">here</span></>, <>Utilisé <span className="text-brand-orange">ici</span></>)}
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -42,14 +44,14 @@ const ReferencedProjects: React.FC<ReferencedProjectsProps> = ({ productPath, li
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
             <div className="absolute inset-0 flex flex-col justify-end p-8">
               <span className="text-brand-orange font-mono text-xs mb-2 uppercase tracking-widest">
-                {project.category}
+                {kategorie(project.category)}
                 {project.year ? ` · ${project.year}` : ''}
               </span>
               <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">
                 {project.title}
               </h3>
               <span className="mt-3 text-white/70 text-xs font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                Zum Projekt →
+                {t('Zum Projekt →', 'View project →', 'Voir le projet →')}
               </span>
             </div>
           </Link>

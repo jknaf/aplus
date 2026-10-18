@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { LANGS, OG_LOCALE, localizePath, prefixFor, stripLang, useLang, useT } from '../i18n';
 
 interface PageShellProps {
   title: string;
@@ -32,10 +33,17 @@ const setMeta = (attr: string, value: string, attrName = 'property') => {
 
 const PageShell: React.FC<PageShellProps> = ({ title, description, children, schema, noIndex = false, fullWidth = false, ogImage }) => {
   const location = useLocation();
+  const lang = useLang();
+  const t = useT();
+  const defaultDesc = t(
+    'Skateparks, Pumptracks und Hockey-Banden aus Beton, mit TÜV-zertifizierten Skate-Elementen. Modular, fundamentfrei und langlebig.',
+    'Skateparks, pump tracks and hockey boards in concrete, with TÜV-certified skate elements. Modular, foundation-free and long-lasting.',
+    'Skateparks, pumptracks et bandes de hockey en béton, avec des éléments de skate certifiés TÜV. Modulaires, sans fondation et durables.',
+  );
 
   useEffect(() => {
     const pageTitle = `${title} | A+ Urban Design`;
-    const pageDesc = description ?? 'Skateparks, Pumptracks und Hockey-Banden aus Beton, mit TÜV-zertifizierten Skate-Elementen. Modular, fundamentfrei und langlebig.';
+    const pageDesc = description ?? defaultDesc;
     const pageUrl = `${BASE_URL}${location.pathname}`;
     const pageImage = absoluteImageUrl(ogImage);
 
@@ -54,6 +62,20 @@ const PageShell: React.FC<PageShellProps> = ({ title, description, children, sch
     }
     linkCanonical.setAttribute('href', pageUrl);
 
+    // 3b. Sprachfassungen (hreflang)
+    const basePath = stripLang(location.pathname);
+    document.querySelectorAll('link[data-hreflang]').forEach((el) => el.remove());
+    const addAlternate = (hreflang: string, path: string) => {
+      const el = document.createElement('link');
+      el.setAttribute('rel', 'alternate');
+      el.setAttribute('hreflang', hreflang);
+      el.setAttribute('href', `${BASE_URL}${path}`);
+      el.setAttribute('data-hreflang', '');
+      document.head.appendChild(el);
+    };
+    LANGS.forEach((l) => addAlternate(l, localizePath(l, basePath)));
+    addAlternate('x-default', basePath);
+
     // 4. Robots
     setMeta('robots', noIndex ? 'noindex, nofollow' : 'index, follow', 'name');
 
@@ -62,6 +84,7 @@ const PageShell: React.FC<PageShellProps> = ({ title, description, children, sch
     setMeta('og:description', pageDesc);
     setMeta('og:url', pageUrl);
     setMeta('og:type', 'website');
+    setMeta('og:locale', OG_LOCALE[lang]);
     setMeta('og:site_name', 'A+ Urban Design');
     setMeta('og:image', pageImage);
     setMeta('og:image:width', '1200');
@@ -97,22 +120,22 @@ const PageShell: React.FC<PageShellProps> = ({ title, description, children, sch
         breadcrumbTag.setAttribute('type', 'application/ld+json');
         document.head.appendChild(breadcrumbTag);
     }
-    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const pathSegments = stripLang(location.pathname).split('/').filter(Boolean);
     breadcrumbTag.textContent = JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+            { "@type": "ListItem", "position": 1, "name": t('Home', 'Home', 'Accueil'), "item": `${BASE_URL}${prefixFor(lang)}` },
             ...pathSegments.map((segment, index) => ({
                 "@type": "ListItem",
                 "position": index + 2,
                 "name": segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
-                "item": `${BASE_URL}/${pathSegments.slice(0, index + 1).join('/')}`
+                "item": `${BASE_URL}${prefixFor(lang)}/${pathSegments.slice(0, index + 1).join('/')}`
             }))
         ]
     });
 
-  }, [title, description, location, schema, noIndex, ogImage]);
+  }, [title, description, location, schema, noIndex, ogImage, lang, defaultDesc, t]);
 
   if (fullWidth) {
       return (

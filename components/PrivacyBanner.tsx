@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useT } from '../i18n';
 
 const CONSENT_KEY = 'a-plus-urban-design-privacy-consent';
 
@@ -30,6 +30,7 @@ const safeStorage = {
 };
 
 const PrivacyBanner: React.FC = () => {
+    const t = useT();
     const [isVisible, setIsVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     
@@ -92,28 +93,28 @@ const PrivacyBanner: React.FC = () => {
     return (
         <>
             {/* Banner */}
-            <div role="region" aria-label="Datenschutzeinstellungen" className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-brand-dark/10 z-[100] animate-[fade-in-up_0.5s_ease-out] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+            <div role="region" aria-label={t('Datenschutzeinstellungen', 'Privacy settings', 'Paramètres de confidentialité')} className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-brand-dark/10 z-[100] animate-[fade-in-up_0.5s_ease-out] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
                 <div className="container mx-auto p-4 md:p-6 flex flex-col xl:flex-row items-center justify-between gap-4 md:gap-6">
                     <div className="text-center xl:text-left w-full xl:w-auto">
-                        <h3 className="text-sm md:text-lg font-bold text-brand-dark uppercase tracking-wider mb-2">Datenschutzeinstellungen</h3>
+                        <h3 className="text-sm md:text-lg font-bold text-brand-dark uppercase tracking-wider mb-2">{t('Datenschutzeinstellungen', 'Privacy settings', 'Paramètres de confidentialité')}</h3>
                         <p className="text-xs md:text-sm text-brand-muted leading-relaxed max-w-3xl">
-                            Wir nutzen Cookies und ähnliche Technologien, um unsere Website für Sie zu optimieren und Ihnen ein bestmögliches Nutzungserlebnis zu bieten.
+                            {t('Wir nutzen Cookies und ähnliche Technologien, um unsere Website für Sie zu optimieren und Ihnen ein bestmögliches Nutzungserlebnis zu bieten.', 'We use cookies and similar technologies to improve our website and make it work as well as possible for you.', 'Nous utilisons des cookies et des technologies similaires pour améliorer notre site et vous offrir la meilleure expérience possible.')}
                             <br className="md:hidden" />
-                            <Link to="/impressum" className="text-brand-orange hover:text-white underline mx-1">Impressum</Link> 
+                            <Link to="/impressum" className="text-brand-orange hover:text-white underline mx-1">{t('Impressum', 'Legal notice', 'Mentions légales')}</Link> 
                             &bull;
-                            <Link to="/datenschutz" className="text-brand-orange hover:text-white underline ml-1">Datenschutz</Link>
+                            <Link to="/datenschutz" className="text-brand-orange hover:text-white underline ml-1">{t('Datenschutz', 'Privacy', 'Confidentialité')}</Link>
                         </p>
                     </div>
                     {/* Buttons: Grid on mobile, Flex on desktop for better spacing */}
                     <div className="w-full xl:w-auto grid grid-cols-1 sm:grid-cols-3 xl:flex gap-3">
                          <button onClick={() => setIsModalOpen(true)} className="px-4 py-3 text-xs font-bold border border-brand-dark/20 hover:bg-brand-surface rounded bg-transparent transition-colors text-brand-muted uppercase tracking-widest whitespace-nowrap">
-                            Dateneinstellungen
+                            {t('Dateneinstellungen', 'Data settings', 'Paramètres des données')}
                         </button>
                         <button onClick={handleDeclineAll} className="px-4 py-3 text-xs font-bold border border-brand-dark/20 hover:bg-brand-surface rounded bg-transparent transition-colors text-brand-dark uppercase tracking-widest whitespace-nowrap">
-                            Alles ablehnen
+                            {t('Alles ablehnen', 'Reject all', 'Tout refuser')}
                         </button>
                         <button onClick={handleAcceptAll} className="px-6 py-3 text-xs font-bold bg-brand-orange text-black rounded hover:bg-white transition-colors shadow-lg shadow-brand-orange/20 uppercase tracking-widest whitespace-nowrap">
-                            Alles akzeptieren
+                            {t('Alles akzeptieren', 'Accept all', 'Tout accepter')}
                         </button>
                     </div>
                 </div>
@@ -124,15 +125,15 @@ const PrivacyBanner: React.FC = () => {
                  <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-end md:items-center justify-center z-[110] animate-[fade-in-up_0.2s_ease-out] md:animate-none">
                     <div className="bg-white w-full md:rounded-xl shadow-2xl md:max-w-lg md:m-4 border-t md:border border-brand-dark/10 max-h-[90vh] flex flex-col">
                         <div className="p-6 border-b border-brand-dark/10">
-                            <h2 className="text-xl font-bold text-brand-dark font-heading uppercase tracking-wide">Privatsphäre</h2>
-                            <p className="text-sm text-brand-muted mt-1">Entscheiden Sie selbst, welche Daten wir nutzen dürfen.</p>
+                            <h2 className="text-xl font-bold text-brand-dark font-heading uppercase tracking-wide">{t('Privatsphäre', 'Privacy', 'Confidentialité')}</h2>
+                            <p className="text-sm text-brand-muted mt-1">{t('Entscheiden Sie selbst, welche Daten wir nutzen dürfen.', 'You decide which data we may use.', 'Vous décidez des données que nous pouvons utiliser.')}</p>
                         </div>
                         
                         <div className="p-6 space-y-4 overflow-y-auto custom-scrollbar flex-grow">
                             <div className="flex justify-between items-center p-4 rounded-lg bg-brand-surface/60 border border-brand-dark/5">
                                 <div>
-                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">Technisch notwendig</h3>
-                                    <p className="text-xs text-brand-muted mt-1">Essenziell für die Funktion der Website.</p>
+                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">{t('Technisch notwendig', 'Strictly necessary', 'Strictement nécessaires')}</h3>
+                                    <p className="text-xs text-brand-muted mt-1">{t('Essenziell für die Funktion der Website.', 'Required for the website to work.', 'Indispensables au fonctionnement du site.')}</p>
                                 </div>
                                 <div className="relative inline-block w-10 ml-2 align-middle select-none opacity-50">
                                     <input type="checkbox" checked readOnly disabled className="appearance-none"/>
@@ -144,8 +145,8 @@ const PrivacyBanner: React.FC = () => {
                             
                             <div className="flex justify-between items-center p-4 rounded-lg bg-brand-surface/40 border border-brand-dark/5 hover:border-brand-dark/20 transition-colors">
                                  <div>
-                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">Statistik</h3>
-                                    <p className="text-xs text-brand-muted mt-1">Anonyme Nutzungsdaten zur Verbesserung.</p>
+                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">{t('Statistik', 'Statistics', 'Statistiques')}</h3>
+                                    <p className="text-xs text-brand-muted mt-1">{t('Anonyme Nutzungsdaten zur Verbesserung.', 'Anonymous usage data to help us improve.', "Données d'usage anonymes pour nous aider à nous améliorer.")}</p>
                                 </div>
                                  <button
                                     type="button"
@@ -161,8 +162,8 @@ const PrivacyBanner: React.FC = () => {
 
                             <div className="flex justify-between items-center p-4 rounded-lg bg-brand-surface/40 border border-brand-dark/5 hover:border-brand-dark/20 transition-colors">
                                  <div>
-                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">Externe Medien</h3>
-                                    <p className="text-xs text-brand-muted mt-1">Inhalte von Drittanbietern laden.</p>
+                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">{t('Externe Medien', 'External media', 'Médias externes')}</h3>
+                                    <p className="text-xs text-brand-muted mt-1">{t('Inhalte von Drittanbietern laden.', 'Load content from third parties.', 'Charger des contenus de tiers.')}</p>
                                 </div>
                                  <button
                                     type="button"
@@ -179,10 +180,10 @@ const PrivacyBanner: React.FC = () => {
 
                         <div className="p-4 bg-brand-surface/40 border-t border-brand-dark/10 flex flex-col sm:flex-row justify-end gap-3 rounded-b-xl">
                             <button onClick={handleDeclineAll} className="px-4 py-3 sm:py-2 text-xs font-bold border border-brand-dark/10 hover:bg-brand-surface rounded transition-colors text-brand-muted uppercase tracking-widest w-full sm:w-auto">
-                                Ablehnen
+                                {t('Ablehnen', 'Reject', 'Refuser')}
                             </button>
                             <button onClick={handleSavePreferences} className="px-6 py-3 sm:py-2 text-xs font-bold bg-white text-black rounded hover:bg-brand-orange hover:text-white transition-colors uppercase tracking-widest w-full sm:w-auto shadow-lg">
-                                Speichern
+                                {t('Speichern', 'Save', 'Enregistrer')}
                             </button>
                         </div>
                     </div>

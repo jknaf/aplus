@@ -1,11 +1,14 @@
 import React from 'react';
+import { useT } from '../../i18n';
 
 const BrandDark = '#2C3530';
 const Accent = '#6B8F4A';
 const Muted = '#8A8A80';
 
-export const FoundationDiagram: React.FC = () => (
-  <svg viewBox="0 0 600 420" style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label="Schnitt durch Kiesbett, Rieselschicht und Bodenplatte">
+export const FoundationDiagram: React.FC = () => {
+  const t = useT();
+  return (
+  <svg viewBox="0 0 600 420" style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label={t("Schnitt durch Kiesbett, Rieselschicht und Bodenplatte", "Section through gravel bed, bedding layer and base slab", "Coupe à travers le lit de gravier, le lit de pose et la dalle de sol")}>
     <defs>
       <pattern id="am-kies" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
         <circle cx="3" cy="3" r="1.8" fill={BrandDark} opacity="0.35" />
@@ -30,10 +33,10 @@ export const FoundationDiagram: React.FC = () => (
     <rect x="80" y="160" width="440" height="140" fill="url(#am-kies)" stroke={BrandDark} strokeOpacity="0.3" strokeWidth="1" />
     <rect x="80" y="130" width="440" height="30" fill="url(#am-riesel)" stroke={BrandDark} strokeOpacity="0.4" strokeWidth="1" />
     <rect x="120" y="80" width="360" height="50" fill="#D9D6CD" stroke={BrandDark} strokeOpacity="0.7" strokeWidth="1.5" />
-    <text x="300" y="110" textAnchor="middle" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="800" fontSize="14" fill={BrandDark} letterSpacing="1">BODENPLATTE · 16 cm</text>
+    <text x="300" y="110" textAnchor="middle" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="800" fontSize="14" fill={BrandDark} letterSpacing="1">{t("BODENPLATTE · 16 cm", "BASE SLAB · 16 cm", "DALLE DE SOL · 16 cm")}</text>
 
     <line x1="0" y1="80" x2="600" y2="80" stroke={Accent} strokeWidth="1.5" strokeDasharray="4 4" />
-    <text x="12" y="74" fontFamily="ui-monospace, monospace" fontSize="10" fill={Accent} letterSpacing="1.5">GEHFLÄCHE · ±0,00</text>
+    <text x="12" y="74" fontFamily="ui-monospace, monospace" fontSize="10" fill={Accent} letterSpacing="1.5">{t("GEHFLÄCHE · ±0,00", "GROUND LEVEL · ±0.00", "NIVEAU DU SOL · ±0,00")}</text>
 
     <g stroke={BrandDark} strokeOpacity="0.5" strokeWidth="0.8" fontFamily="ui-monospace, monospace" fontSize="10" fill={BrandDark}>
       <line x1="535" y1="130" x2="555" y2="130" />
@@ -56,23 +59,26 @@ export const FoundationDiagram: React.FC = () => (
       <line x1="80" y1="340" x2="520" y2="340" />
       <line x1="80" y1="332" x2="80" y2="348" />
       <line x1="520" y1="332" x2="520" y2="348" />
-      <text x="300" y="362" textAnchor="middle" fontWeight="700">Ø 4,50 m</text>
+      <text x="300" y="362" textAnchor="middle" fontWeight="700">{t("Ø 4,50 m", "Ø 4.50 m", "Ø 4,50 m")}</text>
     </g>
 
     <g fontFamily="ui-monospace, monospace" fontSize="10" letterSpacing="1" fill={BrandDark}>
       <line x1="300" y1="180" x2="300" y2="220" stroke={Accent} strokeWidth="1" />
       <circle cx="300" cy="180" r="3" fill={Accent} />
-      <text x="300" y="240" textAnchor="middle" fontWeight="700" fill={Accent}>KIESBETT · KÖRNUNG 10–40 mm</text>
-      <text x="300" y="256" textAnchor="middle" fill={Muted}>VERDICHTET · FROSTSICHER</text>
+      <text x="300" y="240" textAnchor="middle" fontWeight="700" fill={Accent}>{t("KIESBETT · KÖRNUNG 10–40 mm", "GRAVEL BED · GRADING 10–40 mm", "LIT DE GRAVIER · GRANULOMÉTRIE 10–40 mm")}</text>
+      <text x="300" y="256" textAnchor="middle" fill={Muted}>{t("VERDICHTET · FROSTSICHER", "COMPACTED · FROST-PROOF", "COMPACTÉ · RÉSISTANT AU GEL")}</text>
 
       <line x1="380" y1="145" x2="420" y2="108" stroke={Accent} strokeWidth="1" />
-      <text x="430" y="106" fontWeight="700" fill={Accent}>RIESELSCHICHT · 5–10 mm</text>
+      <text x="430" y="106" fontWeight="700" fill={Accent}>{t("RIESELSCHICHT · 5–10 mm", "BEDDING LAYER · 5–10 mm", "LIT DE POSE · 5–10 mm")}</text>
     </g>
   </svg>
-);
+  );
+};
 
-export const RiggingDiagram: React.FC = () => (
-  <svg viewBox="0 0 500 400" style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label="Dreifach-Anschlag mit Seilösen M 24">
+export const RiggingDiagram: React.FC = () => {
+  const t = useT();
+  return (
+  <svg viewBox="0 0 500 400" style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label={t("Dreifach-Anschlag mit Seilösen M 24", "Three-point sling with M 24 lifting eyes", "Élingage en trois points avec anneaux de levage M 24")}>
     <defs>
       <pattern id="am-concrete2" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
         <rect width="4" height="4" fill="#E5E3DC" />
@@ -86,7 +92,7 @@ export const RiggingDiagram: React.FC = () => (
       <circle cx="250" cy="48" r="10" fill="#E5E3DC" />
       <path d="M 245 55 C 240 65, 245 72, 250 68 C 255 72, 260 65, 255 55" fill={BrandDark} />
     </g>
-    <text x="265" y="50" fontFamily="ui-monospace, monospace" fontSize="10" fill={Muted} letterSpacing="1">HAKEN</text>
+    <text x="265" y="50" fontFamily="ui-monospace, monospace" fontSize="10" fill={Muted} letterSpacing="1">{t("HAKEN", "HOOK", "CROCHET")}</text>
 
     <g stroke={Accent} strokeWidth="2" fill="none">
       <line x1="250" y1="60" x2="130" y2="220" />
@@ -106,17 +112,17 @@ export const RiggingDiagram: React.FC = () => (
 
     <g>
       <rect x="200" y="298" width="100" height="22" rx="2" fill="white" stroke="#DC2626" strokeWidth="1.5" strokeDasharray="4 3" />
-      <text x="250" y="313" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="9" fontWeight="700" fill="#DC2626" letterSpacing="1">NICHT AN BÄNKEN!</text>
+      <text x="250" y="313" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="9" fontWeight="700" fill="#DC2626" letterSpacing="1">{t("NICHT AN BÄNKEN!", "NOT ON THE BENCHES!", "PAS SUR LES BANCS !")}</text>
     </g>
 
     <g>
       <rect x="192" y="245" width="116" height="28" rx="14" fill={BrandDark} />
-      <text x="250" y="263" textAnchor="middle" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="800" fontSize="13" fill="white" letterSpacing="1">ca. 3,3 t</text>
+      <text x="250" y="263" textAnchor="middle" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="800" fontSize="13" fill="white" letterSpacing="1">{t("ca. 3,3 t", "approx. 3.3 t", "env. 3,3 t")}</text>
     </g>
 
     <g fontFamily="ui-monospace, monospace" fontSize="10" fill={BrandDark} letterSpacing="1">
-      <text x="40" y="228" fontWeight="700" fill={Accent}>3× SEILÖSE M 24</text>
-      <text x="40" y="242" fontSize="9" fill={Muted}>stirnseitig · M 24 Ankerhülse</text>
+      <text x="40" y="228" fontWeight="700" fill={Accent}>{t("3× SEILÖSE M 24", "3× M 24 LIFTING EYE", "3× ANNEAU DE LEVAGE M 24")}</text>
+      <text x="40" y="242" fontSize="9" fill={Muted}>{t("stirnseitig · M 24 Ankerhülse", "end face · M 24 anchor socket", "face frontale · douille d'ancrage M 24")}</text>
 
       <text x="125" y="380" textAnchor="middle" fontWeight="700">1</text>
       <text x="250" y="380" textAnchor="middle" fontWeight="700">2</text>
@@ -125,10 +131,13 @@ export const RiggingDiagram: React.FC = () => (
 
     <line x1="0" y1="355" x2="500" y2="355" stroke={BrandDark} strokeOpacity="0.4" strokeWidth="1" strokeDasharray="2 4" />
   </svg>
-);
+  );
+};
 
-export const SetzreihenfolgeDiagram: React.FC = () => (
-  <svg viewBox="0 0 600 220" style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label="Setzreihenfolge: Halbrund A, Halbrund B, Mittelteil">
+export const SetzreihenfolgeDiagram: React.FC = () => {
+  const t = useT();
+  return (
+  <svg viewBox="0 0 600 220" style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label={t("Setzreihenfolge: Halbrund A, Halbrund B, Mittelteil", "Order of setting: half-round A, half-round B, centre part", "Ordre de pose : demi-cercle A, demi-cercle B, élément central")}>
     <defs>
       <pattern id="am-concrete3" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
         <rect width="4" height="4" fill="#E5E3DC" />
@@ -140,14 +149,14 @@ export const SetzreihenfolgeDiagram: React.FC = () => (
       <circle cx="70" cy="70" r="70" fill="none" stroke={BrandDark} strokeOpacity="0.15" strokeWidth="1" strokeDasharray="3 3" />
       <path d="M 10 70 A 60 60 0 0 1 130 70 L 100 70 A 30 30 0 0 0 40 70 Z" fill="url(#am-concrete3)" stroke={BrandDark} strokeWidth="1" />
       <path d="M 10 70 A 60 60 0 0 0 130 70 L 100 70 A 30 30 0 0 1 40 70 Z" fill="url(#am-concrete3)" stroke={BrandDark} strokeWidth="1" opacity="0.35" />
-      <text x="70" y="170" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="10" fontWeight="700" fill={BrandDark} letterSpacing="1">01 · HALBRUND A</text>
+      <text x="70" y="170" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="10" fontWeight="700" fill={BrandDark} letterSpacing="1">{t("01 · HALBRUND A", "01 · HALF-ROUND A", "01 · DEMI-CERCLE A")}</text>
     </g>
 
     <g transform="translate(210,30)">
       <circle cx="70" cy="70" r="70" fill="none" stroke={BrandDark} strokeOpacity="0.15" strokeWidth="1" strokeDasharray="3 3" />
       <path d="M 10 70 A 60 60 0 0 1 130 70 L 100 70 A 30 30 0 0 0 40 70 Z" fill="url(#am-concrete3)" stroke={BrandDark} strokeWidth="1" />
       <path d="M 10 70 A 60 60 0 0 0 130 70 L 100 70 A 30 30 0 0 1 40 70 Z" fill="url(#am-concrete3)" stroke={BrandDark} strokeWidth="1" />
-      <text x="70" y="170" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="10" fontWeight="700" fill={BrandDark} letterSpacing="1">02 · HALBRUND B</text>
+      <text x="70" y="170" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="10" fontWeight="700" fill={BrandDark} letterSpacing="1">{t("02 · HALBRUND B", "02 · HALF-ROUND B", "02 · DEMI-CERCLE B")}</text>
     </g>
 
     <g transform="translate(390,30)">
@@ -156,7 +165,7 @@ export const SetzreihenfolgeDiagram: React.FC = () => (
       <path d="M 10 70 A 60 60 0 0 0 130 70 L 100 70 A 30 30 0 0 1 40 70 Z" fill="url(#am-concrete3)" stroke={BrandDark} strokeWidth="1" />
       <circle cx="70" cy="70" r="30" fill={Accent} opacity="0.85" stroke={BrandDark} strokeWidth="1" />
       <circle cx="70" cy="70" r="14" fill="#F2F0EB" stroke={BrandDark} strokeWidth="1" />
-      <text x="70" y="170" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="10" fontWeight="700" fill={Accent} letterSpacing="1">03 · MITTELTEIL</text>
+      <text x="70" y="170" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="10" fontWeight="700" fill={Accent} letterSpacing="1">{t("03 · MITTELTEIL", "03 · CENTRE PART", "03 · ÉLÉMENT CENTRAL")}</text>
     </g>
 
     <g stroke={Muted} strokeWidth="1.5" fill="none">
@@ -166,5 +175,6 @@ export const SetzreihenfolgeDiagram: React.FC = () => (
       <polygon points="380,100 374,96 374,104" fill={Muted} stroke="none" />
     </g>
   </svg>
-);
+  );
+};
 

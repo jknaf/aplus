@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import PageShell from '../components/PageShell';
@@ -6,6 +6,9 @@ import ModellAnsicht from '../components/katalog/ModellAnsicht';
 import { konfiguratorFrei, useKonfiguratorFrei, usePreise } from '../components/katalog/usePreise';
 import CodeDialog, { KONFIGURATOR_ANFRAGE, KONFIGURATOR_TEXT, KONFIGURATOR_TITEL } from '../components/katalog/CodeDialog';
 import { anzahlImPark, merken } from '../components/konfigurator/merkliste';
+import type { ParkTeil } from '../components/katalog/ParkAnsicht';
+
+const ParkAnsicht = lazy(() => import('../components/katalog/ParkAnsicht'));
 
 // Daten: public/katalog/katalog.json, erzeugt aus der Archicad-Skate-Bibliothek
 // (08_CAD_Blender/10_Katalog/katalog_web.py). Preise kommen nur über /api/skate-preise.
@@ -22,6 +25,25 @@ interface Element {
   gewicht: { kg: number; hinweis: string } | null;
 }
 interface Katalog { stand: string; quelle: string; gruppen: string[]; elemente: Element[] }
+
+// Skatepark-Beispiele: public/katalog/parks.json, erzeugt von 08_CAD_Blender/08_Preisliste/parks_web.py.
+// Preise je Park (id) und Elementgruppe (id:A…) kommen wie die Elementpreise nur über /api/skate-preise.
+interface Beispiel {
+  id: string; nr: number; name: string; laenge_m: string; breite_m: string; hoehe_cm: [number, number]; anzahl: number;
+  gruppen: { teil: string; h: string; l: number; b: number }[];
+  stueckliste: { slug: string; name: string; anzahl: number }[];
+  bild: string; extra: string | null; flaeche: number[] | null; teile: ParkTeil[];
+}
+
+const qm = (p: Beispiel) => Math.round(parseFloat(p.laenge_m.replace(',', '.')) * parseFloat(p.breite_m.replace(',', '.')));
+const GROESSEN = [
+  { name: 'Alle', passt: () => true },
+  { name: 'Bis 300 m²', passt: (p: Beispiel) => qm(p) <= 300 },
+  { name: '300 bis 400 m²', passt: (p: Beispiel) => qm(p) > 300 && qm(p) <= 400 },
+  { name: 'Über 400 m²', passt: (p: Beispiel) => qm(p) > 400 },
+];
+const sternchen = (p: Beispiel) => p.laenge_m.endsWith('*') || p.breite_m.endsWith('*');
+const hoehen = (p: Beispiel) => p.hoehe_cm[0] === p.hoehe_cm[1] ? `${p.hoehe_cm[0]} cm` : `${p.hoehe_cm[0]} bis ${p.hoehe_cm[1]} cm`;
 
 const ANFRAGE = 'mailto:post@aplusurbandesign.com?subject=' + encodeURIComponent('Preiscode für den Skate-Katalog')
   + '&body=' + encodeURIComponent('Guten Tag,\n\nbitte senden Sie mir den Code zur Freischaltung der Preise im Skate-Katalog.\n\nName:\nFirma / Kommune:\nTelefon:\n');
@@ -178,6 +200,102 @@ const Detail: React.FC<{
   );
 };
 
+const ParkDetail: React.FC<{
+  p: Beispiel; preise: Record<string, string> | null; onSperre: () => void; onClose: () => void; vor?: Beispiel; zurueck?: Beispiel;
+}> = ({ p, preise, onSperre, onClose, vor, zurueck }) => {
+  const preis = (k: string) => (preise ? preisText(preise[k]) ?? 'auf Anfrage' : null);
+  useEffect(() => {
+    const esc = (ev: KeyboardEvent) => ev.key === 'Escape' && onClose();
+    window.addEventListener('keydown', esc);
+    document.body.style.overflow = 'hidden';
+    return () => { window.removeEventListener('keydown', esc); document.body.style.overflow = 'unset'; };
+  }, [onClose]);
+  return createPortal(
+    <div className="fixed inset-0 z-[60] bg-brand-dark/50 backdrop-blur-sm flex items-stretch md:items-center justify-center md:p-6" onClick={onClose}>
+      <div onClick={(ev) => ev.stopPropagation()} className="relative w-full max-w-7xl bg-brand-bg md:rounded-2xl shadow-2xl overflow-y-auto md:overflow-hidden md:h-[min(92vh,880px)] grid md:grid-cols-[1.6fr_1fr]">
+        <button type="button" onClick={onClose} aria-label="Schließen" className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/80 border border-brand-dark/10 flex items-center justify-center hover:text-brand-orange">
+          <span className="material-symbols-outlined">close</span>
+        </button>
+        <div className="relative aspect-[4/3] md:aspect-auto bg-[radial-gradient(ellipse_at_50%_40%,#ffffff_0%,#E5E3DC_75%)]">
+          <Suspense fallback={<img src={p.bild} alt={p.name} className="absolute inset-0 w-full h-full object-contain p-6" />}>
+            <ParkAnsicht key={p.id} teile={p.teile} extra={p.extra} flaeche={p.flaeche} poster={p.bild} alt={`3D-Modell ${p.name}`} />
+          </Suspense>
+          <div className="absolute bottom-4 left-4 flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-brand-muted pointer-events-none">
+            <span className="material-symbols-outlined text-base">3d_rotation</span> Ziehen zum Drehen · Scrollen zum Zoomen
+          </div>
+        </div>
+        {/* Rechts scrollt allein, der Park links bleibt stehen */}
+        <div className="p-6 md:p-10 flex flex-col md:overflow-y-auto">
+          <span className="font-mono text-xs uppercase tracking-widest text-brand-orange mb-3">Skatepark-Beispiel</span>
+          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mb-2">{p.name}</h2>
+          <p className="font-mono text-sm text-brand-muted mb-6">Fläche {p.laenge_m} × {p.breite_m} m · {p.anzahl} Elemente</p>
+          <div className="mb-8"><PreisBadge preis={preis(p.id)} gross onSperre={onSperre} /></div>
+
+          <dl className="grid grid-cols-3 gap-3 mb-8">
+            {[['Fläche', `${qm(p)} m²${sternchen(p) ? '*' : ''}`], ['Elemente', String(p.anzahl)], ['Höhen', hoehen(p)]].map(([k, v]) => (
+              <div key={k} className="rounded-xl bg-white border border-brand-dark/5 px-3 py-3">
+                <dt className="font-mono text-[10px] uppercase tracking-widest text-brand-muted">{k}</dt>
+                <dd className="font-heading font-extrabold text-brand-dark text-lg leading-tight mt-1">{v}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <h3 className="font-mono text-xs uppercase tracking-widest text-brand-muted mb-1">Elementgruppen</h3>
+          <dl className="mb-8">
+            {p.gruppen.map((g) => (
+              <div key={g.teil} className="grid grid-cols-[auto_1fr_auto] items-baseline gap-4 py-2.5 border-b border-brand-dark/5 text-sm">
+                <dt className="font-mono font-bold text-brand-orange w-10">{g.teil}</dt>
+                <dd className="text-brand-muted">H {g.h} · L {g.l} · B {g.b} cm</dd>
+                <dd className="text-right"><PreisBadge preis={preis(`${p.id}:${g.teil}`)} onSperre={onSperre} /></dd>
+              </div>
+            ))}
+          </dl>
+
+          <h3 className="font-mono text-xs uppercase tracking-widest text-brand-muted mb-1">Stückliste</h3>
+          <ul className="mb-6">
+            {p.stueckliste.map((t) => (
+              <li key={t.slug}>
+                <Link to={`/katalog/${t.slug}`} className="flex justify-between gap-6 py-2 border-b border-brand-dark/5 text-sm text-brand-dark hover:text-brand-orange">
+                  <span>{t.name}</span><span className="font-mono text-brand-muted">{t.anzahl} ×</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="text-xs text-brand-muted mb-6">
+            Die Elemente sind hier zusammengestellt, um Möglichkeiten und Preise zu zeigen. Jede Anlage lässt sich umstellen und erweitern.
+            {sternchen(p) && ' * Maße der Fläche ohne angeböschte Bereiche.'}
+          </p>
+
+          <div className="mt-auto pt-6 flex items-center justify-between gap-4 border-t border-brand-dark/10">
+            {zurueck ? <Link to={`/katalog/${zurueck.id}`} className="flex items-center gap-1 text-sm text-brand-muted hover:text-brand-orange"><span className="material-symbols-outlined">arrow_back</span>{zurueck.name}</Link> : <span />}
+            {vor ? <Link to={`/katalog/${vor.id}`} className="flex items-center gap-1 text-sm text-brand-muted hover:text-brand-orange text-right">{vor.name}<span className="material-symbols-outlined">arrow_forward</span></Link> : <span />}
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  );
+};
+
+const ParkKarte: React.FC<{ p: Beispiel; preis: string | null; onSperre: () => void }> = ({ p, preis, onSperre }) => (
+  <Link
+    to={`/katalog/${p.id}`}
+    className="group rounded-2xl overflow-hidden border border-brand-dark/5 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.05)] hover:border-brand-orange/40 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1"
+  >
+    <div className="aspect-[3/2] bg-[radial-gradient(ellipse_at_50%_40%,#ffffff_0%,#F2F0EB_80%)] overflow-hidden relative">
+      <img src={p.bild} alt={p.name} loading="lazy" decoding="async" width="1200" height="800" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+      <span className="absolute top-3 right-3 material-symbols-outlined text-brand-muted/60 group-hover:text-brand-orange text-xl">3d_rotation</span>
+    </div>
+    <div className="p-4 md:p-5 flex items-end justify-between gap-4">
+      <div>
+        <h3 className="font-extrabold font-heading text-brand-dark uppercase tracking-tight leading-tight group-hover:text-brand-orange transition-colors">{p.name}</h3>
+        <p className="text-xs text-brand-muted mt-1">{p.laenge_m} × {p.breite_m} m · {p.anzahl} Elemente · {hoehen(p)}</p>
+      </div>
+      <div className="shrink-0 whitespace-nowrap"><PreisBadge preis={preis} onSperre={onSperre} /></div>
+    </div>
+  </Link>
+);
+
 const KatalogPage: React.FC = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -188,9 +306,13 @@ const KatalogPage: React.FC = () => {
   const [neuCode, setNeuCode] = useState<string | null>(null);
   const [konfigDialog, setKonfigDialog] = useState(false);
   const konfig = useKonfiguratorFrei();
+  const [parks, setParks] = useState<Beispiel[]>([]);
+  const [groesse, setGroesse] = useState(0);
+  const [alleParks, setAlleParks] = useState(false);
 
   useEffect(() => {
     fetch('/katalog/katalog.json').then((r) => r.json()).then(setKatalog).catch(() => setKatalog(null));
+    fetch('/katalog/parks.json').then((r) => r.json()).then((d: { parks: Beispiel[] }) => setParks([...d.parks].sort((a, b) => b.nr - a.nr)))   // große Anlagen zuerst, kleine über den Filter.catch(() => setParks([]));
     // 3D-Code schon laden, während man die Übersicht ansieht: spart nach dem Klick bis zu 0,25 s
     const t = setTimeout(() => import('@google/model-viewer'), 1500);
     return () => clearTimeout(t);
@@ -202,27 +324,41 @@ const KatalogPage: React.FC = () => {
     return katalog.elemente.filter((e) => !q || [e.name, e.preisliste_code, e.kuerzel, e.gruppe, e.preisliste_produkt].join(' ').toLowerCase().includes(q));
   }, [katalog, suche]);
 
+  const parkTreffer = useMemo(() => {
+    const q = suche.trim().toLowerCase();
+    return parks.filter((p) => GROESSEN[groesse].passt(p) && (!q || [p.name, ...p.stueckliste.map((t) => t.name)].join(' ').toLowerCase().includes(q)));
+  }, [parks, suche, groesse]);
+  // Erst sechs Parks, damit die Einzelteile nicht weit nach unten rutschen; mit Filter oder Suche alle Treffer
+  const parkListe = alleParks || groesse || suche.trim() ? parkTreffer : parkTreffer.slice(0, 6);
+  const parkIndex = parks.findIndex((p) => p.id === slug);
+  const aktivPark = parkIndex >= 0 ? parks[parkIndex] : undefined;
+
   const index = katalog?.elemente.findIndex((e) => e.slug === slug) ?? -1;
   const aktiv = index >= 0 ? katalog!.elemente[index] : undefined;
   const schliessen = () => navigate('/katalog', { replace: false });
 
   return (
     <PageShell
-      title={aktiv ? `${aktiv.name} · Skate-Katalog` : 'Skate-Katalog in 3D'}
-      description="Alle Skate-Elemente von A+ Urban Design in 3D: Tables, Banks, Hips, Ramps, Rails und mehr. Mit Maßen, Codes und Planungsdaten."
+      title={aktivPark ? `${aktivPark.name} · Skate-Katalog` : aktiv ? `${aktiv.name} · Skate-Katalog` : 'Skate-Katalog in 3D'}
+      description="Skatepark-Beispiele und alle Skate-Elemente von A+ Urban Design in 3D: Parks mit Fläche und Stückliste, dazu Tables, Banks, Hips, Ramps, Rails und mehr."
     >
       <section className="pt-32 pb-10 md:pt-40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Katalog</span>
           <h1 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-            Skate-<span className="text-brand-orange">Elemente.</span>
+            Skate-<span className="text-brand-orange">Parks.</span>
           </h1>
           <p className="text-brand-muted mt-6 max-w-2xl mx-auto text-lg">
-            {katalog ? `${katalog.elemente.length} Elemente` : 'Alle Elemente'} in 3D. Drehen, zoomen und vergleichen, mit allen Maßen und Planungsdaten.
+            {parks.length || 'Viele'} Beispielparks und {katalog ? katalog.elemente.length : 'alle'} Elemente in 3D. Erst den passenden Park finden, dann jedes Teil im Detail ansehen.
           </p>
-          <Link to="/konfigurator" className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors">
-            <span className="material-symbols-outlined text-lg">view_in_ar</span> Eigenen Skatepark planen
-          </Link>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a href="#parks" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors">
+              <span className="material-symbols-outlined text-lg">grid_view</span> Beispielparks ansehen
+            </a>
+            <Link to="/konfigurator" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-brand-dark/15 text-brand-dark font-bold uppercase tracking-wider text-sm hover:border-brand-orange hover:text-brand-orange transition-colors">
+              <span className="material-symbols-outlined text-lg">view_in_ar</span> Eigenen Skatepark planen
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -237,6 +373,10 @@ const KatalogPage: React.FC = () => {
             />
           </div>
           <nav className="hidden md:flex flex-1 min-w-0 gap-1.5 overflow-x-auto [scrollbar-width:none]" aria-label="Gruppen">
+            {[['parks', `Parks ${parks.length || ''}`], ['einzelteile', `Einzelteile ${katalog?.elemente.length ?? ''}`]].map(([id, text]) => (
+              <a key={id} href={`#${id}`} className="shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-brand-dark text-white hover:bg-brand-orange transition-colors">{text}</a>
+            ))}
+            <span className="shrink-0 w-px bg-brand-dark/10 mx-1" />
             {katalog?.gruppen.map((g) => (
               <a key={g} href={`#${gruppenId(g)}`} className="shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider text-brand-muted border border-brand-dark/10 hover:border-brand-orange hover:text-brand-orange transition-colors">{g}</a>
             ))}
@@ -265,6 +405,39 @@ const KatalogPage: React.FC = () => {
       </div>
 
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-32">
+        {parks.length > 0 && (
+          <div id="parks" className="mb-24 scroll-mt-40">
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-3 mb-8 border-b border-brand-dark/10 pb-4">
+              <h2 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">Skatepark-Beispiele</h2>
+              <span className="font-mono text-xs text-brand-muted">{parkTreffer.length} Parks</span>
+              <div className="w-full md:w-auto md:ml-auto flex flex-wrap gap-1.5" role="group" aria-label="Nach Fläche filtern">
+                {GROESSEN.map((g, i) => (
+                  <button
+                    key={g.name} type="button" onClick={() => setGroesse(i)} aria-pressed={groesse === i}
+                    className={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider border transition-colors ${groesse === i ? 'bg-brand-orange border-brand-orange text-white' : 'border-brand-dark/10 text-brand-muted hover:border-brand-orange hover:text-brand-orange'}`}
+                  >{g.name}</button>
+                ))}
+              </div>
+            </div>
+            <p className="text-brand-muted max-w-3xl mb-8">Jeder Park ist aus unseren Einzelelementen zusammengestellt, mit Fläche, Stückliste und Gesamtpreis. Im Detail drehen Sie die Anlage in 3D.</p>
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+              {parkListe.map((p) => <ParkKarte key={p.id} p={p} preis={preise ? preisText(preise[p.id]) ?? 'auf Anfrage' : null} onSperre={() => setDialog(true)} />)}
+            </div>
+            {!parkTreffer.length && <p className="text-center text-brand-muted py-12">Kein Park passt zu diesem Filter.</p>}
+            {parkListe.length < parkTreffer.length && (
+              <div className="text-center mt-10">
+                <button type="button" onClick={() => setAlleParks(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-brand-dark/15 text-brand-dark font-bold uppercase tracking-wider text-sm hover:border-brand-orange hover:text-brand-orange transition-colors">
+                  Alle {parkTreffer.length} Parks zeigen <span className="material-symbols-outlined text-lg">expand_more</span>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        <div id="einzelteile" className="scroll-mt-40 mb-10">
+          <h2 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">Einzelteile</h2>
+          <p className="text-brand-muted max-w-3xl mt-4">Alle Elemente modular im 125-cm-Raster. Jedes einzeln in 3D, mit Maßen und Planungsdaten.</p>
+        </div>
         {!katalog && <p className="text-center text-brand-muted py-24">Katalog wird geladen …</p>}
         {katalog?.gruppen.map((g, gi) => {
           const liste = treffer.filter((e) => e.gruppe === g);
@@ -327,6 +500,12 @@ const KatalogPage: React.FC = () => {
         )}
       </section>
 
+      {aktivPark && (
+        <ParkDetail
+          p={aktivPark} preise={preise} onSperre={() => setDialog(true)} onClose={schliessen}
+          zurueck={parks[parkIndex - 1]} vor={parks[parkIndex + 1]}
+        />
+      )}
       {aktiv && (
         <Detail
           e={aktiv} preis={preise ? preisText(preise[aktiv.slug]) ?? 'auf Anfrage' : null} onSperre={() => setDialog(true)} onParkSperre={() => setKonfigDialog(true)} onClose={schliessen}

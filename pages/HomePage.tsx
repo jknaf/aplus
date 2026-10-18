@@ -123,20 +123,26 @@ const ProductScrollytelling: React.FC = () => {
     const [activeId, setActiveId] = useState<string>(PRODUCTS[0].id);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+    // Aktiv ist der Schritt, dessen Mitte der Bildschirmmitte am nächsten liegt. Genau einer, ohne Flackern:
+    // Die Schritte haben feste Höhen, beim Wechsel verschiebt sich nichts.
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('data-id');
-                        if (id) setActiveId(id);
-                    }
-                });
-            },
-            { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
-        );
-        itemRefs.current.forEach((el) => { if (el) observer.observe(el); });
-        return () => { itemRefs.current.forEach((el) => { if (el) observer.unobserve(el); }); };
+        let raf = 0;
+        const pruefen = () => {
+            raf = 0;
+            const mitte = window.innerHeight / 2;
+            let best: string | null = null, abstand = Infinity;
+            itemRefs.current.forEach((el) => {
+                if (!el) return;
+                const r = el.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - mitte);
+                if (d < abstand) { abstand = d; best = el.getAttribute('data-id'); }
+            });
+            if (best) setActiveId(best);
+        };
+        const beimScrollen = () => { if (!raf) raf = requestAnimationFrame(pruefen); };
+        pruefen();
+        window.addEventListener('scroll', beimScrollen, { passive: true });
+        window.addEventListener('resize', beimScrollen);
+        return () => { window.removeEventListener('scroll', beimScrollen); window.removeEventListener('resize', beimScrollen); cancelAnimationFrame(raf); };
     }, []);
 
     return (
@@ -154,8 +160,8 @@ const ProductScrollytelling: React.FC = () => {
 
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
                     {/* Sticky HUD */}
-                    <div className="hidden lg:block lg:w-1/2 sticky top-32">
-                        <div className="relative aspect-square w-full rounded-2xl overflow-hidden border border-brand-dark/10 bg-brand-surface/50 shadow-[0_8px_30px_rgba(0,0,0,0.1)] group">
+                    <div className="hidden lg:block lg:w-1/2 sticky top-[calc(50vh-min(22vw,300px))]">
+                        <div className="relative aspect-square w-full max-h-[600px] rounded-2xl overflow-hidden border border-brand-dark/10 bg-brand-surface/50 shadow-[0_8px_30px_rgba(0,0,0,0.1)] group">
                             {PRODUCTS.map((product) => product.tuvCertified && (
                                 <div
                                     key={`tuv-${product.id}`}
@@ -173,7 +179,7 @@ const ProductScrollytelling: React.FC = () => {
                             {PRODUCTS.map((product) => (
                                 <div
                                     key={product.id}
-                                    className={`absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${activeId === product.id ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}
+                                    className={`absolute inset-0 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${activeId === product.id ? 'opacity-100 scale-100' : 'opacity-0 scale-[1.03]'}`}
                                 >
                                     <Bild sizes="(min-width: 1024px) 60vw, 100vw" 
                                         src={product.imageUrl} 
@@ -193,7 +199,7 @@ const ProductScrollytelling: React.FC = () => {
                     {/* Timeline */}
                     <div className="lg:w-1/2 relative">
                         <div className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand-dark/10 to-transparent hidden md:block"></div>
-                        <div className="flex flex-col gap-2 pb-[30vh]">
+                        <div className="flex flex-col gap-6 lg:gap-0">
                             {PRODUCTS.map((product, index) => {
                                 const isActive = activeId === product.id;
                                 return (
@@ -201,10 +207,10 @@ const ProductScrollytelling: React.FC = () => {
                                         key={product.id}
                                         data-id={product.id}
                                         ref={(el) => { itemRefs.current[index] = el; }}
-                                        className={`group relative pl-0 md:pl-12 transition-all duration-500 ${isActive ? 'py-8' : 'py-6 opacity-40 hover:opacity-70'}`}
+                                        className={`group relative pl-0 md:pl-12 lg:h-[72vh] lg:min-h-[560px] lg:flex lg:items-center lg:snap-center transition-opacity duration-500 ${isActive ? 'opacity-100' : 'lg:opacity-35 lg:hover:opacity-60'}`}
                                     >
                                         <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange shadow-[0_0_15px_rgba(107,143,74,0.4)] scale-125' : 'bg-brand-bg border-brand-dark/20'}`}></div>
-                                        <div className={`relative rounded-2xl border transition-all duration-500 overflow-hidden ${isActive ? 'bg-white border-brand-orange/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)] scale-100' : 'bg-white/40 border-brand-dark/5 scale-[0.98]'}`}>
+                                        <div className={`relative w-full rounded-2xl border transition-[background-color,border-color,box-shadow] duration-500 overflow-hidden ${isActive ? 'bg-white border-brand-orange/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)]' : 'bg-white/60 border-brand-dark/5'}`}>
                                             <div className="lg:hidden h-48 relative overflow-hidden border-b border-brand-dark/10">
                                                 <Bild 
                                                     src={product.imageUrl}
@@ -219,13 +225,13 @@ const ProductScrollytelling: React.FC = () => {
                                                     <span className={`font-mono text-xs tracking-widest uppercase mb-1 block transition-colors ${isActive ? 'text-brand-orange' : 'text-brand-muted'}`}>
                                                         Produkt 0{index + 1}
                                                     </span>
-                                                    {isActive && <span className="material-symbols-outlined text-brand-orange animate-pulse">arrow_outward</span>}
+                                                    <span className={`material-symbols-outlined text-brand-orange transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>arrow_outward</span>
                                                 </div>
                                                 <h3 className={`text-3xl md:text-4xl font-extrabold font-heading uppercase tracking-tight mb-4 transition-colors ${isActive ? 'text-brand-dark' : 'text-brand-muted'}`}>
                                                     {product.title}
                                                 </h3>
-                                                <div className={`grid transition-all duration-500 ease-in-out ${isActive ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
-                                                    <div className="overflow-hidden">
+                                                <div className="mt-6">
+                                                    <div>
                                                         <p className="text-brand-muted leading-relaxed mb-6 border-l-2 border-brand-dark/10 pl-4">{product.usp}</p>
                                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                                                             <div className="bg-brand-surface/40 p-3 rounded-xl border border-brand-dark/5 shadow-sm">

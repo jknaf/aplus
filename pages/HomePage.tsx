@@ -573,7 +573,8 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 z-20 hero-scrim"></div>
 
             {/* LAYER 4: CONTENT */}
-            <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-center pointer-events-none hero-text">
+            {/* safe center: reicht die Höhe nicht (z. B. 800 × 600), beginnt der Text unter dem Menü statt nach oben darunter zu rutschen */}
+            <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 md:pt-24 flex flex-col [justify-content:safe_center] pointer-events-none hero-text">
                  <div className="max-w-7xl w-full">
                     {/* Wisch-Animation am Wrapper: .hero-wisch setzt display:block und würde die Flex-Zeile der Kopfleiste brechen */}
                     <div className="mb-6 md:mb-8 hero-wisch">
@@ -601,10 +602,10 @@ const Hero: React.FC = () => {
                     {/* Roland §3.2: 30-Jahre-Jubiläums-Claim noch klären, vorläufig */}
                     <div className="relative mt-8 md:mt-12">
                         <div className="hero-linie absolute top-0 left-0 w-full h-px bg-white/40"></div>
-                        <dl className="grid grid-cols-2 md:grid-cols-4">
+                        <dl className="grid grid-cols-2 lg:grid-cols-4 gap-y-4">
                             {KENNWERTE.map((k, i) => (
                                 <div key={i} className="hero-spalte pt-5 pr-4" style={{ '--i': i } as React.CSSProperties}>
-                                    <dt className="font-heading font-extrabold text-xl md:text-3xl leading-tight text-white">{t(...k.wert)}</dt>
+                                    <dt className="font-heading font-extrabold text-xl md:text-2xl xl:text-3xl leading-tight text-white">{t(...k.wert)}</dt>
                                     <dd className="mt-2 font-mono text-xs uppercase tracking-widest text-white/75">{t(...k.label)}</dd>
                                 </div>
                             ))}

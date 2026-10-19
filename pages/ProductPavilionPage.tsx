@@ -180,7 +180,7 @@ const ProductPavilionPage: React.FC = () => {
             <div className="mb-32">
                 <div className="mb-8">
                     <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Das Original", "The original", "L'original")}</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] mb-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] mb-4">
                         {t(<>Das <span className="text-brand-orange">Überdachungselement</span></>, <>The <span className="text-brand-orange">shelter element</span></>, <>L'<span className="text-brand-orange">élément d'abri</span></>)}
                     </h2>
                     <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl">
@@ -229,7 +229,7 @@ const ProductPavilionPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
-                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
                     </h2>
                     <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("DATENBLATT: PAVILLON", "DATA SHEET: PAVILION", "FICHE TECHNIQUE : PAVILLON")}</span>

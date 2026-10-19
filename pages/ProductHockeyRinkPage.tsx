@@ -194,7 +194,7 @@ const ProductHockeyRinkPage: React.FC = () => {
             <div className="mb-32">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     {/* INDUSTRIAL HEADER UPDATE */}
-                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
                     </h2>
                     <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("DATENBLATT: BANDENSYSTEME", "DATA SHEET: BOARD SYSTEMS", "FICHE TECHNIQUE : SYSTÈMES DE BANDES")}</span>

@@ -92,7 +92,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32 relative z-20">
                          <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Geschichte", "History", "Histoire")}</span>
-                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
                             {t(<>Vom Swimmingpool <span className="text-brand-orange">zum Bowl</span></>, <>From swimming pool <span className="text-brand-orange">to bowl</span></>, <>De la piscine <span className="text-brand-orange">au bowl</span></>)}
                         </h2>
                         <p className="text-xl text-brand-dark/75 leading-relaxed mb-6">
@@ -126,7 +126,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
                         <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Bauweisen", "Types of construction", "Modes de construction")}</span>
-                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                             {t(<>Geschlossen <span className="text-brand-orange">oder offen</span></>, <>Closed <span className="text-brand-orange">or open</span></>, <>Fermé <span className="text-brand-orange">ou ouvert</span></>)}
                         </h2>
                     </div>
@@ -180,7 +180,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
                         <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Bauweise", "Construction", "Mode de construction")}</span>
-                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                             {t(<>Fertigteil statt <span className="text-brand-orange">Ortbeton</span></>, <>Precast instead of <span className="text-brand-orange">in-situ concrete</span></>, <>Préfabriqué plutôt que <span className="text-brand-orange">béton coulé en place</span></>)}
                         </h2>
                     </div>
@@ -210,7 +210,7 @@ const ProductSkateBowlsPage: React.FC = () => {
             {/* 5. TECH SPECS */}
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
-                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
                     </h2>
                     <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("DATENBLATT: BOWLS", "DATA SHEET: BOWLS", "FICHE TECHNIQUE : BOWLS")}</span>

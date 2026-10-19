@@ -14,7 +14,7 @@ export const ProduktHero: React.FC<{ bild: React.ReactNode; schilder: React.Reac
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/65 to-brand-dark/15"></div>
         <div className="relative z-10 container mx-auto px-4 pt-32 pb-10">
             <div className="flex flex-wrap items-center gap-3 mb-6 animate-fade-in-up">{schilder}</div>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-12 animate-fade-in-up [animation-delay:100ms]">
+            <h1 className="text-[42px] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-12 animate-fade-in-up [animation-delay:100ms]">
                 {titel}
             </h1>
             <div className="flex flex-wrap border-t border-white/25">

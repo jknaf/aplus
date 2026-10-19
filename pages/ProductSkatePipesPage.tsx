@@ -92,7 +92,7 @@ const ProductSkatePipesPage: React.FC = () => {
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32 relative z-20">
                          <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Aufbau", "Structure", "Structure")}</span>
-                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
                             {t(<>Pipes <br/><span className="text-brand-orange">aus Beton</span></>, <>Concrete <br/><span className="text-brand-orange">pipes</span></>, <>Pipes <br/><span className="text-brand-orange">en béton</span></>)}
                         </h2>
                         <p className="text-xl text-brand-dark/75 leading-relaxed mb-6">
@@ -126,7 +126,7 @@ const ProductSkatePipesPage: React.FC = () => {
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
                         <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Höhen", "Heights", "Hauteurs")}</span>
-                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                             {t(<>165, 200 und <span className="text-brand-orange">255 cm</span></>, <>165, 200 and <span className="text-brand-orange">255 cm</span></>, <>165, 200 et <span className="text-brand-orange">255 cm</span></>)}
                         </h2>
                     </div>
@@ -172,7 +172,7 @@ const ProductSkatePipesPage: React.FC = () => {
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
                         <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Halfpipe und Mini-Pipe", "Halfpipe and mini ramp", "Halfpipe et mini-rampe")}</span>
-                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                             {t(<>So ist eine Pipe <span className="text-brand-orange">gebaut</span></>, <>How a pipe is <span className="text-brand-orange">built</span></>, <>Comment une pipe est <span className="text-brand-orange">construite</span></>)}
                         </h2>
                     </div>
@@ -203,7 +203,7 @@ const ProductSkatePipesPage: React.FC = () => {
             {/* 5. TECH SPECS */}
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
-                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
                     </h2>
                     <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("DATENBLATT: PIPES", "DATA SHEET: PIPES", "FICHE TECHNIQUE : PIPES")}</span>

@@ -361,10 +361,9 @@ export const PROJECTS: Project[] = [
         title: "Skatepark Friedrichsdorf",
         category: "Skatepark",
         year: 2022,
-        imageUrl: "/images/skateparks/skatepark-01.jpg",
+        imageUrl: "/images/homepage/hero-anlage-02.jpg",
         images: [
-            "/images/skateparks/skatepark-02.jpg",
-            "/images/skateparks/skatepark-03.jpg",
+            "/images/homepage/thumb-skateanlage.jpg",
         ],
         description: "Die 2.000 m² große Skateanlage liegt auf zwei Ebenen und besteht aus TÜV-zertifizierten Skateelementen aus Beton: Fun-Boxen, Stairs, Pyramid-Hip, Ledges, Rail-Slides sowie eine knapp zwei Meter hohe Pipe. Die Anlage ist teilweise angeböscht und in das Gelände des Sport- und Freizeitgebiets eingebunden.",
         longDescription: [
@@ -471,7 +470,7 @@ export const PROJECTS: Project[] = [
         title: "Bastion Skatepark Alba Iulia",
         category: "Skatepark",
         year: 2024,
-        imageUrl: "/images/skate-anlagen/skate-anlage-01.jpg",
+        imageUrl: "/images/homepage/hero-anlage-01.jpg",
         description: "Der Skatepark liegt im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia (Rumänien). Die Anlage erstreckt sich über mehrere Ebenen und besteht aus modularen Beton-Skateelementen, die man ab etwa 50 m Entfernung nicht mehr sieht. Die historische Festungsmauer wurde im Zuge der Bauarbeiten restauriert.",
         longDescription: [
             "Im ehemaligen Festungsgraben der sternförmigen Alba Carolina in Alba Iulia, Rumänien, entstand ein Skatepark, der aus mehr als 50 m Entfernung unsichtbar bleibt. Das ist gewollt: Die Anlage soll das Bild der Sternfestung nicht stören.",
@@ -479,7 +478,10 @@ export const PROJECTS: Project[] = [
             "Quelle: freiraum-gestalten.info, »Skaten und Denkmalschutz vereinen«."
         ],
         altText: "Bastion Skatepark in Alba Iulia, Rumänien: modulare Beton-Skate-Elemente im historischen Festungsgraben.",
-        images: [],
+        images: [
+            "/images/planung/skateanlage-planen-04.jpg",
+            "/images/skate-bowls/skate-bowl-02.jpg",
+        ],
         productsUsed: [
             { name: "Modulare Skate-Elemente", path: "/produkte/skate-anlagen" },
             { name: "Skate-Bowls", path: "/produkte/skate-bowls-beton" },

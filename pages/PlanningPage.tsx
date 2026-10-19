@@ -275,7 +275,7 @@ const PlanningPage: React.FC = () => {
                 <div className={`md:w-2/3 ${BOX_A} ${BOX_A_TEXT}`}>
                     {t("Skateelemente lassen sich anböschen, also seitlich mit Erde anschütten. So fügen sie sich besser in die Umgebung ein, und zusätzliche Geländer entfallen. Angeböschte Elemente erhalten an der Rückseite einen Ringanker aus Beton, den der Auftraggeber vor Ort herstellt.", "Skate elements can be banked up, meaning earth is heaped against their sides. They then blend into their surroundings better, and extra railings are not needed. Banked-up elements get a concrete ring beam at the back, which the client builds on site.", "Les éléments de skate peuvent être talutés, c'est-à-dire remblayés latéralement avec de la terre. Ils s'intègrent ainsi mieux à l'environnement et les garde-corps supplémentaires deviennent inutiles. Les éléments talutés reçoivent à l'arrière un chaînage en béton, réalisé sur place par le maître d'ouvrage.")}
                 </div>
-                <Foto className="md:w-1/3 min-h-[180px]" src="/images/planung/skatepark-bowl-01.jpg" alt={t("Bowl und Skate-Elemente auf einer neuen Fläche", "Bowl and skate elements on a new surface", "Bowl et éléments de skate sur une surface neuve")} />
+                <Foto className="md:w-1/3 min-h-[180px]" src="/images/skateparks/skatepark-04.jpg" alt={t("Angeböschte Skate-Elemente mit bepflanztem Erdwall", "Banked-up skate elements with a planted earth bank", "Éléments de skate talutés avec un talus planté")} />
             </div>
         </div>
 

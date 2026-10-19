@@ -97,6 +97,11 @@ const ARTICLE_BY_ID = new Map(PRESS_ARTICLES.map((a) => [a.id, a]));
 const articlesOf = (project: PressProject) =>
   project.articleIds.map((id) => ARTICLE_BY_ID.get(id)).filter((a): a is PressArticle => Boolean(a));
 
+// Für das Abzeichen auf den Projektkarten: Projekt-ID → Zahl der Presseberichte
+export const PRESSE_BERICHTE = new Map(
+  PRESS_PROJECTS.filter((p) => p.projectPath).map((p) => [p.projectPath!.replace('/projekte/', ''), articlesOf(p).length]),
+);
+
 const PFEIL = <span className="material-symbols-outlined text-lg text-[#4F6E34] shrink-0" aria-hidden="true">arrow_outward</span>;
 
 // Ein Artikel als Zeile: Fachmedium (und Jahr), auf Wunsch der Titel darunter
@@ -134,7 +139,7 @@ const Anzahl: React.FC<{ n: number }> = ({ n }) => {
 };
 
 const KARTE = 'bg-white rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] overflow-hidden';
-const FACHMEDIEN = ['Kommunaldirekt', 'Freiraum Gestalten', 'Kommunalclick24', 'Flächenmanager', 'Treffpunkt Kommune'];
+export const FACHMEDIEN = ['Kommunaldirekt', 'Freiraum Gestalten', 'Kommunalclick24', 'Flächenmanager', 'Treffpunkt Kommune'];
 
 const PressePage: React.FC = () => {
   const t = useT();

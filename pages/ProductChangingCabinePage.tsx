@@ -5,7 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
-import Plankopf from '../components/Plankopf';
+import Plankopf, { Kopfleiste } from '../components/Plankopf';
 import { BOX_B, BOX_B_TITEL, BOX_B_TEXT } from '../components/ProduktBausteine';
 
 const OtherProducts: React.FC = () => {
@@ -88,12 +88,7 @@ const ProductChangingCabinePage: React.FC = () => {
             fetchPriority="high" />
         <div className="absolute inset-0 hero-scrim-unten"></div>
         <div className="relative z-10 container mx-auto px-4 pt-32 pb-10 hero-text">
-            <div className="flex flex-wrap items-center gap-3 mb-6 animate-fade-in-up">
-                <span className="px-3 py-1 border border-[#B9D39A]/60 text-[#B9D39A] text-xs font-bold uppercase tracking-[0.2em] rounded-md">{t("Freibad und Sport", "Outdoor pool and sport", "Piscine de plein air et sport")}</span>
-                <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider border border-white/35 px-3 py-1 rounded-md">
-                    <span className="material-symbols-outlined text-base">privacy_tip</span> {t("Sichtschutz", "Privacy screen", "Protection visuelle")}
-                </span>
-            </div>
+            <Kopfleiste label={t("Freibad und Sport", "Outdoor pool and sport", "Piscine de plein air et sport")} rechts={t("Sichtschutz", "Privacy screen", "Protection visuelle")} dunkel className="mb-8 animate-fade-in-up" />
             <h1 className="text-[52px] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-12 animate-fade-in-up [animation-delay:100ms]">
                 {t(<>Die<br/>
                 <span className="text-brand-orange">Schnecke</span></>, <>The<br/> <span className="text-brand-orange">Schnecke</span></>, <>La<br/> <span className="text-brand-orange">Schnecke</span></>)}

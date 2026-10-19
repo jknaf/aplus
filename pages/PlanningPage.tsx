@@ -5,6 +5,7 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 import { useKonfiguratorCode } from '../components/katalog/CodeDialog';
 import Bild from '../components/Bild';
 import Plankopf, { Kopfleiste } from '../components/Plankopf';
+import { BOX_A, BOX_A_TITEL, BOX_A_TEXT } from '../components/ProduktBausteine';
 
 const CARD = 'bg-white rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]';
 const BTN = 'inline-flex items-center justify-center gap-2 min-h-12 px-7 rounded-md font-heading font-bold text-sm uppercase tracking-widest transition-colors';
@@ -72,11 +73,10 @@ const Vorteil: React.FC<{ titel: string; text: string }> = ({ titel, text }) => 
     </div>
 );
 
-const Variante: React.FC<{ nr: string; titel: string; text: string }> = ({ nr, titel, text }) => (
-    <div className={`${CARD} p-8`}>
-        <div className="font-heading font-extrabold text-5xl leading-none text-brand-orange/35">{nr}</div>
-        <h3 className="mt-4 mb-2.5 font-heading font-extrabold uppercase text-lg leading-tight text-brand-dark">{titel}</h3>
-        <p className="text-[15px] leading-relaxed text-brand-dark/75">{text}</p>
+const Variante: React.FC<{ titel: string; text: string }> = ({ titel, text }) => (
+    <div className={BOX_A}>
+        <h3 className={`${BOX_A_TITEL} text-brand-dark`}>{titel}</h3>
+        <p className={BOX_A_TEXT}>{text}</p>
     </div>
 );
 
@@ -181,7 +181,7 @@ const PlanningPage: React.FC = () => {
                         {t(<>So planen wir <span className="text-brand-orange">Ihren Skatepark</span></>, <>How we design <span className="text-brand-orange">your skatepark</span></>, <>Comment nous concevons <span className="text-brand-orange">votre skatepark</span></>)}
                     </Plankopf>
                 </div>
-                <p className="lg:w-1/2 text-lg leading-relaxed text-brand-dark/75">
+                <p className="lg:w-1/2 text-xl leading-relaxed text-brand-dark/75">
                     {t("Sie nennen uns die verfügbare Fläche und das Budget. Wir erstellen einen individuellen Entwurf mit Draufsicht, 3D-Zeichnung und Kostenübersicht. Bei besonderen Wünschen senden Sie uns einfach eine Skizze als Vorlage.", "You tell us the available area and the budget. We prepare an individual design with plan view, 3D drawing and cost overview. If you have special wishes, simply send us a sketch as a starting point.", "Vous nous indiquez la surface disponible et le budget. Nous établissons un projet personnalisé avec plan de masse, dessin 3D et aperçu des coûts. Si vous avez des souhaits particuliers, envoyez-nous simplement une esquisse comme base.")}
                 </p>
             </div>
@@ -198,7 +198,7 @@ const PlanningPage: React.FC = () => {
                 </figure>
             </div>
 
-            <p className="mt-6 max-w-4xl text-[15px] leading-relaxed text-brand-dark/75">
+            <p className="mt-6 max-w-4xl text-lg leading-relaxed text-brand-dark/75">
                 {t("Auf bestehenden Flächen werden die Module mit Übergangsblechen aufgestellt, die einen stolperfreien Übergang zum Boden schaffen. Bei neuen Flächen können Module ohne Übergangsbleche verwendet und anbetoniert werden.", "On existing surfaces, the modules are set up with transition plates that create a trip-free transition to the ground. On new surfaces, modules without transition plates can be used, with the new surface concreted up to them.", "Sur les surfaces existantes, les modules sont posés avec des plaques de transition qui assurent un raccord au sol sans risque de trébucher. Sur les surfaces neuves, on peut utiliser des modules sans plaques de transition et les sceller au béton.")}
             </p>
 
@@ -217,8 +217,8 @@ const PlanningPage: React.FC = () => {
                         {t(<>Vom Architekten <span className="text-[#8DB562]">gedacht</span><br/>
                         Nicht vom Verkäufer</>, <>Designed by an <span className="text-[#8DB562]">architect</span><br/> Not by a salesperson</>, <>Pensé par un <span className="text-[#8DB562]">architecte</span><br/> Pas par un vendeur</>)}
                     </Plankopf>
-                    <p className="text-lg leading-relaxed text-white/90">
-                        {t(<>Bei A+ Urban Design ist die Planung kein externer Posten, sondern der Kern unserer Arbeit. Ihr Ansprechpartner <strong className="text-white">Dipl.-Ing. Cüneyit Akcakoca</strong> ist Architekt bei A+ Urban Design.</>, <>At A+ Urban Design, design is not an add-on but the core of our work. Your contact <strong className="text-white">Dipl.-Ing. Cüneyit Akcakoca</strong> is an architect at A+ Urban Design.</>, <>Chez A+ Urban Design, la conception n'est pas un poste externe, mais le cœur de notre travail. Votre interlocuteur, <strong className="text-white">Dipl.-Ing. Cüneyit Akcakoca</strong>, est architecte chez A+ Urban Design.</>)}
+                    <p className="text-xl leading-relaxed text-white/90">
+                        {t(<>Bei A+ Urban Design ist die Planung kein externer Posten, sondern der Kern unserer Arbeit. Ihr Ansprechpartner Dipl.-Ing. Cüneyit Akcakoca ist Architekt bei A+ Urban Design.</>, <>At A+ Urban Design, design is not an add-on but the core of our work. Your contact Dipl.-Ing. Cüneyit Akcakoca is an architect at A+ Urban Design.</>, <>Chez A+ Urban Design, la conception n'est pas un poste externe, mais le cœur de notre travail. Votre interlocuteur, Dipl.-Ing. Cüneyit Akcakoca, est architecte chez A+ Urban Design.</>)}
                     </p>
                 </div>
                 <div className="basis-full lg:basis-1/2 px-8 md:px-14 lg:pl-0 lg:pt-14 flex flex-col justify-center">
@@ -245,15 +245,15 @@ const PlanningPage: React.FC = () => {
                     </Plankopf>
                     <p className="font-mono text-xs uppercase tracking-widest text-brand-dark/75 mb-8">{t("Mit regelmäßiger TÜV-Überprüfung der Fertigungsstätte", "With regular TÜV inspection of the production site", "Avec contrôle régulier du site de fabrication par le TÜV")}</p>
                     <div className="space-y-5">
-                        <p className="text-xl font-heading font-semibold leading-snug">
-                            {t(<>Der Bau eines Skateparks mit modularen Beton-Fertigteilen geht <strong className="text-brand-dark">schneller, ist einfacher und weniger wetterabhängig</strong> als Ortbeton. Unsere TÜV-zertifizierten Module werden im Werk unter kontrollierten Bedingungen produziert, in gleichbleibender Qualität, unabhängig vom Wetter.</>, <>Building a skatepark from modular precast concrete units is <strong className="text-brand-dark">faster, simpler and less dependent on the weather</strong> than in-situ concrete. Our TÜV-certified modules are produced at the factory under controlled conditions, at consistent quality, whatever the weather.</>, <>La construction d'un skatepark en éléments préfabriqués modulaires en béton est <strong className="text-brand-dark">plus rapide, plus simple et moins dépendante de la météo</strong> que le béton coulé en place. Nos modules certifiés TÜV sont produits en usine dans des conditions contrôlées, avec une qualité constante, quel que soit le temps.</>)}
+                        <p className="text-xl text-brand-dark/75 leading-relaxed">
+                            {t(<>Der Bau eines Skateparks mit modularen Beton-Fertigteilen geht schneller, ist einfacher und weniger wetterabhängig als Ortbeton. Unsere TÜV-zertifizierten Module werden im Werk unter kontrollierten Bedingungen produziert, in gleichbleibender Qualität, unabhängig vom Wetter.</>, <>Building a skatepark from modular precast concrete units is faster, simpler and less dependent on the weather than in-situ concrete. Our TÜV-certified modules are produced at the factory under controlled conditions, at consistent quality, whatever the weather.</>, <>La construction d'un skatepark en éléments préfabriqués modulaires en béton est plus rapide, plus simple et moins dépendante de la météo que le béton coulé en place. Nos modules certifiés TÜV sont produits en usine dans des conditions contrôlées, avec une qualité constante, quel que soit le temps.</>)}
                         </p>
                         <p className="text-lg text-brand-dark/75 leading-relaxed">
-                            {t(<>Für die Aufstellung wird lediglich ein <strong className="text-brand-dark">fester Unterbau</strong> benötigt. Die Elemente stehen auf vorhandenen Beton- oder Asphaltflächen, auf Fundamentplatten oder auf einem Schotterbett.</>, <>All that is needed for installation is a <strong className="text-brand-dark">solid base</strong>. The elements stand on existing concrete or asphalt surfaces, on foundation slabs or on a gravel bed.</>, <>La pose ne nécessite qu'une <strong className="text-brand-dark">sous-couche stable</strong>. Les éléments reposent sur des surfaces existantes en béton ou en asphalte, sur des dalles de fondation ou sur un lit de gravier.</>)}
+                            {t(<>Für die Aufstellung wird lediglich ein fester Unterbau benötigt. Die Elemente stehen auf vorhandenen Beton- oder Asphaltflächen, auf Fundamentplatten oder auf einem Schotterbett.</>, <>All that is needed for installation is a solid base. The elements stand on existing concrete or asphalt surfaces, on foundation slabs or on a gravel bed.</>, <>La pose ne nécessite qu'une sous-couche stable. Les éléments reposent sur des surfaces existantes en béton ou en asphalte, sur des dalles de fondation ou sur un lit de gravier.</>)}
                         </p>
                         <p className="text-lg text-brand-dark/75 leading-relaxed">
                             {/* Roland §4.10: "Verfügungssystem" vs. "Verfugungssystem" oder "Montagesystem" noch klären */}
-                            {t(<>Unser eigens entwickeltes <strong className="text-brand-dark">Verfugungssystem</strong> ist UV- und witterungsbeständig, dauerhaft elastisch, schleifbar und befahrbar. Damit lassen sich auch große Anlagen fugenlos verbinden.</>, <>Our own <strong className="text-brand-dark">jointing system</strong> is UV- and weather-resistant, permanently elastic, sandable and rideable. It lets even large parks be joined seamlessly.</>, <>Notre <strong className="text-brand-dark">système de jointoiement</strong>, développé en interne, résiste aux UV et aux intempéries, reste élastique durablement, est ponçable et roulable. Il permet de relier sans joint apparent même de grandes installations.</>)}
+                            {t(<>Unser eigens entwickeltes Verfugungssystem ist UV- und witterungsbeständig, dauerhaft elastisch, schleifbar und befahrbar. Damit lassen sich auch große Anlagen fugenlos verbinden.</>, <>Our own jointing system is UV- and weather-resistant, permanently elastic, sandable and rideable. It lets even large parks be joined seamlessly.</>, <>Notre système de jointoiement, développé en interne, résiste aux UV et aux intempéries, reste élastique durablement, est ponçable et roulable. Il permet de relier sans joint apparent même de grandes installations.</>)}
                         </p>
                     </div>
                 </div>
@@ -263,16 +263,16 @@ const PlanningPage: React.FC = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
-                <Variante nr="1" titel={t("Variante 1: Befestigte Fläche", "Option 1: Paved surface", "Variante 1 : surface revêtue")} text={t("Die Module stehen auf einer bestehenden, befestigten Fläche aus Beton oder Asphalt. Wir montieren sie und markieren die Strecke. Der Belag bleibt unbeschädigt.", "The modules stand on an existing paved surface of concrete or asphalt. We install them and mark out the route. The surface stays undamaged.", "Les modules reposent sur une surface revêtue existante en béton ou en asphalte. Nous les montons et marquons le tracé. Le revêtement reste intact.")} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14">
+                <Variante titel={t("Variante 1: Befestigte Fläche", "Option 1: Paved surface", "Variante 1 : surface revêtue")} text={t("Die Module stehen auf einer bestehenden, befestigten Fläche aus Beton oder Asphalt. Wir montieren sie und markieren die Strecke. Der Belag bleibt unbeschädigt.", "The modules stand on an existing paved surface of concrete or asphalt. We install them and mark out the route. The surface stays undamaged.", "Les modules reposent sur une surface revêtue existante en béton ou en asphalte. Nous les montons et marquons le tracé. Le revêtement reste intact.")} />
                 {/* Roland §4.13: präziser Wortlaut 'sehr liegende Fundamentplatte / einrahmendes Fugensystem' noch klären */}
-                <Variante nr="2" titel={t("Variante 2: Neue Fundamentplatte", "Option 2: New foundation slab", "Variante 2 : nouvelle dalle de fondation")} text={t("Auf einer gesondert hergestellten Strecke werden die Elemente zuerst auf Fundamentplatten aufgestellt und anschließend anbetoniert oder anasphaltiert.", "On a separately prepared route, the elements are first set on foundation slabs and then concreted or asphalted up to their edges.", "Sur un tracé réalisé séparément, les éléments sont d'abord posés sur des dalles de fondation, puis raccordés en béton ou en asphalte.")} />
-                <Variante nr="3" titel={t("Variante 3: Schotterbett", "Option 3: Gravel bed", "Variante 3 : lit de gravier")} text={t("Startrampen und Pipes stehen auf einem verdichteten Schotterbett neben der Fahrfläche. Unter den Arretierungsfüßen liegen Gehwegplatten. Genauso werden Grillplätze und Umkleidekabinen aufgestellt. So lässt sich die Anlage jederzeit wieder abbauen.", "Launch ramps and pipes stand on a compacted gravel bed beside the riding surface. Paving slabs lie under the locking feet. Barbecue areas and changing cubicles are installed the same way. This means the park can be dismantled again at any time.", "Les lanceurs et les pipes reposent sur un lit de gravier compacté à côté de la surface de roulement. Des dalles de trottoir sont placées sous les pieds verrouillables. Les aires de barbecue et les cabines de change se posent de la même façon. L'installation peut ainsi être démontée à tout moment.")} />
-                <Variante nr="4" titel={t("Variante 4: Erdeinbau & Anböschung", "Option 4: Built into the ground & banking", "Variante 4 : intégration au terrain et talutage")} text={t("Skate-Elemente lassen sich in das Gelände einbauen und anböschen. In Friedrichsdorf wurden Teile der Anlage angeböscht, in Altdorf wurde der Serpent eingebaut und begrünt.", "Skate elements can be built into the terrain and banked up with soil. In Friedrichsdorf, parts of the park were banked up; in Altdorf, the serpent run was built in and planted.", "Les éléments de skate peuvent être intégrés au terrain et talutés. À Friedrichsdorf, une partie de l'installation a été talutée ; à Altdorf, le Serpent a été enterré et végétalisé.")} />
+                <Variante titel={t("Variante 2: Neue Fundamentplatte", "Option 2: New foundation slab", "Variante 2 : nouvelle dalle de fondation")} text={t("Auf einer gesondert hergestellten Strecke werden die Elemente zuerst auf Fundamentplatten aufgestellt und anschließend anbetoniert oder anasphaltiert.", "On a separately prepared route, the elements are first set on foundation slabs and then concreted or asphalted up to their edges.", "Sur un tracé réalisé séparément, les éléments sont d'abord posés sur des dalles de fondation, puis raccordés en béton ou en asphalte.")} />
+                <Variante titel={t("Variante 3: Schotterbett", "Option 3: Gravel bed", "Variante 3 : lit de gravier")} text={t("Startrampen und Pipes stehen auf einem verdichteten Schotterbett neben der Fahrfläche. Unter den Arretierungsfüßen liegen Gehwegplatten. Genauso werden Grillplätze und Umkleidekabinen aufgestellt. So lässt sich die Anlage jederzeit wieder abbauen.", "Launch ramps and pipes stand on a compacted gravel bed beside the riding surface. Paving slabs lie under the locking feet. Barbecue areas and changing cubicles are installed the same way. This means the park can be dismantled again at any time.", "Les lanceurs et les pipes reposent sur un lit de gravier compacté à côté de la surface de roulement. Des dalles de trottoir sont placées sous les pieds verrouillables. Les aires de barbecue et les cabines de change se posent de la même façon. L'installation peut ainsi être démontée à tout moment.")} />
+                <Variante titel={t("Variante 4: Erdeinbau & Anböschung", "Option 4: Built into the ground & banking", "Variante 4 : intégration au terrain et talutage")} text={t("Skate-Elemente lassen sich in das Gelände einbauen und anböschen. In Friedrichsdorf wurden Teile der Anlage angeböscht, in Altdorf wurde der Serpent eingebaut und begrünt.", "Skate elements can be built into the terrain and banked up with soil. In Friedrichsdorf, parts of the park were banked up; in Altdorf, the serpent run was built in and planted.", "Les éléments de skate peuvent être intégrés au terrain et talutés. À Friedrichsdorf, une partie de l'installation a été talutée ; à Altdorf, le Serpent a été enterré et végétalisé.")} />
             </div>
 
             <div className="flex flex-col md:flex-row gap-4 mt-5">
-                <div className="md:w-2/3 bg-brand-surface rounded-lg p-7 md:px-8 text-[15px] leading-relaxed text-brand-dark">
+                <div className={`md:w-2/3 ${BOX_A} ${BOX_A_TEXT}`}>
                     {t("Skateelemente lassen sich anböschen, also seitlich mit Erde anschütten. So fügen sie sich besser in die Umgebung ein, und zusätzliche Geländer entfallen. Angeböschte Elemente erhalten an der Rückseite einen Ringanker aus Beton, den der Auftraggeber vor Ort herstellt.", "Skate elements can be banked up, meaning earth is heaped against their sides. They then blend into their surroundings better, and extra railings are not needed. Banked-up elements get a concrete ring beam at the back, which the client builds on site.", "Les éléments de skate peuvent être talutés, c'est-à-dire remblayés latéralement avec de la terre. Ils s'intègrent ainsi mieux à l'environnement et les garde-corps supplémentaires deviennent inutiles. Les éléments talutés reçoivent à l'arrière un chaînage en béton, réalisé sur place par le maître d'ouvrage.")}
                 </div>
                 <Foto className="md:w-1/3 min-h-[180px]" src="/images/planung/skatepark-bowl-01.jpg" alt={t("Bowl und Skate-Elemente auf einer neuen Fläche", "Bowl and skate elements on a new surface", "Bowl et éléments de skate sur une surface neuve")} />
@@ -291,10 +291,10 @@ const PlanningPage: React.FC = () => {
                     <Plankopf label={t("Selbst entwerfen", "Design it yourself", "Concevoir soi-même")} klein className="mb-6">
                         {t(<>Der <span className="text-brand-orange">Skatepark-Planer</span></>, <>The <span className="text-brand-orange">Skatepark Planner</span></>, <>Le <span className="text-brand-orange">configurateur de skatepark</span></>)}
                     </Plankopf>
-                    <p className="text-lg text-brand-dark/75 leading-relaxed mb-4">
+                    <p className="text-xl text-brand-dark/75 leading-relaxed mb-4">
                         {t("Stellen Sie Ihren Park im Browser aus unseren Elementen zusammen, in 3D und als Draufsicht. Der Planer zeigt Maße und Stückliste. Ihren Entwurf senden Sie uns, und wir arbeiten ihn zur fertigen Planung aus.", "Put your park together in the browser from our elements, in 3D and in plan view. The planner shows dimensions and a parts list. You send us your design, and we develop it into the finished plan.", "Composez votre skatepark dans le navigateur à partir de nos éléments, en 3D et en plan de masse. Le planificateur affiche les dimensions et la liste des pièces. Vous nous envoyez votre projet, et nous le transformons en plan définitif.")}
                     </p>
-                    <p className="text-[15px] text-brand-dark/75 leading-relaxed mb-8">
+                    <p className="text-lg text-brand-dark/75 leading-relaxed mb-8">
                         {t("Vorlagen ansehen geht ohne Code. Zum Bearbeiten brauchen Sie Ihren persönlichen Code, den wir Ihnen gern zusenden.", "You can view templates without a code. To edit, you need your personal code, which we are happy to send you.", "Consulter les modèles ne nécessite pas de code. Pour modifier, il vous faut votre code personnel, que nous vous envoyons volontiers.")}
                     </p>
                     <div className="flex flex-wrap gap-3">
@@ -315,7 +315,7 @@ const PlanningPage: React.FC = () => {
                 <Plankopf klein dunkel className="mb-5">
                     {t("Starten wir die Planung?", "Shall we start designing?", "On commence la conception ?")}
                 </Plankopf>
-                <p className="text-lg leading-relaxed text-white/90 max-w-2xl mb-8">
+                <p className="text-xl leading-relaxed text-white/90 max-w-2xl mb-8">
                     {t("Lassen Sie uns über Ihre Fläche sprechen. Erstberatung und Kostenschätzung sind für Sie unverbindlich.", "Let's talk about your site. The initial consultation and cost estimate are non-binding.", "Parlons de votre terrain. La première consultation et l'estimation des coûts sont sans engagement.")}
                 </p>
                 <Link to="/kontakt?projectType=Beratung" className={`${BTN} bg-brand-orange text-white hover:bg-white hover:text-brand-dark`}>

@@ -93,7 +93,7 @@ const FAQSection: React.FC = () => {
                         <Plankopf label={t("Wissen und Technik", "Technical FAQ", "Savoir et technique")} klein className="mb-6">
                             {t(<>Häufige <span className="text-brand-orange">Fragen</span></>, <>Frequently asked <span className="text-brand-orange">questions</span></>, <>Questions <span className="text-brand-orange">fréquentes</span></>)}
                         </Plankopf>
-                        <p className="text-lg leading-relaxed text-brand-muted">
+                        <p className="text-xl leading-relaxed text-brand-dark/75">
                             {t("Alles über Planung, Kosten, Fördermittel und Bau von Skateparks, Pumptracks und BMX-Anlagen, von Ihrem Skatepark-Hersteller.", "Everything about planning, costs, funding and construction of skateparks, pump tracks and BMX facilities, from your skatepark manufacturer.", "Tout sur la planification, les coûts, les aides et la construction de skateparks, de pumptracks et d'installations BMX, par votre fabricant de skateparks.")}
                         </p>
                     </AnimatedSection>
@@ -107,7 +107,7 @@ const FAQSection: React.FC = () => {
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M3 8h10" /><path d="M8 3v10" className="group-open:hidden" /></svg>
                                     </span>
                                 </summary>
-                                <p className="pb-8 md:pl-[80px] pr-2 md:pr-[60px] text-base md:text-[17px] leading-relaxed text-brand-dark/80 max-w-3xl">{faq.a}</p>
+                                <p className="pb-8 md:pl-[80px] pr-2 md:pr-[60px] text-lg leading-relaxed text-brand-dark/75 max-w-3xl">{faq.a}</p>
                             </details>
                         ))}
                     </div>
@@ -572,7 +572,7 @@ const Hero: React.FC = () => {
                             <span className="text-[clamp(2rem,6vw,6rem)] text-white">{t("für", "for", "pour les")}</span>
                             <span className="text-[clamp(2rem,6vw,6rem)] text-brand-orange">{t("Freiräume", "open spaces", "espaces publics")}</span>
                         </h1>
-                        <p className="mt-6 md:mt-8 text-lg md:text-2xl text-white max-w-xl md:max-w-2xl font-normal border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
+                        <p className="mt-6 md:mt-8 text-xl leading-relaxed text-white/90 max-w-xl md:max-w-2xl animate-fade-in-up [animation-delay:300ms]">
                             {/* Roland §3.2: 30-Jahre-Jubiläums-Claim noch klären, vorläufig */}
                             {t(
                                 <>Skateparks, Pumptracks und urbane Anlagen aus Beton und Stahl. <span className="text-white font-bold">Modular. Robust. Fundamentfrei. Recycelbar.</span></>,

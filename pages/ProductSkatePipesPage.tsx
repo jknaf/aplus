@@ -5,7 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
-import { ProduktHero, TechSpecCard, DATENBLATT } from '../components/ProduktBausteine';
+import { ProduktHero, TechSpecCard, DATENBLATT, BOX_A, BOX_A_TITEL } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
@@ -72,8 +72,8 @@ const ProductSkatePipesPage: React.FC = () => {
        {/* 1. HERO mit Kennzahlen (Werte aus den technischen Daten) */}
        <ProduktHero
             bild={<Bild hoch src="/images/skate-pipes/skate-pipe-01.jpg" alt={t("Skate-Pipe aus Betonfertigteilen", "Skate pipe made of precast concrete units", "Pipe de skate en éléments préfabriqués en béton")} className="absolute inset-0 w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />}
-            label="165 · 200 · 255"
-            rechts={t("DIN EN 14974", "EN 14974", "EN 14974")}
+            label={t("Skate-Pipes", "Skate pipes", "Pipes de skate")}
+            rechts={t("Geprüft nach DIN EN 14974", "Tested to EN 14974", "Testé selon la norme EN 14974")}
             titel={t(<>Skate-<br/><span className="text-brand-orange">Pipes</span></>, <>Skate<br/><span className="text-brand-orange">Pipes</span></>, <>Pipes<br/><span className="text-brand-orange">de skate</span></>)}
             kennzahlen={[
                 { wert: "TÜV / GS", label: t("Zertifizierung", "Certification", "Certification") },
@@ -96,7 +96,7 @@ const ProductSkatePipesPage: React.FC = () => {
                             {t("Die Halfpipe entstand in den 1970er-Jahren aus leeren Schwimmbecken. Heute gehört eine Pipe in fast jeden Skatepark. Aus Beton gebaut hält sie besonders lange.", "The halfpipe grew out of empty swimming pools in the 1970s. Today almost every skatepark has a pipe. Built in concrete, it lasts especially long.", "La halfpipe est née dans les années 1970 à partir de piscines vides. Aujourd'hui, presque tous les skateparks ont une pipe. Construite en béton, elle dure particulièrement longtemps.")}
                         </p>
                         <p className="text-lg text-brand-dark/75 leading-relaxed mb-6">
-                            {t(<>Unsere Skate-Pipes sind aus bewehrtem Beton gefertigt. Unter jeder Plattform sitzt eine arretierbare Stütze, an der Oberkante läuft ein verzinktes Copingrohr durch. Wir liefern sie in <strong className="text-brand-dark">165, 200 und 255 cm</strong> Gesamthöhe, jeweils inklusive 15 cm Flat. Es gibt sie als Standard-Pipe oder als Kombi-Pipe mit Banks, Coping-Ramps und Spines.</>, <>Our skate pipes are made of reinforced concrete. Under each platform sits a lockable support, and a galvanised coping tube runs along the top edge. We supply them in overall heights of <strong className="text-brand-dark">165, 200 and 255 cm</strong>, each including a 15 cm flat. They come as a standard pipe or as a combi pipe with banks, coping ramps and spines.</>, <>Nos pipes de skate sont fabriquées en béton armé. Sous chaque plateforme se trouve un support verrouillable, et un tube de coping galvanisé court le long du bord supérieur. Nous les livrons en hauteurs totales de <strong className="text-brand-dark">165, 200 et 255 cm</strong>, plat de 15 cm compris. Elles existent en version standard ou en pipe combi avec banks, rampes à coping et spines.</>)}
+                            {t(<>Unsere Skate-Pipes sind aus bewehrtem Beton gefertigt. Unter jeder Plattform sitzt eine arretierbare Stütze, an der Oberkante läuft ein verzinktes Copingrohr durch. Wir liefern sie in 165, 200 und 255 cm Gesamthöhe, jeweils inklusive 15 cm Flat. Es gibt sie als Standard-Pipe oder als Kombi-Pipe mit Banks, Coping-Ramps und Spines.</>, <>Our skate pipes are made of reinforced concrete. Under each platform sits a lockable support, and a galvanised coping tube runs along the top edge. We supply them in overall heights of 165, 200 and 255 cm, each including a 15 cm flat. They come as a standard pipe or as a combi pipe with banks, coping ramps and spines.</>, <>Nos pipes de skate sont fabriquées en béton armé. Sous chaque plateforme se trouve un support verrouillable, et un tube de coping galvanisé court le long du bord supérieur. Nous les livrons en hauteurs totales de 165, 200 et 255 cm, plat de 15 cm compris. Elles existent en version standard ou en pipe combi avec banks, rampes à coping et spines.</>)}
                         </p>
                         <p className="text-lg text-brand-dark/75 leading-relaxed mb-8">
                             {t("Die kleine Pipe ist mindestens 375 cm breit und lässt sich in Schritten von 187,5 cm erweitern. Mittlere und große Pipes sind mindestens 500 cm breit und folgen einem Modulraster von 250 cm. Montiert wird ohne Fundament auf Asphalt, Beton oder verdichtetem Schotterbett.", "The small pipe is at least 375 cm wide and can be extended in steps of 187.5 cm. Medium and large pipes are at least 500 cm wide and follow a module grid of 250 cm. They are installed without a foundation on asphalt, concrete or a compacted gravel bed.", "La petite pipe mesure au moins 375 cm de large et peut être agrandie par pas de 187,5 cm. Les pipes moyennes et grandes mesurent au moins 500 cm de large et suivent une trame de modules de 250 cm. Le montage se fait sans fondation sur de l'asphalte, du béton ou un lit de gravier compacté.")}
@@ -128,7 +128,7 @@ const ProductSkatePipesPage: React.FC = () => {
                     </div>
                 </div>
 
-                <p className="text-lg text-brand-dark/75 leading-relaxed mb-8 max-w-4xl">
+                <p className="text-xl text-brand-dark/75 leading-relaxed mb-8 max-w-4xl">
                     {t("Die Pipes 165, 200 und 255 sind gleich aufgebaut. Alle Höhen können untereinander kombiniert werden, beispielsweise als Pipe-zu-Pipe-Transfer mit Zwischen-Spine. Die Nutzfläche zwischen den Pipes ist aus massivem Beton, weil dort die stärkste Belastung auftritt.", "Pipes 165, 200 and 255 are built the same way. All heights can be combined with each other, for example as a pipe-to-pipe transfer with a spine in between. The riding area between the pipes is solid concrete, because that is where the heaviest load occurs.", "Les pipes 165, 200 et 255 sont construites de la même façon. Toutes les hauteurs peuvent être combinées entre elles, par exemple en transfert de pipe à pipe avec une spine intermédiaire. La surface de roulement entre les pipes est en béton plein, car c'est là que la sollicitation est la plus forte.")}
                 </p>
 
@@ -148,15 +148,15 @@ const ProductSkatePipesPage: React.FC = () => {
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-8">
-                    <div className="bg-white p-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">{t("Standard-Aufstellung", "Standard layout", "Disposition standard")}</h3>
-                        <p className="text-brand-dark/75 leading-relaxed">
-                            {t(<>Die Pipe steht frei, mit Flat auf beiden Seiten, Plattform und Copingrohr. Komplett aufgebaut ist eine Pipe je nach Höhe 862 bis 1.143 cm lang. Freistehende Skate-Pipes müssen eine <strong className="text-brand-dark">Absturzsicherung (Geländer)</strong> und auf beiden Seiten einen Sicherheitsbereich von mindestens 2 m haben.</>, <>The pipe is free-standing, with a flat on both sides, a platform and a coping tube. Fully assembled, a pipe is 862 to 1,143 cm long, depending on its height. Free-standing skate pipes must have <strong className="text-brand-dark">fall protection (a railing)</strong> and a safety zone of at least 2 m on both sides.</>, <>La pipe est posée librement, avec un plat de chaque côté, une plateforme et un tube de coping. Entièrement montée, une pipe mesure de 862 à 1 143 cm de long selon sa hauteur. Les pipes de skate autoportantes doivent être équipées d'une <strong className="text-brand-dark">protection antichute (garde-corps)</strong> et d'une zone de sécurité d'au moins 2 m de chaque côté.</>)}
+                    <div className={BOX_A}>
+                        <h3 className={`${BOX_A_TITEL} text-brand-dark`}>{t("Standard-Aufstellung", "Standard layout", "Disposition standard")}</h3>
+                        <p className="text-lg text-brand-dark/75 leading-relaxed">
+                            {t(<>Die Pipe steht frei, mit Flat auf beiden Seiten, Plattform und Copingrohr. Komplett aufgebaut ist eine Pipe je nach Höhe 862 bis 1.143 cm lang. Freistehende Skate-Pipes müssen eine Absturzsicherung (Geländer) und auf beiden Seiten einen Sicherheitsbereich von mindestens 2 m haben.</>, <>The pipe is free-standing, with a flat on both sides, a platform and a coping tube. Fully assembled, a pipe is 862 to 1,143 cm long, depending on its height. Free-standing skate pipes must have fall protection (a railing) and a safety zone of at least 2 m on both sides.</>, <>La pipe est posée librement, avec un plat de chaque côté, une plateforme et un tube de coping. Entièrement montée, une pipe mesure de 862 à 1 143 cm de long selon sa hauteur. Les pipes de skate autoportantes doivent être équipées d'une protection antichute (garde-corps) et d'une zone de sécurité d'au moins 2 m de chaque côté.</>)}
                         </p>
                     </div>
-                    <div className="bg-white p-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">{t("Kombi-Pipe", "Combi pipe", "Pipe combi")}</h3>
-                        <p className="text-brand-dark/75 leading-relaxed">
+                    <div className={BOX_A}>
+                        <h3 className={`${BOX_A_TITEL} text-brand-dark`}>{t("Kombi-Pipe", "Combi pipe", "Pipe combi")}</h3>
+                        <p className="text-lg text-brand-dark/75 leading-relaxed">
                             {t("Kombi-Pipes werden mit weiteren Elementen ergänzt. Sie können unterschiedliche Höhen haben, mit zusätzlichen An- und Abfahrtsteilen (Banks oder Quarter-Ramps) ausgestattet sein oder andere Elemente auf dem Flat haben (Spine, Wave oder Bank to Bank). Je nach Höhe gilt für die Zusatzteile eine Mindestbreite.", "Combi pipes are extended with further elements. They can have different heights, be fitted with additional approach and exit sections (banks or quarter ramps), or have other elements on the flat (spine, wave or bank to bank). Depending on the height, the additional parts have a minimum width.", "Les pipes combi sont complétées par d'autres éléments. Elles peuvent avoir des hauteurs différentes, être équipées de parties d'accès et de sortie supplémentaires (banks ou quarters) ou comporter d'autres éléments sur le plat (spine, wave ou bank to bank). Selon la hauteur, les éléments supplémentaires doivent respecter une largeur minimale.")}
                         </p>
                     </div>
@@ -176,19 +176,19 @@ const ProductSkatePipesPage: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-12">
                     <div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-4">{t("Halfpipe vs. Mini-Pipe", "Halfpipe vs. mini ramp", "Halfpipe ou mini-rampe")}</h3>
-                        <p className="text-brand-dark/75 leading-relaxed mb-4">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed mb-4">
                             {t("Die Halfpipe besteht aus einer halben Röhre mit Radius über 3 m, unten in zwei Transitions geteilt und durch ein Flat verbunden. Die Transition wird oben um einen 30–70 cm hohen senkrechten Teil (Vert) verlängert; an der Oberkante sitzt das Copingrohr. Komplette Halfpipes haben Höhen von 3,5 bis 5 m.", "A halfpipe is a half tube with a radius of more than 3 m, split at the bottom into two transitions joined by a flat. At the top, each transition continues into a vertical section (vert) 30–70 cm high, with the coping tube along the top edge. Full-size halfpipes are 3.5 to 5 m high.", "Une halfpipe est un demi-tube d'un rayon supérieur à 3 m, divisé en bas en deux transitions reliées par un plat. En haut, chaque transition se prolonge par une partie verticale (vert) de 30 à 70 cm de haut, avec le tube de coping sur le bord supérieur. Les halfpipes complètes font de 3,5 à 5 m de haut.")}
                         </p>
-                        <p className="text-brand-dark/75 leading-relaxed">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed">
                             {t("Unsere Mini-Pipes sind vereinfachte Halfpipes mit kleineren Radien, niedrigerer Plattform und ohne Vert. Sie sind dadurch leichter zu fahren, für Einsteiger wie für Fortgeschrittene, und lassen sich als Fertigteil liefern.", "Our pipes are mini ramps: simplified halfpipes with smaller radii, a lower platform and no vert. That makes them easier to ride, for beginners and advanced riders alike, and they can be supplied as precast units.", "Nos pipes sont des mini-rampes : des halfpipes simplifiées, avec des rayons plus petits, une plateforme plus basse et sans vert. Elles sont donc plus faciles à rouler, aussi bien pour les débutants que pour les riders confirmés, et peuvent être livrées en éléments préfabriqués.")}
                         </p>
                     </div>
                     <div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-4">{t("Montage", "Installation", "Montage")}</h3>
-                        <p className="text-brand-dark/75 leading-relaxed mb-4">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed mb-4">
                             {t("Die Pipes werden als vorgefertigte Betonmodule geliefert. Jede Pipe gibt es in zwei Ausführungen: mit Geländer zum freien Aufstellen oder in eine Böschung gebaut. Der Radius beträgt 240 cm bei der Pipe 165 und 280 cm bei den Pipes 200 und 255.", "The pipes are supplied as prefabricated concrete modules. Each pipe comes in two versions: with a railing for free-standing installation, or built into an embankment. The radius is 240 cm for pipe 165 and 280 cm for pipes 200 and 255.", "Les pipes sont livrées en modules préfabriqués en béton. Chaque pipe existe en deux versions : avec garde-corps pour une installation autoportante, ou intégrée dans un talus. Le rayon est de 240 cm pour la pipe 165 et de 280 cm pour les pipes 200 et 255.")}
                         </p>
-                        <p className="text-brand-dark/75 leading-relaxed">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed">
                             {t("Alle Module sind nach DIN EN 14974 geprüft, vom TÜV zertifiziert und tragen das GS-Zeichen. Das Copingrohr ist verzinkt, alle Fahrkanten haben einen Kantenschutz aus Hartgummi.", "All modules are tested to EN 14974, certified by TÜV and carry the GS mark. The coping tube is galvanised, and every riding edge has an edge protection profile made of hard rubber.", "Tous les modules sont testés selon la norme EN 14974, certifiés TÜV et portent la marque GS. Le tube de coping est galvanisé, et toutes les arêtes de roulement sont équipées d'une protection en caoutchouc dur.")}
                         </p>
                     </div>

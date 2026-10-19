@@ -4,6 +4,7 @@ import { Link, useT } from '../i18n';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import Bild from '../components/Bild';
 import Plankopf from '../components/Plankopf';
+import { BOX_B, BOX_B_TITEL, BOX_B_TEXT } from '../components/ProduktBausteine';
 
 const LABEL = 'font-mono text-xs uppercase tracking-widest text-[#4F6E34] mb-4';
 const CARD = 'bg-white rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]';
@@ -63,7 +64,7 @@ const AboutPage: React.FC = () => {
                 {t(<>Beton<br/>
                 <span className="text-brand-orange">in Bestform</span></>, <>Concrete<br/> <span className="text-brand-orange">at its best</span></>, <>Le béton<br/> <span className="text-brand-orange">au meilleur de sa forme</span></>)}
             </h1>
-            <p className="text-xl md:text-2xl text-white/95 font-light max-w-2xl mb-12 animate-fade-in-up [animation-delay:400ms]">
+            <p className="text-xl leading-relaxed text-white/90 max-w-2xl mb-12 animate-fade-in-up [animation-delay:400ms]">
                 {t("Skatepark-Hersteller und Planungsbüro aus Stuttgart. Wir machen aus Asphaltflächen Orte für Sport und Bewegung.", "Skatepark manufacturer and design office based in Stuttgart. We turn asphalt surfaces into places for sport and movement.", "Fabricant de skateparks et bureau d'études à Stuttgart. Nous transformons des surfaces d'asphalte en lieux de sport et de mouvement.")}
                 {/* Roland §2.1: 30-Jahre-Jubiläums-Claim noch klären */}
                 <span className="text-white font-bold"> {t("Modular, vandalismussicher, langlebig.", "Modular, vandal-resistant, long-lasting.", "Modulaire, résistant au vandalisme, durable.")}</span>
@@ -96,7 +97,7 @@ const AboutPage: React.FC = () => {
                   <Plankopf label={t("Qualitätsnachweise", "Proof of quality", "Garanties de qualité")} klein dunkel className="mb-6">
                       {t(<>Geprüfte <span className="text-brand-orange">Skate-Elemente</span></>, <>Tested <span className="text-brand-orange">skate elements</span></>, <>Éléments de skate <span className="text-brand-orange">contrôlés</span></>)}
                   </Plankopf>
-                  <p className="text-lg leading-relaxed text-white/90">
+                  <p className="text-xl leading-relaxed text-white/90">
                       {t("Unsere ersten modularen Skate-Elemente entstanden 1998. Im Jahr 2000 erhielten sie das TÜV-Zertifikat und das GS-Zeichen für geprüfte Sicherheit. Heute sind sie nach DIN EN 14974 („Skateparks: Sicherheitstechnische Anforderungen und Prüfverfahren“), nach PPP 63126B und weiteren Normen geprüft. Die Zertifikatsnummer lautet Z1A 056616 0012. Damit waren wir weltweit vermutlich die ersten Hersteller modularer Beton-Skate-Elemente mit TÜV-Siegel. 27 Fachartikel berichten über Anlagen mit unserem System. Inzwischen wurden mehr als 350 Anlagen mit unserem System gebaut.", "Our first modular skate elements were made in 1998. In 2000 they received the TÜV certificate and the GS mark for tested safety. Today they are tested to EN 14974 (“Skateparks: Safety requirements and test methods”), to PPP 63126B and to further standards. The certificate number is Z1A 056616 0012. That probably made us the first manufacturer in the world of modular concrete skate elements with a TÜV seal. 27 trade articles report on parks built with our system. More than 350 parks have now been built with it.", "Nos premiers éléments de skate modulaires ont vu le jour en 1998. En 2000, ils ont obtenu le certificat TÜV et la marque GS pour la sécurité contrôlée. Aujourd'hui, ils sont testés selon la norme EN 14974 (« Skateparks : exigences de sécurité et méthodes d'essai »), selon PPP 63126B et d'autres normes. Le numéro du certificat est Z1A 056616 0012. Nous avons ainsi probablement été les premiers fabricants au monde d'éléments de skate modulaires en béton portant le sceau TÜV. 27 articles spécialisés rendent compte d'installations réalisées avec notre système. Plus de 350 installations ont désormais été construites avec lui.")}
                   </p>
               </div>
@@ -130,7 +131,7 @@ const AboutPage: React.FC = () => {
                       {t(<>Unsere <span className="text-brand-orange">Philosophie</span></>, <>Our <span className="text-brand-orange">philosophy</span></>, <>Notre <span className="text-brand-orange">philosophie</span></>)}
                   </Plankopf>
                   <div className="space-y-5">
-                      <p className="text-xl font-heading font-semibold leading-snug border-l-[3px] border-brand-orange pl-6">
+                      <p className="text-xl text-brand-dark/75 leading-relaxed">
                           {t("Unsere Elemente sollen lange halten, wenig Pflege brauchen und sich später versetzen, umbauen oder recyceln lassen. Die Module lassen sich fast beliebig kombinieren.", "Our elements should last long, need little care and be easy to move, rearrange or recycle later. The modules can be combined almost freely.", "Nos éléments doivent durer longtemps, demander peu d'entretien et pouvoir être déplacés, réagencés ou recyclés par la suite. Les modules se combinent presque à volonté.")}
                       </p>
                       <p className="text-lg text-brand-dark/75 leading-relaxed">
@@ -144,13 +145,13 @@ const AboutPage: React.FC = () => {
                       </p>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                      <div className="bg-brand-surface rounded-lg p-6">
-                          <h4 className="font-heading font-extrabold uppercase text-sm mb-1.5">{t("Nachhaltig", "Sustainable", "Durable")}</h4>
-                          <p className="text-sm leading-relaxed text-brand-dark/75">{t("Beton und Stahl sind weitgehend recycelbar.", "Concrete and steel are largely recyclable.", "Le béton et l'acier sont largement recyclables.")}</p>
+                      <div className={BOX_B}>
+                          <h4 className={BOX_B_TITEL}>{t("Nachhaltig", "Sustainable", "Durable")}</h4>
+                          <p className={BOX_B_TEXT}>{t("Beton und Stahl sind weitgehend recycelbar.", "Concrete and steel are largely recyclable.", "Le béton et l'acier sont largement recyclables.")}</p>
                       </div>
-                      <div className="bg-brand-surface rounded-lg p-6">
-                          <h4 className="font-heading font-extrabold uppercase text-sm mb-1.5">{t("Präzise", "Precise", "Précis")}</h4>
-                          <p className="text-sm leading-relaxed text-brand-dark/75">{t("Millimetergenaue Werksfertigung", "Factory manufacture accurate to the millimetre", "Fabrication en usine au millimètre près")}</p>
+                      <div className={BOX_B}>
+                          <h4 className={BOX_B_TITEL}>{t("Präzise", "Precise", "Précis")}</h4>
+                          <p className={BOX_B_TEXT}>{t("Millimetergenaue Werksfertigung", "Factory manufacture accurate to the millimetre", "Fabrication en usine au millimètre près")}</p>
                       </div>
                   </div>
               </div>

@@ -5,7 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
-import { ProduktHero, TechSpecCard, DATENBLATT } from '../components/ProduktBausteine';
+import { ProduktHero, TechSpecCard, DATENBLATT, BOX_A, BOX_A_TITEL, BOX_A_TEXT, BOX_B, BOX_B_TITEL, BOX_B_TEXT } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
@@ -116,9 +116,9 @@ const ProductPavilionPage: React.FC = () => {
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 1: Anordnungsvarianten mit Bepflanzung (Zeichnung)", "Fig. 1: Layout options with planting (drawing)", "Fig. 1 : variantes d'agencement avec végétalisation (dessin)")}</div>
                     </div>
                     
-                    <div className="bg-white p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">{t("Anwendungen", "Applications", "Applications")}</h3>
-                        <ul className="grid grid-cols-2 gap-4 list-disc list-inside text-brand-dark/75">
+                    <div className={`${BOX_A} my-8`}>
+                        <h3 className={`${BOX_A_TITEL} text-brand-dark`}>{t("Anwendungen", "Applications", "Applications")}</h3>
+                        <ul className={`grid grid-cols-2 gap-4 list-disc list-inside ${BOX_A_TEXT}`}>
                             <li>{t("Haltestellen", "Bus stops", "Arrêts de bus")}</li>
                             <li>{t("Sitznischen", "Seating bays", "Niches d'assise")}</li>
                             <li>{t("Pavillons", "Pavilions", "Pavillons")}</li>
@@ -136,16 +136,16 @@ const ProductPavilionPage: React.FC = () => {
             </div>
 
             <div className="mb-32 grid lg:grid-cols-2 gap-8">
-                <div className="bg-white p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                <div className={BOX_A}>
                     <Plankopf label={t("Einsatzbereiche", "Where it is used", "Domaines d'utilisation")} klein className="mb-6">
                         {t(<>Wetterschutz im <span className="text-brand-orange">öffentlichen Raum</span></>, <>Weather protection in <span className="text-brand-orange">public space</span></>, <>Protection contre les intempéries dans <span className="text-brand-orange">l'espace public</span></>)}
                     </Plankopf>
-                    <p className="text-lg text-brand-dark/75 leading-relaxed">
+                    <p className="text-xl text-brand-dark/75 leading-relaxed">
                         {t("Typische Einsatzorte sind Haltestellen, Schulhöfe, Parks, Campingplätze, Sportanlagen, Friedhöfe und Rastplätze. Das Betonelement mit 240 × 200 × 262 cm hat eine Sitzfläche für 4–5 Personen und schützt insgesamt ca. 10 Personen vor Regen und Sonne. Das Element kann einzeln stehen. Nebeneinander ergibt sich eine durchgehende Haltestellenüberdachung, gegenüber eine Sitznische mit Sichtschutz. Drei oder vier Elemente bilden einen Pavillon mit Sitzfläche für bis zu 16 Personen und Schutz für bis zu 40 Personen.", "Typical locations are bus stops, school playgrounds, parks, campsites, sports grounds, cemeteries and rest areas. The 240 × 200 × 262 cm concrete element has seating for 4–5 people and shelters about 10 people from rain and sun in total. The element can stand alone. Side by side they form a continuous bus stop canopy, and facing each other a seating bay with a privacy screen. Three or four elements make a pavilion with seating for up to 16 people and shelter for up to 40.", "Les lieux d'implantation typiques sont les arrêts de bus, les cours d'école, les parcs, les campings, les équipements sportifs, les cimetières et les aires de repos. L'élément en béton de 240 × 200 × 262 cm offre une assise pour 4 à 5 personnes et protège au total environ 10 personnes de la pluie et du soleil. L'élément peut être posé seul. Côte à côte, plusieurs éléments forment un abribus continu, face à face un niche d'assise avec protection visuelle. Trois ou quatre éléments forment un pavillon avec assise pour jusqu'à 16 personnes et abri pour jusqu'à 40 personnes.")}
                     </p>
                 </div>
 
-                <div className="bg-white p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                <div className={BOX_A}>
                     <Plankopf label={t("Montage", "Installation", "Montage")} klein className="mb-6">
                         {t(<>Aufstellen und <span className="text-brand-orange">versetzen</span></>, <>Installing and <span className="text-brand-orange">moving</span></>, <>Installer et <span className="text-brand-orange">déplacer</span></>)}
                     </Plankopf>
@@ -166,27 +166,27 @@ const ProductPavilionPage: React.FC = () => {
                     <Plankopf label={t("Das Original", "The original", "L'original")} klein className="mb-4">
                         {t(<>Das <span className="text-brand-orange">Überdachungselement</span></>, <>The <span className="text-brand-orange">shelter element</span></>, <>L'<span className="text-brand-orange">élément d'abri</span></>)}
                     </Plankopf>
-                    <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl">
+                    <p className="text-xl text-brand-dark/75 leading-relaxed max-w-3xl">
                         {t("Unser Überdachungselement ist ein einziges Fertigteil aus bewehrtem Beton. Bodenplatte und Sitzbank sind angeformt. Der Autokran setzt das Element in einem Stück, es wiegt rund 6,3 t. Zusammenbauen muss man nichts.", "Our shelter element is a single precast unit in reinforced concrete. The base slab and bench are cast in one piece with it. The mobile crane sets the element in one piece; it weighs about 6.3 t. There is nothing to assemble.", "Notre élément d'abri est une seule pièce préfabriquée en béton armé. La dalle de sol et le banc sont intégrés au moulage. La grue mobile pose l'élément d'un seul tenant ; il pèse environ 6,3 t. Il n'y a rien à assembler.")}
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-                    <div className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">{t("Multifunktional", "Multifunctional", "Polyvalent")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Mehrere Elemente lassen sich frei anordnen und später neu gruppieren. Abgebaut werden muss dafür nichts.", "Several elements can be arranged freely and regrouped later. Nothing has to be dismantled for that.", "Plusieurs éléments peuvent être disposés librement et regroupés autrement par la suite. Il n'y a rien à démonter pour cela.")}</p>
+                    <div className={BOX_B}>
+                        <h3 className={BOX_B_TITEL}>{t("Multifunktional", "Multifunctional", "Polyvalent")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Mehrere Elemente lassen sich frei anordnen und später neu gruppieren. Abgebaut werden muss dafür nichts.", "Several elements can be arranged freely and regrouped later. Nothing has to be dismantled for that.", "Plusieurs éléments peuvent être disposés librement et regroupés autrement par la suite. Il n'y a rien à démonter pour cela.")}</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">{t("Fundamentfrei", "Foundation-free", "Sans fondation")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Kein Fundament und kein Pflaster: Die Vorarbeiten vor Ort sind gering.", "No foundation and no paving: the groundwork on site is minimal.", "Ni fondation ni pavage : les travaux préparatoires sur place sont réduits.")}</p>
+                    <div className={BOX_B}>
+                        <h3 className={BOX_B_TITEL}>{t("Fundamentfrei", "Foundation-free", "Sans fondation")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Kein Fundament und kein Pflaster: Die Vorarbeiten vor Ort sind gering.", "No foundation and no paving: the groundwork on site is minimal.", "Ni fondation ni pavage : les travaux préparatoires sur place sont réduits.")}</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">{t("Robust", "Robust", "Robuste")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Bewehrter Beton C35/45 brennt nicht, verbiegt nicht und ist kaum zu beschädigen. Er ist witterungsbeständig und auch unter Dauernutzung im öffentlichen Raum stabil.", "Reinforced concrete C35/45 does not burn, does not bend and is hard to damage. It is weather-resistant and stays stable even under constant use in public spaces.", "Le béton armé C35/45 ne brûle pas, ne se déforme pas et est difficile à endommager. Il résiste aux intempéries et reste stable même en usage continu dans l'espace public.")}</p>
+                    <div className={BOX_B}>
+                        <h3 className={BOX_B_TITEL}>{t("Robust", "Robust", "Robuste")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Bewehrter Beton C35/45 brennt nicht, verbiegt nicht und ist kaum zu beschädigen. Er ist witterungsbeständig und auch unter Dauernutzung im öffentlichen Raum stabil.", "Reinforced concrete C35/45 does not burn, does not bend and is hard to damage. It is weather-resistant and stays stable even under constant use in public spaces.", "Le béton armé C35/45 ne brûle pas, ne se déforme pas et est difficile à endommager. Il résiste aux intempéries et reste stable même en usage continu dans l'espace public.")}</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">{t("Wartungsarm", "Low-maintenance", "Entretien réduit")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Das Element hat keine Schrauben und keine empfindlichen Teile. Der Boden ist leicht zu reinigen. Die Materialien sind recycelbar.", "The element has no screws and no delicate parts. The floor is easy to clean. The materials are recyclable.", "L'élément n'a ni vis ni pièces fragiles. Le sol est facile à nettoyer. Les matériaux sont recyclables.")}</p>
+                    <div className={BOX_B}>
+                        <h3 className={BOX_B_TITEL}>{t("Wartungsarm", "Low-maintenance", "Entretien réduit")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Das Element hat keine Schrauben und keine empfindlichen Teile. Der Boden ist leicht zu reinigen. Die Materialien sind recycelbar.", "The element has no screws and no delicate parts. The floor is easy to clean. The materials are recyclable.", "L'élément n'a ni vis ni pièces fragiles. Le sol est facile à nettoyer. Les matériaux sont recyclables.")}</p>
                     </div>
                 </div>
 
@@ -195,17 +195,17 @@ const ProductPavilionPage: React.FC = () => {
                     <Plankopf label={t("Für Kommunen und Vereine", "For municipalities and clubs", "Pour les communes et les clubs")} klein className="mb-4">
                         {t(<>Keine Scheibe, <span className="text-brand-orange">die zerbricht</span></>, <>No pane <span className="text-brand-orange">to smash</span></>, <>Aucune vitre <span className="text-brand-orange">à briser</span></>)}
                     </Plankopf>
-                    <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl mb-8">
+                    <p className="text-xl text-brand-dark/75 leading-relaxed max-w-3xl mb-8">
                         {t("Wartehallen aus Glas sind ein häufiges Ziel von Vandalismus. In einer deutschen Stadt mussten nach einer Vandalismuswelle 29 zerschlagene Glasscheiben an 18 Buswartehäuschen ersetzt werden. Die Kosten lagen bei etwa 20.000 Euro. Unser Überdachungselement hat keine Scheiben, die man zerschlagen oder ersetzen müsste.", "Glass waiting shelters are a frequent target of vandalism. In one German city, after a wave of vandalism, 29 smashed panes had to be replaced at 18 bus shelters. The cost was about 20,000 euros. Our shelter element has no panes that could be smashed or would need replacing.", "Les abribus en verre sont une cible fréquente du vandalisme. Dans une ville allemande, après une vague de dégradations, 29 vitres brisées ont dû être remplacées dans 18 abribus. Le coût s'est élevé à environ 20 000 euros. Notre élément d'abri n'a aucune vitre à briser ni à remplacer.")}
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                            <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">{t("Picknickplatz", "Picnic area", "Aire de pique-nique")}</h3>
-                            <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Auf Rastplätzen, Campingplätzen oder dem Vereinsgelände wird das Element zum überdachten Picknickplatz für 8 Personen.", "At rest areas, campsites or club grounds, the element becomes a covered picnic area for 8 people.", "Sur les aires de repos, les campings ou les terrains associatifs, l'élément devient une aire de pique-nique couverte pour 8 personnes.")}</p>
+                        <div className={BOX_B}>
+                            <h3 className={BOX_B_TITEL}>{t("Picknickplatz", "Picnic area", "Aire de pique-nique")}</h3>
+                            <p className={BOX_B_TEXT}>{t("Auf Rastplätzen, Campingplätzen oder dem Vereinsgelände wird das Element zum überdachten Picknickplatz für 8 Personen.", "At rest areas, campsites or club grounds, the element becomes a covered picnic area for 8 people.", "Sur les aires de repos, les campings ou les terrains associatifs, l'élément devient une aire de pique-nique couverte pour 8 personnes.")}</p>
                         </div>
-                        <div className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                            <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">{t("Sportanlagen", "Sports grounds", "Équipements sportifs")}</h3>
-                            <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Am Spielfeldrand schützt das Element Zuschauer und Wartende vor Regen und Sonne.", "At the side of the pitch, the element shelters spectators and people waiting from rain and sun.", "En bordure de terrain, l'élément protège les spectateurs et les personnes qui attendent de la pluie et du soleil.")}</p>
+                        <div className={BOX_B}>
+                            <h3 className={BOX_B_TITEL}>{t("Sportanlagen", "Sports grounds", "Équipements sportifs")}</h3>
+                            <p className={BOX_B_TEXT}>{t("Am Spielfeldrand schützt das Element Zuschauer und Wartende vor Regen und Sonne.", "At the side of the pitch, the element shelters spectators and people waiting from rain and sun.", "En bordure de terrain, l'élément protège les spectateurs et les personnes qui attendent de la pluie et du soleil.")}</p>
                         </div>
                     </div>
                 </div>

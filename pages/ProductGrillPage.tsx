@@ -5,7 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
-import { ProduktHero, TechSpecCard, DATENBLATT } from '../components/ProduktBausteine';
+import { ProduktHero, TechSpecCard, DATENBLATT, BOX_A, BOX_A_TITEL, BOX_A_TEXT, BOX_B, BOX_B_TITEL, BOX_B_TEXT } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
@@ -124,10 +124,10 @@ const ProductGrillPage: React.FC = () => {
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 1: Grillplatz mit Sitzring im Grünen", "Fig. 1: Barbecue area with seating ring in a green setting", "Fig. 1 : aire de barbecue avec banc circulaire dans la verdure")}</div>
                     </div>
                     
-                    <div className="bg-white p-8 my-8 flex rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] items-center justify-between backdrop-blur-sm">
+                    <div className={`${BOX_A} my-8 flex items-center justify-between gap-6`}>
                          <div>
-                            <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase">{t("Abmessungen", "Dimensions", "Dimensions")}</h3>
-                            <p className="text-brand-dark/75 mt-2">{t("Zwei halbrunde Teile mit je rund 3,3 t und ein Mittelteil mit rund 1,0 t.", "Two semicircular parts of about 3.3 t each and a centre part of about 1.0 t.", "Deux éléments demi-circulaires d'environ 3,3 t chacun et un élément central d'environ 1,0 t.")}</p>
+                            <h3 className={`${BOX_A_TITEL} text-brand-dark`}>{t("Abmessungen", "Dimensions", "Dimensions")}</h3>
+                            <p className={BOX_A_TEXT}>{t("Zwei halbrunde Teile mit je rund 3,3 t und ein Mittelteil mit rund 1,0 t.", "Two semicircular parts of about 3.3 t each and a centre part of about 1.0 t.", "Deux éléments demi-circulaires d'environ 3,3 t chacun et un élément central d'environ 1,0 t.")}</p>
                          </div>
                          <div className="text-right">
                              <div className="text-4xl font-mono text-brand-orange font-bold">{t("4,20 m", "4.20 m", "4,20 m")}</div>
@@ -148,27 +148,27 @@ const ProductGrillPage: React.FC = () => {
                     <Plankopf label={t("Konstruktion & Eigenschaften", "Construction & features", "Construction et caractéristiques")} klein className="mb-4">
                         {t(<>Aufbau und <span className="text-brand-orange">Material</span></>, <>Structure and <span className="text-brand-orange">materials</span></>, <>Structure et <span className="text-brand-orange">matériaux</span></>)}
                     </Plankopf>
-                    <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl">
+                    <p className="text-xl text-brand-dark/75 leading-relaxed max-w-3xl">
                         {t("Der Grillplatz besteht aus drei Betonfertigteilen. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl. Der Rost hängt an einer Kette mit Gegengewicht. Gesetzt werden die Teile mit Autokran, Radlader oder Gabelstapler mit mindestens 3,5 t Hublast. Die Konstruktion ist einfach zu bedienen und hat wenige Verschleißteile.", "The barbecue area consists of three precast concrete units. The grate is stainless steel and the support is galvanised steel. The grate hangs from a chain with a counterweight. The parts are set with a mobile crane, wheel loader or a forklift with a lifting capacity of at least 3.5 t. The design is easy to operate and has few wearing parts.", "L'aire de barbecue se compose de trois éléments préfabriqués en béton. La grille est en inox, le support en acier galvanisé. La grille est suspendue à une chaîne avec contrepoids. Les éléments sont posés avec une grue mobile, une chargeuse sur pneus ou un chariot élévateur d'une capacité de levage d'au moins 3,5 t. L'ensemble est simple à utiliser et compte peu de pièces d'usure.")}
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-                    <div className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">{t("Materialien", "Materials", "Matériaux")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Beton, Edelstahl und verzinkter Stahl sind durchweg witterungsbeständig und recycelbar. Der Edelstahlrost ist für Dauernutzung ausgelegt.", "Concrete, stainless steel and galvanised steel are all weather-resistant and recyclable. The stainless steel grate is designed for continuous use.", "Le béton, l'inox et l'acier galvanisé résistent tous aux intempéries et sont recyclables. La grille en inox est conçue pour un usage continu.")}</p>
+                    <div className={BOX_B}>
+                        <h3 className={BOX_B_TITEL}>{t("Materialien", "Materials", "Matériaux")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Beton, Edelstahl und verzinkter Stahl sind durchweg witterungsbeständig und recycelbar. Der Edelstahlrost ist für Dauernutzung ausgelegt.", "Concrete, stainless steel and galvanised steel are all weather-resistant and recyclable. The stainless steel grate is designed for continuous use.", "Le béton, l'inox et l'acier galvanisé résistent tous aux intempéries et sont recyclables. La grille en inox est conçue pour un usage continu.")}</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">{t("Ohne Fundamente", "No foundations", "Sans fondation")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Als Unterbau genügt ein verdichtetes Kies- oder Schotterbett (Körnung 5/30 mm). Fundamente entfallen, und die Bauzeit ist kurz.", "A compacted gravel or crushed-stone bed (grading 5/30 mm) is enough as a base. No foundations are needed, and construction time is short.", "Un lit de gravier ou de concassé compacté (granulométrie 5/30 mm) suffit comme sous-couche. Les fondations sont inutiles et la durée du chantier est courte.")}</p>
+                    <div className={BOX_B}>
+                        <h3 className={BOX_B_TITEL}>{t("Ohne Fundamente", "No foundations", "Sans fondation")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Als Unterbau genügt ein verdichtetes Kies- oder Schotterbett (Körnung 5/30 mm). Fundamente entfallen, und die Bauzeit ist kurz.", "A compacted gravel or crushed-stone bed (grading 5/30 mm) is enough as a base. No foundations are needed, and construction time is short.", "Un lit de gravier ou de concassé compacté (granulométrie 5/30 mm) suffit comme sous-couche. Les fondations sont inutiles et la durée du chantier est courte.")}</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">{t("Vandalismussicher", "Vandal-resistant", "Résistant au vandalisme")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Der Grillplatz ist massiv gebaut und für den unbeaufsichtigten Betrieb im öffentlichen Raum ausgelegt.", "The barbecue area is solidly built and designed to be used unsupervised in public spaces.", "L'aire de barbecue est de construction massive et conçue pour fonctionner sans surveillance dans l'espace public.")}</p>
+                    <div className={BOX_B}>
+                        <h3 className={BOX_B_TITEL}>{t("Vandalismussicher", "Vandal-resistant", "Résistant au vandalisme")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Der Grillplatz ist massiv gebaut und für den unbeaufsichtigten Betrieb im öffentlichen Raum ausgelegt.", "The barbecue area is solidly built and designed to be used unsupervised in public spaces.", "L'aire de barbecue est de construction massive et conçue pour fonctionner sans surveillance dans l'espace public.")}</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-base font-bold font-heading text-brand-dark uppercase mb-2">{t("Höhenverstellbar", "Height-adjustable", "Réglable en hauteur")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Die Grillfläche lässt sich einfach in der Höhe einstellen. Der Windschutzring schützt die Glut vor Wind. Zweimal im Jahr wird die Rolle geölt.", "The cooking surface is easy to adjust in height. The windbreak ring protects the embers from the wind. The pulley is oiled twice a year.", "La surface de cuisson se règle facilement en hauteur. L'anneau pare-vent protège les braises du vent. La poulie est huilée deux fois par an.")}</p>
+                    <div className={BOX_B}>
+                        <h3 className={BOX_B_TITEL}>{t("Höhenverstellbar", "Height-adjustable", "Réglable en hauteur")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Die Grillfläche lässt sich einfach in der Höhe einstellen. Der Windschutzring schützt die Glut vor Wind. Zweimal im Jahr wird die Rolle geölt.", "The cooking surface is easy to adjust in height. The windbreak ring protects the embers from the wind. The pulley is oiled twice a year.", "La surface de cuisson se règle facilement en hauteur. L'anneau pare-vent protège les braises du vent. La poulie est huilée deux fois par an.")}</p>
                     </div>
                 </div>
 
@@ -177,7 +177,7 @@ const ProductGrillPage: React.FC = () => {
                     <Plankopf label={t("Für Kommunen und Vereine", "For municipalities and clubs", "Pour les communes et les clubs")} klein className="mb-4">
                         {t(<>Ein fester Ort <span className="text-brand-orange">fürs Feuer</span></>, <>A permanent place <span className="text-brand-orange">for the fire</span></>, <>Un lieu fixe <span className="text-brand-orange">pour le feu</span></>)}
                     </Plankopf>
-                    <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl mb-6">
+                    <p className="text-xl text-brand-dark/75 leading-relaxed max-w-3xl mb-6">
                         {t("Viele Städte erlauben das Grillen in Parks nur an fest eingerichteten Feuerstellen. Mitgebrachte Grills und Einweggrills sind dort aus Brandschutzgründen oft verboten. Ein fester Grillplatz gibt Badegästen, Campern und Vereinsmitgliedern einen erlaubten Ort zum Grillen. Gegrillt wird über Beton, nicht über der Wiese.", "Many cities only allow barbecues in parks at designated sites. Portable and disposable barbecues are often banned there for fire safety reasons. A permanent barbecue area gives pool visitors, campers and club members a permitted place to cook. The fire is over concrete, not over the lawn.", "De nombreuses villes n'autorisent les barbecues dans les parcs qu'aux foyers aménagés. Les barbecues apportés par les visiteurs et les barbecues jetables y sont souvent interdits pour des raisons de sécurité incendie. Une aire de barbecue fixe offre aux baigneurs, aux campeurs et aux membres d'associations un endroit autorisé pour griller. On grille au-dessus du béton, pas au-dessus de la pelouse.")}
                     </p>
                     <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl">

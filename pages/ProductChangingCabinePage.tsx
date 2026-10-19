@@ -6,6 +6,7 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
 import Plankopf from '../components/Plankopf';
+import { BOX_B, BOX_B_TITEL, BOX_B_TEXT } from '../components/ProduktBausteine';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -123,15 +124,15 @@ const ProductChangingCabinePage: React.FC = () => {
                   <Plankopf label={t("Prinzip", "Principle", "Le principe")} className="mb-8">
                       {t(<>Privatsphäre <span className="text-brand-orange">ohne Türen</span></>, <>Privacy <span className="text-brand-orange">without doors</span></>, <>Intimité <span className="text-brand-orange">sans porte</span></>)}
                   </Plankopf>
-                  <p className="text-xl font-heading font-semibold leading-snug border-l-[3px] border-brand-orange pl-6 mb-5">
+                  <p className="text-xl text-brand-dark/75 leading-relaxed mb-5">
                       {t("In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung ist die Schnecke. Beim Betreten und Verlassen berührt man nichts. Oben und unten bleibt die Kabine offen und sie ist nicht abschließbar. Beides erschwert Missbrauch. Die fugenlose Oberfläche ist leicht zu reinigen.", "At outdoor pools and swimming lakes, doors are often the first victims of vandalism. Our answer is the Schnecke (German for “snail”). You touch nothing when you enter or leave. The cubicle stays open at the top and bottom and cannot be locked. Both make misuse harder. The seamless surface is easy to clean.", "Dans les piscines de plein air et sur les lacs de baignade, les portes sont souvent les premières victimes du vandalisme. Notre solution est la Schnecke (« escargot » en allemand). On ne touche rien pour entrer ou sortir. La cabine reste ouverte en haut et en bas et ne peut pas être verrouillée. Les deux rendent les dégradations plus difficiles. La surface sans joint est facile à nettoyer.")}
                   </p>
                   <p className="text-lg text-brand-dark/75 leading-relaxed mb-8">
                       {t("Die Kabine ist schnell aufgestellt und lässt sich später versetzen. Die Bodenplatte ist fugenlos und liegt direkt auf einem verdichteten Schotterbett. Die Kabine besteht aus bewehrtem Beton und steht auf drei Edelstahlfüßen. Sie ist witterungsbeständig und vandalismussicher.", "The cubicle is quick to set up and can be moved later. The base slab is seamless and lies directly on a compacted gravel bed. The cubicle is made of reinforced concrete and stands on three stainless steel feet. It is weather-resistant and vandal-resistant.", "La cabine se met en place rapidement et peut être déplacée par la suite. La dalle de sol est sans joint et repose directement sur un lit de gravier compacté. La cabine est en béton armé et repose sur trois pieds en inox. Elle résiste aux intempéries et au vandalisme.")}
                   </p>
-                  <div className="bg-brand-surface rounded-lg p-6 mb-8">
-                      <h3 className="font-heading font-extrabold uppercase text-sm [word-spacing:0.12em] mb-1.5">{t("Wartungsarm", "Low-maintenance", "Entretien réduit")}</h3>
-                      <p className="leading-relaxed text-brand-dark/75">{t("Es gibt keine Scharniere, keine Schlösser und kein Holz. Die Kabine bleibt im Winter stehen und verrottet nicht.", "There are no hinges, no locks and no timber. The cubicle can stay in place over winter and does not rot.", "Il n'y a ni charnières, ni serrures, ni bois. La cabine reste en place l'hiver et ne pourrit pas.")}</p>
+                  <div className={`${BOX_B} mb-8`}>
+                      <h3 className={BOX_B_TITEL}>{t("Wartungsarm", "Low-maintenance", "Entretien réduit")}</h3>
+                      <p className={BOX_B_TEXT}>{t("Es gibt keine Scharniere, keine Schlösser und kein Holz. Die Kabine bleibt im Winter stehen und verrottet nicht.", "There are no hinges, no locks and no timber. The cubicle can stay in place over winter and does not rot.", "Il n'y a ni charnières, ni serrures, ni bois. La cabine reste en place l'hiver et ne pourrit pas.")}</p>
                   </div>
                   <Link
                       to="/kontakt?projectType=Möblierung"
@@ -151,7 +152,7 @@ const ProductChangingCabinePage: React.FC = () => {
                       {t(<>Form statt <span className="text-brand-orange">Mechanik</span></>, <>Form instead of <span className="text-brand-orange">mechanics</span></>, <>La forme plutôt que la <span className="text-brand-orange">mécanique</span></>)}
                   </Plankopf>
                   <div className="space-y-5 text-lg leading-relaxed text-white/90">
-                      <p>
+                      <p className="text-xl">
                           {t("Herkömmliche Umkleidekabinen halten im öffentlichen Raum oft nicht lange: Verriegelungen brechen, Scharniere korrodieren, Holz verrottet. Die Schnecke hat nichts davon. Sie schützt durch ihre Form statt durch Mechanik und besteht aus Beton und Edelstahl. Die spiralförmige Wand führt in einen geschützten Innenraum, ganz ohne bewegliche Teile. Unten bleibt ein Abstand von 30 cm zur Bodenplatte, oben ist die Kabine offen. Das sorgt für Luft.", "Conventional changing cubicles often do not last long in public spaces: latches break, hinges corrode, timber rots. The Schnecke has none of that. It gives privacy through its shape rather than through mechanisms and is made of concrete and stainless steel. The spiral wall leads into a sheltered interior with no moving parts at all. There is a 30 cm gap between the wall and the base slab at the bottom, and the cubicle is open at the top. That keeps the air moving.", "Les cabines de change classiques tiennent souvent peu de temps dans l'espace public : les verrous cassent, les charnières se corrodent, le bois pourrit. La Schnecke n'a rien de tout cela. Elle protège par sa forme plutôt que par la mécanique et se compose de béton et d'inox. La paroi en spirale mène à un intérieur protégé, sans aucune pièce mobile. En bas, un espace de 30 cm sépare la paroi de la dalle de sol, et en haut la cabine est ouverte. L'air circule ainsi.")}
                       </p>
                       <p>
@@ -179,7 +180,7 @@ const ProductChangingCabinePage: React.FC = () => {
                   <Plankopf label={t("Einsatz", "Use", "Utilisation")} className="mb-6">
                       {t(<>Umkleide <span className="text-brand-orange">oder Dusche</span></>, <>Changing room <span className="text-brand-orange">or shower</span></>, <>Cabine de change <span className="text-brand-orange">ou douche</span></>)}
                   </Plankopf>
-                  <p className="text-lg text-brand-dark/75 leading-relaxed">
+                  <p className="text-xl text-brand-dark/75 leading-relaxed">
                       {t("Die Schnecke ist für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen gedacht. Sie steht frei als Außenkabine und ist wahlweise auch als Duschkabine erhältlich. Die Duschkabine gibt es fertig mit Bodenablauf und Dusche: Die Bodenplatte wird über die Abwasserleitung gesetzt, dann wird nur noch die Wasserzuleitung angeschlossen. Alternativ gibt es die Kabine nur mit Aussparungen für Gully und Wasserleitung. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.", "The Schnecke is intended for outdoor pools, swimming lakes, lakeside lidos, campsites and sports grounds. It stands free as an outdoor cubicle and is also available as a shower cubicle if wanted. The shower cubicle comes ready-made with a floor drain and shower: the base slab is set over the waste-water pipe, and only the water supply then needs connecting. Alternatively, the cubicle is available with just recesses for a drain and water pipe. Wind, frost and UV radiation do not harm it. The Schnecke does not need constant supervision: it is vandal-resistant and does not burn.", "La Schnecke est destinée aux piscines de plein air, aux lacs de baignade, aux plages aménagées, aux campings et aux équipements sportifs. Elle se pose librement comme cabine d'extérieur et existe aussi, au choix, en cabine de douche. La cabine de douche est livrée prête à l'emploi, avec siphon de sol et douche : la dalle de sol est posée au-dessus de la conduite d'évacuation, il ne reste alors qu'à raccorder l'arrivée d'eau. La cabine existe aussi avec de simples réservations pour le siphon de sol et la conduite d'eau. Le vent, le gel et les UV ne l'abîment pas. La Schnecke n'a pas besoin d'être surveillée en permanence : elle résiste au vandalisme et ne brûle pas.")}
                   </p>
               </div>
@@ -197,7 +198,7 @@ const ProductChangingCabinePage: React.FC = () => {
           <Plankopf label={t("Einsatzbereich", "Where it is used", "Domaine d'utilisation")} className="mb-4">
               {t(<>Freibad und <span className="text-brand-orange">Badesee</span></>, <>Outdoor pool and <span className="text-brand-orange">swimming lake</span></>, <>Piscine de plein air et <span className="text-brand-orange">lac de baignade</span></>)}
           </Plankopf>
-          <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl mb-8">
+          <p className="text-xl text-brand-dark/75 leading-relaxed max-w-3xl mb-8">
               {t("Die Umkleidekabine steht frei im Freibad oder am Badesee. Vor Ort genügt ein verdichtetes, frostsicheres Kiesbett mit 5–20 mm Körnung. Die Bodenplatte kann bündig mit dem Boden oder etwas höher liegen.", "The changing cubicle stands free at an outdoor pool or swimming lake. On site, a compacted, frost-proof gravel bed with 5–20 mm grading is enough. The base slab can sit flush with the ground or slightly above it.", "La cabine de change se pose librement dans une piscine de plein air ou au bord d'un lac de baignade. Sur place, un lit de gravier compacté et résistant au gel, de granulométrie 5–20 mm, suffit. La dalle de sol peut être à fleur du sol ou légèrement au-dessus.")}
           </p>
           <div className="relative w-full aspect-[4/3] md:aspect-[21/9] rounded-xl overflow-hidden group">

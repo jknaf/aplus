@@ -5,7 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
-import { ProduktHero, TechSpecCard, DATENBLATT } from '../components/ProduktBausteine';
+import { ProduktHero, TechSpecCard, DATENBLATT, BOX_B, BOX_B_TITEL, BOX_B_TEXT, BOX_NR } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
@@ -113,7 +113,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
        <ProduktHero
             bild={<Bild hoch src="/images/homepage/hero-anlage-01.jpg" alt={t("Skatepark aus Betonelementen, Gesamtansicht", "Skatepark made of concrete elements, overall view", "Skatepark en éléments de béton, vue d'ensemble")} className="absolute inset-0 w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />}
             label={t("Skate-Anlagen", "Skateparks", "Skateparks")}
-            rechts={t("DIN EN 14974", "EN 14974", "EN 14974")}
+            rechts={t("Geprüft nach DIN EN 14974", "Tested to EN 14974", "Testé selon la norme EN 14974")}
             titel={t(<>Skatepark<br/><span className="text-brand-orange">aus Beton</span></>, <>Concrete<br/><span className="text-brand-orange">skatepark</span></>, <>Skatepark<br/><span className="text-brand-orange">en béton</span></>)}
             kennzahlen={[
                 { wert: "TÜV / GS", label: t("Zertifizierung", "Certification", "Certification") },
@@ -173,16 +173,16 @@ const ProductSkateAnlagenPage: React.FC = () => {
 
                 <div className="grid lg:grid-cols-5 gap-8 mb-8">
                     <div className="lg:col-span-2">
+                        <p className="text-xl text-brand-dark/75 leading-relaxed mb-6">
+                            {t(<>Unsere Skate-Module sind aus bewehrtem Beton hergestellt. Elemente von 35 bis 150 cm Höhe haben höhenverstellbare Füße und sind in Hohlkörperbauweise gebaut. Das spart Gewicht. Module bis 150 cm haben unten Aussparungen für Hubwagen oder Gabelstapler, durch die auch Regenwasser abläuft.</>, <>Our skate modules are made of reinforced concrete. Elements from 35 to 150 cm high have height-adjustable feet and are built as hollow-section units, which saves weight. Modules up to 150 cm have fork pockets underneath for a pallet truck or forklift, which also let rainwater drain away.</>, <>Nos modules de skate sont fabriqués en béton armé. Les éléments de 35 à 150 cm de haut ont des pieds réglables en hauteur et sont conçus en construction creuse, ce qui réduit le poids. Les modules jusqu'à 150 cm comportent en dessous des réservations pour un transpalette ou un chariot élévateur, qui permettent aussi l'écoulement de l'eau de pluie.</>)}
+                        </p>
                         <p className="text-lg text-brand-dark/75 leading-relaxed mb-6">
-                            {t(<>Unsere Skate-Module sind aus bewehrtem Beton hergestellt. Elemente von 35 bis 150 cm Höhe haben <strong className="text-brand-dark">höhenverstellbare Füße</strong> und sind in <strong className="text-brand-dark">Hohlkörperbauweise</strong> gebaut. Das spart Gewicht. Module bis 150 cm haben unten Aussparungen für Hubwagen oder Gabelstapler, durch die auch Regenwasser abläuft.</>, <>Our skate modules are made of reinforced concrete. Elements from 35 to 150 cm high have <strong className="text-brand-dark">height-adjustable feet</strong> and are built as <strong className="text-brand-dark">hollow-section units</strong>, which saves weight. Modules up to 150 cm have fork pockets underneath for a pallet truck or forklift, which also let rainwater drain away.</>, <>Nos modules de skate sont fabriqués en béton armé. Les éléments de 35 à 150 cm de haut ont des <strong className="text-brand-dark">pieds réglables en hauteur</strong> et sont conçus en <strong className="text-brand-dark">construction creuse</strong>, ce qui réduit le poids. Les modules jusqu'à 150 cm comportent en dessous des réservations pour un transpalette ou un chariot élévateur, qui permettent aussi l'écoulement de l'eau de pluie.</>)}
+                            {t(<>Die Elemente gibt es in den Höhen 35, 45, 60, 75, 98, 125 und 150 cm, die Wände sind 8 bis 16 cm stark. Die Pipes sind 165, 200 oder 255 cm hoch. Darin ist das Flat, also der ebene Boden, schon eingerechnet. Sie stehen auf arretierbaren Stützen. Kleine Pipes lassen sich auch aus den niedrigeren Elementen zusammenstellen. Mehr dazu auf der Seite <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">Skate-Pipes</Link>.</>, <>The elements come in heights of 35, 45, 60, 75, 98, 125 and 150 cm, with walls 8 to 16 cm thick. The pipes are 165, 200 or 255 cm high, with the flat (the level floor) already included. They stand on lockable supports. Small pipes can also be put together from the lower elements. More on the <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">skate pipes</Link> page.</>, <>Les éléments existent en hauteurs de 35, 45, 60, 75, 98, 125 et 150 cm, avec des parois de 8 à 16 cm d'épaisseur. Les pipes mesurent 165, 200 ou 255 cm de haut, le plat (le sol horizontal) étant déjà compris. Elles reposent sur des supports verrouillables. De petites pipes peuvent aussi être composées à partir des éléments plus bas. Plus d'informations sur la page <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">pipes de skate</Link>.</>)}
                         </p>
-                        <p className="text-brand-dark/75 leading-relaxed mb-6">
-                            {t(<>Die Elemente gibt es in den Höhen <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 und 150 cm</strong>, die Wände sind 8 bis 16 cm stark. Die Pipes sind 165, 200 oder 255 cm hoch. Darin ist das Flat, also der ebene Boden, schon eingerechnet. Sie stehen auf arretierbaren Stützen. Kleine Pipes lassen sich auch aus den niedrigeren Elementen zusammenstellen. Mehr dazu auf der Seite <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">Skate-Pipes</Link>.</>, <>The elements come in heights of <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 and 150 cm</strong>, with walls 8 to 16 cm thick. The pipes are 165, 200 or 255 cm high, with the flat (the level floor) already included. They stand on lockable supports. Small pipes can also be put together from the lower elements. More on the <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">skate pipes</Link> page.</>, <>Les éléments existent en hauteurs de <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 et 150 cm</strong>, avec des parois de 8 à 16 cm d'épaisseur. Les pipes mesurent 165, 200 ou 255 cm de haut, le plat (le sol horizontal) étant déjà compris. Elles reposent sur des supports verrouillables. De petites pipes peuvent aussi être composées à partir des éléments plus bas. Plus d'informations sur la page <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">pipes de skate</Link>.</>)}
-                        </p>
-                        <p className="text-brand-dark/75 leading-relaxed mb-6">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed mb-6">
                             {t("Die Skate-Elemente aus Beton sind UV- und witterungsbeständig und durch die konische Form auch auf leicht unebenem Untergrund montierbar. Die eingebauten Kantenschutzprofile ermöglichen es, die Skate-Elemente mit offenen Fugen aufzustellen. Auf Wunsch schließen wir die Fugen mit unserem eigenen Verfahren.", "The concrete skate elements are UV- and weather-resistant, and their tapered shape means they can be installed even on slightly uneven ground. The built-in edge protection profiles allow the elements to be set up with open joints. On request, we close the joints using our own method.", "Les éléments de skate en béton résistent aux UV et aux intempéries, et leur forme conique permet de les monter même sur un sol légèrement irrégulier. Les profilés de protection d'arête intégrés permettent de poser les éléments avec des joints ouverts. Sur demande, nous fermons les joints grâce à notre propre procédé.")}
                         </p>
-                        <p className="text-brand-dark/75 leading-relaxed">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed">
                             {t("Die Elemente gibt es in zwei Ausführungen: zum direkten Aufstellen auf einer vorhandenen Fläche oder zum Aufstellen auf einer Fundamentplatte. Im zweiten Fall wird das Flat anschließend mit unserem Fugenverfahren anbetoniert oder anasphaltiert.", "The elements come in two versions: for setting up directly on an existing surface, or for setting up on a foundation slab. In the second case, the flat is then finished in concrete or asphalt using our jointing method.", "Les éléments existent en deux versions : pour une pose directe sur une surface existante, ou pour une pose sur une dalle de fondation. Dans le second cas, le plat est ensuite bétonné ou revêtu d'asphalte avec notre procédé de jointoiement.")}
                         </p>
                     </div>
@@ -205,25 +205,25 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">01</div>
-                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">{t("Standard mit variabler Breite", "Standard with variable width", "Standard à largeur variable")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Die Grundaufstellung hat auf beiden Seiten ein Flat und eine Plattform. Die Breite ist im Modulraster flexibel.", "The basic layout has a flat and a platform on both sides. The width is flexible within the module grid.", "La disposition de base comporte un plat et une plateforme de chaque côté. La largeur est modulable selon la trame des modules.")}</p>
+                    <div className={BOX_B}>
+                        <div className={BOX_NR}>01</div>
+                        <h3 className={BOX_B_TITEL}>{t("Standard mit variabler Breite", "Standard with variable width", "Standard à largeur variable")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Die Grundaufstellung hat auf beiden Seiten ein Flat und eine Plattform. Die Breite ist im Modulraster flexibel.", "The basic layout has a flat and a platform on both sides. The width is flexible within the module grid.", "La disposition de base comporte un plat et une plateforme de chaque côté. La largeur est modulable selon la trame des modules.")}</p>
                     </div>
-                    <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">02</div>
-                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">{t("Kombi mit Spine", "Combi with spine", "Combi avec spine")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Zwei Rampen stehen Rücken an Rücken und sind über einen gemeinsamen Grat verbunden, den Spine.", "Two ramps stand back to back and are joined by a shared ridge, the spine.", "Deux rampes sont placées dos à dos et reliées par une arête commune, la spine.")}</p>
+                    <div className={BOX_B}>
+                        <div className={BOX_NR}>02</div>
+                        <h3 className={BOX_B_TITEL}>{t("Kombi mit Spine", "Combi with spine", "Combi avec spine")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Zwei Rampen stehen Rücken an Rücken und sind über einen gemeinsamen Grat verbunden, den Spine.", "Two ramps stand back to back and are joined by a shared ridge, the spine.", "Deux rampes sont placées dos à dos et reliées par une arête commune, la spine.")}</p>
                     </div>
-                    <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">03</div>
-                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">{t("Kombi mit Banks", "Combi with banks", "Combi avec banks")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Zusatz-Banks erweitern die Anlage seitlich und bieten flache An- und Abfahrten.", "Additional banks extend the park sideways and provide gentle approaches and exits.", "Des banks supplémentaires élargissent l'installation sur les côtés et offrent des entrées et des sorties en pente douce.")}</p>
+                    <div className={BOX_B}>
+                        <div className={BOX_NR}>03</div>
+                        <h3 className={BOX_B_TITEL}>{t("Kombi mit Banks", "Combi with banks", "Combi avec banks")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Zusatz-Banks erweitern die Anlage seitlich und bieten flache An- und Abfahrten.", "Additional banks extend the park sideways and provide gentle approaches and exits.", "Des banks supplémentaires élargissent l'installation sur les côtés et offrent des entrées et des sorties en pente douce.")}</p>
                     </div>
-                    <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">04</div>
-                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">{t("Kombi mit Coping-Ramps", "Combi with coping ramps", "Combi avec rampes à coping")}</h3>
-                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Coping-Ramps haben ein durchlaufendes Copingrohr. Die Rundung ist zum Fahren da, das Rohr zum Grinden.", "Coping ramps have a continuous coping tube. The curve is for riding, the tube for grinding.", "Les rampes à coping sont équipées d'un tube de coping continu. La courbe sert à rouler, le tube à grinder.")}</p>
+                    <div className={BOX_B}>
+                        <div className={BOX_NR}>04</div>
+                        <h3 className={BOX_B_TITEL}>{t("Kombi mit Coping-Ramps", "Combi with coping ramps", "Combi avec rampes à coping")}</h3>
+                        <p className={BOX_B_TEXT}>{t("Coping-Ramps haben ein durchlaufendes Copingrohr. Die Rundung ist zum Fahren da, das Rohr zum Grinden.", "Coping ramps have a continuous coping tube. The curve is for riding, the tube for grinding.", "Les rampes à coping sont équipées d'un tube de coping continu. La courbe sert à rouler, le tube à grinder.")}</p>
                     </div>
                 </div>
             </div>

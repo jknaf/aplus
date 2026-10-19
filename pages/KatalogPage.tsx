@@ -490,7 +490,7 @@ const KatalogPage: React.FC = () => {
         {ansicht === 'parks' && parks.length > 0 && (
           <div id="parks" className="mb-24 scroll-mt-40">
             <Plankopf klein rechts={<>{parkTreffer.length} {t("Parks", "parks", "parcs")}</>} className="mb-8">{t("Skatepark-Beispiele", "Skatepark examples", "Exemples de skateparks")}</Plankopf>
-            <p className="text-brand-muted max-w-3xl mb-8">{t("Jeder Park ist aus unseren Einzelelementen zusammengestellt, mit Fläche, Stückliste und Gesamtpreis. Im Detail drehen Sie die Anlage in 3D.", "Every park is put together from our individual elements, with area, parts list and total price. In the detail view you can rotate the park in 3D.", "Chaque parc est composé de nos éléments individuels, avec surface, liste des pièces et prix total. Dans la vue détaillée, vous pouvez faire pivoter l'installation en 3D.")}</p>
+            <p className="text-xl leading-relaxed text-brand-dark/75 max-w-3xl mb-8">{t("Jeder Park ist aus unseren Einzelelementen zusammengestellt, mit Fläche, Stückliste und Gesamtpreis. Im Detail drehen Sie die Anlage in 3D.", "Every park is put together from our individual elements, with area, parts list and total price. In the detail view you can rotate the park in 3D.", "Chaque parc est composé de nos éléments individuels, avec surface, liste des pièces et prix total. Dans la vue détaillée, vous pouvez faire pivoter l'installation en 3D.")}</p>
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
               {(suche.trim() ? parkTreffer : parkTreffer.slice(0, reihenParks * PARKS_JE_REIHE)).map((p) => <ParkKarte key={p.id} p={p} preis={preise ? preisText(preise[p.id], loc) ?? t("auf Anfrage", "on request", "sur demande") : null} onSperre={() => setDialog(true)} />)}
             </div>
@@ -502,7 +502,7 @@ const KatalogPage: React.FC = () => {
         {ansicht === 'einzelteile' && (<>
         <div id="einzelteile" className="scroll-mt-40 mb-10">
           <Plankopf klein>{t("Einzelteile", "Individual parts", "Éléments individuels")}</Plankopf>
-          <p className="text-brand-muted max-w-3xl mt-4">{t("Alle Elemente modular im 125-cm-Raster. Jedes einzeln in 3D, mit Maßen und Planungsdaten.", "All elements are modular on a 125 cm grid. Each one in 3D, with dimensions and planning data.", "Tous les éléments sont modulaires sur une trame de 125 cm. Chacun en 3D, avec ses cotes et ses données de planification.")}</p>
+          <p className="text-xl leading-relaxed text-brand-dark/75 max-w-3xl mt-4">{t("Alle Elemente modular im 125-cm-Raster. Jedes einzeln in 3D, mit Maßen und Planungsdaten.", "All elements are modular on a 125 cm grid. Each one in 3D, with dimensions and planning data.", "Tous les éléments sont modulaires sur une trame de 125 cm. Chacun en 3D, avec ses cotes et ses données de planification.")}</p>
         </div>
         {!katalog && <p className="text-center text-brand-muted py-24">{t("Katalog wird geladen …", "Loading the catalogue …", "Chargement du catalogue …")}</p>}
         {katalog?.gruppen.map((g, gi) => {
@@ -546,7 +546,7 @@ const KatalogPage: React.FC = () => {
           <div className="mt-8 mb-16 grid md:grid-cols-2 gap-8 border-t border-brand-dark/10 pt-12">
             <div>
               <h2 className="text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em]">{t(<>Gebaut für <span className="text-brand-orange">Jahrzehnte</span></>, <>Built for <span className="text-brand-orange">decades</span></>, <>Conçu pour <span className="text-brand-orange">des décennies</span></>)}</h2>
-              <p className="text-brand-muted mt-4">{t("Alle Elemente sind modular im 125-cm-Raster aufgebaut und lassen sich frei kombinieren, erweitern und umstellen.", "All elements are built modularly on a 125 cm grid and can be combined, extended and rearranged freely.", "Tous les éléments sont conçus de façon modulaire sur une trame de 125 cm et peuvent être combinés, agrandis et réagencés librement.")}</p>
+              <p className="text-xl leading-relaxed text-brand-dark/75 mt-4">{t("Alle Elemente sind modular im 125-cm-Raster aufgebaut und lassen sich frei kombinieren, erweitern und umstellen.", "All elements are built modularly on a 125 cm grid and can be combined, extended and rearranged freely.", "Tous les éléments sont conçus de façon modulaire sur une trame de 125 cm et peuvent être combinés, agrandis et réagencés librement.")}</p>
             </div>
             <ul className="space-y-3 text-sm text-brand-dark">
               {[

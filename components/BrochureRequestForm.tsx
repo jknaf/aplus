@@ -65,7 +65,7 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                                 <span className="text-brand-orange">{t('Katalog', 'Catalogue', 'Catalogue')}</span>
                             </Plankopf>
 
-                            <p className="text-lg text-brand-muted mb-8 max-w-xl leading-relaxed">
+                            <p className="text-xl text-brand-dark/75 mb-8 max-w-xl leading-relaxed">
                                 {t('Unser Katalog enthält alle Elemente mit Maßen, Beispielkombinationen und Normhinweisen sowie die Montage- und Wartungsanleitung.', 'Our catalogue lists every element with dimensions, example combinations and notes on standards, plus the installation and maintenance instructions.', "Notre catalogue présente tous les éléments avec leurs dimensions, des exemples de combinaisons et des indications sur les normes, ainsi que les instructions de montage et d'entretien.")}
                             </p>
 

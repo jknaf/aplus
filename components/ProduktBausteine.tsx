@@ -30,6 +30,17 @@ export const ProduktHero: React.FC<{ bild: React.ReactNode; label: React.ReactNo
     </div>
 );
 
+// Textboxen: Typ A (zwei oder drei nebeneinander) und Typ B (Kachel im Raster), überall gleich.
+const BOX = 'bg-white rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]';
+export const BOX_A = `${BOX} p-8`;
+export const BOX_A_DUNKEL = 'bg-brand-dark text-white rounded-xl p-8';
+export const BOX_A_TITEL = 'font-heading font-extrabold uppercase text-[22px] leading-tight [word-spacing:0.12em] mb-3';
+export const BOX_A_TEXT = 'text-lg leading-relaxed text-brand-dark/75';
+export const BOX_B = `${BOX} p-6`;
+export const BOX_B_TITEL = 'font-heading font-extrabold uppercase text-[17px] leading-snug [word-spacing:0.12em] text-brand-dark mb-2';
+export const BOX_B_TEXT = 'text-base leading-relaxed text-brand-dark/75';
+export const BOX_NR = 'font-mono text-xs uppercase tracking-[0.14em] text-[#4F6E34] mb-2';
+
 // Eine Zeile im Datenblatt. Mit href (Zertifikat) über die ganze Breite, mit GS-Zeichen und Link zu TÜV SÜD.
 export const TechSpecCard: React.FC<{ title: string; value: string; icon?: string; href?: string; linkLabel?: string }> = ({ title, value, href, linkLabel }) => {
     const t = useT();

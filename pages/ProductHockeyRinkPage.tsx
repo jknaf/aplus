@@ -5,7 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
-import { ProduktHero, TechSpecCard, DATENBLATT } from '../components/ProduktBausteine';
+import { ProduktHero, TechSpecCard, DATENBLATT, BOX_A, BOX_A_TITEL, BOX_A_TEXT } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
@@ -99,7 +99,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                             {t("Es gibt zwei Höhen: 40 cm hohe Einfassungselemente aus Beton mit Gummikappe und 110 cm hohe Profilbanden mit Edelstahl-Handlauf für Roll- und Eishockey. Beide Varianten können modular in 1,5-m-Schritten erweitert oder verkleinert werden.", "There are two heights: perimeter elements in concrete, 40 cm high with a rubber cap, and profiled boards, 110 cm high with a stainless steel handrail, for roller and ice hockey. Both versions can be extended or reduced in modular 1.5 m steps.", "Il existe deux hauteurs : des éléments d'enceinte en béton de 40 cm de haut avec capuchon en caoutchouc, et des bandes profilées de 110 cm de haut avec main courante en inox, pour le roller hockey et le hockey sur glace. Les deux variantes peuvent être agrandies ou réduites par modules de 1,5 m.")}
                         </p>
                         <p className="text-lg text-brand-dark/75 leading-relaxed mb-12">
-                            {t(<><strong className="text-brand-dark">Die Banden brauchen keine Bodenbefestigung.</strong> Sie werden ohne Fundament auf bestehende Hartplätze gestellt. Der Belag bleibt unbeschädigt. Die am stärksten beanspruchte Fläche besteht aus massivem Beton.</>, <><strong className="text-brand-dark">The boards need no ground fixings.</strong> They are placed on existing hard courts without a foundation. The surface stays undamaged. The area that takes the heaviest wear is solid concrete.</>, <><strong className="text-brand-dark">Les bandes n'ont besoin d'aucune fixation au sol.</strong> Elles se posent sans fondation sur des terrains en dur existants. Le revêtement reste intact. La zone la plus sollicitée est en béton plein.</>)}
+                            {t(<>Die Banden brauchen keine Bodenbefestigung. Sie werden ohne Fundament auf bestehende Hartplätze gestellt. Der Belag bleibt unbeschädigt. Die am stärksten beanspruchte Fläche besteht aus massivem Beton.</>, <>The boards need no ground fixings. They are placed on existing hard courts without a foundation. The surface stays undamaged. The area that takes the heaviest wear is solid concrete.</>, <>Les bandes n'ont besoin d'aucune fixation au sol. Elles se posent sans fondation sur des terrains en dur existants. Le revêtement reste intact. La zone la plus sollicitée est en béton plein.</>)}
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -119,9 +119,9 @@ const ProductHockeyRinkPage: React.FC = () => {
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 1: Inline-Hockey auf einem Feld mit niedriger Einfassung", "Fig. 1: Inline hockey on a court with a low perimeter", "Fig. 1 : hockey in-line sur un terrain à enceinte basse")}</div>
                     </div>
                     
-                    <div className="bg-white p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">{t("Materialien", "Materials", "Matériaux")}</h3>
-                        <p className="text-brand-dark/75 mb-4 font-mono text-sm border-l-2 border-brand-orange pl-4">
+                    <div className={`${BOX_A} my-8`}>
+                        <h3 className={`${BOX_A_TITEL} text-brand-dark`}>{t("Materialien", "Materials", "Matériaux")}</h3>
+                        <p className={`${BOX_A_TEXT} mb-4`}>
                             {t("Alle Materialien sind witterungsbeständig: Beton, Edelstahl, HPL-Platten und Gummi.", "All materials are weather-resistant: concrete, stainless steel, HPL panels and rubber.", "Tous les matériaux résistent aux intempéries : béton, inox, panneaux HPL et caoutchouc.")}
                         </p>
                         <div className="flex flex-wrap gap-2">
@@ -150,26 +150,26 @@ const ProductHockeyRinkPage: React.FC = () => {
                     <Plankopf label={t("Varianten", "Versions", "Variantes")} klein>
                         {t(<>40 cm oder <span className="text-brand-orange">110 cm</span></>, <>40 cm or <span className="text-brand-orange">110 cm</span></>, <>40 cm ou <span className="text-brand-orange">110 cm</span></>)}
                     </Plankopf>
-                    <p className="text-lg text-brand-dark/75 mt-4 max-w-3xl">
+                    <p className="text-xl text-brand-dark/75 leading-relaxed mt-4 max-w-3xl">
                         {t("Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen. Sie ist stapelbar und vandalismussicher. Die 110-cm-Bande mit Edelstahl-Handlauf umschließt das ganze Spielfeld und ist für regelmäßigen Spielbetrieb gebaut. Beide Varianten lassen sich kombinieren und auf Asphalt- oder Betonflächen fundamentfrei aufstellen.", "The 40 cm perimeter with rubber caps works as a court boundary on existing hard courts. It is stackable and vandal-resistant. The 110 cm board with a stainless steel handrail encloses the whole court and is built for regular play. Both versions can be combined and installed without foundations on asphalt or concrete surfaces.", "L'enceinte de 40 cm avec capuchons en caoutchouc convient pour délimiter le terrain sur des terrains en dur existants. Elle est empilable et résiste au vandalisme. La bande de 110 cm avec main courante en inox entoure tout le terrain et est conçue pour un usage régulier. Les deux variantes peuvent être combinées et posées sans fondation sur des surfaces en asphalte ou en béton.")}
                     </p>
                 </div>
                 {/* Roland §8.7: Klarstellung Profil-Bande vs. Einfassung als getrennte Systeme noch final abstimmen */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-white rounded-xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className={BOX_A}>
                         <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">40 cm</div>
-                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">{t("Einfassungselemente (niedrige Bande)", "Perimeter elements (low board)", "Éléments d'enceinte (bande basse)")}</h3>
-                        <p className="text-sm text-brand-dark/75 mb-3">{t("Sie begrenzen das Spielfeld auf bestehenden Hartplätzen.", "They mark the edge of the court on existing hard courts.", "Ils délimitent le terrain sur des terrains en dur existants.")}</p>
-                        <ul className="space-y-2 text-sm text-brand-dark/75">
+                        <h3 className={`${BOX_A_TITEL} text-brand-dark`}>{t("Einfassungselemente (niedrige Bande)", "Perimeter elements (low board)", "Éléments d'enceinte (bande basse)")}</h3>
+                        <p className={`${BOX_A_TEXT} mb-3`}>{t("Sie begrenzen das Spielfeld auf bestehenden Hartplätzen.", "They mark the edge of the court on existing hard courts.", "Ils délimitent le terrain sur des terrains en dur existants.")}</p>
+                        <ul className={`space-y-2 ${BOX_A_TEXT}`}>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Gummikappen als Aufprallschutz", "Rubber caps as impact protection", "Capuchons en caoutchouc comme protection contre les chocs")}</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Modular erweiterbar in 1,5-m-Schritten", "Modular, extendable in 1.5 m steps", "Modulaire, extensible par pas de 1,5 m")}</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Stapelbar für saisonale Nutzung", "Stackable for seasonal use", "Empilables pour un usage saisonnier")}</li>
                         </ul>
                     </div>
-                    <div className="bg-brand-surface/60 border border-brand-orange/30 rounded-xl p-8">
+                    <div className={BOX_A}>
                         <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">110 cm</div>
-                        <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">{t("Profil-Bande für Rollhockey oder Eishockey", "Profiled board for roller hockey or ice hockey", "Bande profilée pour le roller hockey ou le hockey sur glace")}</h3>
-                        <ul className="space-y-2 text-sm text-brand-dark/75">
+                        <h3 className={`${BOX_A_TITEL} text-brand-dark`}>{t("Profil-Bande für Rollhockey oder Eishockey", "Profiled board for roller hockey or ice hockey", "Bande profilée pour le roller hockey ou le hockey sur glace")}</h3>
+                        <ul className={`space-y-2 ${BOX_A_TEXT}`}>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Mit integriertem Edelstahl-Handlauf", "With integrated stainless steel handrail", "Avec main courante en inox intégrée")}</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Optional mit Abdichtungsprofil für Eishockey", "Optional sealing profile for ice hockey", "Profil d'étanchéité en option pour le hockey sur glace")}</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Nachrüstbar auf bestehende 40-cm-Einfassung", "Can be retrofitted to an existing 40 cm perimeter", "Adaptable sur une enceinte de 40 cm existante")}</li>

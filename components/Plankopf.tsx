@@ -2,11 +2,11 @@ import React from 'react';
 
 // Kopfleiste allein: Stichwort links, Kennung rechts. Auch über den Fotos der Heroes.
 export const Kopfleiste: React.FC<{ label?: React.ReactNode; rechts?: React.ReactNode; dunkel?: boolean; className?: string }> = ({ label, rechts, dunkel, className = '' }) => {
-  const linie = dunkel ? 'border-[rgba(242,240,235,0.4)]' : 'border-brand-dark';
+  const linie = dunkel ? 'border-[rgba(242,240,235,0.5)]' : 'border-brand-dark';
   return (
-    <div className={`flex justify-between min-h-[40px] border ${linie} rounded-lg font-mono text-xs uppercase tracking-[0.14em] ${className}`}>
+    <div className={`flex justify-between min-h-[40px] border ${linie} ${dunkel ? 'bg-brand-dark/75 backdrop-blur-sm' : ''} rounded-lg font-mono text-xs uppercase tracking-[0.14em] ${className}`}>
       {label && <span className={`px-4 py-2.5 rounded-l-[7px] ${dunkel ? 'bg-brand-bg text-brand-dark' : 'bg-brand-dark text-brand-bg'}`}>{label}</span>}
-      {rechts && <span className={`hidden sm:block px-4 py-2.5 ml-auto border-l ${linie} ${dunkel ? 'text-brand-bg/80' : 'text-brand-dark/75'}`}>{rechts}</span>}
+      {rechts && <span className={`hidden sm:block px-4 py-2.5 ml-auto border-l ${linie} ${dunkel ? 'text-brand-bg' : 'text-brand-dark/75'}`}>{rechts}</span>}
     </div>
   );
 };
@@ -33,7 +33,7 @@ const Plankopf: React.FC<{
         >
           {children}
         </Tag>
-        {text && <div className="text-lg leading-relaxed text-brand-muted lg:pb-1">{text}</div>}
+        {text && <div className="text-xl leading-relaxed text-brand-dark/75 lg:pb-1">{text}</div>}
       </div>
     </div>
   );

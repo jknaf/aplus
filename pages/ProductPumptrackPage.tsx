@@ -5,7 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
-import { ProduktHero, TechSpecCard, DATENBLATT, GsSiegel } from '../components/ProduktBausteine';
+import { ProduktHero, TechSpecCard, DATENBLATT, GsSiegel, BOX_A, BOX_A_TITEL, BOX_A_TEXT } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
@@ -97,9 +97,9 @@ const ProductPumptrackPage: React.FC = () => {
                         <p className="text-lg text-brand-dark/75 leading-relaxed mb-6">
                             {t("Im Gegensatz zu Asphaltpisten behalten unsere Betonelemente dauerhaft ihre Form. Für den Aufbau gibt es drei Varianten. Die Elemente können auch angeböscht werden.", "Unlike asphalt tracks, our concrete elements keep their shape permanently. There are three ways to build it. The elements can also be banked up with soil.", "Contrairement aux pistes en asphalte, nos éléments en béton conservent leur forme durablement. Il existe trois variantes de montage. Les éléments peuvent aussi être talutés.")}
                         </p>
-                        <div className="bg-brand-orange/10 border border-brand-orange/30 rounded-xl p-5 mb-12">
-                            <p className="text-brand-dark font-bold uppercase text-sm tracking-widest mb-2">{t("Lieferung & Montage aus einer Hand", "Delivery & installation from a single source", "Livraison et montage par un seul interlocuteur")}</p>
-                            <p className="text-sm text-brand-dark/75 leading-relaxed">
+                        <div className={`${BOX_A} mb-12`}>
+                            <p className={`${BOX_A_TITEL} text-brand-dark`}>{t("Lieferung & Montage aus einer Hand", "Delivery & installation from a single source", "Livraison et montage par un seul interlocuteur")}</p>
+                            <p className={BOX_A_TEXT}>
                                 {t("A+ Urban Design plant, fertigt, liefert und baut auf. Kommunen können Fördermittel aus der Sportstättenförderung nutzen.", "A+ Urban Design designs, manufactures, delivers and installs. In Germany, municipalities can use funding from sports facility programmes.", "A+ Urban Design conçoit, fabrique, livre et monte. En Allemagne, les communes peuvent recourir aux subventions des programmes de soutien aux équipements sportifs.")}
                             </p>
                         </div>
@@ -139,7 +139,7 @@ const ProductPumptrackPage: React.FC = () => {
                     <Plankopf label={t("Modulsystem", "Modular system", "Système modulaire")} klein>
                         {t(<>Kurven, Wellen, <span className="text-brand-orange">Rampen</span></>, <>Berms, rollers, <span className="text-brand-orange">ramps</span></>, <>Virages, bosses, <span className="text-brand-orange">rampes</span></>)}
                     </Plankopf>
-                    <p className="text-lg text-brand-dark/75 mt-4 max-w-3xl">
+                    <p className="text-xl text-brand-dark/75 leading-relaxed mt-4 max-w-3xl">
                         {t("Jede Kurve, jede Welle und jeder Roller ist ein im Werk gefertigtes Betonteil mit fester Geometrie. Die Module lassen sich frei zu eigenen Streckenverläufen kombinieren.", "Every berm, every wave and every roller is a concrete unit made in the factory to a fixed geometry. The modules can be combined freely into your own track layouts.", "Chaque virage, chaque bosse et chaque roller est une pièce en béton fabriquée en usine, à la géométrie définie. Les modules se combinent librement pour créer vos propres tracés.")}
                     </p>
                 </div>
@@ -153,8 +153,8 @@ const ProductPumptrackPage: React.FC = () => {
                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 4: 3D-Visualisierung eines geplanten Pumptracks", "Fig. 4: 3D visualisation of a planned pump track", "Fig. 4 : visualisation 3D d'un pumptrack en projet")}</div>
                     </div>
                 </div>
-                <div className="mt-6 bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-dark/75">
-                    {t(<>Der Pumptrack lässt sich auf <strong className="text-brand-dark">drei Arten</strong> aufbauen: auf einer vorhandenen befahrbaren Fläche, auf der die Trasse markiert wird, auf einer neu angelegten Trasse aus Beton oder Asphalt oder auf Fundamentplatten, an die die Trasse anbetoniert oder anasphaltiert wird. Die Elemente können auch angeböscht werden.</>, <>The pump track can be built in <strong className="text-brand-dark">three ways</strong>: on an existing rideable surface with the route marked out, on a newly laid concrete or asphalt route, or on foundation slabs that the route is then cast or asphalted up to. The elements can also be banked up with soil.</>, <>Le pumptrack peut être monté de <strong className="text-brand-dark">trois façons</strong> : sur une surface roulante existante sur laquelle le tracé est marqué, sur un tracé neuf en béton ou en asphalte, ou sur des dalles de fondation auxquelles le tracé est raccordé en béton ou en asphalte. Les éléments peuvent aussi être talutés.</>)}
+                <div className={`mt-6 ${BOX_A} ${BOX_A_TEXT}`}>
+                    {t(<>Der Pumptrack lässt sich auf drei Arten aufbauen: auf einer vorhandenen befahrbaren Fläche, auf der die Trasse markiert wird, auf einer neu angelegten Trasse aus Beton oder Asphalt oder auf Fundamentplatten, an die die Trasse anbetoniert oder anasphaltiert wird. Die Elemente können auch angeböscht werden.</>, <>The pump track can be built in three ways: on an existing rideable surface with the route marked out, on a newly laid concrete or asphalt route, or on foundation slabs that the route is then cast or asphalted up to. The elements can also be banked up with soil.</>, <>Le pumptrack peut être monté de trois façons : sur une surface roulante existante sur laquelle le tracé est marqué, sur un tracé neuf en béton ou en asphalte, ou sur des dalles de fondation auxquelles le tracé est raccordé en béton ou en asphalte. Les éléments peuvent aussi être talutés.</>)}
                 </div>
             </div>
 

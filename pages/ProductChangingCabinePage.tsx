@@ -97,7 +97,7 @@ const ProductChangingCabinePage: React.FC = () => {
                     <span className="material-symbols-outlined text-base">privacy_tip</span> {t("Sichtschutz", "Privacy screen", "Protection visuelle")}
                 </span>
             </div>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-12 animate-fade-in-up [animation-delay:100ms]">
+            <h1 className="text-[52px] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-12 animate-fade-in-up [animation-delay:100ms]">
                 {t(<>Die<br/>
                 <span className="text-brand-orange">Schnecke</span></>, <>The<br/> <span className="text-brand-orange">Schnecke</span></>, <>La<br/> <span className="text-brand-orange">Schnecke</span></>)}
             </h1>

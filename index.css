@@ -286,3 +286,30 @@ html, body {
 @media (min-width: 1024px) {
   html { scroll-snap-type: y proximity; }
 }
+
+/* Hero-Lesbarkeit (Variante A): Verlauf von links statt flacher Abdunklung,
+   damit der Text auch auf hellen Bildstellen (Himmel, Beton) lesbar bleibt. */
+.hero-scrim {
+  background:
+    linear-gradient(90deg, rgba(20,26,22,.88) 0%, rgba(20,26,22,.72) 35%, rgba(20,26,22,.25) 65%, rgba(20,26,22,0) 85%),
+    rgba(0,0,0,.15);
+}
+/* Produktseiten: zusätzlich flach von unten, für die Kennzahlen über die volle Breite */
+.hero-scrim-unten {
+  background:
+    linear-gradient(0deg, rgba(20,26,22,.92) 0%, rgba(20,26,22,.6) 22%, rgba(20,26,22,0) 42%),
+    linear-gradient(90deg, rgba(20,26,22,.88) 0%, rgba(20,26,22,.72) 35%, rgba(20,26,22,.25) 65%, rgba(20,26,22,0) 85%),
+    rgba(0,0,0,.15);
+}
+.hero-text { text-shadow: 0 2px 20px rgba(0,0,0,.45); }
+/* Akzentgrün ist auf dunklem Grund zu schwach: im Hero die helle Variante */
+.hero-text .text-brand-orange { color: #B9D39A; }
+/* Handy: Text läuft über die volle Breite, also Verlauf bis zum rechten Rand */
+@media (max-width: 767px) {
+  .hero-scrim { background: linear-gradient(90deg, rgba(20,26,22,.85) 0%, rgba(20,26,22,.55) 100%); }
+  .hero-scrim-unten {
+    background:
+      linear-gradient(0deg, rgba(20,26,22,.92) 0%, rgba(20,26,22,.6) 40%, rgba(20,26,22,.25) 100%),
+      linear-gradient(90deg, rgba(20,26,22,.6) 0%, rgba(20,26,22,.3) 100%);
+  }
+}

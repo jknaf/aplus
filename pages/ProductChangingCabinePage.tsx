@@ -89,8 +89,8 @@ const ProductChangingCabinePage: React.FC = () => {
             className="absolute inset-0 w-full h-full object-cover animate-kenburns-3"
             loading="eager"
             fetchPriority="high" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/65 to-brand-dark/15"></div>
-        <div className="relative z-10 container mx-auto px-4 pt-32 pb-10">
+        <div className="absolute inset-0 hero-scrim-unten"></div>
+        <div className="relative z-10 container mx-auto px-4 pt-32 pb-10 hero-text">
             <div className="flex flex-wrap items-center gap-3 mb-6 animate-fade-in-up">
                 <span className="px-3 py-1 border border-[#B9D39A]/60 text-[#B9D39A] text-xs font-bold uppercase tracking-[0.2em] rounded-md">{t("Freibad und Sport", "Outdoor pool and sport", "Piscine de plein air et sport")}</span>
                 <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider border border-white/35 px-3 py-1 rounded-md">

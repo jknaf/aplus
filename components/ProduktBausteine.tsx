@@ -11,8 +11,8 @@ export type Kennzahl = { wert: string; label: string };
 export const ProduktHero: React.FC<{ bild: React.ReactNode; schilder: React.ReactNode; titel: React.ReactNode; kennzahlen: Kennzahl[] }> = ({ bild, schilder, titel, kennzahlen }) => (
     <div className="relative w-full min-h-[620px] -mt-16 mb-28 flex flex-col justify-end overflow-hidden bg-brand-dark">
         {bild}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/65 to-brand-dark/15"></div>
-        <div className="relative z-10 container mx-auto px-4 pt-32 pb-10">
+        <div className="absolute inset-0 hero-scrim-unten"></div>
+        <div className="relative z-10 container mx-auto px-4 pt-32 pb-10 hero-text">
             <div className="flex flex-wrap items-center gap-3 mb-6 animate-fade-in-up">{schilder}</div>
             <h1 className="text-[42px] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-12 animate-fade-in-up [animation-delay:100ms]">
                 {titel}

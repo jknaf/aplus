@@ -592,19 +592,19 @@ const Hero: React.FC = () => {
                 ))}
             </div>
 
-            {/* LAYER 3: DARKNESS OVERLAY */}
-            <div className="absolute inset-0 z-20 bg-black/40"></div>
+            {/* LAYER 3: Verlauf von links (Lesbarkeit, siehe .hero-scrim in index.css) */}
+            <div className="absolute inset-0 z-20 hero-scrim"></div>
 
             {/* LAYER 4: CONTENT */}
-            <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-center pointer-events-none">
+            <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-center pointer-events-none hero-text">
                  <div className="max-w-7xl">
                     <div className="animate-fade-in-up">
-                        <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-tighter leading-[1.2] md:leading-[1.1]">
-                            <span className="text-[clamp(2rem,6vw,6rem)] text-white opacity-90">{t("Architektur", "Architecture", "Architecture")}</span>
-                            <span className="text-[clamp(2rem,6vw,6rem)] text-white/60">{t("für", "for", "pour les")}</span>
+                        <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-normal leading-[1.2] md:leading-[1.05]">
+                            <span className="text-[clamp(2rem,6vw,6rem)] text-white">{t("Architektur", "Architecture", "Architecture")}</span>
+                            <span className="text-[clamp(2rem,6vw,6rem)] text-white">{t("für", "for", "pour les")}</span>
                             <span className="text-[clamp(2rem,6vw,6rem)] text-brand-orange">{t("Freiräume", "open spaces", "espaces publics")}</span>
                         </h1>
-                        <p className="mt-6 md:mt-8 text-lg md:text-2xl text-white/80 max-w-xl md:max-w-2xl font-light border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
+                        <p className="mt-6 md:mt-8 text-lg md:text-2xl text-white max-w-xl md:max-w-2xl font-normal border-l-4 border-brand-orange pl-4 md:pl-6 animate-fade-in-up [animation-delay:300ms]">
                             {/* Roland §3.2: 30-Jahre-Jubiläums-Claim noch klären, vorläufig */}
                             {t(
                                 <>Skateparks, Pumptracks und urbane Anlagen aus Beton und Stahl. <span className="text-white font-bold">Modular. Robust. Fundamentfrei. Recycelbar.</span></>,

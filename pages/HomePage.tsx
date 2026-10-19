@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, useT } from '../i18n';
-import { useProducts } from '../localized';
+import { useNavLinks, useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import PageShell from '../components/PageShell';
 import Bild from '../components/Bild';
@@ -490,6 +490,8 @@ const VIDEO_WAIT_MAX = 5000;
 
 const Hero: React.FC = () => {
     const t = useT();
+    // Die acht Produkte aus dem Menü, in der Sprache der Seite
+    const produkte = (useNavLinks().find((l) => l.href === '/produkte')?.subLinks ?? []).map((s) => s.name);
     const [currentIndex, setCurrentIndex] = useState(0);
     const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
 
@@ -579,12 +581,9 @@ const Hero: React.FC = () => {
                         dunkel
                         label={<>
                             <span className="hero-wort" aria-hidden="true"><span>
-                                <b>{t("Skateparks", "Skateparks", "Skateparks")}</b>
-                                <b>{t("Pumptracks", "Pump tracks", "Pumptracks")}</b>
-                                <b>{t("Urbane Anlagen", "Urban facilities", "Équipements urbains")}</b>
-                                <b>{t("Skateparks", "Skateparks", "Skateparks")}</b>
+                                {[...produkte, produkte[0]].map((p, i) => <b key={i}>{p}</b>)}
                             </span></span>
-                            <span className="sr-only">{t("Skateparks, Pumptracks, urbane Anlagen", "Skateparks, pump tracks, urban facilities", "Skateparks, pumptracks, équipements urbains")}</span>
+                            <span className="sr-only">{produkte.join(', ')}</span>
                         </>}
                         rechts={
                             <span className="flex items-center gap-2.5 -my-1">

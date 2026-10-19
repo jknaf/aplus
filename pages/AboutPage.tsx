@@ -84,7 +84,6 @@ const AboutPage: React.FC = () => {
               {t(<>Seit 1998 <span className="text-brand-orange">Skate-Elemente aus Beton</span></>, <>Concrete skate elements <span className="text-brand-orange">since 1998</span></>, <>Éléments de skate en béton <span className="text-brand-orange">depuis 1998</span></>)}
           </h2>
           <div className="flex flex-wrap border-t-2 border-brand-dark [&>div]:basis-full md:[&>div]:basis-0">
-              <Jahr jahr={t("1990er", "1990s", "Années 1990")} text={t("Kantenschutzprofile werden eingeführt.", "Edge protection profiles are introduced.", "Introduction des profilés de protection d'arête.")} />
               <Jahr jahr="1998" text={t("Die ersten modularen Skate-Elemente entstehen.", "The first modular skate elements are made.", "Naissance des premiers éléments de skate modulaires.")} />
               <Jahr jahr="2000" text={t("TÜV-Zertifikat und GS-Zeichen für geprüfte Sicherheit.", "TÜV certificate and GS mark for tested safety.", "Certificat TÜV et marque GS pour la sécurité contrôlée.")} />
               <Jahr jahr="2025" dunkel text={t("Entwicklung, Fertigung und Logistik werden von Stuttgart aus gesteuert.", "Development, manufacturing and logistics are run from Stuttgart.", "Le développement, la fabrication et la logistique sont pilotés depuis Stuttgart.")} />

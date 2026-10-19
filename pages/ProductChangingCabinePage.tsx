@@ -86,7 +86,7 @@ const ProductChangingCabinePage: React.FC = () => {
       <div className="relative w-full min-h-[620px] -mt-16 mb-28 flex flex-col justify-end overflow-hidden bg-brand-dark">
         <Bild hoch src="/images/umkleide/umkleidekabine-schnecke-04.jpg"
             alt={t("Umkleidekabine Schnecke aus Beton im Freien", "Schnecke concrete changing cubicle outdoors", "Cabine de change « Schnecke » en béton, en extérieur")}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover animate-kenburns-3"
             loading="eager"
             fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/65 to-brand-dark/15"></div>
@@ -114,12 +114,12 @@ const ProductChangingCabinePage: React.FC = () => {
       <div className="container mx-auto px-4 mb-28">
           <div className="flex flex-col lg:flex-row gap-14 items-stretch">
               <div className="lg:w-5/12 flex flex-col gap-4">
-                  <div className="relative flex-1 min-h-[260px] rounded-xl overflow-hidden">
-                      <Bild sizes="(min-width: 1024px) 40vw, 100vw" src="/images/umkleide/umkleide-kabine-01.jpg" alt={t("Umkleidekabine auf Edelstahlfüßen, Eingang ohne Tür", "Changing cubicle on stainless steel feet, doorless entrance", "Cabine de change sur pieds en inox, entrée sans porte")} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="relative flex-1 min-h-[260px] rounded-xl overflow-hidden group">
+                      <Bild sizes="(min-width: 1024px) 40vw, 100vw" src="/images/umkleide/umkleide-kabine-01.jpg" alt={t("Umkleidekabine auf Edelstahlfüßen, Eingang ohne Tür", "Changing cubicle on stainless steel feet, doorless entrance", "Cabine de change sur pieds en inox, entrée sans porte")} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                       <div className={ABB}>{t("Abb. 1: Kabine auf Edelstahlfüßen, Eingang ohne Tür", "Fig. 1: Cubicle on stainless steel feet, doorless entrance", "Fig. 1 : cabine sur pieds en inox, entrée sans porte")}</div>
                   </div>
-                  <div className="relative flex-1 min-h-[260px] rounded-xl overflow-hidden">
-                      <img src="/images/umkleide/umkleide-kabine-02.jpg" alt={t("Schnecke neben einem Spielplatz", "Schnecke next to a playground", "Schnecke à côté d'une aire de jeux")} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="relative flex-1 min-h-[260px] rounded-xl overflow-hidden group">
+                      <img src="/images/umkleide/umkleide-kabine-02.jpg" alt={t("Schnecke neben einem Spielplatz", "Schnecke next to a playground", "Schnecke à côté d'une aire de jeux")} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                       <div className={ABB}>{t("Abb. 2: Aufstellung neben einem Spielplatz", "Fig. 2: Installed next to a playground", "Fig. 2 : installation à côté d'une aire de jeux")}</div>
                   </div>
               </div>
@@ -191,8 +191,8 @@ const ProductChangingCabinePage: React.FC = () => {
                   </p>
               </div>
               <div className="lg:w-5/12 w-full">
-                  <div className="relative h-80 lg:h-[440px] rounded-xl overflow-hidden">
-                      <img src="/images/umkleide/umkleidekabine-freibad-03.jpg" alt={t("Schnecken-Kabine im Freibad", "Schnecke cubicle at an outdoor pool", "Cabine « Schnecke » dans une piscine de plein air")} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="relative h-80 lg:h-[440px] rounded-xl overflow-hidden group">
+                      <img src="/images/umkleide/umkleidekabine-freibad-03.jpg" alt={t("Schnecken-Kabine im Freibad", "Schnecke cubicle at an outdoor pool", "Cabine « Schnecke » dans une piscine de plein air")} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                       <div className={ABB}>{t("Abb. 3: Aufstellung im Freibad", "Fig. 3: Installed at an outdoor pool", "Fig. 3 : installation dans une piscine de plein air")}</div>
                   </div>
               </div>
@@ -208,8 +208,8 @@ const ProductChangingCabinePage: React.FC = () => {
           <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl mb-8">
               {t("Die Umkleidekabine steht frei im Freibad oder am Badesee. Vor Ort genügt ein verdichtetes, frostsicheres Kiesbett mit 5–20 mm Körnung. Die Bodenplatte kann bündig mit dem Boden oder etwas höher liegen.", "The changing cubicle stands free at an outdoor pool or swimming lake. On site, a compacted, frost-proof gravel bed with 5–20 mm grading is enough. The base slab can sit flush with the ground or slightly above it.", "La cabine de change se pose librement dans une piscine de plein air ou au bord d'un lac de baignade. Sur place, un lit de gravier compacté et résistant au gel, de granulométrie 5–20 mm, suffit. La dalle de sol peut être à fleur du sol ou légèrement au-dessus.")}
           </p>
-          <div className="relative w-full aspect-[4/3] md:aspect-[21/9] rounded-xl overflow-hidden">
-              <Bild sizes="(min-width: 1280px) 1200px, 100vw" src="/images/umkleide/umkleide-panorama.jpg" alt={t("Mehrere Schnecken-Kabinen auf einer gepflasterten Fläche", "Several Schnecke cubicles on a paved area", "Plusieurs cabines « Schnecke » sur une surface pavée")} loading="lazy" className="w-full h-full object-cover" />
+          <div className="relative w-full aspect-[4/3] md:aspect-[21/9] rounded-xl overflow-hidden group">
+              <Bild sizes="(min-width: 1280px) 1200px, 100vw" src="/images/umkleide/umkleide-panorama.jpg" alt={t("Mehrere Schnecken-Kabinen auf einer gepflasterten Fläche", "Several Schnecke cubicles on a paved area", "Plusieurs cabines « Schnecke » sur une surface pavée")} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className={ABB}>{t("Abb. 4: Freistehend auf gepflasterter Fläche", "Fig. 4: Free-standing on a paved area", "Fig. 4 : autoportantes sur une surface pavée")}</div>
           </div>
       </div>

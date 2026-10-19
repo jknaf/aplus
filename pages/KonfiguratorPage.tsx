@@ -9,7 +9,7 @@ import { ladeNetz, type Netz } from '../components/konfigurator/plan2d';
 import { PARK_SPEICHER, leeren, warteschlange } from '../components/konfigurator/merkliste';
 import { konfiguratorFrei, useKonfiguratorFrei } from '../components/katalog/usePreise';
 import CodeDialog, { useKonfiguratorCode } from '../components/katalog/CodeDialog';
-import { gruppenName } from '../localized';
+import { gruppenName, teilName } from '../localized';
 import {
   BAUSTEINE, LEER, RASTER, gruppen, gruppeVerschieben, anbauMoeglich, bowl, drehenGruppe, geradeAnhaengen, kurveAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
   hinzufuegen, kodieren, kollidiert, neueId, pruefen, stueckliste, vorlageBauen, vorschlag as vorschlagFuer, waehlbar,
@@ -199,7 +199,7 @@ const KonfiguratorPage: React.FC = () => {
   useEffect(() => {
     Promise.all([fetch('/katalog/katalog.json').then((r) => r.json()), fetch('/konfigurator/masse.json').then((r) => r.json())]).then(([k, masse]: [Katalog, Ctx['masse']]) => {
       const info: Ctx['info'] = {};
-      for (const e of k.elemente) info[e.slug] = { name: e.name, code: e.preisliste_code || e.kuerzel, gruppe: e.gruppe, kg: e.gewicht?.kg, masse: e.preisliste_masse_cm };
+      for (const e of k.elemente) info[e.slug] = { name: teilName(e.name, lang), code: e.preisliste_code || e.kuerzel, gruppe: e.gruppe, kg: e.gewicht?.kg, masse: e.preisliste_masse_cm };
       const c = { masse, info };
       setKatalog(k);
       setCtx(c);
@@ -216,7 +216,7 @@ const KonfiguratorPage: React.FC = () => {
       }
       if (p) setPark(p); else setStart(true);
     });
-  }, [melden]);
+  }, [melden, lang]);
 
   // Speichern im Browser, damit der Park beim Wechsel zum Katalog erhalten bleibt
   useEffect(() => {
@@ -468,7 +468,7 @@ const KonfiguratorPage: React.FC = () => {
     const s = suche.trim().toLowerCase();
     return katalog.gruppen.map((g) => ({
       gruppe: g,
-      elemente: katalog.elemente.filter((e) => e.gruppe === g && waehlbar(e.slug, ctx) && (!s || `${e.name} ${e.preisliste_code} ${e.kuerzel}`.toLowerCase().includes(s))),
+      elemente: katalog.elemente.filter((e) => e.gruppe === g && waehlbar(e.slug, ctx) && (!s || `${e.name} ${teilName(e.name, lang)} ${e.preisliste_code} ${e.kuerzel}`.toLowerCase().includes(s))),
     })).filter((g) => g.elemente.length);
   }, [katalog, ctx, suche]);
 
@@ -523,10 +523,10 @@ const KonfiguratorPage: React.FC = () => {
                       onDragStart={(ev) => ev.dataTransfer.setData('text/plain', `teil:${e.slug}`)}
                       onClick={() => { teileHinzufuegen([einzelTeil(e.slug)]); setPanel(null); }}
                       className="text-left p-2 rounded-lg bg-white border border-brand-dark/10 hover:border-brand-orange transition-colors"
-                      title={e.name}
+                      title={teilName(e.name, lang)}
                     >
                       <img src={e.bild} alt="" loading="lazy" className="w-full aspect-[4/3] object-contain" />
-                      <span className="block text-[11px] font-semibold text-brand-dark leading-tight mt-1">{e.name}</span>
+                      <span className="block text-[11px] font-semibold text-brand-dark leading-tight mt-1">{teilName(e.name, lang)}</span>
                       <span className="block text-[10px] font-mono text-brand-muted">{e.preisliste_code || e.kuerzel}</span>
                     </button>
                   ))}

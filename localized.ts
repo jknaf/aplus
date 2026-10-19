@@ -403,3 +403,28 @@ const GRUPPEN: Record<string, [string, string]> = {
 };
 export const gruppenName = (g: string, lang: string) => (lang === 'de' || !GRUPPEN[g] ? g : GRUPPEN[g][lang === 'en' ? 0 : 1]);
 
+
+// Teilenamen: englische Fachbegriffe (Bank, Wall …) und Kürzel bleiben, nur die deutschen Wörter werden übersetzt.
+// Reihenfolge zählt: längere Wendungen vor ihren Teilen.
+const TEILE: [string, string, string][] = [
+  ['CORNER-PODESTPLATTE', 'CORNER PLATFORM PLATE', 'PLAQUE DE PODIUM CORNER'],
+  ['PODESTPLATTE', 'PLATFORM PLATE', 'PLAQUE DE PODIUM'],
+  ['KEGEL', 'CONE', 'CÔNE'],
+  ['WAVE-WELLE', 'WAVE', 'WAVE'],
+  ['ANLAUFKEIL', 'RUN-UP WEDGE', "CALE D'ÉLAN"],
+  ['LEDGE KURZ', 'LEDGE SHORT', 'LEDGE COURT'],
+  ['LEDGE LANG', 'LEDGE LONG', 'LEDGE LONG'],
+  ['GELÄNDER-ENDE LINKS', 'RAILING END LEFT', 'EXTRÉMITÉ DE GARDE-CORPS GAUCHE'],
+  ['GELÄNDER-ENDE RECHTS', 'RAILING END RIGHT', 'EXTRÉMITÉ DE GARDE-CORPS DROITE'],
+  ['GELÄNDER-VERBINDUNG GERADE', 'RAILING CONNECTOR STRAIGHT', 'RACCORD DE GARDE-CORPS DROIT'],
+  ['GELÄNDER-VERBINDUNG', 'RAILING CONNECTOR', 'RACCORD DE GARDE-CORPS'],
+  ['GELÄNDER-', 'RAILING ', 'GARDE-CORPS '],
+  ['GELÄNDER', 'RAILING', 'GARDE-CORPS'],
+  ['HINWEISSCHILD', 'INFORMATION SIGN', "PANNEAU D'INFORMATION"],
+];
+export const teilName = (name: string, lang: string) => {
+  if (lang === 'de') return name;
+  const i = lang === 'en' ? 1 : 2;
+  const z = TEILE.find((r) => name.startsWith(r[0]));
+  return z ? z[i] + name.slice(z[0].length) : name;
+};

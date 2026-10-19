@@ -6,7 +6,7 @@ import PageShell from '../components/PageShell';
 import ModellAnsicht from '../components/katalog/ModellAnsicht';
 import { konfiguratorFrei, useKonfiguratorFrei, usePreise } from '../components/katalog/usePreise';
 import CodeDialog, { useKonfiguratorCode } from '../components/katalog/CodeDialog';
-import { gruppenName } from '../localized';
+import { gruppenName, teilName } from '../localized';
 import { anzahlImPark, merken } from '../components/konfigurator/merkliste';
 import type { ParkTeil, Boeschung } from '../components/katalog/ParkAnsicht';
 
@@ -179,14 +179,14 @@ const Detail: React.FC<{
           <span className="material-symbols-outlined">close</span>
         </button>
         <div className="relative aspect-square md:aspect-auto md:min-h-[560px] bg-[radial-gradient(ellipse_at_50%_40%,#ffffff_0%,#E5E3DC_75%)]">
-          <ModellAnsicht key={e.slug} src={e.modell} poster={e.bild} kamera={e.kamera} alt={`${t('3D-Modell', '3D model', 'Modèle 3D')} ${e.name}`} />
+          <ModellAnsicht key={e.slug} src={e.modell} poster={e.bild} kamera={e.kamera} alt={`${t('3D-Modell', '3D model', 'Modèle 3D')} ${teilName(e.name, lang)}`} />
           <div className="absolute bottom-4 left-4 flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-brand-muted pointer-events-none">
             <span className="material-symbols-outlined text-base">3d_rotation</span> {t("Ziehen zum Drehen · Scrollen zum Zoomen", "Drag to rotate · scroll to zoom", "Glisser pour tourner · défiler pour zoomer")}
           </div>
         </div>
         <div className="p-6 md:p-10 flex flex-col">
           <span className="font-mono text-xs uppercase tracking-widest text-brand-orange mb-3">{gruppenName(e.gruppe, lang)}</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mb-2">{e.name}</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mb-2">{teilName(e.name, lang)}</h2>
           <p className="font-mono text-sm text-brand-muted mb-6">{e.preisliste_code || e.kuerzel || t("ohne Code", "no code", "sans code")}{e.preisliste_produkt && ` · ${e.preisliste_produkt}`}</p>
           <div className="mb-6"><PreisBadge preis={preis} gross onSperre={onSperre} /></div>
           <div className="mb-8"><ParkKnopf slug={e.slug} onSperre={onParkSperre} /></div>
@@ -219,8 +219,8 @@ const Detail: React.FC<{
 
 
           <div className="mt-auto pt-6 flex items-center justify-between gap-4 border-t border-brand-dark/10">
-            {zurueck ? <Link to={`/katalog/${zurueck.slug}`} className="flex items-center gap-1 text-sm text-brand-muted hover:text-brand-orange"><span className="material-symbols-outlined">arrow_back</span>{zurueck.name}</Link> : <span />}
-            {vor ? <Link to={`/katalog/${vor.slug}`} className="flex items-center gap-1 text-sm text-brand-muted hover:text-brand-orange text-right">{vor.name}<span className="material-symbols-outlined">arrow_forward</span></Link> : <span />}
+            {zurueck ? <Link to={`/katalog/${zurueck.slug}`} className="flex items-center gap-1 text-sm text-brand-muted hover:text-brand-orange"><span className="material-symbols-outlined">arrow_back</span>{teilName(zurueck.name, lang)}</Link> : <span />}
+            {vor ? <Link to={`/katalog/${vor.slug}`} className="flex items-center gap-1 text-sm text-brand-muted hover:text-brand-orange text-right">{teilName(vor.name, lang)}<span className="material-symbols-outlined">arrow_forward</span></Link> : <span />}
           </div>
         </div>
       </div>
@@ -288,7 +288,7 @@ const ParkDetail: React.FC<{
             {p.stueckliste.map((t) => (
               <li key={t.slug}>
                 <Link to={`/katalog/${t.slug}`} className="flex justify-between gap-6 py-2 border-b border-brand-dark/5 text-sm text-brand-dark hover:text-brand-orange">
-                  <span>{t.name}</span><span className="font-mono text-brand-muted">{t.anzahl} ×</span>
+                  <span>{teilName(t.name, lang)}</span><span className="font-mono text-brand-muted">{t.anzahl} ×</span>
                 </Link>
               </li>
             ))}
@@ -375,12 +375,12 @@ const KatalogPage: React.FC = () => {
   const treffer = useMemo(() => {
     if (!katalog) return [];
     const q = suche.trim().toLowerCase();
-    return katalog.elemente.filter((e) => !q || [e.name, e.preisliste_code, e.kuerzel, e.gruppe, e.preisliste_produkt].join(' ').toLowerCase().includes(q));
+    return katalog.elemente.filter((e) => !q || [e.name, teilName(e.name, lang), e.preisliste_code, e.kuerzel, e.gruppe, e.preisliste_produkt].join(' ').toLowerCase().includes(q));
   }, [katalog, suche]);
 
   const parkTreffer = useMemo(() => {
     const q = suche.trim().toLowerCase();
-    return parks.filter((p) => GROESSEN[groesse].passt(p) && (!q || [p.name, ...p.stueckliste.map((t) => t.name)].join(' ').toLowerCase().includes(q)));
+    return parks.filter((p) => GROESSEN[groesse].passt(p) && (!q || [p.name, ...p.stueckliste.map((t) => `${t.name} ${teilName(t.name, lang)}`)].join(' ').toLowerCase().includes(q)));
   }, [parks, suche, groesse]);
   // Erst sechs Parks, damit die Einzelteile nicht weit nach unten rutschen; mit Filter oder Suche alle Treffer
   const parkIndex = parks.findIndex((p) => p.id === slug);
@@ -393,7 +393,7 @@ const KatalogPage: React.FC = () => {
 
   return (
     <PageShell
-      title={aktivPark ? `${aktivPark.name} · Skate-Katalog` : aktiv ? `${aktiv.name} · Skate-Katalog` : t("Skate-Katalog in 3D", "Skate Catalogue in 3D", "Catalogue de skate en 3D")}
+      title={aktivPark ? `${aktivPark.name} · Skate-Katalog` : aktiv ? `${teilName(aktiv.name, lang)} · Skate-Katalog` : t("Skate-Katalog in 3D", "Skate Catalogue in 3D", "Catalogue de skate en 3D")}
       description={t("Skatepark-Beispiele und alle Skate-Elemente von A+ Urban Design in 3D: Parks mit Fläche und Stückliste, dazu Tables, Banks, Hips, Ramps, Rails und mehr.", "Skatepark examples and all skate elements from A+ Urban Design in 3D: parks with area and parts list, plus tables, banks, hips, ramps, rails and more.", "Exemples de skateparks et tous les éléments de skate d'A+ Urban Design en 3D : parcs avec surface et liste des pièces, ainsi que tables, banks, hips, rampes, rails et plus encore.")}
     >
       <section className="pt-32 pb-8 md:pt-40 md:pb-10">
@@ -530,11 +530,11 @@ const KatalogPage: React.FC = () => {
                     className="group rounded-2xl overflow-hidden border border-brand-dark/5 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.05)] hover:border-brand-orange/40 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1"
                   >
                     <div className="aspect-square bg-[radial-gradient(ellipse_at_50%_40%,#ffffff_0%,#F2F0EB_80%)] p-4 relative">
-                      <img src={e.bild} alt={e.name} loading="lazy" decoding="async" width="640" height="640" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
+                      <img src={e.bild} alt={teilName(e.name, lang)} loading="lazy" decoding="async" width="640" height="640" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
                       <span className="absolute top-3 right-3 material-symbols-outlined text-brand-muted/60 group-hover:text-brand-orange text-xl">3d_rotation</span>
                     </div>
                     <div className="p-4 md:p-5">
-                      <h3 className="font-extrabold font-heading text-brand-dark uppercase tracking-tight leading-tight group-hover:text-brand-orange transition-colors">{e.name}</h3>
+                      <h3 className="font-extrabold font-heading text-brand-dark uppercase tracking-tight leading-tight group-hover:text-brand-orange transition-colors">{teilName(e.name, lang)}</h3>
                       <p className="font-mono text-[11px] text-brand-muted mt-1">{e.preisliste_code || e.kuerzel || '–'}</p>
                       <p className="text-xs text-brand-muted mt-2">{kurzMasse(e, t)}</p>
                       <div className="mt-3"><PreisBadge preis={preise ? preisText(preise[e.slug], loc) ?? t("auf Anfrage", "on request", "sur demande") : null} onSperre={() => setDialog(true)} /></div>

@@ -5,7 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
-import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON } from '../components/ProduktBausteine';
+import { ProduktHero, TechSpecCard, DATENBLATT } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
@@ -70,12 +70,8 @@ const ProductHockeyRinkPage: React.FC = () => {
                         className="absolute inset-0 w-full h-full object-cover animate-kenburns-1"
                         loading="eager"
                         fetchPriority="high" />}
-            schilder={<>
-                <span className={SCHILD}>{t("Hockey-Banden", "Hockey boards", "Bandes de hockey")}</span>
-                         <span className={SCHILD_ICON}>
-                            <span className="material-symbols-outlined text-base">verified_user</span> {t("Inline- und Eishockey", "Inline and ice hockey", "Hockey in-line et sur glace")}
-                         </span>
-            </>}
+            label={t("Hockey-Banden", "Hockey boards", "Bandes de hockey")}
+            rechts={t("Inline- und Eishockey", "Inline and ice hockey", "Hockey in-line et sur glace")}
             titel={t(<>Banden-<br/>
                         <span className="text-brand-orange">system</span></>, <>Board<br/> <span className="text-brand-orange">system</span></>, <>Système<br/> <span className="text-brand-orange">de bandes</span></>)}
             kennzahlen={[

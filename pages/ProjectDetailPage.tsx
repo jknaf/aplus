@@ -4,6 +4,7 @@ import { Link, localizePath, prefixFor, useLang, useT } from '../i18n';
 import PageShell from '../components/PageShell';
 import { useKategorie, useProjects } from '../localized';
 import Bild from '../components/Bild';
+import { Kopfleiste } from '../components/Plankopf';
 
 const ProjectDetailPage: React.FC = () => {
   const t = useT();
@@ -105,9 +106,7 @@ const ProjectDetailPage: React.FC = () => {
         {/* Title Overlay */}
         <div className="container mx-auto px-4 mb-24">
              <div className="border-l-4 border-brand-orange pl-6 md:pl-12 backdrop-blur-sm">
-                 <div className="flex items-center gap-4 mb-4">
-                    <span className="bg-brand-orange text-black text-xs font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">{kategorie(project.category)}</span>
-                 </div>
+                 <Kopfleiste label={kategorie(project.category)} dunkel className="mb-8" />
                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] leading-none shadow-black drop-shadow-2xl">
                     {project.title}
                  </h1>

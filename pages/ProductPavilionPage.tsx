@@ -5,7 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
-import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON } from '../components/ProduktBausteine';
+import { ProduktHero, TechSpecCard, DATENBLATT } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
@@ -70,12 +70,8 @@ const ProductPavilionPage: React.FC = () => {
                         className="absolute inset-0 w-full h-full object-cover animate-kenburns-1"
                         loading="eager"
                         fetchPriority="high" />}
-            schilder={<>
-                <span className={SCHILD}>{t("Öffentlicher Raum", "Public space", "Espace public")}</span>
-                         <span className={SCHILD_ICON}>
-                            <span className="material-symbols-outlined text-base">umbrella</span> {t("Wetterschutz", "Weather protection", "Protection contre les intempéries")}
-                         </span>
-            </>}
+            label={t("Öffentlicher Raum", "Public space", "Espace public")}
+            rechts={t("Wetterschutz", "Weather protection", "Protection contre les intempéries")}
             titel={t(<>Beton-<br/>
                         <span className="text-brand-orange">Pavillon</span></>, <>Concrete<br/> <span className="text-brand-orange">pavilion</span></>, <>Pavillon<br/> <span className="text-brand-orange">en béton</span></>)}
             kennzahlen={[

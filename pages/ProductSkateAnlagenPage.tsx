@@ -5,7 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
-import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON } from '../components/ProduktBausteine';
+import { ProduktHero, TechSpecCard, DATENBLATT } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
@@ -112,12 +112,8 @@ const ProductSkateAnlagenPage: React.FC = () => {
        {/* 1. HERO mit Kennzahlen (Werte aus den technischen Daten) */}
        <ProduktHero
             bild={<Bild hoch src="/images/homepage/hero-anlage-01.jpg" alt={t("Skatepark aus Betonelementen, Gesamtansicht", "Skatepark made of concrete elements, overall view", "Skatepark en éléments de béton, vue d'ensemble")} className="absolute inset-0 w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />}
-            schilder={<>
-                <span className={SCHILD}>{t("Skate-Anlagen", "Skateparks", "Skateparks")}</span>
-                         <span className={SCHILD_ICON}>
-                            <span className="material-symbols-outlined text-base">verified_user</span> {t("DIN EN 14974", "EN 14974", "EN 14974")}
-                         </span>
-            </>}
+            label={t("Skate-Anlagen", "Skateparks", "Skateparks")}
+            rechts={t("DIN EN 14974", "EN 14974", "EN 14974")}
             titel={t(<>Skatepark<br/><span className="text-brand-orange">aus Beton</span></>, <>Concrete<br/><span className="text-brand-orange">skatepark</span></>, <>Skatepark<br/><span className="text-brand-orange">en béton</span></>)}
             kennzahlen={[
                 { wert: "TÜV / GS", label: t("Zertifizierung", "Certification", "Certification") },

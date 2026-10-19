@@ -4,9 +4,8 @@ import PageShell from '../components/PageShell';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import { useKonfiguratorCode } from '../components/katalog/CodeDialog';
 import Bild from '../components/Bild';
-import Plankopf from '../components/Plankopf';
+import Plankopf, { Kopfleiste } from '../components/Plankopf';
 
-const LABEL = 'font-mono text-xs uppercase tracking-widest text-[#4F6E34] mb-4';
 const CARD = 'bg-white rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]';
 const BTN = 'inline-flex items-center justify-center gap-2 min-h-12 px-7 rounded-md font-heading font-bold text-sm uppercase tracking-widest transition-colors';
 
@@ -142,10 +141,7 @@ const PlanningPage: React.FC = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-brand-dark/20"></div>
             <div className="relative z-10 container mx-auto px-4 pt-32 pb-16">
-                <div className={`${LABEL} !text-[#B9D39A] flex items-center gap-2.5 !mb-5`}>
-                    <span className="material-symbols-outlined text-base">check_circle</span>
-                    {t("Im Produktpreis enthalten", "Included in the product price", "Comprise dans le prix du produit")}
-                </div>
+                <Kopfleiste label={t("Im Produktpreis enthalten", "Included in the product price", "Comprise dans le prix du produit")} dunkel className="mb-8" />
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-7">
                     {t(<>Skatepark<br/>
                     <span className="text-[#8DB562]">Planung</span></>, <>Skatepark<br/> <span className="text-[#8DB562]">design</span></>, <>Conception de<br/> <span className="text-[#8DB562]">skatepark</span></>)}

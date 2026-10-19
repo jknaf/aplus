@@ -1,5 +1,6 @@
 import React from 'react';
 import { useT } from '../i18n';
+import { Kopfleiste } from './Plankopf';
 
 // Gemeinsame Bausteine der Produktseiten im Stil von „Über uns“.
 
@@ -7,13 +8,13 @@ const TUEV_LINK = 'https://www.tuvsud.com/de-de/dienstleistungen/produktpruefung
 
 export type Kennzahl = { wert: string; label: string };
 
-// Header: Foto mit Ken-Burns-Effekt, Schilder, Titel, darunter vier Werte aus den technischen Daten.
-export const ProduktHero: React.FC<{ bild: React.ReactNode; schilder: React.ReactNode; titel: React.ReactNode; kennzahlen: Kennzahl[] }> = ({ bild, schilder, titel, kennzahlen }) => (
+// Header: Foto mit Ken-Burns-Effekt, Kopfleiste, Titel, darunter vier Werte aus den technischen Daten.
+export const ProduktHero: React.FC<{ bild: React.ReactNode; label: React.ReactNode; rechts?: React.ReactNode; titel: React.ReactNode; kennzahlen: Kennzahl[] }> = ({ bild, label, rechts, titel, kennzahlen }) => (
     <div className="relative w-full min-h-[620px] -mt-16 mb-28 flex flex-col justify-end overflow-hidden bg-brand-dark">
         {bild}
         <div className="absolute inset-0 hero-scrim-unten"></div>
         <div className="relative z-10 container mx-auto px-4 pt-32 pb-10 hero-text">
-            <div className="flex flex-wrap items-center gap-3 mb-6 animate-fade-in-up">{schilder}</div>
+            <Kopfleiste label={label} rechts={rechts} dunkel className="mb-8 animate-fade-in-up" />
             <h1 className="text-[42px] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-12 animate-fade-in-up [animation-delay:100ms]">
                 {titel}
             </h1>
@@ -28,9 +29,6 @@ export const ProduktHero: React.FC<{ bild: React.ReactNode; schilder: React.Reac
         </div>
     </div>
 );
-
-export const SCHILD = 'px-3 py-1 border border-[#B9D39A]/60 text-[#B9D39A] text-xs font-bold uppercase tracking-[0.2em] rounded-md';
-export const SCHILD_ICON = 'flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider border border-white/35 px-3 py-1 rounded-md';
 
 // Eine Zeile im Datenblatt. Mit href (Zertifikat) über die ganze Breite, mit GS-Zeichen und Link zu TÜV SÜD.
 export const TechSpecCard: React.FC<{ title: string; value: string; icon?: string; href?: string; linkLabel?: string }> = ({ title, value, href, linkLabel }) => {

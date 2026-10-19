@@ -383,7 +383,7 @@ const PhaseKachel: React.FC<{ className: string; nr: number; info: string; servi
 );
 
 // --- Anspruch: Bild-Mosaik mit Werkplan-Layer ---
-// Fotos getönt, darüber Hinweislinien wie in einer Bauzeichnung, Text im Plankopf. Beim Überfahren wird das Foto farbig.
+// Fotos leicht getönt (der Block soll nicht zu dunkel wirken), darüber Hinweislinien wie in einer Bauzeichnung, Text im Plankopf. Beim Überfahren wird das Foto farbig.
 // Linien im Koordinatensystem des Fotos (756 × 430); "slice" schneidet wie object-cover, die Linien bleiben auf dem Detail.
 const Plan: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <svg viewBox="0 0 756 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"
@@ -405,8 +405,8 @@ const Plankopf: React.FC<{ blatt: string; info: string; titel: string; text: str
 
 const Fotokachel: React.FC<{ src: string; alt: string; className: string; children: React.ReactNode }> = ({ src, alt, className, children }) => (
     <article className={`group relative rounded-2xl overflow-hidden bg-brand-dark ${className}`}>
-        <img src={src} alt={alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 transition-[filter,transform] duration-700 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.04]" />
-        <div className="absolute inset-0 bg-[#33502B] mix-blend-multiply opacity-60 transition-opacity duration-700 group-hover:opacity-0 pointer-events-none" />
+        <img src={src} alt={alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale-[0.6] contrast-[1.05] transition-[filter,transform] duration-700 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.04]" />
+        <div className="absolute inset-0 bg-[#33502B] mix-blend-multiply opacity-30 transition-opacity duration-700 group-hover:opacity-0 pointer-events-none" />
         {children}
     </article>
 );
@@ -414,7 +414,7 @@ const Fotokachel: React.FC<{ src: string; alt: string; className: string; childr
 const Anspruch: React.FC = () => {
   const t = useT();
   return (
-    <section id="philosophie" className="bg-[#1F2622] text-brand-bg py-24 lg:py-32">
+    <section id="philosophie" className="bg-brand-dark text-brand-bg py-24 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col gap-12 lg:gap-14">
             <div className="flex flex-wrap gap-x-16 gap-y-6 items-end justify-between">
                 <div className="flex flex-col gap-5">
@@ -425,9 +425,9 @@ const Anspruch: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 lg:auto-rows-[290px] gap-4">
-                <Fotokachel src="/images/details/einstellung-04.jpg" alt={t("Höhenverstellbarer Fuß eines Betonelements auf Asphalt", "Height-adjustable foot of a concrete element on asphalt", "Pied réglable en hauteur d'un élément en béton sur de l'asphalte")} className="h-[440px] lg:h-auto lg:col-span-7 lg:row-span-2">
+                <Fotokachel src="/images/details/einstellung-04-hell.jpg" alt={t("Höhenverstellbarer Fuß eines Betonelements auf Asphalt", "Height-adjustable foot of a concrete element on asphalt", "Pied réglable en hauteur d'un élément en béton sur de l'asphalte")} className="h-[440px] lg:h-auto lg:col-span-7 lg:row-span-2">
                     <Plan>
-                        <circle cx="368" cy="300" r="30" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
+                        <circle cx="367" cy="310" r="30" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
                     </Plan>
                     <Plankopf gross oben blatt={t("BLATT 01 / 04", "SHEET 01 / 04", "PLANCHE 01 / 04")} info={t("Detail Fuß", "Detail: foot", "Détail : pied")} titel={t("Fundamentfrei", "No foundations", "Sans fondation")} text={t("Steht auf vorhandenem Asphalt oder Beton. Vor Ort wird nicht betoniert.", "Stands on existing asphalt or concrete. No concreting on site.", "Se pose sur de l'asphalte ou du béton existant. Aucun bétonnage sur place.")} />
                 </Fotokachel>
@@ -450,9 +450,9 @@ const Anspruch: React.FC = () => {
                     </div>
                 </article>
 
-                <Fotokachel src="/images/montage/transport-01.jpg" alt={t("Gabelstapler hebt ein Betonelement vom Lkw", "Forklift lifting a concrete element off a lorry", "Chariot élévateur déchargeant un élément en béton d'un camion")} className="h-[320px] lg:h-auto lg:col-span-8">
+                <Fotokachel src="/images/montage/transport-01-scharf.jpg" alt={t("Gabelstapler hebt ein Betonelement vom Lkw", "Forklift lifting a concrete element off a lorry", "Chariot élévateur déchargeant un élément en béton d'un camion")} className="h-[320px] lg:h-auto lg:col-span-8">
                     <Plan>
-                        <rect x="345" y="212" width="112" height="54" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
+                        <rect x="364" y="216" width="148" height="58" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
                     </Plan>
                     <Plankopf blatt={t("BLATT 04 / 04", "SHEET 04 / 04", "PLANCHE 04 / 04")} info="KrWG § 6" titel={t("Versetzen statt abreißen", "Move it, don't demolish it", "Déplacer plutôt que démolir")} text={t("Kein Abbruch, kein Bauschutt. Ihre Investition zieht mit.", "No demolition, no rubble. Your investment moves with you.", "Ni démolition, ni gravats. Votre investissement vous suit.")} />
                 </Fotokachel>

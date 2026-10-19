@@ -312,3 +312,19 @@ html, body {
       linear-gradient(90deg, rgba(20,26,22,.6) 0%, rgba(20,26,22,.3) 100%);
   }
 }
+
+/* Startseiten-Hero: der Plan wird freigelegt. Zeilen wischen von links herein,
+   die Linie über den Kennwerten zieht sich auf, dann setzen die Spalten ein. */
+@keyframes hero-wisch { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(-2% -2% -2% 0); } }
+@keyframes hero-linie { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes hero-spalte { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes hero-wort { 0%, 28% { transform: translateY(0); } 33%, 61% { transform: translateY(-1rem); } 66%, 94% { transform: translateY(-2rem); } 100% { transform: translateY(-3rem); } }
+.hero-wisch { display: block; animation: hero-wisch .9s cubic-bezier(.65,0,.15,1) both; animation-delay: var(--d, 0s); }
+.hero-linie { transform-origin: left; animation: hero-linie 1s cubic-bezier(.65,0,.15,1) both; animation-delay: 1.4s; }
+.hero-spalte { animation: hero-spalte .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(2s + var(--i, 0) * .18s); }
+.hero-wort { display: inline-grid; height: 1rem; overflow: hidden; vertical-align: bottom; }
+.hero-wort > span { display: block; animation: hero-wort 9s cubic-bezier(.7,0,.2,1) 2.5s infinite; }
+.hero-wort b { display: block; height: 1rem; line-height: 1rem; font-weight: 500; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-wisch, .hero-linie, .hero-spalte, .hero-wort > span { animation: none; }
+}

@@ -5,7 +5,7 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 import PageShell from '../components/PageShell';
 import Bild from '../components/Bild';
 import parkStart from '../components/katalog/park-startseite.json';
-import Plankopf from '../components/Plankopf';
+import Plankopf, { Kopfleiste } from '../components/Plankopf';
 
 // --- Animated Section Utility ---
 const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}> = ({ children, className }) => {
@@ -478,6 +478,13 @@ const SLIDES: Slide[] = [
   { type: 'video', src: '/videos/skateparks/hero-bmx.mp4', poster: '/videos/skateparks/poster-hero-bmx.jpg', duration: 10000 },
 ];
 
+const KENNWERTE: { wert: [string, string, string]; label: [string, string, string] }[] = [
+  { wert: ["Modular", "Modular", "Modulaires"], label: ["Aus Betonelementen", "Made of concrete elements", "En éléments béton"] },
+  { wert: ["Robust", "Robust", "Robustes"], label: ["Bewehrter Beton", "Reinforced concrete", "Béton armé"] },
+  { wert: ["Fundamentfrei", "Foundation-free", "Sans fondation"], label: ["Direkt auf Asphalt", "Straight onto asphalt", "Directement sur l'asphalte"] },
+  { wert: ["Recycelbar", "Recyclable", "Recyclables"], label: ["Beton und Stahl", "Concrete and steel", "Béton et acier"] },
+];
+
 // Läuft ein Video nach dieser Zeit noch nicht (langsames Netz), geht das Karussell trotzdem weiter
 const VIDEO_WAIT_MAX = 5000;
 
@@ -565,21 +572,36 @@ const Hero: React.FC = () => {
 
             {/* LAYER 4: CONTENT */}
             <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-center pointer-events-none hero-text">
-                 <div className="max-w-7xl">
-                    <div className="animate-fade-in-up">
-                        <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-normal leading-[1.2] md:leading-[1.05]">
-                            <span className="text-[clamp(2rem,6vw,6rem)] text-white">{t("Architektur", "Architecture", "Architecture")}</span>
-                            <span className="text-[clamp(2rem,6vw,6rem)] text-white">{t("für", "for", "pour les")}</span>
-                            <span className="text-[clamp(2rem,6vw,6rem)] text-brand-orange">{t("Freiräume", "open spaces", "espaces publics")}</span>
-                        </h1>
-                        <p className="mt-6 md:mt-8 text-xl leading-relaxed text-white/90 max-w-xl md:max-w-2xl animate-fade-in-up [animation-delay:300ms]">
-                            {/* Roland §3.2: 30-Jahre-Jubiläums-Claim noch klären, vorläufig */}
-                            {t(
-                                <>Skateparks, Pumptracks und urbane Anlagen aus Beton und Stahl. <span className="text-white font-bold">Modular. Robust. Fundamentfrei. Recycelbar.</span></>,
-                                <>Skateparks, pump tracks and urban facilities made of concrete and steel. <span className="text-white font-bold">Modular. Robust. Foundation-free. Recyclable.</span></>,
-                                <>Skateparks, pumptracks et équipements urbains en béton et en acier. <span className="text-white font-bold">Modulaires. Robustes. Sans fondation. Recyclables.</span></>,
-                            )}
-                        </p>
+                 <div className="max-w-7xl w-full">
+                    <Kopfleiste
+                        dunkel
+                        className="mb-6 md:mb-8 hero-wisch"
+                        label="A+ Urban Design"
+                        rechts={
+                            <span className="hero-wort" aria-hidden="true"><span>
+                                <b>{t("Skateparks", "Skateparks", "Skateparks")}</b>
+                                <b>{t("Pumptracks", "Pump tracks", "Pumptracks")}</b>
+                                <b>{t("Urbane Anlagen", "Urban facilities", "Équipements urbains")}</b>
+                                <b>{t("Skateparks", "Skateparks", "Skateparks")}</b>
+                            </span></span>
+                        }
+                    />
+                    <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-normal leading-[1.2] md:leading-[1.05] [word-spacing:0.12em]">
+                        <span className="hero-wisch text-[clamp(2rem,6vw,6rem)] text-white" style={{ '--d': '0.3s' } as React.CSSProperties}>{t("Architektur", "Architecture", "Architecture")}</span>
+                        <span className="hero-wisch text-[clamp(2rem,6vw,6rem)] text-white" style={{ '--d': '0.55s' } as React.CSSProperties}>{t("für", "for", "pour les")}</span>
+                        <span className="hero-wisch text-[clamp(2rem,6vw,6rem)] text-brand-orange" style={{ '--d': '0.8s' } as React.CSSProperties}>{t("Freiräume", "open spaces", "espaces publics")}</span>
+                    </h1>
+                    {/* Roland §3.2: 30-Jahre-Jubiläums-Claim noch klären, vorläufig */}
+                    <div className="relative mt-8 md:mt-12">
+                        <div className="hero-linie absolute top-0 left-0 w-full h-px bg-white/40"></div>
+                        <dl className="grid grid-cols-2 md:grid-cols-4">
+                            {KENNWERTE.map((k, i) => (
+                                <div key={i} className="hero-spalte pt-5 pr-4" style={{ '--i': i } as React.CSSProperties}>
+                                    <dt className="font-heading font-extrabold text-xl md:text-3xl leading-tight text-white">{t(...k.wert)}</dt>
+                                    <dd className="mt-2 font-mono text-xs uppercase tracking-widest text-white/75">{t(...k.label)}</dd>
+                                </div>
+                            ))}
+                        </dl>
                     </div>
                  </div>
             </div>

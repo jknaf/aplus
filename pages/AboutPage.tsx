@@ -198,7 +198,33 @@ const AboutPage: React.FC = () => {
           </div>
       </div>
 
-      {/* 6. ANSPRECHPARTNER */}
+      {/* 6. PRESSE: drei Projekte mit Foto, alles Weitere auf /referenzen-presse */}
+      <div className="container mx-auto px-4 mb-28">
+          <Plankopf label={t("Presse", "Press", "Presse")} text={t("Kommunale Fachmedien berichten seit über zehn Jahren über Anlagen und Produkte von A+ Urban Design. Hier finden Sie die Projektberichte und Fachbeiträge.", "Municipal trade media have been reporting on A+ Urban Design parks and products for more than ten years. Here you will find the project reports and trade articles. The articles are in German.", "La presse spécialisée destinée aux collectivités rend compte depuis plus de dix ans des installations et des produits d'A+ Urban Design. Vous trouverez ici les reportages sur les projets et les articles spécialisés. Les articles sont en allemand.")} className="mb-10">
+              {t(<>A+ in der <span className="text-brand-orange">Fachpresse</span></>, <>A+ in the <span className="text-brand-orange">trade press</span></>, <>A+ dans la <span className="text-brand-orange">presse spécialisée</span></>)}
+          </Plankopf>
+          <div className="grid md:grid-cols-3 gap-6">
+              {([
+                  ['/images/homepage/hero-anlage-02.jpg', t("Skatepark Friedrichsdorf", "Friedrichsdorf Skatepark", "Skatepark de Friedrichsdorf"), 'Kommunaldirekt · Freiraum Gestalten'],
+                  ['/images/umkleide/umkleidekabine-freibad-03.jpg', t("Umkleide- und Duschkabine „Schnecke“", "“Schnecke” changing and shower cubicle", "Cabine de change et de douche « Schnecke »"), 'Flächenmanager · Kommunaldirekt · Kommunalclick24'],
+                  ['/images/pumptrack/pumptrack-beton-elemente-01.jpg', t("Pumptrack Berlin-Reinickendorf", "Berlin-Reinickendorf pump track", "Pumptrack de Berlin-Reinickendorf"), 'Kommunaldirekt · Freiraum Gestalten'],
+              ] as const).map(([src, titel, medien]) => (
+                  <Link key={src} to="/referenzen-presse" className={`${CARD} group flex flex-col`}>
+                      <div className="h-52 overflow-hidden"><Bild src={src} sizes="(min-width: 768px) 33vw, 100vw" alt={titel} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
+                      <div className="p-6 flex flex-col gap-2">
+                          <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#4F6E34]">{medien}</div>
+                          <h3 className={`${BOX_B_TITEL} !mb-0 group-hover:text-[#4F6E34] transition-colors`}>{titel}</h3>
+                      </div>
+                  </Link>
+              ))}
+          </div>
+          <Link to="/referenzen-presse" className="mt-8 inline-flex items-center gap-2 min-h-[52px] px-8 rounded-lg bg-brand-orange hover:bg-brand-dark text-white font-extrabold uppercase tracking-wider text-sm transition-colors">
+              {t("Alle Presseberichte", "All press reports", "Tous les articles de presse")}
+              <span className="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
+          </Link>
+      </div>
+
+      {/* 7. ANSPRECHPARTNER */}
       <div className="container mx-auto px-4 mb-28">
           <div className="flex flex-wrap bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
               <div className="basis-full lg:basis-3/5 p-8 md:p-14">

@@ -9,7 +9,7 @@ import CodeDialog, { useKonfiguratorCode } from '../components/katalog/CodeDialo
 import { gruppenName, teilName } from '../localized';
 import { anzahlImPark, merken } from '../components/konfigurator/merkliste';
 import type { ParkTeil, Boeschung } from '../components/katalog/ParkAnsicht';
-import Plankopf from '../components/Plankopf';
+import Plankopf, { Kopfleiste } from '../components/Plankopf';
 
 const ParkAnsicht = lazy(() => import('../components/katalog/ParkAnsicht'));
 const Blaetterkatalog = lazy(() => import('../components/katalog/Blaetterkatalog'));
@@ -144,10 +144,10 @@ const ParkZaehler: React.FC = () => {
     return () => window.removeEventListener('aplus-park', neu);
   }, []);
   return (
-    <Link to="/konfigurator" className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider border border-brand-dark/15 text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-colors">
-      <span className="material-symbols-outlined text-lg">view_in_ar</span>
+    <Link to="/konfigurator" className="shrink-0 h-12 inline-flex items-center gap-2 px-4 md:px-5 rounded-lg text-sm font-extrabold uppercase tracking-wider bg-brand-orange text-white shadow-[0_6px_18px_rgba(107,143,74,0.35)] hover:bg-brand-dark transition-colors">
+      <span className="material-symbols-outlined text-[22px]">view_in_ar</span>
       <span className="hidden sm:inline">{t("Park planen", "Plan a park", "Planifier un parc")}</span>
-      {n > 0 && <span className="min-w-5 h-5 px-1.5 rounded-full bg-brand-orange text-white text-[11px] leading-5 text-center">{n}</span>}
+      {n > 0 && <span className="min-w-5 h-5 px-1.5 rounded-full bg-white text-brand-dark text-[11px] leading-5 text-center">{n}</span>}
     </Link>
   );
 };
@@ -335,6 +335,49 @@ const ParkKarte: React.FC<{ p: Beispiel; preis: string | null; onSperre: () => v
   );
 };
 
+// Titelbild des Katalogheftes (Park 20, 08_Preisliste/heft_renders/park-20_titel.png) mit Schildern an
+// einzelnen Elementen. x/y in Prozent des Bildes; links: Schild links vom Punkt (Punkte am rechten Rand).
+const TITEL_SCHILDER = [
+  { slug: 'table-150', x: 19, y: 55 },
+  { slug: 'stairs-60-75', x: 73, y: 39, nurBreit: true },
+  { slug: 'curb-300', x: 86, y: 54, links: true, nurBreit: true },
+  { slug: 'rail-300', x: 91, y: 28, links: true },
+];
+
+const TitelPark: React.FC<{ park?: Beispiel; katalog: Katalog | null }> = ({ park, katalog }) => {
+  const t = useT();
+  const lang = useLang();
+  return (
+    <div className="lg:[grid-area:bild] relative flex flex-col items-center justify-center">
+      <div className="relative w-full max-w-[640px]">
+        <div className="absolute inset-x-[4%] -bottom-[10%] h-[55%] rounded-[50%] bg-brand-orange/10" aria-hidden="true" />
+        <img src="/images/katalog/titel-park-20.webp" alt={t("Skatepark 20 aus Betonelementen in 3D", "Skatepark 20 made of concrete elements in 3D", "Skatepark 20 en éléments de béton en 3D")} width="1200" height="555" className="relative w-full h-auto" />
+        {katalog && TITEL_SCHILDER.map((s) => {
+          const e = katalog.elemente.find((x) => x.slug === s.slug);
+          if (!e) return null;
+          return (
+            <Link
+              key={s.slug} to={`/katalog/${s.slug}`}
+              style={{ left: `${s.x}%`, top: `${s.y}%`, transform: s.links ? 'translate(calc(-100% + 6px), -50%)' : 'translate(-6px, -50%)' }}
+              className={`group absolute ${s.nurBreit ? 'hidden sm:flex' : 'flex'} ${s.links ? 'flex-row-reverse' : ''} items-center gap-1.5 min-h-11`}
+            >
+              <span className="w-3 h-3 shrink-0 rounded-full bg-brand-orange shadow-[0_0_0_5px_rgba(107,143,74,0.25)]" />
+              <span className="px-2.5 py-1 rounded-md bg-brand-dark group-hover:bg-brand-orange text-white font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em] whitespace-nowrap transition-colors">{teilName(e.name, lang)}</span>
+            </Link>
+          );
+        })}
+      </div>
+      <Link
+        to="/katalog/skatepark-20" onMouseEnter={() => park && vorladen(park)} onFocus={() => park && vorladen(park)} onTouchStart={() => park && vorladen(park)}
+        className="mt-8 inline-flex items-center gap-2.5 min-h-12 px-5 rounded-full bg-white shadow-[0_6px_20px_rgba(44,53,48,0.14)] font-bold text-[15px] text-brand-dark hover:text-brand-orange transition-colors"
+      >
+        <span className="material-symbols-outlined text-[22px] text-[#4F6E34]">3d_rotation</span>
+        {t("Park 20 in 3D ansehen", "View park 20 in 3D", "Voir le parc 20 en 3D")}
+      </Link>
+    </div>
+  );
+};
+
 const KatalogPage: React.FC = () => {
   const t = useT();
   const lang = useLang();
@@ -397,39 +440,49 @@ const KatalogPage: React.FC = () => {
       title={aktivPark ? `${aktivPark.name} · Skate-Katalog` : aktiv ? `${teilName(aktiv.name, lang)} · Skate-Katalog` : t("Skate-Katalog in 3D", "Skate Catalogue in 3D", "Catalogue de skate en 3D")}
       description={t("Skatepark-Beispiele und alle Skate-Elemente von A+ Urban Design in 3D: Parks mit Fläche und Stückliste, dazu Tables, Banks, Hips, Ramps, Rails und mehr.", "Skatepark examples and all skate elements from A+ Urban Design in 3D: parks with area and parts list, plus tables, banks, hips, ramps, rails and more.", "Exemples de skateparks et tous les éléments de skate d'A+ Urban Design en 3D : parcs avec surface et liste des pièces, ainsi que tables, banks, hips, rampes, rails et plus encore.")}
     >
-      <section className="pt-32 pb-8 md:pt-40 md:pb-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Plankopf label={t("Katalog", "Catalogue", "Catalogue")} as="h1" text={<>{parks.length || t('Viele', 'Many', 'De nombreux')} {t('Beispielparks und', 'example parks and', 'parcs exemples et')} {katalog ? katalog.elemente.length : t('alle', 'all', 'tous les')} {t('Einzelteile in 3D. Park aussuchen, Teile ansehen, eigenen Park planen.', 'individual parts in 3D. Choose a park, look at the parts, plan your own park.', 'éléments individuels en 3D. Choisissez un parc, consultez les éléments, planifiez votre propre parc.')}</>}>
-            {t(<>Skate-<span className="text-brand-orange">Parks</span></>, <>Skate<span className="text-brand-orange">parks</span></>, <><span className="text-brand-orange">Skateparks</span></>)}
-          </Plankopf>
+      {/* Kopf: links Titel und die Wahl Parks oder Einzelteile, rechts der Titelpark aus dem Katalogheft.
+          So sieht man schon ohne Scrollen 3D. Am Handy: Titel, Bild, Wahl untereinander. */}
+      <section className="pt-6 pb-4 md:pt-8 md:pb-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid gap-5 lg:gap-x-10 lg:gap-y-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:[grid-template-areas:'text_bild''wahl_bild']">
+          <div className="lg:[grid-area:text]">
+            <Kopfleiste label={t("Katalog", "Catalogue", "Catalogue")} className="mb-5 md:mb-6" />
+            <h1 className="font-extrabold font-heading uppercase leading-none break-words text-brand-dark text-[44px] sm:text-6xl xl:text-[72px] lg:whitespace-nowrap" style={{ wordSpacing: '0.12em' }}>
+              {t(<>Skate-<span className="text-brand-orange">Parks</span></>, <>Skate<span className="text-brand-orange">parks</span></>, <><span className="text-brand-orange">Skateparks</span></>)}
+            </h1>
+            <p className="mt-4 md:mt-5 text-lg md:text-xl leading-relaxed text-brand-dark/75 max-w-xl">
+              {parks.length || t('Viele', 'Many', 'De nombreux')} {t('Beispielparks und', 'example parks and', 'parcs exemples et')} {katalog ? katalog.elemente.length : t('alle', 'all', 'tous les')} {t('Einzelteile in 3D. Park aussuchen, Teile ansehen, eigenen Park planen.', 'individual parts in 3D. Choose a park, look at the parts, plan your own park.', 'éléments individuels en 3D. Choisissez un parc, consultez les éléments, planifiez votre propre parc.')}
+            </p>
+          </div>
+
+          <TitelPark park={parks.find((p) => p.id === 'skatepark-20')} katalog={katalog} />
+
+          {/* Große Schalter mit Bildern aus dem Katalog statt Symbolen */}
+          <div className="lg:[grid-area:wahl] lg:self-end grid grid-cols-2 gap-3" role="tablist" aria-label={t("Ansicht", "View", "Vue")}>
+            {([
+              ['parks', t("Beispielparks", "Example parks", "Parcs exemples"), t("Parks", "Parks", "Parcs"), `${parks.length || ''} ${t('fertige Anlagen mit Preis', 'ready-made parks with prices', 'parcs prêts avec prix')}`, `${parks.length || ''} ${t('Anlagen', 'parks', 'parcs')}`],
+              ['einzelteile', t("Einzelteile", "Individual parts", "Éléments individuels"), t("Einzelteile", "Individual parts", "Éléments individuels"), `${katalog?.elemente.length ?? ''} ${t('Elemente einzeln in 3D', 'elements individually in 3D', 'éléments individuels en 3D')}`, `${katalog?.elemente.length ?? ''} ${t('Elemente', 'elements', 'éléments')}`],
+            ] as const).map(([id, text, kurz, unter, unterKurz]) => {
+              const an = ansicht === id;
+              return (
+                <button
+                  key={id} type="button" role="tab" aria-selected={an} onClick={() => zeigen(id)}
+                  className={`group relative overflow-hidden h-32 md:h-[168px] flex flex-col justify-end p-3 md:p-4 rounded-2xl border-2 text-left transition-colors ${an ? 'bg-brand-dark border-brand-dark text-white' : 'bg-white border-brand-dark/15 text-brand-dark hover:border-brand-orange'}`}
+                >
+                  {id === 'parks' ? (
+                    <img src="/katalog/parks/skatepark-22.webp" alt="" width="1200" height="876" className="absolute -top-3 -right-6 w-[150px] md:w-[220px] h-auto transition-transform duration-500 group-hover:scale-105" />
+                  ) : (
+                    <span className="absolute top-1.5 md:top-2.5 inset-x-2 md:inset-x-3 flex items-end justify-between transition-transform duration-500 group-hover:scale-105">
+                      {['quarterramp-200', 'table-125', 'hip-75'].map((s, i) => <img key={s} src={`/katalog/bilder/${s}.webp`} alt="" width="640" height="640" className={`object-contain ${['w-[52px] md:w-[76px]', 'w-12 md:w-[70px]', 'w-11 md:w-16'][i]} h-auto`} />)}
+                    </span>
+                  )}
+                  <span className="relative block font-heading font-extrabold uppercase text-base md:text-[19px] [word-spacing:0.12em]"><span className="sm:hidden">{kurz}</span><span className="hidden sm:inline">{text}</span></span>
+                  <span className={`relative block text-xs md:text-sm mt-0.5 ${an ? 'text-white/80' : 'text-brand-dark/75'}`}><span className="sm:hidden">{unterKurz}</span><span className="hidden sm:inline">{unter}</span></span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
-
-      {/* Große Schalter: Parks oder Einzelteile, damit man die Wahl sofort sieht */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-6 md:pb-8">
-        <div className="max-w-3xl mx-auto grid grid-cols-2 gap-3 md:gap-4" role="tablist" aria-label={t("Ansicht", "View", "Vue")}>
-          {([
-            ['parks', t("Beispielparks", "Example parks", "Parcs exemples"), t("Parks", "Parks", "Parcs"), 'landscape', `${parks.length || ''} ${t('fertige Anlagen mit Preis', 'ready-made parks with prices', 'parcs prêts avec prix')}`, `${parks.length || ''} ${t('Anlagen', 'parks', 'parcs')}`],
-            ['einzelteile', t("Einzelteile", "Individual parts", "Éléments individuels"), t("Einzelteile", "Individual parts", "Éléments individuels"), 'deployed_code', `${katalog?.elemente.length ?? ''} ${t('Elemente einzeln in 3D', 'elements individually in 3D', 'éléments individuels en 3D')}`, `${katalog?.elemente.length ?? ''} ${t('Elemente', 'elements', 'éléments')}`],
-          ] as const).map(([id, text, kurz, icon, unter, unterKurz]) => {
-            const an = ansicht === id;
-            return (
-              <button
-                key={id} type="button" role="tab" aria-selected={an} onClick={() => zeigen(id)}
-                className={`flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 md:gap-5 p-3 md:p-4 rounded-2xl border-2 text-left transition-colors ${an ? 'bg-brand-dark border-brand-dark text-white' : 'bg-white border-brand-dark/15 text-brand-dark hover:border-brand-orange'}`}
-              >
-                <span className={`shrink-0 w-11 h-11 md:w-16 md:h-16 rounded-xl flex items-center justify-center ${an ? 'bg-white/10' : 'bg-brand-surface'}`}>
-                  <span className="material-symbols-outlined text-2xl md:text-4xl">{icon}</span>
-                </span>
-                <span className="min-w-0">
-                  <span className="block font-heading font-extrabold uppercase tracking-tight text-base md:text-xl"><span className="sm:hidden">{kurz}</span><span className="hidden sm:inline">{text}</span></span>
-                  <span className={`block text-xs md:text-sm mt-0.5 ${an ? 'text-white/75' : 'text-brand-muted'}`}><span className="sm:hidden">{unterKurz}</span><span className="hidden sm:inline">{unter}</span></span>
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
 
       {/* Leiste: Suche, Filter, Planen, Preise. Codes für Kunden gibt es nur auf /admin. */}
       <div ref={leiste} className="sticky top-14 md:top-20 z-30 bg-brand-bg/95 backdrop-blur-md border-y border-brand-dark/5 scroll-mt-14 md:scroll-mt-20">
@@ -461,15 +514,15 @@ const KatalogPage: React.FC = () => {
           <button
             type="button" onClick={() => (katalogLinks ? setBlaettern(true) : setDialog(true))}
             aria-label={katalogLinks ? t("Katalog 2026 blättern", "Browse the 2026 catalogue", "Feuilleter le catalogue 2026") : t("Preise und Katalog freischalten", "Unlock prices and catalogue", "Débloquer les prix et le catalogue")}
-            className={`shrink-0 h-11 inline-flex items-center gap-2 px-3 md:px-4 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${katalogLinks ? 'bg-brand-orange text-white hover:bg-brand-dark' : 'bg-brand-dark text-white hover:bg-brand-orange'}`}
+            className="shrink-0 h-12 inline-flex items-center gap-2 px-4 md:px-5 rounded-lg text-sm font-extrabold uppercase tracking-wider bg-brand-dark text-white shadow-[0_6px_18px_rgba(44,53,48,0.25)] hover:bg-brand-orange transition-colors"
           >
-            <span className="material-symbols-outlined text-lg">{katalogLinks ? 'menu_book' : 'lock'}</span>
-            <span className="hidden lg:inline">{katalogLinks ? t("Katalog 2026 blättern", "Browse the 2026 catalogue", "Feuilleter le catalogue 2026") : t("Preise und Katalog", "Prices and catalogue", "Prix et catalogue")}</span>
+            <span className="material-symbols-outlined text-[22px]">{katalogLinks ? 'menu_book' : 'lock'}</span>
+            <span className="hidden sm:inline">{katalogLinks ? t("Katalog 2026 blättern", "Browse the 2026 catalogue", "Feuilleter le catalogue 2026") : t("Preise und Katalog", "Prices and catalogue", "Prix et catalogue")}</span>
           </button>
         </div>
       </div>
 
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-32">
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 md:pt-8 pb-32">
         {katalogLinks && (
           <div className="mb-16 flex flex-col md:flex-row md:items-center gap-6 bg-brand-dark text-white rounded-2xl p-6 md:p-8">
             <span className="material-symbols-outlined text-5xl text-brand-orange">menu_book</span>
@@ -489,13 +542,15 @@ const KatalogPage: React.FC = () => {
         )}
         {ansicht === 'parks' && parks.length > 0 && (
           <div id="parks" className="mb-24 scroll-mt-40">
-            <Plankopf klein rechts={<>{parkTreffer.length} {t("Parks", "parks", "parcs")}</>} className="mb-8">{t("Skatepark-Beispiele", "Skatepark examples", "Exemples de skateparks")}</Plankopf>
-            <p className="text-xl leading-relaxed text-brand-dark/75 max-w-3xl mb-8">{t("Jeder Park ist aus unseren Einzelelementen zusammengestellt, mit Fläche, Stückliste und Gesamtpreis. Im Detail drehen Sie die Anlage in 3D.", "Every park is put together from our individual elements, with area, parts list and total price. In the detail view you can rotate the park in 3D.", "Chaque parc est composé de nos éléments individuels, avec surface, liste des pièces et prix total. Dans la vue détaillée, vous pouvez faire pivoter l'installation en 3D.")}</p>
+            {/* Nur die Kopfleiste über den Karten, damit die Parks schon im ersten Bildschirm hereinschauen */}
+            <h2 className="sr-only">{t("Skatepark-Beispiele", "Skatepark examples", "Exemples de skateparks")}</h2>
+            <Kopfleiste label={t("Skatepark-Beispiele", "Skatepark examples", "Exemples de skateparks")} rechts={<>{parkTreffer.length} {t("Parks", "parks", "parcs")}</>} className="mb-6" />
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
               {(suche.trim() ? parkTreffer : parkTreffer.slice(0, reihenParks * PARKS_JE_REIHE)).map((p) => <ParkKarte key={p.id} p={p} preis={preise ? preisText(preise[p.id], loc) ?? t("auf Anfrage", "on request", "sur demande") : null} onSperre={() => setDialog(true)} />)}
             </div>
             {!parkTreffer.length && <p className="text-center text-brand-muted py-12">{t("Kein Park passt zu diesem Filter.", "No park matches this filter.", "Aucun parc ne correspond à ce filtre.")}</p>}
             {!suche.trim() && <MehrLaden rest={parkTreffer.length - reihenParks * PARKS_JE_REIHE} onClick={() => setReihenParks((n) => n + 1)} />}
+            <p className="text-xl leading-relaxed text-brand-dark/75 max-w-3xl mt-10">{t("Jeder Park ist aus unseren Einzelelementen zusammengestellt, mit Fläche, Stückliste und Gesamtpreis. Im Detail drehen Sie die Anlage in 3D.", "Every park is put together from our individual elements, with area, parts list and total price. In the detail view you can rotate the park in 3D.", "Chaque parc est composé de nos éléments individuels, avec surface, liste des pièces et prix total. Dans la vue détaillée, vous pouvez faire pivoter l'installation en 3D.")}</p>
           </div>
         )}
 

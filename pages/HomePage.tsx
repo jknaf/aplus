@@ -488,17 +488,18 @@ type Slide =
   | { type: 'image'; src: string; alt: [string, string, string]; duration: number }
   | { type: 'video'; src: string; poster: string; duration: number };
 
-// Videos starten bei Sekunde 15 (um Logos/Intro zu überspringen) und spielen 10 Sek
-const VIDEO_START_TIME = 15;
-
+// Die Hero-Videos sind fertig geschnittene 10-s-Clips (ab 0:15 der Contest-Videos),
+// das Poster ist ihr erster Frame. Kein Springen im Video nötig.
 const SLIDES: Slide[] = [
   { type: 'image', src: '/images/homepage/hero-banner.jpg', alt: ["A+ Urban Design Skatepark", "A+ Urban Design skatepark", "Skatepark A+ Urban Design"], duration: 5000 },
-  { type: 'video', src: '/videos/skateparks/contest-skateboard.mp4', poster: '/videos/skateparks/poster-contest-skateboard.jpg', duration: 10000 },
+  { type: 'video', src: '/videos/skateparks/hero-skateboard.mp4', poster: '/videos/skateparks/poster-hero-skateboard.jpg', duration: 10000 },
   { type: 'image', src: '/images/homepage/hero-anlage-01.jpg', alt: ["Beton-Skatepark, Totalaufnahme", "Concrete skatepark, wide shot", "Skatepark en béton, vue d'ensemble"], duration: 5000 },
   { type: 'image', src: '/images/homepage/hero-anlage-panorama.jpg', alt: ["Skatepark-Panorama mit Bowl und Street-Area", "Skatepark panorama with bowl and street area", "Panorama d'un skatepark avec bowl et zone street"], duration: 5000 },
-  { type: 'video', src: '/videos/skateparks/contest-bmx.mp4', poster: '/videos/skateparks/poster-contest-bmx.jpg', duration: 10000 },
-  { type: 'image', src: '/images/homepage/hero-anlage-02.jpg', alt: ["Skatepark-Anlage komplett", "Complete skatepark", "Skatepark complet"], duration: 5000 },
+  { type: 'video', src: '/videos/skateparks/hero-bmx.mp4', poster: '/videos/skateparks/poster-hero-bmx.jpg', duration: 10000 },
 ];
+
+// Läuft ein Video nach dieser Zeit noch nicht (langsames Netz), geht das Karussell trotzdem weiter
+const VIDEO_WAIT_MAX = 5000;
 
 const Hero: React.FC = () => {
     const t = useT();
@@ -507,51 +508,39 @@ const Hero: React.FC = () => {
 
     useEffect(() => {
         const current = SLIDES[currentIndex];
-        let cleanupListener: (() => void) | undefined;
+        let timer: ReturnType<typeof setTimeout> | undefined;
+        let fallback: ReturnType<typeof setTimeout> | undefined;
+        const startTimer = () => {
+            if (timer) return;
+            clearTimeout(fallback);
+            timer = setTimeout(() => setCurrentIndex((prev) => (prev + 1) % SLIDES.length), current.duration);
+        };
 
-        // Bei Videos: bei Sekunde 15 starten und abspielen
-        if (current.type === 'video') {
-            const video = videoRefs.current[currentIndex];
-            if (video) {
-                const seekAndPlay = () => {
-                    video.currentTime = VIDEO_START_TIME;
-                    video.play().catch(() => {}); // Safari/autoplay-Schutz abfangen
-                };
-
-                if (video.readyState >= 3) {
-                    // Video ist ausreichend gepuffert (HAVE_FUTURE_DATA)
-                    seekAndPlay();
-                } else {
-                    // Noch nicht genug gepuffert, auf canplay warten
-                    video.addEventListener('canplay', seekAndPlay, { once: true });
-                    video.load();
-                    cleanupListener = () => video.removeEventListener('canplay', seekAndPlay);
-                }
-            }
+        // Bei Videos: von vorn abspielen, Slide-Timer erst starten, wenn das Video läuft
+        const video = current.type === 'video' ? videoRefs.current[currentIndex] : null;
+        if (video) {
+            video.addEventListener('playing', startTimer, { once: true });
+            video.currentTime = 0;
+            video.play().catch(startTimer); // Autoplay blockiert: Poster zeigen, weiterdrehen
+            fallback = setTimeout(startTimer, VIDEO_WAIT_MAX);
+        } else {
+            startTimer();
         }
 
-        // Smart-Preload: während dieser Slide läuft, das nächste Video-Slide
-        // im Hintergrund vorladen. So nutzen wir bewusst die Bild-Slots (5 s)
-        // als Ladezeit fuer das kommende Video, ohne beim Page-Load alle
-        // Videos gleichzeitig herunterzuladen (Safari 26 unter macOS Tahoe
-        // nimmt preload="auto" als "alles sofort voll laden" wortwoertlich).
+        // Nächstes Video schon während dieser Slide ganz laden, damit es beim
+        // Einblenden sofort läuft. Nur das nächste, nicht alle beim Seitenstart
+        // (Safari 26 lädt bei preload="auto" sonst alles auf einmal).
         const nextIndex = (currentIndex + 1) % SLIDES.length;
-        const nextSlide = SLIDES[nextIndex];
-        if (nextSlide.type === 'video') {
-            const nextVideo = videoRefs.current[nextIndex];
-            if (nextVideo && nextVideo.readyState < 3) {
-                try { nextVideo.load(); } catch {}
-            }
+        const nextVideo = SLIDES[nextIndex].type === 'video' ? videoRefs.current[nextIndex] : null;
+        if (nextVideo && nextVideo.preload !== 'auto') {
+            nextVideo.preload = 'auto';
+            nextVideo.load();
         }
-
-        // Nach Ablauf der Dauer zum nächsten Slide wechseln
-        const timer = setTimeout(() => {
-            setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
-        }, current.duration);
 
         return () => {
             clearTimeout(timer);
-            cleanupListener?.();
+            clearTimeout(fallback);
+            video?.removeEventListener('playing', startTimer);
         };
     }, [currentIndex]);
 
@@ -585,7 +574,6 @@ const Hero: React.FC = () => {
                                 muted
                                 playsInline
                                 preload="metadata"
-                                onLoadedMetadata={(e) => { e.currentTarget.currentTime = VIDEO_START_TIME; }}
                             />
                         )}
                     </div>

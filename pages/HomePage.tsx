@@ -573,19 +573,27 @@ const Hero: React.FC = () => {
             {/* LAYER 4: CONTENT */}
             <div className="absolute inset-0 z-30 container mx-auto px-4 pb-24 md:pb-32 pt-32 flex flex-col justify-center pointer-events-none hero-text">
                  <div className="max-w-7xl w-full">
+                    {/* Wisch-Animation am Wrapper: .hero-wisch setzt display:block und würde die Flex-Zeile der Kopfleiste brechen */}
+                    <div className="mb-6 md:mb-8 hero-wisch">
                     <Kopfleiste
                         dunkel
-                        className="mb-6 md:mb-8 hero-wisch"
-                        label="A+ Urban Design"
-                        rechts={
+                        label={<>
                             <span className="hero-wort" aria-hidden="true"><span>
                                 <b>{t("Skateparks", "Skateparks", "Skateparks")}</b>
                                 <b>{t("Pumptracks", "Pump tracks", "Pumptracks")}</b>
                                 <b>{t("Urbane Anlagen", "Urban facilities", "Équipements urbains")}</b>
                                 <b>{t("Skateparks", "Skateparks", "Skateparks")}</b>
                             </span></span>
+                            <span className="sr-only">{t("Skateparks, Pumptracks, urbane Anlagen", "Skateparks, pump tracks, urban facilities", "Skateparks, pumptracks, équipements urbains")}</span>
+                        </>}
+                        rechts={
+                            <span className="flex items-center gap-2.5 -my-1">
+                                <img src="/images/details/tuev-gs.png" alt={t("GS-Zeichen von TÜV SÜD", "GS mark from TÜV SÜD", "Marque GS du TÜV SÜD")} width={24} height={24} className="w-6 h-6 bg-white rounded-sm p-px" />
+                                <span>{t("EN 14974 · GS geprüft", "EN 14974 · GS tested", "EN 14974 · certifié GS")}</span>
+                            </span>
                         }
                     />
+                    </div>
                     <h1 className="flex flex-col font-extrabold font-heading uppercase tracking-normal leading-[1.2] md:leading-[1.05] [word-spacing:0.12em]">
                         <span className="hero-wisch text-[clamp(2rem,6vw,6rem)] text-white" style={{ '--d': '0.3s' } as React.CSSProperties}>{t("Architektur", "Architecture", "Architecture")}</span>
                         <span className="hero-wisch text-[clamp(2rem,6vw,6rem)] text-white" style={{ '--d': '0.55s' } as React.CSSProperties}>{t("für", "for", "pour les")}</span>

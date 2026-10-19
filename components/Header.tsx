@@ -99,7 +99,8 @@ const Header: React.FC = () => {
   );
 
   const produktePanel = (link: NavLink) => (
-    <div className="grid grid-cols-[minmax(0,1fr)_260px] xl:grid-cols-[minmax(0,1fr)_340px] gap-10 xl:gap-14">
+    // max-w: auf breiten Bildschirmen wachsen die Kacheln sonst mit
+    <div className="max-w-[1200px] mx-auto grid grid-cols-[minmax(0,1fr)_240px] xl:grid-cols-[minmax(0,1fr)_280px] gap-10 xl:gap-14">
       <div className="flex flex-col gap-8">
         {gruppen.map((g) => (
           <div key={g.id} className="flex flex-col gap-4">
@@ -109,12 +110,12 @@ const Header: React.FC = () => {
         ))}
       </div>
       <div className="flex flex-col gap-5 border-l border-brand-dark/10 pl-8 xl:pl-10">
-        <Link to="/katalog" className="group/k flex flex-col xl:flex-row xl:items-end gap-5">
+        <Link to="/katalog" className="group/k flex flex-col gap-4">
           <img
             src="/images/menue/katalog-cover.webp"
             alt={t('Titelseite Katalog 2026: Skate-Elemente aus Beton', '2026 catalogue cover: concrete skate elements', 'Couverture du catalogue 2026 : éléments de skate en béton')}
             decoding="async" width={480} height={680}
-            className="w-[150px] xl:w-[170px] h-auto rounded shadow-[0_12px_28px_rgba(28,34,30,0.22)] ring-1 ring-brand-dark/10 transition-transform duration-500 group-hover/k:-translate-y-1"
+            className="w-[130px] xl:w-[150px] h-auto rounded shadow-[0_12px_28px_rgba(28,34,30,0.22)] ring-1 ring-brand-dark/10 transition-transform duration-500 group-hover/k:-translate-y-1"
           />
           <span className="flex flex-col gap-2 pb-1">
             <span className={GRUPPE_TEXT}>{t('Ausgabe 2026', '2026 edition', 'Édition 2026')}</span>

@@ -59,6 +59,12 @@ const Footer: React.FC = () => {
                             </Link>
                         </li>
                     ))}
+                    {/* Presse steht nicht im Hauptmenü, darum hier */}
+                    <li>
+                        <Link to="/referenzen-presse" className="text-sm font-bold text-gray-400 hover:text-white transition-colors uppercase tracking-wider block hover:translate-x-2 transition-transform duration-300">
+                            {t('Presse', 'Press', 'Presse')}
+                        </Link>
+                    </li>
                 </ul>
             </div>
 

@@ -5,6 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
+import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON } from '../components/ProduktBausteine';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -13,8 +14,8 @@ const OtherProducts: React.FC = () => {
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24 relative z-20">
       <div className="text-center mb-16">
-          <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">Portfolio</span>
-          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">{t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}</h2>
+          <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">Portfolio</span>
+          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">{t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -23,7 +24,7 @@ const OtherProducts: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="absolute inset-0 flex flex-col justify-end p-8 z-30">
                <span className="text-brand-orange font-mono text-xs mb-2 hidden group-hover:block">{t('PRODUKT', 'PRODUCT', 'PRODUIT')} 0{PRODUCTS.indexOf(product) + 1}</span>
-              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
+              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
           </Link>
         ))}
@@ -31,38 +32,6 @@ const OtherProducts: React.FC = () => {
     </div>
   );
 }
-
-const TechSpecCard: React.FC<{ title: string; value: string; icon: string; href?: string; linkLabel?: string }> = ({ title, value, icon, href, linkLabel }) => {
-    const t = useT();
-    const content = (
-        <>
-            <span className="material-symbols-outlined text-brand-orange text-3xl mb-4">{icon}</span>
-            <h4 className="text-brand-muted font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
-            <p className="text-brand-dark font-bold text-lg leading-tight">{value}</p>
-            {href && (
-                <span className="mt-3 inline-flex items-center gap-1 text-brand-orange font-mono text-xs uppercase tracking-wider">
-                    {linkLabel ?? t('Zertifikat ansehen', 'View certificate', 'Voir le certificat')}
-                    <span className="material-symbols-outlined text-sm">open_in_new</span>
-                </span>
-            )}
-        </>
-    );
-    const baseClass = "bg-brand-surface/40 border border-brand-dark/5 p-6 rounded-xl shadow-sm hover:border-brand-orange/50 transition-colors duration-300";
-    if (href) {
-        return (
-            <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${title}: ${value}, ${linkLabel ?? t('Zertifikat in der TÜV-SÜD-Datenbank ansehen', 'View the certificate in the TÜV SÜD database', 'Voir le certificat dans la base de données du TÜV SÜD')}`}
-                className={`${baseClass} block group hover:shadow-md`}
-            >
-                {content}
-            </a>
-        );
-    }
-    return <div className={baseClass}>{content}</div>;
-};
 
 const GalleryImage: React.FC<{ src: string; alt: string; label: string }> = ({ src, alt, label }) => (
     <div className="aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden border border-brand-dark/10 group relative shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
@@ -138,28 +107,23 @@ const ProductSkateAnlagenPage: React.FC = () => {
         schema={productSchema}
     >
 
-       {/* 1. IMMERSIVE HERO */}
-       <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
-            <div className="absolute inset-0">
-                 <Bild hoch src="/images/homepage/hero-anlage-01.jpg" alt={t("Skatepark aus Betonelementen, Gesamtansicht", "Skatepark made of concrete elements, overall view", "Skatepark en éléments de béton, vue d'ensemble")} className="w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
-            </div>
-            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
-                <div className="max-w-7xl mx-auto">
-                    <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
-                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">{t("Skate-Anlagen", "Skateparks", "Skateparks")}</span>
-                         <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider bg-black/40 backdrop-blur-sm px-2 py-1">
+       {/* 1. HERO mit Kennzahlen (Werte aus den technischen Daten) */}
+       <ProduktHero
+            bild={<Bild hoch src="/images/homepage/hero-anlage-01.jpg" alt={t("Skatepark aus Betonelementen, Gesamtansicht", "Skatepark made of concrete elements, overall view", "Skatepark en éléments de béton, vue d'ensemble")} className="absolute inset-0 w-full h-full object-cover animate-kenburns-1" loading="eager" fetchPriority="high" />}
+            schilder={<>
+                <span className={SCHILD}>{t("Skate-Anlagen", "Skateparks", "Skateparks")}</span>
+                         <span className={SCHILD_ICON}>
                             <span className="material-symbols-outlined text-base">verified_user</span> {t("DIN EN 14974", "EN 14974", "EN 14974")}
                          </span>
-                    </div>
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms] drop-shadow-2xl">
-                        {t(<>Skatepark<br/><span className="text-brand-orange">aus Beton</span></>, <>Concrete<br/><span className="text-brand-orange">skatepark</span></>, <>Skatepark<br/><span className="text-brand-orange">en béton</span></>)}
-                    </h1>
-                </div>
-            </div>
-       </div>
+            </>}
+            titel={t(<>Skatepark<br/><span className="text-brand-orange">aus Beton</span></>, <>Concrete<br/><span className="text-brand-orange">skatepark</span></>, <>Skatepark<br/><span className="text-brand-orange">en béton</span></>)}
+            kennzahlen={[
+                { wert: "TÜV / GS", label: t("Zertifizierung", "Certification", "Certification") },
+                { wert: t("Fundamentfrei", "Foundation-free", "Sans fondation"), label: t("Montage", "Installation", "Montage") },
+                { wert: t("Erweiterbar / versetzbar", "Extendable / relocatable", "Extensible / déplaçable"), label: t("Modularität", "Modularity", "Modularité") },
+                { wert: t("ca. 5–8 dB(A) leiser als Holz", "approx. 5–8 dB(A) quieter than timber", "environ 5 à 8 dB(A) de moins que le bois"), label: t("Lärmschutz", "Noise reduction", "Réduction du bruit") },
+            ]}
+       />
 
        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
 
@@ -167,17 +131,17 @@ const ProductSkateAnlagenPage: React.FC = () => {
             <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mb-32">
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32 relative z-20">
-                         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">{t("Das Original", "The original", "L'original")}</span>
-                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
+                         <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Das Original", "The original", "L'original")}</span>
+                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
                             {t(<>Seit den <span className="text-brand-orange">90ern</span></>, <>Since the <span className="text-brand-orange">1990s</span></>, <>Depuis les <span className="text-brand-orange">années 1990</span></>)}
                         </h2>
-                        <p className="text-xl text-brand-muted leading-relaxed mb-6">
+                        <p className="text-xl text-brand-dark/75 leading-relaxed mb-6">
                             {t("Wir entwickeln modulare Skate-Elemente aus Beton für dauerhafte Skateparks im öffentlichen Raum. Unsere Elemente gehörten zu den ersten Beton-Skateelementen in Europa mit TÜV-Zertifikat.", "We develop modular concrete skate elements for permanent skateparks in public spaces. Ours were among the first concrete skate elements in Europe with a TÜV certificate.", "Nous développons des éléments de skate modulaires en béton pour des skateparks durables dans l'espace public. Les nôtres figuraient parmi les premiers éléments de skate en béton d'Europe à obtenir un certificat TÜV.")}
                         </p>
-                        <p className="text-lg text-brand-muted leading-relaxed mb-6">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed mb-6">
                             {t("Auf der Landesgartenschau 2000 in Memmingen wurde erstmals unsere Combi-Pipe ins Erdreich eingebaut. 2002 folgte der erste Bowl auf Gran Canaria.", "Our combi pipe was first sunk into the ground at the Landesgartenschau (regional garden show) 2000 in Memmingen. The first bowl followed in 2002 on Gran Canaria.", "C'est à la Landesgartenschau (exposition horticole régionale) 2000 de Memmingen que notre combi pipe a été enterrée pour la première fois. Le premier bowl a suivi en 2002, à Gran Canaria.")}
                         </p>
-                        <p className="text-lg text-brand-muted leading-relaxed mb-8">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed mb-8">
                             {t("Unsere Skateelemente stehen auf Meereshöhe ebenso wie auf über 1.000 m, von Norwegen bis zu den Kanaren und von England bis in die Türkei.", "Our skate elements stand at sea level as well as above 1,000 m, from Norway to the Canary Islands and from England to Turkey.", "Nos éléments de skate sont installés aussi bien au niveau de la mer qu'à plus de 1 000 m d'altitude, de la Norvège aux Canaries et de l'Angleterre à la Turquie.")}
                         </p>
 
@@ -188,7 +152,7 @@ const ProductSkateAnlagenPage: React.FC = () => {
                             <Link to="/kontakt?projectType=Skatepark" className="inline-flex justify-center items-center gap-2 bg-brand-orange text-white font-extrabold uppercase tracking-widest py-4 px-8 rounded-lg hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl relative z-30 group">
                                 {t("3D-Planung anfragen", "Request a 3D design", "Demander une étude 3D")} <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </Link>
-                            <span className="text-xs text-brand-muted font-mono text-center">{t("Mit Kostenschätzung. Wir liefern und montieren schlüsselfertig.", "With a cost estimate. We deliver and install turnkey.", "Avec estimation des coûts. Nous livrons et installons clé en main.")}</span>
+                            <span className="text-xs text-brand-dark/75 font-mono text-center">{t("Mit Kostenschätzung. Wir liefern und montieren schlüsselfertig.", "With a cost estimate. We deliver and install turnkey.", "Avec estimation des coûts. Nous livrons et installons clé en main.")}</span>
                         </div>
                     </div>
                 </div>
@@ -204,8 +168,8 @@ const ProductSkateAnlagenPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
-                        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">{t("Baukastensystem", "Modular system", "Système modulaire")}</span>
-                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
+                        <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Baukastensystem", "Modular system", "Système modulaire")}</span>
+                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                             {t(<>Skatepark-<span className="text-brand-orange">Elemente</span></>, <>Skatepark <span className="text-brand-orange">elements</span></>, <>Éléments de <span className="text-brand-orange">skatepark</span></>)}
                         </h2>
                     </div>
@@ -213,16 +177,16 @@ const ProductSkateAnlagenPage: React.FC = () => {
 
                 <div className="grid lg:grid-cols-5 gap-8 mb-8">
                     <div className="lg:col-span-2">
-                        <p className="text-lg text-brand-muted leading-relaxed mb-6">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed mb-6">
                             {t(<>Unsere Skate-Module sind aus bewehrtem Beton hergestellt. Elemente von 35 bis 150 cm Höhe haben <strong className="text-brand-dark">höhenverstellbare Füße</strong> und sind in <strong className="text-brand-dark">Hohlkörperbauweise</strong> gebaut. Das spart Gewicht. Module bis 150 cm haben unten Aussparungen für Hubwagen oder Gabelstapler, durch die auch Regenwasser abläuft.</>, <>Our skate modules are made of reinforced concrete. Elements from 35 to 150 cm high have <strong className="text-brand-dark">height-adjustable feet</strong> and are built as <strong className="text-brand-dark">hollow-section units</strong>, which saves weight. Modules up to 150 cm have fork pockets underneath for a pallet truck or forklift, which also let rainwater drain away.</>, <>Nos modules de skate sont fabriqués en béton armé. Les éléments de 35 à 150 cm de haut ont des <strong className="text-brand-dark">pieds réglables en hauteur</strong> et sont conçus en <strong className="text-brand-dark">construction creuse</strong>, ce qui réduit le poids. Les modules jusqu'à 150 cm comportent en dessous des réservations pour un transpalette ou un chariot élévateur, qui permettent aussi l'écoulement de l'eau de pluie.</>)}
                         </p>
-                        <p className="text-brand-muted leading-relaxed mb-6">
+                        <p className="text-brand-dark/75 leading-relaxed mb-6">
                             {t(<>Die Elemente gibt es in den Höhen <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 und 150 cm</strong>, die Wände sind 8 bis 16 cm stark. Die Pipes sind 165, 200 oder 255 cm hoch. Darin ist das Flat, also der ebene Boden, schon eingerechnet. Sie stehen auf arretierbaren Stützen. Kleine Pipes lassen sich auch aus den niedrigeren Elementen zusammenstellen. Mehr dazu auf der Seite <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">Skate-Pipes</Link>.</>, <>The elements come in heights of <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 and 150 cm</strong>, with walls 8 to 16 cm thick. The pipes are 165, 200 or 255 cm high, with the flat (the level floor) already included. They stand on lockable supports. Small pipes can also be put together from the lower elements. More on the <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">skate pipes</Link> page.</>, <>Les éléments existent en hauteurs de <strong className="text-brand-dark">35, 45, 60, 75, 98, 125 et 150 cm</strong>, avec des parois de 8 à 16 cm d'épaisseur. Les pipes mesurent 165, 200 ou 255 cm de haut, le plat (le sol horizontal) étant déjà compris. Elles reposent sur des supports verrouillables. De petites pipes peuvent aussi être composées à partir des éléments plus bas. Plus d'informations sur la page <Link to="/produkte/skate-pipes-beton" className="text-brand-orange hover:underline">pipes de skate</Link>.</>)}
                         </p>
-                        <p className="text-brand-muted leading-relaxed mb-6">
+                        <p className="text-brand-dark/75 leading-relaxed mb-6">
                             {t("Die Skate-Elemente aus Beton sind UV- und witterungsbeständig und durch die konische Form auch auf leicht unebenem Untergrund montierbar. Die eingebauten Kantenschutzprofile ermöglichen es, die Skate-Elemente mit offenen Fugen aufzustellen. Auf Wunsch schließen wir die Fugen mit unserem eigenen Verfahren.", "The concrete skate elements are UV- and weather-resistant, and their tapered shape means they can be installed even on slightly uneven ground. The built-in edge protection profiles allow the elements to be set up with open joints. On request, we close the joints using our own method.", "Les éléments de skate en béton résistent aux UV et aux intempéries, et leur forme conique permet de les monter même sur un sol légèrement irrégulier. Les profilés de protection d'arête intégrés permettent de poser les éléments avec des joints ouverts. Sur demande, nous fermons les joints grâce à notre propre procédé.")}
                         </p>
-                        <p className="text-brand-muted leading-relaxed">
+                        <p className="text-brand-dark/75 leading-relaxed">
                             {t("Die Elemente gibt es in zwei Ausführungen: zum direkten Aufstellen auf einer vorhandenen Fläche oder zum Aufstellen auf einer Fundamentplatte. Im zweiten Fall wird das Flat anschließend mit unserem Fugenverfahren anbetoniert oder anasphaltiert.", "The elements come in two versions: for setting up directly on an existing surface, or for setting up on a foundation slab. In the second case, the flat is then finished in concrete or asphalt using our jointing method.", "Les éléments existent en deux versions : pour une pose directe sur une surface existante, ou pour une pose sur une dalle de fondation. Dans le second cas, le plat est ensuite bétonné ou revêtu d'asphalte avec notre procédé de jointoiement.")}
                         </p>
                     </div>
@@ -239,32 +203,32 @@ const ProductSkateAnlagenPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
-                        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">{t("Aufstellungsvarianten", "Layout variants", "Variantes d'installation")}</span>
-                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
+                        <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Aufstellungsvarianten", "Layout variants", "Variantes d'installation")}</span>
+                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                             {t(<>Vier <span className="text-brand-orange">Grundformen</span></>, <>Four <span className="text-brand-orange">basic forms</span></>, <>Quatre <span className="text-brand-orange">formes de base</span></>)}
                         </h2>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-6">
+                    <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">01</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">{t("Standard mit variabler Breite", "Standard with variable width", "Standard à largeur variable")}</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">{t("Die Grundaufstellung hat auf beiden Seiten ein Flat und eine Plattform. Die Breite ist im Modulraster flexibel.", "The basic layout has a flat and a platform on both sides. The width is flexible within the module grid.", "La disposition de base comporte un plat et une plateforme de chaque côté. La largeur est modulable selon la trame des modules.")}</p>
+                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Die Grundaufstellung hat auf beiden Seiten ein Flat und eine Plattform. Die Breite ist im Modulraster flexibel.", "The basic layout has a flat and a platform on both sides. The width is flexible within the module grid.", "La disposition de base comporte un plat et une plateforme de chaque côté. La largeur est modulable selon la trame des modules.")}</p>
                     </div>
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-6">
+                    <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">02</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">{t("Kombi mit Spine", "Combi with spine", "Combi avec spine")}</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">{t("Zwei Rampen stehen Rücken an Rücken und sind über einen gemeinsamen Grat verbunden, den Spine.", "Two ramps stand back to back and are joined by a shared ridge, the spine.", "Deux rampes sont placées dos à dos et reliées par une arête commune, la spine.")}</p>
+                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Zwei Rampen stehen Rücken an Rücken und sind über einen gemeinsamen Grat verbunden, den Spine.", "Two ramps stand back to back and are joined by a shared ridge, the spine.", "Deux rampes sont placées dos à dos et reliées par une arête commune, la spine.")}</p>
                     </div>
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-6">
+                    <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">03</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">{t("Kombi mit Banks", "Combi with banks", "Combi avec banks")}</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">{t("Zusatz-Banks erweitern die Anlage seitlich und bieten flache An- und Abfahrten.", "Additional banks extend the park sideways and provide gentle approaches and exits.", "Des banks supplémentaires élargissent l'installation sur les côtés et offrent des entrées et des sorties en pente douce.")}</p>
+                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Zusatz-Banks erweitern die Anlage seitlich und bieten flache An- und Abfahrten.", "Additional banks extend the park sideways and provide gentle approaches and exits.", "Des banks supplémentaires élargissent l'installation sur les côtés et offrent des entrées et des sorties en pente douce.")}</p>
                     </div>
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-6">
+                    <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <div className="text-xs font-mono text-brand-orange mb-2 uppercase tracking-widest">04</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-2">{t("Kombi mit Coping-Ramps", "Combi with coping ramps", "Combi avec rampes à coping")}</h3>
-                        <p className="text-sm text-brand-muted leading-relaxed">{t("Coping-Ramps haben ein durchlaufendes Copingrohr. Die Rundung ist zum Fahren da, das Rohr zum Grinden.", "Coping ramps have a continuous coping tube. The curve is for riding, the tube for grinding.", "Les rampes à coping sont équipées d'un tube de coping continu. La courbe sert à rouler, le tube à grinder.")}</p>
+                        <p className="text-sm text-brand-dark/75 leading-relaxed">{t("Coping-Ramps haben ein durchlaufendes Copingrohr. Die Rundung ist zum Fahren da, das Rohr zum Grinden.", "Coping ramps have a continuous coping tube. The curve is for riding, the tube for grinding.", "Les rampes à coping sont équipées d'un tube de coping continu. La courbe sert à rouler, le tube à grinder.")}</p>
                     </div>
                 </div>
             </div>
@@ -273,49 +237,49 @@ const ProductSkateAnlagenPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     <div>
-                        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-4 uppercase tracking-widest bg-brand-orange/10 rounded-md">{t("Konstruktion", "Construction", "Construction")}</span>
-                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
+                        <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Konstruktion", "Construction", "Construction")}</span>
+                        <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                             {t("Details", "Details", "Détails")}
                         </h2>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="bg-white rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <img src="/images/details/schutzkante-01.jpg" alt={t("Gerundetes Kantenschutzprofil", "Rounded edge protection profile", "Profilé de protection d'arête arrondi")} loading="lazy" className="w-full aspect-[16/10] object-cover" />
                         <div className="p-6">
                             <h3 className="text-lg font-bold font-heading text-brand-dark uppercase mb-2">{t("Kantenschutzprofil", "Edge protection profile", "Profilé de protection d'arête")}</h3>
-                            <p className="text-sm text-brand-muted leading-relaxed">
+                            <p className="text-sm text-brand-dark/75 leading-relaxed">
                                 {t("Alle Kanten ohne Copingrohr haben ein gerundetes Kantenschutzprofil aus Hartgummi. Es ist auf allen Seiten der Fahrfläche einbetoniert, auch an gewölbten Flächen.", "All edges without a coping tube have a rounded edge protection profile made of hard rubber. It is cast in on all sides of the riding surface, including on curved surfaces.", "Toutes les arêtes sans tube de coping sont équipées d'un profilé de protection arrondi en caoutchouc dur. Il est scellé dans le béton sur tous les côtés de la surface de roulement, y compris sur les surfaces galbées.")}
                             </p>
                         </div>
                     </div>
 
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="bg-white rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <img src="/images/details/copingrohr-02.jpg" alt={t("Copingrohr mit Alu-Kappe", "Coping tube with aluminium cap", "Tube de coping avec capuchon en aluminium")} loading="lazy" className="w-full aspect-[16/10] object-cover" />
                         <div className="p-6">
                             <h3 className="text-lg font-bold font-heading text-brand-dark uppercase mb-2">{t("Copingrohre", "Coping tubes", "Tubes de coping")}</h3>
-                            <p className="text-sm text-brand-muted leading-relaxed">
+                            <p className="text-sm text-brand-dark/75 leading-relaxed">
                                 {t("Die durchlaufenden Copingrohre werden vollständig in Zweikomponentenkleber eingebettet und mit Stahlzapfen im Beton befestigt. Die Enden werden mit gedrehten Alu-Kappen verschlossen.", "The continuous coping tubes are bedded completely in two-part adhesive and fixed to the concrete with steel pins. The ends are closed with turned aluminium caps.", "Les tubes de coping continus sont entièrement noyés dans une colle bicomposant et fixés au béton par des goujons en acier. Les extrémités sont fermées par des capuchons en aluminium tournés.")}
                             </p>
                         </div>
                     </div>
 
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="bg-white rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <Bild sizes="(min-width: 1024px) 60vw, 100vw" src="/images/skate-anlagen/uebergangsblech.jpg" alt={t("Edelstahl-Übergangsblech zwischen Skate-Element und angrenzender Fläche", "Stainless steel transition plate between the skate element and the adjoining surface", "Plaque de transition en inox entre l'élément de skate et la surface voisine")} loading="lazy" className="w-full aspect-[16/10] object-cover" />
                         <div className="p-6">
                             <h3 className="text-lg font-bold font-heading text-brand-dark uppercase mb-2">{t("Übergangsblech", "Transition plate", "Plaque de transition")}</h3>
-                            <p className="text-sm text-brand-muted leading-relaxed">
+                            <p className="text-sm text-brand-dark/75 leading-relaxed">
                                 {t("Ein Übergangsblech aus Edelstahl am unteren Rand sorgt für einen bündigen, stolperfreien Übergang zur angrenzenden Fläche aus Asphalt oder Beton. Es wird im Werk einbetoniert.", "A stainless steel transition plate along the bottom edge gives a flush, trip-free transition to the adjoining asphalt or concrete surface. It is cast in at the factory.", "Une plaque de transition en inox sur le bord inférieur assure un raccord affleurant, sans risque de trébucher, avec la surface voisine en asphalte ou en béton. Elle est scellée en usine.")}
                             </p>
                         </div>
                     </div>
 
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="bg-white rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <img src="/images/details/einstellung-04.jpg" alt={t("Arretierungsfuß auf verzinkter Platte", "Locking foot on a galvanised plate", "Pied verrouillable sur plaque galvanisée")} loading="lazy" className="w-full aspect-[16/10] object-cover" />
                         <div className="p-6">
                             <h3 className="text-lg font-bold font-heading text-brand-dark uppercase mb-2">{t("Arretierungsfuß", "Locking foot", "Pied verrouillable")}</h3>
-                            <p className="text-sm text-brand-muted leading-relaxed">
+                            <p className="text-sm text-brand-dark/75 leading-relaxed">
                                 {t("Elemente ab 35 cm haben Arretierungsfüße. Mit ihnen gleicht man Unebenheiten der Aufstellfläche in der Höhe aus. Verankerungen oder ein Mörtelbett sind nicht nötig. Das erleichtert den Auf-, Um- und Abbau der Skate-Elemente.", "Elements from 35 cm upwards have locking feet. They compensate for unevenness in the installation surface. No anchoring or mortar bed is needed, which makes it easier to set up, rearrange and dismantle the skate elements.", "Les éléments à partir de 35 cm sont équipés de pieds verrouillables. Ils permettent de rattraper en hauteur les irrégularités de la surface de pose. Ni ancrage ni lit de mortier ne sont nécessaires, ce qui facilite le montage, le réagencement et le démontage des éléments de skate.")}
                             </p>
                         </div>
@@ -326,10 +290,10 @@ const ProductSkateAnlagenPage: React.FC = () => {
             {/* 6. WEITERE SKATEPARKS GALERIE */}
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
-                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
+                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         Skate<span className="text-brand-orange">parks</span>
                     </h2>
-                    <span className="font-mono text-brand-muted text-xs hidden sm:block">{t("REFERENZEN", "REFERENCES", "RÉFÉRENCES")}</span>
+                    <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("REFERENZEN", "REFERENCES", "RÉFÉRENCES")}</span>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <GalleryImage src="/images/skate-anlagen/skate-anlagen-02.jpg" alt={t("Skateanlage mit offenem Bowl", "Skatepark with an open bowl", "Skatepark avec bowl ouvert")} label={t("Anlage mit Bowl, von oben", "Park with bowl, from above", "Installation avec bowl, vue de dessus")} />
@@ -342,13 +306,13 @@ const ProductSkateAnlagenPage: React.FC = () => {
             {/* 7. TECHNICAL SPECS GRID */}
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
-                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
+                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
                     </h2>
-                    <span className="font-mono text-brand-muted text-xs hidden sm:block">{t("DATENBLATT: SKATE-SYSTEME", "DATA SHEET: SKATE SYSTEMS", "FICHE TECHNIQUE : SYSTÈMES DE SKATE")}</span>
+                    <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("DATENBLATT: SKATE-SYSTEME", "DATA SHEET: SKATE SYSTEMS", "FICHE TECHNIQUE : SYSTÈMES DE SKATE")}</span>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <dl className={DATENBLATT}>
                     <TechSpecCard
                         title={t("Zertifizierung", "Certification", "Certification")}
                         value={t("DIN EN 14974 / TÜV / GS", "EN 14974 / TÜV / GS", "EN 14974 / TÜV / GS")}
@@ -367,21 +331,21 @@ const ProductSkateAnlagenPage: React.FC = () => {
                     <TechSpecCard title={t("Lärm", "Noise", "Bruit")} value={t("ca. 5–8 dB(A) leiser als Holz", "approx. 5–8 dB(A) quieter than timber", "environ 5 à 8 dB(A) de moins que le bois")} icon="volume_off" />
                     <TechSpecCard title={t("Modularität", "Modularity", "Modularité")} value={t("Erweiterbar / versetzbar", "Extendable / relocatable", "Extensible / déplaçable")} icon="extension" />
                     <TechSpecCard title={t("Einsatzgebiet", "Where it is used", "Zone d'utilisation")} value={t("0 bis über 1.000 m ü. NN", "0 to over 1,000 m above sea level", "De 0 à plus de 1 000 m d'altitude")} icon="landscape" />
-                </div>
+                </dl>
             </div>
 
             {/* 8. VIDEO GALERIE */}
             <div className="mb-32 relative z-20">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
-                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
+                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t("Videos", "Videos", "Vidéos")}
                     </h2>
-                    <span className="font-mono text-brand-muted text-xs hidden sm:block">{t("CONTESTS & SESSIONS", "CONTESTS & SESSIONS", "CONTESTS & SESSIONS")}</span>
+                    <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("CONTESTS & SESSIONS", "CONTESTS & SESSIONS", "CONTESTS & SESSIONS")}</span>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {VIDEOS.map((video, i) => <VideoCard key={i} video={video} />)}
                 </div>
-                <p className="text-xs text-brand-muted font-mono mt-4 text-right">{t("Videos: HaiHai Media", "Videos: HaiHai Media", "Vidéos : HaiHai Media")}</p>
+                <p className="text-xs text-brand-dark/75 font-mono mt-4 text-right">{t("Videos: HaiHai Media", "Videos: HaiHai Media", "Vidéos : HaiHai Media")}</p>
             </div>
 
             {/* 9. BROCHURE & CTA */}

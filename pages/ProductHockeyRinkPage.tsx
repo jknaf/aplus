@@ -5,6 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
+import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON } from '../components/ProduktBausteine';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -13,10 +14,10 @@ const OtherProducts: React.FC = () => {
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24">
       <div className="text-center mb-16">
-          <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
+          <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">
               Portfolio
           </span>
-           <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+           <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
               {t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}
           </h2>
       </div>
@@ -27,7 +28,7 @@ const OtherProducts: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="absolute inset-0 flex flex-col justify-end p-8">
                <span className="text-brand-orange font-mono text-xs mb-2 hidden group-hover:block">{t('PRODUKT', 'PRODUCT', 'PRODUIT')} 0{PRODUCTS.indexOf(product) + 1}</span>
-              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
+              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
           </Link>
         ))}
@@ -35,14 +36,6 @@ const OtherProducts: React.FC = () => {
     </div>
   );
 }
-
-const TechSpecCard: React.FC<{ title: string; value: string; icon: string }> = ({ title, value, icon }) => (
-    <div className="bg-brand-surface/40 border border-brand-dark/5 p-6 rounded-xl shadow-sm hover:border-brand-orange/50 transition-colors duration-300">
-        <span className="material-symbols-outlined text-brand-orange text-3xl mb-4">{icon}</span>
-        <h4 className="text-brand-muted font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
-        <p className="text-brand-dark font-bold text-lg leading-tight">{value}</p>
-    </div>
-);
 
 const ProductHockeyRinkPage: React.FC = () => {
   const t = useT();
@@ -72,37 +65,28 @@ const ProductHockeyRinkPage: React.FC = () => {
   return (
     <PageShell title={t("Hockey-Banden für Inline-, Roll- und Eishockey", "Rink Boards for Inline, Roller and Ice Hockey", "Bandes de hockey pour le hockey in-line, le roller hockey et le hockey sur glace")} description={t("Hockey-Banden und Hockeyfeld aus Beton und Stahl: fundamentfrei, in 40 cm oder 110 cm Höhe. Für Inline-Hockey, Streethockey und Rollhockey. Wartungsarm und schnell aufgebaut, für Kommunen und Vereine.", "Hockey boards and hockey courts in concrete and steel: foundation-free, in 40 cm or 110 cm heights. For inline hockey, street hockey and roller hockey. Low-maintenance and quick to install, for municipalities and clubs.", "Bandes de hockey et terrains de hockey en béton et en acier : sans fondation, en hauteur de 40 cm ou de 110 cm. Pour le hockey in-line, le street hockey et le roller hockey. Entretien réduit et montage rapide, pour les communes et les clubs.")} schema={productSchema}>
 
-       {/* 1. HERO */}
-       <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden rounded-b-2xl border-b border-brand-dark/10 z-10">
-            <div className="absolute inset-0">
-                 {/* OPTIMIZED HERO IMAGE for Mobile Speed */}
-                 <Bild hoch src="/images/hockey/roll-hockey-bande.jpg"
+       {/* 1. HERO mit Kennzahlen (Werte aus den technischen Daten) */}
+       <ProduktHero
+            bild={<Bild hoch src="/images/hockey/roll-hockey-bande.jpg"
                         alt={t("Rollhockey-Feld mit Beton-Bande", "Roller hockey court with concrete boards", "Terrain de roller hockey avec bandes en béton")}
-                        className="w-full h-full object-cover animate-kenburns-1"
+                        className="absolute inset-0 w-full h-full object-cover animate-kenburns-1"
                         loading="eager"
-                        fetchPriority="high" />
-                
-                <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
-            </div>
-            
-            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
-                <div className="max-w-7xl mx-auto">
-                    <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
-                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">{t("Hockey-Banden", "Hockey boards", "Bandes de hockey")}</span>
-                         <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider bg-black/40 backdrop-blur-sm px-2 py-1">
+                        fetchPriority="high" />}
+            schilder={<>
+                <span className={SCHILD}>{t("Hockey-Banden", "Hockey boards", "Bandes de hockey")}</span>
+                         <span className={SCHILD_ICON}>
                             <span className="material-symbols-outlined text-base">verified_user</span> {t("Inline- und Eishockey", "Inline and ice hockey", "Hockey in-line et sur glace")}
                          </span>
-                    </div>
-                    {/* INDUSTRIAL HEADER UPDATE */}
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
-                        {t(<>Banden-<br/>
+            </>}
+            titel={t(<>Banden-<br/>
                         <span className="text-brand-orange">system</span></>, <>Board<br/> <span className="text-brand-orange">system</span></>, <>Système<br/> <span className="text-brand-orange">de bandes</span></>)}
-                    </h1>
-                </div>
-            </div>
-       </div>
+            kennzahlen={[
+                { wert: "40 / 110 cm", label: t("Höhen", "Heights", "Hauteurs") },
+                { wert: t("Fundamentfrei", "Foundation-free", "Sans fondation"), label: t("Montage", "Installation", "Montage") },
+                { wert: t("Ganzjährig", "All year round", "Toute l'année"), label: t("Einsatz", "Use", "Utilisation") },
+                { wert: t("Inline-, Roll- und Eishockey", "Inline, roller and ice hockey", "Hockey in-line, roller hockey et hockey sur glace"), label: t("Einsatzzweck", "Purpose", "Usage") },
+            ]}
+       />
 
        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             
@@ -111,20 +95,20 @@ const ProductHockeyRinkPage: React.FC = () => {
                 
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
-                        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
+                        <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">
                             {t("Ganzjährig", "All year round", "Toute l'année")}
                         </span>
                         {/* INDUSTRIAL HEADER UPDATE */}
-                        <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none mb-8">
+                        <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
                             {t(<>Spielen, <span className="text-brand-orange">das ganze Jahr</span></>, <>Play <span className="text-brand-orange">all year round</span></>, <>Jouer <span className="text-brand-orange">toute l'année</span></>)}
                         </h2>
-                        <p className="text-xl text-brand-muted leading-relaxed mb-8">
+                        <p className="text-xl text-brand-dark/75 leading-relaxed mb-8">
                             {t("Mit unserem Bandensystem wird ein Hartplatz zum Spielfeld für Inline- und Rollhockey. Mit einem Abdichtungsprofil unter der Einfassung lässt sich im Winter auch Eis anlegen.", "With our board system, a hard court becomes a playing field for inline and roller hockey. With a sealing profile under the perimeter, you can also make ice in winter.", "Avec notre système de bandes, un terrain en dur devient un terrain de hockey in-line et de roller hockey. Avec un profil d'étanchéité sous l'enceinte, on peut aussi y aménager une patinoire en hiver.")}
                         </p>
-                        <p className="text-lg text-brand-muted leading-relaxed mb-4">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed mb-4">
                             {t("Es gibt zwei Höhen: 40 cm hohe Einfassungselemente aus Beton mit Gummikappe und 110 cm hohe Profilbanden mit Edelstahl-Handlauf für Roll- und Eishockey. Beide Varianten können modular in 1,5-m-Schritten erweitert oder verkleinert werden.", "There are two heights: perimeter elements in concrete, 40 cm high with a rubber cap, and profiled boards, 110 cm high with a stainless steel handrail, for roller and ice hockey. Both versions can be extended or reduced in modular 1.5 m steps.", "Il existe deux hauteurs : des éléments d'enceinte en béton de 40 cm de haut avec capuchon en caoutchouc, et des bandes profilées de 110 cm de haut avec main courante en inox, pour le roller hockey et le hockey sur glace. Les deux variantes peuvent être agrandies ou réduites par modules de 1,5 m.")}
                         </p>
-                        <p className="text-lg text-brand-muted leading-relaxed mb-12">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed mb-12">
                             {t(<><strong className="text-brand-dark">Die Banden brauchen keine Bodenbefestigung.</strong> Sie werden ohne Fundament auf bestehende Hartplätze gestellt. Der Belag bleibt unbeschädigt. Die am stärksten beanspruchte Fläche besteht aus massivem Beton.</>, <><strong className="text-brand-dark">The boards need no ground fixings.</strong> They are placed on existing hard courts without a foundation. The surface stays undamaged. The area that takes the heaviest wear is solid concrete.</>, <><strong className="text-brand-dark">Les bandes n'ont besoin d'aucune fixation au sol.</strong> Elles se posent sans fondation sur des terrains en dur existants. Le revêtement reste intact. La zone la plus sollicitée est en béton plein.</>)}
                         </p>
                         
@@ -140,14 +124,14 @@ const ProductHockeyRinkPage: React.FC = () => {
                 </div>
 
                 <div className="lg:w-7/12 flex flex-col gap-8">
-                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden group">
                          <img src="/images/hockey/inline-hockey-bande-02.jpg" alt={t("Inline-Hockey auf einem Feld mit niedriger Einfassung", "Inline hockey on a court with a low perimeter", "Hockey in-line sur un terrain à enceinte basse")} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 1: Inline-Hockey auf einem Feld mit niedriger Einfassung", "Fig. 1: Inline hockey on a court with a low perimeter", "Fig. 1 : hockey in-line sur un terrain à enceinte basse")}</div>
                     </div>
                     
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="bg-white p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <h3 className="text-2xl font-bold font-heading text-brand-dark uppercase mb-4">{t("Materialien", "Materials", "Matériaux")}</h3>
-                        <p className="text-brand-muted mb-4 font-mono text-sm border-l-2 border-brand-orange pl-4">
+                        <p className="text-brand-dark/75 mb-4 font-mono text-sm border-l-2 border-brand-orange pl-4">
                             {t("Alle Materialien sind witterungsbeständig: Beton, Edelstahl, HPL-Platten und Gummi.", "All materials are weather-resistant: concrete, stainless steel, HPL panels and rubber.", "Tous les matériaux résistent aux intempéries : béton, inox, panneaux HPL et caoutchouc.")}
                         </p>
                         <div className="flex flex-wrap gap-2">
@@ -158,12 +142,12 @@ const ProductHockeyRinkPage: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden group">
                          <Bild sizes="(min-width: 1024px) 60vw, 100vw" src="/images/hockey/inline-hockey-bande-03.jpg" alt={t("Spielfeld mit Bande und Edelstahl-Handlauf", "Court with board and stainless steel handrail", "Terrain avec bande et main courante en inox")} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 2: Spielfeld mit gelber Bande und Edelstahl-Handlauf", "Fig. 2: Court with yellow board and stainless steel handrail", "Fig. 2 : terrain avec bande jaune et main courante en inox")}</div>
                     </div>
 
-                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden group">
                          <img src="/images/hockey/hockey-einfassung-01.jpg" alt={t("40 cm hohe Beton-Einfassung mit Gummikappe", "40 cm high concrete perimeter with rubber cap", "Enceinte en béton de 40 cm de haut avec capuchon en caoutchouc")} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 3: Niedrige Einfassung mit roter Gummikappe", "Fig. 3: Low perimeter with red rubber cap", "Fig. 3 : enceinte basse avec capuchon rouge en caoutchouc")}</div>
                     </div>
@@ -173,21 +157,21 @@ const ProductHockeyRinkPage: React.FC = () => {
             {/* 2b. VARIANTEN */}
             <div className="mb-32">
                 <div className="mb-8">
-                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">{t("Varianten", "Versions", "Variantes")}</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
+                    <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Varianten", "Versions", "Variantes")}</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em]">
                         {t(<>40 cm oder <span className="text-brand-orange">110 cm</span></>, <>40 cm or <span className="text-brand-orange">110 cm</span></>, <>40 cm ou <span className="text-brand-orange">110 cm</span></>)}
                     </h2>
-                    <p className="text-lg text-brand-muted mt-4 max-w-3xl">
+                    <p className="text-lg text-brand-dark/75 mt-4 max-w-3xl">
                         {t("Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen. Sie ist stapelbar und vandalismussicher. Die 110-cm-Bande mit Edelstahl-Handlauf umschließt das ganze Spielfeld und ist für regelmäßigen Spielbetrieb gebaut. Beide Varianten lassen sich kombinieren und auf Asphalt- oder Betonflächen fundamentfrei aufstellen.", "The 40 cm perimeter with rubber caps works as a court boundary on existing hard courts. It is stackable and vandal-resistant. The 110 cm board with a stainless steel handrail encloses the whole court and is built for regular play. Both versions can be combined and installed without foundations on asphalt or concrete surfaces.", "L'enceinte de 40 cm avec capuchons en caoutchouc convient pour délimiter le terrain sur des terrains en dur existants. Elle est empilable et résiste au vandalisme. La bande de 110 cm avec main courante en inox entoure tout le terrain et est conçue pour un usage régulier. Les deux variantes peuvent être combinées et posées sans fondation sur des surfaces en asphalte ou en béton.")}
                     </p>
                 </div>
                 {/* Roland §8.7: Klarstellung Profil-Bande vs. Einfassung als getrennte Systeme noch final abstimmen */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 rounded-xl p-8">
+                    <div className="bg-white rounded-xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                         <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">40 cm</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">{t("Einfassungselemente (niedrige Bande)", "Perimeter elements (low board)", "Éléments d'enceinte (bande basse)")}</h3>
-                        <p className="text-sm text-brand-muted mb-3">{t("Sie begrenzen das Spielfeld auf bestehenden Hartplätzen.", "They mark the edge of the court on existing hard courts.", "Ils délimitent le terrain sur des terrains en dur existants.")}</p>
-                        <ul className="space-y-2 text-sm text-brand-muted">
+                        <p className="text-sm text-brand-dark/75 mb-3">{t("Sie begrenzen das Spielfeld auf bestehenden Hartplätzen.", "They mark the edge of the court on existing hard courts.", "Ils délimitent le terrain sur des terrains en dur existants.")}</p>
+                        <ul className="space-y-2 text-sm text-brand-dark/75">
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Gummikappen als Aufprallschutz", "Rubber caps as impact protection", "Capuchons en caoutchouc comme protection contre les chocs")}</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Modular erweiterbar in 1,5-m-Schritten", "Modular, extendable in 1.5 m steps", "Modulaire, extensible par pas de 1,5 m")}</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Stapelbar für saisonale Nutzung", "Stackable for seasonal use", "Empilables pour un usage saisonnier")}</li>
@@ -196,7 +180,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                     <div className="bg-brand-surface/60 border border-brand-orange/30 rounded-xl p-8">
                         <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">110 cm</div>
                         <h3 className="text-xl font-bold font-heading text-brand-dark uppercase mb-3">{t("Profil-Bande für Rollhockey oder Eishockey", "Profiled board for roller hockey or ice hockey", "Bande profilée pour le roller hockey ou le hockey sur glace")}</h3>
-                        <ul className="space-y-2 text-sm text-brand-muted">
+                        <ul className="space-y-2 text-sm text-brand-dark/75">
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Mit integriertem Edelstahl-Handlauf", "With integrated stainless steel handrail", "Avec main courante en inox intégrée")}</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Optional mit Abdichtungsprofil für Eishockey", "Optional sealing profile for ice hockey", "Profil d'étanchéité en option pour le hockey sur glace")}</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Nachrüstbar auf bestehende 40-cm-Einfassung", "Can be retrofitted to an existing 40 cm perimeter", "Adaptable sur une enceinte de 40 cm existante")}</li>
@@ -210,13 +194,13 @@ const ProductHockeyRinkPage: React.FC = () => {
             <div className="mb-32">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     {/* INDUSTRIAL HEADER UPDATE */}
-                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
+                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
                     </h2>
-                    <span className="font-mono text-brand-muted text-xs hidden sm:block">{t("DATENBLATT: BANDENSYSTEME", "DATA SHEET: BOARD SYSTEMS", "FICHE TECHNIQUE : SYSTÈMES DE BANDES")}</span>
+                    <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("DATENBLATT: BANDENSYSTEME", "DATA SHEET: BOARD SYSTEMS", "FICHE TECHNIQUE : SYSTÈMES DE BANDES")}</span>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <dl className={DATENBLATT}>
                     <TechSpecCard title={t("Höhen", "Heights", "Hauteurs")} value="40 / 110 cm" icon="height" />
                     <TechSpecCard title={t("Raster", "Grid", "Trame")} value={t("1,50 Meter", "1.50 metres", "1,50 mètre")} icon="grid_view" />
                     <TechSpecCard title={t("Einsatz", "Use", "Utilisation")} value={t("Ganzjährig", "All year round", "Toute l'année")} icon="calendar_month" />
@@ -225,7 +209,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                     <TechSpecCard title={t("Material", "Material", "Matériau")} value={t("Beton, Edelstahl, HPL, Gummi", "Concrete, stainless steel, HPL, rubber", "Béton, inox, HPL, caoutchouc")} icon="science" />
                     <TechSpecCard title={t("Schutz", "Protection", "Protection")} value={t("Gummikappe an Einfassung", "Rubber cap on perimeter", "Capuchon en caoutchouc sur l'enceinte")} icon="shield" />
                     <TechSpecCard title={t("Prallfläche", "Impact area", "Zone d'impact")} value={t("Beton", "Concrete", "Béton")} icon="layers" />
-                </div>
+                </dl>
             </div>
 
             <BrochureRequestForm context="productpage" />

@@ -5,6 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
+import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON, GsSiegel } from '../components/ProduktBausteine';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -22,7 +23,7 @@ const OtherProducts: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="absolute inset-0 flex flex-col justify-end p-8">
                <span className="text-brand-orange font-mono text-xs mb-2 hidden group-hover:block">{t('PRODUKT', 'PRODUCT', 'PRODUIT')} 0{PRODUCTS.indexOf(product) + 1}</span>
-              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
+              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
           </Link>
         ))}
@@ -30,38 +31,6 @@ const OtherProducts: React.FC = () => {
     </div>
   );
 }
-
-const TechSpecCard: React.FC<{ title: string; value: string; icon: string; href?: string; linkLabel?: string }> = ({ title, value, icon, href, linkLabel }) => {
-    const t = useT();
-    const content = (
-        <>
-            <span className="material-symbols-outlined text-brand-orange text-3xl mb-4">{icon}</span>
-            <h4 className="text-brand-muted font-mono text-xs uppercase tracking-widest mb-2">{title}</h4>
-            <p className="text-brand-dark font-bold text-lg leading-tight">{value}</p>
-            {href && (
-                <span className="mt-3 inline-flex items-center gap-1 text-brand-orange font-mono text-xs uppercase tracking-wider">
-                    {linkLabel ?? t('Zertifikat ansehen', 'View certificate', 'Voir le certificat')}
-                    <span className="material-symbols-outlined text-sm">open_in_new</span>
-                </span>
-            )}
-        </>
-    );
-    const baseClass = "bg-brand-surface/40 border border-brand-dark/5 p-6 rounded-xl shadow-sm hover:border-brand-orange/50 transition-colors duration-300";
-    if (href) {
-        return (
-            <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${title}: ${value}, ${linkLabel ?? t('Zertifikat in der TÜV-SÜD-Datenbank ansehen', 'View the certificate in the TÜV SÜD database', 'Voir le certificat dans la base de données du TÜV SÜD')}`}
-                className={`${baseClass} block group hover:shadow-md`}
-            >
-                {content}
-            </a>
-        );
-    }
-    return <div className={baseClass}>{content}</div>;
-};
 
 const ProductPumptrackPage: React.FC = () => {
   const t = useT();
@@ -91,38 +60,28 @@ const ProductPumptrackPage: React.FC = () => {
   return (
     <PageShell title={t("Pumptrack-Hersteller: Beton-Pumptrack planen & bauen", "Pump Track Manufacturer: Designing & Building Concrete Pump Tracks", "Fabricant de pumptracks : conception et construction de pumptracks en béton")} description={t("Pumptrack-Hersteller A+ Urban Design: Pumptracks aus Beton: TÜV-zertifiziert, formstabil und wartungsarm. Modular, sofort befahrbar, in ganz Europa gebaut.", "Pump track manufacturer A+ Urban Design: concrete pump tracks, TÜV-certified, dimensionally stable and low-maintenance. Modular, ready to ride straight away, built all over Europe.", "Fabricant de pumptracks A+ Urban Design : pumptracks en béton certifiés TÜV, indéformables et à entretien réduit. Modulaires, utilisables immédiatement, construits dans toute l'Europe.")} schema={productSchema}>
        
-       {/* 1. IMMERSIVE HERO */}
-       <div className="relative w-full h-[60vh] -mt-16 mb-24 overflow-hidden z-10 rounded-b-2xl border-b border-brand-dark/10">
-            <div className="absolute inset-0">
-                 {/* OPTIMIZED HERO IMAGE for Mobile Speed */}
-                 <Bild hoch src="/images/pumptrack/pumptrack-beton-elemente-01.jpg"
+       {/* 1. HERO mit Kennzahlen (Werte aus den technischen Daten) */}
+       <ProduktHero
+            bild={<Bild hoch src="/images/pumptrack/pumptrack-beton-elemente-01.jpg"
                         alt={t("Pumptrack aus Betonelementen", "Pump track made of concrete elements", "Pumptrack en éléments de béton")}
-                        className="w-full h-full object-cover animate-kenburns-2"
+                        className="absolute inset-0 w-full h-full object-cover animate-kenburns-2"
                         loading="eager"
-                        fetchPriority="high" />
-
-                 {/* Gradient to transparent to show grid */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
-            </div>
-            
-            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-12 z-10">
-                <div className="max-w-7xl mx-auto">
-                    <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
-                         <span className="px-3 py-1 border border-brand-orange text-brand-orange text-xs font-bold uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm">{t("Für Bike, Skate, Scooter", "For bike, skate and scooter", "Pour vélo, skate et trottinette")}</span>
-                         <span className="flex items-center gap-2 text-white text-xs font-bold uppercase tracking-wider bg-black/40 backdrop-blur-sm px-2 py-1">
+                        fetchPriority="high" />}
+            schilder={<>
+                <span className={SCHILD}>{t("Für Bike, Skate, Scooter", "For bike, skate and scooter", "Pour vélo, skate et trottinette")}</span>
+                         <span className={SCHILD_ICON}>
                             <span className="material-symbols-outlined text-base">verified_user</span> {t("DIN EN 14974", "EN 14974", "EN 14974")}
                          </span>
-                    </div>
-                    {/* INDUSTRIAL HEADER UPDATE */}
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] animate-fade-in-up [animation-delay:100ms]">
-                        {t(<>Pumptracks<br/>
+            </>}
+            titel={t(<>Pumptracks<br/>
                         <span className="text-brand-orange">aus Beton</span></>, <>Concrete<br/> <span className="text-brand-orange">pump tracks</span></>, <>Pumptracks<br/> <span className="text-brand-orange">en béton</span></>)}
-                    </h1>
-                </div>
-            </div>
-       </div>
+            kennzahlen={[
+                { wert: "TÜV / GS", label: t("Zertifikat", "Certificate", "Certificat") },
+                { wert: t("Bike, Skate, Scooter, Inline", "Bike, skate, scooter, inline", "Vélo, skate, trottinette, roller"), label: t("Einsatzzweck", "Purpose", "Usage") },
+                { wert: t("Ganzjährig", "All year round", "Toute l'année"), label: t("Witterung", "Weather", "Intempéries") },
+                { wert: t("Leicht erweiterbar", "Easy to extend", "Facile à agrandir"), label: t("Modulsystem", "Modular system", "Système modulaire") },
+            ]}
+       />
 
        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             
@@ -133,18 +92,18 @@ const ProductPumptrackPage: React.FC = () => {
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
                         {/* INDUSTRIAL HEADER UPDATE */}
-                        <h2 className="text-3xl md:text-5xl font-bold font-heading text-brand-dark mb-8 uppercase tracking-tighter">
+                        <h2 className="text-3xl md:text-5xl font-bold font-heading text-brand-dark mb-8 uppercase tracking-normal [word-spacing:0.12em]">
                             {t(<>Fahren ohne <span className="text-brand-orange">Treten</span></>, <>Riding without <span className="text-brand-orange">pedalling</span></>, <>Rouler sans <span className="text-brand-orange">pédaler</span></>)}
                         </h2>
-                        <p className="text-xl text-brand-muted leading-relaxed mb-8">
+                        <p className="text-xl text-brand-dark/75 leading-relaxed mb-8">
                             {t("Ein Pumptrack ist ein Rundkurs aus Wellen und Steilkurven, nutzbar für alle Altersgruppen. Die ca. 1,25 m breite Fahrbahn wird ohne Treten, allein durch Gewichtsverlagerung („Pumpen“) befahren.", "A pump track is a loop of rollers and berms that people of all ages can use. The track, about 1.25 m wide, is ridden without pedalling, by shifting your weight alone (“pumping”).", "Un pumptrack est un circuit en boucle composé de bosses et de virages relevés, utilisable à tout âge. La piste, large d'environ 1,25 m, se parcourt sans pédaler, par simple transfert de poids (« pumper »).")}
                         </p>
-                        <p className="text-lg text-brand-muted leading-relaxed mb-6">
+                        <p className="text-lg text-brand-dark/75 leading-relaxed mb-6">
                             {t("Im Gegensatz zu Asphaltpisten behalten unsere Betonelemente dauerhaft ihre Form. Für den Aufbau gibt es drei Varianten. Die Elemente können auch angeböscht werden.", "Unlike asphalt tracks, our concrete elements keep their shape permanently. There are three ways to build it. The elements can also be banked up with soil.", "Contrairement aux pistes en asphalte, nos éléments en béton conservent leur forme durablement. Il existe trois variantes de montage. Les éléments peuvent aussi être talutés.")}
                         </p>
                         <div className="bg-brand-orange/10 border border-brand-orange/30 rounded-xl p-5 mb-12">
                             <p className="text-brand-dark font-bold uppercase text-sm tracking-widest mb-2">{t("Lieferung & Montage aus einer Hand", "Delivery & installation from a single source", "Livraison et montage par un seul interlocuteur")}</p>
-                            <p className="text-sm text-brand-muted leading-relaxed">
+                            <p className="text-sm text-brand-dark/75 leading-relaxed">
                                 {t("A+ Urban Design plant, fertigt, liefert und baut auf. Kommunen können Fördermittel aus der Sportstättenförderung nutzen.", "A+ Urban Design designs, manufactures, delivers and installs. In Germany, municipalities can use funding from sports facility programmes.", "A+ Urban Design conçoit, fabrique, livre et monte. En Allemagne, les communes peuvent recourir aux subventions des programmes de soutien aux équipements sportifs.")}
                             </p>
                         </div>
@@ -162,18 +121,16 @@ const ProductPumptrackPage: React.FC = () => {
 
                 {/* Scrolling Gallery */}
                 <div className="lg:w-7/12 flex flex-col gap-8">
-                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden group">
                          <img src="/images/pumptrack/pumptrack-beton-module-03.jpg" alt={t("Pumptrack in einem Park mit Fahrern", "Pump track in a park with riders", "Pumptrack dans un parc, avec des riders")} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 1: Pumptrack in einem Park, mit Fahrern", "Fig. 1: Pump track in a park, with riders", "Fig. 1 : pumptrack dans un parc, avec des riders")}</div>
                     </div>
                     
-                    <div className="bg-brand-surface/60 border border-brand-dark/10 p-8 my-8 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                        <p className="text-xs font-mono uppercase tracking-widest text-brand-orange">
-                            {t("TÜV-zertifiziert mit GS-Zeichen", "TÜV-certified with the GS mark", "Certifié TÜV, avec marque GS")}
-                        </p>
-                    </div>
+                    <GsSiegel linkLabel={t("Zertifikat TÜV SÜD", "TÜV SÜD certificate", "Certificat TÜV SÜD")}>
+                        {t("TÜV-zertifiziert mit GS-Zeichen", "TÜV-certified with the GS mark", "Certifié TÜV, avec marque GS")}
+                    </GsSiegel>
 
-                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-sm overflow-hidden border border-brand-dark/10 group shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[16/10] bg-brand-surface/60 rounded-xl overflow-hidden group">
                          <Bild sizes="(min-width: 1024px) 60vw, 100vw" src="/images/pumptrack/pumptrack-beton-elemente-01.jpg" alt={t("Startbereich und Strecke aus Betonelementen", "Start area and track made of concrete elements", "Zone de départ et piste en éléments de béton")} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                          <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 2: Startbereich und Strecke aus Betonelementen", "Fig. 2: Start area and track made of concrete elements", "Fig. 2 : zone de départ et piste en éléments de béton")}</div>
                     </div>
@@ -183,11 +140,11 @@ const ProductPumptrackPage: React.FC = () => {
             {/* 2b. ELEMENT GALLERY */}
             <div className="mb-32">
                 <div className="mb-10">
-                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">{t("Modulsystem", "Modular system", "Système modulaire")}</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">
+                    <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Modulsystem", "Modular system", "Système modulaire")}</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em]">
                         {t(<>Kurven, Wellen, <span className="text-brand-orange">Rampen</span></>, <>Berms, rollers, <span className="text-brand-orange">ramps</span></>, <>Virages, bosses, <span className="text-brand-orange">rampes</span></>)}
                     </h2>
-                    <p className="text-lg text-brand-muted mt-4 max-w-3xl">
+                    <p className="text-lg text-brand-dark/75 mt-4 max-w-3xl">
                         {t("Jede Kurve, jede Welle und jeder Roller ist ein im Werk gefertigtes Betonteil mit fester Geometrie. Die Module lassen sich frei zu eigenen Streckenverläufen kombinieren.", "Every berm, every wave and every roller is a concrete unit made in the factory to a fixed geometry. The modules can be combined freely into your own track layouts.", "Chaque virage, chaque bosse et chaque roller est une pièce en béton fabriquée en usine, à la géométrie définie. Les modules se combinent librement pour créer vos propres tracés.")}
                     </p>
                 </div>
@@ -201,7 +158,7 @@ const ProductPumptrackPage: React.FC = () => {
                         <div className="absolute bottom-4 left-4 bg-black/80 px-3 py-1 text-xs font-mono text-white">{t("Abb. 4: 3D-Visualisierung eines geplanten Pumptracks", "Fig. 4: 3D visualisation of a planned pump track", "Fig. 4 : visualisation 3D d'un pumptrack en projet")}</div>
                     </div>
                 </div>
-                <div className="mt-6 bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-muted">
+                <div className="mt-6 bg-brand-surface/60 border border-brand-orange/20 rounded-xl p-6 text-sm text-brand-dark/75">
                     {t(<>Der Pumptrack lässt sich auf <strong className="text-brand-dark">drei Arten</strong> aufbauen: auf einer vorhandenen befahrbaren Fläche, auf der die Trasse markiert wird, auf einer neu angelegten Trasse aus Beton oder Asphalt oder auf Fundamentplatten, an die die Trasse anbetoniert oder anasphaltiert wird. Die Elemente können auch angeböscht werden.</>, <>The pump track can be built in <strong className="text-brand-dark">three ways</strong>: on an existing rideable surface with the route marked out, on a newly laid concrete or asphalt route, or on foundation slabs that the route is then cast or asphalted up to. The elements can also be banked up with soil.</>, <>Le pumptrack peut être monté de <strong className="text-brand-dark">trois façons</strong> : sur une surface roulante existante sur laquelle le tracé est marqué, sur un tracé neuf en béton ou en asphalte, ou sur des dalles de fondation auxquelles le tracé est raccordé en béton ou en asphalte. Les éléments peuvent aussi être talutés.</>)}
                 </div>
             </div>
@@ -210,12 +167,12 @@ const ProductPumptrackPage: React.FC = () => {
             <div className="mb-32">
                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
                     {/* INDUSTRIAL HEADER UPDATE */}
-                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-none">
+                    <h2 className="text-5xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
                     </h2>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <dl className={DATENBLATT}>
                     <TechSpecCard title={t("Fahrbreite", "Track width", "Largeur de piste")} value={t("~1,25 Meter", "~1.25 metres", "~1,25 mètre")} icon="straighten" />
                     <TechSpecCard title={t("Zielgruppe", "Who it's for", "Public visé")} value={t("Bike, Skate, Scooter, Inline", "Bike, skate, scooter, inline", "Vélo, skate, trottinette, roller")} icon="groups" />
                     <TechSpecCard title={t("Oberfläche", "Surface", "Surface")} value={t("Spezialbeton", "Special concrete", "Béton spécial")} icon="texture" />
@@ -230,7 +187,7 @@ const ProductPumptrackPage: React.FC = () => {
                         linkLabel={t("Zertifikat TÜV SÜD", "TÜV SÜD certificate", "Certificat TÜV SÜD")}
                     />
                     <TechSpecCard title={t("Montage", "Installation", "Montage")} value={t("Durch A+ Urban Design", "By A+ Urban Design", "Par A+ Urban Design")} icon="construction" />
-                </div>
+                </dl>
             </div>
 
             <BrochureRequestForm context="productpage" />

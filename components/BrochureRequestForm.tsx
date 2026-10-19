@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useT } from '../i18n';
 import Plankopf from './Plankopf';
+import { BOX_A, BOX_A_TITEL, BOX_A_TEXT } from './ProduktBausteine';
 
 const CTA_TARGET = '/kontakt?projectType=Katalog';
 
@@ -91,23 +92,36 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
         );
     }
 
+    // Produktseiten und Planung: Textbox Typ A mit Deckblatt, Knopf wie auf der Startseite
+    const titel = t('Produktkatalog', 'Product catalogue', 'Catalogue produit');
     return (
-        <div className="mt-12 p-1 bg-gradient-to-b from-brand-dark/10 to-transparent rounded-2xl">
-            <div className="bg-white rounded-xl p-8 border border-brand-dark/10 relative overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 blur-[50px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
-
-                <h3 className="text-2xl font-extrabold font-heading text-brand-dark uppercase mb-2">{t('Produktkatalog', 'Product catalogue', 'Catalogue produit')}</h3>
-                <p className="text-sm text-brand-muted mb-6 leading-relaxed">
-                    {t('Alle technischen Daten, Maße und Zertifikate zu diesem Produkt. Ein Klick öffnet Ihr E-Mail-Programm mit einer vorbereiteten Anfrage. Wir schicken den Katalog persönlich zu.', 'All technical data, dimensions and certificates for this product. One click opens your email app with a prepared enquiry. We send the catalogue to you personally.', 'Toutes les données techniques, dimensions et certificats de ce produit. Un clic ouvre votre messagerie avec une demande préremplie. Nous vous envoyons le catalogue personnellement.')}
+        <div className={`mt-12 ${BOX_A} flex flex-col md:flex-row md:items-center gap-5 md:gap-10`}>
+            <div className="flex flex-col items-start gap-5 md:contents">
+                <img
+                    src="/images/branding/katalog-cover.jpg"
+                    alt={t('Deckblatt Katalog 2026: Skate-Elemente aus Beton', 'Cover of the 2026 catalogue: concrete skate elements', 'Couverture du catalogue 2026 : éléments de skate en béton')}
+                    width={904} height={1280} loading="lazy"
+                    className="w-[84px] md:w-[150px] h-auto shrink-0 rounded-[3px] shadow-[0_8px_24px_rgba(44,53,48,0.18)]"
+                />
+                <h3 className={`${BOX_A_TITEL} text-brand-dark !mb-0 md:hidden`}>{titel}</h3>
+            </div>
+            <div className="flex-1 min-w-0">
+                <h3 className={`${BOX_A_TITEL} text-brand-dark hidden md:block`}>{titel}</h3>
+                <p className={`${BOX_A_TEXT} max-w-xl`}>
+                    {t('Alle technischen Daten, Maße und Zertifikate zu diesem Produkt.', 'All technical data, dimensions and certificates for this product.', 'Toutes les données techniques, dimensions et certificats de ce produit.')}
                 </p>
-
+            </div>
+            <div className="md:w-[300px] shrink-0 flex flex-col gap-3">
                 <Link
                     to={CTA_TARGET}
-                    className="w-full py-3 bg-white hover:bg-brand-orange text-black hover:text-white font-bold uppercase tracking-wider text-xs rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group border border-brand-dark/10"
+                    className="inline-flex items-center justify-center gap-2 min-h-[52px] px-6 md:px-8 bg-brand-orange hover:bg-brand-dark text-white font-extrabold uppercase tracking-wider md:tracking-widest whitespace-nowrap text-sm rounded-lg transition-colors duration-300 group"
                 >
                     {t('Katalog anfordern', 'Request the catalogue', 'Demander le catalogue')}
-                    <span className="material-symbols-outlined text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+                    <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                 </Link>
+                <p className="text-xs leading-relaxed text-brand-dark/75">
+                    {t('Ein Klick öffnet Ihr E-Mail-Programm mit einer vorbereiteten Anfrage. Wir schicken den Katalog persönlich zu.', 'One click opens your email app with a prepared enquiry. We send the catalogue to you personally.', 'Un clic ouvre votre messagerie avec une demande préremplie. Nous vous envoyons le catalogue personnellement.')}
+                </p>
             </div>
         </div>
     );

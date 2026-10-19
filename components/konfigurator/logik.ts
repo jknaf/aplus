@@ -974,23 +974,6 @@ export const vorschlag = (id: string, park: Park, ctx: Ctx): Vorschlag | null =>
     if (!jump && coping) opt.push({ label: name(coping), anwenden: andocken(coping, t) });
     if (opt.length) return { teil: id, text: 'Eine Rampe dazu? Sie dockt passend an.', optionen: opt };
   }
-  if (a === 'rampe' && m.hoch && hochAchsig(m) && ['bank', 'jump-ramp-sjr', 'coping-ramp', 'stairs'].includes(familie(t.slug))) {
-    const hinten = seiteIn(t, m, hochWelt(t, m)!);
-    if (!anliegend(hinten, t.id, park, ctx)) {
-      const tisch = variante('table-60', m.h, ctx);
-      const opt: Option[] = [];
-      const tischDahinter = (p: Park): Park => {
-        if (!tisch) return p;
-        const mt = ctx.masse[tisch];
-        const mitte = plus(hinten.mitte, mal(hinten.normale, mt.l / 2));
-        const neu = teil(tisch, r3(mitte.x), r3(mitte.z), t.rot);
-        return kollidiert(neu, p, ctx) ? p : { ...p, teile: [...p.teile, neu] };
-      };
-      if (tisch) opt.push({ label: tt(`${name(tisch)} dahinter`, `${name(tisch)} behind it`, `${name(tisch)} derrière`), anwenden: tischDahinter });
-      if (familie(t.slug) === 'coping-ramp') opt.push({ label: tt('Zweite Coping Ramp (Spine)', 'Second coping ramp (spine)', 'Seconde rampe à coping (spine)'), anwenden: andocken(t.slug, t, hinten) });
-      if (opt.length) return { teil: id, text: tt('Dahinter gehört ein Podest, sonst ist die Rückseite offen.', 'A platform belongs behind it, otherwise the back is open.', "Une plateforme doit se trouver derrière, sinon l'arrière est ouvert."), optionen: opt };
-    }
-  }
   if (familie(t.slug) === 'hip' && hoehe && [60, 75, 98].includes(hoehe)) {
     const allein = !park.teile.some((o) => o.id !== t.id && abstand(umriss(o, ctx), umriss(t, ctx)) < BERUEHRT);
     if (allein) {

@@ -197,7 +197,9 @@ const ProductGrillPage: React.FC = () => {
                     </p>
                 </div>
 
-                 <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
+                 {/* Datenblatt im weißen Kasten wie bei der Umkleidekabine */}
+                 <div className="bg-white rounded-2xl p-8 md:p-14 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                 <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
                     <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
                     </h2>
@@ -218,6 +220,7 @@ const ProductGrillPage: React.FC = () => {
                     <TechSpecCard title={t("Recycelbar", "Recyclable", "Recyclable")} value={t("Ja", "Yes", "Oui")} icon="recycling" />
                     <TechSpecCard title={t("Bauweise", "Construction", "Mode de construction")} value={t("Betonfertigteile", "Precast concrete units", "Éléments préfabriqués en béton")} icon="view_in_ar" />
                 </dl>
+                 </div>
 
                 {/* Montageanleitung: CTA */}
                 <div className="mt-16 rounded-2xl border border-brand-dark/10 bg-brand-surface/50 p-8 lg:p-10 backdrop-blur-sm">

@@ -209,7 +209,9 @@ const ProductSkateBowlsPage: React.FC = () => {
 
             {/* 5. TECH SPECS */}
             <div className="mb-32 relative z-20">
-                <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
+                {/* Datenblatt im weißen Kasten wie bei der Umkleidekabine */}
+                <div className="bg-white rounded-2xl p-8 md:p-14 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+                <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
                     <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
                         {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
                     </h2>
@@ -236,6 +238,7 @@ const ProductSkateBowlsPage: React.FC = () => {
                     <TechSpecCard title={t("Versetzbar", "Relocatable", "Déplaçable")} value={t("Ja (offener Bowl)", "Yes (open bowl)", "Oui (bowl ouvert)")} icon="unfold_more" />
                     <TechSpecCard title={t("Montage", "Installation", "Montage")} value={t("Durch A+ Urban Design", "By A+ Urban Design", "Par A+ Urban Design")} icon="build" />
                 </dl>
+                </div>
             </div>
 
             <BrochureRequestForm context="productpage" />

@@ -171,10 +171,8 @@ const ProductScrollytelling: React.FC = () => {
                                     className={`absolute inset-0 z-20 pointer-events-none p-6 flex flex-col justify-end transition-opacity duration-500 ${activeId === product.id ? 'opacity-100' : 'opacity-0'}`}
                                 >
                                     <div className="flex justify-end">
-                                        <div className="border border-white/20 px-2 py-1 bg-brand-dark/60 backdrop-blur-md rounded-sm">
-                                            <span className="text-xs font-bold text-white uppercase tracking-wider">
-                                                {t("TÜV-ZERTIFIZIERT", "TÜV-CERTIFIED", "CERTIFIÉ TÜV")}
-                                            </span>
+                                        <div className="bg-white rounded-lg p-2 shadow-lg">
+                                            <img src="/images/details/tuev-gs.png" alt={t("GS-Zeichen von TÜV SÜD", "GS mark from TÜV SÜD", "Marque GS du TÜV SÜD")} width="317" height="320" loading="lazy" className="h-14 w-auto" />
                                         </div>
                                     </div>
                                 </div>
@@ -190,9 +188,8 @@ const ProductScrollytelling: React.FC = () => {
                                         width="800"
                                         height="800"
                                         loading="lazy"
-                                        className="w-full h-full object-cover filter brightness-75 contrast-110"
+                                        className="w-full h-full object-cover"
                                     />
-                                    <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-20"></div>
                                 </div>
                             ))}
                         </div>
@@ -218,10 +215,9 @@ const ProductScrollytelling: React.FC = () => {
                                                 <Bild 
                                                     src={product.imageUrl}
                                                     alt={product.title}
-                                                    className="w-full h-full object-cover opacity-60" 
+                                                    className="w-full h-full object-cover"
                                                     loading="lazy"
                                                 />
-                                                <div className="absolute inset-0 bg-black/40"></div>
                                             </div>
                                             <Link to={product.path} className="block p-6 md:p-8">
                                                 <div className="flex justify-between items-start mb-4">
@@ -436,9 +432,9 @@ const Anspruch: React.FC = () => {
                     <Plankopf gross oben blatt={t("BLATT 01 / 04", "SHEET 01 / 04", "PLANCHE 01 / 04")} info={t("Detail Fuß", "Detail: foot", "Détail : pied")} titel={t("Fundamentfrei", "No foundations", "Sans fondation")} text={t("Steht auf vorhandenem Asphalt oder Beton. Vor Ort wird nicht betoniert.", "Stands on existing asphalt or concrete. No concreting on site.", "Se pose sur de l'asphalte ou du béton existant. Aucun bétonnage sur place.")} />
                 </Fotokachel>
 
-                <Fotokachel src="/images/details/schutzkante-01.jpg" alt={t("Einbetonierter Kantenschutz an der Fahrkante", "Cast-in edge protection on the riding edge", "Protection d'arête scellée sur l'arête de roulement")} className="h-[320px] lg:h-auto lg:col-span-5">
+                <Fotokachel src="/images/skate-elemente/skate-module-beton-04.jpg" alt={t("Massive Skate-Module aus Beton mit Kantenschutz aus Stahl", "Solid concrete skate modules with steel edge protection", "Modules de skate massifs en béton avec protection d'arête en acier")} className="h-[320px] lg:h-auto lg:col-span-5">
                     <Plan>
-                        <circle cx="340" cy="238" r="32" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
+                        <circle cx="430" cy="168" r="32" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
                     </Plan>
                     <Plankopf oben blatt={t("BLATT 02 / 04", "SHEET 02 / 04", "PLANCHE 02 / 04")} info="C35/45" titel={t("Vandalismussicher", "Vandal-resistant", "Résistant au vandalisme")} text={t("Wand 8 bis 16 cm. Nicht schneidbar, nicht brennbar.", "Wall 8 to 16 cm. Cannot be cut, does not burn.", "Paroi de 8 à 16 cm. Impossible à découper, incombustible.")} />
                 </Fotokachel>

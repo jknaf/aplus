@@ -289,10 +289,9 @@ html, body {
 
 /* Hero-Lesbarkeit (Variante A): Verlauf von links statt flacher Abdunklung,
    damit der Text auch auf hellen Bildstellen (Himmel, Beton) lesbar bleibt. */
+/* Startseite: schwächer als auf den Produktseiten, damit Videos und Bilder hell bleiben (Joachim 19.10.) */
 .hero-scrim {
-  background:
-    linear-gradient(90deg, rgba(20,26,22,.88) 0%, rgba(20,26,22,.72) 35%, rgba(20,26,22,.25) 65%, rgba(20,26,22,0) 85%),
-    rgba(0,0,0,.15);
+  background: linear-gradient(90deg, rgba(20,26,22,.72) 0%, rgba(20,26,22,.5) 32%, rgba(20,26,22,.12) 60%, rgba(20,26,22,0) 80%);
 }
 /* Produktseiten: zusätzlich flach von unten, für die Kennzahlen über die volle Breite */
 .hero-scrim-unten {
@@ -306,7 +305,7 @@ html, body {
 .hero-text .text-brand-orange { color: #B9D39A; }
 /* Handy: Text läuft über die volle Breite, also Verlauf bis zum rechten Rand */
 @media (max-width: 767px) {
-  .hero-scrim { background: linear-gradient(90deg, rgba(20,26,22,.85) 0%, rgba(20,26,22,.55) 100%); }
+  .hero-scrim { background: linear-gradient(90deg, rgba(20,26,22,.7) 0%, rgba(20,26,22,.35) 100%); }
   .hero-scrim-unten {
     background:
       linear-gradient(0deg, rgba(20,26,22,.92) 0%, rgba(20,26,22,.6) 40%, rgba(20,26,22,.25) 100%),

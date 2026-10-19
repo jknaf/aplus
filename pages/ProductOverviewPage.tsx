@@ -57,10 +57,7 @@ const ProductOverviewPage: React.FC = () => {
                   </p>
 
                   {product.tuvCertified && (
-                    <div className="mt-4 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-brand-orange bg-brand-orange/5 border border-brand-orange/20 px-2 py-1 rounded">
-                      <span className="material-symbols-outlined text-sm">verified</span>
-                      {t("TÜV-zertifiziert", "TÜV-certified", "Certifié TÜV")}
-                    </div>
+                    <img src="/images/details/tuev-gs.png" alt={t("GS-Zeichen von TÜV SÜD", "GS mark from TÜV SÜD", "Marque GS du TÜV SÜD")} width="317" height="320" loading="lazy" className="mt-4 h-12 w-auto" />
                   )}
                 </div>
               </Link>

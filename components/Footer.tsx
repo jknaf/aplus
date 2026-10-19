@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
             <p className="bg-brand-dark px-5 py-3.5">{t('Made in Europe · aus Stuttgart', 'Made in Europe · from Stuttgart', 'Made in Europe · depuis Stuttgart')}</p>
             <p className="bg-brand-dark px-5 py-2.5 flex items-center gap-2.5">
               <img src="/images/details/tuev-gs.png" alt={t('GS-Zeichen von TÜV SÜD', 'GS mark from TÜV SÜD', 'Marque GS du TÜV SÜD')} width={22} height={22} loading="lazy" className="w-[22px] h-[22px] bg-white rounded-sm p-px" />
-              <span>{t('EN 14974 · GS geprüft', 'EN 14974 · GS tested', 'EN 14974 · certifié GS')}</span>
+              <span>EN 14974</span>
             </p>
             <div className="bg-brand-dark px-5 py-3.5 flex flex-wrap gap-5">
               <Link to="/impressum" className="hover:text-[#A9C98A] transition-colors">{t('Impressum', 'Legal notice', 'Mentions légales')}</Link>

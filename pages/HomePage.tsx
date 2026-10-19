@@ -589,7 +589,7 @@ const Hero: React.FC = () => {
                         rechts={
                             <span className="flex items-center gap-2.5 -my-1">
                                 <img src="/images/details/tuev-gs.png" alt={t("GS-Zeichen von TÜV SÜD", "GS mark from TÜV SÜD", "Marque GS du TÜV SÜD")} width={24} height={24} className="w-6 h-6 bg-white rounded-sm p-px" />
-                                <span>{t("EN 14974 · GS geprüft", "EN 14974 · GS tested", "EN 14974 · certifié GS")}</span>
+                                <span>EN 14974</span>
                             </span>
                         }
                     />

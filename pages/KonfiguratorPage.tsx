@@ -70,7 +70,7 @@ const Start: React.FC<{ onWahl: (id: string) => void; onSchliessen?: () => void 
   return (
   <div className="absolute inset-0 z-30 flex items-center justify-center p-4 bg-brand-dark/40 backdrop-blur-sm">
     <div className="w-full max-w-4xl bg-brand-bg rounded-2xl shadow-2xl p-6 md:p-10 max-h-full overflow-y-auto">
-      <h1 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mb-3">{t(<>Skatepark <span className="text-brand-orange">planen</span></>, <>Plan your <span className="text-brand-orange">skatepark</span></>, <>Planifiez votre <span className="text-brand-orange">skatepark</span></>)}</h1>
+      <h1 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[0.95] mb-3">{t(<>Skatepark <span className="text-brand-orange">planen</span></>, <>Plan your <span className="text-brand-orange">skatepark</span></>, <>Planifiez votre <span className="text-brand-orange">skatepark</span></>)}</h1>
       <p className="text-brand-muted mb-8 max-w-2xl">{t("Starten Sie mit einer Vorlage und passen Sie sie an. Elemente docken passend an, Geländer und Pflichtteile ergänzt der Konfigurator selbst.", "Start with a template and adapt it. Elements dock together neatly; the planner adds railings and mandatory parts itself.", "Commencez avec un modèle et adaptez-le. Les éléments s'emboîtent automatiquement ; le configurateur ajoute lui-même les garde-corps et les pièces obligatoires.")}</p>
       <div className="grid md:grid-cols-3 gap-4 mb-6">
         {VORLAGEN.map((v) => (

@@ -6,6 +6,7 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
 import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON, GsSiegel } from '../components/ProduktBausteine';
+import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -13,9 +14,9 @@ const OtherProducts: React.FC = () => {
   const otherProducts = PRODUCTS.filter(p => p.id !== 'pumptrack' && p.id !== 'skate-anlagen').slice(0, 3);
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24">
-      <h2 className="text-4xl font-extrabold font-heading text-center mb-16 uppercase tracking-widest text-brand-dark">
+      <Plankopf label="Portfolio" className="mb-16">
         {t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}
-      </h2>
+      </Plankopf>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
           <Link key={product.id} to={product.path} className="group relative block overflow-hidden rounded-sm aspect-[4/5] bg-brand-surface/60 border border-brand-dark/5 backdrop-blur-sm">
@@ -91,10 +92,9 @@ const ProductPumptrackPage: React.FC = () => {
                 {/* Sticky Narrative */}
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
-                        {/* INDUSTRIAL HEADER UPDATE */}
-                        <h2 className="text-3xl md:text-5xl font-bold font-heading text-brand-dark mb-8 uppercase tracking-normal [word-spacing:0.12em]">
+                        <Plankopf klein className="mb-8">
                             {t(<>Fahren ohne <span className="text-brand-orange">Treten</span></>, <>Riding without <span className="text-brand-orange">pedalling</span></>, <>Rouler sans <span className="text-brand-orange">pédaler</span></>)}
-                        </h2>
+                        </Plankopf>
                         <p className="text-xl text-brand-dark/75 leading-relaxed mb-8">
                             {t("Ein Pumptrack ist ein Rundkurs aus Wellen und Steilkurven, nutzbar für alle Altersgruppen. Die ca. 1,25 m breite Fahrbahn wird ohne Treten, allein durch Gewichtsverlagerung („Pumpen“) befahren.", "A pump track is a loop of rollers and berms that people of all ages can use. The track, about 1.25 m wide, is ridden without pedalling, by shifting your weight alone (“pumping”).", "Un pumptrack est un circuit en boucle composé de bosses et de virages relevés, utilisable à tout âge. La piste, large d'environ 1,25 m, se parcourt sans pédaler, par simple transfert de poids (« pumper »).")}
                         </p>
@@ -140,10 +140,9 @@ const ProductPumptrackPage: React.FC = () => {
             {/* 2b. ELEMENT GALLERY */}
             <div className="mb-32">
                 <div className="mb-10">
-                    <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Modulsystem", "Modular system", "Système modulaire")}</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em]">
+                    <Plankopf label={t("Modulsystem", "Modular system", "Système modulaire")} klein>
                         {t(<>Kurven, Wellen, <span className="text-brand-orange">Rampen</span></>, <>Berms, rollers, <span className="text-brand-orange">ramps</span></>, <>Virages, bosses, <span className="text-brand-orange">rampes</span></>)}
-                    </h2>
+                    </Plankopf>
                     <p className="text-lg text-brand-dark/75 mt-4 max-w-3xl">
                         {t("Jede Kurve, jede Welle und jeder Roller ist ein im Werk gefertigtes Betonteil mit fester Geometrie. Die Module lassen sich frei zu eigenen Streckenverläufen kombinieren.", "Every berm, every wave and every roller is a concrete unit made in the factory to a fixed geometry. The modules can be combined freely into your own track layouts.", "Chaque virage, chaque bosse et chaque roller est une pièce en béton fabriquée en usine, à la géométrie définie. Les modules se combinent librement pour créer vos propres tracés.")}
                     </p>
@@ -167,12 +166,9 @@ const ProductPumptrackPage: React.FC = () => {
             <div className="mb-32">
                 {/* Datenblatt im weißen Kasten wie bei der Umkleidekabine */}
                 <div className="bg-white rounded-2xl p-8 md:p-14 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
-                    {/* INDUSTRIAL HEADER UPDATE */}
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                <Plankopf className="mb-8">
                         {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
-                    </h2>
-                </div>
+                    </Plankopf>
                 
                 <dl className={DATENBLATT}>
                     <TechSpecCard title={t("Fahrbreite", "Track width", "Largeur de piste")} value={t("~1,25 Meter", "~1.25 metres", "~1,25 mètre")} icon="straighten" />

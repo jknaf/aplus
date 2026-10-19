@@ -2,6 +2,7 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useLang, useT, type Lang } from '../i18n';
 import PageShell from '../components/PageShell';
+import Plankopf from '../components/Plankopf';
 
 const PROJECT_TYPES = ['Skatepark', 'Pumptrack', 'Möblierung', 'Katalog', 'Beratung', 'Sonstiges'] as const;
 type ProjectType = typeof PROJECT_TYPES[number];
@@ -130,14 +131,13 @@ const ContactPage: React.FC = () => {
         <PageShell title={t("Kontakt & Anfrage", "Contact & Enquiries", "Contact et demandes")} description={t("Projekt anfragen: Beratung, Planung und Umsetzung von Beton-Skateparks, Pumptracks und urbanen Anlagen. Jetzt Angebot anfordern.", "Enquire about a project: advice, design and delivery of concrete skateparks, pump tracks and urban facilities. Request a quote now.", "Parlez-nous de votre projet : conseil, conception et réalisation de skateparks en béton, de pumptracks et d'équipements urbains. Demandez un devis dès maintenant.")}>
             <div className="relative w-full min-h-[80vh] flex flex-col justify-center">
 
-                <div className="text-center mb-16 animate-fade-in-up">
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-brand-dark leading-[0.85]">
-                        {t(<>Gemeinsam<br/><span className="text-brand-orange">planen</span></>, <>Plan it<br/><span className="text-brand-orange">together</span></>, <>Concevons<br/><span className="text-brand-orange">ensemble</span></>)}
-                    </h1>
-                    <p className="mt-8 text-xl text-brand-muted max-w-2xl mx-auto font-light">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16 animate-fade-in-up">
+                    <Plankopf as="h1" text={<>
                         {t("Sie planen eine Anlage? Beschreiben Sie uns kurz Fläche und Vorhaben.", "Planning a facility? Briefly describe the site and your plans.", "Vous prévoyez une installation ? Décrivez-nous brièvement le terrain et votre projet.")} <br/>
                         {t("Wir machen Ihnen einen Vorschlag.", "We will make you a proposal.", "Nous vous ferons une proposition.")}
-                    </p>
+                    </>}>
+                        {t(<>Gemeinsam<br/><span className="text-brand-orange">planen</span></>, <>Plan it<br/><span className="text-brand-orange">together</span></>, <>Concevons<br/><span className="text-brand-orange">ensemble</span></>)}
+                    </Plankopf>
                 </div>
 
                 <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-24">

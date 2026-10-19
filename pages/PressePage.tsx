@@ -3,6 +3,7 @@ import { Link, prefixFor, useLang, useT } from '../i18n';
 import PageShell from '../components/PageShell';
 import { PRESS_ARTICLES } from '../constants';
 import { PressArticle, PressPublisher } from '../types';
+import Plankopf from '../components/Plankopf';
 
 const PUBLISHER_LABEL: Record<PressPublisher, string> = {
   'kommunaldirekt.de': 'Kommunaldirekt',
@@ -166,15 +167,9 @@ const PressePage: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-20 md:space-y-28">
           <header>
             <div>
-              <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                {t("Referenzen & Presse", "References & Press", "Références et presse")}
-              </span>
-              <h1 className="text-5xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+              <Plankopf label={t("Referenzen & Presse", "References & Press", "Références et presse")} as="h1" text={<>{t("Kommunale Fachmedien berichten seit über zehn Jahren über Anlagen und Produkte von A+ Urban Design. Hier finden Sie die Projektberichte und Fachbeiträge.", "Municipal trade media have been reporting on A+ Urban Design parks and products for more than ten years. Here you will find the project reports and trade articles. The articles are in German.", "La presse spécialisée destinée aux collectivités rend compte depuis plus de dix ans des installations et des produits d'A+ Urban Design. Vous trouverez ici les reportages sur les projets et les articles spécialisés. Les articles sont en allemand.")}</>}>
                 {t(<>A+ in der <span className="text-brand-orange">Fachpresse</span></>, <>A+ in the <span className="text-brand-orange">trade press</span></>, <>A+ dans la <span className="text-brand-orange">presse spécialisée</span></>)}
-              </h1>
-              <p className="text-brand-muted mt-6 max-w-xl text-lg leading-relaxed">
-                {t("Kommunale Fachmedien berichten seit über zehn Jahren über Anlagen und Produkte von A+ Urban Design. Hier finden Sie die Projektberichte und Fachbeiträge.", "Municipal trade media have been reporting on A+ Urban Design parks and products for more than ten years. Here you will find the project reports and trade articles. The articles are in German.", "La presse spécialisée destinée aux collectivités rend compte depuis plus de dix ans des installations et des produits d'A+ Urban Design. Vous trouverez ici les reportages sur les projets et les articles spécialisés. Les articles sont en allemand.")}
-              </p>
+              </Plankopf>
             </div>
           </header>
 

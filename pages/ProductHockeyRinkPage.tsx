@@ -6,6 +6,7 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
 import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON } from '../components/ProduktBausteine';
+import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -14,12 +15,9 @@ const OtherProducts: React.FC = () => {
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24">
       <div className="text-center mb-16">
-          <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">
-              Portfolio
-          </span>
-           <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+          <Plankopf label="Portfolio">
               {t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}
-          </h2>
+          </Plankopf>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -95,13 +93,9 @@ const ProductHockeyRinkPage: React.FC = () => {
                 
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
-                        <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">
-                            {t("Ganzjährig", "All year round", "Toute l'année")}
-                        </span>
-                        {/* INDUSTRIAL HEADER UPDATE */}
-                        <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
+                        <Plankopf label={t("Ganzjährig", "All year round", "Toute l'année")} klein className="mb-8">
                             {t(<>Spielen, <span className="text-brand-orange">das ganze Jahr</span></>, <>Play <span className="text-brand-orange">all year round</span></>, <>Jouer <span className="text-brand-orange">toute l'année</span></>)}
-                        </h2>
+                        </Plankopf>
                         <p className="text-xl text-brand-dark/75 leading-relaxed mb-8">
                             {t("Mit unserem Bandensystem wird ein Hartplatz zum Spielfeld für Inline- und Rollhockey. Mit einem Abdichtungsprofil unter der Einfassung lässt sich im Winter auch Eis anlegen.", "With our board system, a hard court becomes a playing field for inline and roller hockey. With a sealing profile under the perimeter, you can also make ice in winter.", "Avec notre système de bandes, un terrain en dur devient un terrain de hockey in-line et de roller hockey. Avec un profil d'étanchéité sous l'enceinte, on peut aussi y aménager une patinoire en hiver.")}
                         </p>
@@ -157,10 +151,9 @@ const ProductHockeyRinkPage: React.FC = () => {
             {/* 2b. VARIANTEN */}
             <div className="mb-32">
                 <div className="mb-8">
-                    <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Varianten", "Versions", "Variantes")}</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em]">
+                    <Plankopf label={t("Varianten", "Versions", "Variantes")} klein>
                         {t(<>40 cm oder <span className="text-brand-orange">110 cm</span></>, <>40 cm or <span className="text-brand-orange">110 cm</span></>, <>40 cm ou <span className="text-brand-orange">110 cm</span></>)}
-                    </h2>
+                    </Plankopf>
                     <p className="text-lg text-brand-dark/75 mt-4 max-w-3xl">
                         {t("Die 40-cm-Einfassung mit Gummikappen eignet sich als Spielfeldbegrenzung auf bestehenden Hartplätzen. Sie ist stapelbar und vandalismussicher. Die 110-cm-Bande mit Edelstahl-Handlauf umschließt das ganze Spielfeld und ist für regelmäßigen Spielbetrieb gebaut. Beide Varianten lassen sich kombinieren und auf Asphalt- oder Betonflächen fundamentfrei aufstellen.", "The 40 cm perimeter with rubber caps works as a court boundary on existing hard courts. It is stackable and vandal-resistant. The 110 cm board with a stainless steel handrail encloses the whole court and is built for regular play. Both versions can be combined and installed without foundations on asphalt or concrete surfaces.", "L'enceinte de 40 cm avec capuchons en caoutchouc convient pour délimiter le terrain sur des terrains en dur existants. Elle est empilable et résiste au vandalisme. La bande de 110 cm avec main courante en inox entoure tout le terrain et est conçue pour un usage régulier. Les deux variantes peuvent être combinées et posées sans fondation sur des surfaces en asphalte ou en béton.")}
                     </p>

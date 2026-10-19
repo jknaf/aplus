@@ -108,7 +108,7 @@ const ProjectDetailPage: React.FC = () => {
                  <div className="flex items-center gap-4 mb-4">
                     <span className="bg-brand-orange text-black text-xs font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">{kategorie(project.category)}</span>
                  </div>
-                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading text-white uppercase tracking-tighter leading-[0.85] shadow-black drop-shadow-2xl">
+                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] leading-none shadow-black drop-shadow-2xl">
                     {project.title}
                  </h1>
              </div>

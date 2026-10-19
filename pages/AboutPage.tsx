@@ -3,9 +3,9 @@ import PageShell from '../components/PageShell';
 import { Link, useT } from '../i18n';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import Bild from '../components/Bild';
+import Plankopf from '../components/Plankopf';
 
 const LABEL = 'font-mono text-xs uppercase tracking-widest text-[#4F6E34] mb-4';
-const H2 = 'font-heading font-extrabold uppercase tracking-tighter text-brand-dark leading-none text-4xl md:text-6xl';
 const CARD = 'bg-white rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]';
 
 const Kennzahl: React.FC<{ zahl: string; label: string }> = ({ zahl, label }) => (
@@ -59,7 +59,7 @@ const AboutPage: React.FC = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/65 to-brand-dark/15"></div>
         <div className="relative z-10 container mx-auto px-4 pt-32 pb-10">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] mb-6 animate-fade-in-up [animation-delay:200ms]">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-6 animate-fade-in-up [animation-delay:200ms]">
                 {t(<>Beton<br/>
                 <span className="text-brand-orange">in Bestform</span></>, <>Concrete<br/> <span className="text-brand-orange">at its best</span></>, <>Le béton<br/> <span className="text-brand-orange">au meilleur de sa forme</span></>)}
             </h1>
@@ -79,10 +79,9 @@ const AboutPage: React.FC = () => {
 
       {/* 2. WERDEGANG */}
       <div className="container mx-auto px-4 mb-28">
-          <div className={LABEL}>{t("Werdegang", "Our story", "Notre histoire")}</div>
-          <h2 className={`${H2} mb-14 !text-4xl md:!text-5xl`}>
+          <Plankopf label={t("Werdegang", "Our story", "Notre histoire")} klein className="mb-14">
               {t(<>Seit 1998 <span className="text-brand-orange">Skate-Elemente aus Beton</span></>, <>Concrete skate elements <span className="text-brand-orange">since 1998</span></>, <>Éléments de skate en béton <span className="text-brand-orange">depuis 1998</span></>)}
-          </h2>
+          </Plankopf>
           <div className="flex flex-wrap border-t-2 border-brand-dark [&>div]:basis-full md:[&>div]:basis-0">
               <Jahr jahr="1998" text={t("Die ersten modularen Skate-Elemente entstehen.", "The first modular skate elements are made.", "Naissance des premiers éléments de skate modulaires.")} />
               <Jahr jahr="2000" text={t("TÜV-Zertifikat und GS-Zeichen für geprüfte Sicherheit.", "TÜV certificate and GS mark for tested safety.", "Certificat TÜV et marque GS pour la sécurité contrôlée.")} />
@@ -94,10 +93,9 @@ const AboutPage: React.FC = () => {
       <div className="container mx-auto px-4 mb-28">
           <div className="flex flex-wrap bg-brand-dark text-white rounded-2xl overflow-hidden">
               <div className="basis-full lg:basis-2/3 p-8 md:p-14">
-                  <div className={`${LABEL} !text-[#B9D39A]`}>{t("Qualitätsnachweise", "Proof of quality", "Garanties de qualité")}</div>
-                  <h2 className="font-heading font-extrabold uppercase tracking-tighter leading-none text-4xl md:text-5xl mb-6">
+                  <Plankopf label={t("Qualitätsnachweise", "Proof of quality", "Garanties de qualité")} klein dunkel className="mb-6">
                       {t(<>Geprüfte <span className="text-brand-orange">Skate-Elemente</span></>, <>Tested <span className="text-brand-orange">skate elements</span></>, <>Éléments de skate <span className="text-brand-orange">contrôlés</span></>)}
-                  </h2>
+                  </Plankopf>
                   <p className="text-lg leading-relaxed text-white/90">
                       {t("Unsere ersten modularen Skate-Elemente entstanden 1998. Im Jahr 2000 erhielten sie das TÜV-Zertifikat und das GS-Zeichen für geprüfte Sicherheit. Heute sind sie nach DIN EN 14974 („Skateparks: Sicherheitstechnische Anforderungen und Prüfverfahren“), nach PPP 63126B und weiteren Normen geprüft. Die Zertifikatsnummer lautet Z1A 056616 0012. Damit waren wir weltweit vermutlich die ersten Hersteller modularer Beton-Skate-Elemente mit TÜV-Siegel. 27 Fachartikel berichten über Anlagen mit unserem System. Inzwischen wurden mehr als 350 Anlagen mit unserem System gebaut.", "Our first modular skate elements were made in 1998. In 2000 they received the TÜV certificate and the GS mark for tested safety. Today they are tested to EN 14974 (“Skateparks: Safety requirements and test methods”), to PPP 63126B and to further standards. The certificate number is Z1A 056616 0012. That probably made us the first manufacturer in the world of modular concrete skate elements with a TÜV seal. 27 trade articles report on parks built with our system. More than 350 parks have now been built with it.", "Nos premiers éléments de skate modulaires ont vu le jour en 1998. En 2000, ils ont obtenu le certificat TÜV et la marque GS pour la sécurité contrôlée. Aujourd'hui, ils sont testés selon la norme EN 14974 (« Skateparks : exigences de sécurité et méthodes d'essai »), selon PPP 63126B et d'autres normes. Le numéro du certificat est Z1A 056616 0012. Nous avons ainsi probablement été les premiers fabricants au monde d'éléments de skate modulaires en béton portant le sceau TÜV. 27 articles spécialisés rendent compte d'installations réalisées avec notre système. Plus de 350 installations ont désormais été construites avec lui.")}
                   </p>
@@ -128,10 +126,9 @@ const AboutPage: React.FC = () => {
                   </div>
               </div>
               <div className="lg:w-7/12">
-                  <div className={LABEL}>{t("Haltung", "Approach", "Philosophie")}</div>
-                  <h2 className={`${H2} mb-8 !text-4xl md:!text-5xl`}>
+                  <Plankopf label={t("Haltung", "Approach", "Philosophie")} klein className="mb-8">
                       {t(<>Unsere <span className="text-brand-orange">Philosophie</span></>, <>Our <span className="text-brand-orange">philosophy</span></>, <>Notre <span className="text-brand-orange">philosophie</span></>)}
-                  </h2>
+                  </Plankopf>
                   <div className="space-y-5">
                       <p className="text-xl font-heading font-semibold leading-snug border-l-[3px] border-brand-orange pl-6">
                           {t("Unsere Elemente sollen lange halten, wenig Pflege brauchen und sich später versetzen, umbauen oder recyceln lassen. Die Module lassen sich fast beliebig kombinieren.", "Our elements should last long, need little care and be easy to move, rearrange or recycle later. The modules can be combined almost freely.", "Nos éléments doivent durer longtemps, demander peu d'entretien et pouvoir être déplacés, réagencés ou recyclés par la suite. Les modules se combinent presque à volonté.")}
@@ -162,10 +159,9 @@ const AboutPage: React.FC = () => {
 
       {/* 5. SO ARBEITEN WIR */}
       <div className="container mx-auto px-4 mb-28">
-          <div className={LABEL}>{t("Der A+ Standard", "The A+ standard", "Le standard A+")}</div>
-          <h2 className={`${H2} mb-12`}>
+          <Plankopf label={t("Der A+ Standard", "The A+ standard", "Le standard A+")} className="mb-12">
               {t(<>So arbeiten <span className="text-brand-orange">wir</span></>, <>How <span className="text-brand-orange">we</span> work</>, <>Notre façon de <span className="text-brand-orange">travailler</span></>)}
-          </h2>
+          </Plankopf>
           {/* Roland §2.6: Ob der 4-Schritt-Prozess für alle Produkte gilt oder nur Skate noch klären */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               <Schritt nr="01" src="/images/planung/skateanlage-planung-02.jpg"
@@ -188,7 +184,7 @@ const AboutPage: React.FC = () => {
 
           <div className="mt-20">
               <div className={LABEL}>{t("Montage-Prozess", "Installation process", "Processus de montage")}</div>
-              <h3 className="font-heading font-extrabold uppercase tracking-tighter text-brand-dark leading-tight text-3xl md:text-4xl mb-4">
+              <h3 className="font-heading font-extrabold uppercase tracking-normal [word-spacing:0.12em] text-brand-dark leading-tight text-3xl md:text-4xl mb-4">
                   {t(<>Vom Lkw zum fertigen <span className="text-brand-orange">Park</span></>, <>From lorry to finished <span className="text-brand-orange">park</span></>, <>Du camion au <span className="text-brand-orange">skatepark</span> fini</>)}
               </h3>
               <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl mb-8">

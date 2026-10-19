@@ -5,6 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
+import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -13,12 +14,9 @@ const OtherProducts: React.FC = () => {
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24">
       <div className="text-center mb-16">
-          <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
-              Portfolio
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+          <Plankopf label="Portfolio">
               {t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}
-          </h2>
+          </Plankopf>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -27,7 +25,7 @@ const OtherProducts: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
             <div className="absolute inset-0 flex flex-col justify-end p-8">
                <span className="text-brand-orange font-mono text-xs mb-2 hidden group-hover:block">{t('PRODUKT', 'PRODUCT', 'PRODUIT')} 0{PRODUCTS.indexOf(product) + 1}</span>
-              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
+              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] transform group-hover:-translate-y-1 transition-transform duration-300">{product.title}</h3>
             </div>
           </Link>
         ))}
@@ -36,8 +34,6 @@ const OtherProducts: React.FC = () => {
   );
 }
 
-const LABEL = 'font-mono text-xs uppercase tracking-widest text-[#4F6E34] mb-4';
-const H2 = 'font-heading font-extrabold uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] text-brand-dark text-4xl md:text-5xl';
 const ABB = 'absolute bottom-4 left-4 right-4 sm:right-auto bg-black/80 px-3 py-1 text-xs font-mono text-white';
 
 const Kennzahl: React.FC<{ wert: string; label: string }> = ({ wert, label }) => (
@@ -124,10 +120,9 @@ const ProductChangingCabinePage: React.FC = () => {
                   </div>
               </div>
               <div className="lg:w-7/12">
-                  <div className={LABEL}>{t("Prinzip", "Principle", "Le principe")}</div>
-                  <h2 className={`${H2} mb-8`}>
+                  <Plankopf label={t("Prinzip", "Principle", "Le principe")} className="mb-8">
                       {t(<>Privatsphäre <span className="text-brand-orange">ohne Türen</span></>, <>Privacy <span className="text-brand-orange">without doors</span></>, <>Intimité <span className="text-brand-orange">sans porte</span></>)}
-                  </h2>
+                  </Plankopf>
                   <p className="text-xl font-heading font-semibold leading-snug border-l-[3px] border-brand-orange pl-6 mb-5">
                       {t("In Freibädern und an Badeseen sind Türen oft das erste Opfer von Vandalismus. Unsere Lösung ist die Schnecke. Beim Betreten und Verlassen berührt man nichts. Oben und unten bleibt die Kabine offen und sie ist nicht abschließbar. Beides erschwert Missbrauch. Die fugenlose Oberfläche ist leicht zu reinigen.", "At outdoor pools and swimming lakes, doors are often the first victims of vandalism. Our answer is the Schnecke (German for “snail”). You touch nothing when you enter or leave. The cubicle stays open at the top and bottom and cannot be locked. Both make misuse harder. The seamless surface is easy to clean.", "Dans les piscines de plein air et sur les lacs de baignade, les portes sont souvent les premières victimes du vandalisme. Notre solution est la Schnecke (« escargot » en allemand). On ne touche rien pour entrer ou sortir. La cabine reste ouverte en haut et en bas et ne peut pas être verrouillée. Les deux rendent les dégradations plus difficiles. La surface sans joint est facile à nettoyer.")}
                   </p>
@@ -152,10 +147,9 @@ const ProductChangingCabinePage: React.FC = () => {
       <div className="container mx-auto px-4 mb-28">
           <div className="flex flex-wrap bg-brand-dark text-white rounded-2xl overflow-hidden">
               <div className="basis-full lg:basis-2/3 p-8 md:p-14">
-                  <div className={`${LABEL} !text-[#B9D39A]`}>{t("Schnecken-Prinzip", "The Schnecke principle", "Le principe de la Schnecke")}</div>
-                  <h2 className="font-heading font-extrabold uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] text-4xl md:text-5xl mb-6">
+                  <Plankopf label={t("Schnecken-Prinzip", "The Schnecke principle", "Le principe de la Schnecke")} klein dunkel className="mb-6">
                       {t(<>Form statt <span className="text-brand-orange">Mechanik</span></>, <>Form instead of <span className="text-brand-orange">mechanics</span></>, <>La forme plutôt que la <span className="text-brand-orange">mécanique</span></>)}
-                  </h2>
+                  </Plankopf>
                   <div className="space-y-5 text-lg leading-relaxed text-white/90">
                       <p>
                           {t("Herkömmliche Umkleidekabinen halten im öffentlichen Raum oft nicht lange: Verriegelungen brechen, Scharniere korrodieren, Holz verrottet. Die Schnecke hat nichts davon. Sie schützt durch ihre Form statt durch Mechanik und besteht aus Beton und Edelstahl. Die spiralförmige Wand führt in einen geschützten Innenraum, ganz ohne bewegliche Teile. Unten bleibt ein Abstand von 30 cm zur Bodenplatte, oben ist die Kabine offen. Das sorgt für Luft.", "Conventional changing cubicles often do not last long in public spaces: latches break, hinges corrode, timber rots. The Schnecke has none of that. It gives privacy through its shape rather than through mechanisms and is made of concrete and stainless steel. The spiral wall leads into a sheltered interior with no moving parts at all. There is a 30 cm gap between the wall and the base slab at the bottom, and the cubicle is open at the top. That keeps the air moving.", "Les cabines de change classiques tiennent souvent peu de temps dans l'espace public : les verrous cassent, les charnières se corrodent, le bois pourrit. La Schnecke n'a rien de tout cela. Elle protège par sa forme plutôt que par la mécanique et se compose de béton et d'inox. La paroi en spirale mène à un intérieur protégé, sans aucune pièce mobile. En bas, un espace de 30 cm sépare la paroi de la dalle de sol, et en haut la cabine est ouverte. L'air circule ainsi.")}
@@ -182,10 +176,9 @@ const ProductChangingCabinePage: React.FC = () => {
       <div className="container mx-auto px-4 mb-28">
           <div className="flex flex-col lg:flex-row gap-14 items-center">
               <div className="lg:w-7/12">
-                  <div className={LABEL}>{t("Einsatz", "Use", "Utilisation")}</div>
-                  <h2 className={`${H2} mb-6`}>
+                  <Plankopf label={t("Einsatz", "Use", "Utilisation")} className="mb-6">
                       {t(<>Umkleide <span className="text-brand-orange">oder Dusche</span></>, <>Changing room <span className="text-brand-orange">or shower</span></>, <>Cabine de change <span className="text-brand-orange">ou douche</span></>)}
-                  </h2>
+                  </Plankopf>
                   <p className="text-lg text-brand-dark/75 leading-relaxed">
                       {t("Die Schnecke ist für Freibäder, Badeseen, Strandbäder, Campingplätze und Sportanlagen gedacht. Sie steht frei als Außenkabine und ist wahlweise auch als Duschkabine erhältlich. Die Duschkabine gibt es fertig mit Bodenablauf und Dusche: Die Bodenplatte wird über die Abwasserleitung gesetzt, dann wird nur noch die Wasserzuleitung angeschlossen. Alternativ gibt es die Kabine nur mit Aussparungen für Gully und Wasserleitung. Wind, Frost und UV-Strahlung schaden ihr nicht. Die Schnecke muss nicht ständig beaufsichtigt werden: Sie ist vandalismussicher und brennt nicht.", "The Schnecke is intended for outdoor pools, swimming lakes, lakeside lidos, campsites and sports grounds. It stands free as an outdoor cubicle and is also available as a shower cubicle if wanted. The shower cubicle comes ready-made with a floor drain and shower: the base slab is set over the waste-water pipe, and only the water supply then needs connecting. Alternatively, the cubicle is available with just recesses for a drain and water pipe. Wind, frost and UV radiation do not harm it. The Schnecke does not need constant supervision: it is vandal-resistant and does not burn.", "La Schnecke est destinée aux piscines de plein air, aux lacs de baignade, aux plages aménagées, aux campings et aux équipements sportifs. Elle se pose librement comme cabine d'extérieur et existe aussi, au choix, en cabine de douche. La cabine de douche est livrée prête à l'emploi, avec siphon de sol et douche : la dalle de sol est posée au-dessus de la conduite d'évacuation, il ne reste alors qu'à raccorder l'arrivée d'eau. La cabine existe aussi avec de simples réservations pour le siphon de sol et la conduite d'eau. Le vent, le gel et les UV ne l'abîment pas. La Schnecke n'a pas besoin d'être surveillée en permanence : elle résiste au vandalisme et ne brûle pas.")}
                   </p>
@@ -201,10 +194,9 @@ const ProductChangingCabinePage: React.FC = () => {
 
       {/* 5. EINSATZBEREICH: Panorama */}
       <div className="container mx-auto px-4 mb-28">
-          <div className={LABEL}>{t("Einsatzbereich", "Where it is used", "Domaine d'utilisation")}</div>
-          <h2 className={`${H2} mb-4`}>
+          <Plankopf label={t("Einsatzbereich", "Where it is used", "Domaine d'utilisation")} className="mb-4">
               {t(<>Freibad und <span className="text-brand-orange">Badesee</span></>, <>Outdoor pool and <span className="text-brand-orange">swimming lake</span></>, <>Piscine de plein air et <span className="text-brand-orange">lac de baignade</span></>)}
-          </h2>
+          </Plankopf>
           <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl mb-8">
               {t("Die Umkleidekabine steht frei im Freibad oder am Badesee. Vor Ort genügt ein verdichtetes, frostsicheres Kiesbett mit 5–20 mm Körnung. Die Bodenplatte kann bündig mit dem Boden oder etwas höher liegen.", "The changing cubicle stands free at an outdoor pool or swimming lake. On site, a compacted, frost-proof gravel bed with 5–20 mm grading is enough. The base slab can sit flush with the ground or slightly above it.", "La cabine de change se pose librement dans une piscine de plein air ou au bord d'un lac de baignade. Sur place, un lit de gravier compacté et résistant au gel, de granulométrie 5–20 mm, suffit. La dalle de sol peut être à fleur du sol ou légèrement au-dessus.")}
           </p>
@@ -217,12 +209,9 @@ const ProductChangingCabinePage: React.FC = () => {
       {/* 6. TECHNISCHE DATEN als Datenblatt */}
       <div className="container mx-auto px-4 mb-28">
           <div className="bg-white rounded-2xl p-8 md:p-14 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-              <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
-                  <h2 className={H2}>
+              <Plankopf rechts={t("DATENBLATT: UMKLEIDE", "DATA SHEET: CHANGING CUBICLE", "FICHE TECHNIQUE : CABINE DE CHANGE")} klein className="mb-8">
                       {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
-                  </h2>
-                  <span className="font-mono text-brand-dark/60 text-xs uppercase tracking-widest">{t("DATENBLATT: UMKLEIDE", "DATA SHEET: CHANGING CUBICLE", "FICHE TECHNIQUE : CABINE DE CHANGE")}</span>
-              </div>
+                  </Plankopf>
               <dl className="grid grid-cols-1 md:grid-cols-2 md:gap-x-14 border-t-2 border-brand-dark">
                   <Datenzeile title={t("Aufbau", "Construction", "Construction")} value={t("2 Teile, ohne Schrauben", "2 parts, no bolts", "2 éléments, sans vis")} />
                   <Datenzeile title={t("Tür", "Door", "Porte")} value={t("Keine (Spirale)", "None (spiral)", "Aucune (spirale)")} />

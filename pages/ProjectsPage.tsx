@@ -4,6 +4,7 @@ import PageShell from '../components/PageShell';
 import { useKategorie, useProjects } from '../localized';
 import { ProjectCategory } from '../types';
 import Bild from '../components/Bild';
+import Plankopf from '../components/Plankopf';
 
 const CATEGORIES: ProjectCategory[] = ['Skatepark', 'Pumptrack', 'Hockey-Bande', 'Grillstelle', 'Umkleidekabine'];
 
@@ -19,16 +20,10 @@ const ProjectsPage: React.FC = () => {
     <PageShell title={t("Referenzen & Projekte", "References & Projects", "Références et projets")} description={t("Realisierte Projekte von A+ Urban Design: Beton-Skateparks, Pumptracks, Hockey-Banden und urbane Freiraumlösungen in ganz Europa.", "Completed projects by A+ Urban Design: concrete skateparks, pump tracks, hockey boards and urban open-space solutions across Europe.", "Projets réalisés par A+ Urban Design : skateparks en béton, pumptracks, bandes de hockey et solutions d'aménagement d'espaces publics urbains dans toute l'Europe.")}>
       
       {/* 1. HEADER SECTION - Updated Typography */}
-      <div className="relative pt-12 pb-24 text-center">
-        <div className="inline-flex items-center gap-3 py-1 px-4 border border-brand-orange/30 bg-brand-orange/10 rounded-full mb-8 backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
-            <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">
-                Portfolio
-            </span>
-        </div>
-        <h1 className="text-6xl md:text-9xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.85] mb-8">
-            {t(<>Ausgewählte<br/><span className="text-brand-orange">Projekte</span></>, <>Selected<br/><span className="text-brand-orange">projects</span></>, <>Projets<br/><span className="text-brand-orange">sélectionnés</span></>)}
-        </h1>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24">
+        <Plankopf label="Portfolio" as="h1">
+            {t(<>Ausgewählte <span className="text-brand-orange">Projekte</span></>, <>Selected <span className="text-brand-orange">projects</span></>, <>Projets <span className="text-brand-orange">sélectionnés</span></>)}
+        </Plankopf>
       </div>
 
       {/* 2. FILTER CONTROL PANEL - Transparent with Blur */}
@@ -104,7 +99,7 @@ const ProjectsPage: React.FC = () => {
 
                 {/* Bottom Info */}
                 <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-2xl lg:text-3xl xl:text-5xl font-extrabold font-heading text-white uppercase tracking-tighter mb-2 leading-[0.9] drop-shadow-xl line-clamp-3">
+                    <h3 className="text-2xl lg:text-3xl xl:text-5xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] mb-2 leading-none drop-shadow-xl line-clamp-3">
                         {project.title}
                     </h3>
                     <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">

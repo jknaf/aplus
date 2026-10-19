@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PageShell from '../components/PageShell';
 import { useLang, useT } from '../i18n';
+import Plankopf from '../components/Plankopf';
 
 const link = 'text-[#4E6F33] underline underline-offset-4 hover:text-brand-dark';
 
@@ -37,12 +38,9 @@ const PrivacyPolicyPage: React.FC = () => {
     <PageShell title={t("Datenschutzerklärung", "Privacy Policy", "Politique de confidentialité")} fullWidth>
       <div className="mx-auto max-w-6xl px-4 pb-24 pt-32 sm:px-6 md:pt-40 lg:px-8 text-[17px] leading-[1.7] text-[#3A433D]">
         <header className="mb-14">
-          <span className="inline-block rounded-md border border-[#4E6F33]/35 bg-brand-orange/10 px-3.5 py-1 font-mono text-xs uppercase tracking-[0.16em] text-[#4E6F33]">
-            {t("Rechtliches", "Legal", "Informations légales")}
-          </span>
-          <h1 className="mt-7 text-[clamp(3rem,9vw,8rem)] font-extrabold font-heading uppercase leading-[0.92] tracking-[-0.045em] text-brand-dark">
+          <Plankopf label={t("Rechtliches", "Legal", "Informations légales")} as="h1" klein>
             {t(<>Daten<span className="text-brand-orange">schutz</span></>, <>Privacy <span className="text-brand-orange">policy</span></>, <>Protection<br/> des <span className="text-brand-orange">données</span></>)}
-          </h1>
+          </Plankopf>
           <p className="mt-7 max-w-[620px] text-xl text-[#5A615C]">
             {t("Welche Daten beim Besuch dieser Website anfallen, wozu wir sie brauchen und wie lange sie bleiben.", "Which data arise when you visit this website, what we need them for and how long they are kept.", "Quelles données sont collectées lors de la visite de ce site, pourquoi nous en avons besoin et combien de temps elles sont conservées.")}
           </p>

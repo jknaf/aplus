@@ -6,6 +6,7 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
 import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON } from '../components/ProduktBausteine';
+import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -14,12 +15,9 @@ const OtherProducts: React.FC = () => {
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24">
       <div className="text-center mb-16">
-          <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">
-              Portfolio
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+          <Plankopf label="Portfolio">
               {t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}
-          </h2>
+          </Plankopf>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -95,13 +93,9 @@ const ProductPavilionPage: React.FC = () => {
                 
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
-                        <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">
-                            {t("Einsatzarten", "Ways to use it", "Types d'utilisation")}
-                        </span>
-                        {/* INDUSTRIAL HEADER UPDATE */}
-                        <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
+                        <Plankopf label={t("Einsatzarten", "Ways to use it", "Types d'utilisation")} klein className="mb-8">
                             {t(<>Ein Element, <span className="text-brand-orange">vier Einsätze</span></>, <>One element, <span className="text-brand-orange">four uses</span></>, <>Un élément, <span className="text-brand-orange">quatre usages</span></>)}
-                        </h2>
+                        </Plankopf>
                         <p className="text-xl text-brand-dark/75 leading-relaxed mb-8">
                             {t("Ein einziges Betonelement lässt sich auf vier Arten einsetzen: einzeln als Unterstellplatz, in einer Reihe als Haltestellenüberdachung, paarweise gegenüber als überdachte Sitznische oder zu dritt oder viert als Pavillon.", "A single concrete element can be used in four ways: on its own as a shelter, in a row as a bus stop canopy, in facing pairs as a covered seating bay, or in threes or fours as a pavilion.", "Un seul élément en béton peut s'utiliser de quatre façons : seul comme abri, en rangée comme abribus, par paires face à face comme niche d'assise couvert, ou à trois ou quatre comme pavillon.")}
                         </p>
@@ -147,24 +141,18 @@ const ProductPavilionPage: React.FC = () => {
 
             <div className="mb-32 grid lg:grid-cols-2 gap-8">
                 <div className="bg-white p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                    <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">
-                        {t("Einsatzbereiche", "Where it is used", "Domaines d'utilisation")}
-                    </span>
-                    <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] mb-6">
+                    <Plankopf label={t("Einsatzbereiche", "Where it is used", "Domaines d'utilisation")} klein className="mb-6">
                         {t(<>Wetterschutz im <span className="text-brand-orange">öffentlichen Raum</span></>, <>Weather protection in <span className="text-brand-orange">public space</span></>, <>Protection contre les intempéries dans <span className="text-brand-orange">l'espace public</span></>)}
-                    </h2>
+                    </Plankopf>
                     <p className="text-lg text-brand-dark/75 leading-relaxed">
                         {t("Typische Einsatzorte sind Haltestellen, Schulhöfe, Parks, Campingplätze, Sportanlagen, Friedhöfe und Rastplätze. Das Betonelement mit 240 × 200 × 262 cm hat eine Sitzfläche für 4–5 Personen und schützt insgesamt ca. 10 Personen vor Regen und Sonne. Das Element kann einzeln stehen. Nebeneinander ergibt sich eine durchgehende Haltestellenüberdachung, gegenüber eine Sitznische mit Sichtschutz. Drei oder vier Elemente bilden einen Pavillon mit Sitzfläche für bis zu 16 Personen und Schutz für bis zu 40 Personen.", "Typical locations are bus stops, school playgrounds, parks, campsites, sports grounds, cemeteries and rest areas. The 240 × 200 × 262 cm concrete element has seating for 4–5 people and shelters about 10 people from rain and sun in total. The element can stand alone. Side by side they form a continuous bus stop canopy, and facing each other a seating bay with a privacy screen. Three or four elements make a pavilion with seating for up to 16 people and shelter for up to 40.", "Les lieux d'implantation typiques sont les arrêts de bus, les cours d'école, les parcs, les campings, les équipements sportifs, les cimetières et les aires de repos. L'élément en béton de 240 × 200 × 262 cm offre une assise pour 4 à 5 personnes et protège au total environ 10 personnes de la pluie et du soleil. L'élément peut être posé seul. Côte à côte, plusieurs éléments forment un abribus continu, face à face un niche d'assise avec protection visuelle. Trois ou quatre éléments forment un pavillon avec assise pour jusqu'à 16 personnes et abri pour jusqu'à 40 personnes.")}
                     </p>
                 </div>
 
                 <div className="bg-white p-8 md:p-10 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                    <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">
-                        {t("Montage", "Installation", "Montage")}
-                    </span>
-                    <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] mb-6">
+                    <Plankopf label={t("Montage", "Installation", "Montage")} klein className="mb-6">
                         {t(<>Aufstellen und <span className="text-brand-orange">versetzen</span></>, <>Installing and <span className="text-brand-orange">moving</span></>, <>Installer et <span className="text-brand-orange">déplacer</span></>)}
-                    </h2>
+                    </Plankopf>
                     <div className="space-y-5 text-lg text-brand-dark/75 leading-relaxed">
                         <p>
                             {t("Das Element wird mit dem Autokran auf ein verdichtetes Kies- oder Schotterbett gesetzt, ohne Fundament- und Pflasterarbeiten. Es hat keine Verschraubungen und keine beweglichen Teile. Deshalb ist es wartungsarm und lässt sich einfach versetzen oder abbauen.", "The element is set on a compacted gravel or crushed-stone bed with a mobile crane, with no foundation or paving work. It has no bolted joints and no moving parts. That is why it needs little maintenance and is easy to move or dismantle.", "L'élément est posé à la grue mobile sur un lit de gravier ou de concassé compacté, sans travaux de fondation ni de pavage. Il n'a ni assemblages vissés ni pièces mobiles. C'est pourquoi il demande peu d'entretien et se déplace ou se démonte facilement.")}
@@ -179,10 +167,9 @@ const ProductPavilionPage: React.FC = () => {
             {/* 3. EIGENSCHAFTEN (aus ueberdachung-pavillon.md) */}
             <div className="mb-32">
                 <div className="mb-8">
-                    <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Das Original", "The original", "L'original")}</span>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] mb-4">
+                    <Plankopf label={t("Das Original", "The original", "L'original")} klein className="mb-4">
                         {t(<>Das <span className="text-brand-orange">Überdachungselement</span></>, <>The <span className="text-brand-orange">shelter element</span></>, <>L'<span className="text-brand-orange">élément d'abri</span></>)}
-                    </h2>
+                    </Plankopf>
                     <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl">
                         {t("Unser Überdachungselement ist ein einziges Fertigteil aus bewehrtem Beton. Bodenplatte und Sitzbank sind angeformt. Der Autokran setzt das Element in einem Stück, es wiegt rund 6,3 t. Zusammenbauen muss man nichts.", "Our shelter element is a single precast unit in reinforced concrete. The base slab and bench are cast in one piece with it. The mobile crane sets the element in one piece; it weighs about 6.3 t. There is nothing to assemble.", "Notre élément d'abri est une seule pièce préfabriquée en béton armé. La dalle de sol et le banc sont intégrés au moulage. La grue mobile pose l'élément d'un seul tenant ; il pèse environ 6,3 t. Il n'y a rien à assembler.")}
                     </p>
@@ -209,10 +196,9 @@ const ProductPavilionPage: React.FC = () => {
 
                 {/* Für Kommunen: Belege Pressemitteilung Stadt Wedel 01.06.2023, Archivtext ueberdachung-pavillon */}
                 <div className="mb-12">
-                    <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Für Kommunen und Vereine", "For municipalities and clubs", "Pour les communes et les clubs")}</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] mb-4">
+                    <Plankopf label={t("Für Kommunen und Vereine", "For municipalities and clubs", "Pour les communes et les clubs")} klein className="mb-4">
                         {t(<>Keine Scheibe, <span className="text-brand-orange">die zerbricht</span></>, <>No pane <span className="text-brand-orange">to smash</span></>, <>Aucune vitre <span className="text-brand-orange">à briser</span></>)}
-                    </h2>
+                    </Plankopf>
                     <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl mb-8">
                         {t("Wartehallen aus Glas sind ein häufiges Ziel von Vandalismus. In einer deutschen Stadt mussten nach einer Vandalismuswelle 29 zerschlagene Glasscheiben an 18 Buswartehäuschen ersetzt werden. Die Kosten lagen bei etwa 20.000 Euro. Unser Überdachungselement hat keine Scheiben, die man zerschlagen oder ersetzen müsste.", "Glass waiting shelters are a frequent target of vandalism. In one German city, after a wave of vandalism, 29 smashed panes had to be replaced at 18 bus shelters. The cost was about 20,000 euros. Our shelter element has no panes that could be smashed or would need replacing.", "Les abribus en verre sont une cible fréquente du vandalisme. Dans une ville allemande, après une vague de dégradations, 29 vitres brisées ont dû être remplacées dans 18 abribus. Le coût s'est élevé à environ 20 000 euros. Notre élément d'abri n'a aucune vitre à briser ni à remplacer.")}
                     </p>
@@ -230,12 +216,9 @@ const ProductPavilionPage: React.FC = () => {
 
                 {/* Datenblatt im weißen Kasten wie bei der Umkleidekabine */}
                 <div className="bg-white rounded-2xl p-8 md:p-14 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
-                        {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
-                    </h2>
-                    <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("DATENBLATT: PAVILLON", "DATA SHEET: PAVILION", "FICHE TECHNIQUE : PAVILLON")}</span>
-                </div>
+                <Plankopf rechts={t("DATENBLATT: PAVILLON", "DATA SHEET: PAVILION", "FICHE TECHNIQUE : PAVILLON")} className="mb-8">
+                    {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
+                </Plankopf>
 
                 <dl className={DATENBLATT}>
                     <TechSpecCard title={t("Länge", "Length", "Longueur")} value="240 cm" icon="straighten" />

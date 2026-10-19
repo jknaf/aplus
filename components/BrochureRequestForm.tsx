@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useT } from '../i18n';
+import Plankopf from './Plankopf';
 
 const CTA_TARGET = '/kontakt?projectType=Katalog';
 
@@ -59,14 +60,10 @@ const BrochureRequestForm: React.FC<{ context: 'homepage' | 'productpage' }> = (
                     <div className="grid lg:grid-cols-12 gap-12 items-center">
 
                         <div className="lg:col-span-7 text-left order-2 lg:order-1">
-                            <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                                {t('Katalog anfordern', 'Request the catalogue', 'Demander le catalogue')}
-                            </span>
-
-                            <h2 className="text-5xl md:text-7xl font-extrabold font-heading uppercase tracking-tighter leading-[0.9] mb-6">
+                            <Plankopf label={t('Katalog anfordern', 'Request the catalogue', 'Demander le catalogue')} className="mb-6">
                                 <span className="text-brand-dark">{t('Unser', 'Our', 'Notre')}</span> <br/>
                                 <span className="text-brand-orange">{t('Katalog', 'Catalogue', 'Catalogue')}</span>
-                            </h2>
+                            </Plankopf>
 
                             <p className="text-lg text-brand-muted mb-8 max-w-xl leading-relaxed">
                                 {t('Unser Katalog enthält alle Elemente mit Maßen, Beispielkombinationen und Normhinweisen sowie die Montage- und Wartungsanleitung.', 'Our catalogue lists every element with dimensions, example combinations and notes on standards, plus the installation and maintenance instructions.', "Notre catalogue présente tous les éléments avec leurs dimensions, des exemples de combinaisons et des indications sur les normes, ainsi que les instructions de montage et d'entretien.")}

@@ -121,7 +121,7 @@ const AdminPage: React.FC = () => {
     <PageShell title="Admin" noIndex>
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-32 max-w-6xl">
         <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">Nur für A+</span>
-        <h1 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9] mb-10">Admin</h1>
+        <h1 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-none mb-10">Admin</h1>
 
         {!betreiber ? (
           <form onSubmit={anmelden} className="max-w-md bg-white rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.05)] p-6">

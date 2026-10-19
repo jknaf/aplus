@@ -5,6 +5,7 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 import PageShell from '../components/PageShell';
 import Bild from '../components/Bild';
 import parkStart from '../components/katalog/park-startseite.json';
+import Plankopf from '../components/Plankopf';
 
 // --- Animated Section Utility ---
 const AnimatedSection: React.FC<{children: React.ReactNode, className?: string}> = ({ children, className }) => {
@@ -87,33 +88,29 @@ const FAQSection: React.FC = () => {
                 {JSON.stringify(faqSchema)}
             </script>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                 <AnimatedSection className="mb-16 text-center">
-                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                        {t("Wissen und Technik", "Technical FAQ", "Savoir et technique")}
-                    </span>
-                    <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-                        {t(<>Häufige <span className="text-brand-orange">Fragen</span></>, <>Frequently asked <span className="text-brand-orange">questions</span></>, <>Questions <span className="text-brand-orange">fréquentes</span></>)}
-                    </h2>
-                    <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
-                        {t("Alles über Planung, Kosten, Fördermittel und Bau von Skateparks, Pumptracks und BMX-Anlagen, von Ihrem Skatepark-Hersteller.", "Everything about planning, costs, funding and construction of skateparks, pump tracks and BMX facilities, from your skatepark manufacturer.", "Tout sur la planification, les coûts, les aides et la construction de skateparks, de pumptracks et d'installations BMX, par votre fabricant de skateparks.")}
-                    </p>
-                </AnimatedSection>
-                <div className="max-w-4xl mx-auto space-y-4">
-                    {faqs.map((faq, index) => (
-                        <details key={index} className="group bg-white rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.05)] border border-brand-dark/5 overflow-hidden transition-all duration-300 open:border-brand-orange/40 open:shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
-                            <summary className="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-brand-surface/50 transition-colors">
-                                <span className="font-bold text-base md:text-xl text-brand-dark group-hover:text-brand-orange transition-colors pr-8">
-                                    {faq.q}
-                                </span>
-                                <span className="material-symbols-outlined text-brand-muted transition-transform duration-300 group-open:rotate-180 group-open:text-brand-orange">
-                                    expand_more
-                                </span>
-                            </summary>
-                            <div className="px-6 pb-6 pt-0 text-brand-muted leading-relaxed border-t border-brand-dark/5 mt-2 animate-fade-in-up text-sm md:text-base">
-                                {faq.a}
-                            </div>
-                        </details>
-                    ))}
+                <div className="grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-12 lg:gap-20 items-start">
+                    <AnimatedSection className="lg:sticky lg:top-32">
+                        <Plankopf label={t("Wissen und Technik", "Technical FAQ", "Savoir et technique")} klein className="mb-6">
+                            {t(<>Häufige <span className="text-brand-orange">Fragen</span></>, <>Frequently asked <span className="text-brand-orange">questions</span></>, <>Questions <span className="text-brand-orange">fréquentes</span></>)}
+                        </Plankopf>
+                        <p className="text-lg leading-relaxed text-brand-muted">
+                            {t("Alles über Planung, Kosten, Fördermittel und Bau von Skateparks, Pumptracks und BMX-Anlagen, von Ihrem Skatepark-Hersteller.", "Everything about planning, costs, funding and construction of skateparks, pump tracks and BMX facilities, from your skatepark manufacturer.", "Tout sur la planification, les coûts, les aides et la construction de skateparks, de pumptracks et d'installations BMX, par votre fabricant de skateparks.")}
+                        </p>
+                    </AnimatedSection>
+                    <div className="border-t-2 border-brand-dark">
+                        {faqs.map((faq, index) => (
+                            <details key={index} name="faq" open={index === 0} className="group border-b border-brand-dark/15">
+                                <summary className="grid grid-cols-[40px_minmax(0,1fr)_44px] md:grid-cols-[64px_minmax(0,1fr)_44px] items-center gap-3 md:gap-4 py-6 md:py-7 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                                    <span className="font-mono text-[13px] tracking-[0.1em] text-brand-dark/70 group-open:text-brand-orange">{String(index + 1).padStart(2, '0')}</span>
+                                    <span className="font-heading font-bold text-lg md:text-[22px] leading-snug text-brand-dark group-hover:text-brand-orange transition-colors">{faq.q}</span>
+                                    <span className="w-11 h-11 rounded-full border border-brand-dark/30 flex items-center justify-center text-brand-dark transition-colors group-open:bg-brand-orange group-open:border-brand-orange group-open:text-white" aria-hidden="true">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M3 8h10" /><path d="M8 3v10" className="group-open:hidden" /></svg>
+                                    </span>
+                                </summary>
+                                <p className="pb-8 md:pl-[80px] pr-2 md:pr-[60px] text-base md:text-[17px] leading-relaxed text-brand-dark/80 max-w-3xl">{faq.a}</p>
+                            </details>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
@@ -152,13 +149,10 @@ const ProductScrollytelling: React.FC = () => {
     return (
         <section id="produkte" className="relative z-10 py-24 border-y border-brand-dark/5 bg-transparent">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <AnimatedSection className="mb-24 text-center">
-                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                        Portfolio
-                    </span>
-                    <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
-                        {t(<>Unsere<br/><span className="text-brand-orange">Produkte</span></>, <>Our<br/><span className="text-brand-orange">products</span></>, <>Nos<br/><span className="text-brand-orange">produits</span></>)}
-                    </h2>
+                <AnimatedSection className="mb-24">
+                    <Plankopf label="Portfolio">
+                        {t(<>Unsere <span className="text-brand-orange">Produkte</span></>, <>Our <span className="text-brand-orange">products</span></>, <>Nos <span className="text-brand-orange">produits</span></>)}
+                    </Plankopf>
                 </AnimatedSection>
 
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
@@ -292,16 +286,10 @@ const ServiceOverviewSection: React.FC = () => {
     return (
         <section id="leistungen" className="py-24 relative bg-brand-surface/30 border-y border-brand-dark/5">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <AnimatedSection className="mb-16 text-center">
-                    <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-                        {t("Alles aus einer Hand", "One partner from design to aftercare", "Un seul interlocuteur")}
-                    </span>
-                    <h2 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                <AnimatedSection className="mb-16">
+                    <Plankopf label={t("Alles aus einer Hand", "One partner from design to aftercare", "Un seul interlocuteur")} text={t("Seit über 25 Jahren begleiten wir Kommunen, Architekten und Landschaftsplaner durch jede Phase eines Skatepark-Projekts, von der Beratung bis zur langfristigen Wartung.", "For more than 25 years we have guided municipalities, architects and landscape planners through every phase of a skatepark project, from consultation to long-term maintenance.", "Depuis plus de 25 ans, nous accompagnons les communes, les architectes et les paysagistes à chaque étape d'un projet de skatepark, du conseil à l'entretien à long terme.")}>
                         {t(<>Planung, Bau<br />& <span className="text-brand-orange">Service</span></>, <>Design, build<br />& <span className="text-brand-orange">service</span></>, <>Conception, réalisation<br />& <span className="text-brand-orange">service</span></>)}
-                    </h2>
-                    <p className="text-brand-muted mt-6 max-w-2xl mx-auto">
-                        {t("Seit über 25 Jahren begleiten wir Kommunen, Architekten und Landschaftsplaner durch jede Phase eines Skatepark-Projekts, von der Beratung bis zur langfristigen Wartung.", "For more than 25 years we have guided municipalities, architects and landscape planners through every phase of a skatepark project, from consultation to long-term maintenance.", "Depuis plus de 25 ans, nous accompagnons les communes, les architectes et les paysagistes à chaque étape d'un projet de skatepark, du conseil à l'entretien à long terme.")}
-                    </p>
+                    </Plankopf>
                 </AnimatedSection>
 
 
@@ -392,7 +380,7 @@ const Plan: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     </svg>
 );
 
-const Plankopf: React.FC<{ blatt: string; info: string; titel: string; text: string; gross?: boolean; oben?: boolean }> = ({ blatt, info, titel, text, gross, oben }) => (
+const PlanKachel: React.FC<{ blatt: string; info: string; titel: string; text: string; gross?: boolean; oben?: boolean }> = ({ blatt, info, titel, text, gross, oben }) => (
     <div className={`absolute left-4 sm:left-5 ${oben ? 'top-4 sm:top-5' : 'bottom-4 sm:bottom-5'} max-w-[calc(100%-2rem)] bg-brand-bg text-brand-dark border-[1.5px] border-brand-dark grid grid-cols-2 ${gross ? 'w-[380px]' : 'w-[330px]'}`}>
         <span className="px-3 py-2 border-r border-b border-brand-dark font-mono text-[11px] tracking-[0.14em]">{blatt}</span>
         <span className="px-3 py-2 border-b border-brand-dark font-mono text-[11px] tracking-[0.14em] uppercase">{info}</span>
@@ -416,27 +404,23 @@ const Anspruch: React.FC = () => {
   return (
     <section id="philosophie" className="bg-brand-dark text-brand-bg py-24 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col gap-12 lg:gap-14">
-            <div className="flex flex-wrap gap-x-16 gap-y-6 items-end justify-between">
-                <div className="flex flex-col gap-5">
-                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#A9C98A]">{t("Unser Anspruch", "Our standard", "Notre exigence")}</span>
-                    <h2 className="text-5xl md:text-8xl font-extrabold font-heading uppercase leading-[0.88] tracking-tighter">{t(<>Gebaut für<br /><span className="text-[#A9C98A]">Jahrzehnte</span></>, <>Built for<br /><span className="text-[#A9C98A]">decades</span></>, <>Conçu pour<br /><span className="text-[#A9C98A]">des décennies</span></>)}</h2>
-                </div>
-                <p className="max-w-sm text-lg leading-relaxed text-[#C9CCC4]">{t("Beton, Stahl und Gummi, im Werk gefertigt und vom TÜV geprüft. Und wenn sich der Ort ändert, ziehen die Elemente einfach mit.", "Concrete, steel and rubber, made in the factory and tested by TÜV. And when the place changes, the elements simply move with it.", "Béton, acier et caoutchouc, fabriqués en usine et contrôlés par le TÜV. Et quand le lieu change, les éléments suivent tout simplement.")}</p>
-            </div>
+            <Plankopf label={t("Unser Anspruch", "Our standard", "Notre exigence")} dunkel text={<span className="text-[#C9CCC4]">{t("Beton, Stahl und Gummi, im Werk gefertigt und vom TÜV geprüft. Und wenn sich der Ort ändert, ziehen die Elemente einfach mit.", "Concrete, steel and rubber, made in the factory and tested by TÜV. And when the place changes, the elements simply move with it.", "Béton, acier et caoutchouc, fabriqués en usine et contrôlés par le TÜV. Et quand le lieu change, les éléments suivent tout simplement.")}</span>}>
+                {t(<>Gebaut für<br /><span className="text-[#A9C98A]">Jahrzehnte</span></>, <>Built for<br /><span className="text-[#A9C98A]">decades</span></>, <>Conçu pour<br /><span className="text-[#A9C98A]">des décennies</span></>)}
+            </Plankopf>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 lg:auto-rows-[290px] gap-4">
                 <Fotokachel src="/images/details/einstellung-04-hell.jpg" alt={t("Höhenverstellbarer Fuß eines Betonelements auf Asphalt", "Height-adjustable foot of a concrete element on asphalt", "Pied réglable en hauteur d'un élément en béton sur de l'asphalte")} className="h-[440px] lg:h-auto lg:col-span-7 lg:row-span-2">
                     <Plan>
                         <circle cx="367" cy="310" r="30" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
                     </Plan>
-                    <Plankopf gross oben blatt={t("BLATT 01 / 04", "SHEET 01 / 04", "PLANCHE 01 / 04")} info={t("Detail Fuß", "Detail: foot", "Détail : pied")} titel={t("Fundamentfrei", "No foundations", "Sans fondation")} text={t("Steht auf vorhandenem Asphalt oder Beton. Vor Ort wird nicht betoniert.", "Stands on existing asphalt or concrete. No concreting on site.", "Se pose sur de l'asphalte ou du béton existant. Aucun bétonnage sur place.")} />
+                    <PlanKachel gross oben blatt={t("BLATT 01 / 04", "SHEET 01 / 04", "PLANCHE 01 / 04")} info={t("Detail Fuß", "Detail: foot", "Détail : pied")} titel={t("Fundamentfrei", "No foundations", "Sans fondation")} text={t("Steht auf vorhandenem Asphalt oder Beton. Vor Ort wird nicht betoniert.", "Stands on existing asphalt or concrete. No concreting on site.", "Se pose sur de l'asphalte ou du béton existant. Aucun bétonnage sur place.")} />
                 </Fotokachel>
 
                 <Fotokachel src="/images/skate-elemente/skate-module-beton-04.jpg" alt={t("Massive Skate-Module aus Beton mit Kantenschutz aus Stahl", "Solid concrete skate modules with steel edge protection", "Modules de skate massifs en béton avec protection d'arête en acier")} className="h-[320px] lg:h-auto lg:col-span-5">
                     <Plan>
                         <circle cx="430" cy="168" r="32" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
                     </Plan>
-                    <Plankopf oben blatt={t("BLATT 02 / 04", "SHEET 02 / 04", "PLANCHE 02 / 04")} info="C35/45" titel={t("Vandalismussicher", "Vandal-resistant", "Résistant au vandalisme")} text={t("Wand 8 bis 16 cm. Nicht schneidbar, nicht brennbar.", "Wall 8 to 16 cm. Cannot be cut, does not burn.", "Paroi de 8 à 16 cm. Impossible à découper, incombustible.")} />
+                    <PlanKachel oben blatt={t("BLATT 02 / 04", "SHEET 02 / 04", "PLANCHE 02 / 04")} info="C35/45" titel={t("Vandalismussicher", "Vandal-resistant", "Résistant au vandalisme")} text={t("Wand 8 bis 16 cm. Nicht schneidbar, nicht brennbar.", "Wall 8 to 16 cm. Cannot be cut, does not burn.", "Paroi de 8 à 16 cm. Impossible à découper, incombustible.")} />
                 </Fotokachel>
 
                 <article className="lg:col-span-5 rounded-2xl bg-brand-bg text-brand-dark p-5 grid grid-cols-1 sm:grid-cols-[auto_minmax(0,1fr)] gap-5 lg:min-h-0">
@@ -454,7 +438,7 @@ const Anspruch: React.FC = () => {
                     <Plan>
                         <rect x="364" y="216" width="148" height="58" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
                     </Plan>
-                    <Plankopf blatt={t("BLATT 04 / 04", "SHEET 04 / 04", "PLANCHE 04 / 04")} info="KrWG § 6" titel={t("Versetzen statt abreißen", "Move it, don't demolish it", "Déplacer plutôt que démolir")} text={t("Kein Abbruch, kein Bauschutt. Ihre Investition zieht mit.", "No demolition, no rubble. Your investment moves with you.", "Ni démolition, ni gravats. Votre investissement vous suit.")} />
+                    <PlanKachel blatt={t("BLATT 04 / 04", "SHEET 04 / 04", "PLANCHE 04 / 04")} info="KrWG § 6" titel={t("Versetzen statt abreißen", "Move it, don't demolish it", "Déplacer plutôt que démolir")} text={t("Kein Abbruch, kein Bauschutt. Ihre Investition zieht mit.", "No demolition, no rubble. Your investment moves with you.", "Ni démolition, ni gravats. Votre investissement vous suit.")} />
                 </Fotokachel>
 
                 <article className="lg:col-span-4 rounded-2xl bg-brand-orange text-white p-7 flex flex-col justify-between gap-6 min-h-[240px]">
@@ -622,35 +606,6 @@ const HomePage: React.FC = () => {
       <BrochureRequestForm context="homepage" />
       
       <FAQSection />
-      
-      <section id="contact-area" className="py-24 md:py-32 relative overflow-hidden border-t border-brand-dark/10">
-          <div className="absolute inset-0 bg-brand-surface/50"></div>
-          <div className="absolute -top-1/2 left-1/2 -translate-x-1/2 w-[100vw] h-[100vw] bg-brand-orange/5 blur-[120px] rounded-full pointer-events-none"></div>
-
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <AnimatedSection>
-              <div className="inline-flex items-center gap-3 py-1 px-4 border border-brand-orange/30 bg-brand-orange/10 rounded-full mb-12 backdrop-blur-md">
-                 <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
-                 <span className="text-brand-orange font-mono text-xs uppercase tracking-widest">
-                    {t("Ihr Projekt", "Your project", "Votre projet")}
-                 </span>
-              </div>
-              <h2 className="text-6xl md:text-[10rem] font-extrabold font-heading uppercase tracking-tighter mb-12 leading-[0.85] text-brand-dark">
-                {t(<>Start<br/><span className="text-brand-orange">klar?</span></>, <>Ready<br/><span className="text-brand-orange">to go?</span></>, <>Prêt<br/><span className="text-brand-orange">à démarrer ?</span></>)}
-              </h2>
-              <p className="text-lg md:text-2xl text-brand-muted max-w-2xl mx-auto mb-16 font-light">
-                  {t("Sprechen Sie mit uns über Ihre Fläche.", "Talk to us about your site.", "Parlez-nous de votre terrain.")} <br/>
-                  <span className="text-brand-dark font-bold">{t("Von der ersten Skizze bis zur Eröffnung.", "From the first sketch to the opening.", "De la première esquisse à l'inauguration.")}</span>
-              </p>
-              <Link
-                to="/kontakt"
-                className="inline-flex items-center gap-4 bg-brand-orange text-white font-extrabold uppercase tracking-widest text-base md:text-lg py-5 px-10 md:py-6 md:px-12 rounded-2xl hover:bg-brand-dark hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-[0_8px_30px_rgba(107,143,74,0.3)] hover:shadow-[0_12px_40px_rgba(44,53,48,0.25)] group"
-              >
-                {t("Projekt starten", "Start your project", "Lancer votre projet")} <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform text-2xl">arrow_forward</span>
-              </Link>
-            </AnimatedSection>
-          </div>
-        </section>
     </PageShell>
   );
 };

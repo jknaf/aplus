@@ -4,9 +4,9 @@ import PageShell from '../components/PageShell';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import { useKonfiguratorCode } from '../components/katalog/CodeDialog';
 import Bild from '../components/Bild';
+import Plankopf from '../components/Plankopf';
 
 const LABEL = 'font-mono text-xs uppercase tracking-widest text-[#4F6E34] mb-4';
-const H2 = 'font-heading font-extrabold uppercase tracking-tighter text-brand-dark leading-none text-4xl md:text-6xl';
 const CARD = 'bg-white rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)]';
 const BTN = 'inline-flex items-center justify-center gap-2 min-h-12 px-7 rounded-md font-heading font-bold text-sm uppercase tracking-widest transition-colors';
 
@@ -146,7 +146,7 @@ const PlanningPage: React.FC = () => {
                     <span className="material-symbols-outlined text-base">check_circle</span>
                     {t("Im Produktpreis enthalten", "Included in the product price", "Comprise dans le prix du produit")}
                 </div>
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-tighter text-white leading-[0.85] mb-7">
+                <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-7">
                     {t(<>Skatepark<br/>
                     <span className="text-[#8DB562]">Planung</span></>, <>Skatepark<br/> <span className="text-[#8DB562]">design</span></>, <>Conception de<br/> <span className="text-[#8DB562]">skatepark</span></>)}
                 </h1>
@@ -166,10 +166,9 @@ const PlanningPage: React.FC = () => {
 
         {/* 2. ABLAUF als Zeitstrahl */}
         <div className="container mx-auto px-4 mb-28">
-            <div className={LABEL}>{t("Ablauf", "Process", "Déroulement")}</div>
-            <h2 className={`${H2} mb-14 !text-4xl md:!text-5xl`}>
+            <Plankopf label={t("Ablauf", "Process", "Déroulement")} klein className="mb-14">
                 {t(<>Der Weg zum <span className="text-brand-orange">Skatepark</span> in drei Schritten</>, <>The route to your <span className="text-brand-orange">skatepark</span> in three steps</>, <>Votre <span className="text-brand-orange">skatepark</span> en trois étapes</>)}
-            </h2>
+            </Plankopf>
             <div className="flex flex-wrap border-t-2 border-brand-dark [&>div]:basis-full md:[&>div]:basis-0">
                 <Schritt nr="01" titel={t("Analyse & Skizze", "Analysis & sketch", "Analyse et esquisse")} text={t("Wir prüfen Ihren Standort (digital oder vor Ort) und entwickeln erste Entwürfe passend zu Budget und Zielgruppe. Gern auf Basis Ihres Entwurfs aus dem Skatepark-Planer.", "We review your site (digitally or on site) and develop first designs to suit your budget and target group. We are happy to work from a design you have made in the Skatepark Planner.", "Nous examinons votre site (à distance ou sur place) et développons de premières esquisses adaptées à votre budget et à votre public. Volontiers à partir de votre projet réalisé avec le configurateur de skatepark.")} />
                 {/* Roland §4.5: Wortlaut für 3D-Phase präzisieren (Skizze + 3D + Geländer) noch klären */}
@@ -182,10 +181,9 @@ const PlanningPage: React.FC = () => {
         <div className="container mx-auto px-4 mb-28">
             <div className="flex flex-col lg:flex-row lg:items-end gap-6 lg:gap-14 mb-10">
                 <div className="lg:w-1/2">
-                    <div className={LABEL}>{t("Planungsbeispiele", "Design examples", "Exemples de conception")}</div>
-                    <h2 className={`${H2} !text-4xl md:!text-5xl`}>
+                    <Plankopf label={t("Planungsbeispiele", "Design examples", "Exemples de conception")} klein>
                         {t(<>So planen wir <span className="text-brand-orange">Ihren Skatepark</span></>, <>How we design <span className="text-brand-orange">your skatepark</span></>, <>Comment nous concevons <span className="text-brand-orange">votre skatepark</span></>)}
-                    </h2>
+                    </Plankopf>
                 </div>
                 <p className="lg:w-1/2 text-lg leading-relaxed text-brand-dark/75">
                     {t("Sie nennen uns die verfügbare Fläche und das Budget. Wir erstellen einen individuellen Entwurf mit Draufsicht, 3D-Zeichnung und Kostenübersicht. Bei besonderen Wünschen senden Sie uns einfach eine Skizze als Vorlage.", "You tell us the available area and the budget. We prepare an individual design with plan view, 3D drawing and cost overview. If you have special wishes, simply send us a sketch as a starting point.", "Vous nous indiquez la surface disponible et le budget. Nous établissons un projet personnalisé avec plan de masse, dessin 3D et aperçu des coûts. Si vous avez des souhaits particuliers, envoyez-nous simplement une esquisse comme base.")}
@@ -219,10 +217,10 @@ const PlanningPage: React.FC = () => {
         <div className="container mx-auto px-4 mb-28">
             <div className="flex flex-wrap bg-brand-dark text-white rounded-2xl overflow-hidden">
                 <div className="basis-full lg:basis-1/2 p-8 md:p-14 lg:pb-10">
-                    <h2 className="font-heading font-extrabold uppercase tracking-tighter leading-[0.95] text-4xl md:text-5xl mb-6">
+                    <Plankopf klein dunkel className="mb-6">
                         {t(<>Vom Architekten <span className="text-[#8DB562]">gedacht</span><br/>
                         Nicht vom Verkäufer</>, <>Designed by an <span className="text-[#8DB562]">architect</span><br/> Not by a salesperson</>, <>Pensé par un <span className="text-[#8DB562]">architecte</span><br/> Pas par un vendeur</>)}
-                    </h2>
+                    </Plankopf>
                     <p className="text-lg leading-relaxed text-white/90">
                         {t(<>Bei A+ Urban Design ist die Planung kein externer Posten, sondern der Kern unserer Arbeit. Ihr Ansprechpartner <strong className="text-white">Dipl.-Ing. Cüneyit Akcakoca</strong> ist Architekt bei A+ Urban Design.</>, <>At A+ Urban Design, design is not an add-on but the core of our work. Your contact <strong className="text-white">Dipl.-Ing. Cüneyit Akcakoca</strong> is an architect at A+ Urban Design.</>, <>Chez A+ Urban Design, la conception n'est pas un poste externe, mais le cœur de notre travail. Votre interlocuteur, <strong className="text-white">Dipl.-Ing. Cüneyit Akcakoca</strong>, est architecte chez A+ Urban Design.</>)}
                     </p>
@@ -246,10 +244,9 @@ const PlanningPage: React.FC = () => {
         <div className="container mx-auto px-4 mb-28">
             <div className="flex flex-col lg:flex-row gap-14">
                 <div className="lg:w-1/2">
-                    <div className={LABEL}>{t("Bau und Umsetzung", "Construction and delivery", "Construction et réalisation")}</div>
-                    <h2 className={`${H2} mb-4 !text-4xl md:!text-5xl`}>
+                    <Plankopf label={t("Bau und Umsetzung", "Construction and delivery", "Construction et réalisation")} klein className="mb-4">
                         {t(<>Schneller gebaut <span className="text-brand-orange">als Ortbeton</span></>, <>Built faster <span className="text-brand-orange">than in-situ concrete</span></>, <>Construit plus vite <span className="text-brand-orange">que le béton coulé en place</span></>)}
-                    </h2>
+                    </Plankopf>
                     <p className="font-mono text-xs uppercase tracking-widest text-brand-dark/75 mb-8">{t("Mit regelmäßiger TÜV-Überprüfung der Fertigungsstätte", "With regular TÜV inspection of the production site", "Avec contrôle régulier du site de fabrication par le TÜV")}</p>
                     <div className="space-y-5">
                         <p className="text-xl font-heading font-semibold leading-snug">
@@ -295,10 +292,9 @@ const PlanningPage: React.FC = () => {
                     <img className="planung-wechsel absolute inset-0 w-full h-full object-cover" src="/images/planung/planer-3d-nah.jpg" alt={t("Skatepark-Planer: 3D-Nahansicht der Elemente", "Skatepark Planner: close-up 3D view of the elements", "Configurateur de skatepark : vue 3D rapprochée des éléments")} loading="lazy" />
                 </div>
                 <div className="lg:w-1/2 p-8 md:p-14">
-                    <div className={LABEL}>{t("Selbst entwerfen", "Design it yourself", "Concevoir soi-même")}</div>
-                    <h2 className="font-heading font-extrabold uppercase tracking-tighter leading-none text-brand-dark text-4xl md:text-5xl mb-6">
+                    <Plankopf label={t("Selbst entwerfen", "Design it yourself", "Concevoir soi-même")} klein className="mb-6">
                         {t(<>Der <span className="text-brand-orange">Skatepark-Planer</span></>, <>The <span className="text-brand-orange">Skatepark Planner</span></>, <>Le <span className="text-brand-orange">configurateur de skatepark</span></>)}
-                    </h2>
+                    </Plankopf>
                     <p className="text-lg text-brand-dark/75 leading-relaxed mb-4">
                         {t("Stellen Sie Ihren Park im Browser aus unseren Elementen zusammen, in 3D und als Draufsicht. Der Planer zeigt Maße und Stückliste. Ihren Entwurf senden Sie uns, und wir arbeiten ihn zur fertigen Planung aus.", "Put your park together in the browser from our elements, in 3D and in plan view. The planner shows dimensions and a parts list. You send us your design, and we develop it into the finished plan.", "Composez votre skatepark dans le navigateur à partir de nos éléments, en 3D et en plan de masse. Le planificateur affiche les dimensions et la liste des pièces. Vous nous envoyez votre projet, et nous le transformons en plan définitif.")}
                     </p>
@@ -320,9 +316,9 @@ const PlanningPage: React.FC = () => {
         {/* 7. CTA */}
         <div className="container mx-auto px-4 mb-28">
             <div className="bg-brand-dark text-white rounded-2xl p-8 md:p-14">
-                <h2 className="font-heading font-extrabold uppercase tracking-tighter leading-none text-4xl md:text-5xl mb-5">
+                <Plankopf klein dunkel className="mb-5">
                     {t("Starten wir die Planung?", "Shall we start designing?", "On commence la conception ?")}
-                </h2>
+                </Plankopf>
                 <p className="text-lg leading-relaxed text-white/90 max-w-2xl mb-8">
                     {t("Lassen Sie uns über Ihre Fläche sprechen. Erstberatung und Kostenschätzung sind für Sie unverbindlich.", "Let's talk about your site. The initial consultation and cost estimate are non-binding.", "Parlons de votre terrain. La première consultation et l'estimation des coûts sont sans engagement.")}
                 </p>

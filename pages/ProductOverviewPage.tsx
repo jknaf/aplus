@@ -3,6 +3,7 @@ import { Link, useT } from '../i18n';
 import { useProducts } from '../localized';
 import PageShell from '../components/PageShell';
 import Bild from '../components/Bild';
+import Plankopf from '../components/Plankopf';
 
 const ProductOverviewPage: React.FC = () => {
   const t = useT();
@@ -14,16 +15,10 @@ const ProductOverviewPage: React.FC = () => {
     >
       <section className="pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16 text-center">
-            <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">
-              {t("Produktübersicht", "Product overview", "Aperçu des produits")}
-            </span>
-            <h1 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+          <div className="mb-16">
+            <Plankopf label={t("Produktübersicht", "Product overview", "Aperçu des produits")} as="h1" text={<>{t("Unsere modularen Betonfertigteile für den öffentlichen Raum werden ohne Fundament aufgestellt und sind auf Jahrzehnte ausgelegt. Die Skate- und Pumptrack-Elemente sind TÜV-zertifiziert.", "Our modular precast concrete units for public spaces are installed without foundations and built to last for decades. The skate and pump track elements are TÜV-certified.", "Nos éléments préfabriqués modulaires en béton pour l'espace public se posent sans fondation et sont conçus pour durer des décennies. Les éléments de skate et de pumptrack sont certifiés TÜV.")}</>}>
               {t(<>Unsere <span className="text-brand-orange">Produkte</span></>, <>Our <span className="text-brand-orange">products</span></>, <>Nos <span className="text-brand-orange">produits</span></>)}
-            </h1>
-            <p className="text-brand-muted mt-6 max-w-2xl mx-auto text-lg">
-              {t("Unsere modularen Betonfertigteile für den öffentlichen Raum werden ohne Fundament aufgestellt und sind auf Jahrzehnte ausgelegt. Die Skate- und Pumptrack-Elemente sind TÜV-zertifiziert.", "Our modular precast concrete units for public spaces are installed without foundations and built to last for decades. The skate and pump track elements are TÜV-certified.", "Nos éléments préfabriqués modulaires en béton pour l'espace public se posent sans fondation et sont conçus pour durer des décennies. Les éléments de skate et de pumptrack sont certifiés TÜV.")}
-            </p>
+            </Plankopf>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

@@ -6,6 +6,7 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
 import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON } from '../components/ProduktBausteine';
+import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -14,12 +15,9 @@ const OtherProducts: React.FC = () => {
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24">
       <div className="text-center mb-16">
-          <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">
-              Portfolio
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+          <Plankopf label="Portfolio">
               {t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}
-          </h2>
+          </Plankopf>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -95,13 +93,9 @@ const ProductGrillPage: React.FC = () => {
                 
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32">
-                        <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">
-                            {t("Treffpunkt", "Meeting point", "Lieu de rencontre")}
-                        </span>
-                        {/* INDUSTRIAL HEADER UPDATE */}
-                        <h2 className="text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
+                        <Plankopf label={t("Treffpunkt", "Meeting point", "Lieu de rencontre")} klein className="mb-8">
                             {t(<>Feuer und <span className="text-brand-orange">Beton</span></>, <>Fire and <span className="text-brand-orange">concrete</span></>, <>Feu et <span className="text-brand-orange">béton</span></>)}
-                        </h2>
+                        </Plankopf>
                         <p className="text-xl text-brand-dark/75 leading-relaxed mb-8">
                             {t("Der runde Grillplatz ist für Freibäder, Campingplätze, Sportanlagen und Kleingartenanlagen gedacht. Er hat 4,20 m Durchmesser, ist 2,70 m hoch und bietet 12–16 Personen Platz.", "The round barbecue area is intended for outdoor pools, campsites, sports grounds and allotment sites. It is 4.20 m in diameter and 2.70 m high, with room for 12–16 people.", "L'aire de barbecue circulaire est destinée aux piscines de plein air, aux campings, aux équipements sportifs et aux jardins familiaux. Elle mesure 4,20 m de diamètre, 2,70 m de haut et accueille 12 à 16 personnes.")}
                         </p>
@@ -155,10 +149,9 @@ const ProductGrillPage: React.FC = () => {
             {/* 3. KONSTRUKTION & EIGENSCHAFTEN (aus grill-grillplatz.md) */}
             <div className="mb-32">
                 <div className="mb-8">
-                    <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Konstruktion & Eigenschaften", "Construction & features", "Construction et caractéristiques")}</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] mb-4">
+                    <Plankopf label={t("Konstruktion & Eigenschaften", "Construction & features", "Construction et caractéristiques")} klein className="mb-4">
                         {t(<>Aufbau und <span className="text-brand-orange">Material</span></>, <>Structure and <span className="text-brand-orange">materials</span></>, <>Structure et <span className="text-brand-orange">matériaux</span></>)}
-                    </h2>
+                    </Plankopf>
                     <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl">
                         {t("Der Grillplatz besteht aus drei Betonfertigteilen. Der Grillrost ist aus Edelstahl, die Stütze aus verzinktem Stahl. Der Rost hängt an einer Kette mit Gegengewicht. Gesetzt werden die Teile mit Autokran, Radlader oder Gabelstapler mit mindestens 3,5 t Hublast. Die Konstruktion ist einfach zu bedienen und hat wenige Verschleißteile.", "The barbecue area consists of three precast concrete units. The grate is stainless steel and the support is galvanised steel. The grate hangs from a chain with a counterweight. The parts are set with a mobile crane, wheel loader or a forklift with a lifting capacity of at least 3.5 t. The design is easy to operate and has few wearing parts.", "L'aire de barbecue se compose de trois éléments préfabriqués en béton. La grille est en inox, le support en acier galvanisé. La grille est suspendue à une chaîne avec contrepoids. Les éléments sont posés avec une grue mobile, une chargeuse sur pneus ou un chariot élévateur d'une capacité de levage d'au moins 3,5 t. L'ensemble est simple à utiliser et compte peu de pièces d'usure.")}
                     </p>
@@ -185,10 +178,9 @@ const ProductGrillPage: React.FC = () => {
 
                 {/* Für Betreiber: Belege Montageanleitung Grillplatz, Grillregeln Städte (z. B. Stuttgart) */}
                 <div className="mb-12">
-                    <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Für Kommunen und Vereine", "For municipalities and clubs", "Pour les communes et les clubs")}</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] mb-4">
+                    <Plankopf label={t("Für Kommunen und Vereine", "For municipalities and clubs", "Pour les communes et les clubs")} klein className="mb-4">
                         {t(<>Ein fester Ort <span className="text-brand-orange">fürs Feuer</span></>, <>A permanent place <span className="text-brand-orange">for the fire</span></>, <>Un lieu fixe <span className="text-brand-orange">pour le feu</span></>)}
-                    </h2>
+                    </Plankopf>
                     <p className="text-lg text-brand-dark/75 leading-relaxed max-w-3xl mb-6">
                         {t("Viele Städte erlauben das Grillen in Parks nur an fest eingerichteten Feuerstellen. Mitgebrachte Grills und Einweggrills sind dort aus Brandschutzgründen oft verboten. Ein fester Grillplatz gibt Badegästen, Campern und Vereinsmitgliedern einen erlaubten Ort zum Grillen. Gegrillt wird über Beton, nicht über der Wiese.", "Many cities only allow barbecues in parks at designated sites. Portable and disposable barbecues are often banned there for fire safety reasons. A permanent barbecue area gives pool visitors, campers and club members a permitted place to cook. The fire is over concrete, not over the lawn.", "De nombreuses villes n'autorisent les barbecues dans les parcs qu'aux foyers aménagés. Les barbecues apportés par les visiteurs et les barbecues jetables y sont souvent interdits pour des raisons de sécurité incendie. Une aire de barbecue fixe offre aux baigneurs, aux campeurs et aux membres d'associations un endroit autorisé pour griller. On grille au-dessus du béton, pas au-dessus de la pelouse.")}
                     </p>
@@ -199,12 +191,9 @@ const ProductGrillPage: React.FC = () => {
 
                  {/* Datenblatt im weißen Kasten wie bei der Umkleidekabine */}
                  <div className="bg-white rounded-2xl p-8 md:p-14 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                 <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
-                        {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
-                    </h2>
-                    <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("DATENBLATT: GRILLSTELLE", "DATA SHEET: BARBECUE AREA", "FICHE TECHNIQUE : AIRE DE BARBECUE")}</span>
-                </div>
+                 <Plankopf rechts={t("DATENBLATT: GRILLSTELLE", "DATA SHEET: BARBECUE AREA", "FICHE TECHNIQUE : AIRE DE BARBECUE")} className="mb-8">
+                     {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
+                 </Plankopf>
 
                 <dl className={DATENBLATT}>
                     <TechSpecCard title={t("Durchmesser", "Diameter", "Diamètre")} value={t("4,20 Meter", "4.20 metres", "4,20 mètres")} icon="straighten" />

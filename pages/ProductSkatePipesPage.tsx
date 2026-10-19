@@ -6,6 +6,7 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
 import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON } from '../components/ProduktBausteine';
+import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -14,8 +15,9 @@ const OtherProducts: React.FC = () => {
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24 relative z-20">
       <div className="text-center mb-16">
-          <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">Portfolio</span>
-          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">{t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}</h2>
+          <Plankopf label="Portfolio">
+{t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}
+          </Plankopf>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -91,10 +93,9 @@ const ProductSkatePipesPage: React.FC = () => {
             <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mb-32">
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32 relative z-20">
-                         <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Aufbau", "Structure", "Structure")}</span>
-                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
+                         <Plankopf label={t("Aufbau", "Structure", "Structure")} className="mb-8">
                             {t(<>Pipes <br/><span className="text-brand-orange">aus Beton</span></>, <>Concrete <br/><span className="text-brand-orange">pipes</span></>, <>Pipes <br/><span className="text-brand-orange">en béton</span></>)}
-                        </h2>
+                         </Plankopf>
                         <p className="text-xl text-brand-dark/75 leading-relaxed mb-6">
                             {t("Die Halfpipe entstand in den 1970er-Jahren aus leeren Schwimmbecken. Heute gehört eine Pipe in fast jeden Skatepark. Aus Beton gebaut hält sie besonders lange.", "The halfpipe grew out of empty swimming pools in the 1970s. Today almost every skatepark has a pipe. Built in concrete, it lasts especially long.", "La halfpipe est née dans les années 1970 à partir de piscines vides. Aujourd'hui, presque tous les skateparks ont une pipe. Construite en béton, elle dure particulièrement longtemps.")}
                         </p>
@@ -123,12 +124,11 @@ const ProductSkatePipesPage: React.FC = () => {
 
             {/* 3. PIPE-HÖHEN */}
             <div className="mb-32 relative z-20">
-                <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
+                <div className="mb-12">
                     <div>
-                        <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Höhen", "Heights", "Hauteurs")}</span>
-                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                        <Plankopf label={t("Höhen", "Heights", "Hauteurs")}>
                             {t(<>165, 200 und <span className="text-brand-orange">255 cm</span></>, <>165, 200 and <span className="text-brand-orange">255 cm</span></>, <>165, 200 et <span className="text-brand-orange">255 cm</span></>)}
-                        </h2>
+                        </Plankopf>
                     </div>
                 </div>
 
@@ -169,12 +169,11 @@ const ProductSkatePipesPage: React.FC = () => {
 
             {/* 4. CONSTRUCTION */}
             <div className="mb-32 relative z-20">
-                <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
+                <div className="mb-12">
                     <div>
-                        <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Halfpipe und Mini-Pipe", "Halfpipe and mini ramp", "Halfpipe et mini-rampe")}</span>
-                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                        <Plankopf label={t("Halfpipe und Mini-Pipe", "Halfpipe and mini ramp", "Halfpipe et mini-rampe")}>
                             {t(<>So ist eine Pipe <span className="text-brand-orange">gebaut</span></>, <>How a pipe is <span className="text-brand-orange">built</span></>, <>Comment une pipe est <span className="text-brand-orange">construite</span></>)}
-                        </h2>
+                        </Plankopf>
                     </div>
                 </div>
 
@@ -204,12 +203,9 @@ const ProductSkatePipesPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 {/* Datenblatt im weißen Kasten wie bei der Umkleidekabine */}
                 <div className="bg-white rounded-2xl p-8 md:p-14 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
-                        {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
-                    </h2>
-                    <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("DATENBLATT: PIPES", "DATA SHEET: PIPES", "FICHE TECHNIQUE : PIPES")}</span>
-                </div>
+                <Plankopf rechts={t("DATENBLATT: PIPES", "DATA SHEET: PIPES", "FICHE TECHNIQUE : PIPES")} className="mb-8">
+                    {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
+                </Plankopf>
 
                 <dl className={DATENBLATT}>
                     <TechSpecCard

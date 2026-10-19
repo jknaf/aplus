@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useT } from '../i18n';
 import { useKategorie, useProjects } from '../localized';
 import Bild from './Bild';
+import Plankopf from './Plankopf';
 
 interface ReferencedProjectsProps {
   productPath: string;
@@ -20,12 +21,9 @@ const ReferencedProjects: React.FC<ReferencedProjectsProps> = ({ productPath, li
   return (
     <section className="mt-32 border-t border-brand-dark/10 pt-24">
       <div className="text-center mb-16">
-        <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/10 backdrop-blur-sm rounded-md">
-          {t('Referenzprojekte', 'Reference projects', 'Projets de référence')}
-        </span>
-        <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+        <Plankopf label={t('Referenzprojekte', 'Reference projects', 'Projets de référence')}>
           {t(<>Hier <span className="text-brand-orange">eingesetzt</span></>, <>Used <span className="text-brand-orange">here</span></>, <>Utilisé <span className="text-brand-orange">ici</span></>)}
-        </h2>
+        </Plankopf>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {matches.map((project) => (
@@ -47,7 +45,7 @@ const ReferencedProjects: React.FC<ReferencedProjectsProps> = ({ productPath, li
                 {kategorie(project.category)}
                 {project.year ? ` · ${project.year}` : ''}
               </span>
-              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-tighter transform group-hover:-translate-y-1 transition-transform duration-300">
+              <h3 className="text-2xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] transform group-hover:-translate-y-1 transition-transform duration-300">
                 {project.title}
               </h3>
               <span className="mt-3 text-white/70 text-xs font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">

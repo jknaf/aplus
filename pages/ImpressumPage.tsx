@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PageShell from '../components/PageShell';
 import { useLang, useT } from '../i18n';
+import Plankopf from '../components/Plankopf';
 
 const label = 'text-xs font-semibold uppercase tracking-[0.18em] text-[#4E6F33]';
 const card = 'rounded-[20px] border border-brand-dark/10 bg-[#FAF9F6] p-8 md:p-11';
@@ -24,12 +25,9 @@ const ImpressumPage: React.FC = () => {
     <PageShell title={t("Impressum", "Legal Notice", "Mentions légales")} fullWidth>
       <div className="mx-auto max-w-6xl px-4 pb-24 pt-32 sm:px-6 md:pt-40 lg:px-8 text-[17px] leading-relaxed text-[#3A433D]">
         <header className="mb-14">
-          <span className="inline-block rounded-md border border-[#4E6F33]/35 bg-brand-orange/10 px-3.5 py-1 font-mono text-xs uppercase tracking-[0.16em] text-[#4E6F33]">
-            {t("Rechtliches", "Legal", "Informations légales")}
-          </span>
-          <h1 className="mt-7 text-[clamp(3.25rem,10vw,8.5rem)] font-extrabold font-heading uppercase leading-[0.92] tracking-[-0.045em] text-brand-dark">
+          <Plankopf label={t("Rechtliches", "Legal", "Informations légales")} as="h1" klein>
             {t(<>Impres<span className="text-brand-orange">sum</span></>, <>Legal <span className="text-brand-orange">notice</span></>, <>Mentions <span className="text-brand-orange">légales</span></>)}
-          </h1>
+          </Plankopf>
           <p className="mt-7 max-w-xl text-xl text-[#5A615C]">{t("Anbieter dieser Website und zuständige Stellen.", "Provider of this website and responsible bodies.", "Éditeur de ce site et organismes compétents.")}</p>
           {lang !== 'de' && (
             <p className="mt-4 max-w-[620px] text-sm text-[#5A615C]">{t("", "This page is a translation for convenience. The German version is the legally binding one.", "Cette page est une traduction fournie à titre indicatif. Seule la version allemande fait foi.")}</p>

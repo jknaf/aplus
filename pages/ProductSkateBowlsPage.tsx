@@ -6,6 +6,7 @@ import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
 import { ProduktHero, TechSpecCard, DATENBLATT, SCHILD, SCHILD_ICON } from '../components/ProduktBausteine';
+import Plankopf from '../components/Plankopf';
 
 const OtherProducts: React.FC = () => {
   const t = useT();
@@ -14,8 +15,9 @@ const OtherProducts: React.FC = () => {
   return (
     <div className="mt-32 border-t border-brand-dark/10 pt-24 relative z-20">
       <div className="text-center mb-16">
-          <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">Portfolio</span>
-          <h2 className="text-4xl md:text-6xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">{t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}</h2>
+          <Plankopf label="Portfolio">
+{t(<>Weitere <span className="text-brand-orange">Lösungen</span></>, <>More <span className="text-brand-orange">solutions</span></>, <>D'autres <span className="text-brand-orange">solutions</span></>)}
+          </Plankopf>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {otherProducts.map(product => (
@@ -91,10 +93,9 @@ const ProductSkateBowlsPage: React.FC = () => {
             <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 mb-32">
                 <div className="lg:w-5/12">
                     <div className="lg:sticky lg:top-32 relative z-20">
-                         <span className="block font-mono text-xs mb-6 uppercase tracking-widest text-[#4F6E34]">{t("Geschichte", "History", "Histoire")}</span>
-                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02] mb-8">
+                         <Plankopf label={t("Geschichte", "History", "Histoire")} className="mb-8">
                             {t(<>Vom Swimmingpool <span className="text-brand-orange">zum Bowl</span></>, <>From swimming pool <span className="text-brand-orange">to bowl</span></>, <>De la piscine <span className="text-brand-orange">au bowl</span></>)}
-                        </h2>
+                         </Plankopf>
                         <p className="text-xl text-brand-dark/75 leading-relaxed mb-6">
                             {t("In den 1950er-Jahren entdeckten Surfer leere Swimmingpools als Skateflächen. Die geschwungenen Transitions, das Flat und das Copingrohr an der Oberkante prägen bis heute jeden Skate-Bowl.", "In the 1950s, surfers discovered empty swimming pools as places to skate. The curved transitions, the flat and the coping tube along the top edge still define every skate bowl today.", "Dans les années 1950, des surfeurs ont découvert que les piscines vides pouvaient servir de terrain de skate. Les transitions courbes, le plat et le tube de coping sur le bord supérieur caractérisent encore aujourd'hui chaque bowl.")}
                         </p>
@@ -123,12 +124,11 @@ const ProductSkateBowlsPage: React.FC = () => {
 
             {/* 3. BOWL-TYPEN */}
             <div className="mb-32 relative z-20">
-                <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
+                <div className="mb-12">
                     <div>
-                        <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Bauweisen", "Types of construction", "Modes de construction")}</span>
-                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                        <Plankopf label={t("Bauweisen", "Types of construction", "Modes de construction")}>
                             {t(<>Geschlossen <span className="text-brand-orange">oder offen</span></>, <>Closed <span className="text-brand-orange">or open</span></>, <>Fermé <span className="text-brand-orange">ou ouvert</span></>)}
-                        </h2>
+                        </Plankopf>
                     </div>
                 </div>
 
@@ -177,12 +177,11 @@ const ProductSkateBowlsPage: React.FC = () => {
 
             {/* 4. PLANUNG */}
             <div className="mb-32 relative z-20">
-                <div className="flex items-end justify-between mb-12 border-b border-brand-dark/10 pb-6">
+                <div className="mb-12">
                     <div>
-                        <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">{t("Bauweise", "Construction", "Mode de construction")}</span>
-                        <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
+                        <Plankopf label={t("Bauweise", "Construction", "Mode de construction")}>
                             {t(<>Fertigteil statt <span className="text-brand-orange">Ortbeton</span></>, <>Precast instead of <span className="text-brand-orange">in-situ concrete</span></>, <>Préfabriqué plutôt que <span className="text-brand-orange">béton coulé en place</span></>)}
-                        </h2>
+                        </Plankopf>
                     </div>
                 </div>
 
@@ -211,12 +210,9 @@ const ProductSkateBowlsPage: React.FC = () => {
             <div className="mb-32 relative z-20">
                 {/* Datenblatt im weißen Kasten wie bei der Umkleidekabine */}
                 <div className="bg-white rounded-2xl p-8 md:p-14 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-                <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl hyphens-auto font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-[1.02]">
-                        {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
-                    </h2>
-                    <span className="font-mono text-brand-dark/75 text-xs hidden sm:block">{t("DATENBLATT: BOWLS", "DATA SHEET: BOWLS", "FICHE TECHNIQUE : BOWLS")}</span>
-                </div>
+                <Plankopf rechts={t("DATENBLATT: BOWLS", "DATA SHEET: BOWLS", "FICHE TECHNIQUE : BOWLS")} className="mb-8">
+                    {t(<>Technische <span className="text-brand-orange">Daten</span></>, <>Technical <span className="text-brand-orange">data</span></>, <>Données <span className="text-brand-orange">techniques</span></>)}
+                </Plankopf>
 
                 <dl className={DATENBLATT}>
                     <TechSpecCard

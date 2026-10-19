@@ -9,6 +9,7 @@ import CodeDialog, { useKonfiguratorCode } from '../components/katalog/CodeDialo
 import { gruppenName, teilName } from '../localized';
 import { anzahlImPark, merken } from '../components/konfigurator/merkliste';
 import type { ParkTeil, Boeschung } from '../components/katalog/ParkAnsicht';
+import Plankopf from '../components/Plankopf';
 
 const ParkAnsicht = lazy(() => import('../components/katalog/ParkAnsicht'));
 const Blaetterkatalog = lazy(() => import('../components/katalog/Blaetterkatalog'));
@@ -186,7 +187,7 @@ const Detail: React.FC<{
         </div>
         <div className="p-6 md:p-10 flex flex-col">
           <span className="font-mono text-xs uppercase tracking-widest text-brand-orange mb-3">{gruppenName(e.gruppe, lang)}</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mb-2">{teilName(e.name, lang)}</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-none mb-2">{teilName(e.name, lang)}</h2>
           <p className="font-mono text-sm text-brand-muted mb-6">{e.preisliste_code || e.kuerzel || t("ohne Code", "no code", "sans code")}{e.preisliste_produkt && ` · ${e.preisliste_produkt}`}</p>
           <div className="mb-6"><PreisBadge preis={preis} gross onSperre={onSperre} /></div>
           <div className="mb-8"><ParkKnopf slug={e.slug} onSperre={onParkSperre} /></div>
@@ -259,7 +260,7 @@ const ParkDetail: React.FC<{
         {/* Rechts scrollt allein, der Park links bleibt stehen */}
         <div className="p-6 md:p-10 flex flex-col md:overflow-y-auto">
           <span className="font-mono text-xs uppercase tracking-widest text-brand-orange mb-3">{t("Skatepark-Beispiel", "Skatepark example", "Exemple de skatepark")}</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.95] mb-2">{p.name}</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-none mb-2">{p.name}</h2>
           <p className="font-mono text-sm text-brand-muted mb-6">{t("Fläche", "Area", "Surface")} {dezimal(lang, p.laenge_m)} × {dezimal(lang, p.breite_m)} m · {p.anzahl} {t("Elemente", "elements", "éléments")}</p>
           <div className="mb-8"><PreisBadge preis={preis(p.id)} gross onSperre={onSperre} /></div>
 
@@ -397,14 +398,10 @@ const KatalogPage: React.FC = () => {
       description={t("Skatepark-Beispiele und alle Skate-Elemente von A+ Urban Design in 3D: Parks mit Fläche und Stückliste, dazu Tables, Banks, Hips, Ramps, Rails und mehr.", "Skatepark examples and all skate elements from A+ Urban Design in 3D: parks with area and parts list, plus tables, banks, hips, ramps, rails and more.", "Exemples de skateparks et tous les éléments de skate d'A+ Urban Design en 3D : parcs avec surface et liste des pièces, ainsi que tables, banks, hips, rampes, rails et plus encore.")}
     >
       <section className="pt-32 pb-8 md:pt-40 md:pb-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-block py-1 px-3 border border-brand-orange/30 text-brand-orange font-mono text-xs mb-6 uppercase tracking-widest bg-brand-orange/5 rounded-md">{t("Katalog", "Catalogue", "Catalogue")}</span>
-          <h1 className="text-4xl md:text-7xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter leading-[0.9]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <Plankopf label={t("Katalog", "Catalogue", "Catalogue")} as="h1" text={<>{parks.length || t('Viele', 'Many', 'De nombreux')} {t('Beispielparks und', 'example parks and', 'parcs exemples et')} {katalog ? katalog.elemente.length : t('alle', 'all', 'tous les')} {t('Einzelteile in 3D. Park aussuchen, Teile ansehen, eigenen Park planen.', 'individual parts in 3D. Choose a park, look at the parts, plan your own park.', 'éléments individuels en 3D. Choisissez un parc, consultez les éléments, planifiez votre propre parc.')}</>}>
             {t(<>Skate-<span className="text-brand-orange">Parks</span></>, <>Skate<span className="text-brand-orange">parks</span></>, <><span className="text-brand-orange">Skateparks</span></>)}
-          </h1>
-          <p className="text-brand-muted mt-6 max-w-2xl mx-auto text-lg">
-            {parks.length || t('Viele', 'Many', 'De nombreux')} {t('Beispielparks und', 'example parks and', 'parcs exemples et')} {katalog ? katalog.elemente.length : t('alle', 'all', 'tous les')} {t('Einzelteile in 3D. Park aussuchen, Teile ansehen, eigenen Park planen.', 'individual parts in 3D. Choose a park, look at the parts, plan your own park.', 'éléments individuels en 3D. Choisissez un parc, consultez les éléments, planifiez votre propre parc.')}
-          </p>
+          </Plankopf>
         </div>
       </section>
 
@@ -492,10 +489,7 @@ const KatalogPage: React.FC = () => {
         )}
         {ansicht === 'parks' && parks.length > 0 && (
           <div id="parks" className="mb-24 scroll-mt-40">
-            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-3 mb-8 border-b border-brand-dark/10 pb-4">
-              <h2 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">{t("Skatepark-Beispiele", "Skatepark examples", "Exemples de skateparks")}</h2>
-              <span className="font-mono text-xs text-brand-muted">{parkTreffer.length} {t("Parks", "parks", "parcs")}</span>
-            </div>
+            <Plankopf klein rechts={<>{parkTreffer.length} {t("Parks", "parks", "parcs")}</>} className="mb-8">{t("Skatepark-Beispiele", "Skatepark examples", "Exemples de skateparks")}</Plankopf>
             <p className="text-brand-muted max-w-3xl mb-8">{t("Jeder Park ist aus unseren Einzelelementen zusammengestellt, mit Fläche, Stückliste und Gesamtpreis. Im Detail drehen Sie die Anlage in 3D.", "Every park is put together from our individual elements, with area, parts list and total price. In the detail view you can rotate the park in 3D.", "Chaque parc est composé de nos éléments individuels, avec surface, liste des pièces et prix total. Dans la vue détaillée, vous pouvez faire pivoter l'installation en 3D.")}</p>
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
               {(suche.trim() ? parkTreffer : parkTreffer.slice(0, reihenParks * PARKS_JE_REIHE)).map((p) => <ParkKarte key={p.id} p={p} preis={preise ? preisText(preise[p.id], loc) ?? t("auf Anfrage", "on request", "sur demande") : null} onSperre={() => setDialog(true)} />)}
@@ -507,7 +501,7 @@ const KatalogPage: React.FC = () => {
 
         {ansicht === 'einzelteile' && (<>
         <div id="einzelteile" className="scroll-mt-40 mb-10">
-          <h2 className="text-3xl md:text-5xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">{t("Einzelteile", "Individual parts", "Éléments individuels")}</h2>
+          <Plankopf klein>{t("Einzelteile", "Individual parts", "Éléments individuels")}</Plankopf>
           <p className="text-brand-muted max-w-3xl mt-4">{t("Alle Elemente modular im 125-cm-Raster. Jedes einzeln in 3D, mit Maßen und Planungsdaten.", "All elements are modular on a 125 cm grid. Each one in 3D, with dimensions and planning data.", "Tous les éléments sont modulaires sur une trame de 125 cm. Chacun en 3D, avec ses cotes et ses données de planification.")}</p>
         </div>
         {!katalog && <p className="text-center text-brand-muted py-24">{t("Katalog wird geladen …", "Loading the catalogue …", "Chargement du catalogue …")}</p>}
@@ -520,7 +514,7 @@ const KatalogPage: React.FC = () => {
             <div key={g} id={gruppenId(g)} className="mb-20 scroll-mt-40">
               <div className="flex items-baseline gap-4 mb-8 border-b border-brand-dark/10 pb-4">
                 <span className="font-mono text-xs text-brand-orange">{String(gi + 1).padStart(2, '0')}</span>
-                <h2 className="text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">{gruppenName(g, lang)}</h2>
+                <h2 className="text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em]">{gruppenName(g, lang)}</h2>
                 <span className="ml-auto font-mono text-xs text-brand-muted">{alle.length} {t("Elemente", "elements", "éléments")}</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
@@ -551,7 +545,7 @@ const KatalogPage: React.FC = () => {
         {katalog && (
           <div className="mt-8 mb-16 grid md:grid-cols-2 gap-8 border-t border-brand-dark/10 pt-12">
             <div>
-              <h2 className="text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter">{t(<>Gebaut für <span className="text-brand-orange">Jahrzehnte</span></>, <>Built for <span className="text-brand-orange">decades</span></>, <>Conçu pour <span className="text-brand-orange">des décennies</span></>)}</h2>
+              <h2 className="text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em]">{t(<>Gebaut für <span className="text-brand-orange">Jahrzehnte</span></>, <>Built for <span className="text-brand-orange">decades</span></>, <>Conçu pour <span className="text-brand-orange">des décennies</span></>)}</h2>
               <p className="text-brand-muted mt-4">{t("Alle Elemente sind modular im 125-cm-Raster aufgebaut und lassen sich frei kombinieren, erweitern und umstellen.", "All elements are built modularly on a 125 cm grid and can be combined, extended and rearranged freely.", "Tous les éléments sont conçus de façon modulaire sur une trame de 125 cm et peuvent être combinés, agrandis et réagencés librement.")}</p>
             </div>
             <ul className="space-y-3 text-sm text-brand-dark">

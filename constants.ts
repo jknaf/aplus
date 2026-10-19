@@ -1,19 +1,22 @@
 import { Product, Project, PressArticle } from './types';
 
-export const NAV_LINKS = [
-  { name: 'Home', href: '/' },
+type NavLink = { name: string; href: string; subLinks?: { name: string; href: string; gruppe?: string; bild?: string }[] };
+
+export const NAV_LINKS: NavLink[] = [
+  // Home führt über das Logo, Presse steht im Footer und auf Über uns.
+  // gruppe und bild nutzt das aufklappende Menü im Header (Bilder in public/images/menue, 480 px breit).
   {
     name: 'Produkte',
     href: '/produkte',
     subLinks: [
-      { name: 'Skate-Anlagen', href: '/produkte/skate-anlagen' },
-      { name: 'Skate-Bowls', href: '/produkte/skate-bowls-beton' },
-      { name: 'Skate-Pipes', href: '/produkte/skate-pipes-beton' },
-      { name: 'Pumptrack Beton', href: '/produkte/pumptrack-beton' },
-      { name: 'Grillstelle Beton', href: '/produkte/grillstelle-beton' },
-      { name: 'Umkleidekabine', href: '/produkte/umkleidekabine-beton' },
-      { name: 'Überdachung / Pavillon', href: '/produkte/ueberdachung-beton' },
-      { name: 'Hockey-Banden', href: '/produkte/hockey-banden' },
+      { name: 'Skate-Anlagen', href: '/produkte/skate-anlagen', gruppe: 'skate', bild: '/images/menue/skate-anlage-01.webp' },
+      { name: 'Skate-Bowls', href: '/produkte/skate-bowls-beton', gruppe: 'skate', bild: '/images/menue/skate-bowl-01.webp' },
+      { name: 'Skate-Pipes', href: '/produkte/skate-pipes-beton', gruppe: 'skate', bild: '/images/menue/skate-pipe-01.webp' },
+      { name: 'Pumptrack Beton', href: '/produkte/pumptrack-beton', gruppe: 'skate', bild: '/images/menue/pumptrack-beton-elemente-01.webp' },
+      { name: 'Grillstelle Beton', href: '/produkte/grillstelle-beton', gruppe: 'freizeit', bild: '/images/menue/grill-platz-01.webp' },
+      { name: 'Umkleidekabine', href: '/produkte/umkleidekabine-beton', gruppe: 'freizeit', bild: '/images/menue/umkleide-kabine-01.webp' },
+      { name: 'Überdachung / Pavillon', href: '/produkte/ueberdachung-beton', gruppe: 'freizeit', bild: '/images/menue/ueberdachung-unterstellplatz-02.webp' },
+      { name: 'Hockey-Banden', href: '/produkte/hockey-banden', gruppe: 'freizeit', bild: '/images/menue/inline-hockey-bande-03.webp' },
     ]
   },
   { name: 'Katalog', href: '/katalog' },
@@ -21,12 +24,11 @@ export const NAV_LINKS = [
     name: 'Planung',
     href: '/planung',
     subLinks: [
-      { name: 'Planung durch A+', href: '/planung' },
-      { name: 'Skatepark-Planer', href: '/konfigurator' },
+      { name: 'Planung durch A+', href: '/planung', bild: '/images/menue/skate-anlage-planung-01.webp' },
+      { name: 'Skatepark-Planer', href: '/konfigurator', bild: '/images/menue/planer-3d-ueberblick.webp' },
     ]
   },
   { name: 'Projekte', href: '/projekte' },
-  { name: 'Presse', href: '/referenzen-presse' },
   { name: 'Über uns', href: '/ueber-uns' },
   { name: 'Kontakt', href: '/kontakt' },
 ];

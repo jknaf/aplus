@@ -22,6 +22,7 @@ export default {
       },
       animation: {
         'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'menue-auf': 'menue-auf 0.2s ease-out',
         'marquee': 'marquee 25s linear infinite',
         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'spin-slow': 'spin 12s linear infinite',
@@ -35,6 +36,10 @@ export default {
         'kenburns-3': 'kenburns-3 30s ease-in-out infinite alternate',
       },
       keyframes: {
+        'menue-auf': {
+          '0%': { opacity: '0', transform: 'translateY(-8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
         'fade-in-up': {
           '0%': { opacity: '0', transform: 'translateY(2rem)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PageShell from '../components/PageShell';
-import { useT } from '../i18n';
+import { Link, useT } from '../i18n';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import Bild from '../components/Bild';
 
@@ -219,6 +219,7 @@ const AboutPage: React.FC = () => {
                   <div className="flex flex-wrap gap-3">
                       <a href="mailto:post@aplusurbandesign.com" className="inline-flex items-center min-h-12 px-7 rounded-md bg-brand-orange text-white font-heading font-bold text-sm uppercase tracking-widest hover:bg-brand-dark transition-colors">{t("E-Mail senden", "Send an email", "Envoyer un e-mail")}</a>
                       <a href="https://www.linkedin.com/in/cüneyit-akcakoca-6577673/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center min-h-12 px-7 rounded-md border-2 border-brand-dark text-brand-dark font-heading font-bold text-sm uppercase tracking-widest hover:bg-brand-dark hover:text-white transition-colors">LinkedIn</a>
+                      <Link to="/referenzen-presse" className="inline-flex items-center min-h-12 px-7 rounded-md border-2 border-brand-dark text-brand-dark font-heading font-bold text-sm uppercase tracking-widest hover:bg-brand-dark hover:text-white transition-colors">{t("Presse", "Press", "Presse")}</Link>
                   </div>
                   <a href="mailto:post@aplusurbandesign.com" className="text-sm text-brand-dark/75 hover:text-brand-dark">post@aplusurbandesign.com</a>
               </div>

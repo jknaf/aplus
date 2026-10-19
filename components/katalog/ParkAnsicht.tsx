@@ -15,6 +15,8 @@ interface Props { teile: ParkTeil[]; extra: string | null; flaeche: number[] | n
 const C = new THREE.Matrix4().set(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1);   // Blender (z oben) → glTF (y oben)
 const Ci = C.clone().invert();
 const lader = new GLTFLoader();
+// ponytail: ?v=2 einmalig gegen alte Browser-Caches (bis 19.10.2026 durften Browser Modelle 1 Tag + 7 Tage behalten, seither fragen sie nach)
+const STAND = '?v=2';
 const cache = new Map<string, Promise<THREE.Group | null>>();
 const laden = (src: string) => {
   if (!cache.has(src)) cache.set(src, lader.loadAsync(src).then((g) => g.scene, () => null));
@@ -22,7 +24,7 @@ const laden = (src: string) => {
 };
 // Schon beim Zeigen auf die Karte laden, damit der Park beim Öffnen fast fertig ist
 export const vorladen = (teile: ParkTeil[], extra: string | null) => {
-  new Set(teile.map((t) => t.slug)).forEach((s) => laden(`/katalog/modelle/${s}.gltf`));
+  new Set(teile.map((t) => t.slug)).forEach((s) => laden(`/katalog/modelle/${s}.gltf${STAND}`));
   if (extra) laden(extra);
 };
 
@@ -89,7 +91,7 @@ const ParkAnsicht: React.FC<Props> = ({ teile, extra, flaeche, boeschung, alt, b
 
     Promise.all([
       ...teile.map(async (t) => {
-        const g = await laden(`/katalog/modelle/${t.slug}.gltf`);
+        const g = await laden(`/katalog/modelle/${t.slug}.gltf${STAND}`);
         if (!aus) setFertig((n) => n + 1);
         if (!g) return;
         const w = new THREE.Group(); w.matrixAutoUpdate = false;

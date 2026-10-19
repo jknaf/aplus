@@ -168,12 +168,12 @@
   {
    "mimeType": "image/png",
    "name": "table-150_schatten",
-   "uri": "texturen/table-150_schatten.png"
+   "uri": "texturen/table-150_schatten.png?v=2"
   },
   {
    "mimeType": "image/jpeg",
    "name": "table-150_licht",
-   "uri": "texturen/table-150_licht.jpg"
+   "uri": "texturen/table-150_licht.jpg?v=2"
   }
  ],
  "accessors": [
@@ -457,7 +457,7 @@
  "buffers": [
   {
    "byteLength": 99932,
-   "uri": "table-150.bin"
+   "uri": "table-150.bin?v=2"
   }
  ],
  "extensionsUsed": [

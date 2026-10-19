@@ -472,7 +472,7 @@ const KatalogPage: React.FC = () => {
                     <img src="/katalog/parks/skatepark-22.webp" alt="" width="1200" height="876" className="absolute -top-3 -right-6 w-[150px] md:w-[220px] h-auto transition-transform duration-500 group-hover:scale-105" />
                   ) : (
                     <span className="absolute top-1.5 md:top-2.5 inset-x-2 md:inset-x-3 flex items-end justify-between transition-transform duration-500 group-hover:scale-105">
-                      {['quarterramp-200', 'table-125', 'hip-75'].map((s, i) => <img key={s} src={`/katalog/bilder/${s}.webp`} alt="" width="640" height="640" className={`object-contain ${['w-[52px] md:w-[76px]', 'w-12 md:w-[70px]', 'w-11 md:w-16'][i]} h-auto`} />)}
+                      {['quarterramp-200', 'table-125', 'hip-75'].map((s, i) => <img key={s} src={`/katalog/bilder/${s}.webp?v=2`} alt="" width="640" height="640" className={`object-contain ${['w-[52px] md:w-[76px]', 'w-12 md:w-[70px]', 'w-11 md:w-16'][i]} h-auto`} />)}
                     </span>
                   )}
                   <span className="relative block font-heading font-extrabold uppercase text-base md:text-[19px] [word-spacing:0.12em]"><span className="sm:hidden">{kurz}</span><span className="hidden sm:inline">{text}</span></span>

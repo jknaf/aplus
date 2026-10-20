@@ -286,15 +286,15 @@ const ServiceOverviewSection: React.FC = () => {
                 </AnimatedSection>
 
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[440px_240px] gap-4 max-w-6xl mx-auto">
-                <PhaseKachel className="lg:col-span-4" nr={1} info="DIN EN 14974" service={services[0]} unten={false}>
+            <div className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[auto_240px] gap-4 max-w-6xl mx-auto">
+                <PhaseKachel className="lg:col-span-4" nr={1} info="DIN EN 14974" service={services[0]}>
                     <Park3D alt={t("3D-Modell eines Skateparks aus Katalogelementen", "3D model of a skatepark made of catalogue elements", "Modèle 3D d'un skatepark en éléments du catalogue")} />
                 </PhaseKachel>
-                <PhaseKachel className="lg:col-span-4" nr={2} info={t("Montage", "Installation", "Montage")} service={services[1]} unten
-                    foto="/images/leistungen/bau-montage-kran.jpg" alt={t("Montage einer Skate-Pipe mit Autokran", "Installing a skate pipe with a mobile crane", "Montage d'une mini-rampe à la grue mobile")} pos="50% 55%"
-                    plan={<circle cx="400" cy="170" r="44" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />} />
-                <PhaseKachel className="lg:col-span-4" nr={3} info={t("Wartung", "Maintenance", "Entretien")} service={services[2]} unten={false}
-                    foto="/images/leistungen/service-anlage-abend.jpg" alt={t("Luftaufnahme einer Skateanlage am Abend", "Aerial view of a skatepark in the evening", "Vue aérienne d'un skatepark en soirée")} pos="50% 50%"
+                <PhaseKachel className="lg:col-span-4" nr={2} info={t("Montage", "Installation", "Montage")} service={services[1]}
+                    foto="/images/leistungen/bau-montage-kran.jpg" alt={t("Montage einer Skate-Pipe mit Autokran", "Installing a skate pipe with a mobile crane", "Montage d'une mini-rampe à la grue mobile")}
+                    plan={<circle cx="432" cy="182" r="40" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />} />
+                <PhaseKachel className="lg:col-span-4" nr={3} info={t("Wartung", "Maintenance", "Entretien")} service={services[2]}
+                    foto="/images/leistungen/service-anlage-abend.jpg" alt={t("Luftaufnahme einer Skateanlage am Abend", "Aerial view of a skatepark in the evening", "Vue aérienne d'un skatepark en soirée")}
                     plan={<rect x="470" y="230" width="150" height="90" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />} />
 
                 <article className="lg:col-span-8 rounded-2xl bg-brand-orange text-white p-7 flex flex-col justify-between gap-6 min-h-[200px]">
@@ -330,7 +330,7 @@ const Park3D: React.FC<{ alt: string }> = ({ alt }) => {
         return () => io.disconnect();
     }, []);
     return (
-        <div ref={ref} className="relative h-[260px] lg:absolute lg:inset-x-0 lg:bottom-0 lg:h-[54%]">
+        <div ref={ref} className="absolute inset-0">
             {nah && <Suspense fallback={null}><ParkAnsicht3D beiHover teile={parkStart.teile} extra={parkStart.extra} flaeche={parkStart.flaeche} boeschung={null} alt={alt} /></Suspense>}
             <span className="absolute left-4 bottom-3 flex items-center gap-2 px-3 py-2 rounded-full border border-brand-dark/45 bg-brand-bg/85 font-mono text-[11px] uppercase tracking-[0.14em] text-brand-dark pointer-events-none">
                 <span className="material-symbols-outlined text-base group-hover:animate-spin">3d_rotation</span>
@@ -342,23 +342,25 @@ const Park3D: React.FC<{ alt: string }> = ({ alt }) => {
 const Dreh: React.FC = () => { const t = useT(); return <>{t("3D, drehbar", "3D, rotatable", "3D, rotatif")}</>; };
 
 type Service = { title: string; desc: string };
-const PhaseKachel: React.FC<{ className: string; nr: number; info: string; service: Service; unten: boolean; foto?: string; alt?: string; pos?: string; plan?: React.ReactNode; children?: React.ReactNode }> = ({ className, nr, info, service, unten, foto, alt, pos, plan, children }) => (
-    <article className={`group relative rounded-2xl overflow-hidden flex flex-col lg:block ${foto ? 'bg-brand-dark' : 'bg-[#D3DDC6] bg-[linear-gradient(rgba(44,53,48,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(44,53,48,.07)_1px,transparent_1px),radial-gradient(ellipse_at_65%_75%,#F2F5EC,#C6D3B8_75%)] bg-[length:40px_40px,40px_40px,100%_100%]'} ${className}`}>
-        {foto && (
-            <div className="relative h-[260px] lg:absolute lg:inset-0 lg:h-full">
-                <img src={foto} alt={alt} loading="lazy" style={{ objectPosition: pos }} className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 transition-[filter,transform] duration-700 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.04]" />
-                <div className="absolute inset-0 bg-[#33502B] mix-blend-multiply opacity-60 transition-opacity duration-700 group-hover:opacity-0 pointer-events-none" />
-                {plan && <div className="hidden lg:block"><Plan>{plan}</Plan></div>}
-            </div>
-        )}
-        {children}
-        <div className={`relative m-4 lg:absolute lg:left-5 lg:right-5 lg:m-0 ${unten ? 'lg:bottom-5' : 'lg:top-5'} bg-brand-bg text-brand-dark border-[1.5px] border-brand-dark grid grid-cols-2`}>
+// Schild oben, darunter eingerückt Foto oder 3D-Ansicht. Nichts liegt mehr auf dem Bild, die Personen bleiben sichtbar.
+const PhaseKachel: React.FC<{ className: string; nr: number; info: string; service: Service; foto?: string; alt?: string; plan?: React.ReactNode; children?: React.ReactNode }> = ({ className, nr, info, service, foto, alt, plan, children }) => (
+    <article className={`group rounded-2xl overflow-hidden flex flex-col gap-4 p-4 lg:p-5 bg-[#D3DDC6] bg-[linear-gradient(rgba(44,53,48,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(44,53,48,.07)_1px,transparent_1px),radial-gradient(ellipse_at_65%_75%,#F2F5EC,#C6D3B8_75%)] bg-[length:40px_40px,40px_40px,100%_100%] ${className}`}>
+        <div className="bg-brand-bg text-brand-dark border-[1.5px] border-brand-dark grid grid-cols-2">
             <span className="px-3 py-2 border-r border-b border-brand-dark font-mono text-[11px] tracking-[0.14em] uppercase">Phase 0{nr} / 03</span>
             <span className="px-3 py-2 border-b border-brand-dark font-mono text-[11px] tracking-[0.14em] uppercase">{info}</span>
             <div className="col-span-2 px-4 pt-3 pb-4 flex flex-col gap-2">
                 <h3 className="font-heading font-extrabold uppercase text-2xl leading-[1.08] [word-spacing:0.12em]">{service.title}</h3>
                 <p className="text-sm text-brand-dark/75 leading-snug">{service.desc}</p>
             </div>
+        </div>
+        <div className={`relative h-[220px] lg:h-auto lg:flex-1 lg:min-h-[200px] overflow-hidden ${foto ? 'border-[1.5px] border-brand-dark bg-brand-dark' : ''}`}>
+            {foto ? (
+                <>
+                    <img src={foto} alt={alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 transition-[filter,transform] duration-700 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.04]" />
+                    <div className="absolute inset-0 bg-[#33502B] mix-blend-multiply opacity-60 transition-opacity duration-700 group-hover:opacity-0 pointer-events-none" />
+                    {plan && <div className="hidden lg:block"><Plan>{plan}</Plan></div>}
+                </>
+            ) : children}
         </div>
     </article>
 );

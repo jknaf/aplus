@@ -168,7 +168,7 @@ const AboutPage: React.FC = () => {
               <Schritt nr="01" src="/images/planung/skateanlage-planung-02.jpg"
                   alt={t("3D-Planung eines Skateparks", "3D design of a skatepark", "Conception 3D d'un skatepark")}
                   titel={t("Planung", "Design", "Conception")}
-                  text={t("Individuelle 3D-Planung, bauliche Anpassung und Absteckung, inkl. ansatzfreiem Fundamentschutz und Abtrag Bewehrung (nur für Skate-Anlagen).", "Individual 3D design, structural adaptation and setting out, including seamless foundation protection and reinforcement removal (skateparks only).", "Conception 3D personnalisée, adaptation de l'ouvrage et piquetage, y compris protection de fondation sans ressaut et dépose de l'armature (uniquement pour les skateparks).")} />
+                  text={t("Für Skate-Anlagen planen wir Ihren Park in 3D, passen den Entwurf an Ihr Gelände an und stecken die Anlage vor Ort ab.", "For skateparks, we design your park in 3D, adapt the layout to your site and set it out on the ground.", "Pour les skateparks, nous concevons votre parc en 3D, adaptons le projet à votre terrain et l'implantons sur place.")} />
               <Schritt nr="02" src="/images/skate-elemente/skate-module-beton-04.jpg"
                   alt={t("Gefertigte Betonelemente im Lager", "Finished concrete elements in storage", "Éléments en béton fabriqués, en stock")}
                   titel={t("Fertigung", "Manufacture", "Fabrication")}

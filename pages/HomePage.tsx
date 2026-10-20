@@ -203,8 +203,8 @@ const ProductScrollytelling: React.FC = () => {
                                         ref={(el) => { itemRefs.current[index] = el; }}
                                         className={`group relative pl-0 md:pl-12 lg:h-[72vh] lg:min-h-[560px] lg:flex lg:items-center lg:snap-center transition-opacity duration-500 ${isActive ? 'opacity-100' : 'lg:opacity-35 lg:hover:opacity-60'}`}
                                     >
-                                        <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange shadow-[0_0_15px_rgba(107,143,74,0.4)] scale-125' : 'bg-brand-bg border-brand-dark/20'}`}></div>
-                                        <div className={`relative w-full rounded-2xl border transition-[background-color,border-color,box-shadow] duration-500 overflow-hidden ${isActive ? 'bg-white border-brand-orange/40 shadow-[0_8px_30px_rgba(0,0,0,0.08)]' : 'bg-white/60 border-brand-dark/5'}`}>
+                                        <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange' : 'bg-brand-bg border-brand-dark/20'}`}></div>
+                                        <div className={`relative w-full rounded-md border transition-[background-color,border-color] duration-500 overflow-hidden ${isActive ? 'bg-white border-brand-dark/15' : 'bg-white/60 border-brand-dark/5'}`}>
                                             <div className="lg:hidden h-48 relative overflow-hidden border-b border-brand-dark/10">
                                                 <Bild 
                                                     src={product.imageUrl}
@@ -213,36 +213,29 @@ const ProductScrollytelling: React.FC = () => {
                                                     loading="lazy"
                                                 />
                                             </div>
-                                            <Link to={product.path} className="block p-6 md:p-8">
-                                                <div className="flex justify-between items-start mb-4">
-                                                    <span className={`font-mono text-xs tracking-widest uppercase mb-1 block transition-colors ${isActive ? 'text-brand-orange' : 'text-brand-muted'}`}>
-                                                        {t('Produkt', 'Product', 'Produit')} 0{index + 1}
-                                                    </span>
-                                                    <span className={`material-symbols-outlined text-brand-orange transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>arrow_outward</span>
+                                            <Link to={product.path} className="group/link block p-6 md:p-10">
+                                                <div className={`text-[13px] font-semibold mb-4 transition-colors ${isActive ? 'text-[#4E6B35]' : 'text-brand-muted'}`}>
+                                                    {t('Produkt', 'Product', 'Produit')} 0{index + 1}
                                                 </div>
-                                                <h3 className={`text-3xl md:text-4xl font-extrabold font-heading uppercase tracking-tight mb-4 transition-colors ${isActive ? 'text-brand-dark' : 'text-brand-muted'}`}>
+                                                <h3 className={`text-3xl md:text-[38px] font-extrabold font-heading uppercase leading-[1.04] tracking-normal [word-spacing:0.12em] mb-5 transition-colors ${isActive ? 'text-brand-dark' : 'text-brand-muted'}`}>
                                                     {product.title}
                                                 </h3>
-                                                <div className="mt-6">
-                                                    <div>
-                                                        <p className="text-brand-muted leading-relaxed mb-6 border-l-2 border-brand-dark/10 pl-4">{product.usp}</p>
-                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                                                            <div className="bg-brand-surface/40 p-3 rounded-xl border border-brand-dark/5 shadow-sm">
-                                                                <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">{t("Material", "Material", "Matériau")}</div>
-                                                                <div className="text-sm font-bold text-brand-dark">{product.material}</div>
-                                                            </div>
-                                                            <div className="bg-brand-surface/40 p-3 rounded-xl border border-brand-dark/5 shadow-sm">
-                                                                <div className="text-[10px] text-brand-muted uppercase tracking-wider mb-1">{t("Besonderheit", "Special feature", "Particularité")}</div>
-                                                                <div className="text-sm font-bold text-brand-dark">{product.details}</div>
-                                                            </div>
-                                                        </div>
-                                                        <span className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-brand-dark hover:text-brand-orange transition-colors group/link">
-                                                            {t("Technische Daten", "Technical data", "Données techniques")} <span className="material-symbols-outlined text-sm ml-1 group-hover/link:translate-x-1 transition-transform">chevron_right</span>
-                                                        </span>
+                                                <p className="text-[17px] leading-[1.6] text-[#454D48] mb-7">{product.usp}</p>
+                                                <dl className="mb-7 border-t border-brand-dark/[0.18]">
+                                                    <div className="grid grid-cols-[110px_minmax(0,1fr)] sm:grid-cols-[136px_minmax(0,1fr)] gap-4 py-3 border-b border-brand-dark/[0.12]">
+                                                        <dt className="text-sm text-[#5F665F]">{t("Material", "Material", "Matériau")}</dt>
+                                                        <dd className="text-[15px] font-semibold text-brand-dark">{product.material}</dd>
                                                     </div>
-                                                </div>
+                                                    <div className="grid grid-cols-[110px_minmax(0,1fr)] sm:grid-cols-[136px_minmax(0,1fr)] gap-4 py-3 border-b border-brand-dark/[0.12]">
+                                                        <dt className="text-sm text-[#5F665F]">{t("Besonderheit", "Special feature", "Particularité")}</dt>
+                                                        <dd className="text-[15px] font-semibold text-brand-dark">{product.details}</dd>
+                                                    </div>
+                                                </dl>
+                                                <span className="inline-flex items-center gap-2 min-h-[44px] text-[15px] font-semibold text-[#4E6B35] underline underline-offset-[5px] decoration-1 group-hover/link:text-brand-dark transition-colors">
+                                                    {t("Technische Daten", "Technical data", "Données techniques")}
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true" className="group-hover/link:translate-x-1 transition-transform"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                                                </span>
                                             </Link>
-                                            {isActive && <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/5 blur-[40px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>}
                                         </div>
                                     </div>
                                 );

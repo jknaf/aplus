@@ -294,7 +294,7 @@ const Montage: React.FC = () => {
                 <div className="txt">
                   {t(<>Die Aussparung für den Träger ist nur an <strong>einer</strong> Platte
                   vorhanden. Position vor dem Absetzen prüfen. Nachträgliches Drehen ist
-                  mit 3,3 t pro Teil nicht sinnvoll.</>, <>The recess for the support is on <strong>one</strong> slab only. Check the position before setting it down. Turning it afterwards is not practical at 3.3 t per part.</>, <>La réservation pour le support n'existe que sur <strong>une</strong> dalle. Vérifier la position avant la dépose. Il n'est pas judicieux de la faire pivoter ensuite, à 3,3 t par élément.</>)}
+                  mit 3,3 t pro Teil nicht sinnvoll.</>, <>The recess for the support is on <strong>one</strong> slab only. Check the position before setting it down. Turning it afterwards is not practical at 3.3 t per part.</>, <>La réservation pour le support n'existe que sur <strong>une</strong> dalle. Vérifier la position avant de poser l'élément. Il n'est pas judicieux de la faire pivoter ensuite, à 3,3 t par élément.</>)}
                 </div>
               </div>
             </div>
@@ -427,7 +427,7 @@ const HandoverCard: React.FC = () => {
     t("Kette & Gegengewicht montiert", "Chain and counterweight fitted", "Chaîne et contrepoids montés"),
     t("Aussparung verfüllt oder offen gelassen", "Recess filled or left open", "Réservation comblée ou laissée ouverte"),
     t("Randspalt verschlossen", "Edge gap closed", "Joint périphérique fermé"),
-    t("Nutzungsschild angebracht", "Notice board fitted", "Panneau d'utilisation installé"),
+    t("Nutzungsschild angebracht", "Usage sign fitted", "Panneau d'utilisation installé"),
   ];
   return (
     <div style={{ padding: '1rem 0' }}>
@@ -472,7 +472,7 @@ const Werkzeuge: React.FC = () => {
           </div>
           <h2>{t(<>Was Sie <span className="accent">brauchen</span></>, <>What you <span className="accent">need</span></>, <>Ce dont vous <span className="accent">avez besoin</span></>)}</h2>
           <p>
-            {t("Die komplette Liste der Geräte und Werkzeuge, die Sie vor Ort benötigen. Prüfen Sie die Liste vor Montagebeginn. Das spart Zeit und Leerfahrten.", "The complete list of equipment and tools you need on site. Check the list before installation starts. That saves time and wasted trips.", "La liste complète des appareils et outils dont vous avez besoin sur place. Vérifiez-la avant de commencer le montage. Cela fait gagner du temps et évite les déplacements inutiles.")}
+            {t("Die komplette Liste der Geräte und Werkzeuge, die Sie vor Ort benötigen. Prüfen Sie die Liste vor Montagebeginn. Das spart Zeit und Leerfahrten.", "The complete list of equipment and tools you need on site. Check the list before installation starts. This saves time and avoids wasted trips.", "La liste complète des appareils et outils dont vous avez besoin sur place. Vérifiez-la avant de commencer le montage. Cela fait gagner du temps et évite les déplacements inutiles.")}
           </p>
         </div>
         <div className="tools-grid fade-stagger">

@@ -41,7 +41,7 @@ const ProductHockeyRinkPage: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": t("Hockey-Banden aus Beton", "Concrete Rink Boards", "Bandes de hockey en béton"),
-    "description": t("Modulare Hockey-Banden aus Beton, Edelstahl, HPL-Platten und Gummi. Fundamentfrei, in 40 cm oder 110 cm Höhe. Ganzjährig einsetzbar für Inline-, Roll- und Eishockey.", "Modular hockey boards made of concrete, stainless steel, HPL panels and rubber. Foundation-free, in 40 cm or 110 cm heights. Usable all year round for inline, roller and ice hockey.", "Bandes de hockey modulaires en béton, inox, panneaux HPL et caoutchouc. Sans fondation, en hauteur de 40 cm ou de 110 cm. Utilisables toute l'année pour le hockey in-line, le roller hockey et le hockey sur glace."),
+    "description": t("Modulare Hockey-Banden aus Beton, Edelstahl, HPL-Platten und Gummi. Fundamentfrei, in 40 cm oder 110 cm Höhe. Ganzjährig einsetzbar für Inline-, Roll- und Eishockey.", "Modular hockey boards made of concrete, stainless steel, HPL panels and rubber. Foundation-free, in 40 cm or 110 cm heights. Usable all year round for inline, roller and ice hockey.", "Bandes de hockey modulaires en béton, inox, panneaux HPL et caoutchouc. Sans fondation, en hauteur de 40 cm ou de 110 cm. Utilisables toute l'année pour le hockey in-line, le rink hockey et le hockey sur glace."),
     "brand": { "@type": "Brand", "name": "A+ Urban Design" },
     "manufacturer": { "@type": "Organization", "name": "A+ Urban Design", "url": "https://www.aplusurbandesign.com" },
     "category": t("Sportanlagen", "Sports facilities", "Équipements sportifs"),
@@ -61,12 +61,12 @@ const ProductHockeyRinkPage: React.FC = () => {
   };
 
   return (
-    <PageShell title={t("Hockey-Banden für Inline-, Roll- und Eishockey", "Rink Boards for Inline, Roller and Ice Hockey", "Bandes de hockey pour le hockey in-line, le roller hockey et le hockey sur glace")} description={t("Hockey-Banden und Hockeyfeld aus Beton und Stahl: fundamentfrei, in 40 cm oder 110 cm Höhe. Für Inline-Hockey, Streethockey und Rollhockey. Wartungsarm und schnell aufgebaut, für Kommunen und Vereine.", "Hockey boards and hockey courts in concrete and steel: foundation-free, in 40 cm or 110 cm heights. For inline hockey, street hockey and roller hockey. Low-maintenance and quick to install, for municipalities and clubs.", "Bandes de hockey et terrains de hockey en béton et en acier : sans fondation, en hauteur de 40 cm ou de 110 cm. Pour le hockey in-line, le street hockey et le roller hockey. Entretien réduit et montage rapide, pour les communes et les clubs.")} schema={productSchema}>
+    <PageShell title={t("Hockey-Banden für Inline-, Roll- und Eishockey", "Rink Boards for Inline, Roller and Ice Hockey", "Bandes de hockey pour le hockey in-line, le rink hockey et le hockey sur glace")} description={t("Hockey-Banden und Hockeyfeld aus Beton und Stahl: fundamentfrei, in 40 cm oder 110 cm Höhe. Für Inline-Hockey, Streethockey und Rollhockey. Wartungsarm und schnell aufgebaut, für Kommunen und Vereine.", "Hockey boards and hockey courts in concrete and steel: foundation-free, in 40 cm or 110 cm heights. For inline hockey, street hockey and roller hockey. Low-maintenance and quick to install, for municipalities and clubs.", "Bandes de hockey et terrains de hockey en béton et en acier : sans fondation, en hauteur de 40 cm ou de 110 cm. Pour le hockey in-line, le street hockey et le rink hockey. Entretien réduit et montage rapide, pour les communes et les clubs.")} schema={productSchema}>
 
        {/* 1. HERO mit Kennzahlen (Werte aus den technischen Daten) */}
        <ProduktHero
             bild={<Bild hoch src="/images/hockey/roll-hockey-bande.jpg"
-                        alt={t("Rollhockey-Feld mit Beton-Bande", "Roller hockey court with concrete boards", "Terrain de roller hockey avec bandes en béton")}
+                        alt={t("Rollhockey-Feld mit Beton-Bande", "Roller hockey court with concrete boards", "Terrain de rink hockey avec bandes en béton")}
                         className="absolute inset-0 w-full h-full object-cover animate-kenburns-1"
                         loading="eager"
                         fetchPriority="high" />}
@@ -78,7 +78,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                 { wert: "40 / 110 cm", label: t("Höhen", "Heights", "Hauteurs") },
                 { wert: t("Fundamentfrei", "Foundation-free", "Sans fondation"), label: t("Montage", "Installation", "Montage") },
                 { wert: t("Ganzjährig", "All year round", "Toute l'année"), label: t("Einsatz", "Use", "Utilisation") },
-                { wert: t("Inline-, Roll- und Eishockey", "Inline, roller and ice hockey", "Hockey in-line, roller hockey et hockey sur glace"), label: t("Einsatzzweck", "Purpose", "Usage") },
+                { wert: t("Inline-, Roll- und Eishockey", "Inline, roller and ice hockey", "Hockey in-line, rink hockey et hockey sur glace"), label: t("Einsatzzweck", "Purpose", "Usage") },
             ]}
        />
 
@@ -93,10 +93,10 @@ const ProductHockeyRinkPage: React.FC = () => {
                             {t(<>Spielen, <span className="text-brand-orange">das ganze Jahr</span></>, <>Play <span className="text-brand-orange">all year round</span></>, <>Jouer <span className="text-brand-orange">toute l'année</span></>)}
                         </Plankopf>
                         <p className="text-xl text-brand-dark/75 leading-relaxed mb-8">
-                            {t("Mit unserem Bandensystem wird ein Hartplatz zum Spielfeld für Inline- und Rollhockey. Mit einem Abdichtungsprofil unter der Einfassung lässt sich im Winter auch Eis anlegen.", "With our board system, a hard court becomes a playing field for inline and roller hockey. With a sealing profile under the perimeter, you can also make ice in winter.", "Avec notre système de bandes, un terrain en dur devient un terrain de hockey in-line et de roller hockey. Avec un profil d'étanchéité sous l'enceinte, on peut aussi y aménager une patinoire en hiver.")}
+                            {t("Mit unserem Bandensystem wird ein Hartplatz zum Spielfeld für Inline- und Rollhockey. Mit einem Abdichtungsprofil unter der Einfassung lässt sich im Winter auch Eis anlegen.", "With our board system, a hard court becomes a playing field for inline and roller hockey. With a sealing profile under the perimeter, you can also make ice in winter.", "Avec notre système de bandes, un terrain en dur devient un terrain de hockey in-line et de rink hockey. Avec un profil d'étanchéité sous l'enceinte, on peut aussi y aménager une patinoire en hiver.")}
                         </p>
                         <p className="text-lg text-brand-dark/75 leading-relaxed mb-4">
-                            {t("Es gibt zwei Höhen: 40 cm hohe Einfassungselemente aus Beton mit Gummikappe und 110 cm hohe Profilbanden mit Edelstahl-Handlauf für Roll- und Eishockey. Beide Varianten können modular in 1,5-m-Schritten erweitert oder verkleinert werden.", "There are two heights: perimeter elements in concrete, 40 cm high with a rubber cap, and profiled boards, 110 cm high with a stainless steel handrail, for roller and ice hockey. Both versions can be extended or reduced in modular 1.5 m steps.", "Il existe deux hauteurs : des éléments d'enceinte en béton de 40 cm de haut avec capuchon en caoutchouc, et des bandes profilées de 110 cm de haut avec main courante en inox, pour le roller hockey et le hockey sur glace. Les deux variantes peuvent être agrandies ou réduites par modules de 1,5 m.")}
+                            {t("Es gibt zwei Höhen: 40 cm hohe Einfassungselemente aus Beton mit Gummikappe und 110 cm hohe Profilbanden mit Edelstahl-Handlauf für Roll- und Eishockey. Beide Varianten können modular in 1,5-m-Schritten erweitert oder verkleinert werden.", "There are two heights: perimeter elements in concrete, 40 cm high with a rubber cap, and profiled boards, 110 cm high with a stainless steel handrail, for roller and ice hockey. Both versions can be extended or reduced in modular 1.5 m steps.", "Il existe deux hauteurs : des éléments d'enceinte en béton de 40 cm de haut avec capuchon en caoutchouc, et des bandes profilées de 110 cm de haut avec main courante en inox, pour le rink hockey et le hockey sur glace. Les deux variantes peuvent être agrandies ou réduites par modules de 1,5 m.")}
                         </p>
                         <p className="text-lg text-brand-dark/75 leading-relaxed mb-12">
                             {t(<>Die Banden brauchen keine Bodenbefestigung. Sie werden ohne Fundament auf bestehende Hartplätze gestellt. Der Belag bleibt unbeschädigt. Die am stärksten beanspruchte Fläche besteht aus massivem Beton.</>, <>The boards need no ground fixings. They are placed on existing hard courts without a foundation. The surface stays undamaged. The area that takes the heaviest wear is solid concrete.</>, <>Les bandes n'ont besoin d'aucune fixation au sol. Elles se posent sans fondation sur des terrains en dur existants. Le revêtement reste intact. La zone la plus sollicitée est en béton plein.</>)}
@@ -168,7 +168,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                     </div>
                     <div className={BOX_A}>
                         <div className="text-4xl font-extrabold font-mono text-brand-orange mb-3">110 cm</div>
-                        <h3 className={`${BOX_A_TITEL} text-brand-dark`}>{t("Profil-Bande für Rollhockey oder Eishockey", "Profiled board for roller hockey or ice hockey", "Bande profilée pour le roller hockey ou le hockey sur glace")}</h3>
+                        <h3 className={`${BOX_A_TITEL} text-brand-dark`}>{t("Profil-Bande für Rollhockey oder Eishockey", "Profiled board for roller hockey or ice hockey", "Bande profilée pour le rink hockey ou le hockey sur glace")}</h3>
                         <ul className={`space-y-2 ${BOX_A_TEXT}`}>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Mit integriertem Edelstahl-Handlauf", "With integrated stainless steel handrail", "Avec main courante en inox intégrée")}</li>
                             <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"></span>{t("Optional mit Abdichtungsprofil für Eishockey", "Optional sealing profile for ice hockey", "Profil d'étanchéité en option pour le hockey sur glace")}</li>
@@ -196,7 +196,7 @@ const ProductHockeyRinkPage: React.FC = () => {
                     <TechSpecCard title={t("Raster", "Grid", "Trame")} value={t("1,50 Meter", "1.50 metres", "1,50 mètre")} icon="grid_view" />
                     <TechSpecCard title={t("Einsatz", "Use", "Utilisation")} value={t("Ganzjährig", "All year round", "Toute l'année")} icon="calendar_month" />
                     <TechSpecCard title={t("Montage", "Installation", "Montage")} value={t("Fundamentfrei", "Foundation-free", "Sans fondation")} icon="layers" />
-                    <TechSpecCard title={t("Eignung", "Suitable for", "Convient pour")} value={t("Inline-, Roll- und Eishockey", "Inline, roller and ice hockey", "Hockey in-line, roller hockey et hockey sur glace")} icon="ice_skating" />
+                    <TechSpecCard title={t("Eignung", "Suitable for", "Convient pour")} value={t("Inline-, Roll- und Eishockey", "Inline, roller and ice hockey", "Hockey in-line, rink hockey et hockey sur glace")} icon="ice_skating" />
                     <TechSpecCard title={t("Material", "Material", "Matériau")} value={t("Beton, Edelstahl, HPL, Gummi", "Concrete, stainless steel, HPL, rubber", "Béton, inox, HPL, caoutchouc")} icon="science" />
                     <TechSpecCard title={t("Schutz", "Protection", "Protection")} value={t("Gummikappe an Einfassung", "Rubber cap on perimeter", "Capuchon en caoutchouc sur l'enceinte")} icon="shield" />
                     <TechSpecCard title={t("Prallfläche", "Impact area", "Zone d'impact")} value={t("Beton", "Concrete", "Béton")} icon="layers" />

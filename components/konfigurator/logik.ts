@@ -978,7 +978,7 @@ export const vorschlag = (id: string, park: Park, ctx: Ctx): Vorschlag | null =>
     const allein = !park.teile.some((o) => o.id !== t.id && abstand(umriss(o, ctx), umriss(t, ctx)) < BERUEHRT);
     if (allein) {
       return {
-        teil: id, text: tt('Ein Pyramid Hip allein ist selten. Zur Pyramide ergänzen?', 'A pyramid hip on its own is rare. Complete it to a pyramid?', 'Une pyramid hip seule est rare. La compléter pour en faire une pyramide ?'), optionen: [{
+        teil: id, text: tt('Ein Pyramid Hip allein ist selten. Zur Pyramide ergänzen?', 'A pyramid hip on its own is rare. Turn it into a full pyramid?', 'Une pyramid hip seule est rare. La compléter pour en faire une pyramide ?'), optionen: [{
           label: tt(`Pyramide ${hoehe} bauen`, `Build pyramid ${hoehe}`, `Construire la pyramide ${hoehe}`),
           anwenden: (p) => {
             const b = BAUSTEINE.find((x) => x.id === `pyramide-${hoehe}`)!.bauen(ctx);
@@ -1160,7 +1160,7 @@ export const stueckliste = (park: Park, ctx: Ctx): Zeile[] => {
     });
   if (park.teile.length) zeilen.push({ slug: null, code: 'SHS', name: tt('Hinweisschild nach DIN EN 14974', 'Information sign to EN 14974', "Panneau d'information selon EN 14974"), menge: 1, kg: null, auto: true }); // P01
   if (park.teile.filter((t) => t.slug.startsWith('corner-') && !t.slug.startsWith('corner-table')).length >= 12) {
-    zeilen.push({ slug: null, code: tt('bauseits', 'by client', 'client'), name: tt('Bowl: Bodenplatte 15 cm bewehrt, Innenfläche ausbetoniert, befahrbarer Gully', 'Bowl: reinforced base slab 15 cm, interior concreted, rideable drain', 'Bowl : dalle de fond armée de 15 cm, surface intérieure bétonnée, avaloir roulable'), menge: 1, kg: null, auto: true });
+    zeilen.push({ slug: null, code: tt('bauseits', 'by client', 'à charge client'), name: tt('Bowl: Bodenplatte 15 cm bewehrt, Innenfläche ausbetoniert, befahrbarer Gully', 'Bowl: reinforced base slab 15 cm, interior concreted, rideable drain', 'Bowl : dalle de fond armée de 15 cm, surface intérieure bétonnée, avaloir roulable'), menge: 1, kg: null, auto: true });
   }
   return zeilen;
 };

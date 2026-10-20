@@ -161,7 +161,7 @@ const PressePage: React.FC = () => {
     () => ({
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      name: t('Referenzen & Presse | A+ Urban Design', 'References & Press | A+ Urban Design', 'Références et presse | A+ Urban Design'),
+      name: t('Referenzen & Presse | A+ Urban Design', 'Projects & Press | A+ Urban Design', 'Références et presse | A+ Urban Design'),
       description: t(
         'Fachpublikationen über Skateparks, Pumptracks, Umkleidekabinen und Beton-Fertigteile von A+ Urban Design in kommunalen Fachmedien.',
         'Trade publications about skateparks, pump tracks, changing cubicles and precast concrete units from A+ Urban Design in municipal trade media (in German).',
@@ -183,7 +183,7 @@ const PressePage: React.FC = () => {
 
   return (
     <PageShell
-      title={t("Referenzen & Presse", "References & Press", "Références et presse")}
+      title={t("Referenzen & Presse", "Projects & Press", "Références et presse")}
       description={t("Fachpublikationen über A+ Urban Design: Skateparks, Pumptracks, Umkleidekabinen und Beton-Fertigteile in kommunaldirekt.de, kommunalclick24.de, treffpunkt-kommune.de und freiraum-gestalten.info.", "Trade publications about A+ Urban Design: skateparks, pump tracks, changing cubicles and precast concrete units in kommunaldirekt.de, kommunalclick24.de, treffpunkt-kommune.de and freiraum-gestalten.info (in German).", "Publications spécialisées sur A+ Urban Design : skateparks, pumptracks, cabines de change et éléments préfabriqués en béton dans kommunaldirekt.de, kommunalclick24.de, treffpunkt-kommune.de et freiraum-gestalten.info (en allemand).")}
       schema={collectionSchema}
     >
@@ -192,7 +192,7 @@ const PressePage: React.FC = () => {
         <Bild hoch src="/images/skate-bowls/skate-bowl-01.jpg" alt={t("Skate-Bowl aus Betonfertigteilen", "Skate bowl made of precast concrete units", "Bowl de skate en éléments préfabriqués en béton")} className="absolute inset-0 w-full h-full object-cover animate-kenburns-1" loading="eager" />
         <div className="absolute inset-0 hero-scrim-unten"></div>
         <div className="relative z-10 container mx-auto px-4 pt-32 pb-12 md:pb-16 hero-text">
-          <Kopfleiste label={t("Referenzen & Presse", "References & Press", "Références et presse")} dunkel className="mb-8 animate-fade-in-up" />
+          <Kopfleiste label={t("Referenzen & Presse", "Projects & Press", "Références et presse")} dunkel className="mb-8 animate-fade-in-up" />
           <h1 className="text-[42px] sm:text-6xl md:text-8xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-6 animate-fade-in-up [animation-delay:100ms]">
             {t(<>A+ in der <span className="text-brand-orange">Fachpresse</span></>, <>A+ in the <span className="text-brand-orange">trade press</span></>, <>A+ dans la <span className="text-brand-orange">presse spécialisée</span></>)}
           </h1>

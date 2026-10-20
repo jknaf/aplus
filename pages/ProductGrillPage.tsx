@@ -77,7 +77,7 @@ const ProductGrillPage: React.FC = () => {
             kennzahlen={[
                 { wert: t("4,20 Meter", "4.20 metres", "4,20 mètres"), label: t("Durchmesser", "Diameter", "Diamètre") },
                 { wert: t("Edelstahl", "Stainless steel", "Inox"), label: t("Rost", "Grate", "Grille") },
-                { wert: t("Zentrale Öse", "Central eyelet", "Œillet central"), label: t("Diebstahlschutz", "Theft protection", "Protection antivol") },
+                { wert: t("Zentrale Öse", "Central locking eye", "Œillet central"), label: t("Diebstahlschutz", "Theft protection", "Protection antivol") },
                 { wert: t("Verstellbar", "Adjustable", "Réglable"), label: t("Grillhöhe", "Grill height", "Hauteur de grille") },
             ]}
        />
@@ -96,7 +96,7 @@ const ProductGrillPage: React.FC = () => {
                             {t("Der runde Grillplatz ist für Freibäder, Campingplätze, Sportanlagen und Kleingartenanlagen gedacht. Er hat 4,20 m Durchmesser, ist 2,70 m hoch und bietet 12–16 Personen Platz.", "The round barbecue area is intended for outdoor pools, campsites, sports grounds and allotment sites. It is 4.20 m in diameter and 2.70 m high, with room for 12–16 people.", "L'aire de barbecue circulaire est destinée aux piscines de plein air, aux campings, aux équipements sportifs et aux jardins familiaux. Elle mesure 4,20 m de diamètre, 2,70 m de haut et accueille 12 à 16 personnes.")}
                         </p>
                         <p className="text-lg text-brand-dark/75 leading-relaxed mb-12">
-                            {t("Der Edelstahlrost ist höhenverstellbar, leicht zu reinigen und über eine zentrale Öse gegen Schwenken und Diebstahl gesichert. Die 16 cm starke Bodenplatte gehört dazu. Pflasterarbeiten entfallen. Der Grillplatz steht ohne Fundament auf einem verdichteten Schotterbett.", "The stainless steel grate is height-adjustable, easy to clean and secured against swivelling and theft by a central eyelet. The 16 cm base slab is included. No paving work is needed. The barbecue area stands without a foundation on a compacted gravel bed.", "La grille en inox est réglable en hauteur, facile à nettoyer et sécurisée contre la rotation et le vol par un œillet central. La dalle de sol de 16 cm d'épaisseur est comprise. Aucun pavage n'est nécessaire. L'aire de barbecue se pose sans fondation sur un lit de gravier compacté.")}
+                            {t("Der Edelstahlrost ist höhenverstellbar, leicht zu reinigen und über eine zentrale Öse gegen Schwenken und Diebstahl gesichert. Die 16 cm starke Bodenplatte gehört dazu. Pflasterarbeiten entfallen. Der Grillplatz steht ohne Fundament auf einem verdichteten Schotterbett.", "The stainless steel grate is height-adjustable, easy to clean and secured against swivelling and theft by a central locking eye. The 16 cm base slab is included. No paving work is needed. The barbecue area stands without a foundation on a compacted gravel bed.", "La grille en inox est réglable en hauteur, facile à nettoyer et sécurisée contre la rotation et le vol par un œillet central. La dalle de sol de 16 cm d'épaisseur est comprise. Aucun pavage n'est nécessaire. L'aire de barbecue se pose sans fondation sur un lit de gravier compacté.")}
                         </p>
                         
                         <div className="flex flex-col gap-4">
@@ -196,7 +196,7 @@ const ProductGrillPage: React.FC = () => {
                     <TechSpecCard title={t("Höhe", "Height", "Hauteur")} value={t("2,70 Meter", "2.70 metres", "2,70 mètres")} icon="vertical_align_top" />
                     <TechSpecCard title={t("Rost", "Grate", "Grille")} value={t("Edelstahl", "Stainless steel", "Inox")} icon="grid_on" />
                     <TechSpecCard title={t("Bodenplatte", "Base slab", "Dalle de sol")} value="16 cm" icon="foundation" />
-                    <TechSpecCard title={t("Diebstahlschutz", "Theft protection", "Protection antivol")} value={t("Zentrale Öse", "Central eyelet", "Œillet central")} icon="lock" />
+                    <TechSpecCard title={t("Diebstahlschutz", "Theft protection", "Protection antivol")} value={t("Zentrale Öse", "Central locking eye", "Œillet central")} icon="lock" />
                     <TechSpecCard title={t("Montage", "Installation", "Montage")} value={t("Schotterbett 5/30 mm", "Gravel bed 5/30 mm", "Lit de gravier 5/30 mm")} icon="layers" />
                     <TechSpecCard title={t("Grillhöhe", "Grill height", "Hauteur de grille")} value={t("Verstellbar", "Adjustable", "Réglable")} icon="tune" />
                     <TechSpecCard title={t("Einsatz", "Use", "Utilisation")} value={t("Öffentlicher Raum", "Public space", "Espace public")} icon="public" />

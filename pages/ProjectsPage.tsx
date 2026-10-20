@@ -25,7 +25,7 @@ const ProjectsPage: React.FC = () => {
   const filteredProjects = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
 
   return (
-    <PageShell title={t("Referenzen & Projekte", "References & Projects", "Références et projets")} description={t("Realisierte Projekte von A+ Urban Design: Beton-Skateparks, Pumptracks, Hockey-Banden und urbane Freiraumlösungen in ganz Europa.", "Completed projects by A+ Urban Design: concrete skateparks, pump tracks, hockey boards and urban open-space solutions across Europe.", "Projets réalisés par A+ Urban Design : skateparks en béton, pumptracks, bandes de hockey et solutions d'aménagement d'espaces publics urbains dans toute l'Europe.")}>
+    <PageShell title={t("Referenzen & Projekte", "Our Projects", "Références et projets")} description={t("Realisierte Projekte von A+ Urban Design: Beton-Skateparks, Pumptracks, Hockey-Banden und urbane Freiraumlösungen in ganz Europa.", "Completed projects by A+ Urban Design: concrete skateparks, pump tracks, hockey boards and urban open-space solutions across Europe.", "Projets réalisés par A+ Urban Design : skateparks en béton, pumptracks, bandes de hockey et solutions d'aménagement d'espaces publics urbains dans toute l'Europe.")}>
       
       {/* 1. HEADER SECTION - Updated Typography */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">

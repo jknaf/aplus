@@ -384,7 +384,7 @@ const KatalogPage: React.FC = () => {
   const loc = LOCALE[lang];
   const konfigCode = useKonfiguratorCode();
   const anfrage = 'mailto:post@aplusurbandesign.com?subject=' + encodeURIComponent(t('Preiscode für den Skate-Katalog', 'Price code for the skate catalogue', 'Code de prix pour le catalogue de skate'))
-    + '&body=' + encodeURIComponent(t('Guten Tag,\n\nbitte senden Sie mir den Code zur Freischaltung der Preise im Skate-Katalog.\n\nName:\nFirma / Kommune:\nTelefon:\n', 'Hello,\n\nplease send me the code to unlock the prices in the skate catalogue.\n\nName:\nCompany / municipality:\nPhone:\n', "Bonjour,\n\nmerci de m'envoyer le code de déblocage des prix du catalogue de skate.\n\nNom :\nEntreprise / commune :\nTéléphone :\n"));
+    + '&body=' + encodeURIComponent(t('Guten Tag,\n\nbitte senden Sie mir den Code zur Freischaltung der Preise im Skate-Katalog.\n\nName:\nFirma / Kommune:\nTelefon:\n', 'Hello,\n\nPlease send me the code to unlock the prices in the skate catalogue.\n\nName:\nCompany / municipality:\nPhone:\n', "Bonjour,\n\nmerci de m'envoyer le code de déblocage des prix du catalogue de skate.\n\nNom :\nEntreprise / commune :\nTéléphone :\n"));
   const { slug } = useParams();
   const navigate = useNavigate();
   const [katalog, setKatalog] = useState<Katalog | null>(null);

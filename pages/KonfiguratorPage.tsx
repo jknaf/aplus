@@ -118,7 +118,7 @@ const AnfrageDialog: React.FC<{ offen: boolean; onClose: () => void; mailto: str
         </div>
         <p className="mt-6 text-xs text-brand-muted">
           {t("Kein E-Mail-Programm? Schreiben Sie an", "No email program? Write to", "Pas de messagerie ? Écrivez à")} <a href="mailto:post@aplusurbandesign.com" className="underline">post@aplusurbandesign.com</a> {t("und fügen Sie den", "and paste the", "et collez-y le")}{' '}
-          <button type="button" className="underline" onClick={() => navigator.clipboard?.writeText(link).then(() => setKopiert(true))}>{t("Link zu Ihrer Planung", "link to your plan", "lien vers votre plan")}</button> {t("ein.", "into it.", ".")}{kopiert && t(' Link kopiert.', ' Link copied.', ' Lien copié.')}
+          <button type="button" className="underline" onClick={() => navigator.clipboard?.writeText(link).then(() => setKopiert(true))}>{t("Link zu Ihrer Planung", "link to your plan", "lien vers votre plan")}</button>{t(" ein.", " into it.", ".")}{kopiert && t(' Link kopiert.', ' Link copied.', ' Lien copié.')}
         </p>
       </div>
     </div>,
@@ -212,7 +212,7 @@ const KonfiguratorPage: React.FC = () => {
         p = p ?? LEER;
         for (const s of neu) p = hinzufuegen(p, [{ id: neueId(), slug: s, x: 0, z: 0, rot: 0 }], c);
         leeren();
-        melden(`${neu.length} ${neu.length === 1 ? tt('Element', 'element', 'élément') : tt('Elemente', 'elements', 'éléments')} ${tt('aus dem Katalog übernommen.', 'taken over from the catalogue.', 'repris du catalogue.')}`);
+        melden(`${neu.length} ${neu.length === 1 ? tt('Element', 'element', 'élément') : tt('Elemente', 'elements', 'éléments')} ${tt('aus dem Katalog übernommen.', 'added from the catalogue.', 'repris du catalogue.')}`);
       }
       if (p) setPark(p); else setStart(true);
     });
@@ -361,7 +361,7 @@ const KonfiguratorPage: React.FC = () => {
     const neu = allesBeheben(park, ctx);
     const rest = pruefen(neu, ctx).length;
     aendern(neu);
-    melden(rest ? tt(`${hinweise.length - rest} behoben, ${rest} bleiben offen.`, `${hinweise.length - rest} fixed, ${rest} remain open.`, `${hinweise.length - rest} corrigées, ${rest} restent ouvertes.`) : tt('Alles behoben.', 'All fixed.', 'Tout est corrigé.'));
+    melden(rest ? tt(`${hinweise.length - rest} behoben, ${rest} bleiben offen.`, `${hinweise.length - rest} fixed, ${rest} remain open.`, `Corrigé(s) : ${hinweise.length - rest}. En suspens : ${rest}.`) : tt('Alles behoben.', 'All fixed.', 'Tout est corrigé.'));
   };
   const neuAnordnen = () => {
     if (!ctx || !park) return;
@@ -500,7 +500,7 @@ const KonfiguratorPage: React.FC = () => {
                 type="button"
                 draggable
                 onDragStart={(e) => e.dataTransfer.setData('text/plain', `baustein:${b.id}`)}
-                onClick={() => { const g = bausteinTeile(b.id); if (g) { teileHinzufuegen(g, tt(`${b.name} gesetzt.`, `${b.name} placed.`, `${b.name} posé.`)); setPanel(null); } }}
+                onClick={() => { const g = bausteinTeile(b.id); if (g) { teileHinzufuegen(g, tt(`${b.name} gesetzt.`, `${b.name} placed.`, `Ajouté : ${b.name}.`)); setPanel(null); } }}
                 className="w-full text-left p-3 rounded-lg bg-white border border-brand-dark/10 hover:border-brand-orange transition-colors"
               >
                 <span className="block font-heading font-bold uppercase text-sm text-brand-dark">{ueberText(b.name, lang)}</span>
@@ -567,7 +567,7 @@ const KonfiguratorPage: React.FC = () => {
       </div>
       <div className="p-4 border-t border-brand-dark/10 space-y-2 text-sm">
         {gewicht > 0 && <div className="flex justify-between text-brand-muted"><span>{t('Gewicht ca.', 'Weight approx.', 'Poids env.')}</span><span>{(gewicht / 1000).toLocaleString(loc, { maximumFractionDigits: 1 })} t</span></div>}
-        <p className="text-[11px] text-brand-muted leading-snug">{t("Preise erhalten Sie mit dem Angebot, inklusive Fracht und Montage. Bauseitige Leistungen (Fläche, Gullys, Fundamente) sind nicht Teil der Lieferung.", "You receive prices with the quote, including freight and installation. Work to be done by the client (area, drains, foundations) is not part of the delivery.", "Vous recevez les prix avec l'offre, transport et montage compris. Les prestations à la charge du client (surface, avaloirs, fondations) ne font pas partie de la livraison.")}</p>
+        <p className="text-[11px] text-brand-muted leading-snug">{t("Preise erhalten Sie mit dem Angebot, inklusive Fracht und Montage. Bauseitige Leistungen (Fläche, Gullys, Fundamente) sind nicht Teil der Lieferung.", "Prices, including freight and installation, are set out in the quotation. Groundwork by the client (base surface, drains, foundations) is not included.", "Vous recevez les prix avec l'offre, transport et montage compris. Les prestations à la charge du client (surface, avaloirs, fondations) ne font pas partie de la livraison.")}</p>
         <button type="button" disabled={!park?.teile.length} onClick={() => { if (!gesperrt()) setAnfrage(true); }} className="w-full py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-brand-dark transition-colors disabled:opacity-40">
           {t("Angebot anfragen", "Request a quote", "Demander un devis")}
         </button>

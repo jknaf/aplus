@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
             </Link>
             {planer && (
               <Link to={planer.href} className="inline-flex items-center min-h-[52px] px-7 rounded-lg border border-[rgba(242,240,235,0.4)] font-heading font-bold text-sm uppercase tracking-[0.08em] hover:border-brand-bg transition-colors">
-                {t(`${planer.name} öffnen`, `Open ${planer.name}`, `Ouvrir : ${planer.name}`)}
+                {t(`${planer.name} öffnen`, `Open ${planer.name}`, 'Ouvrir le configurateur')}
               </Link>
             )}
           </div>

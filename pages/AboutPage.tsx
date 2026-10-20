@@ -132,7 +132,7 @@ const AboutPage: React.FC = () => {
                   </Plankopf>
                   <div className="space-y-5">
                       <p className="text-xl text-brand-dark/75 leading-relaxed">
-                          {t("Unsere Elemente sollen lange halten, wenig Pflege brauchen und sich später versetzen, umbauen oder recyceln lassen. Die Module lassen sich fast beliebig kombinieren.", "Our elements should last long, need little care and be easy to move, rearrange or recycle later. The modules can be combined almost freely.", "Nos éléments doivent durer longtemps, demander peu d'entretien et pouvoir être déplacés, réagencés ou recyclés par la suite. Les modules se combinent presque à volonté.")}
+                          {t("Unsere Elemente sollen lange halten, wenig Pflege brauchen und sich später versetzen, umbauen oder recyceln lassen. Die Module lassen sich fast beliebig kombinieren.", "Our elements are built to last, need little maintenance and can later be moved, rearranged or recycled. The modules can be combined almost freely.", "Nos éléments doivent durer longtemps, demander peu d'entretien et pouvoir être déplacés, réagencés ou recyclés par la suite. Les modules se combinent presque à volonté.")}
                       </p>
                       <p className="text-lg text-brand-dark/75 leading-relaxed">
                           {t("Wir fertigen im Werk unter kontrollierten Bedingungen und bauen vor Ort in wenigen Tagen auf.", "We manufacture at the factory under controlled conditions and build on site in a few days.", "Nous fabriquons en usine dans des conditions contrôlées et montons sur place en quelques jours.")}
@@ -178,7 +178,7 @@ const AboutPage: React.FC = () => {
                   titel={t("Transport", "Transport", "Transport")}
                   text={t("Abgeladen wird mit Gabelstapler oder Autokran. Die Hohlkörperbauweise spart Gewicht. Die Ladung wird je nach Produkt gesichert.", "Unloading is done with a forklift or mobile crane. The hollow construction saves weight. The load is secured according to the product.", "Le déchargement se fait au chariot élévateur ou à la grue mobile. La construction creuse réduit le poids. La charge est arrimée selon le produit.")} />
               <Schritt nr="04" src="/images/montage/aufbau-04.jpg"
-                  alt={t("Montage der Skate-Pipe mit Autokran", "Installing the skate pipe with a mobile crane", "Montage de la pipe de skate à la grue mobile")}
+                  alt={t("Montage der Skate-Pipe mit Autokran", "Installing the skate pipe with a mobile crane", "Montage de la mini-rampe à la grue mobile")}
                   titel={t("Montage", "Installation", "Montage")}
                   text={t("Die Elemente sind in wenigen Tagen aufgestellt und brauchen keine Bodenbefestigung. Erweitern lässt sich die Anlage jederzeit mit weiteren Modulen.", "The elements are set up in a few days and need no ground fixings. The park can be extended at any time with further modules.", "Les éléments sont installés en quelques jours et n'ont besoin d'aucune fixation au sol. L'installation peut être agrandie à tout moment avec d'autres modules.")} />
           </div>
@@ -237,7 +237,7 @@ const AboutPage: React.FC = () => {
               </div>
               <div className="basis-full lg:basis-2/5 p-8 md:p-12 bg-brand-surface flex flex-col justify-center gap-5">
                   <p className="leading-relaxed text-brand-dark">
-                      {t("A+ Urban Design hat bis heute über 350 Skateanlagen europaweit realisiert: von den Kanaren bis Norwegen und von Großbritannien bis zur Türkei. Entwicklung, Fertigung und Logistik steuern wir seit 2025 aus Stuttgart.", "To date, A+ Urban Design has built more than 350 skateparks across Europe: from the Canary Islands to Norway and from Great Britain to Turkey. We have run development, manufacturing and logistics from Stuttgart since 2025.", "À ce jour, A+ Urban Design a réalisé plus de 350 skateparks à travers l'Europe : des Canaries à la Norvège et de la Grande-Bretagne à la Turquie. Nous pilotons le développement, la fabrication et la logistique depuis Stuttgart depuis 2025.")}
+                      {t("A+ Urban Design hat bis heute über 350 Skateanlagen europaweit realisiert: von den Kanaren bis Norwegen und von Großbritannien bis zur Türkei. Entwicklung, Fertigung und Logistik steuern wir seit 2025 aus Stuttgart.", "To date, A+ Urban Design has built more than 350 skateparks across Europe: from the Canary Islands to Norway and from Great Britain to Turkey. We have run development, manufacturing and logistics from Stuttgart since 2025.", "À ce jour, A+ Urban Design a réalisé plus de 350 skateparks à travers l'Europe : des Canaries à la Norvège et de la Grande-Bretagne à la Turquie. Depuis 2025, nous pilotons le développement, la fabrication et la logistique à partir de Stuttgart.")}
                   </p>
                   <div className="flex flex-wrap gap-3">
                       <a href="mailto:post@aplusurbandesign.com" className="inline-flex items-center min-h-12 px-7 rounded-md bg-brand-orange text-white font-heading font-bold text-sm uppercase tracking-widest hover:bg-brand-dark transition-colors">{t("E-Mail senden", "Send an email", "Envoyer un e-mail")}</a>

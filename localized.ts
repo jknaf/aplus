@@ -14,7 +14,7 @@ const NAV: Record<string, Texte> = {
   '/produkte': { en: 'Products', fr: 'Produits' },
   '/produkte/skate-anlagen': { en: 'Concrete Skateparks', fr: 'Skateparks en béton' },
   '/produkte/skate-bowls-beton': { en: 'Skate Bowls', fr: 'Bowls de skate' },
-  '/produkte/skate-pipes-beton': { en: 'Skate Pipes', fr: 'Pipes de skate' },
+  '/produkte/skate-pipes-beton': { en: 'Skate Pipes', fr: 'Mini-rampes de skate' },
   '/produkte/pumptrack-beton': { en: 'Concrete Pump Tracks', fr: 'Pumptracks en béton' },
   '/produkte/grillstelle-beton': { en: 'Barbecue Area', fr: 'Aire de barbecue' },
   '/produkte/umkleidekabine-beton': { en: 'Changing Cubicle', fr: 'Cabine de change' },
@@ -43,8 +43,8 @@ const PRODUKT: Record<string, { en: Partial<Product>; fr: Partial<Product> }> = 
     },
     fr: {
       title: 'Skateparks en béton',
-      altText: 'Skatepark en béton avec bowls et pipes : éléments de skate modulaires du fabricant A+ Urban Design.',
-      usp: "L'original A+ : des éléments de skate en béton certifiés TÜV pour skateparks, bowls et pipes. Les éléments préfabriqués se combinent et peuvent être agrandis par la suite. Ils demandent peu d'entretien et résistent au vandalisme comme aux intempéries. Le béton atténue le bruit de roulement.",
+      altText: 'Skatepark en béton avec bowls et mini-rampes : éléments de skate modulaires du fabricant A+ Urban Design.',
+      usp: "L'original A+ : des éléments de skate en béton certifiés TÜV pour skateparks, bowls et mini-rampes. Les éléments préfabriqués se combinent et peuvent être agrandis par la suite. Ils demandent peu d'entretien et résistent au vandalisme comme aux intempéries. Le béton atténue le bruit de roulement.",
       material: 'Béton armé',
       details: 'Testé selon la norme EN 14974, réagençable au transpalette',
     },
@@ -69,14 +69,14 @@ const PRODUKT: Record<string, { en: Partial<Product>; fr: Partial<Product> }> = 
     en: {
       title: 'Concrete Skate Pipes',
       altText: 'Concrete skate pipes in three heights: 165, 200 and 255 cm.',
-      usp: 'The A+ original: TÜV-certified concrete pipes in three heights, either as a standard pipe that can be extended sideways or as a combi pipe with coping ramps, banks and spines. The pipes need little maintenance, resist vandalism and are quiet.',
+      usp: 'The A+ original: TÜV-certified concrete skate pipes in three heights, either as a standard pipe that can be extended sideways or as a combi pipe with coping ramps, banks and spines. The pipes need little maintenance, resist vandalism and are quiet.',
       material: 'Reinforced concrete',
       details: '165, 200 or 255 cm high, adjustable supports',
     },
     fr: {
-      title: 'Pipes de skate en béton',
-      altText: 'Pipes de skate en béton en trois hauteurs : 165, 200 et 255 cm.',
-      usp: "L'original A+ : des pipes en béton certifiées TÜV en trois hauteurs, en version standard extensible sur les côtés ou en version combi avec rampes à coping, banks et spines. Elles demandent peu d'entretien, résistent au vandalisme et sont silencieuses.",
+      title: 'Mini-rampes de skate en béton',
+      altText: 'Mini-rampes de skate en béton en trois hauteurs : 165, 200 et 255 cm.',
+      usp: "L'original A+ : des mini-rampes en béton certifiées TÜV en trois hauteurs, en version standard extensible sur les côtés ou en version combi avec rampes à coping, banks et spines. Elles demandent peu d'entretien, résistent au vandalisme et sont silencieuses.",
       material: 'Béton armé',
       details: '165, 200 ou 255 cm de haut, supports réglables',
     },
@@ -148,15 +148,15 @@ const PRODUKT: Record<string, { en: Partial<Product>; fr: Partial<Product> }> = 
   hockey: {
     en: {
       title: 'Rink Boards',
-      altText: 'Outdoor hockey rink with robust concrete boards for inline and roller hockey.',
+      altText: 'Outdoor hockey rink with robust concrete boards for inline and rink hockey.',
       usp: 'The A+ original: foundation-free perimeters and boards for inline, roller and ice hockey, extendable in 1.5 m steps, with no moving parts. They are set up on concrete or asphalt surfaces, need little maintenance and are weather-resistant.',
       material: 'Reinforced concrete, recyclable rubber, stainless steel, HPL panels',
       details: 'Installed without foundations',
     },
     fr: {
       title: 'Bandes de hockey',
-      altText: 'Terrain de hockey extérieur avec bandes robustes en béton pour le roller hockey et le hockey in-line.',
-      usp: "L'original A+ : des enceintes et bandes sans fondation pour le hockey in-line, le roller hockey et le hockey sur glace, extensibles par modules de 1,5 m, sans pièces mobiles. Elles se posent sur des surfaces en béton ou en asphalte, demandent peu d'entretien et résistent aux intempéries.",
+      altText: 'Terrain de hockey extérieur avec bandes robustes en béton pour le rink hockey et le hockey in-line.',
+      usp: "L'original A+ : des enceintes et bandes sans fondation pour le hockey in-line, le rink hockey et le hockey sur glace, extensibles par modules de 1,5 m, sans pièces mobiles. Elles se posent sur des surfaces en béton ou en asphalte, demandent peu d'entretien et résistent aux intempéries.",
       material: 'Béton armé, caoutchouc recyclable, inox, panneaux HPL',
       details: 'Pose sans fondation',
     },
@@ -196,14 +196,14 @@ const PROJEKT: Record<string, { en: ProjektText; fr: ProjektText }> = {
     fr: {
       title: 'Skatepark de Friedrichsdorf',
       description:
-        "Ce skatepark de 2 000 m² s'étend sur deux niveaux et se compose d'éléments de skate en béton certifiés TÜV : funboxes, escaliers, pyramide à arêtes, ledges, rails ainsi qu'une pipe de près de deux mètres de haut. Une partie de l'ensemble est talutée et intégrée au terrain de la zone de sports et de loisirs.",
+        "Ce skatepark de 2 000 m² s'étend sur deux niveaux et se compose d'éléments de skate en béton certifiés TÜV : funboxes, escaliers, pyramide à arêtes, ledges, rails ainsi qu'une mini-rampe de près de deux mètres de haut. Une partie de l'ensemble est talutée et intégrée au terrain de la zone de sports et de loisirs.",
       longDescription: [
-        "À Friedrichsdorf, un skatepark de 2 000 m² a vu le jour sur deux niveaux reliés, avec des éléments en béton certifiés TÜV d'A+ Urban Design. Il comprend des funboxes, des escaliers, une pyramide à arêtes, des ledges, des rails et une pipe de près de deux mètres de haut.",
+        "À Friedrichsdorf, un skatepark de 2 000 m² a vu le jour sur deux niveaux reliés, avec des éléments en béton certifiés TÜV d'A+ Urban Design. Il comprend des funboxes, des escaliers, une pyramide à arêtes, des ledges, des rails et une mini-rampe de près de deux mètres de haut.",
         "Une partie des éléments est talutée et intégrée au terrain de la zone de sports et de loisirs existante.",
         "Sources (en allemand) : kommunaldirekt.de (« Skatepark Friedrichsdorf », 2022 et 2024), freiraum-gestalten.info (« Skatepark Friedrichsdorf »). Vous trouverez plus de détails dans les articles spécialisés sur notre page presse.",
       ],
       altText: 'Skatepark de Friedrichsdorf : skatepark de 2 000 m² sur deux niveaux, en éléments de béton certifiés TÜV.',
-      produkte: ['Éléments de skate modulaires', 'Pipes de skate'],
+      produkte: ['Éléments de skate modulaires', 'Mini-rampes de skate'],
     },
   },
   'pumptrack-berlin-reinickendorf': {
@@ -238,7 +238,7 @@ const PROJEKT: Record<string, { en: ProjektText; fr: ProjektText }> = {
       description:
         'The fixed barbecue area is made of precast concrete units and has a stainless steel grate, a height-adjustable cooking surface and a windbreak ring. It measures 420 cm across and stands without a foundation. The robust, vandal-resistant barbecue area is intended for outdoor pools, sports grounds and allotment sites.',
       longDescription: [
-        'The barbecue area consists of three precast concrete units and measures 420 cm across once assembled. The grate is stainless steel, the support galvanised steel. The grate is height-adjustable and secured against swivelling and theft by a central eyelet.',
+        'The barbecue area consists of three precast concrete units and measures 420 cm across once assembled. The grate is stainless steel, the support galvanised steel. The grate is height-adjustable and secured against swivelling and theft by a central locking eye.',
         'It is intended for outdoor pools, campsites, sports grounds and allotment sites. The barbecue area stands without a foundation on a compacted gravel bed, so no paving is needed. The 16 cm base slab is part of the delivery.',
         'Source (in German): kommunaldirekt.de, "Grillplatz für öffentlichen Raum" (2020).',
       ],
@@ -279,10 +279,10 @@ const PROJEKT: Record<string, { en: ProjektText; fr: ProjektText }> = {
       longDescription: [
         "A+ Urban Design a développé un système de bandes pour terrains de sport qui se pose sans fondation ni fixation au sol. Contrairement aux bandes ancrées, il ne détériore pas le revêtement.",
         "Le système est réalisé en matériaux résistants aux intempéries : béton, inox, panneaux HPL et caoutchouc. L'enceinte, la partie la plus sollicitée, est en béton. Par modules de 1,5 m, les bandes s'adaptent à un petit terrain, à un demi-terrain ou à un terrain entier.",
-        "Il existe deux hauteurs : 40 cm pour une enceinte avec capuchon en caoutchouc destinée au hockey in-line, et 110 cm pour une bande profilée avec main courante en inox, destinée au roller hockey, au hockey in-line et, avec un profil d'étanchéité en option, au hockey sur glace en hiver.",
+        "Il existe deux hauteurs : 40 cm pour une enceinte avec capuchon en caoutchouc destinée au hockey in-line, et 110 cm pour une bande profilée avec main courante en inox, destinée au rink hockey, au hockey in-line et, avec un profil d'étanchéité en option, au hockey sur glace en hiver.",
         "Source (en allemand) : freiraum-gestalten.info, « Ohne Fundament und Bodenbefestigung » (FREIRAUM GESTALTEN 02/2015).",
       ],
-      altText: 'Système de bandes sans fondation en béton, inox et HPL pour le hockey in-line, le roller hockey et le hockey sur glace.',
+      altText: 'Système de bandes sans fondation en béton, inox et HPL pour le hockey in-line, le rink hockey et le hockey sur glace.',
       produkte: ['Bandes de hockey'],
     },
   },
@@ -330,12 +330,12 @@ const PROJEKT: Record<string, { en: ProjektText; fr: ProjektText }> = {
       description:
         "Le skatepark se trouve dans l'ancien fossé de la forteresse en étoile d'Alba Carolina, à Alba Iulia (Roumanie). Il s'étend sur plusieurs niveaux et se compose d'éléments de skate modulaires en béton qui disparaissent de la vue à partir d'environ 50 m. Le mur historique de la forteresse a été restauré pendant les travaux.",
       longDescription: [
-        "Dans l'ancien fossé de la forteresse en étoile d'Alba Carolina, à Alba Iulia, en Roumanie, un skatepark est resté invisible à plus de 50 m de distance. C'est voulu : l'ensemble ne doit pas troubler l'image de la forteresse en étoile.",
+        "Dans l'ancien fossé de la forteresse en étoile d'Alba Carolina, à Alba Iulia, en Roumanie, a été aménagé un skatepark qui reste invisible au-delà de 50 m. C'est voulu : l'ensemble ne doit pas troubler l'image de la forteresse en étoile.",
         "Le mur historique de la forteresse a été restauré pendant les travaux. Le skatepark relie la ville haute et la ville basse sur plusieurs niveaux et montre que loisirs et protection du patrimoine peuvent aller de pair. A+ Urban Design a fourni les éléments modulaires en béton et a accompagné le projet dans le contexte de la protection du patrimoine.",
         "Source (en allemand) : freiraum-gestalten.info, « Skaten und Denkmalschutz vereinen ».",
       ],
       altText: 'Bastion Skatepark à Alba Iulia, en Roumanie : éléments de skate modulaires en béton dans le fossé historique de la forteresse.',
-      produkte: ['Éléments de skate modulaires', 'Bowls de skate', 'Pipes de skate'],
+      produkte: ['Éléments de skate modulaires', 'Bowls de skate', 'Mini-rampes de skate'],
     },
   },
 };
@@ -416,7 +416,7 @@ const TEILE: [string, string, string][] = [
   ['LEDGE LANG', 'LEDGE LONG', 'LEDGE LONG'],
   ['GELÄNDER-ENDE LINKS', 'RAILING END LEFT', 'EXTRÉMITÉ DE GARDE-CORPS GAUCHE'],
   ['GELÄNDER-ENDE RECHTS', 'RAILING END RIGHT', 'EXTRÉMITÉ DE GARDE-CORPS DROITE'],
-  ['GELÄNDER-VERBINDUNG GERADE', 'RAILING CONNECTOR STRAIGHT', 'RACCORD DE GARDE-CORPS DROIT'],
+  ['GELÄNDER-VERBINDUNG GERADE', 'RAILING CONNECTOR STRAIGHT', 'RACCORD DE GARDE-CORPS RECTILIGNE'],
   ['GELÄNDER-VERBINDUNG', 'RAILING CONNECTOR', 'RACCORD DE GARDE-CORPS'],
   ['GELÄNDER-', 'RAILING ', 'GARDE-CORPS '],
   ['GELÄNDER', 'RAILING', 'GARDE-CORPS'],

@@ -60,7 +60,7 @@ export const useKonfiguratorCode = () => {
       encodeURIComponent(
         t(
           'Guten Tag,\n\nbitte senden Sie mir den Code zur Freischaltung des Skatepark-Konfigurators.\n\nName:\nFirma / Kommune:\nTelefon:\n',
-          'Hello,\n\nplease send me the code to unlock the skatepark planner.\n\nName:\nCompany / municipality:\nPhone:\n',
+          'Hello,\n\nPlease send me the code to unlock the Skatepark Planner.\n\nName:\nCompany / municipality:\nPhone:\n',
           "Bonjour,\n\nmerci de m'envoyer le code de déblocage du configurateur de skatepark.\n\nNom :\nEntreprise / commune :\nTéléphone :\n",
         ),
       ),

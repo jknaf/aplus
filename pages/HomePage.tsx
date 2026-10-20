@@ -201,7 +201,7 @@ const ProductScrollytelling: React.FC = () => {
                                         key={product.id}
                                         data-id={product.id}
                                         ref={(el) => { itemRefs.current[index] = el; }}
-                                        className={`group relative pl-0 md:pl-12 lg:h-[72vh] lg:min-h-[560px] lg:flex lg:items-center lg:snap-center transition-opacity duration-500 ${isActive ? 'opacity-100' : 'lg:opacity-35 lg:hover:opacity-60'}`}
+                                        className={`group relative pl-0 md:pl-12 lg:min-h-[max(72vh,560px)] lg:py-6 lg:flex lg:items-center lg:snap-center transition-opacity duration-500 ${isActive ? 'opacity-100' : 'lg:opacity-35 lg:hover:opacity-60'}`}
                                     >
                                         <div className={`absolute left-[14px] top-1/2 -translate-y-1/2 w-[11px] h-[11px] rounded-full border-2 transition-all duration-500 hidden md:block z-10 ${isActive ? 'bg-brand-orange border-brand-orange' : 'bg-brand-bg border-brand-dark/20'}`}></div>
                                         <div className={`relative w-full rounded-md border transition-[background-color,border-color] duration-500 overflow-hidden ${isActive ? 'bg-white border-brand-dark/15' : 'bg-white/60 border-brand-dark/5'}`}>

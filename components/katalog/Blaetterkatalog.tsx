@@ -11,7 +11,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = worker;
 // Der Link kommt nur mit gültigem Code vom Server (R2, einige Stunden gültig), siehe api/_r2.ts.
 const BREITE = 1100; // Pixel je Seite, scharf genug für Text auf großen Bildschirmen
 
-const Blaetterkatalog: React.FC<{ links: { ansehen: string; download: string }; onClose: () => void }> = ({ links, onClose }) => {
+const Blaetterkatalog: React.FC<{ links: { ansehen: string }; onClose: () => void }> = ({ links, onClose }) => {
   const t = useT();
   const buch = useRef<HTMLDivElement>(null);
   const [seite, setSeite] = useState(0);
@@ -68,6 +68,7 @@ const Blaetterkatalog: React.FC<{ links: { ansehen: string; download: string }; 
   useEffect(() => {
     const taste = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
+      if ((e.metaKey || e.ctrlKey) && (e.key === 'p' || e.key === 's')) e.preventDefault();
       if (e.key === 'ArrowRight') flip.current?.flipNext();
       if (e.key === 'ArrowLeft') flip.current?.flipPrev();
     };
@@ -78,14 +79,11 @@ const Blaetterkatalog: React.FC<{ links: { ansehen: string; download: string }; 
 
   const knopf = 'inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors';
   return createPortal(
-    <div className="fixed inset-0 z-[80] flex flex-col bg-brand-dark" role="dialog" aria-label={t('Katalog und Preisliste 2026', 'Catalogue and price list 2026', 'Catalogue et liste de prix 2026')}>
+    <div className="fixed inset-0 z-[80] flex flex-col bg-brand-dark select-none print:hidden" onContextMenu={(e) => e.preventDefault()} onDragStart={(e) => e.preventDefault()} role="dialog" aria-label={t('Katalog und Preisliste 2026', 'Catalogue and price list 2026', 'Catalogue et liste de prix 2026')}>
       <div className="flex items-center gap-3 px-4 py-3 text-white">
         <span className="font-heading font-extrabold uppercase tracking-tight truncate">{t('Katalog und Preisliste 2026', 'Catalogue and price list 2026', 'Catalogue et tarifs 2026')}</span>
         <span className="font-mono text-xs text-white/60 shrink-0">{anzahl ? `${seite + 1} / ${anzahl}` : ''}{anzahl && fertig < anzahl ? ` · ${t('lädt', 'loading', 'chargement')} ${fertig}/${anzahl}` : ''}</span>
-        <a href={links.download} className={`${knopf} ml-auto bg-brand-orange text-white hover:bg-white hover:text-brand-dark`}>
-          <span className="material-symbols-outlined text-lg">download</span><span className="hidden sm:inline">{t('PDF laden', 'Download PDF', 'Télécharger le PDF')}</span>
-        </a>
-        <button type="button" onClick={onClose} aria-label={t('Schließen', 'Close', 'Fermer')} className={`${knopf} text-white hover:text-brand-orange`}>
+        <button type="button" onClick={onClose} aria-label={t('Schließen', 'Close', 'Fermer')} className={`${knopf} ml-auto text-white hover:text-brand-orange`}>
           <span className="material-symbols-outlined text-2xl">close</span>
         </button>
       </div>

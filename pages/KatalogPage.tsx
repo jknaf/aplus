@@ -528,15 +528,12 @@ const KatalogPage: React.FC = () => {
             <span className="material-symbols-outlined text-5xl text-brand-orange">menu_book</span>
             <div className="flex-1">
               <h2 className="text-2xl md:text-3xl font-extrabold font-heading uppercase tracking-tight">{t("Ihr Katalog 2026 ist freigeschaltet", "Your 2026 catalogue is unlocked", "Votre catalogue 2026 est débloqué")}</h2>
-              <p className="text-white/70 mt-1">{t("Alle Elemente mit Nettopreisen. Blättern Sie im Heft oder laden Sie es als PDF.", "All elements with net prices. Browse the booklet or download it as a PDF.", "Tous les éléments avec les prix nets. Feuilletez le catalogue ou téléchargez-le en PDF.")}</p>
+              <p className="text-white/70 mt-1">{t("Alle Elemente mit Nettopreisen. Blättern Sie online im Heft.", "All elements with net prices. Browse the booklet online.", "Tous les éléments avec les prix nets. Feuilletez le catalogue en ligne.")}</p>
             </div>
             <div className="flex flex-wrap gap-3">
               <button type="button" onClick={() => setBlaettern(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-brand-dark transition-colors">
                 <span className="material-symbols-outlined text-lg">auto_stories</span>{t("Blättern", "Browse", "Feuilleter")}
               </button>
-              <a href={katalogLinks.download} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white/30 text-white font-bold uppercase tracking-wider text-sm hover:border-brand-orange hover:text-brand-orange transition-colors">
-                <span className="material-symbols-outlined text-lg">download</span>{t("PDF laden", "Download PDF", "Télécharger le PDF")}
-              </a>
             </div>
           </div>
         )}

@@ -39,7 +39,7 @@ export const usePreise = () => {
   const t = useT();
   const [preise, setPreise] = useState<Record<string, string> | null>(null);
   const [betreiber, setBetreiber] = useState<string | null>(null);
-  const [katalogAlle, setKatalog] = useState<Record<'de' | 'en' | 'fr', { ansehen: string; download: string } | null> | null>(null);
+  const [katalogAlle, setKatalog] = useState<Record<'de' | 'en' | 'fr', { ansehen: string } | null> | null>(null);
   const lang = useLang();
   const katalog = katalogAlle?.[lang] ?? katalogAlle?.de ?? null;
 

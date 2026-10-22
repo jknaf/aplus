@@ -8,7 +8,7 @@ const sha = (s: string) => createHash('sha256').update(s).digest('hex');
 const hmac = (k: Buffer | string, s: string) => createHmac('sha256', k).update(s).digest();
 const enc = (s: string) => encodeURIComponent(s).replace(/[!'()*]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase());
 
-export const r2Link = (datei: string | undefined, download = false, jetzt = new Date()): string | null => {
+export const r2Link = (datei: string | undefined, jetzt = new Date()): string | null => {
   const { R2_ACCOUNT_ID: konto, R2_ACCESS_KEY_ID: id, R2_SECRET_ACCESS_KEY: geheim, R2_BUCKET: bucket } = process.env;
   if (!konto || !id || !geheim || !bucket || !datei) return null;
   const host = `${konto}.r2.cloudflarestorage.com`;
@@ -23,7 +23,6 @@ export const r2Link = (datei: string | undefined, download = false, jetzt = new 
     'X-Amz-Expires': String(STUNDEN * 3600),
     'X-Amz-SignedHeaders': 'host',
   };
-  if (download) q['response-content-disposition'] = `attachment; filename="${datei.split('/').pop()}"`;
   const query = Object.keys(q).sort().map((k) => `${enc(k)}=${enc(q[k])}`).join('&');
   const anfrage = ['GET', pfad, query, `host:${host}\n`, 'host', 'UNSIGNED-PAYLOAD'].join('\n');
   const text = ['AWS4-HMAC-SHA256', zeit, bereich, sha(anfrage)].join('\n');
@@ -31,9 +30,10 @@ export const r2Link = (datei: string | undefined, download = false, jetzt = new 
   return `https://${host}${pfad}?${query}&X-Amz-Signature=${hmac(schluessel, text).toString('hex')}`;
 };
 
+// Nur ein Link zum Blättern, kein Download-Link (Entscheidung 22.10.2026: Katalog nicht herunterladen oder drucken)
 const links = (datei: string | undefined) => {
   const ansehen = r2Link(datei);
-  return ansehen ? { ansehen, download: r2Link(datei, true)! } : null;
+  return ansehen ? { ansehen } : null;
 };
 
 // Je Sprache ein Linkpaar; ohne eigene Datei für EN oder FR bekommt die Sprache die deutsche Fassung.

@@ -5,6 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
+import ProduktModell from '../components/ProduktModell';
 import { ProduktHero, TechSpecCard, DATENBLATT, BOX_A, BOX_A_TITEL, BOX_A_TEXT, BOX_B, BOX_B_TITEL, BOX_B_TEXT } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
@@ -184,6 +185,11 @@ const ProductGrillPage: React.FC = () => {
                         {t("Die Bodenplatte liegt wahlweise bündig mit dem Gelände oder darüber. Der Träger sitzt fest in der Bodenplatte und ist gegen Diebstahl gesichert.", "The base slab sits either flush with the ground or above it. The support is fixed firmly in the base slab and secured against theft.", "La dalle de sol est posée au choix à fleur du terrain ou au-dessus. Le support est solidement fixé dans la dalle de sol et protégé contre le vol.")}
                     </p>
                 </div>
+
+                {/* 3D-MODELL (Grillplatz 420-15 ist gleich wie 420-01, darum nur eins) */}
+                <ProduktModell className="mb-16" ausfuehrungen={[
+                    { slug: 'grill-grillplatz-420-01', name: t('Grillplatz 420', 'Barbecue area 420', 'Aire de barbecue 420'), masse: '4,20 × 4,20 × 2,85 m', kamera: { ziel: [2.101, 1.424, -2.1], abstand: 12.643 } },
+                ]} />
 
                  {/* Datenblatt im weißen Kasten wie bei der Umkleidekabine */}
                  <div className="bg-white rounded-2xl p-8 md:p-14 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">

@@ -1,0 +1,466 @@
+{
+ "asset": {
+  "generator": "Khronos glTF Blender I/O v5.2.40",
+  "version": "2.0",
+  "extras": {
+   "kamera": {
+    "ziel": [
+     2.101,
+     1.424,
+     -2.1
+    ],
+    "abstand": 12.643
+   }
+  }
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "name": "Katalog",
+   "nodes": [
+    0,
+    1
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "mesh": 0,
+   "name": "Grillplatz-420-01.001"
+  },
+  {
+   "mesh": 1,
+   "name": "Schatten"
+  }
+ ],
+ "materials": [
+  {
+   "doubleSided": true,
+   "name": "Beton_web",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 0,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "doubleSided": true,
+   "name": "Beton_web.001",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 1,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "doubleSided": true,
+   "name": "Stahl_web",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 2,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "alphaMode": "BLEND",
+   "doubleSided": false,
+   "name": "Schatten",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 3
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  }
+ ],
+ "meshes": [
+  {
+   "name": "2026-10-23_A-Plus-Urban-Design_Grillplatz-420-01_V01.001",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2,
+      "TEXCOORD_1": 3
+     },
+     "indices": 4,
+     "material": 0
+    },
+    {
+     "attributes": {
+      "POSITION": 5,
+      "NORMAL": 6,
+      "TEXCOORD_0": 7,
+      "TEXCOORD_1": 8
+     },
+     "indices": 9,
+     "material": 1
+    },
+    {
+     "attributes": {
+      "POSITION": 10,
+      "NORMAL": 11,
+      "TEXCOORD_0": 12,
+      "TEXCOORD_1": 13
+     },
+     "indices": 14,
+     "material": 2
+    }
+   ]
+  },
+  {
+   "name": "Schatten",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 15,
+      "NORMAL": 16,
+      "TEXCOORD_0": 17
+     },
+     "indices": 18,
+     "material": 3
+    }
+   ]
+  }
+ ],
+ "textures": [
+  {
+   "sampler": 0,
+   "source": 0
+  },
+  {
+   "sampler": 0,
+   "source": 0
+  },
+  {
+   "sampler": 0,
+   "source": 0
+  },
+  {
+   "sampler": 0,
+   "source": 1
+  }
+ ],
+ "images": [
+  {
+   "mimeType": "image/jpeg",
+   "name": "grill-grillplatz-420-01_licht",
+   "uri": "texturen/grill-grillplatz-420-01_licht.jpg"
+  },
+  {
+   "mimeType": "image/png",
+   "name": "grill-grillplatz-420-01_schatten",
+   "uri": "texturen/grill-grillplatz-420-01_schatten.png"
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 6194,
+   "max": [
+    4.201930522918701,
+    2.8480000495910645,
+    1.8620000901137246e-06
+   ],
+   "min": [
+    2.5309002012363635e-05,
+    0,
+    -4.2000298500061035
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 6194,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 6194,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5126,
+   "count": 6194,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5123,
+   "count": 16149,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5126,
+   "count": 219,
+   "max": [
+    4.201430320739746,
+    0.15000000596046448,
+    -0.000498017470818013
+   ],
+   "min": [
+    0.0005254424177110195,
+    0,
+    -4.199530124664307
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 6,
+   "componentType": 5126,
+   "count": 219,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 7,
+   "componentType": 5126,
+   "count": 219,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 8,
+   "componentType": 5126,
+   "count": 219,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 9,
+   "componentType": 5123,
+   "count": 633,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 10,
+   "componentType": 5126,
+   "count": 9728,
+   "max": [
+    3.5167300701141357,
+    2.8480000495910645,
+    -1.6241601705551147
+   ],
+   "min": [
+    1.624730110168457,
+    0.14714300632476807,
+    -2.5758302211761475
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 11,
+   "componentType": 5126,
+   "count": 9728,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 12,
+   "componentType": 5126,
+   "count": 9728,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 13,
+   "componentType": 5126,
+   "count": 9728,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 14,
+   "componentType": 5123,
+   "count": 17412,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 15,
+   "componentType": 5126,
+   "count": 4,
+   "max": [
+    4.783505916595459,
+    -0.0020000000949949026,
+    0.1354260891675949
+   ],
+   "min": [
+    0.014567175880074501,
+    -0.0020000000949949026,
+    -4.3780341148376465
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 16,
+   "componentType": 5126,
+   "count": 4,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 17,
+   "componentType": 5126,
+   "count": 4,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 18,
+   "componentType": 5123,
+   "count": 6,
+   "type": "SCALAR"
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteLength": 74328,
+   "byteOffset": 0,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 74328,
+   "byteOffset": 74328,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 49552,
+   "byteOffset": 148656,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 49552,
+   "byteOffset": 198208,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 32298,
+   "byteOffset": 247760,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 2628,
+   "byteOffset": 280060,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 2628,
+   "byteOffset": 282688,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1752,
+   "byteOffset": 285316,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1752,
+   "byteOffset": 287068,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1266,
+   "byteOffset": 288820,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 116736,
+   "byteOffset": 290088,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 116736,
+   "byteOffset": 406824,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 77824,
+   "byteOffset": 523560,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 77824,
+   "byteOffset": 601384,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 34824,
+   "byteOffset": 679208,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 714032,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 714080,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 32,
+   "byteOffset": 714128,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 12,
+   "byteOffset": 714160,
+   "target": 34963
+  }
+ ],
+ "samplers": [
+  {
+   "magFilter": 9729,
+   "minFilter": 9987
+  }
+ ],
+ "buffers": [
+  {
+   "byteLength": 714172,
+   "uri": "grill-grillplatz-420-01.bin"
+  }
+ ],
+ "extensionsUsed": [
+  "KHR_materials_unlit"
+ ]
+}

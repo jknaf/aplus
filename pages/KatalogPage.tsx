@@ -340,7 +340,7 @@ const ParkKarte: React.FC<{ p: Beispiel; preis: string | null; onSperre: () => v
 // einzelnen Elementen. x/y in Prozent des Bildes; links: Schild links vom Punkt (Punkte am rechten Rand).
 const TITEL_SCHILDER = [
   { slug: 'table-150', x: 19, y: 55 },
-  { slug: 'stairs-60-75', x: 73, y: 39, nurBreit: true },
+  { slug: 'stairs-60-75', x: 73, y: 39, nurBreit: true, name: 'Stairs 75' },   // Joachim: auf dem Schild nur ein Wert
   { slug: 'curb-300', x: 86, y: 54, links: true, nurBreit: true },
   { slug: 'rail-300', x: 91, y: 28, links: true },
 ];
@@ -363,7 +363,7 @@ const TitelPark: React.FC<{ park?: Beispiel; katalog: Katalog | null }> = ({ par
               className={`group absolute ${s.nurBreit ? 'hidden sm:flex' : 'flex'} ${s.links ? 'flex-row-reverse' : ''} items-center gap-1.5 min-h-11`}
             >
               <span className="w-3 h-3 shrink-0 rounded-full bg-brand-orange shadow-[0_0_0_5px_rgba(107,143,74,0.25)]" />
-              <span className="px-2.5 py-1 rounded-md bg-brand-dark group-hover:bg-brand-orange text-white font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em] whitespace-nowrap transition-colors">{teilName(e.name, lang)}</span>
+              <span className="px-2.5 py-1 rounded-md bg-brand-dark group-hover:bg-brand-orange text-white font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em] whitespace-nowrap transition-colors">{s.name ?? teilName(e.name, lang)}</span>
             </Link>
           );
         })}
@@ -512,14 +512,16 @@ const KatalogPage: React.FC = () => {
           </label>
           <span className="hidden xl:block flex-1" />
           <ParkZaehler />
-          <button
-            type="button" onClick={() => (katalogLinks ? setBlaettern(true) : setDialog(true))}
-            aria-label={katalogLinks ? t("Katalog 2026 blättern", "Browse the 2026 catalogue", "Feuilleter le catalogue 2026") : t("Preise und Katalog freischalten", "Unlock prices and catalogue", "Débloquer les prix et le catalogue")}
-            className="shrink-0 h-12 inline-flex items-center gap-2 px-4 md:px-5 rounded-lg text-sm font-extrabold uppercase tracking-wider bg-brand-dark text-white shadow-[0_6px_18px_rgba(44,53,48,0.25)] hover:bg-brand-orange transition-colors"
-          >
-            <span className="material-symbols-outlined text-[22px]">{katalogLinks ? 'menu_book' : 'lock'}</span>
-            <span className="hidden sm:inline">{katalogLinks ? t("Katalog 2026 blättern", "Browse the 2026 catalogue", "Feuilleter le catalogue 2026") : t("Preise und Katalog", "Prices and catalogue", "Prix et catalogue")}</span>
-          </button>
+          {!katalogLinks && (
+            <button
+              type="button" onClick={() => setDialog(true)}
+              aria-label={t("Preise und Katalog freischalten", "Unlock prices and catalogue", "Débloquer les prix et le catalogue")}
+              className="shrink-0 h-12 inline-flex items-center gap-2 px-4 md:px-5 rounded-lg text-sm font-extrabold uppercase tracking-wider bg-brand-dark text-white shadow-[0_6px_18px_rgba(44,53,48,0.25)] hover:bg-brand-orange transition-colors"
+            >
+              <span className="material-symbols-outlined text-[22px]">lock</span>
+              <span className="hidden sm:inline">{t("Preise und Katalog", "Prices and catalogue", "Prix et catalogue")}</span>
+            </button>
+          )}
         </div>
       </div>
 

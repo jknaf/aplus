@@ -1,8 +1,12 @@
 // Erzeugt von 08_CAD_Blender/10_Katalog/katalog_web.py. Nur serverseitig verwenden, nie im Frontend importieren.
 // Nettopreise 2026 laut Preisliste Skate-Elemente, Schlüssel = Katalog-Slug.
 const SKATE_PREISE: Record<string, string> = {
+  "rail-301": "1039 €",
   "rail-b-bank": "990 €",
   "rail-c-300": "839 €",
+  "anlaufkeil-187": "1119 €",
+  "anlaufkeil-250": "1558 €",
+  "bigbank-165": "5833 €",
   "bigbank-200": "7395 €",
   "flat-375": "2720 €",
   "quarterramp-165": "4657 €",
@@ -29,6 +33,13 @@ const SKATE_PREISE: Record<string, string> = {
   "corner-table-150": "2134 €",
   "curb-250": "1546 €",
   "curb-300": "1776 €",
+  "gelaender-250": "896 €",
+  "gelaender-375": "1392 €",
+  "gelaender-500": "1756 €",
+  "gelaender-ende-links": "821 €",
+  "gelaender-ende-rechts": "821 €",
+  "gelaender-verbindung-90": "329 €",
+  "gelaender-verbindung-gerade": "220 €",
   "hip-60": "2671 €",
   "hip-60l": "2940 €",
   "hip-75": "2920 €",
@@ -46,6 +57,7 @@ const SKATE_PREISE: Record<string, string> = {
   "manual-pad-300": "1909 €",
   "rail-300": "525 €",
   "rail-550": "835 €",
+  "railslide-123": "1356 €",
   "railslide-98-38": "1011 €",
   "railslide-98l": "1274 €",
   "slide-bar-300": "858 €",
@@ -60,6 +72,7 @@ const SKATE_PREISE: Record<string, string> = {
   "table-platte-10": "370 €",
   "wall-410": "5921 €",
   "wall-ramp-200": "5135 €",
+  "wallslide-145": "1974 €",
   "wallslide-175": "1989 €",
   "wave-welle": "2097 €"
 };

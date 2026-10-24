@@ -44,6 +44,7 @@ const BASE_STATIC_ROUTES = [
   '/produkte/grillstelle-beton',
   '/produkte/grillstelle-beton/montageanleitung',
   '/produkte/umkleidekabine-beton',
+  '/produkte/umkleidekabine-beton/montageanleitung',
   '/produkte/ueberdachung-beton',
   '/impressum',
   '/datenschutz',
@@ -88,6 +89,7 @@ const sourceFilesFor = (route) => {
   if (route === '/produkte/grillstelle-beton') return ['pages/ProductGrillPage.tsx', 'constants.ts'];
   if (route === '/produkte/grillstelle-beton/montageanleitung') return ['pages/ProductGrillAssemblyPage.tsx'];
   if (route === '/produkte/umkleidekabine-beton') return ['pages/ProductChangingCabinePage.tsx', 'constants.ts'];
+  if (route === '/produkte/umkleidekabine-beton/montageanleitung') return ['pages/ProductChangingCabineAssemblyPage.tsx'];
   if (route === '/produkte/ueberdachung-beton') return ['pages/ProductPavilionPage.tsx', 'constants.ts'];
   if (route === '/impressum') return ['pages/ImpressumPage.tsx'];
   if (route === '/datenschutz') return ['pages/PrivacyPolicyPage.tsx'];
@@ -115,7 +117,7 @@ const sitemapMetaFor = (route) => {
   if (route === '/') return { changefreq: 'weekly', priority: '1.0' };
   if (route === '/projekte') return { changefreq: 'weekly', priority: '0.9' };
   if (route.startsWith('/projekte/')) return { changefreq: 'monthly', priority: '0.7' };
-  if (route === '/produkte/grillstelle-beton/montageanleitung') return { changefreq: 'yearly', priority: '0.6' };
+  if (route.endsWith('/montageanleitung')) return { changefreq: 'yearly', priority: '0.6' };
   if (route.startsWith('/produkte/')) return { changefreq: 'monthly', priority: '0.8' };
   if (route === '/produkte') return { changefreq: 'monthly', priority: '0.9' };
   if (route === '/ueber-uns' || route === '/kontakt') return { changefreq: 'monthly', priority: '0.9' };

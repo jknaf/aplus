@@ -11,7 +11,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = worker;
 // Der Link kommt nur mit gültigem Code vom Server (R2, einige Stunden gültig), siehe api/_r2.ts.
 const BREITE = 1100; // Pixel je Seite, scharf genug für Text auf großen Bildschirmen
 
-const Blaetterkatalog: React.FC<{ links: { ansehen: string }; onClose: () => void }> = ({ links, onClose }) => {
+// titel und fehlerText: für andere PDFs (Montageanleitungen); ohne sie gelten die Texte des Katalogs
+const Blaetterkatalog: React.FC<{ links: { ansehen: string }; onClose: () => void; titel?: string; fehlerText?: string }> = ({ links, onClose, titel, fehlerText }) => {
   const t = useT();
   const buch = useRef<HTMLDivElement>(null);
   const [seite, setSeite] = useState(0);
@@ -79,9 +80,9 @@ const Blaetterkatalog: React.FC<{ links: { ansehen: string }; onClose: () => voi
 
   const knopf = 'inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors';
   return createPortal(
-    <div className="fixed inset-0 z-[80] flex flex-col bg-brand-dark select-none print:hidden" onContextMenu={(e) => e.preventDefault()} onDragStart={(e) => e.preventDefault()} role="dialog" aria-label={t('Katalog und Preisliste 2026', 'Catalogue and price list 2026', 'Catalogue et liste de prix 2026')}>
+    <div className="fixed inset-0 z-[80] flex flex-col bg-brand-dark select-none print:hidden" onContextMenu={(e) => e.preventDefault()} onDragStart={(e) => e.preventDefault()} role="dialog" aria-label={titel ?? t('Katalog und Preisliste 2026', 'Catalogue and price list 2026', 'Catalogue et liste de prix 2026')}>
       <div className="flex items-center gap-3 px-4 py-3 text-white">
-        <span className="font-heading font-extrabold uppercase tracking-tight truncate">{t('Katalog und Preisliste 2026', 'Catalogue and price list 2026', 'Catalogue et tarifs 2026')}</span>
+        <span className="font-heading font-extrabold uppercase tracking-tight truncate">{titel ?? t('Katalog und Preisliste 2026', 'Catalogue and price list 2026', 'Catalogue et tarifs 2026')}</span>
         <span className="font-mono text-xs text-white/60 shrink-0">{anzahl ? `${seite + 1} / ${anzahl}` : ''}{anzahl && fertig < anzahl ? ` · ${t('lädt', 'loading', 'chargement')} ${fertig}/${anzahl}` : ''}</span>
         <button type="button" onClick={onClose} aria-label={t('Schließen', 'Close', 'Fermer')} className={`${knopf} ml-auto text-white hover:text-brand-orange`}>
           <span className="material-symbols-outlined text-2xl">close</span>
@@ -89,7 +90,7 @@ const Blaetterkatalog: React.FC<{ links: { ansehen: string }; onClose: () => voi
       </div>
       <div className="relative flex-1 min-h-0 flex items-center justify-center px-2 sm:px-14 pb-4">
         {fehler
-          ? <p className="text-white/80 text-center max-w-md">{t('Der Katalog lässt sich gerade nicht öffnen. Der Link gilt einige Stunden; bitte die Seite neu laden und den Code erneut eingeben.', 'The catalogue cannot be opened right now. The link is valid for a few hours; please reload the page and enter the code again.', 'Le catalogue ne peut pas être ouvert pour le moment. Le lien est valable quelques heures ; veuillez recharger la page et saisir à nouveau le code.')}</p>
+          ? <p className="text-white/80 text-center max-w-md">{fehlerText ?? t('Der Katalog lässt sich gerade nicht öffnen. Der Link gilt einige Stunden; bitte die Seite neu laden und den Code erneut eingeben.', 'The catalogue cannot be opened right now. The link is valid for a few hours; please reload the page and enter the code again.', 'Le catalogue ne peut pas être ouvert pour le moment. Le lien est valable quelques heures ; veuillez recharger la page et saisir à nouveau le code.')}</p>
           : <div className="w-full" style={{ maxWidth: 'min(1400px, calc((100dvh - 90px) * 1.41))' }}><div ref={buch} /></div>}
         {!fehler && <>
           <button type="button" onClick={() => flip.current?.flipPrev()} aria-label={t('Zurückblättern', 'Previous page', 'Page précédente')} className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 text-white/70 hover:text-brand-orange">

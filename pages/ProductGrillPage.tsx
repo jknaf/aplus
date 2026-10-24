@@ -224,7 +224,7 @@ const ProductGrillPage: React.FC = () => {
                                 {t(<>Montageanleitung <span className="text-brand-orange">Grillplatz</span></>, <>Installation instructions: <span className="text-brand-orange">barbecue area</span></>, <>Notice de montage : <span className="text-brand-orange">aire de barbecue</span></>)}
                             </h3>
                             <p className="mt-3 text-brand-dark/75 max-w-xl leading-relaxed">
-                                {t("Die vollständige Aufbauanleitung erklärt Unterbau, Abladen, Setzreihenfolge, das Ausrichten des Trägers mit dem Schnurlot, Kette und Gegengewicht. Dazu kommen Werkzeugliste und Wartungsplan. Sie können die Anleitung online lesen oder als PDF herunterladen.", "The complete installation guide covers the base, unloading, the order of setting, aligning the support with a plumb line, the chain and the counterweight. A tool list and maintenance schedule are included. You can read the guide online or download it as a PDF.", "La notice de montage complète explique la sous-couche, le déchargement, l'ordre de pose, l'alignement du support au fil à plomb, la chaîne et le contrepoids. Une liste d'outils et un plan d'entretien y sont joints. Vous pouvez lire la notice en ligne ou la télécharger en PDF.")}
+                                {t("Die vollständige Aufbauanleitung erklärt Unterbau, Abladen, Setzreihenfolge, das Ausrichten des Trägers mit dem Schnurlot, Kette und Gegengewicht. Dazu kommen Werkzeugliste und Wartungsplan. Sie können die Anleitung online lesen oder als PDF durchblättern.", "The complete installation guide covers the base, unloading, the order of setting, aligning the support with a plumb line, the chain and the counterweight. A tool list and maintenance schedule are included. You can read the guide online or flip through it as a PDF.", "La notice de montage complète explique la sous-couche, le déchargement, l'ordre de pose, l'alignement du support au fil à plomb, la chaîne et le contrepoids. Une liste d'outils et un plan d'entretien y sont joints. Vous pouvez lire la notice en ligne ou la feuilleter en PDF.")}
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-3 shrink-0">
@@ -235,14 +235,6 @@ const ProductGrillPage: React.FC = () => {
                                 <span className="material-symbols-outlined">menu_book</span>
                                 {t("Online ansehen", "View online", "Consulter en ligne")}
                             </Link>
-                            <a
-                                href="/downloads/montage-grillplatz.pdf"
-                                download
-                                className="inline-flex justify-center items-center gap-2 border border-brand-dark/20 bg-white/60 text-brand-dark font-extrabold uppercase tracking-widest py-3 px-6 rounded-lg hover:border-brand-orange hover:text-brand-orange transition-colors duration-300 text-sm"
-                            >
-                                <span className="material-symbols-outlined">download</span>
-                                {t("PDF (625 KB)", "PDF (625 KB, in German)", "PDF (625 Ko, en allemand)")}
-                            </a>
                         </div>
                     </div>
                 </div>

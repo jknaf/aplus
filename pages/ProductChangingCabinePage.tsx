@@ -226,6 +226,30 @@ const ProductChangingCabinePage: React.FC = () => {
                   <Datenzeile title={t("Winterbetrieb", "Winter", "Hiver")} value={t("Kein Abbau nötig", "No dismantling needed", "Aucun démontage nécessaire")} />
               </dl>
           </div>
+
+          {/* Montageanleitung: CTA wie beim Grillplatz */}
+          <div className="mt-16 rounded-2xl border border-brand-dark/10 bg-brand-surface/50 p-8 lg:p-10 backdrop-blur-sm">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                  <div>
+                      <span className="block font-mono text-xs mb-4 uppercase tracking-widest text-[#4F6E34]">
+                          {t("Dokumentation", "Documentation", "Documentation")}
+                      </span>
+                      <h3 className="font-heading text-2xl lg:text-3xl font-extrabold uppercase tracking-normal [word-spacing:0.12em] text-brand-dark">
+                          {t(<>Montageanleitung <span className="text-brand-orange">Umkleidekabine</span></>, <>Installation instructions: <span className="text-brand-orange">changing cubicle</span></>, <>Notice de montage : <span className="text-brand-orange">cabine de change</span></>)}
+                      </h3>
+                      <p className="mt-3 text-brand-dark/75 max-w-xl leading-relaxed">
+                          {t("Die Anleitung erklärt Kiesbett, Abladen, das Setzen der Füße und das Herablassen der Schnecke. Sie können sie online lesen oder als PDF durchblättern.", "The guide covers the gravel bed, unloading, fitting the feet and lowering the Schnecke. You can read it online or flip through it as a PDF.", "La notice explique le lit de gravier, le déchargement, la pose des pieds et la descente de la Schnecke. Vous pouvez la lire en ligne ou la feuilleter en PDF.")}
+                      </p>
+                  </div>
+                  <Link
+                      to="/produkte/umkleidekabine-beton/montageanleitung"
+                      className="shrink-0 inline-flex justify-center items-center gap-2 bg-brand-dark text-white font-extrabold uppercase tracking-widest py-3 px-6 rounded-lg hover:bg-brand-orange transition-colors duration-300 text-sm"
+                  >
+                      <span className="material-symbols-outlined">menu_book</span>
+                      {t("Online ansehen", "View online", "Consulter en ligne")}
+                  </Link>
+              </div>
+          </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">

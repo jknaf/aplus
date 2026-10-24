@@ -15,6 +15,7 @@ import ContactPage from './pages/ContactPage';
 import ProductGrillPage from './pages/ProductGrillPage';
 import ProductGrillAssemblyPage from './pages/ProductGrillAssemblyPage';
 import ProductChangingCabinePage from './pages/ProductChangingCabinePage';
+import ProductChangingCabineAssemblyPage from './pages/ProductChangingCabineAssemblyPage';
 import ProductHockeyRinkPage from './pages/ProductHockeyRinkPage';
 import ProductPumptrackPage from './pages/ProductPumptrackPage';
 import ProductSkateAnlagenPage from './pages/ProductSkateAnlagenPage';
@@ -66,6 +67,7 @@ const ROUTES: [string, React.ReactNode][] = [
   ['/produkte/grillstelle-beton', <ProductGrillPage />],
   ['/produkte/grillstelle-beton/montageanleitung', <ProductGrillAssemblyPage />],
   ['/produkte/umkleidekabine-beton', <ProductChangingCabinePage />],
+  ['/produkte/umkleidekabine-beton/montageanleitung', <ProductChangingCabineAssemblyPage />],
   ['/produkte/ueberdachung-beton', <ProductPavilionPage />],
   ['/projekte/:projectId', <ProjectDetailPage />],
   ['/impressum', <ImpressumPage />],

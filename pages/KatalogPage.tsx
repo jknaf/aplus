@@ -104,6 +104,7 @@ const PreisBadge: React.FC<{ preis: string | null; gross?: boolean; onSperre: ()
   return preis ? (
     <span className={`font-heading font-extrabold text-brand-dark ${gross ? 'text-3xl' : 'text-base'}`}>
       {preis}{preis.includes('€') && <span className="text-xs font-sans font-normal text-brand-muted"> {t('netto', 'net', 'HT')}</span>}
+      {gross && preis.includes('€') && <span className="block mt-1 text-xs font-sans font-normal text-brand-muted">{t('zzgl. MwSt., Transport und Montage', 'plus VAT, transport and installation', 'hors TVA, transport et montage')}</span>}
     </span>
   ) : (
     <button
@@ -528,7 +529,7 @@ const KatalogPage: React.FC = () => {
             <span className="material-symbols-outlined text-5xl text-brand-orange">menu_book</span>
             <div className="flex-1">
               <h2 className="text-2xl md:text-3xl font-extrabold font-heading uppercase tracking-tight">{t("Ihr Katalog 2026 ist freigeschaltet", "Your 2026 catalogue is unlocked", "Votre catalogue 2026 est débloqué")}</h2>
-              <p className="text-white/70 mt-1">{t("Alle Elemente mit Nettopreisen. Blättern Sie online im Heft.", "All elements with net prices. Browse the booklet online.", "Tous les éléments avec les prix nets. Feuilletez le catalogue en ligne.")}</p>
+              <p className="text-white/70 mt-1">{t("Alle Elemente mit Nettopreisen, zzgl. MwSt., Transport und Montage. Blättern Sie online im Heft.", "All elements with net prices, plus VAT, transport and installation. Browse the booklet online.", "Tous les éléments avec les prix nets, hors TVA, transport et montage. Feuilletez le catalogue en ligne.")}</p>
             </div>
             <div className="flex flex-wrap gap-3">
               <button type="button" onClick={() => setBlaettern(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-brand-dark transition-colors">
@@ -616,7 +617,7 @@ const KatalogPage: React.FC = () => {
         )}
         {katalog && (
           <p className="text-xs text-brand-muted text-center mt-8">
-            {t('Stand', 'As of', 'État au')} {new Date(katalog.stand).toLocaleDateString(loc)}. {t('Darstellung schematisch, maßgeblich sind Preisliste und Angebot. Preise netto zzgl. MwSt.', 'Illustration is schematic; the price list and quote are what count. Prices net, plus VAT.', 'Représentation schématique ; la liste de prix et l\'offre font foi. Prix nets, TVA en sus.')}
+            {t('Stand', 'As of', 'État au')} {new Date(katalog.stand).toLocaleDateString(loc)}. {t('Darstellung schematisch, maßgeblich sind Preisliste und Angebot. Nettopreise 2026 zzgl. MwSt., Transport und Montage.', 'Illustration is schematic; the price list and quote are what count. 2026 net prices, plus VAT, transport and installation.', 'Représentation schématique ; la liste de prix et l\'offre font foi. Prix nets 2026 hors TVA, transport et montage.')}
           </p>
         )}
       </section>
@@ -638,7 +639,7 @@ const KatalogPage: React.FC = () => {
       )}
       <CodeDialog
         offen={dialog} onClose={() => setDialog(false)} freischalten={freischalten} anfrage={anfrage} titel={t("Preise freischalten", "Unlock prices", "Débloquer les prix")}
-        text={t("Die Nettopreise 2026 und den Katalog zum Blättern sehen Sie mit Ihrem persönlichen Code. Der Code gilt einmal: Nach dem Neuladen der Seite sind die Preise wieder ausgeblendet. Sie haben noch keinen? Wir senden ihn Ihnen gern zu.", "You see the 2026 net prices and the browsable catalogue with your personal code. The code works once: after the page is reloaded, the prices are hidden again. Don't have one yet? We are happy to send you one.", "Vous voyez les prix nets 2026 et le catalogue à feuilleter avec votre code personnel. Le code est à usage unique : une fois la page rechargée, les prix sont de nouveau masqués. Vous n'en avez pas encore ? Nous vous en envoyons volontiers un.")}
+        text={t("Die Nettopreise 2026 (zzgl. MwSt., Transport und Montage) und den Katalog zum Blättern sehen Sie mit Ihrem persönlichen Code. Der Code gilt einmal: Nach dem Neuladen der Seite sind die Preise wieder ausgeblendet. Sie haben noch keinen? Wir senden ihn Ihnen gern zu.", "You see the 2026 net prices (plus VAT, transport and installation) and the browsable catalogue with your personal code. The code works once: after the page is reloaded, the prices are hidden again. Don't have one yet? We are happy to send you one.", "Vous voyez les prix nets 2026 (hors TVA, transport et montage) et le catalogue à feuilleter avec votre code personnel. Le code est à usage unique : une fois la page rechargée, les prix sont de nouveau masqués. Vous n'en avez pas encore ? Nous vous en envoyons volontiers un.")}
       />
       <CodeDialog offen={konfigDialog} onClose={() => setKonfigDialog(false)} freischalten={konfig.freischalten} anfrage={konfigCode.anfrage} titel={konfigCode.titel} text={konfigCode.text} />
     </PageShell>

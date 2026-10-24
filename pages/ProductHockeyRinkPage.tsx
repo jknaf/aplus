@@ -5,6 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
+import ProduktModell from '../components/ProduktModell';
 import { ProduktHero, TechSpecCard, DATENBLATT, BOX_A, BOX_A_TITEL, BOX_A_TEXT } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
@@ -178,6 +179,11 @@ const ProductHockeyRinkPage: React.FC = () => {
                     </div>
                 </div>
             </div>
+
+            {/* 2c. 3D-MODELL: Blender-Kamera steht 57,35 m weit weg, hier 52 %; das Vorschaubild ist dazu passend mittig zugeschnitten (cwebp -crop 240 240 520 520) */}
+            <ProduktModell className="mb-32" ausfuehrungen={[
+                { slug: 'hockey-feld-25-45x13-45-h110', name: t('Hockeyfeld 25,45 × 13,45 m', 'Hockey rink 25.45 × 13.45 m', 'Terrain de hockey 25,45 × 13,45 m'), masse: '25,45 × 13,45 m · H 1,10 m', kamera: { ziel: [13.123, 0.579, -7.123], abstand: 29.82 } },
+            ]} />
 
             {/* 3. TECH SPECS */}
             <div className="mb-32">

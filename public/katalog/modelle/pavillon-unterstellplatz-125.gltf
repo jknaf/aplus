@@ -1,0 +1,268 @@
+{
+ "asset": {
+  "generator": "Khronos glTF Blender I/O v5.2.40",
+  "version": "2.0",
+  "extras": {
+   "kamera": {
+    "ziel": [
+     1.001,
+     1.232,
+     -1.2
+    ],
+    "abstand": 7.637
+   }
+  }
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "name": "Katalog",
+   "nodes": [
+    0,
+    1
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "mesh": 0,
+   "name": "Schatten"
+  },
+  {
+   "mesh": 1,
+   "name": "Unterstellplatz-125.001"
+  }
+ ],
+ "materials": [
+  {
+   "alphaMode": "BLEND",
+   "doubleSided": false,
+   "name": "Schatten.002",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 0
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "doubleSided": true,
+   "name": "Beton_web.004",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 1,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  }
+ ],
+ "meshes": [
+  {
+   "name": "Schatten",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2
+     },
+     "indices": 3,
+     "material": 0
+    }
+   ]
+  },
+  {
+   "name": "2026-10-23_A-Plus-Urban-Design_Unterstellplatz-125_V01.001",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 4,
+      "NORMAL": 5,
+      "TEXCOORD_0": 6,
+      "TEXCOORD_1": 7
+     },
+     "indices": 8,
+     "material": 1
+    }
+   ]
+  }
+ ],
+ "textures": [
+  {
+   "sampler": 0,
+   "source": 0
+  },
+  {
+   "sampler": 0,
+   "source": 1
+  }
+ ],
+ "images": [
+  {
+   "mimeType": "image/png",
+   "name": "pavillon-unterstellplatz-125_schatten",
+   "uri": "texturen/pavillon-unterstellplatz-125_schatten.png"
+  },
+  {
+   "mimeType": "image/jpeg",
+   "name": "pavillon-unterstellplatz-125_licht",
+   "uri": "texturen/pavillon-unterstellplatz-125_licht.jpg"
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 4,
+   "max": [
+    3.7153565883636475,
+    -0.0020000000949949026,
+    0.2429492175579071
+   ],
+   "min": [
+    -0.08196724206209183,
+    -0.0020000000949949026,
+    -2.7983462810516357
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 4,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 4,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5123,
+   "count": 6,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5126,
+   "count": 897,
+   "max": [
+    2.001030206680298,
+    2.463613271713257,
+    1.2911999874631874e-05
+   ],
+   "min": [
+    2.5309002012363635e-05,
+    0,
+    -2.4007678031921387
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5126,
+   "count": 897,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 6,
+   "componentType": 5126,
+   "count": 897,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 7,
+   "componentType": 5126,
+   "count": 897,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 8,
+   "componentType": 5123,
+   "count": 2790,
+   "type": "SCALAR"
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 0,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 48,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 32,
+   "byteOffset": 96,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 12,
+   "byteOffset": 128,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 10764,
+   "byteOffset": 140,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 10764,
+   "byteOffset": 10904,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 7176,
+   "byteOffset": 21668,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 7176,
+   "byteOffset": 28844,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 5580,
+   "byteOffset": 36020,
+   "target": 34963
+  }
+ ],
+ "samplers": [
+  {
+   "magFilter": 9729,
+   "minFilter": 9987
+  }
+ ],
+ "buffers": [
+  {
+   "byteLength": 41600,
+   "uri": "pavillon-unterstellplatz-125.bin"
+  }
+ ],
+ "extensionsUsed": [
+  "KHR_materials_unlit"
+ ]
+}

@@ -1,0 +1,367 @@
+{
+ "asset": {
+  "generator": "Khronos glTF Blender I/O v5.2.40",
+  "version": "2.0",
+  "extras": {
+   "kamera": {
+    "ziel": [
+     0.996,
+     0.88,
+     -1.183
+    ],
+    "abstand": 6.828
+   }
+  }
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "name": "Katalog",
+   "nodes": [
+    0,
+    1
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "mesh": 0,
+   "name": "Schatten"
+  },
+  {
+   "mesh": 1,
+   "name": "UMKL-161.001"
+  }
+ ],
+ "materials": [
+  {
+   "alphaMode": "BLEND",
+   "doubleSided": false,
+   "name": "Schatten.005",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 0
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "doubleSided": true,
+   "name": "Beton_web.007",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 1,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "doubleSided": true,
+   "name": "Stahl_web.002",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 2,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  }
+ ],
+ "meshes": [
+  {
+   "name": "Schatten",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2
+     },
+     "indices": 3,
+     "material": 0
+    }
+   ]
+  },
+  {
+   "name": "Umkleide.002",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 4,
+      "NORMAL": 5,
+      "TEXCOORD_0": 6,
+      "TEXCOORD_1": 7
+     },
+     "indices": 8,
+     "material": 1
+    },
+    {
+     "attributes": {
+      "POSITION": 9,
+      "NORMAL": 10,
+      "TEXCOORD_0": 11,
+      "TEXCOORD_1": 12
+     },
+     "indices": 13,
+     "material": 2
+    }
+   ]
+  }
+ ],
+ "textures": [
+  {
+   "sampler": 0,
+   "source": 0
+  },
+  {
+   "sampler": 0,
+   "source": 1
+  },
+  {
+   "sampler": 0,
+   "source": 1
+  }
+ ],
+ "images": [
+  {
+   "mimeType": "image/png",
+   "name": "umkleide-umkl-161_schatten",
+   "uri": "texturen/umkleide-umkl-161_schatten.png"
+  },
+  {
+   "mimeType": "image/jpeg",
+   "name": "umkleide-umkl-161_licht",
+   "uri": "texturen/umkleide-umkl-161_licht.jpg"
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 4,
+   "max": [
+    3.632688045501709,
+    -0.0020000000949949026,
+    0.09706933796405792
+   ],
+   "min": [
+    -0.050934311002492905,
+    -0.0020000000949949026,
+    -2.6947286128997803
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 4,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 4,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5123,
+   "count": 6,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5126,
+   "count": 3135,
+   "max": [
+    1.9919798374176025,
+    1.7599999904632568,
+    -9.441409929422662e-06
+   ],
+   "min": [
+    0,
+    0,
+    -2.365000009536743
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5126,
+   "count": 3135,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 6,
+   "componentType": 5126,
+   "count": 3135,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 7,
+   "componentType": 5126,
+   "count": 3135,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 8,
+   "componentType": 5123,
+   "count": 9546,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 9,
+   "componentType": 5126,
+   "count": 6678,
+   "max": [
+    1.8551158905029297,
+    1.669999599456787,
+    -0.13952741026878357
+   ],
+   "min": [
+    0.3795579969882965,
+    0.15999984741210938,
+    -2.1367733478546143
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 10,
+   "componentType": 5126,
+   "count": 6678,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 11,
+   "componentType": 5126,
+   "count": 6678,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 12,
+   "componentType": 5126,
+   "count": 6678,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 13,
+   "componentType": 5123,
+   "count": 12276,
+   "type": "SCALAR"
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 0,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 48,
+   "byteOffset": 48,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 32,
+   "byteOffset": 96,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 12,
+   "byteOffset": 128,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 37620,
+   "byteOffset": 140,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 37620,
+   "byteOffset": 37760,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 25080,
+   "byteOffset": 75380,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 25080,
+   "byteOffset": 100460,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 19092,
+   "byteOffset": 125540,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 80136,
+   "byteOffset": 144632,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 80136,
+   "byteOffset": 224768,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 53424,
+   "byteOffset": 304904,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 53424,
+   "byteOffset": 358328,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 24552,
+   "byteOffset": 411752,
+   "target": 34963
+  }
+ ],
+ "samplers": [
+  {
+   "magFilter": 9729,
+   "minFilter": 9987
+  }
+ ],
+ "buffers": [
+  {
+   "byteLength": 436304,
+   "uri": "umkleide-umkl-161.bin"
+  }
+ ],
+ "extensionsUsed": [
+  "KHR_materials_unlit"
+ ]
+}

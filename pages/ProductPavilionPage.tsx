@@ -5,6 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
+import ProduktModell from '../components/ProduktModell';
 import { ProduktHero, TechSpecCard, DATENBLATT, BOX_A, BOX_A_TITEL, BOX_A_TEXT, BOX_B, BOX_B_TITEL, BOX_B_TEXT } from '../components/ProduktBausteine';
 import Plankopf from '../components/Plankopf';
 
@@ -209,6 +210,12 @@ const ProductPavilionPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* 3D-MODELL */}
+                <ProduktModell className="mb-16" ausfuehrungen={[
+                    { slug: 'pavillon-unterstellplatz-125', name: t('Unterstellplatz 125', 'Shelter 125', 'Abri 125'), masse: '2,00 × 2,40 × 2,46 m', kamera: { ziel: [1.001, 1.232, -1.2], abstand: 7.637 } },
+                    { slug: 'pavillon-unterstellplatz-125x8', name: t('Unterstellplatz 125x8', 'Shelter 125x8', 'Abri 125x8'), masse: '2,00 × 2,40 × 2,46 m', kamera: { ziel: [1.001, 1.232, -1.2], abstand: 7.636 } },
+                ]} />
 
                 {/* Datenblatt im weißen Kasten wie bei der Umkleidekabine */}
                 <div className="bg-white rounded-2xl p-8 md:p-14 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">

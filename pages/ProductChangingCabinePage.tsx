@@ -5,6 +5,7 @@ import { useProducts } from '../localized';
 import BrochureRequestForm from '../components/BrochureRequestForm';
 import ReferencedProjects from '../components/ReferencedProjects';
 import Bild from '../components/Bild';
+import ProduktModell from '../components/ProduktModell';
 import Plankopf, { Kopfleiste } from '../components/Plankopf';
 import { BOX_B, BOX_B_TITEL, BOX_B_TEXT } from '../components/ProduktBausteine';
 
@@ -201,6 +202,12 @@ const ProductChangingCabinePage: React.FC = () => {
               <div className={ABB}>{t("Abb. 4: Freistehend auf gepflasterter Fläche", "Fig. 4: Free-standing on a paved area", "Fig. 4 : autoportantes sur une surface pavée")}</div>
           </div>
       </div>
+
+      {/* 5b. 3D-MODELL */}
+      <ProduktModell className="container mx-auto px-4 mb-28" ausfuehrungen={[
+          { slug: 'umkleide-umkl-160', name: t('Umkleide', 'Changing cubicle', 'Cabine de change'), zusatz: 'UMKL-160', masse: '1,99 × 2,36 × 1,76 m', kamera: { ziel: [0.996, 0.88, -1.183], abstand: 6.828 } },
+          { slug: 'umkleide-umkl-161', name: t('Umkleide mit Sitz', 'Changing cubicle with seat', 'Cabine de change avec assise'), zusatz: 'UMKL-161', masse: '1,99 × 2,36 × 1,76 m', kamera: { ziel: [0.996, 0.88, -1.183], abstand: 6.828 } },
+      ]} />
 
       {/* 6. TECHNISCHE DATEN als Datenblatt */}
       <div className="container mx-auto px-4 mb-28">

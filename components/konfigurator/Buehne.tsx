@@ -18,11 +18,12 @@ interface Props {
   park: Park;
   zusatz: Zusatz[];
   auswahl: string | null;
+  mehr: string[];
   markierung: Record<string, 'rot' | 'gelb'>;
   ansicht: '3d' | 'oben';
   rundflug: boolean;
   modellPfad: (slug: string) => string;
-  onAuswahl: (id: string | null) => void;
+  onAuswahl: (id: string | null, dazu?: boolean) => void;
   onZiehen: (t: Teil, einzeln: boolean) => void;
   onAblegen: () => void;
   onBereit: (api: BuehnenApi) => void;
@@ -172,7 +173,7 @@ const Boden: React.FC<{ l: number; b: number; onLeer: () => void }> = ({ l, b, o
   </group>
 );
 
-const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansicht, rundflug, modellPfad, onAuswahl, onZiehen, onAblegen, onBereit }) => {
+const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, mehr, markierung, ansicht, rundflug, modellPfad, onAuswahl, onZiehen, onAblegen, onBereit }) => {
   const steuerung = useRef<OrbitControlsImpl>(null);
   const ziehen = useRef<{ id: string; versatz: V; teil: Teil; bewegt: boolean; einzeln: boolean } | null>(null);
   const gewaehlt = park.teile.find((t) => t.id === auswahl);
@@ -185,6 +186,8 @@ const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansic
     const { onAuswahl } = rueckruf.current;
     if (e.button !== 0) return;
     e.stopPropagation();
+    // Umschalt-Klick: zur Auswahl hinzufügen oder herausnehmen, nicht ziehen
+    if (e.shiftKey) { onAuswahl(t.id, true); return; }
     onAuswahl(t.id);
     const p = new THREE.Vector3();
     if (!e.ray.intersectPlane(boden, p)) return;
@@ -250,6 +253,7 @@ const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, markierung, ansic
         </group>
       ))}
       {gewaehlt && <Rahmen punkte={umriss(gewaehlt, ctx)} farbe={markierung[gewaehlt.id] === 'rot' ? '#dc2626' : '#6B8F4A'} />}
+      {park.teile.filter((t) => mehr.includes(t.id)).map((t) => <Rahmen key={`mehr-${t.id}`} punkte={umriss(t, ctx)} farbe="#6B8F4A" />)}
       <Kamera park={park} ansicht={ansicht} rundflug={rundflug} steuerung={steuerung} />
       <Api onBereit={onBereit} park={park} />
     </Canvas>

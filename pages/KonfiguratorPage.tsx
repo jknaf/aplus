@@ -168,6 +168,9 @@ const KonfiguratorPage: React.FC = () => {
   const [park, setPark] = useState<Park | null>(null);
   const [verlauf, setVerlauf] = useState<{ zurueck: Park[]; vor: Park[] }>({ zurueck: [], vor: [] });
   const [auswahl, setAuswahl] = useState<string | null>(null);
+  // Weitere per Umschalt-Klick gewählte Teile; jede andere Auswahl leert die Liste
+  const [mehr, setMehr] = useState<string[]>([]);
+  useEffect(() => setMehr([]), [auswahl]);
   // Gezogene Teile (eines oder eine ganze Gruppe); die Referenz hält den Stand, falls schnell losgelassen wird
   type Zug = { id: string; teile: Teil[]; getauscht: boolean };
   const [ziehen, setZiehen] = useState<Zug | null>(null);
@@ -273,9 +276,9 @@ const KonfiguratorPage: React.FC = () => {
 
   const loeschen = useCallback(() => {
     if (!park || !auswahl) return;
-    aendern({ ...park, teile: park.teile.filter((t) => t.id !== auswahl) });
+    aendern({ ...park, teile: park.teile.filter((t) => t.id !== auswahl && !mehr.includes(t.id)) });
     setAuswahl(null); setVorschlag(null);
-  }, [park, auswahl, aendern]);
+  }, [park, auswahl, mehr, aendern]);
   const drehen = useCallback((grad: number, einzeln = false) => {
     if (!park || !auswahl || !ctx) return;
     const t = park.teile.find((x) => x.id === auswahl)!;
@@ -600,11 +603,12 @@ const KonfiguratorPage: React.FC = () => {
               park={dargestellt}
               zusatz={[...ab.gelaender, ...ab.keile]}
               auswahl={auswahl}
+              mehr={mehr}
               markierung={markierung}
               ansicht={ansicht}
               rundflug={rundflug}
               modellPfad={modellPfad}
-              onAuswahl={(id) => { if (id && gesperrt()) return; setAuswahl(id); if (!id) setVorschlag(null); }}
+              onAuswahl={(id, dazu) => { if (id && gesperrt()) return; if (dazu && auswahl && id !== auswahl) { setMehr((m) => (m.includes(id!) ? m.filter((x) => x !== id) : [...m, id!])); return; } setAuswahl(id); if (!id) setVorschlag(null); }}
               onZiehen={ziehenUpdate}
               onAblegen={ablegen}
               onBereit={(a) => { api.current = a; }}
@@ -676,6 +680,7 @@ const KonfiguratorPage: React.FC = () => {
                   <div className="min-w-0">
                     <p className="font-heading font-bold uppercase text-sm text-brand-dark truncate">{ctx.info[ausgewaehlt.slug]?.name}</p>
                     <p className="font-mono text-[11px] text-brand-muted">{ctx.info[ausgewaehlt.slug]?.code}</p>
+                    {mehr.length > 0 && <p className="text-[11px] font-semibold text-brand-dark">{t(`${mehr.length + 1} Elemente ausgewählt`, `${mehr.length + 1} elements selected`, `${mehr.length + 1} éléments sélectionnés`)}</p>}
                   </div>
                   <div className="flex gap-1 shrink-0">
                     <Knopf icon="rotate_right" onClick={() => drehen(90)} title={t("Gruppe drehen 90° (R), mit Alt nur dieses Element, mit Umschalt 15°", "Rotate group 90° (R), with Alt only this element, with Shift 15°", "Faire pivoter le groupe de 90° (R), avec Alt seulement cet élément, avec Maj 15°")} />
@@ -704,7 +709,7 @@ const KonfiguratorPage: React.FC = () => {
                     </div>
                   </div>
                 )}
-                <p className="mt-2 text-[11px] text-brand-muted">{t("Ziehen und R wirken auf die ganze Gruppe, mit gedrückter Alt-Taste nur auf dieses Element. Entf löscht.", "Dragging and R act on the whole group; hold Alt to affect only this element. Del deletes.", "Le glisser-déposer et R agissent sur tout le groupe ; avec la touche Alt, uniquement sur cet élément. Suppr supprime.")}</p>
+                <p className="mt-2 text-[11px] text-brand-muted">{t("Ziehen und R wirken auf die ganze Gruppe, mit gedrückter Alt-Taste nur auf dieses Element. Umschalt-Klick wählt weitere Elemente aus. Entf löscht.", "Dragging and R act on the whole group; hold Alt to affect only this element. Shift-click selects more elements. Del deletes.", "Le glisser-déposer et R agissent sur tout le groupe ; avec la touche Alt, uniquement sur cet élément. Maj-clic sélectionne d'autres éléments. Suppr supprime.")}</p>
                 {auswahlHinweise.map((h) => (
                   <div key={h.id} className={`mt-2 flex items-center justify-between gap-2 text-xs rounded-lg px-2.5 py-2 ${h.stufe === 'rot' ? 'bg-red-50 text-red-800' : 'bg-amber-50 text-amber-900'}`}>
                     <span>{h.text}</span>

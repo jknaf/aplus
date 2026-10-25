@@ -63,6 +63,7 @@ export const Plan: React.FC<{ park: Park; ctx: Ctx; zusatz: Zusatz[]; bezeichnun
 };
 
 const ZEILEN_JE_SEITE = 11;
+const ZEILEN_LETZTE_SEITE = 8;
 const kg = (x: number) => `${x.toLocaleString(aktuelleLocale())} kg`;
 // „H / L / B“ der Preisliste in cm
 const masse = (cm?: string) => {
@@ -78,6 +79,9 @@ const Druck: React.FC<Props> = ({ park, ctx, zusatz, zeilen, hinweise, optionen,
   const gewicht = zeilen.reduce((s, z) => s + (z.kg ?? 0), 0);
   const seiten: Zeile[][] = [];
   for (let i = 0; i < zeilen.length; i += ZEILEN_JE_SEITE) seiten.push(zeilen.slice(i, i + ZEILEN_JE_SEITE));
+  // Die letzte Seite trägt noch Gesamtgewicht, Hinweise und QR-Code; ist sie zu voll, kommt die letzte Zeile auf eine eigene Seite
+  const letzte = seiten[seiten.length - 1];
+  if (letzte && letzte.length > Math.max(1, ZEILEN_LETZTE_SEITE - Math.ceil(hinweise.length / 3))) seiten.push(letzte.splice(letzte.length - 1));
   const fuss = <footer className="absolute left-[12mm] right-[12mm] bottom-[8mm] border-t border-black pt-1.5 text-[7.5pt] text-[#555] flex justify-between">
     <span>A+ Urban Design · Talstraße 41 · 70188 Stuttgart</span><span>post@aplusurbandesign.com · www.aplusurbandesign.com</span>
   </footer>;
@@ -132,7 +136,7 @@ const Druck: React.FC<Props> = ({ park, ctx, zusatz, zeilen, hinweise, optionen,
                 const m = masse(z.slug ? ctx.info[z.slug]?.masse : undefined);
                 return (
                   <tr key={z.code + z.name} className="border-b border-[#ccc] align-top">
-                    <td className="py-1.5 pr-3">{String(s * ZEILEN_JE_SEITE + i + 1).padStart(3, '0')}</td>
+                    <td className="py-1.5 pr-3">{String(seiten.slice(0, s).reduce((n, z) => n + z.length, 0) + i + 1).padStart(3, '0')}</td>
                     <td className="py-1.5 pr-3">
                       <div><span className="font-bold">{z.code}</span><span className="text-[#888]"> ____ </span>{z.name}</div>
                       {(m || z.auto) && <div className="text-[8pt] text-[#555]">{[m, z.auto ? t('automatisch ergänzt', 'added automatically', 'ajouté automatiquement') : ''].filter(Boolean).join(' · ')}</div>}

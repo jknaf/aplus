@@ -85,11 +85,12 @@ const Druck: React.FC<Props> = ({ park, ctx, zusatz, zeilen, hinweise, optionen,
     <div className="druck-bereich hidden text-black bg-white" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
       <style>{`
         @page { size: A4 landscape; margin: 0; }
+        .druck-seite { width: 297mm; height: 210mm; overflow: hidden; position: relative; }
         @media print {
           html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
           body > *:not(.druck-bereich) { display: none !important; }
           .druck-bereich { display: block !important; }
-          .druck-seite { width: 297mm; height: 210mm; overflow: hidden; position: relative; break-after: page; }
+          .druck-seite { break-after: page; }
           .druck-seite:last-child { break-after: auto; }
           .druck-bereich * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
@@ -166,6 +167,23 @@ const Druck: React.FC<Props> = ({ park, ctx, zusatz, zeilen, hinweise, optionen,
     </div>,
     document.body,
   );
+};
+
+// Safari druckt trotz @page im Hochformat; deshalb baut die Seite das PDF selbst, A4 quer auf jedem Gerät
+export const pdfSpeichern = async (dateiname: string) => {
+  const [{ jsPDF }, { toPng }] = await Promise.all([import('jspdf'), import('html-to-image')]);
+  const bereich = document.querySelector<HTMLElement>('.druck-bereich');
+  if (!bereich) throw new Error('Druckansicht fehlt');
+  // zum Abfotografieren sichtbar, aber außerhalb des Bildschirms
+  Object.assign(bereich.style, { display: 'block', position: 'fixed', left: '-10000px', top: '0' });
+  const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4', compress: true });
+  const seiten = [...bereich.querySelectorAll<HTMLElement>('.druck-seite')];
+  for (const [i, seite] of seiten.entries()) {
+    const bild = await toPng(seite, { pixelRatio: 2, backgroundColor: '#ffffff', skipFonts: true });
+    if (i) pdf.addPage('a4', 'landscape');
+    pdf.addImage(bild, 'PNG', 0, 0, 297, 210, undefined, 'FAST');
+  }
+  pdf.save(dateiname);
 };
 
 export default Druck;

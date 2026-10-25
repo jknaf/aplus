@@ -4,7 +4,7 @@ import { Link, LOCALE, localizePath, tt, useLang, useT } from '../i18n';
 import PageShell from '../components/PageShell';
 import Buehne, { type BuehnenApi } from '../components/konfigurator/Buehne';
 import QRCode from 'qrcode';
-import Druck, { Plan, type DruckOptionen } from '../components/konfigurator/Druck';
+import Druck, { Plan, pdfSpeichern, type DruckOptionen } from '../components/konfigurator/Druck';
 import { ladeNetz, type Netz } from '../components/konfigurator/plan2d';
 import { PARK_SPEICHER, leeren, warteschlange } from '../components/konfigurator/merkliste';
 import { konfiguratorFrei, useKonfiguratorFrei } from '../components/katalog/usePreise';
@@ -139,7 +139,7 @@ const DruckDialog: React.FC<{ offen: boolean; onClose: () => void; onDrucken: (o
     <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-brand-dark/50 backdrop-blur-sm" onClick={onClose}>
       <form onClick={(e) => e.stopPropagation()} onSubmit={(e) => { e.preventDefault(); onDrucken(o); }} className="w-full max-w-md bg-brand-bg rounded-2xl shadow-2xl p-8">
         <h2 className="text-2xl font-extrabold font-heading uppercase text-brand-dark mb-1">{t("Planung als PDF speichern", "Save plan as PDF", "Enregistrer le plan en PDF")}</h2>
-        <p className="text-sm text-brand-muted mb-5">{t("Sie erhalten ein PDF mit 3D-Ansicht, Bauplan mit Maßen und Stückliste. Im nächsten Fenster wählen Sie „Als PDF sichern“.", "You receive a PDF with a 3D view, a site plan with dimensions and the parts list. In the next window, choose “Save as PDF”.", "Vous obtenez un PDF avec vue 3D, plan coté et liste des pièces. Dans la fenêtre suivante, choisissez « Enregistrer au format PDF ».")}</p>
+        <p className="text-sm text-brand-muted mb-5">{t("Sie erhalten ein PDF mit 3D-Ansicht, Bauplan mit Maßen und Stückliste. Es wird im Querformat A4 heruntergeladen.", "You receive a PDF with a 3D view, a site plan with dimensions and the parts list. It is downloaded in A4 landscape.", "Vous obtenez un PDF avec vue 3D, plan coté et liste des pièces. Il est téléchargé au format A4 paysage.")}</p>
         <Feld label={t("Name Ihres Projekts", "Name of your project", "Nom de votre projet")}><input className={eingabe} value={o.titel} maxLength={60} onChange={(e) => setO({ ...o, titel: e.target.value })} placeholder={t("z. B. Skatepark Musterstadt", "e.g. Exampletown skatepark", "par ex. Skatepark de Villeexemple")} /></Feld>
         <div className="mt-4 space-y-2">
           {haken('ansicht3d', t("3D-Ansicht", "3D view", "Vue 3D"))}
@@ -398,11 +398,13 @@ const KonfiguratorPage: React.FC = () => {
     }
     const qr = o.liste ? await QRCode.toString(link, { type: 'svg', margin: 0, errorCorrectionLevel: 'L' }).catch(() => '') : '';
     setDruck({ optionen: o, bild, netze, qr });
-    // erst rendern lassen, dann das Druckfenster öffnen; danach die Druckansicht wieder entfernen
+    melden(tt('PDF wird erstellt …', 'Creating PDF …', 'Création du PDF …'));
+    // erst rendern lassen, dann das PDF bauen; danach die Druckansicht wieder entfernen
     window.setTimeout(() => {
-      const weg = () => { setDruck(null); window.removeEventListener('afterprint', weg); };
-      window.addEventListener('afterprint', weg);
-      window.print();
+      const name = `${(o.titel.trim() || 'Skatepark').replace(/[\\/:*?"<>|]/g, '-')} A+ Urban Design.pdf`;
+      pdfSpeichern(name)
+        .catch(() => melden(tt('Das PDF konnte nicht erstellt werden. Bitte erneut versuchen.', 'The PDF could not be created. Please try again.', "Le PDF n'a pas pu être créé. Veuillez réessayer.")))
+        .finally(() => setDruck(null));
     }, 400);
   };
   const teilen = () => {

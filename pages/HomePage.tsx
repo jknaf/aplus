@@ -416,7 +416,7 @@ const Anspruch: React.FC = () => {
                     <Plan>
                         <circle cx="430" cy="168" r="32" strokeWidth="2" strokeDasharray="5 4" vectorEffect="non-scaling-stroke" />
                     </Plan>
-                    <PlanKachel oben blatt={t("BLATT 02 / 04", "SHEET 02 / 04", "PLANCHE 02 / 04")} info="C35/45" titel={t("Vandalismussicher", "Vandal-resistant", "Résistant au vandalisme")} text={t("Wand 8 bis 16 cm. Nicht schneidbar, nicht brennbar.", "Wall 8 to 16 cm. Cannot be cut, does not burn.", "Paroi de 8 à 16 cm. Impossible à découper, incombustible.")} />
+                    <PlanKachel oben blatt={t("BLATT 02 / 04", "SHEET 02 / 04", "PLANCHE 02 / 04")} info="C35/45" titel={t("Vandalismussicher", "Vandal-resistant", "Résistant au vandalisme")} text={t("Holzrampen verschleißen und splittern, Stahlrampen verbeulen und lockern sich an den Schrauben: Unser Beton hält das alles aus.", "Wooden ramps wear out and splinter, steel ramps dent and their bolts work loose: our concrete stands up to all of it.", "Les rampes en bois s'usent et éclatent, les rampes en acier se cabossent et leurs vis se desserrent : notre béton résiste à tout cela.")} />
                 </Fotokachel>
 
                 <article className="lg:col-span-5 rounded-2xl bg-brand-bg text-brand-dark p-5 grid grid-cols-1 sm:grid-cols-[auto_minmax(0,1fr)] gap-5 lg:min-h-0">

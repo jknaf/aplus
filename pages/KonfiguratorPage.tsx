@@ -11,7 +11,7 @@ import { konfiguratorFrei, useKonfiguratorFrei } from '../components/katalog/use
 import CodeDialog, { useKonfiguratorCode } from '../components/katalog/CodeDialog';
 import { gruppenName, teilName } from '../localized';
 import {
-  BAUSTEINE, LEER, RASTER, gruppen, gruppeVerschieben, anbauMoeglich, bowl, drehenGruppe, geradeAnhaengen, kurveAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
+  BAUSTEINE, LEER, RASTER, gruppen, entgruppieren, gruppeVerschieben, anbauMoeglich, bowl, drehenGruppe, geradeAnhaengen, kurveAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
   hinzufuegen, kodieren, kollidiert, neueId, pruefen, stueckliste, vorlageBauen, vorschlag as vorschlagFuer, waehlbar,
   type Ctx, type Hinweis, type Park, type Teil, type Vorschlag, ueberText,
 } from '../components/konfigurator/logik';
@@ -300,6 +300,12 @@ const KonfiguratorPage: React.FC = () => {
     const t = park?.teile.find((x) => x.id === auswahl);
     if (t) teileHinzufuegen([{ ...t, id: neueId() }]);
   }, [park, auswahl]);
+  const loesen = useCallback(() => {
+    if (!park || !auswahl || !ctx) return;
+    const t = entgruppieren(auswahl, park, ctx);
+    if (!t) { melden(tt('Zum Entgruppieren ist auf der Fläche kein Platz.', 'There is no room on the area to ungroup.', "Il n'y a pas la place sur la surface pour dissocier.")); return; }
+    aendern({ ...park, teile: park.teile.map((x) => (x.id === t.id ? t : x)) });
+  }, [park, auswahl, ctx, aendern, melden]);
   const rueckgaengig = useCallback(() => {
     if (!verlauf.zurueck.length || !park) return;
     setPark(verlauf.zurueck[verlauf.zurueck.length - 1]);
@@ -351,6 +357,7 @@ const KonfiguratorPage: React.FC = () => {
     if (letzte) setAuswahl(letzte.id);
     setVorschlag(null);
   };
+  const inGruppe = useMemo(() => !!(ctx && park && auswahl && (gruppen(park, ctx).find((g) => g.some((x) => x.id === auswahl))?.length ?? 0) > 1), [ctx, park, auswahl]);
   const gelModus = useMemo(() => (ctx && park && auswahl ? gelaenderModus(auswahl, park, ctx) : null), [ctx, park, auswahl]);
   const gelSetzen = (m: GelaenderModus) => { if (ctx && park && auswahl) aendern(gelaenderSetzen(auswahl, m, park, ctx)); };
   const [bowlMass, setBowlMass] = useState<{ h: 98 | 150; l: number; b: number }>({ h: 98, l: 3, b: 1 });
@@ -699,6 +706,11 @@ const KonfiguratorPage: React.FC = () => {
                     {anbau.gerade.includes('links') && <Knopf icon="west" onClick={() => anbauen('gerade', 'links')}>{t("Gerade", "Straight", "Droit")}</Knopf>}
                     {anbau.gerade.includes('rechts') && <Knopf icon="east" onClick={() => anbauen('gerade', 'rechts')}>{t("Gerade", "Straight", "Droit")}</Knopf>}
                     {anbau.kurve.includes('rechts') && <Knopf icon="turn_right" onClick={() => anbauen('kurve', 'rechts')}>{t("Kurve rechts", "Curve right", "Courbe à droite")}</Knopf>}
+                  </div>
+                )}
+                {inGruppe && mehr.length === 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    <Knopf icon="link_off" onClick={loesen} title={t("Element von der Gruppe wegrücken", "Move the element away from its group", "Éloigner l'élément de son groupe")}>{t("Entgruppieren", "Ungroup", "Dissocier")}</Knopf>
                   </div>
                 )}
                 {gelModus && (

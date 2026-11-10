@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { drehe, gruppen, umriss, type Ctx, type Park, type Teil, type V, type Zusatz } from './logik';
+import { bowls, drehe, gruppen, umriss, type Ctx, type Park, type Teil, type V, type Zusatz } from './logik';
 import { aktuelleLocale, tt } from '../../i18n';
 
 // Druckblätter A4 quer als SVG (Einheit mm): Grundriss im Stil eines CAD-Plans und Schnitt durch die höchste Rampengruppe.
@@ -121,6 +121,7 @@ const H = 210;
 const R = 8;
 const f = (n: number) => n.toFixed(2);
 const zahl = (m: number) => m.toLocaleString(aktuelleLocale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const kote = (m: number) => (Math.abs(m) < 0.005 ? `±${zahl(0)}` : m > 0 ? `+${zahl(m)}` : `−${zahl(-m)}`);
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const linie = (x1: number, y1: number, x2: number, y2: number, cls: string) => `<line x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2)}" y2="${f(y2)}" class="${cls}"/>`;
 const box = (p: V[]) => ({
@@ -176,6 +177,8 @@ export const planBlatt = ({ park, ctx, zusatz, netze: nz, kopf }: PlanDaten) => 
   const { l, b } = park.flaeche;
   const gs = gruppen(park, ctx);
   const gb = gs.map((g) => box(g.flatMap((t) => umriss(t, ctx))));
+  const gruben = bowls(park, ctx); // B09: eingegrabene Bowls, Oberkante Coping auf ±0,00
+  const tief = new Map(gruben.flatMap((g) => g.teile.map((t) => [t.id, g.tief] as const)));
 
   // Schnitt durch die höchste Gruppe, quer zur hohen Kante einer Rampe (sonst entlang x)
   const hoechste = gs.map((g, i) => ({ g, i, h: Math.max(...g.map((t) => ctx.masse[t.slug].h)) })).sort((a, c) => c.h - a.h)[0];
@@ -234,7 +237,7 @@ export const planBlatt = ({ park, ctx, zusatz, netze: nz, kopf }: PlanDaten) => 
     if (m.hoch) {
       const kx = tx + (quer ? 2.2 : 0);
       const ky = ty + (quer ? 0 : 2.2);
-      s += `<text x="${f(kx)}" y="${f(ky)}" class="kote"${dreh(kx, ky)}>${tt('OK', 'TOP', 'HAUT')} +${zahl(m.h)}</text>`;
+      s += `<text x="${f(kx)}" y="${f(ky)}" class="kote"${dreh(kx, ky)}>${tt('OK', 'TOP', 'HAUT')} ${kote(m.h - (tief.get(t.id) ?? 0))}</text>`;
     }
   }
   for (const z of zusatz) s += nz[z.slug] ? modell(z, 'mk') : poly(umriss({ id: 'z', ...z }, ctx), 'dr');
@@ -298,28 +301,62 @@ export const planBlatt = ({ park, ctx, zusatz, netze: nz, kopf }: PlanDaten) => 
       const [lo, hi] = entlangX ? [bb.z0, bb.z1] : [bb.x0, bb.x1];
       const [a0, a1] = entlangX ? [bb.x0, bb.x1] : [bb.z0, bb.z1];
       if (!n || w < lo || w > hi || a1 < u0 || a0 > u1) continue;
-      const hy = 'y' in t ? t.y ?? 0 : 0; // Geländer sitzen auf dem Podest
+      const hy = 'id' in t ? -(tief.get(t.id) ?? 0) : t.y ?? 0; // Geländer sitzen auf dem Podest, Bowls liegen abgesenkt
       const welt = n.P.map((p) => { const d = drehe({ x: p[0], z: p[2] }, t.rot); return [d.x + t.x, p[1] + hy, d.z + t.z]; });
       for (const tr of n.tri) {
         const st = schnittpunkte(tr.map((i) => welt[i]), entlangX ? 2 : 0, w, [entlangX ? 0 : 2, 1]);
         if (st) schnitte.push(st);
       }
     }
-    const ymax = Math.max(hoechste.h, ...schnitte.flatMap((st) => [st[1], st[3]]));
-    const KS = [50, 75, 100, 125, 150, 200, 250, 500].find((n) => ((u1 - u0) * 1000) / n <= 160 && (ymax * 1000) / n <= frei) ?? 500;
+    // Bowl im Schnitt: Spanne [ba, bb] der Außenkontur auf der Schnittlinie, dort liegt die Sohle tiefer
+    const grube = gruben.map((g) => {
+      const us: number[] = [];
+      g.rand.forEach((p, i) => {
+        const q = g.rand[(i + 1) % g.rand.length];
+        const [pw, qw] = entlangX ? [p.z, q.z] : [p.x, q.x];
+        const [pu, qu] = entlangX ? [p.x, q.x] : [p.z, q.z];
+        if ((pw - w) * (qw - w) <= 0 && pw !== qw) us.push(pu + ((w - pw) / (qw - pw)) * (qu - pu));
+      });
+      return us.length ? { ba: Math.min(...us), bb: Math.max(...us), tief: g.tief } : null;
+    }).filter((x): x is { ba: number; bb: number; tief: number } => !!x && x.bb > u0 && x.ba < u1).sort((a, c) => a.ba - c.ba);
+    const ys = schnitte.flatMap((st) => [st[1], st[3]]);
+    const ymax = Math.max(hoechste.h - (tief.get(hoechste.g[0].id) ?? 0), 0, ...ys);
+    const ymin = Math.min(0, ...grube.map((g) => -g.tief), ...ys);
+    const KS = [50, 75, 100, 125, 150, 200, 250, 500].find((n) => ((u1 - u0) * 1000) / n <= 160 && ((ymax - ymin) * 1000) / n <= frei) ?? 500;
     const ks = 1000 / KS;
     const sl = R + 6;
-    const S = (u: number, y: number): [number, number] => [sl + (u - u0) * ks, boden - y * ks];
+    const S = (u: number, y: number): [number, number] => [sl + (u - u0) * ks, boden - (y - ymin) * ks];
     let o = '';
     for (const st of schnitte) {
       const [x1, y1] = S(st[0], st[1]);
       const [x2, y2] = S(st[2], st[3]);
       o += linie(x1, y1, x2, y2, 'cut');
     }
-    const [gx0, gy] = S(u0, 0);
+    const [, gy] = S(u0, 0);
     const [gx1] = S(u1, 0);
-    o += linie(gx0, gy, gx1, gy, 'boden');
-    for (let i = 0; i < 6; i++) { const x = gx0 + 2 + (i * (gx1 - gx0 - 4)) / 5; o += linie(x, gy + 0.3, x - 1.5, gy + 1.8, 'hl'); }
+    // Gelände: außerhalb des Bowls auf ±0,00, im Bowl auf der Sohle; Schraffur darunter
+    const stuecke: [number, number, number][] = [];
+    let von = u0;
+    for (const g of grube) {
+      const a = Math.max(g.ba, u0);
+      const e = Math.min(g.bb, u1);
+      if (a > von) stuecke.push([von, a, 0]);
+      stuecke.push([a, e, -g.tief]);
+      const [xa, ya] = S(a, 0);
+      const [xe, ye] = S(e, -g.tief);
+      o += linie(xa, ya, xa, ye, 'boden') + linie(xe, ya, xe, ye, 'boden');
+      const [mx, my] = S((a + e) / 2, -g.tief);
+      o += `<text x="${f(mx)}" y="${f(my + 3.2)}" class="mz">${tt('Sohle', 'Bottom', 'Fond')} ${kote(-g.tief)}</text>`;
+      von = e;
+    }
+    if (von < u1) stuecke.push([von, u1, 0]);
+    for (const [a, e, y] of stuecke) {
+      const [xa, ya] = S(a, y);
+      const [xe] = S(e, y);
+      o += linie(xa, ya, xe, ya, 'boden');
+      const n = Math.max(1, Math.round((xe - xa) / 8));
+      for (let i = 0; i < n; i++) { const x = xa + 2 + (i * Math.max(0, xe - xa - 4)) / Math.max(1, n - 1); if (x < xe - 0.5) o += linie(x, ya + 0.3, x - 1.5, ya + 1.8, 'hl'); }
+    }
     // Höhenkoten an der hohen Kante jeder geschnittenen Rampe
     const koten = new Set<string>();
     for (const t of hoechste.g) {
@@ -330,15 +367,15 @@ export const planBlatt = ({ park, ctx, zusatz, netze: nz, kopf }: PlanDaten) => 
       const d = drehe(m.hoch, t.rot);
       const dv = entlangX ? d.x : d.z;
       if (Math.abs(dv) < 0.5) continue;
-      koten.add(`${dv > 0 ? (entlangX ? bb.x1 : bb.z1) - 0.4 : (entlangX ? bb.x0 : bb.z0) + 0.4}|${m.h}|${Math.sign(dv)}`);
+      koten.add(`${dv > 0 ? (entlangX ? bb.x1 : bb.z1) - 0.4 : (entlangX ? bb.x0 : bb.z0) + 0.4}|${m.h - (tief.get(t.id) ?? 0)}|${Math.sign(dv)}`);
     }
     for (const kt of koten) {
       const [u, h, sg] = kt.split('|').map(Number);
       const [px, py] = S(u, h);
       o += `<path d="M${f(px - 0.9)},${f(py - 1.4)} L${f(px + 0.9)},${f(py - 1.4)} L${f(px)},${f(py)} Z" class="dr"/>`;
-      o += `<text x="${f(px - sg * 1.6)}" y="${f(py - 2)}" class="mz" text-anchor="${sg > 0 ? 'end' : 'start'}">+${zahl(h)}</text>`; // Zahl zur Rampe hin, weg vom Geländer
+      o += `<text x="${f(px - sg * 1.6)}" y="${f(py - 2)}" class="mz" text-anchor="${sg > 0 ? 'end' : 'start'}">${kote(h)}</text>`; // Zahl zur Rampe hin, weg vom Geländer
     }
-    o += `<text x="${f(gx1 + 1.2)}" y="${f(gy - 0.8)}" class="mz" text-anchor="start">${zahl(0).replace('0.00', '±0.00').replace('0,00', '±0,00')}</text>`;
+    o += `<text x="${f(gx1 + 1.2)}" y="${f(gy - 0.8)}" class="mz" text-anchor="start">${kote(0)}</text>`;
     const ty = oy + (b + RE) * k + 6; // direkt unter dem Plan, Geländer im Schnitt ragen sonst hinein
     o += `<text x="${f(sl)}" y="${f(ty)}" class="titel">${tt('SCHNITT A-A', 'SECTION A-A', 'COUPE A-A')}</text><text x="${f(sl + 26)}" y="${f(ty)}" class="klein">${tt('M', 'Scale', 'Éch.')} 1:${KS}</text>`;
     // Schnittlinie im Grundriss: Strichpunkt, Blickrichtung und Kennbuchstabe

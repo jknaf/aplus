@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import {
   BAUSTEINE, VORLAGEN, vorlageBauen, gruppen, pruefen, abgeleitet, einrasten, stueckliste, kodieren, dekodieren,
-  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, gelaenderSetzen, gelaenderModus, type Ctx, type Park,
+  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, bowls, tiefen, gelaenderSetzen, gelaenderModus, type Ctx, type Park,
 } from '../components/konfigurator/logik.ts';
 
 const katalog = JSON.parse(readFileSync(new URL('../public/katalog/katalog.json', import.meta.url), 'utf8'));
@@ -74,21 +74,33 @@ assert.equal(hinzufuegen({ flaeche: feld, teile: [] }, [{ id: 'w', slug: 'wall-4
   }
 }
 
-// Bowl: geschlossen, eine Gruppe, keine Überlappung, Geländer nur bei 150, bauseitige Zeile
+// Bowl: geschlossen, eine Gruppe, keine Überlappung, eingegraben ohne Geländer (B09), bauseitige Zeile
 for (const [h, nl, nb] of [[98, 1, 0], [98, 3, 1], [150, 3, 1]] as const) {
   const t = bowl(h, nl, nb, ctx)!;
   const p: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: t };
   assert.equal(gruppen(p, ctx).length, 1, `Bowl ${h} ${nl}×${nb} nicht geschlossen`);
   assert.ok(!pruefen(p, ctx).some((x) => x.stufe === 'rot'), `Bowl ${h}: ${pruefen(p, ctx).filter((x) => x.stufe === 'rot').map((x) => x.text).join(' | ')}`);
   const ab = abgeleitet(p, ctx);
-  if (h === 98) assert.equal(ab.gelaender.length, 0); else assert.ok(ab.gelaender.filter((g) => g.slug === 'gelaender-sger-150').length === 12);
+  assert.equal(ab.gelaender.length, 0, `Bowl ${h}: Geländer trotz Eingraben`);
+  assert.equal(bowls(p, ctx).length, 1);
+  assert.ok(t.every((x) => tiefen(p, ctx).get(x.id) === ctx.masse[`corner-${h}`].h), `Bowl ${h}: nicht um seine Höhe abgesenkt`);
   assert.ok(stueckliste(p, ctx).some((z) => z.code === 'bauseits'));
   const xs = t.flatMap((x) => umriss(x, ctx)).map((q) => q.x);
   const zs = t.flatMap((x) => umriss(x, ctx)).map((q) => q.z);
   console.log(`Bowl ${h} ${nl}×${nb}: ${t.length} Teile, außen ${(Math.max(...xs) - Math.min(...xs)).toFixed(2)} × ${(Math.max(...zs) - Math.min(...zs)).toFixed(2)} m`);
 }
 
-// Geländer-Schalter: Bowl 98 mit Geländer, Bowl 150 ohne, bleibt im Teilen-Link erhalten
+// B09: außen an den Bowl angedockter Table 98 bleibt auf Geländehöhe
+{
+  const t = bowl(98, 3, 1, ctx)!;
+  const rand = t.filter((x) => x.slug === 'table-98').sort((a, c) => a.z - c.z)[0];
+  const aussen: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: [...t, { id: 'aussen', slug: 'table-98', x: rand.x, z: rand.z - 1.25, rot: 0 }] };
+  assert.equal(gruppen(aussen, ctx).length, 1, 'Table 98 dockt nicht an den Bowl an');
+  assert.equal(tiefen(aussen, ctx).get('aussen') ?? 0, 0, 'Angedockter Table 98 wird mit abgesenkt');
+  assert.equal(tiefen(aussen, ctx).size, t.length, 'Bowl-Teile nicht alle abgesenkt');
+}
+
+// Geländer-Schalter: Bowl 98 mit Geländer auf Geländehöhe, Bowl 150 an, aus, auto; bleibt im Teilen-Link erhalten
 {
   const b98: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: bowl(98, 3, 1, ctx)! };
   const an = gelaenderSetzen(b98.teile[0].id, 'an', b98, ctx);
@@ -96,11 +108,13 @@ for (const [h, nl, nb] of [[98, 1, 0], [98, 3, 1], [150, 3, 1]] as const) {
   const ga = abgeleitet(an, ctx).gelaender;
   assert.ok(ga.filter((g) => g.slug === 'gelaender-125').length >= 24, 'Bowl 98 mit Geländer: Rundung fehlt');
   assert.ok(ga.some((g) => g.slug === 'gelaender-375'), 'Bowl 98 mit Geländer: gerade Seiten fehlen');
+  assert.ok(ga.every((g) => Math.abs(g.y ?? 0) < 0.03), 'Bowl 98 mit Geländer: Geländer nicht auf Geländehöhe');
   const zurueck = dekodieren(kodieren(an), ctx)!;
   assert.equal(abgeleitet(zurueck, ctx).gelaender.length, ga.length);
   const b150: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: bowl(150, 3, 1, ctx)! };
+  assert.equal(abgeleitet(gelaenderSetzen(b150.teile[0].id, 'an', b150, ctx), ctx).gelaender.filter((g) => g.slug === 'gelaender-sger-150').length, 12);
   assert.equal(abgeleitet(gelaenderSetzen(b150.teile[0].id, 'aus', b150, ctx), ctx).gelaender.length, 0);
-  assert.ok(abgeleitet(gelaenderSetzen(gelaenderSetzen(b150.teile[0].id, 'aus', b150, ctx).teile[0].id, 'auto', gelaenderSetzen(b150.teile[0].id, 'aus', b150, ctx), ctx), ctx).gelaender.length > 0);
+  assert.equal(abgeleitet(gelaenderSetzen(gelaenderSetzen(b150.teile[0].id, 'an', b150, ctx).teile[0].id, 'auto', gelaenderSetzen(b150.teile[0].id, 'an', b150, ctx), ctx), ctx).gelaender.length, 0);
 }
 
 // Kein Platz frei: Fläche wächst, nichts überlappt

@@ -383,6 +383,27 @@ export const entgruppieren = (id: string, park: Park, ctx: Ctx): Teil | null => 
   }
   return null;
 };
+// B09: Bowls werden eingegraben, Oberkante Coping auf Geländehöhe. Bowl = Gruppe mit mindestens 12 Corners (wie die bauseits-Zeile)
+export interface Bowl { teile: Teil[]; tief: number; rand: V[] }
+const istCorner = (slug: string) => slug.startsWith('corner-') && !slug.startsWith('corner-table');
+const huelle = (p: V[]): V[] => {
+  const q = [...p].sort((a, b) => a.x - b.x || a.z - b.z);
+  const kreuz = (o: V, a: V, b: V) => (a.x - o.x) * (b.z - o.z) - (a.z - o.z) * (b.x - o.x);
+  const halb = (liste: V[]) => liste.reduce<V[]>((h, v) => { while (h.length >= 2 && kreuz(h[h.length - 2], h[h.length - 1], v) <= 0) h.pop(); h.push(v); return h; }, []);
+  const unten = halb(q);
+  const oben = halb([...q].reverse());
+  return [...unten.slice(0, -1), ...oben.slice(0, -1)];
+};
+// Abgesenkt werden nur die Bowl-Teile: Kurvenstücke und die Coping Ramps und Tables innerhalb ihrer Hülle. Außen angedockte Elemente bleiben auf Geländehöhe.
+const BOWL_TEIL = /^(coping-ramp|table)-/;
+export const bowls = (park: Park, ctx: Ctx): Bowl[] => gruppen(park, ctx)
+  .filter((g) => g.filter((t) => istCorner(t.slug)).length >= 12)
+  .map((g) => {
+    const kern = huelle(g.filter((t) => istKurve(t.slug)).flatMap((t) => umriss(t, ctx)));
+    const teile = g.filter((t) => istKurve(t.slug) || (BOWL_TEIL.test(t.slug) && innen(t, kern)));
+    return { teile, tief: Math.max(...g.filter((t) => istCorner(t.slug)).map((t) => ctx.masse[t.slug].h)), rand: huelle(teile.flatMap((t) => umriss(t, ctx))) };
+  });
+export const tiefen = (park: Park, ctx: Ctx) => new Map(bowls(park, ctx).flatMap((b) => b.teile.map((t) => [t.id, b.tief] as const)));
 
 // ---------- Automatik: Geländer, Anlaufkeile, Pflichtteile (Abschnitte 3, 4, 7) ----------
 
@@ -397,29 +418,31 @@ const nachAussen = (slug: string, aussen: V) => norm360(winkel(aussen) - winkel(
 // Tiefe der ebenen Plattform hinter dem Coping, ab Rückkante aus den Modellen gemessen. Ihre Seiten brauchen Geländer.
 const PLATEAU: Record<string, number> = { 'quarterramp-165': 1.33, 'quarterramp-165-p': 1.33, 'quarterramp-200': 1.33, 'quarterramp-255': 1.32, 'bigbank-165': 1.14, 'bigbank-200': 1.31 };
 
-const braucht = (t: Teil, m: Masse, park: Park) => (t.gel !== undefined ? t.gel : !park.flaeche.angeboescht && m.h >= 1.0);
+// B09: im eingegrabenen Bowl keine Fallhöhe nach außen, also kein Geländer von selbst (EN 3.14); der Schalter An bleibt
+const braucht = (t: Teil, m: Masse, park: Park, tief = 0) => (t.gel !== undefined ? t.gel : !park.flaeche.angeboescht && !tief && m.h >= 1.0);
 export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
+  const tief = tiefen(park, ctx);
   const strecken: { a: V; b: V; n: V; y: number }[] = [];
   const keile: Zusatz[] = [];
   for (const t of park.teile) {
     const m = ctx.masse[t.slug];
     const a = art(t.slug, ctx);
     // G01/G02: Plattformen über 1 m Fallhöhe, bei Rampen nur die hohe Rückseite; per Schalter erzwingen oder abschalten
-    if (braucht(t, m, park) && !istKurve(t.slug) && (a === 'plattform' || (a === 'rampe' && m.hoch && hochAchsig(m)))) {
+    if (braucht(t, m, park, tief.get(t.id)) && !istKurve(t.slug) && (a === 'plattform' || (a === 'rampe' && m.hoch && hochAchsig(m)))) {
       const kandidaten = a === 'plattform' ? seiten(t, m) : [seiteIn(t, m, hochWelt(t, m)!)];
       for (const s of kandidaten) {
         if (anliegend(s, t.id, park, ctx)) continue; // G06: wo etwas andockt, kein Geländer
         const h = mal(s.tangente, s.laenge / 2);
-        strecken.push({ a: minus(s.mitte, h), b: plus(s.mitte, h), n: s.normale, y: m.h });
+        strecken.push({ a: minus(s.mitte, h), b: plus(s.mitte, h), n: s.normale, y: m.h - (tief.get(t.id) ?? 0) });
       }
       // Seitlich der Plattform einer Rampe, nur so tief wie die Plattform, ab der hohen Rückkante
-      const tief = a === 'rampe' ? PLATEAU[t.slug] : 0;
-      if (tief) {
+      const plateau = a === 'rampe' ? PLATEAU[t.slug] : 0;
+      if (plateau) {
         const hw = hochWelt(t, m)!;
         for (const s of seiten(t, m)) {
           if (Math.abs(skalar(s.normale, hw)) > 0.5 || anliegend(s, t.id, park, ctx)) continue;
           const ecke = plus(s.mitte, mal(hw, s.laenge / 2));
-          strecken.push({ a: ecke, b: minus(ecke, mal(hw, tief)), n: s.normale, y: m.h });
+          strecken.push({ a: ecke, b: minus(ecke, mal(hw, plateau)), n: s.normale, y: m.h });
         }
       }
     }
@@ -445,7 +468,8 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
   // G01 an Kurven: Rundgeländer SGER-150 außen am Table Corner 150. Lage im Modell: Sehne unter -14,2°, Bogen nach -z
   const rund: Zusatz[] = [];
   for (const t of park.teile) {
-    if (!t.slug.startsWith('corner-table') || !braucht(t, ctx.masse[t.slug], park)) continue;
+    if (!t.slug.startsWith('corner-table') || !braucht(t, ctx.masse[t.slug], park, tief.get(t.id))) continue;
+    const y = ctx.masse[t.slug].h - (tief.get(t.id) ?? 0);
     const k = KURVE[t.slug];
     const halb = (k.von + k.bis) / 2;
     const aussen = drehe(polar(halb, 1), t.rot);
@@ -454,13 +478,13 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
     if (t.slug === 'corner-table-150' && ctx.masse['gelaender-sger-150']) {
       const rot = norm360(winkel(aussen) - 75.8);
       const p = minus(plus(mitteAussen, mal(aussen, -0.08)), drehe({ x: 0, z: -0.13 }, rot));
-      rund.push({ slug: 'gelaender-sger-150', x: r3(p.x), z: r3(p.z), rot, y: ctx.masse[t.slug].h });
+      rund.push({ slug: 'gelaender-sger-150', x: r3(p.x), z: r3(p.z), rot, y });
     } else if (ctx.masse['gelaender-125']) {
       // ponytail: für den Table Corner 98 gibt es im Katalog kein Rundgeländer; zwei gerade 125er entlang des Bogens, A+ prüft im Angebot
       for (const w of [k.von + (k.bis - k.von) / 4, k.von + (3 * (k.bis - k.von)) / 4]) {
         const r = drehe(polar(w, 1), t.rot);
         const p = plus(plus(t, drehe(plus(k.c, polar(w, k.R)), t.rot)), mal(r, -0.06));
-        rund.push({ slug: 'gelaender-125', x: r3(p.x), z: r3(p.z), rot: nachAussen('gelaender-125', r), y: ctx.masse[t.slug].h });
+        rund.push({ slug: 'gelaender-125', x: r3(p.x), z: r3(p.z), rot: nachAussen('gelaender-125', r), y });
       }
     }
   }
@@ -801,7 +825,7 @@ export const BAUSTEINE: Baustein[] = [
   { id: 'pipe-255', name: 'Pipe 255', text: '4 Quarterramps 255 mit Flats, 5 m breit', seite: 'K S. 16', bauen: pipe(255) },
   { id: 'bowl-98-klein', name: 'Bowl 98 klein', text: 'Runde Ecken aus Corners, außen ca. 9,0 × 7,7 m', seite: 'K S. 4, 41', bauen: (ctx) => bowl(98, 1, 0, ctx) },
   { id: 'bowl-98', name: 'Bowl 98', text: 'Runde Ecken aus Corners, außen ca. 11,5 × 9,0 m', seite: 'K S. 4, 41', bauen: (ctx) => bowl(98, 3, 1, ctx) },
-  { id: 'bowl-150', name: 'Bowl 150', text: 'Runde Ecken aus Corners, außen ca. 12,5 × 10,0 m, mit Geländer', seite: 'K S. 4, 41', bauen: (ctx) => bowl(150, 3, 1, ctx) },
+  { id: 'bowl-150', name: 'Bowl 150', text: 'Runde Ecken aus Corners, außen ca. 12,5 × 10,0 m', seite: 'K S. 4, 41', bauen: (ctx) => bowl(150, 3, 1, ctx) },
 ];
 
 // Einzelteile, die der Kunde nicht direkt wählt: Geländer und Anlaufkeile setzt die Automatik, SQR-255 nur in der Pipe (A09)
@@ -1195,7 +1219,7 @@ export const stueckliste = (park: Park, ctx: Ctx): Zeile[] => {
     });
   if (park.teile.length) zeilen.push({ slug: null, code: 'SHS', name: tt('Hinweisschild nach DIN EN 14974', 'Information sign to EN 14974', "Panneau d'information selon EN 14974"), menge: 1, kg: null, auto: true }); // P01
   if (park.teile.filter((t) => t.slug.startsWith('corner-') && !t.slug.startsWith('corner-table')).length >= 12) {
-    zeilen.push({ slug: null, code: tt('bauseits', 'by client', 'à charge client'), name: tt('Bowl: Bodenplatte 15 cm bewehrt, Innenfläche ausbetoniert, befahrbarer Gully', 'Bowl: reinforced base slab 15 cm, interior concreted, rideable drain', 'Bowl : dalle de fond armée de 15 cm, surface intérieure bétonnée, avaloir roulable'), menge: 1, kg: null, auto: true });
+    zeilen.push({ slug: null, code: tt('bauseits', 'by client', 'à charge client'), name: tt('Bowl: Aushub, Bodenplatte 15 cm bewehrt, Innenfläche ausbetoniert, Hinterfüllung, befahrbarer Gully mit Anschluss an die Entwässerung', 'Bowl: excavation, reinforced base slab 15 cm, interior concreted, backfill, rideable drain connected to the drainage system', "Bowl : excavation, dalle de fond armée de 15 cm, surface intérieure bétonnée, remblai, avaloir roulable raccordé au réseau d'évacuation"), menge: 1, kg: null, auto: true });
   }
   return zeilen;
 };
@@ -1248,7 +1272,7 @@ const TEXTE: Record<string, [string, string]> = {
   '4 Quarterramps 255 mit Flats, 5 m breit': ['4 quarter ramps 255 with flats, 5 m wide', '4 quarters 255 avec plats, 5 m de large'],
   'Runde Ecken aus Corners, außen ca. 9,0 × 7,7 m': ['Rounded corners made of corner elements, approx. 9.0 × 7.7 m outside', "Angles arrondis en éléments corner, env. 9,0 × 7,7 m à l'extérieur"],
   'Runde Ecken aus Corners, außen ca. 11,5 × 9,0 m': ['Rounded corners made of corner elements, approx. 11.5 × 9.0 m outside', "Angles arrondis en éléments corner, env. 11,5 × 9,0 m à l'extérieur"],
-  'Runde Ecken aus Corners, außen ca. 12,5 × 10,0 m, mit Geländer': ['Rounded corners made of corner elements, approx. 12.5 × 10.0 m outside, with railing', "Angles arrondis en éléments corner, env. 12,5 × 10,0 m à l'extérieur, avec garde-corps"],
+  'Runde Ecken aus Corners, außen ca. 12,5 × 10,0 m': ['Rounded corners made of corner elements, approx. 12.5 × 10.0 m outside', "Angles arrondis en éléments corner, env. 12,5 × 10,0 m à l'extérieur"],
   'Bowl 98 klein': ['Bowl 98 small', 'Bowl 98 petit'],
   'Klein · Starter': ['Small · Starter', 'Petit · Starter'],
   'Mittel · Plaza': ['Medium · Plaza', 'Moyen · Plaza'],

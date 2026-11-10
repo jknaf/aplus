@@ -991,8 +991,9 @@ export const hinzufuegen = (park: Park, neu: Teil[], ctx: Ctx): Park => {
   // Kein Platz mehr frei: Fläche wächst, statt etwas übereinander zu setzen
   let flaeche = park.flaeche;
   let d = freierPlatz(neu, park, ctx);
-  for (let i = 0; !d && i < 24; i++) {
-    flaeche = i % 2 ? { ...flaeche, b: flaeche.b + 2 * RASTER } : { ...flaeche, l: flaeche.l + 2 * RASTER };
+  // bis 200 m (Grenze wie im Link); vorher war nach 24 Schritten Schluss und ein Bowl landete über den vorhandenen Elementen
+  for (let i = 0; !d && (flaeche.l < 200 || flaeche.b < 200); i++) {
+    flaeche = i % 2 ? { ...flaeche, b: Math.min(200, flaeche.b + 2 * RASTER) } : { ...flaeche, l: Math.min(200, flaeche.l + 2 * RASTER) };
     d = freierPlatz(neu, { ...park, flaeche }, ctx);
   }
   park = { ...park, flaeche };

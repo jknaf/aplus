@@ -181,7 +181,9 @@ const Boden: React.FC<{ l: number; b: number; gruben: Bowl[]; onLeer: () => void
   const maske = useMemo(() => flaechen(gruben.flatMap((g) => g.maske)), [gruben]);
   const sohlen = useMemo(() => gruben.map((g) => ({ y: -g.tief, geo: flaechen(g.maske) })), [gruben]);
   useEffect(() => () => { maske.dispose(); sohlen.forEach((x) => x.geo.dispose()); }, [maske, sohlen]);
-  const leer = (e: ThreeEvent<PointerEvent>) => { if (e.button === 0) onLeer(); };
+  // Über einer Grube liegt der Boden oberhalb der Teile: dort zählt der Klick für die Teile darunter, nicht als Klick ins Leere
+  const leer = (e: ThreeEvent<PointerEvent>) => { if (e.button === 0 && !gruben.some((g) => g.drin({ x: e.point.x, z: e.point.z }))) onLeer(); };
+  const sohleLeer = (e: ThreeEvent<PointerEvent>) => { if (e.button === 0) onLeer(); };
   return (
     <group>
       {gruben.length > 0 && (
@@ -198,7 +200,7 @@ const Boden: React.FC<{ l: number; b: number; gruben: Bowl[]; onLeer: () => void
         <meshStandardMaterial color="#d6d3cc" roughness={0.95} />
       </mesh>
       {sohlen.map((s, i) => (
-        <mesh key={i} geometry={s.geo} position={[0, s.y + 0.001, 0]} receiveShadow>
+        <mesh key={i} geometry={s.geo} position={[0, s.y + 0.001, 0]} receiveShadow onPointerDown={sohleLeer}>
           <meshStandardMaterial color="#c9c5bd" roughness={0.95} />
         </mesh>
       ))}

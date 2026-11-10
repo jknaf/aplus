@@ -211,6 +211,10 @@ assert.equal(zurueck.flaeche.l, gross.flaeche.l);
   }
   // B11: so wenige Passstücke wie möglich, jedes höchstens 30 cm (2 Nasen Kegel 98 = 0,39 m → 2)
   assert.deepEqual([0, 0.196, 0.3, 0.392, 0.61].map(passstuecke), [0, 1, 1, 2, 3]);
+  // Bowl neben vorhandene Elemente: Fläche wächst, bis Platz ist; vorher landete er nach 24 Schritten über den Elementen
+  const jb = BAUSTEINE.find((x) => x.id === 'jumpbox-45')!.bauen(ctx)!;
+  const mitBox = hinzufuegen(hinzufuegen({ flaeche: { l: 15, b: 11.25, angeboescht: false }, teile: [] }, jb, ctx), bowlForm(98, 3, 1, [S(1), S(1, true), S(0), S(0)], 0, ctx)!, ctx);
+  assert.ok(!bowls(mitBox, ctx).some((b) => jb.some((x) => b.drin(mitBox.teile.find((y) => y.id === x.id)!))), 'Bowl über vorhandene Elemente gesetzt');
   // Löschen: ein Teil weg, der Rest bleibt eingegraben (vorher sprang der Bowl beim Löschen eines Corners hoch)
   const t = bowlForm(98, 3, 1, [S(1), S(0), S(0), S(0)], 0, ctx)!;
   const p: Park = { flaeche: { l: 40, b: 40, angeboescht: false }, teile: t };

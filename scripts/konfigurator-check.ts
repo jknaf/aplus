@@ -221,5 +221,12 @@ assert.equal(zurueck.flaeche.l, gross.flaeche.l);
   const ohneSeite = eingraben(p, { ...p, teile: p.teile.filter((y) => y.z < 3) }, ctx);
   assert.equal(tiefen(dekodieren(kodieren(ohneSeite), ctx)!, ctx).size, ohneSeite.teile.length, 'eingegraben geht im Link verloren');
   assert.ok(pruefen(ohneSeite, ctx).some((x) => x.id.startsWith('bowloffen')), 'offener Bowl-Ring ohne Hinweis');
+  // Coping Ramp samt Table gelöscht: Ring offen, die Bodenfläche bleibt unten (vorher lag sie auf Geländehöhe)
+  const flaeche = (q: Park) => { const b = bowls(q, ctx)[0]; let n = 0; for (let x = -15; x < 15; x += 0.1) for (let z = -15; z < 15; z += 0.1) if (b?.drin({ x, z })) n++; return n / 100; };
+  const rampe = t.filter((x) => x.slug === 'coping-ramp-98')[3];
+  const weg = new Set([rampe.id, t.find((x) => x.slug === 'table-98' && Math.hypot(x.x - rampe.x, x.z - rampe.z) < 1.6)!.id]);
+  const loch = eingraben(p, { ...p, teile: p.teile.filter((y) => !weg.has(y.id)) }, ctx);
+  assert.ok(bowls(loch, ctx)[0]?.offen, 'Lücke im Ring nicht als offen erkannt');
+  assert.ok(flaeche(loch) > 0.95 * flaeche(p), `Bodenfläche bei offenem Ring verloren: ${flaeche(loch)} statt ${flaeche(p)} m²`);
 }
 console.log('Konfigurator-Logik: alle Prüfungen bestanden.');

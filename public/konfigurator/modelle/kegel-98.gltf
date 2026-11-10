@@ -18,7 +18,7 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"SK0870_Kegel_98.001"
+			"name":"SK0895_Kegel_98.001"
 		}
 	],
 	"materials":[
@@ -29,7 +29,7 @@
 					"specularFactor":0.4000000059604645
 				}
 			},
-			"name":"Beton_web.070",
+			"name":"Beton_web.002",
 			"normalTexture":{
 				"index":0,
 				"texCoord":1
@@ -45,12 +45,7 @@
 		},
 		{
 			"doubleSided":true,
-			"extensions":{
-				"KHR_materials_specular":{
-					"specularFactor":0.699999988079071
-				}
-			},
-			"name":"Kantenwinkel_web.044",
+			"name":"Stahl_web",
 			"normalTexture":{
 				"index":2,
 				"texCoord":1
@@ -60,6 +55,26 @@
 					"index":3,
 					"texCoord":1
 				},
+				"roughnessFactor":0.15000000596046448
+			}
+		},
+		{
+			"doubleSided":true,
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularFactor":0.699999988079071
+				}
+			},
+			"name":"Kantenwinkel_web.001",
+			"normalTexture":{
+				"index":4,
+				"texCoord":1
+			},
+			"pbrMetallicRoughness":{
+				"baseColorTexture":{
+					"index":5,
+					"texCoord":1
+				},
 				"metallicFactor":0,
 				"roughnessFactor":0.699999988079071
 			}
@@ -67,7 +82,7 @@
 	],
 	"meshes":[
 		{
-			"name":"SK0870_Kegel_98.001",
+			"name":"SK0895_Kegel_98.001",
 			"primitives":[
 				{
 					"attributes":{
@@ -88,11 +103,29 @@
 					},
 					"indices":9,
 					"material":1
+				},
+				{
+					"attributes":{
+						"POSITION":10,
+						"NORMAL":11,
+						"TEXCOORD_0":12,
+						"TEXCOORD_1":13
+					},
+					"indices":14,
+					"material":2
 				}
 			]
 		}
 	],
 	"textures":[
+		{
+			"sampler":0,
+			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
+		},
 		{
 			"sampler":0,
 			"source":0
@@ -126,143 +159,213 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":3480,
+			"count":1458,
 			"max":[
-				1.1575000286102295,
-				0.9791070222854614,
-				1.1575006246566772
+				1.157500147819519,
+				0.9600000977516174,
+				1.158307671546936
 			],
 			"min":[
-				-1.1575006246566772,
-				-4.8607070368689165e-08,
-				-1.1575062274932861
+				-1.1582013368606567,
+				-4.860705971054813e-08,
+				-1.1581001281738281
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":3480,
+			"count":1458,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":3480,
+			"count":1458,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":3480,
+			"count":1458,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":3480,
+			"count":1458,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":297,
+			"count":2373,
 			"max":[
-				1.1596050262451172,
-				0.9641595482826233,
-				1.1578744649887085
+				1.1575000286102295,
+				0.9791070222854614,
+				1.1575000286102295
 			],
 			"min":[
-				-1.157874584197998,
-				-0.03235434740781784,
-				-1.1596050262451172
+				-1.1582013368606567,
+				-1.179724404209992e-05,
+				-1.1581001281738281
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":297,
+			"count":2373,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
 			"componentType":5126,
-			"count":297,
+			"count":2373,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":297,
+			"count":2373,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":9,
 			"componentType":5123,
-			"count":297,
+			"count":2373,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":10,
+			"componentType":5126,
+			"count":144,
+			"max":[
+				1.1596213579177856,
+				0.962121844291687,
+				1.1596213579177856
+			],
+			"min":[
+				-0.820189893245697,
+				0.02878521755337715,
+				-0.8209584951400757
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":11,
+			"componentType":5126,
+			"count":144,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":12,
+			"componentType":5126,
+			"count":144,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":13,
+			"componentType":5126,
+			"count":144,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":14,
+			"componentType":5123,
+			"count":144,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":41760,
+			"byteLength":17496,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":41760,
-			"byteOffset":41760,
+			"byteLength":17496,
+			"byteOffset":17496,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":27840,
-			"byteOffset":83520,
+			"byteLength":11664,
+			"byteOffset":34992,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":27840,
-			"byteOffset":111360,
+			"byteLength":11664,
+			"byteOffset":46656,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":6960,
-			"byteOffset":139200,
+			"byteLength":2916,
+			"byteOffset":58320,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":3564,
-			"byteOffset":146160,
+			"byteLength":28476,
+			"byteOffset":61236,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":3564,
-			"byteOffset":149724,
+			"byteLength":28476,
+			"byteOffset":89712,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2376,
-			"byteOffset":153288,
+			"byteLength":18984,
+			"byteOffset":118188,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":2376,
-			"byteOffset":155664,
+			"byteLength":18984,
+			"byteOffset":137172,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":594,
-			"byteOffset":158040,
+			"byteLength":4746,
+			"byteOffset":156156,
+			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":1728,
+			"byteOffset":160904,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1728,
+			"byteOffset":162632,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1152,
+			"byteOffset":164360,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":1152,
+			"byteOffset":165512,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":288,
+			"byteOffset":166664,
 			"target":34963
 		}
 	],
@@ -274,7 +377,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":158636,
+			"byteLength":166952,
 			"uri":"kegel-98.bin"
 		}
 	]

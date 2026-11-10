@@ -387,17 +387,19 @@ export const entgruppieren = (id: string, park: Park, ctx: Ctx): Teil | null => 
 };
 // B09: Bowls werden eingegraben, Oberkante Coping auf Geländehöhe. Bowl = Gruppe mit Kurvenstücken, deren Coping-Ring eine Fläche
 // umschließt (auch ein geschlossener Snake-Run). Gerechnet im 5-cm-Raster; eine Lücke bis etwa 30 cm gilt als Passstück in Ortbeton.
-export interface Bowl { teile: Teil[]; hoehe: Map<string, number>; tief: number; maske: V[][]; passstueck: boolean; offen?: boolean; drin: (p: V) => boolean }
+export interface Bowl { teile: Teil[]; hoehe: Map<string, number>; tief: number; maske: V[][]; passstueck: boolean; offen?: boolean; flaeche: number; drin: (p: V) => boolean }
 const ZELLE = 0.05;
 const RINGTEIL = /^(coping-ramp|corner|kegel)-/;
 const istRingKurve = (slug: string) => istKurve(slug) || slug.startsWith('kegel-');
-const bowlAus = (g: Teil[], ctx: Ctx): Bowl | null => {
+// r: Aufdicken in Zellen; 3 schließt Passstück-Lücken bis 30 cm, ein großes r schließt den Ring über eine gelöschte Stelle hinweg
+const bowlAus = (g: Teil[], ctx: Ctx, r = 3): Bowl | null => {
   const polys = g.map((t) => umriss(t, ctx));
   const b = box(polys.flat());
-  const x0 = b.x0 - 0.6;
-  const z0 = b.z0 - 0.6;
-  const nx = Math.ceil((b.x1 - x0 + 0.6) / ZELLE);
-  const nz = Math.ceil((b.z1 - z0 + 0.6) / ZELLE);
+  const rand = 0.6 + r * ZELLE;
+  const x0 = b.x0 - rand;
+  const z0 = b.z0 - rand;
+  const nx = Math.ceil((b.x1 - x0 + rand) / ZELLE);
+  const nz = Math.ceil((b.z1 - z0 + rand) / ZELLE);
   const mitte = (i: number, j: number): V => ({ x: x0 + (i + 0.5) * ZELLE, z: z0 + (j + 0.5) * ZELLE });
   // acht Nachbarn, damit das Zurückwachsen das quadratische Aufdicken genau umkehrt (auch an schrägen Corner-Kanten)
   const nachbar = (c: number, f: (d: number) => boolean) => {
@@ -439,27 +441,42 @@ const bowlAus = (g: Teil[], ctx: Ctx): Bowl | null => {
     };
     for (let i = 0; i < nx; i++) for (const c of [i, (nz - 1) * nx + i]) if (!marke[c] && !sperre[c]) flute(c, -1);
     for (let j = 0; j < nz; j++) for (const c of [j * nx, j * nx + nx - 1]) if (!marke[c] && !sperre[c]) flute(c, -1);
+    // Außen um r Zellen zurück an die Teile wachsen lassen; was dann nicht außen und kein Teil ist, gehört zur Innenfläche.
+    // So bleiben auch schmale Buchten innen erhalten, und an einer Lücke im Ring wächst außen nur r Zellen hinein.
+    const aussen = new Uint8Array(nx * nz);
+    for (let c = 0; c < nx * nz; c++) if (marke[c] === -1) aussen[c] = 1;
+    for (let k = 0; k < r; k++) {
+      const neu = aussen.slice();
+      for (let c = 0; c < nx * nz; c++) if (!aussen[c] && teilVon[c] < 0 && nachbar(c, (d) => aussen[d] === 1)) neu[c] = 1;
+      aussen.set(neu);
+    }
+    // größte zusammenhängende Innenfläche (4 Nachbarn, Teile trennen)
+    const nr = new Int32Array(nx * nz);
     let beste = 0;
     let groesse = 0;
-    for (let c = 0, nr = 1; c < nx * nz; c++) {
-      if (marke[c] || sperre[c] || teilVon[c] >= 0) continue;
-      const n = flute(c, ++nr);
-      if (n > groesse) { groesse = n; beste = nr; }
-    }
-    // aufgedickte Ränder zurück zur Innenfläche zählen, sonst bleibt zwischen Fläche und Teil ein Spalt
-    const drin = new Uint8Array(nx * nz);
-    if (groesse * ZELLE * ZELLE < 1) return null;
-    for (let c = 0; c < nx * nz; c++) if (marke[c] === beste) drin[c] = 1;
-    for (let k = 0; k < r; k++) {
-      const neu = drin.slice();
-      for (let c = 0; c < nx * nz; c++) {
-        if (!drin[c] && teilVon[c] < 0 && nachbar(c, (d) => drin[d] === 1)) neu[c] = 1;
+    for (let c0 = 0, z = 0; c0 < nx * nz; c0++) {
+      if (nr[c0] || aussen[c0] || teilVon[c0] >= 0) continue;
+      let n = 0;
+      const stapel = [c0];
+      nr[c0] = ++z;
+      while (stapel.length) {
+        const c = stapel.pop()!;
+        n++;
+        const i = c % nx;
+        for (const d of [i > 0 ? c - 1 : -1, i < nx - 1 ? c + 1 : -1, c - nx, c + nx]) {
+          if (d < 0 || d >= nx * nz || nr[d] || aussen[d] || teilVon[d] >= 0) continue;
+          nr[d] = z;
+          stapel.push(d);
+        }
       }
-      drin.set(neu);
+      if (n > groesse) { groesse = n; beste = z; }
     }
+    if (groesse * ZELLE * ZELLE < 1) return null;
+    const drin = new Uint8Array(nx * nz);
+    for (let c = 0; c < nx * nz; c++) if (nr[c] === beste) drin[c] = 1;
     return drin;
   };
-  const drin = innenFlaeche(3);
+  const drin = innenFlaeche(r);
   if (!drin) return null;
   // Ringteile, die an die Innenfläche grenzen; dazu die Tables, die an einem dieser Ringteile liegen. Außen angedockte Elemente bleiben oben.
   const amRand = new Set<number>();
@@ -492,6 +509,7 @@ const bowlAus = (g: Teil[], ctx: Ctx): Bowl | null => {
   return {
     teile, hoehe, maske,
     tief: Math.max(...hoehe.values()),
+    flaeche: drin.reduce((n, x) => n + x, 0) * ZELLE * ZELLE,
     passstueck: !innenFlaeche(1), // ohne Aufdicken nicht geschlossen: Lücke im Coping-Ring
     drin: (p) => { const c = zelle(p); return c >= 0 && (!!drin[c] || (teilVon[c] >= 0 && hoehe.has(g[teilVon[c]].id))); },
   };
@@ -513,12 +531,22 @@ const mitGemerkten = (b: Bowl | null, g: Teil[], ctx: Ctx): Bowl | null => {
   return b;
 };
 // Ring offen (z. B. ein Teil gelöscht): Teile, die schon im Bowl lagen (bw), bleiben eingegraben, solange eine Kurve davon in der Gruppe ist.
+// Die Innenfläche wird über die Lücke hinweg erkannt (bis etwa 3 m), sonst liegt der Boden auf Geländehöhe.
 const offenerBowl = (g: Teil[], ctx: Ctx): Bowl | null => {
   const teile = g.filter((t) => t.bw);
   if (!teile.some((t) => istRingKurve(t.slug))) return null;
+  // Ein zu kleines r lässt außen durch die Lücke hinein und findet nur einen Teil der Innenfläche: das r mit der größten Fläche gilt
+  let best: Bowl | null = null;
+  let flaeche = 0;
+  for (const r of [8, 14, 20, 30]) {
+    const b = bowlAus(g, ctx, r);
+    if (b && b.flaeche > flaeche) { best = b; flaeche = b.flaeche; }
+  }
+  const weit = mitGemerkten(best, g, ctx);
+  if (weit) return { ...weit, passstueck: false, offen: true };
   const hoehe = new Map(teile.map((t) => [t.id, ctx.masse[t.slug].h]));
   const maske = teile.map((t) => umriss(t, ctx));
-  return { teile, hoehe, maske, tief: Math.max(...hoehe.values()), passstueck: false, offen: true, drin: (p) => maske.some((u) => innen(p, u)) };
+  return { teile, hoehe, maske, tief: Math.max(...hoehe.values()), passstueck: false, offen: true, flaeche: 0, drin: (p) => maske.some((u) => innen(p, u)) };
 };
 // Merkt am Teil, dass es im alten Stand eingegraben war; so springt ein Bowl beim Löschen oder Umbauen nicht wieder hoch.
 export const eingraben = (alt: Park, neu: Park, ctx: Ctx): Park => {

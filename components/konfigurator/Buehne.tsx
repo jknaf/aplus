@@ -3,7 +3,7 @@ import { Canvas, useThree, type ThreeEvent } from '@react-three/fiber';
 import { Environment, Html, Line, OrbitControls, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
-import { umriss, type Ctx, type Park, type Teil, type V, type Zusatz } from './logik';
+import { bowls, umriss, type Bowl, type Ctx, type Park, type Teil, type V, type Zusatz } from './logik';
 
 THREE.Cache.enabled = true;
 
@@ -62,15 +62,15 @@ const Rahmen: React.FC<{ punkte: V[]; farbe: string }> = ({ punkte, farbe }) => 
 );
 
 const TeilObjekt = memo<{
-  t: Teil; ctx: Ctx; url: string; stufe?: 'rot' | 'gelb';
+  t: Teil; ctx: Ctx; url: string; stufe?: 'rot' | 'gelb'; tief: number;
   onDown: (e: ThreeEvent<PointerEvent>, t: Teil) => void;
   onMove: (e: ThreeEvent<PointerEvent>) => void;
   onUp: (e: ThreeEvent<PointerEvent>) => void;
-}>(({ t, ctx, url, stufe, onDown, onMove, onUp }) => {
+}>(({ t, ctx, url, stufe, tief, onDown, onMove, onUp }) => {
   const m = ctx.masse[t.slug];
   return (
     // Handler direkt am Element: bei Pointer-Capture liefert r3f Bewegungen nur an das gegriffene Objekt
-    <group position={[t.x, 0, t.z]} rotation={[0, rad(t.rot), 0]} onPointerDown={(e) => onDown(e, t)} onPointerMove={onMove} onPointerUp={onUp}>
+    <group position={[t.x, -tief, t.z]} rotation={[0, rad(t.rot), 0]} onPointerDown={(e) => onDown(e, t)} onPointerMove={onMove} onPointerUp={onUp}>
       <ModellFehler ersatz={<Platzhalter l={m.l} b={m.b} h={m.h} />}>
         <Suspense fallback={<Platzhalter l={m.l} b={m.b} h={m.h} />}>
           <Modell url={url} />
@@ -158,26 +158,46 @@ const Raster: React.FC<{ l: number; b: number }> = ({ l, b }) => {
   );
 };
 
-// Boden in Betonfarbe ohne Textur-Datei: die Modell-Exporte benennen Texturen um, der Boden darf daran nicht hängen
-const Boden: React.FC<{ l: number; b: number; onLeer: () => void }> = ({ l, b, onLeer }) => (
-  <group>
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.02, 0]} receiveShadow onPointerDown={(e) => { if (e.button === 0) onLeer(); }}>
-      <planeGeometry args={[400, 400]} />
-      <meshStandardMaterial color="#a3ad92" roughness={1} />
-    </mesh>
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.001, 0]} receiveShadow onPointerDown={(e) => { if (e.button === 0) onLeer(); }}>
-      <planeGeometry args={[l, b]} />
-      <meshStandardMaterial color="#d6d3cc" roughness={0.95} />
-    </mesh>
-    <Raster l={l} b={b} />
-  </group>
-);
+// Rechteck mit Aussparungen als Fläche; Shape liegt in (x, -z), weil die Fläche um -90° um x gedreht wird
+const flaecheMitLoch = (l: number, b: number, loecher: V[][]) => {
+  const s = new THREE.Shape([new THREE.Vector2(-l / 2, -b / 2), new THREE.Vector2(l / 2, -b / 2), new THREE.Vector2(l / 2, b / 2), new THREE.Vector2(-l / 2, b / 2)]);
+  s.holes = loecher.map((p) => new THREE.Path(p.map((q) => new THREE.Vector2(q.x, -q.z))));
+  return new THREE.ShapeGeometry(s);
+};
+
+// Boden in Betonfarbe ohne Textur-Datei: die Modell-Exporte benennen Texturen um, der Boden darf daran nicht hängen.
+// B09: eingegrabene Bowls bekommen eine Aussparung in ihrer Außenkontur und unten eine Sohle.
+const Boden: React.FC<{ l: number; b: number; gruben: Bowl[]; onLeer: () => void }> = ({ l, b, gruben, onLeer }) => {
+  const gras = useMemo(() => flaecheMitLoch(400, 400, gruben.map((g) => g.rand)), [gruben]);
+  const platz = useMemo(() => flaecheMitLoch(l, b, gruben.map((g) => g.rand)), [l, b, gruben]);
+  const sohlen = useMemo(() => gruben.map((g) => ({ y: -g.tief, geo: new THREE.ShapeGeometry(new THREE.Shape(g.rand.map((q) => new THREE.Vector2(q.x, -q.z)))) })), [gruben]);
+  useEffect(() => () => { gras.dispose(); platz.dispose(); sohlen.forEach((x) => x.geo.dispose()); }, [gras, platz, sohlen]);
+  const leer = (e: ThreeEvent<PointerEvent>) => { if (e.button === 0) onLeer(); };
+  return (
+    <group>
+      <mesh geometry={gras} rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.02, 0]} receiveShadow onPointerDown={leer}>
+        <meshStandardMaterial color="#a3ad92" roughness={1} />
+      </mesh>
+      <mesh geometry={platz} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.001, 0]} receiveShadow onPointerDown={leer}>
+        <meshStandardMaterial color="#d6d3cc" roughness={0.95} />
+      </mesh>
+      {sohlen.map((s, i) => (
+        <mesh key={i} geometry={s.geo} rotation={[-Math.PI / 2, 0, 0]} position={[0, s.y + 0.001, 0]} receiveShadow onPointerDown={leer}>
+          <meshStandardMaterial color="#c9c5bd" roughness={0.95} />
+        </mesh>
+      ))}
+      <Raster l={l} b={b} />
+    </group>
+  );
+};
 
 const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, mehr, markierung, ansicht, rundflug, modellPfad, onAuswahl, onZiehen, onAblegen, onBereit }) => {
   const steuerung = useRef<OrbitControlsImpl>(null);
   const ziehen = useRef<{ id: string; versatz: V; teil: Teil; bewegt: boolean; einzeln: boolean } | null>(null);
   const gewaehlt = park.teile.find((t) => t.id === auswahl);
   // höchstens 25 Hinweis-Punkte, rote zuerst: jedes HTML-Overlay kostet bei jedem Bild
+  const gruben = useMemo(() => bowls(park, ctx), [park, ctx]);
+  const tief = useMemo(() => new Map(gruben.flatMap((g) => g.teile.map((t) => [t.id, g.tief] as const))), [gruben]);
   const punkte = useMemo(() => new Set(Object.entries(markierung).sort((a, b) => (a[1] === 'rot' ? -1 : 1) - (b[1] === 'rot' ? -1 : 1)).slice(0, 25).map(([id]) => id)), [markierung]);
 
   const rueckruf = useRef({ onAuswahl, onZiehen, onAblegen });
@@ -243,9 +263,9 @@ const Buehne: React.FC<Props> = ({ ctx, park, zusatz, auswahl, mehr, markierung,
         shadow-camera-bottom={-40}
         shadow-bias={-0.0004}
       />
-      <Boden l={park.flaeche.l} b={park.flaeche.b} onLeer={() => onAuswahl(null)} />
+      <Boden l={park.flaeche.l} b={park.flaeche.b} gruben={gruben} onLeer={() => onAuswahl(null)} />
       {park.teile.map((t) => (
-        <TeilObjekt key={t.id} t={t} ctx={ctx} url={modellPfad(t.slug)} stufe={punkte.has(t.id) ? markierung[t.id] : undefined} onDown={runter} onMove={bewegen} onUp={loslassen} />
+        <TeilObjekt key={t.id} t={t} ctx={ctx} url={modellPfad(t.slug)} stufe={punkte.has(t.id) ? markierung[t.id] : undefined} tief={tief.get(t.id) ?? 0} onDown={runter} onMove={bewegen} onUp={loslassen} />
       ))}
       {zusatz.map((z, i) => (
         <group key={`${z.slug}-${i}`} position={[z.x, z.y ?? 0, z.z]} rotation={[0, rad(z.rot), 0]}>

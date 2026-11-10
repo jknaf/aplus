@@ -1147,6 +1147,7 @@ export const niere = (h: 98 | 150, ctx: Ctx): Teil[] | null => {
 };
 // Bowl nach Maß mit Nasen: Rechteck, je Seite 0–2 Nasen nach innen (I A A I) oder außen (A I I A), Nasenlänge in Rastern.
 // Gegenüberliegende Seiten werden gleich lang; was nicht aufs Raster passt, wird Passstück in Ortbeton.
+export const passstuecke = (rest: number) => (rest > 0.01 ? Math.ceil(rest / 0.3 - 1e-6) : 0);
 export interface NasenSeite { n: number; aussen: boolean }
 export const bowlForm = (h: 98 | 150, nl: number, nb: number, seiten: NasenSeite[], lang: number, ctx: Ctx): Teil[] | null => {
   const m = ctx.masse[`coping-ramp-${h}`];
@@ -1176,8 +1177,8 @@ export const bowlForm = (h: 98 | 150, nl: number, nb: number, seiten: NasenSeite
           seg.push(...(seite.aussen ? [['A'], ...gl, ['I'], ['I'], ...gl, ['A']] : [['I'], ...gl, ['A'], ['A'], ...gl, ['I']]) as Schritt[]);
         }
       }
-      // B11: Passstücke höchstens 30 cm, darum auf mehrere Stellen der Seite verteilt
-      const np = rest > 0.01 ? Math.ceil(rest / 0.25) : 0;
+      // B11: so wenige Passstücke wie möglich, jedes höchstens 30 cm
+      const np = passstuecke(rest);
       for (let i = np; i > 0; i--) seg.splice(Math.round((i * seg.length) / (np + 1)), 0, ['P', r3(rest / np)]);
       pfad.push(...seg);
       pfad.push(['I']);

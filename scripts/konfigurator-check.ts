@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import {
   BAUSTEINE, LEER, VORLAGEN, vorlageBauen, gruppen, pruefen, abgeleitet, einrasten, stueckliste, kodieren, dekodieren,
-  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, bowls, tiefen, niere, bowlForm, eingraben, kegelAnhaengen, gelaenderSetzen, gelaenderModus, type Ctx, type Park,
+  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, bowls, tiefen, niere, bowlForm, eingraben, passstuecke, kegelAnhaengen, gelaenderSetzen, gelaenderModus, type Ctx, type Park,
 } from '../components/konfigurator/logik.ts';
 
 const katalog = JSON.parse(readFileSync(new URL('../public/katalog/katalog.json', import.meta.url), 'utf8'));
@@ -209,6 +209,8 @@ assert.equal(zurueck.flaeche.l, gross.flaeche.l);
     assert.equal(tiefen(p, ctx).size, p.teile.length, `Bowl ${h} mit Nasen: nicht alles abgesenkt`);
     assert.deepEqual(pruefen(p, ctx).map((x) => x.text), [], `Bowl ${h} mit Nasen hat Hinweise`);
   }
+  // B11: so wenige Passstücke wie möglich, jedes höchstens 30 cm (2 Nasen Kegel 98 = 0,39 m → 2)
+  assert.deepEqual([0, 0.196, 0.3, 0.392, 0.61].map(passstuecke), [0, 1, 1, 2, 3]);
   // Löschen: ein Teil weg, der Rest bleibt eingegraben (vorher sprang der Bowl beim Löschen eines Corners hoch)
   const t = bowlForm(98, 3, 1, [S(1), S(0), S(0), S(0)], 0, ctx)!;
   const p: Park = { flaeche: { l: 40, b: 40, angeboescht: false }, teile: t };

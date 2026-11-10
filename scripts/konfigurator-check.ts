@@ -90,6 +90,16 @@ for (const [h, nl, nb] of [[98, 1, 0], [98, 3, 1], [150, 3, 1]] as const) {
   console.log(`Bowl ${h} ${nl}×${nb}: ${t.length} Teile, außen ${(Math.max(...xs) - Math.min(...xs)).toFixed(2)} × ${(Math.max(...zs) - Math.min(...zs)).toFixed(2)} m`);
 }
 
+// B09: außen an den Bowl angedockter Table 98 bleibt auf Geländehöhe
+{
+  const t = bowl(98, 3, 1, ctx)!;
+  const rand = t.filter((x) => x.slug === 'table-98').sort((a, c) => a.z - c.z)[0];
+  const aussen: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: [...t, { id: 'aussen', slug: 'table-98', x: rand.x, z: rand.z - 1.25, rot: 0 }] };
+  assert.equal(gruppen(aussen, ctx).length, 1, 'Table 98 dockt nicht an den Bowl an');
+  assert.equal(tiefen(aussen, ctx).get('aussen') ?? 0, 0, 'Angedockter Table 98 wird mit abgesenkt');
+  assert.equal(tiefen(aussen, ctx).size, t.length, 'Bowl-Teile nicht alle abgesenkt');
+}
+
 // Geländer-Schalter: Bowl 98 mit Geländer auf Geländehöhe, Bowl 150 an, aus, auto; bleibt im Teilen-Link erhalten
 {
   const b98: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: bowl(98, 3, 1, ctx)! };

@@ -375,9 +375,15 @@ const huelle = (p: V[]): V[] => {
   const oben = halb([...q].reverse());
   return [...unten.slice(0, -1), ...oben.slice(0, -1)];
 };
+// Abgesenkt werden nur die Bowl-Teile: Kurvenstücke und die Coping Ramps und Tables innerhalb ihrer Hülle. Außen angedockte Elemente bleiben auf Geländehöhe.
+const BOWL_TEIL = /^(coping-ramp|table)-/;
 export const bowls = (park: Park, ctx: Ctx): Bowl[] => gruppen(park, ctx)
   .filter((g) => g.filter((t) => istCorner(t.slug)).length >= 12)
-  .map((g) => ({ teile: g, tief: Math.max(...g.filter((t) => istCorner(t.slug)).map((t) => ctx.masse[t.slug].h)), rand: huelle(g.flatMap((t) => umriss(t, ctx))) }));
+  .map((g) => {
+    const kern = huelle(g.filter((t) => istKurve(t.slug)).flatMap((t) => umriss(t, ctx)));
+    const teile = g.filter((t) => istKurve(t.slug) || (BOWL_TEIL.test(t.slug) && innen(t, kern)));
+    return { teile, tief: Math.max(...g.filter((t) => istCorner(t.slug)).map((t) => ctx.masse[t.slug].h)), rand: huelle(teile.flatMap((t) => umriss(t, ctx))) };
+  });
 export const tiefen = (park: Park, ctx: Ctx) => new Map(bowls(park, ctx).flatMap((b) => b.teile.map((t) => [t.id, b.tief] as const)));
 
 // ---------- Automatik: Geländer, Anlaufkeile, Pflichtteile (Abschnitte 3, 4, 7) ----------

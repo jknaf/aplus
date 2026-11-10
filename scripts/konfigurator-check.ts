@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import {
   BAUSTEINE, LEER, VORLAGEN, vorlageBauen, gruppen, pruefen, abgeleitet, einrasten, stueckliste, kodieren, dekodieren,
-  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, bowls, tiefen, niere, kegelAnhaengen, gelaenderSetzen, gelaenderModus, type Ctx, type Park,
+  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, bowls, tiefen, niere, bowlForm, eingraben, kegelAnhaengen, gelaenderSetzen, gelaenderModus, type Ctx, type Park,
 } from '../components/konfigurator/logik.ts';
 
 const katalog = JSON.parse(readFileSync(new URL('../public/katalog/katalog.json', import.meta.url), 'utf8'));
@@ -198,4 +198,26 @@ assert.ok(sl.some((z) => z.slug?.startsWith('gelaender')));
 const zurueck = dekodieren(kodieren(gross), ctx)!;
 assert.equal(zurueck.teile.length, gross.teile.length);
 assert.equal(zurueck.flaeche.l, gross.flaeche.l);
+// Bowl nach Maß mit Nasen je Seite (innen, außen, verlängert): geschlossener Ring, alles eingegraben, kein Hinweis, Passstücke je höchstens 30 cm
+{
+  const S = (n: number, aussen = false) => ({ n, aussen });
+  for (const h of [98, 150] as const) for (const [s, lang] of [[[S(2), S(1, true), S(1), S(0)], 0], [[S(1), S(0), S(0), S(0)], 2], [[S(1, true), S(0), S(1), S(0)], 0], [[S(1), S(1), S(1), S(1)], 0]] as const) {
+    const t = bowlForm(h, 3, 1, [...s], lang, ctx);
+    assert.ok(t, `Bowl ${h} mit Nasen baut nicht`);
+    const p = hinzufuegen(LEER, t, ctx);
+    assert.equal(bowls(p, ctx).length, 1, `Bowl ${h} mit Nasen nicht als Bowl erkannt`);
+    assert.equal(tiefen(p, ctx).size, p.teile.length, `Bowl ${h} mit Nasen: nicht alles abgesenkt`);
+    assert.deepEqual(pruefen(p, ctx).map((x) => x.text), [], `Bowl ${h} mit Nasen hat Hinweise`);
+  }
+  // Löschen: ein Teil weg, der Rest bleibt eingegraben (vorher sprang der Bowl beim Löschen eines Corners hoch)
+  const t = bowlForm(98, 3, 1, [S(1), S(0), S(0), S(0)], 0, ctx)!;
+  const p: Park = { flaeche: { l: 40, b: 40, angeboescht: false }, teile: t };
+  for (const x of t) {
+    const neu = eingraben(p, { ...p, teile: p.teile.filter((y) => y.id !== x.id) }, ctx);
+    assert.equal(tiefen(neu, ctx).size, neu.teile.length, `Bowl springt hoch, wenn ${x.slug} gelöscht wird`);
+  }
+  const ohneSeite = eingraben(p, { ...p, teile: p.teile.filter((y) => y.z < 3) }, ctx);
+  assert.equal(tiefen(dekodieren(kodieren(ohneSeite), ctx)!, ctx).size, ohneSeite.teile.length, 'eingegraben geht im Link verloren');
+  assert.ok(pruefen(ohneSeite, ctx).some((x) => x.id.startsWith('bowloffen')), 'offener Bowl-Ring ohne Hinweis');
+}
 console.log('Konfigurator-Logik: alle Prüfungen bestanden.');

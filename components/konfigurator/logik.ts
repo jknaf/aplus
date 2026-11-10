@@ -9,7 +9,7 @@ export interface Masse { l: number; b: number; h: number; hoch: V | null; niedri
 export interface Info { name: string; code: string; gruppe: string; kg?: number; masse?: string }
 export interface Ctx { masse: Record<string, Masse>; info: Record<string, Info> }
 // gel: Geländer erzwingen (true) oder abschalten (false); ohne Angabe gilt die Automatik (G01/G02)
-export interface Teil { id: string; slug: string; x: number; z: number; rot: number; gel?: boolean }
+export interface Teil { id: string; slug: string; x: number; z: number; rot: number; gel?: boolean; bw?: true }
 export interface Flaeche { l: number; b: number; angeboescht: boolean }
 export interface Park { flaeche: Flaeche; teile: Teil[] }
 export type Art = 'plattform' | 'rampe' | 'street' | 'wand' | 'auto';
@@ -353,9 +353,11 @@ export const gruppen = (park: Park, ctx: Ctx): Teil[][] => {
     const ba = teilBox(a, ctx);
     for (let j = i + 1; j < park.teile.length; j++) {
       const b = park.teile[j];
-      if (!nah(ba, teilBox(b, ctx), BERUEHRT)) continue;
+      // B11: Ringteile mit Passstück-Lücke (bis 30 cm Ortbeton) gehören zusammen
+      const luecke = RINGTEIL.test(a.slug) && RINGTEIL.test(b.slug) ? 0.3 : BERUEHRT;
+      if (!nah(ba, teilBox(b, ctx), luecke)) continue;
       if (finde(a.id) === finde(b.id)) continue;
-      if (abstand(umriss(a, ctx), umriss(b, ctx)) < BERUEHRT) eltern.set(finde(a.id), finde(b.id));
+      if (abstand(umriss(a, ctx), umriss(b, ctx)) < luecke) eltern.set(finde(a.id), finde(b.id));
     }
   }
   const m = new Map<string, Teil[]>();
@@ -385,7 +387,7 @@ export const entgruppieren = (id: string, park: Park, ctx: Ctx): Teil | null => 
 };
 // B09: Bowls werden eingegraben, Oberkante Coping auf Geländehöhe. Bowl = Gruppe mit Kurvenstücken, deren Coping-Ring eine Fläche
 // umschließt (auch ein geschlossener Snake-Run). Gerechnet im 5-cm-Raster; eine Lücke bis etwa 30 cm gilt als Passstück in Ortbeton.
-export interface Bowl { teile: Teil[]; hoehe: Map<string, number>; tief: number; maske: V[][]; passstueck: boolean; drin: (p: V) => boolean }
+export interface Bowl { teile: Teil[]; hoehe: Map<string, number>; tief: number; maske: V[][]; passstueck: boolean; offen?: boolean; drin: (p: V) => boolean }
 const ZELLE = 0.05;
 const RINGTEIL = /^(coping-ramp|corner|kegel)-/;
 const istRingKurve = (slug: string) => istKurve(slug) || slug.startsWith('kegel-');
@@ -498,10 +500,30 @@ const bowlCache = new WeakMap<Teil[], Bowl[]>();
 export const bowls = (park: Park, ctx: Ctx): Bowl[] => {
   let b = bowlCache.get(park.teile);
   if (!b) {
-    b = gruppen(park, ctx).filter((g) => g.some((t) => istRingKurve(t.slug))).map((g) => bowlAus(g, ctx)).filter((x): x is Bowl => !!x);
+    b = gruppen(park, ctx).filter((g) => g.some((t) => istRingKurve(t.slug))).map((g) => mitGemerkten(bowlAus(g, ctx), g, ctx) ?? offenerBowl(g, ctx)).filter((x): x is Bowl => !!x);
     bowlCache.set(park.teile, b);
   }
   return b;
+};
+// Teile, die schon eingegraben waren (bw), bleiben es, auch wenn die Erkennung sie nach einer Änderung nicht mehr dem Ring zuordnet
+const mitGemerkten = (b: Bowl | null, g: Teil[], ctx: Ctx): Bowl | null => {
+  const dazu = b ? g.filter((t) => t.bw && !b.hoehe.has(t.id)) : [];
+  if (!b || !dazu.length) return b;
+  for (const t of dazu) { b.hoehe.set(t.id, ctx.masse[t.slug].h); b.teile.push(t); b.maske.push(umriss(t, ctx)); }
+  return b;
+};
+// Ring offen (z. B. ein Teil gelöscht): Teile, die schon im Bowl lagen (bw), bleiben eingegraben, solange eine Kurve davon in der Gruppe ist.
+const offenerBowl = (g: Teil[], ctx: Ctx): Bowl | null => {
+  const teile = g.filter((t) => t.bw);
+  if (!teile.some((t) => istRingKurve(t.slug))) return null;
+  const hoehe = new Map(teile.map((t) => [t.id, ctx.masse[t.slug].h]));
+  const maske = teile.map((t) => umriss(t, ctx));
+  return { teile, hoehe, maske, tief: Math.max(...hoehe.values()), passstueck: false, offen: true, drin: (p) => maske.some((u) => innen(p, u)) };
+};
+// Merkt am Teil, dass es im alten Stand eingegraben war; so springt ein Bowl beim Löschen oder Umbauen nicht wieder hoch.
+export const eingraben = (alt: Park, neu: Park, ctx: Ctx): Park => {
+  const tief = tiefen(alt, ctx);
+  return neu.teile.some((t) => !t.bw && tief.has(t.id)) ? { ...neu, teile: neu.teile.map((t) => (!t.bw && tief.has(t.id) ? { ...t, bw: true } : t)) } : neu;
 };
 export const tiefen = (park: Park, ctx: Ctx) => new Map(bowls(park, ctx).flatMap((b) => [...b.hoehe]));
 
@@ -746,6 +768,9 @@ export const pruefen = (park: Park, ctx: Ctx): Hinweis[] => {
     if (rand >= -0.02 && rand < SICHER - 0.05) {
       out.push({ id: `rand-${gs[i][0].id}`, stufe: 'gelb', teile: gs[i].map((t) => t.id), text: tt('Zu nah am Flächenrand, 2 m Sicherheitsbereich nötig.', 'Too close to the edge of the area; a 2 m safety zone is required.', 'Trop près du bord de la surface ; une zone de sécurité de 2 m est nécessaire.'), fix: 'verschieben' });
     }
+  }
+  for (const b of bowls(park, ctx)) {
+    if (b.offen) out.push({ id: `bowloffen-${b.teile[0].id}`, stufe: 'gelb', teile: b.teile.map((t) => t.id), text: tt('Bowl-Ring ist offen: Lücke mit Coping Ramp oder Corner schließen.', 'The bowl ring is open: close the gap with a coping ramp or corner.', "L'anneau du bowl est ouvert : fermez l'espace avec une coping ramp ou un corner.") });
   }
   const gesehen = new Set<string>();
   return out.filter((h) => !gesehen.has(h.id) && gesehen.add(h.id));
@@ -1120,6 +1145,50 @@ export const niere = (h: 98 | 150, ctx: Ctx): Teil[] | null => {
   const pfad: Schritt[] = [['G', 1], ['I'], ['A'], ['A'], ['I'], ['G', 1], ['I'], ['G', 3], ['I'], ['G', 2 + n], ...(rest > 0.01 ? [['P', rest] as Schritt] : []), ['I'], ['G', 3], ['I']];
   return ring(h, pfad, ctx);
 };
+// Bowl nach Maß mit Nasen: Rechteck, je Seite 0–2 Nasen nach innen (I A A I) oder außen (A I I A), Nasenlänge in Rastern.
+// Gegenüberliegende Seiten werden gleich lang; was nicht aufs Raster passt, wird Passstück in Ortbeton.
+export interface NasenSeite { n: number; aussen: boolean }
+export const bowlForm = (h: 98 | 150, nl: number, nb: number, seiten: NasenSeite[], lang: number, ctx: Ctx): Teil[] | null => {
+  const m = ctx.masse[`coping-ramp-${h}`];
+  const mk = ctx.masse[`kegel-${h}`];
+  if (!m?.hoch) return null;
+  if (!seiten.some((x) => x.n > 0)) return bowl(h, nl, nb, ctx);
+  if (!mk) return null;
+  const tiefe = Math.abs(m.hoch.x) > 0.5 ? m.l : m.b;
+  const nase = 2 * KURVE[KURVEN_HOEHEN[`coping-ramp-${h}`].corner].R + 2 * (mk.l - tiefe);
+  const noetig = (k: number) => (k ? k * nase + (k + 1) * RASTER : 0);
+  // Reihenfolge des Rings: unten, rechts, oben, links (seiten: oben, rechts, unten, links)
+  const [oben, rechts, unten, links] = seiten;
+  const ringteil = (t: Teil) => RINGTEIL.test(t.slug) && !t.slug.startsWith('corner-table');
+  for (let mehr = 0; mehr < 8; mehr++) {
+    const sl = Math.max(nl * RASTER, noetig(oben.n), noetig(unten.n)) + Math.floor(mehr / 2) * RASTER;
+    const sb = Math.max(nb * RASTER, noetig(rechts.n), noetig(links.n)) + Math.ceil(mehr / 2) * RASTER;
+    const pfad: Schritt[] = [];
+    for (const [seite, laenge] of [[unten, sl], [rechts, sb], [oben, sl], [links, sb]] as [NasenSeite, number][]) {
+      const g = Math.floor((laenge - seite.n * nase) / RASTER + 0.05);
+      const rest = r3(laenge - seite.n * nase - g * RASTER);
+      const stuecke = seite.n + 1;
+      const seg: Schritt[] = [];
+      for (let i = 0; i < stuecke; i++) {
+        for (let j = Math.floor(g / stuecke) + (i < g % stuecke ? 1 : 0); j > 0; j--) seg.push(['G', 1]);
+        if (i < seite.n) {
+          const gl: Schritt[] = lang ? [['G', lang]] : [];
+          seg.push(...(seite.aussen ? [['A'], ...gl, ['I'], ['I'], ...gl, ['A']] : [['I'], ...gl, ['A'], ['A'], ...gl, ['I']]) as Schritt[]);
+        }
+      }
+      // B11: Passstücke höchstens 30 cm, darum auf mehrere Stellen der Seite verteilt
+      const np = rest > 0.01 ? Math.ceil(rest / 0.25) : 0;
+      for (let i = np; i > 0; i--) seg.splice(Math.round((i * seg.length) / (np + 1)), 0, ['P', r3(rest / np)]);
+      pfad.push(...seg);
+      pfad.push(['I']);
+    }
+    const t = ring(h, pfad, ctx);
+    if (!t) return null;
+    const r = t.filter(ringteil).map((x) => umriss(x, ctx));
+    if (r.every((a, i) => r.every((b, j) => j <= i || !ueberlappt(a, b, 0.05)))) return t;
+  }
+  return null;
+};
 // Außenkurve 90° an eine Coping Ramp: 1 Kegel, danach eine gerade Coping Ramp (mit Table, wenn die Reihe Tables hat)
 export const kegelAnhaengen = (id: string, r: Richtung, park: Park, ctx: Ctx): Park | null => {
   const t = park.teile.find((x) => x.id === id);
@@ -1432,15 +1501,15 @@ const unb64 = (s: string) => atob(s.replace(/-/g, '+').replace(/_/g, '/'));
 
 export const kodieren = (park: Park) => b64(JSON.stringify({
   f: [park.flaeche.l, park.flaeche.b, park.flaeche.angeboescht ? 1 : 0],
-  t: park.teile.map((t) => [t.slug, Math.round(t.x * 100), Math.round(t.z * 100), Math.round(t.rot * 10), ...(t.gel === undefined ? [] : [t.gel ? 1 : 0])]),
+  t: park.teile.map((t) => [t.slug, Math.round(t.x * 100), Math.round(t.z * 100), Math.round(t.rot * 10), ...(t.bw ? [t.gel === undefined ? -1 : t.gel ? 1 : 0, 1] : t.gel === undefined ? [] : [t.gel ? 1 : 0])]),
 }));
 export const dekodieren = (s: string, ctx: Ctx): Park | null => {
   try {
     const d = JSON.parse(unb64(s));
     const [l, b, a] = d.f;
-    const teile: Teil[] = (d.t as [string, number, number, number, number?][])
+    const teile: Teil[] = (d.t as [string, number, number, number, number?, number?][])
       .filter(([slug]) => ctx.masse[slug])
-      .map(([slug, x, z, r, g]) => ({ id: neueId(), slug, x: x / 100, z: z / 100, rot: r / 10, ...(g === undefined ? {} : { gel: g === 1 }) }));
+      .map(([slug, x, z, r, g, bw]) => ({ id: neueId(), slug, x: x / 100, z: z / 100, rot: r / 10, ...(g === undefined || g < 0 ? {} : { gel: g === 1 }), ...(bw === 1 ? { bw: true as const } : {}) }));
     if (!(l > 0 && b > 0)) return null;
     return { flaeche: { l: Math.min(l, 200), b: Math.min(b, 200), angeboescht: !!a }, teile };
   } catch {

@@ -370,6 +370,12 @@ export interface Zusatz { slug: string; x: number; z: number; rot: number; y?: n
 export interface Abgeleitet { gelaender: Zusatz[]; keile: Zusatz[] }
 
 const GELAENDER: [number, string][] = [[5, 'gelaender-500'], [3.75, 'gelaender-375'], [2.5, 'gelaender-250'], [1.25, 'gelaender-125']];
+// Seite der Pfosten mit Fußplatte im Modell (gemessen; das 250er ist gegenüber 375/500 gespiegelt).
+// Pfosten nach außen, die Stabfüllung zur Fahrfläche (Joachim, 10.11.2026).
+const PFOSTEN: Record<string, V> = { 'gelaender-125': { x: 0, z: -1 }, 'gelaender-250': { x: -1, z: 0 }, 'gelaender-375': { x: 1, z: 0 }, 'gelaender-500': { x: 1, z: 0 } };
+const nachAussen = (slug: string, aussen: V) => norm360(winkel(aussen) - winkel(PFOSTEN[slug]));
+// Tiefe der ebenen Plattform hinter dem Coping, ab Rückkante aus den Modellen gemessen. Ihre Seiten brauchen Geländer.
+const PLATEAU: Record<string, number> = { 'quarterramp-165': 1.33, 'quarterramp-165-p': 1.33, 'quarterramp-200': 1.33, 'quarterramp-255': 1.32, 'bigbank-165': 1.14, 'bigbank-200': 1.31 };
 
 const braucht = (t: Teil, m: Masse, park: Park) => (t.gel !== undefined ? t.gel : !park.flaeche.angeboescht && m.h >= 1.0);
 export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
@@ -385,6 +391,16 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
         if (anliegend(s, t.id, park, ctx)) continue; // G06: wo etwas andockt, kein Geländer
         const h = mal(s.tangente, s.laenge / 2);
         strecken.push({ a: minus(s.mitte, h), b: plus(s.mitte, h), n: s.normale, y: m.h });
+      }
+      // Seitlich der Plattform einer Rampe, nur so tief wie die Plattform, ab der hohen Rückkante
+      const tief = a === 'rampe' ? PLATEAU[t.slug] : 0;
+      if (tief) {
+        const hw = hochWelt(t, m)!;
+        for (const s of seiten(t, m)) {
+          if (Math.abs(skalar(s.normale, hw)) > 0.5 || anliegend(s, t.id, park, ctx)) continue;
+          const ecke = plus(s.mitte, mal(hw, s.laenge / 2));
+          strecken.push({ a: ecke, b: minus(ecke, mal(hw, tief)), n: s.normale, y: m.h });
+        }
       }
     }
     // A07: Anlaufkeil vor freistehender Quarterramp 165/200
@@ -424,8 +440,7 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
       for (const w of [k.von + (k.bis - k.von) / 4, k.von + (3 * (k.bis - k.von)) / 4]) {
         const r = drehe(polar(w, 1), t.rot);
         const p = plus(plus(t, drehe(plus(k.c, polar(w, k.R)), t.rot)), mal(r, -0.06));
-        const mg = ctx.masse['gelaender-125'];
-        rund.push({ slug: 'gelaender-125', x: r3(p.x), z: r3(p.z), rot: norm360(winkel({ x: -r.z, z: r.x }) - (mg.l >= mg.b ? 0 : 90)), y: ctx.masse[t.slug].h });
+        rund.push({ slug: 'gelaender-125', x: r3(p.x), z: r3(p.z), rot: nachAussen('gelaender-125', r), y: ctx.masse[t.slug].h });
       }
     }
   }
@@ -458,7 +473,7 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
       const mg = ctx.masse[slug];
       if (mg) {
         const mitte = plus(plus(l.a, mal(t, pos + Math.min(len, frei) / 2)), mal(l.n, -0.06)); // Reststück nicht über die Kante hinaus
-        const rot = norm360(winkel(t) - (mg.l >= mg.b ? 0 : 90));
+        const rot = nachAussen(slug, l.n);
         gelaender.push({ slug, x: r3(mitte.x), z: r3(mitte.z), rot, y: l.y });
       }
       pos += len;

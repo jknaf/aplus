@@ -309,16 +309,17 @@ export const planBlatt = ({ park, ctx, zusatz, netze: nz, kopf }: PlanDaten) => 
       }
     }
     // Bowl im Schnitt: Spanne [ba, bb] der Außenkontur auf der Schnittlinie, dort liegt die Sohle tiefer
-    const grube = gruben.map((g) => {
-      const us: number[] = [];
-      g.rand.forEach((p, i) => {
-        const q = g.rand[(i + 1) % g.rand.length];
-        const [pw, qw] = entlangX ? [p.z, q.z] : [p.x, q.x];
-        const [pu, qu] = entlangX ? [p.x, q.x] : [p.z, q.z];
-        if ((pw - w) * (qw - w) <= 0 && pw !== qw) us.push(pu + ((w - pw) / (qw - pw)) * (qu - pu));
-      });
-      return us.length ? { ba: Math.min(...us), bb: Math.max(...us), tief: g.tief } : null;
-    }).filter((x): x is { ba: number; bb: number; tief: number } => !!x && x.bb > u0 && x.ba < u1).sort((a, c) => a.ba - c.ba);
+    // Bowl im Schnitt: Strecken der Schnittlinie, die im Bowl (Ringteile und Innenfläche) liegen; dort liegt die Sohle tiefer
+    const grube: { ba: number; bb: number; tief: number }[] = [];
+    for (const g of gruben) {
+      let start: number | null = null;
+      for (let u = u0; u <= u1 + 0.025; u += 0.05) {
+        const drin = u <= u1 && g.drin(entlangX ? { x: u, z: w } : { x: w, z: u });
+        if (drin && start === null) start = u;
+        if (!drin && start !== null) { if (u - start > 0.3) grube.push({ ba: start, bb: u, tief: g.tief }); start = null; }
+      }
+    }
+    grube.sort((a, c) => a.ba - c.ba);
     const ys = schnitte.flatMap((st) => [st[1], st[3]]);
     const ymax = Math.max(hoechste.h - (tief.get(hoechste.g[0].id) ?? 0), 0, ...ys);
     const ymin = Math.min(0, ...grube.map((g) => -g.tief), ...ys);

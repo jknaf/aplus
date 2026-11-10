@@ -11,7 +11,7 @@ import { konfiguratorFrei, useKonfiguratorFrei } from '../components/katalog/use
 import CodeDialog, { useKonfiguratorCode } from '../components/katalog/CodeDialog';
 import { gruppenName, teilName } from '../localized';
 import {
-  BAUSTEINE, LEER, RASTER, gruppen, gruppeVerschieben, anbauMoeglich, bowl, drehenGruppe, geradeAnhaengen, kurveAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
+  BAUSTEINE, LEER, RASTER, gruppen, gruppeVerschieben, anbauMoeglich, bowl, drehenGruppe, geradeAnhaengen, kurveAnhaengen, kegelAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
   hinzufuegen, kodieren, kollidiert, neueId, pruefen, stueckliste, vorlageBauen, vorschlag as vorschlagFuer, waehlbar,
   type Ctx, type Hinweis, type Park, type Teil, type Vorschlag, ueberText,
 } from '../components/konfigurator/logik';
@@ -340,10 +340,10 @@ const KonfiguratorPage: React.FC = () => {
     if (z.teile.length === 1) zeigeVorschlag(t.id, neu);
   }, [ctx, park, aendern, melden, zeigeVorschlag]);
 
-  const anbau = useMemo(() => (ctx && park && auswahl ? anbauMoeglich(auswahl, park, ctx) : { kurve: [], gerade: [] }), [ctx, park, auswahl]);
-  const anbauen = (art: 'kurve' | 'gerade', r: Richtung) => {
+  const anbau = useMemo(() => (ctx && park && auswahl ? anbauMoeglich(auswahl, park, ctx) : { kurve: [], aussen: [], gerade: [] }), [ctx, park, auswahl]);
+  const anbauen = (art: 'kurve' | 'aussen' | 'gerade', r: Richtung) => {
     if (!ctx || !park || !auswahl) return;
-    const neu = art === 'kurve' ? kurveAnhaengen(auswahl, r, park, ctx) : geradeAnhaengen(auswahl, r, park, ctx);
+    const neu = art === 'kurve' ? kurveAnhaengen(auswahl, r, park, ctx) : art === 'aussen' ? kegelAnhaengen(auswahl, r, park, ctx) : geradeAnhaengen(auswahl, r, park, ctx);
     if (!neu) { melden(tt('Dafür ist hier kein Platz.', 'There is no room for that here.', "Il n'y a pas de place pour cela ici.")); return; }
     aendern(neu);
     // Das zuletzt angebaute Stück auswählen, damit man direkt weiterbauen kann
@@ -695,10 +695,12 @@ const KonfiguratorPage: React.FC = () => {
                 </div>
                 {(anbau.gerade.length > 0 || anbau.kurve.length > 0) && (
                   <div className="mt-2 flex flex-wrap gap-1.5">
+                    {anbau.aussen.includes('links') && <Knopf icon="turn_slight_left" onClick={() => anbauen('aussen', 'links')} title={t("Außenkurve aus 1 Kegel", "Outer curve made of 1 cone", "Courbe extérieure en 1 cône")}>{t("Außenkurve links", "Outer curve left", "Courbe ext. à gauche")}</Knopf>}
                     {anbau.kurve.includes('links') && <Knopf icon="turn_left" onClick={() => anbauen('kurve', 'links')}>{t("Kurve links", "Curve left", "Courbe à gauche")}</Knopf>}
                     {anbau.gerade.includes('links') && <Knopf icon="west" onClick={() => anbauen('gerade', 'links')}>{t("Gerade", "Straight", "Droit")}</Knopf>}
                     {anbau.gerade.includes('rechts') && <Knopf icon="east" onClick={() => anbauen('gerade', 'rechts')}>{t("Gerade", "Straight", "Droit")}</Knopf>}
                     {anbau.kurve.includes('rechts') && <Knopf icon="turn_right" onClick={() => anbauen('kurve', 'rechts')}>{t("Kurve rechts", "Curve right", "Courbe à droite")}</Knopf>}
+                    {anbau.aussen.includes('rechts') && <Knopf icon="turn_slight_right" onClick={() => anbauen('aussen', 'rechts')} title={t("Außenkurve aus 1 Kegel", "Outer curve made of 1 cone", "Courbe extérieure en 1 cône")}>{t("Außenkurve rechts", "Outer curve right", "Courbe ext. à droite")}</Knopf>}
                   </div>
                 )}
                 {gelModus && (

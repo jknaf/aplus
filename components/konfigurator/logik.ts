@@ -364,27 +364,127 @@ export const gruppen = (park: Park, ctx: Ctx): Teil[][] => {
   gruppenCache.set(park.teile, out);
   return out;
 };
-// B09: Bowls werden eingegraben, Oberkante Coping auf Geländehöhe. Bowl = Gruppe mit mindestens 12 Corners (wie die bauseits-Zeile)
-export interface Bowl { teile: Teil[]; tief: number; rand: V[] }
-const istCorner = (slug: string) => slug.startsWith('corner-') && !slug.startsWith('corner-table');
-const huelle = (p: V[]): V[] => {
-  const q = [...p].sort((a, b) => a.x - b.x || a.z - b.z);
-  const kreuz = (o: V, a: V, b: V) => (a.x - o.x) * (b.z - o.z) - (a.z - o.z) * (b.x - o.x);
-  const halb = (liste: V[]) => liste.reduce<V[]>((h, v) => { while (h.length >= 2 && kreuz(h[h.length - 2], h[h.length - 1], v) <= 0) h.pop(); h.push(v); return h; }, []);
-  const unten = halb(q);
-  const oben = halb([...q].reverse());
-  return [...unten.slice(0, -1), ...oben.slice(0, -1)];
-};
-// Abgesenkt werden nur die Bowl-Teile: Kurvenstücke und die Coping Ramps und Tables innerhalb ihrer Hülle. Außen angedockte Elemente bleiben auf Geländehöhe.
-const BOWL_TEIL = /^(coping-ramp|table)-/;
-export const bowls = (park: Park, ctx: Ctx): Bowl[] => gruppen(park, ctx)
-  .filter((g) => g.filter((t) => istCorner(t.slug)).length >= 12)
-  .map((g) => {
-    const kern = huelle(g.filter((t) => istKurve(t.slug)).flatMap((t) => umriss(t, ctx)));
-    const teile = g.filter((t) => istKurve(t.slug) || (BOWL_TEIL.test(t.slug) && innen(t, kern)));
-    return { teile, tief: Math.max(...g.filter((t) => istCorner(t.slug)).map((t) => ctx.masse[t.slug].h)), rand: huelle(teile.flatMap((t) => umriss(t, ctx))) };
+// B09: Bowls werden eingegraben, Oberkante Coping auf Geländehöhe. Bowl = Gruppe mit Kurvenstücken, deren Coping-Ring eine Fläche
+// umschließt (auch ein geschlossener Snake-Run). Gerechnet im 5-cm-Raster; eine Lücke bis etwa 30 cm gilt als Passstück in Ortbeton.
+export interface Bowl { teile: Teil[]; hoehe: Map<string, number>; tief: number; maske: V[][]; passstueck: boolean; drin: (p: V) => boolean }
+const ZELLE = 0.05;
+const RINGTEIL = /^(coping-ramp|corner|kegel)-/;
+const istRingKurve = (slug: string) => istKurve(slug) || slug.startsWith('kegel-');
+const bowlAus = (g: Teil[], ctx: Ctx): Bowl | null => {
+  const polys = g.map((t) => umriss(t, ctx));
+  const b = box(polys.flat());
+  const x0 = b.x0 - 0.6;
+  const z0 = b.z0 - 0.6;
+  const nx = Math.ceil((b.x1 - x0 + 0.6) / ZELLE);
+  const nz = Math.ceil((b.z1 - z0 + 0.6) / ZELLE);
+  const mitte = (i: number, j: number): V => ({ x: x0 + (i + 0.5) * ZELLE, z: z0 + (j + 0.5) * ZELLE });
+  // acht Nachbarn, damit das Zurückwachsen das quadratische Aufdicken genau umkehrt (auch an schrägen Corner-Kanten)
+  const nachbar = (c: number, f: (d: number) => boolean) => {
+    const i = c % nx;
+    for (let dj = -nx; dj <= nx; dj += nx) for (let di = i > 0 ? -1 : 0; di <= (i < nx - 1 ? 1 : 0); di++) { const d = c + dj + di; if (d !== c && d >= 0 && d < nx * nz && f(d)) return true; }
+    return false;
+  };
+  const teilVon = new Int32Array(nx * nz).fill(-1);
+  polys.forEach((p, k) => {
+    const pb = box(p);
+    for (let j = Math.max(0, Math.floor((pb.z0 - z0) / ZELLE)); j <= Math.min(nz - 1, Math.floor((pb.z1 - z0) / ZELLE)); j++) {
+      for (let i = Math.max(0, Math.floor((pb.x0 - x0) / ZELLE)); i <= Math.min(nx - 1, Math.floor((pb.x1 - x0) / ZELLE)); i++) {
+        if (teilVon[j * nx + i] < 0 && innen(mitte(i, j), p)) teilVon[j * nx + i] = k;
+      }
+    }
   });
-export const tiefen = (park: Park, ctx: Ctx) => new Map(bowls(park, ctx).flatMap((b) => b.teile.map((t) => [t.id, b.tief] as const)));
+  // Innenfläche: größte Zusammenhangsfläche, die von außen nicht erreichbar ist, wenn die Teile um r Zellen aufgedickt sind
+  const innenFlaeche = (r: number) => {
+    const sperre = new Uint8Array(nx * nz);
+    const zeile = new Uint8Array(nx * nz);
+    for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) if (teilVon[j * nx + i] >= 0) for (let a = Math.max(0, i - r); a <= Math.min(nx - 1, i + r); a++) zeile[j * nx + a] = 1;
+    for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) if (zeile[j * nx + i]) for (let c = Math.max(0, j - r); c <= Math.min(nz - 1, j + r); c++) sperre[c * nx + i] = 1;
+    const marke = new Int32Array(nx * nz); // 0 offen, -1 außen, >0 Innenfläche Nr.
+    const flute = (start: number, wert: number) => {
+      let n = 0;
+      const stapel = [start];
+      marke[start] = wert;
+      while (stapel.length) {
+        const c = stapel.pop()!;
+        n++;
+        const i = c % nx;
+        for (const d of [i > 0 ? c - 1 : -1, i < nx - 1 ? c + 1 : -1, c - nx, c + nx]) {
+          if (d < 0 || d >= nx * nz || marke[d] || sperre[d]) continue;
+          marke[d] = wert;
+          stapel.push(d);
+        }
+      }
+      return n;
+    };
+    for (let i = 0; i < nx; i++) for (const c of [i, (nz - 1) * nx + i]) if (!marke[c] && !sperre[c]) flute(c, -1);
+    for (let j = 0; j < nz; j++) for (const c of [j * nx, j * nx + nx - 1]) if (!marke[c] && !sperre[c]) flute(c, -1);
+    let beste = 0;
+    let groesse = 0;
+    for (let c = 0, nr = 1; c < nx * nz; c++) {
+      if (marke[c] || sperre[c] || teilVon[c] >= 0) continue;
+      const n = flute(c, ++nr);
+      if (n > groesse) { groesse = n; beste = nr; }
+    }
+    // aufgedickte Ränder zurück zur Innenfläche zählen, sonst bleibt zwischen Fläche und Teil ein Spalt
+    const drin = new Uint8Array(nx * nz);
+    if (groesse * ZELLE * ZELLE < 1) return null;
+    for (let c = 0; c < nx * nz; c++) if (marke[c] === beste) drin[c] = 1;
+    for (let k = 0; k < r; k++) {
+      const neu = drin.slice();
+      for (let c = 0; c < nx * nz; c++) {
+        if (!drin[c] && teilVon[c] < 0 && nachbar(c, (d) => drin[d] === 1)) neu[c] = 1;
+      }
+      drin.set(neu);
+    }
+    return drin;
+  };
+  const drin = innenFlaeche(3);
+  if (!drin) return null;
+  // Ringteile, die an die Innenfläche grenzen; dazu die Tables, die an einem dieser Ringteile liegen. Außen angedockte Elemente bleiben oben.
+  const amRand = new Set<number>();
+  for (let c = 0; c < nx * nz; c++) {
+    if (!drin[c]) continue;
+    nachbar(c, (d) => { if (teilVon[d] >= 0) amRand.add(teilVon[d]); return false; });
+  }
+  const ring = [...amRand].map((k) => g[k]).filter((t) => RINGTEIL.test(t.slug) && !t.slug.startsWith('corner-table'));
+  if (!ring.some((t) => istRingKurve(t.slug))) return null;
+  const hoehe = new Map(ring.map((t) => [t.id, ctx.masse[t.slug].h]));
+  for (const t of g) {
+    if (hoehe.has(t.id) || !/^(table|corner-table)-/.test(t.slug)) continue;
+    const an = ring.filter((r) => nah(teilBox(t, ctx), teilBox(r, ctx), BERUEHRT) && abstand(umriss(t, ctx), umriss(r, ctx)) < BERUEHRT);
+    if (an.length) hoehe.set(t.id, Math.max(...an.map((r) => ctx.masse[r.slug].h)));
+  }
+  const teile = g.filter((t) => hoehe.has(t.id));
+  const maske: V[][] = teile.map((t) => umriss(t, ctx));
+  for (let j = 0; j < nz; j++) {
+    for (let i = 0; i < nx; i++) {
+      if (!drin[j * nx + i]) continue;
+      let e = i;
+      while (e + 1 < nx && drin[j * nx + e + 1]) e++;
+      const a = { x: x0 + i * ZELLE - ZELLE, z: z0 + j * ZELLE - ZELLE / 2 };
+      const o = { x: x0 + (e + 1) * ZELLE + ZELLE, z: z0 + (j + 1) * ZELLE + ZELLE / 2 };
+      maske.push([a, { x: o.x, z: a.z }, o, { x: a.x, z: o.z }]);
+      i = e;
+    }
+  }
+  const zelle = (p: V) => { const i = Math.floor((p.x - x0) / ZELLE); const j = Math.floor((p.z - z0) / ZELLE); return i >= 0 && j >= 0 && i < nx && j < nz ? j * nx + i : -1; };
+  return {
+    teile, hoehe, maske,
+    tief: Math.max(...hoehe.values()),
+    passstueck: !innenFlaeche(1), // ohne Aufdicken nicht geschlossen: Lücke im Coping-Ring
+    drin: (p) => { const c = zelle(p); return c >= 0 && (!!drin[c] || (teilVon[c] >= 0 && hoehe.has(g[teilVon[c]].id))); },
+  };
+};
+const bowlCache = new WeakMap<Teil[], Bowl[]>();
+export const bowls = (park: Park, ctx: Ctx): Bowl[] => {
+  let b = bowlCache.get(park.teile);
+  if (!b) {
+    b = gruppen(park, ctx).filter((g) => g.some((t) => istRingKurve(t.slug))).map((g) => bowlAus(g, ctx)).filter((x): x is Bowl => !!x);
+    bowlCache.set(park.teile, b);
+  }
+  return b;
+};
+export const tiefen = (park: Park, ctx: Ctx) => new Map(bowls(park, ctx).flatMap((b) => [...b.hoehe]));
 
 // ---------- Automatik: Geländer, Anlaufkeile, Pflichtteile (Abschnitte 3, 4, 7) ----------
 
@@ -791,6 +891,8 @@ export const BAUSTEINE: Baustein[] = [
   { id: 'pipe-255', name: 'Pipe 255', text: '4 Quarterramps 255 mit Flats, 5 m breit', seite: 'K S. 16', bauen: pipe(255) },
   { id: 'bowl-98-klein', name: 'Bowl 98 klein', text: 'Runde Ecken aus Corners, außen ca. 9,0 × 7,7 m', seite: 'K S. 4, 41', bauen: (ctx) => bowl(98, 1, 0, ctx) },
   { id: 'bowl-98', name: 'Bowl 98', text: 'Runde Ecken aus Corners, außen ca. 11,5 × 9,0 m', seite: 'K S. 4, 41', bauen: (ctx) => bowl(98, 3, 1, ctx) },
+  { id: 'bowl-98-niere', name: 'Bowl 98 Niere', text: 'Nase aus 2 Kegeln, Passstück in Ortbeton', seite: 'K S. 4, 41', bauen: (ctx) => niere(98, ctx) },
+  { id: 'bowl-150-niere', name: 'Bowl 150 Niere', text: 'Nase aus 2 Kegeln', seite: 'K S. 4, 41', bauen: (ctx) => niere(150, ctx) },
   { id: 'bowl-150', name: 'Bowl 150', text: 'Runde Ecken aus Corners, außen ca. 12,5 × 10,0 m', seite: 'K S. 4, 41', bauen: (ctx) => bowl(150, 3, 1, ctx) },
 ];
 
@@ -828,12 +930,12 @@ const kurvenStueck = (slug: string, cw: V, bw: number): Teil => {
   const p = minus(cw, drehe(k.c, rot));
   return teil(slug, r3(p.x), r3(p.z), rot);
 };
-const KURVEN_HOEHEN: Record<string, { corner: string; tisch: string }> = {
-  'coping-ramp-98': { corner: 'corner-98', tisch: 'corner-table-98' },
-  'coping-ramp-150': { corner: 'corner-150', tisch: 'corner-table-150' },
+const KURVEN_HOEHEN: Record<string, { corner: string; tisch: string; kegel: string }> = {
+  'coping-ramp-98': { corner: 'corner-98', tisch: 'corner-table-98', kegel: 'kegel-98' },
+  'coping-ramp-150': { corner: 'corner-150', tisch: 'corner-table-150', kegel: 'kegel-150' },
 };
 export type Richtung = 'links' | 'rechts';
-export interface Anbau { kurve: Richtung[]; gerade: Richtung[] }
+export interface Anbau { kurve: Richtung[]; aussen: Richtung[]; gerade: Richtung[] }
 
 // Lage einer Coping Ramp: Rückseite (Coping), Tiefe, Breite, Seitenrichtungen aus Sicht des Fahrers
 const rampenLage = (t: Teil, ctx: Ctx) => {
@@ -848,10 +950,11 @@ const rampenLage = (t: Teil, ctx: Ctx) => {
 // Was an dieser Coping Ramp angebaut werden kann (nur an freien Seiten)
 export const anbauMoeglich = (id: string, park: Park, ctx: Ctx): Anbau => {
   const t = park.teile.find((x) => x.id === id);
-  if (!t || familie(t.slug) !== 'coping-ramp' || !ctx.masse[t.slug]?.hoch) return { kurve: [], gerade: [] };
+  if (!t || familie(t.slug) !== 'coping-ramp' || !ctx.masse[t.slug]?.hoch) return { kurve: [], aussen: [], gerade: [] };
   const l = rampenLage(t, ctx);
   const frei = (['links', 'rechts'] as Richtung[]).filter((r) => !anliegend(seiteIn(t, l.m, l.seite(r)), t.id, park, ctx));
-  return { kurve: KURVEN_HOEHEN[t.slug] ? frei : [], gerade: frei };
+  const satz = KURVEN_HOEHEN[t.slug];
+  return { kurve: satz ? frei : [], aussen: satz && ctx.masse[satz.kegel] ? frei : [], gerade: frei };
 };
 
 // Angebaute Stücke übernehmen den Geländer-Schalter der Gruppe, an die sie angebaut werden
@@ -911,6 +1014,92 @@ export const kurveAnhaengen = (id: string, r: Richtung, park: Park, ctx: Ctx): P
     const tischSlug = t.slug === 'coping-ramp-98' ? 'table-98' : 'table-150';
     neu.push(teil(tischSlug, r3(tt.x), r3(tt.z), rot));
   }
+  return anbauen(park, erben(neu, t, park, ctx), ctx);
+};
+
+// Bowl-Ring als Schildkröte: p liegt auf der Coping-Linie, d ist die Laufrichtung, n zeigt nach hinten zu den Tables.
+// G: n Coping Ramps mit Table; I: Innenkurve 90° aus 3 Corner mit Table Corner; A: Außenkurve 90° aus 1 Kegel; P: Passstück in Ortbeton (Lücke).
+// Der Kegel ist das Coping-Ramp-Profil, gedreht um eine Achse um (Kegelmaß - Rampentiefe) hinter dem Coping: Kegel 98 0,63 m, Kegel 150 0 m.
+interface Kurs { p: V; d: V; n: V }
+export type Schritt = ['G', number] | ['I'] | ['A'] | ['P', number];
+const schritt = (h: 98 | 150, k: Kurs, s: Schritt, teile: Teil[], tische: Teil[], ctx: Ctx): Kurs => {
+  const rampe = `coping-ramp-${h}`;
+  const m = ctx.masse[rampe];
+  const tiefe = Math.abs(m.hoch!.x) > 0.5 ? m.l : m.b;
+  const satz = KURVEN_HOEHEN[rampe];
+  const rot = (v: V, mm: Masse) => norm360(winkel(v) - winkel(mm.hoch!));
+  if (s[0] === 'G') {
+    for (let i = 0; i < s[1]; i++) {
+      const basis = plus(k.p, mal(k.d, RASTER / 2 + i * RASTER));
+      const c = plus(basis, mal(k.n, -tiefe / 2));
+      const tt = plus(basis, mal(k.n, RASTER / 2));
+      teile.push(teil(rampe, r3(c.x), r3(c.z), rot(k.n, m)));
+      tische.push(teil(`table-${h}`, r3(tt.x), r3(tt.z), rot(k.n, m)));
+    }
+    return { ...k, p: plus(k.p, mal(k.d, s[1] * RASTER)) };
+  }
+  if (s[0] === 'P') return { ...k, p: plus(k.p, mal(k.d, s[1])) };
+  if (s[0] === 'I') {
+    const kr = KURVE[satz.corner];
+    const mitte = minus(k.p, mal(k.n, kr.R));
+    const a = winkel(k.n);
+    const sinn = ((winkel(k.d) - a + 540) % 360) - 180 > 0 ? 1 : -1;
+    for (let i = 0; i < 3; i++) {
+      const bw = a + sinn * (15 + 30 * i);
+      teile.push(kurvenStueck(satz.corner, mitte, bw));
+      tische.push(kurvenStueck(satz.tisch, mitte, bw));
+    }
+    return { p: plus(mitte, mal(k.d, kr.R)), d: mal(k.n, -1), n: k.d };
+  }
+  const mk = ctx.masse[satz.kegel];
+  const o = mk.l - tiefe;
+  const q = plus(k.p, mal(k.n, o));
+  const c = plus(q, plus(mal(k.n, -mk.l / 2), mal(k.d, mk.l / 2)));
+  teile.push(teil(satz.kegel, r3(c.x), r3(c.z), rot(minus(k.n, k.d), mk)));
+  return { p: plus(q, mal(k.d, o)), d: k.n, n: mal(k.d, -1) };
+};
+// Tables erst zum Schluss: wo sie ein Ringteil oder einen anderen Table überdecken, entfallen sie
+// (geteilte Table-Reihe in der Nase, Spine ohne Table beim Kegel 150, Zwickel hinter dem Kegel 98)
+const tischeEinfuegen = (teile: Teil[], tische: Teil[], ctx: Ctx) => {
+  for (const t of tische) if (!teile.some((o) => ueberlappt(umriss(t, ctx), umriss(o, ctx), 0.1))) teile.push(t);
+  return teile;
+};
+export const ring = (h: 98 | 150, pfad: Schritt[], ctx: Ctx): Teil[] | null => {
+  if (!ctx.masse[`coping-ramp-${h}`]?.hoch || !ctx.masse[`kegel-${h}`]) return null;
+  let k: Kurs = { p: { x: 0, z: 0 }, d: { x: 1, z: 0 }, n: { x: 0, z: 1 } };
+  const teile: Teil[] = [];
+  const tische: Teil[] = [];
+  for (const s of pfad) k = schritt(h, k, s, teile, tische, ctx);
+  const alle = tischeEinfuegen(teile, tische, ctx);
+  const b = box(alle.flatMap((t) => umriss(t, ctx)));
+  return verschiebe(alle, { x: -(b.x0 + b.x1) / 2, z: -(b.z0 + b.z1) / 2 });
+};
+// Niere: Rechteck mit einer Nase aus 2 Kegeln in einer Längsseite. Die Gegenseite ist um 2R + 2o länger; was nicht aufs Raster passt, wird Passstück.
+export const niere = (h: 98 | 150, ctx: Ctx): Teil[] | null => {
+  const m = ctx.masse[`coping-ramp-${h}`];
+  const mk = ctx.masse[`kegel-${h}`];
+  if (!m?.hoch || !mk) return null;
+  const tiefe = Math.abs(m.hoch.x) > 0.5 ? m.l : m.b;
+  const nase = 2 * KURVE[KURVEN_HOEHEN[`coping-ramp-${h}`].corner].R + 2 * (mk.l - tiefe);
+  const n = Math.floor(nase / RASTER + 0.05);
+  const rest = r3(nase - n * RASTER);
+  const pfad: Schritt[] = [['G', 1], ['I'], ['A'], ['A'], ['I'], ['G', 1], ['I'], ['G', 3], ['I'], ['G', 2 + n], ...(rest > 0.01 ? [['P', rest] as Schritt] : []), ['I'], ['G', 3], ['I']];
+  return ring(h, pfad, ctx);
+};
+// Außenkurve 90° an eine Coping Ramp: 1 Kegel, danach eine gerade Coping Ramp (mit Table, wenn die Reihe Tables hat)
+export const kegelAnhaengen = (id: string, r: Richtung, park: Park, ctx: Ctx): Park | null => {
+  const t = park.teile.find((x) => x.id === id);
+  const h = t?.slug === 'coping-ramp-98' ? 98 : t?.slug === 'coping-ramp-150' ? 150 : null;
+  if (!t || !h || !ctx.masse[`kegel-${h}`]) return null;
+  const l = rampenLage(t, ctx);
+  const s = l.seite(r);
+  const mitTisch = !!anliegend(seiteIn(t, l.m, l.hw), t.id, park, ctx, ['plattform']);
+  const teile: Teil[] = [];
+  const tische: Teil[] = [];
+  let k: Kurs = { p: plus(plus(t, mal(l.hw, l.tiefe / 2)), mal(s, l.breite / 2)), d: s, n: l.hw };
+  k = schritt(h, k, ['A'], teile, tische, ctx);
+  schritt(h, k, ['G', 1], teile, tische, ctx);
+  const neu = tischeEinfuegen([...park.teile, ...teile], mitTisch ? tische : [], ctx).slice(park.teile.length);
   return anbauen(park, erben(neu, t, park, ctx), ctx);
 };
 
@@ -1184,9 +1373,14 @@ export const stueckliste = (park: Park, ctx: Ctx): Zeile[] => {
       return { slug, code: i?.code ?? '', name: i?.name ?? slug, menge: z.menge, kg: i?.kg ? i.kg * z.menge : null, auto: z.auto };
     });
   if (park.teile.length) zeilen.push({ slug: null, code: 'SHS', name: tt('Hinweisschild nach DIN EN 14974', 'Information sign to EN 14974', "Panneau d'information selon EN 14974"), menge: 1, kg: null, auto: true }); // P01
-  if (park.teile.filter((t) => t.slug.startsWith('corner-') && !t.slug.startsWith('corner-table')).length >= 12) {
+  const bw = bowls(park, ctx);
+  if (bw.length) {
     zeilen.push({ slug: null, code: tt('bauseits', 'by client', 'à charge client'), name: tt('Bowl: Aushub, Bodenplatte 15 cm bewehrt, Innenfläche ausbetoniert, Hinterfüllung, befahrbarer Gully mit Anschluss an die Entwässerung', 'Bowl: excavation, reinforced base slab 15 cm, interior concreted, backfill, rideable drain connected to the drainage system', "Bowl : excavation, dalle de fond armée de 15 cm, surface intérieure bétonnée, remblai, avaloir roulable raccordé au réseau d'évacuation"), menge: 1, kg: null, auto: true });
   }
+  // B10: Übergang 98/150 und Passstück werden vor Ort in Ortbeton nachbetoniert
+  const bauseits = (de: string, en: string, fr: string) => zeilen.push({ slug: null, code: tt('bauseits', 'by client', 'à charge client'), name: tt(de, en, fr), menge: 1, kg: null, auto: true });
+  if (bw.some((b) => b.teile.some((t) => t.slug.endsWith('-98')) && b.teile.some((t) => t.slug.endsWith('-150')))) bauseits('Bowl: Übergang 98/150 in Ortbeton', 'Bowl: transition 98/150 in cast-in-place concrete', 'Bowl : transition 98/150 en béton coulé sur place');
+  if (bw.some((b) => b.passstueck)) bauseits('Bowl: Passstück im Coping-Ring in Ortbeton', 'Bowl: filler piece in the coping ring in cast-in-place concrete', 'Bowl : pièce d’ajustement dans l’anneau de coping en béton coulé sur place');
   return zeilen;
 };
 const GRUPPEN = ['Tables', 'Banks', 'Pyramid Hips', 'Corner', 'Coping Ramps', 'Quarterramps und Walls', 'Kegel und Cross-Ramps', 'Jump-Ramps, Anlaufkeile, Wave', 'Stairs', 'Ledges, Curbs, Flats', 'Rails und Slides', 'Geländer'];
@@ -1240,6 +1434,10 @@ const TEXTE: Record<string, [string, string]> = {
   'Runde Ecken aus Corners, außen ca. 11,5 × 9,0 m': ['Rounded corners made of corner elements, approx. 11.5 × 9.0 m outside', "Angles arrondis en éléments corner, env. 11,5 × 9,0 m à l'extérieur"],
   'Runde Ecken aus Corners, außen ca. 12,5 × 10,0 m': ['Rounded corners made of corner elements, approx. 12.5 × 10.0 m outside', "Angles arrondis en éléments corner, env. 12,5 × 10,0 m à l'extérieur"],
   'Bowl 98 klein': ['Bowl 98 small', 'Bowl 98 petit'],
+  'Bowl 98 Niere': ['Bowl 98 kidney', 'Bowl 98 haricot'],
+  'Bowl 150 Niere': ['Bowl 150 kidney', 'Bowl 150 haricot'],
+  'Nase aus 2 Kegeln, Passstück in Ortbeton': ['Nose made of 2 cones, filler piece in cast-in-place concrete', 'Nez en 2 cônes, pièce d’ajustement en béton coulé sur place'],
+  'Nase aus 2 Kegeln': ['Nose made of 2 cones', 'Nez en 2 cônes'],
   'Klein · Starter': ['Small · Starter', 'Petit · Starter'],
   'Mittel · Plaza': ['Medium · Plaza', 'Moyen · Plaza'],
   'Groß · Park': ['Large · Park', 'Grand · Park'],

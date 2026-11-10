@@ -158,35 +158,51 @@ const Raster: React.FC<{ l: number; b: number }> = ({ l, b }) => {
   );
 };
 
-// Rechteck mit Aussparungen als Fläche; Shape liegt in (x, -z), weil die Fläche um -90° um x gedreht wird
-const flaecheMitLoch = (l: number, b: number, loecher: V[][]) => {
-  const s = new THREE.Shape([new THREE.Vector2(-l / 2, -b / 2), new THREE.Vector2(l / 2, -b / 2), new THREE.Vector2(l / 2, b / 2), new THREE.Vector2(-l / 2, b / 2)]);
-  s.holes = loecher.map((p) => new THREE.Path(p.map((q) => new THREE.Vector2(q.x, -q.z))));
-  return new THREE.ShapeGeometry(s);
+// Vielecke (konvex) als eine flache Geometrie in der Ebene y = 0
+const flaechen = (polys: V[][]) => {
+  const p: number[] = [];
+  for (const q of polys) for (let i = 1; i < q.length - 1; i++) {
+    const [a, c, e] = [q[0], q[i], q[i + 1]];
+    // Dreieck so drehen, dass seine Vorderseite nach oben zeigt
+    const oben = (c.z - a.z) * (e.x - a.x) - (c.x - a.x) * (e.z - a.z) > 0;
+    for (const v of oben ? [a, c, e] : [a, e, c]) p.push(v.x, 0, v.z);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(p, 3));
+  g.computeVertexNormals();
+  return g;
 };
+const keinTreffer = () => null;
 
 // Boden in Betonfarbe ohne Textur-Datei: die Modell-Exporte benennen Texturen um, der Boden darf daran nicht hängen.
-// B09: eingegrabene Bowls bekommen eine Aussparung in ihrer Außenkontur und unten eine Sohle.
+// B09: Über eingegrabenen Bowls (auch Nieren, nicht konvex) blendet eine unsichtbare Maske den Boden aus: Die Maske schreibt nur Tiefe,
+// nach den Elementen (renderOrder 1) und vor dem Boden (renderOrder 2). Darunter liegt die Sohle.
 const Boden: React.FC<{ l: number; b: number; gruben: Bowl[]; onLeer: () => void }> = ({ l, b, gruben, onLeer }) => {
-  const gras = useMemo(() => flaecheMitLoch(400, 400, gruben.map((g) => g.rand)), [gruben]);
-  const platz = useMemo(() => flaecheMitLoch(l, b, gruben.map((g) => g.rand)), [l, b, gruben]);
-  const sohlen = useMemo(() => gruben.map((g) => ({ y: -g.tief, geo: new THREE.ShapeGeometry(new THREE.Shape(g.rand.map((q) => new THREE.Vector2(q.x, -q.z)))) })), [gruben]);
-  useEffect(() => () => { gras.dispose(); platz.dispose(); sohlen.forEach((x) => x.geo.dispose()); }, [gras, platz, sohlen]);
+  const maske = useMemo(() => flaechen(gruben.flatMap((g) => g.maske)), [gruben]);
+  const sohlen = useMemo(() => gruben.map((g) => ({ y: -g.tief, geo: flaechen(g.maske) })), [gruben]);
+  useEffect(() => () => { maske.dispose(); sohlen.forEach((x) => x.geo.dispose()); }, [maske, sohlen]);
   const leer = (e: ThreeEvent<PointerEvent>) => { if (e.button === 0) onLeer(); };
   return (
     <group>
-      <mesh geometry={gras} rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.02, 0]} receiveShadow onPointerDown={leer}>
+      {gruben.length > 0 && (
+        <mesh geometry={maske} position={[0, 0.008, 0]} renderOrder={1} raycast={keinTreffer}>
+          <meshBasicMaterial colorWrite={false} side={THREE.DoubleSide} />
+        </mesh>
+      )}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.02, 0]} receiveShadow renderOrder={2} onPointerDown={leer}>
+        <planeGeometry args={[400, 400]} />
         <meshStandardMaterial color="#a3ad92" roughness={1} />
       </mesh>
-      <mesh geometry={platz} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.001, 0]} receiveShadow onPointerDown={leer}>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.001, 0]} receiveShadow renderOrder={2} onPointerDown={leer}>
+        <planeGeometry args={[l, b]} />
         <meshStandardMaterial color="#d6d3cc" roughness={0.95} />
       </mesh>
       {sohlen.map((s, i) => (
-        <mesh key={i} geometry={s.geo} rotation={[-Math.PI / 2, 0, 0]} position={[0, s.y + 0.001, 0]} receiveShadow onPointerDown={leer}>
+        <mesh key={i} geometry={s.geo} position={[0, s.y + 0.001, 0]} receiveShadow>
           <meshStandardMaterial color="#c9c5bd" roughness={0.95} />
         </mesh>
       ))}
-      <Raster l={l} b={b} />
+      <group renderOrder={2}><Raster l={l} b={b} /></group>
     </group>
   );
 };

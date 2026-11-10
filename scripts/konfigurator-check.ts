@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import {
   BAUSTEINE, VORLAGEN, vorlageBauen, gruppen, pruefen, abgeleitet, einrasten, stueckliste, kodieren, dekodieren,
-  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, bowls, tiefen, gelaenderSetzen, gelaenderModus, type Ctx, type Park,
+  ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, bowls, tiefen, niere, kegelAnhaengen, gelaenderSetzen, gelaenderModus, type Ctx, type Park,
 } from '../components/konfigurator/logik.ts';
 
 const katalog = JSON.parse(readFileSync(new URL('../public/katalog/katalog.json', import.meta.url), 'utf8'));
@@ -98,6 +98,50 @@ for (const [h, nl, nb] of [[98, 1, 0], [98, 3, 1], [150, 3, 1]] as const) {
   assert.equal(gruppen(aussen, ctx).length, 1, 'Table 98 dockt nicht an den Bowl an');
   assert.equal(tiefen(aussen, ctx).get('aussen') ?? 0, 0, 'Angedockter Table 98 wird mit abgesenkt');
   assert.equal(tiefen(aussen, ctx).size, t.length, 'Bowl-Teile nicht alle abgesenkt');
+}
+
+// Niere (B02): Nase aus 2 Kegeln, geschlossener Ring, eingegraben, nichts überlappt; Kegel 98 braucht ein Passstück in Ortbeton
+for (const h of [98, 150] as const) {
+  const t = niere(h, ctx)!;
+  const p: Park = { flaeche: { l: 40, b: 30, angeboescht: false }, teile: t };
+  const rot = pruefen(p, ctx).filter((x) => x.stufe === 'rot');
+  assert.ok(!rot.length, `Niere ${h}: ${rot.map((x) => x.text).join(' | ')}`);
+  assert.equal(gruppen(p, ctx).length, 1, `Niere ${h} zerfällt`);
+  assert.equal(t.filter((x) => x.slug === `kegel-${h}`).length, 2);
+  const b = bowls(p, ctx);
+  assert.equal(b.length, 1, `Niere ${h} nicht als Bowl erkannt`);
+  assert.ok(t.filter((x) => /^(coping-ramp|corner|kegel)-/.test(x.slug) && !x.slug.startsWith('corner-table')).every((x) => b[0].hoehe.has(x.id)), `Niere ${h}: Ringteil nicht abgesenkt`);
+  assert.equal(b[0].passstueck, h === 98, `Niere ${h}: Passstück falsch erkannt`);
+  assert.equal(abgeleitet(p, ctx).gelaender.length, 0);
+  assert.equal(stueckliste(p, ctx).some((z) => z.name.includes('Passstück')), h === 98);
+  const xs = t.flatMap((x) => umriss(x, ctx)).map((q) => q.x);
+  const zs = t.flatMap((x) => umriss(x, ctx)).map((q) => q.z);
+  console.log(`Niere ${h}: ${t.length} Teile, außen ${(Math.max(...xs) - Math.min(...xs)).toFixed(2)} × ${(Math.max(...zs) - Math.min(...zs)).toFixed(2)} m`);
+}
+
+// Außenkurve: Kegel an eine Coping Ramp mit Table, danach eine Gerade; nichts überlappt, eine Gruppe
+for (const h of [98, 150] as const) {
+  const start: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: [{ id: 'r', slug: `coping-ramp-${h}`, x: 0, z: 0, rot: 0 }] };
+  const mitTisch = geradeAnhaengen('r', 'links', start, ctx)!;
+  assert.ok(anbauMoeglich('r', start, ctx).aussen.length === 2, `Außenkurve ${h} nicht angeboten`);
+  const k = kegelAnhaengen('r', 'rechts', start, ctx)!;
+  assert.ok(k.teile.some((x) => x.slug === `kegel-${h}`));
+  assert.equal(gruppen(k, ctx).length, 1, `Außenkurve ${h} hängt nicht an`);
+  assert.ok(!pruefen(k, ctx).some((x) => x.id.startsWith('ueber')), `Außenkurve ${h} überlappt`);
+  assert.equal(bowls(k, ctx).length, 0, 'offene Reihe gilt als Bowl');
+  assert.ok(mitTisch);
+}
+
+// Ring-Erkennung: offene Kurve ist kein Bowl; B10: Bowl mit 98 und 150 bekommt die Ortbeton-Zeile
+{
+  const t = bowl(98, 3, 1, ctx)!;
+  const offen: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: t.filter((x) => !(x.slug === 'coping-ramp-98' && x === t.find((y) => y.slug === 'coping-ramp-98'))).filter((x) => x.slug !== 'table-98' || x !== t.find((y) => y.slug === 'table-98')) };
+  assert.equal(bowls(offen, ctx).length, 0, 'Bowl mit offenem Ring gilt als Bowl');
+  assert.ok(!stueckliste(offen, ctx).some((z) => z.code === 'bauseits'));
+  const gemischt: Park = { flaeche: { l: 30, b: 30, angeboescht: false }, teile: t.map((x) => (x.slug === 'table-98' ? { ...x, slug: 'table-150' } : x)) };
+  assert.equal(bowls(gemischt, ctx).length, 1);
+  assert.ok(stueckliste(gemischt, ctx).some((z) => z.name.includes('98/150')), 'B10-Zeile fehlt');
+  assert.ok(!stueckliste({ flaeche: gemischt.flaeche, teile: t }, ctx).some((z) => z.name.includes('98/150')));
 }
 
 // Geländer-Schalter: Bowl 98 mit Geländer auf Geländehöhe, Bowl 150 an, aus, auto; bleibt im Teilen-Link erhalten

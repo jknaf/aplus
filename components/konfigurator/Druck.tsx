@@ -180,6 +180,13 @@ export const pdfSpeichern = async (dateiname: string) => {
   if (!bereich) throw new Error('Druckansicht fehlt');
   // zum Abfotografieren sichtbar, aber außerhalb des Bildschirms
   Object.assign(bereich.style, { display: 'block', position: 'fixed', left: '-10000px', top: '0' });
+  // Safari: html-to-image wartet bei SVG-<image> mit Link ewig auf „load“, als Data-URL lädt es nichts nach
+  for (const el of bereich.querySelectorAll('svg image')) {
+    const href = el.getAttribute('href');
+    if (!href || href.startsWith('data:')) continue;
+    const blob = await (await fetch(href)).blob();
+    el.setAttribute('href', await new Promise<string>((ok, fehler) => { const r = new FileReader(); r.onload = () => ok(r.result as string); r.onerror = fehler; r.readAsDataURL(blob); }));
+  }
   const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4', compress: true });
   const seiten = [...bereich.querySelectorAll<HTMLElement>('.druck-seite')];
   for (const [i, seite] of seiten.entries()) {

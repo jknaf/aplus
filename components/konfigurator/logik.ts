@@ -364,6 +364,26 @@ export const gruppen = (park: Park, ctx: Ctx): Teil[][] => {
   gruppenCache.set(park.teile, out);
   return out;
 };
+// Entgruppieren: Element von seiner Gruppe wegrücken, mit 2 m Luft (Sicherheitsbereich); fehlt dafür Platz, mit 50 cm.
+// Zuerst weg von der Gruppenmitte, sonst in die Achsrichtung, die am besten dazu passt; null, wenn im Feld kein Platz ist.
+export const entgruppieren = (id: string, park: Park, ctx: Ctx): Teil | null => {
+  const t = park.teile.find((x) => x.id === id);
+  const andere = (gruppen(park, ctx).find((g) => g.some((x) => x.id === id)) ?? []).filter((x) => x.id !== id);
+  if (!t || !andere.length) return null;
+  const mitte = mal(andere.reduce((s, x) => plus(s, x), { x: 0, z: 0 }), 1 / andere.length);
+  const weg = minus(t, mitte);
+  const haupt = laenge(weg) > 0.01 ? mal(weg, 1 / laenge(weg)) : { x: 1, z: 0 };
+  const achsen: V[] = [{ x: 1, z: 0 }, { x: -1, z: 0 }, { x: 0, z: 1 }, { x: 0, z: -1 }];
+  const richtungen = [haupt, ...achsen.sort((a, b) => skalar(b, haupt) - skalar(a, haupt))];
+  const rest = park.teile.filter((x) => x.id !== id).map((x) => umriss(x, ctx));
+  for (const luft of [2, 0.5]) for (let d = 0.25; d <= 15; d += 0.25) for (const r of richtungen) {
+    const neu = { ...t, x: r3(t.x + r.x * d), z: r3(t.z + r.z * d) };
+    const u = umriss(neu, ctx);
+    if (imFeld(u, park.flaeche) && rest.every((o) => abstand(u, o) >= luft - 0.001)) return neu;
+  }
+  return null;
+};
+
 // ---------- Automatik: Geländer, Anlaufkeile, Pflichtteile (Abschnitte 3, 4, 7) ----------
 
 export interface Zusatz { slug: string; x: number; z: number; rot: number; y?: number }

@@ -2,7 +2,7 @@
 import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import {
-  BAUSTEINE, VORLAGEN, vorlageBauen, gruppen, pruefen, abgeleitet, einrasten, stueckliste, kodieren, dekodieren,
+  BAUSTEINE, LEER, VORLAGEN, vorlageBauen, gruppen, pruefen, abgeleitet, einrasten, stueckliste, kodieren, dekodieren,
   ueberlappt, umriss, hinzufuegen, vorschlag, allesBeheben, kurveAnhaengen, geradeAnhaengen, anbauMoeglich, bowl, bowls, tiefen, niere, kegelAnhaengen, gelaenderSetzen, gelaenderModus, type Ctx, type Park,
 } from '../components/konfigurator/logik.ts';
 
@@ -26,6 +26,13 @@ for (const b of BAUSTEINE) {
   assert.ok(!pruefen(park, ctx).some((h) => h.id.startsWith('hoehe')), `${b.id}: Höhen passen nicht`);
 }
 assert.equal(BAUSTEINE.find((b) => b.id === 'pyramide-75')!.bauen(ctx)!.length, 12);
+
+// Startformen sind fertige, geprüfte Blöcke (Abschnitt 0): auf leerer Fläche gesetzt ohne einen einzigen Hinweis
+for (const b of BAUSTEINE) {
+  const p = hinzufuegen(LEER, b.bauen(ctx)!, ctx);
+  const h = pruefen(p, ctx);
+  assert.equal(h.length, 0, `${b.id}: ${h.map((x) => x.text).join(' | ')}`);
+}
 
 // Geländer nur ab 125 cm (G02), Anlaufkeil vor freistehender Quarterramp 165 (A07), keiner in der Pipe
 const ab = (id: string) => abgeleitet({ flaeche: feld, teile: BAUSTEINE.find((b) => b.id === id)!.bauen(ctx)! }, ctx);

@@ -8,7 +8,7 @@ for (const e of katalog.elemente) info[e.slug] = { name: e.name, code: e.preisli
 const ctx: Ctx = { masse, info };
 const P: Record<string, any> = { 'gelaender-125': { x: 0, z: -1 }, 'gelaender-250': { x: -1, z: 0 }, 'gelaender-375': { x: 1, z: 0 }, 'gelaender-500': { x: 1, z: 0 } };
 let fehler = 0;
-for (const slug of ['quarterramp-200', 'quarterramp-165', 'bigbank-165', 'table-150', 'corner-table-98'])
+for (const slug of ['quarterramp-200', 'quarterramp-165', 'bigbank-165', 'table-125', 'table-150', 'corner-table-98'])
   for (const rot of [0, 90, 180, 270, 45]) {
     const ab = abgeleitet({ flaeche: { l: 40, b: 30, angeboescht: false }, teile: [{ id: 'a', slug, x: 10, z: 10, rot }] }, ctx);
     const felder = ab.gelaender.filter((g) => P[g.slug]);

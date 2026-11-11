@@ -1178,14 +1178,19 @@ export const niere = (h: 98 | 150, ctx: Ctx): Teil[] | null => {
 // Gegenüberliegende Seiten werden gleich lang; was nicht aufs Raster passt, wird Passstück in Ortbeton.
 export const passstuecke = (rest: number) => (rest > 0.01 ? Math.ceil(rest / 0.3 - 1e-6) : 0);
 export interface NasenSeite { n: number; aussen: boolean }
-export const bowlForm = (h: 98 | 150, nl: number, nb: number, seiten: NasenSeite[], lang: number, ctx: Ctx): Teil[] | null => {
+// Breite einer Nase aus 2 Kegeln in m (null, solange Maße fehlen)
+export const bowlNase = (h: 98 | 150, ctx: Ctx): number | null => {
   const m = ctx.masse[`coping-ramp-${h}`];
   const mk = ctx.masse[`kegel-${h}`];
-  if (!m?.hoch) return null;
-  if (!seiten.some((x) => x.n > 0)) return bowl(h, nl, nb, ctx);
-  if (!mk) return null;
+  if (!m?.hoch || !mk) return null;
   const tiefe = Math.abs(m.hoch.x) > 0.5 ? m.l : m.b;
-  const nase = 2 * KURVE[KURVEN_HOEHEN[`coping-ramp-${h}`].corner].R + 2 * (mk.l - tiefe);
+  return 2 * KURVE[KURVEN_HOEHEN[`coping-ramp-${h}`].corner].R + 2 * (mk.l - tiefe);
+};
+export const bowlForm = (h: 98 | 150, nl: number, nb: number, seiten: NasenSeite[], lang: number, ctx: Ctx): Teil[] | null => {
+  if (!ctx.masse[`coping-ramp-${h}`]?.hoch) return null;
+  if (!seiten.some((x) => x.n > 0)) return bowl(h, nl, nb, ctx);
+  const nase = bowlNase(h, ctx);
+  if (nase === null) return null;
   const noetig = (k: number) => (k ? k * nase + (k + 1) * RASTER : 0);
   // Reihenfolge des Rings: unten, rechts, oben, links (seiten: oben, rechts, unten, links)
   const [oben, rechts, unten, links] = seiten;

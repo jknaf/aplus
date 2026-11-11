@@ -6,10 +6,10 @@
    "kamera": {
     "ziel": [
      0.001,
-     0.473,
-     -0.001
+     0.49,
+     0.001
     ],
-    "abstand": 6.582
+    "abstand": 6.565
    }
   }
  },
@@ -30,14 +30,14 @@
   },
   {
    "mesh": 1,
-   "name": "SK0870_Kegel_98.001"
+   "name": "SK0895_Kegel_98.001"
   }
  ],
  "materials": [
   {
    "alphaMode": "BLEND",
    "doubleSided": false,
-   "name": "Schatten.060",
+   "name": "Schatten.001",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 0
@@ -51,7 +51,7 @@
   },
   {
    "doubleSided": true,
-   "name": "Beton_web.067",
+   "name": "Beton_web.001",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 1,
@@ -66,10 +66,25 @@
   },
   {
    "doubleSided": true,
-   "name": "Kantenwinkel_web.042",
+   "name": "Stahl_web.001",
    "pbrMetallicRoughness": {
     "baseColorTexture": {
      "index": 2,
+     "texCoord": 1
+    },
+    "metallicFactor": 0,
+    "roughnessFactor": 1
+   },
+   "extensions": {
+    "KHR_materials_unlit": {}
+   }
+  },
+  {
+   "doubleSided": true,
+   "name": "Kantenwinkel_web.001",
+   "pbrMetallicRoughness": {
+    "baseColorTexture": {
+     "index": 3,
      "texCoord": 1
     },
     "metallicFactor": 0,
@@ -96,7 +111,7 @@
    ]
   },
   {
-   "name": "SK0870_Kegel_98.001",
+   "name": "SK0895_Kegel_98.001",
    "primitives": [
     {
      "attributes": {
@@ -117,6 +132,16 @@
      },
      "indices": 13,
      "material": 2
+    },
+    {
+     "attributes": {
+      "POSITION": 14,
+      "NORMAL": 15,
+      "TEXCOORD_0": 16,
+      "TEXCOORD_1": 17
+     },
+     "indices": 18,
+     "material": 3
     }
    ]
   }
@@ -125,6 +150,10 @@
   {
    "sampler": 0,
    "source": 0
+  },
+  {
+   "sampler": 0,
+   "source": 1
   },
   {
    "sampler": 0,
@@ -153,14 +182,14 @@
    "componentType": 5126,
    "count": 4,
    "max": [
-    2.189675807952881,
-    -0.030354347079992294,
-    1.206754446029663
+    2.171731948852539,
+    0.0019882027991116047,
+    1.3115663528442383
    ],
    "min": [
-    -1.1899819374084473,
-    -0.030354347079992294,
-    -1.468458652496338
+    -1.1954002380371094,
+    0.0019882027991116047,
+    -1.1953495740890503
    ],
    "type": "VEC3"
   },
@@ -185,81 +214,121 @@
   {
    "bufferView": 4,
    "componentType": 5126,
-   "count": 3480,
+   "count": 1458,
    "max": [
-    1.1575000286102295,
-    0.9791070222854614,
-    1.1575006246566772
+    1.157500147819519,
+    0.9600000977516174,
+    1.158307671546936
    ],
    "min": [
-    -1.1575006246566772,
-    -4.8607070368689165e-08,
-    -1.1575062274932861
+    -1.1582013368606567,
+    -4.860705971054813e-08,
+    -1.1581001281738281
    ],
    "type": "VEC3"
   },
   {
    "bufferView": 5,
    "componentType": 5126,
-   "count": 3480,
+   "count": 1458,
    "type": "VEC3"
   },
   {
    "bufferView": 6,
    "componentType": 5126,
-   "count": 3480,
+   "count": 1458,
    "type": "VEC2"
   },
   {
    "bufferView": 7,
    "componentType": 5126,
-   "count": 3480,
+   "count": 1458,
    "type": "VEC2"
   },
   {
    "bufferView": 8,
    "componentType": 5123,
-   "count": 3480,
+   "count": 1458,
    "type": "SCALAR"
   },
   {
    "bufferView": 9,
    "componentType": 5126,
-   "count": 297,
+   "count": 2373,
    "max": [
-    1.1596050262451172,
-    0.9641595482826233,
-    1.1578744649887085
+    1.1575000286102295,
+    0.9791070222854614,
+    1.1575000286102295
    ],
    "min": [
-    -1.157874584197998,
-    -0.03235434740781784,
-    -1.1596050262451172
+    -1.1582013368606567,
+    -1.179724404209992e-05,
+    -1.1581001281738281
    ],
    "type": "VEC3"
   },
   {
    "bufferView": 10,
    "componentType": 5126,
-   "count": 297,
+   "count": 2373,
    "type": "VEC3"
   },
   {
    "bufferView": 11,
    "componentType": 5126,
-   "count": 297,
+   "count": 2373,
    "type": "VEC2"
   },
   {
    "bufferView": 12,
    "componentType": 5126,
-   "count": 297,
+   "count": 2373,
    "type": "VEC2"
   },
   {
    "bufferView": 13,
    "componentType": 5123,
-   "count": 297,
+   "count": 2373,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 14,
+   "componentType": 5126,
+   "count": 144,
+   "max": [
+    1.1596213579177856,
+    0.962121844291687,
+    1.1596213579177856
+   ],
+   "min": [
+    -0.820189893245697,
+    0.02878521755337715,
+    -0.8209584951400757
+   ],
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 15,
+   "componentType": 5126,
+   "count": 144,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 16,
+   "componentType": 5126,
+   "count": 144,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 17,
+   "componentType": 5126,
+   "count": 144,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 18,
+   "componentType": 5123,
+   "count": 144,
    "type": "SCALAR"
   }
  ],
@@ -290,62 +359,92 @@
   },
   {
    "buffer": 0,
-   "byteLength": 41760,
+   "byteLength": 17496,
    "byteOffset": 140,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 41760,
-   "byteOffset": 41900,
+   "byteLength": 17496,
+   "byteOffset": 17636,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 27840,
-   "byteOffset": 83660,
+   "byteLength": 11664,
+   "byteOffset": 35132,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 27840,
-   "byteOffset": 111500,
+   "byteLength": 11664,
+   "byteOffset": 46796,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 6960,
-   "byteOffset": 139340,
+   "byteLength": 2916,
+   "byteOffset": 58460,
    "target": 34963
   },
   {
    "buffer": 0,
-   "byteLength": 3564,
-   "byteOffset": 146300,
+   "byteLength": 28476,
+   "byteOffset": 61376,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 3564,
-   "byteOffset": 149864,
+   "byteLength": 28476,
+   "byteOffset": 89852,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 2376,
-   "byteOffset": 153428,
+   "byteLength": 18984,
+   "byteOffset": 118328,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 2376,
-   "byteOffset": 155804,
+   "byteLength": 18984,
+   "byteOffset": 137312,
    "target": 34962
   },
   {
    "buffer": 0,
-   "byteLength": 594,
-   "byteOffset": 158180,
+   "byteLength": 4746,
+   "byteOffset": 156296,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1728,
+   "byteOffset": 161044,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1728,
+   "byteOffset": 162772,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1152,
+   "byteOffset": 164500,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 1152,
+   "byteOffset": 165652,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteLength": 288,
+   "byteOffset": 166804,
    "target": 34963
   }
  ],
@@ -357,7 +456,7 @@
  ],
  "buffers": [
   {
-   "byteLength": 158776,
+   "byteLength": 167092,
    "uri": "kegel-98.bin"
   }
  ],

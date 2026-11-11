@@ -12,7 +12,7 @@ import { konfiguratorFrei, useKonfiguratorFrei } from '../components/katalog/use
 import CodeDialog, { useKonfiguratorCode } from '../components/katalog/CodeDialog';
 import { gruppenName, teilName } from '../localized';
 import {
-  BAUSTEINE, LEER, RASTER, gruppen, entgruppieren, eingraben, gruppeVerschieben, anbauMoeglich, bowlForm, drehenGruppe, geradeAnhaengen, kurveAnhaengen, kegelAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
+  BAUSTEINE, LEER, RASTER, gruppen, entgruppieren, eingraben, gruppeVerschieben, anbauMoeglich, bowlForm, drehenGruppe, geradeAnhaengen, kurveAnhaengen, kegelAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, beheben, csv, dekodieren, einrasten,
   hinzufuegen, kodieren, kollidiert, neueId, pruefen, stueckliste, vorlageBauen, vorschlag as vorschlagFuer, waehlbar,
   type Ctx, type Hinweis, type Park, type Teil, type Vorschlag, ueberText,
 } from '../components/konfigurator/logik';
@@ -373,10 +373,11 @@ const KonfiguratorPage: React.FC = () => {
     aendern(neu);
     melden(rest ? tt(`${hinweise.length - rest} behoben, ${rest} bleiben offen.`, `${hinweise.length - rest} fixed, ${rest} remain open.`, `Corrigé(s) : ${hinweise.length - rest}. En suspens : ${rest}.`) : tt('Alles behoben.', 'All fixed.', 'Tout est corrigé.'));
   };
-  const neuAnordnen = () => {
-    if (!ctx || !park) return;
-    aendern(anordnen(park, ctx, false));
-    melden(tt('Neu angeordnet nach dem Muster der A+-Beispielparks.', 'Rearranged following the pattern of the A+ example parks.', 'Réorganisé selon le modèle des parcs exemples A+.'));
+  const allesLoeschen = () => {
+    if (!park) return;
+    aendern({ ...park, teile: [] });
+    setAuswahl(null); setVorschlag(null);
+    melden(tt('Alle Elemente gelöscht. Rückgängig holt sie zurück.', 'All elements deleted. Undo brings them back.', 'Tous les éléments supprimés. Annuler les rétablit.'));
   };
   const flaecheSetzen = (l: number, b: number, angeboescht = park?.flaeche.angeboescht ?? false) => {
     if (!park) return;
@@ -639,7 +640,7 @@ const KonfiguratorPage: React.FC = () => {
                     onClick={() => flaecheSetzen(park.flaeche.l, park.flaeche.b, !park.flaeche.angeboescht)}
                   />
                 </Gruppe>
-                <Gruppe><LKnopf icon="auto_awesome_mosaic" label={t("Anordnen", "Arrange", "Réorganiser")} labelAb="2xl:inline" title={t("Anordnen nach dem Muster der A+-Beispielparks", "Arrange in the pattern of the A+ example parks", "Réorganiser selon le modèle des parcs exemples A+")} onClick={neuAnordnen} disabled={!park.teile.length} /></Gruppe>
+                <Gruppe><LKnopf icon="delete_sweep" label={t("Alles löschen", "Clear all", "Tout effacer")} labelAb="2xl:inline" title={t("Alle Elemente von der Fläche löschen", "Remove all elements from the area", "Retirer tous les éléments de la surface")} onClick={allesLoeschen} disabled={!park.teile.length} /></Gruppe>
               </div>
               <div className="flex flex-wrap gap-2 pointer-events-auto md:ml-auto">
                 <Gruppe>

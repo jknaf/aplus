@@ -1186,44 +1186,157 @@ export const bowlNase = (h: 98 | 150, ctx: Ctx): number | null => {
   const tiefe = Math.abs(m.hoch.x) > 0.5 ? m.l : m.b;
   return 2 * KURVE[KURVEN_HOEHEN[`coping-ramp-${h}`].corner].R + 2 * (mk.l - tiefe);
 };
-export const bowlForm = (h: 98 | 150, nl: number, nb: number, seiten: NasenSeite[], lang: number, ctx: Ctx): Teil[] | null => {
-  if (!ctx.masse[`coping-ramp-${h}`]?.hoch) return null;
-  if (!seiten.some((x) => x.n > 0)) return bowl(h, nl, nb, ctx);
-  const nase = bowlNase(h, ctx);
-  if (nase === null) return null;
-  const noetig = (k: number) => (k ? k * nase + (k + 1) * RASTER : 0);
-  // Reihenfolge des Rings: unten, rechts, oben, links (seiten: oben, rechts, unten, links)
-  const [oben, rechts, unten, links] = seiten;
-  const ringteil = (t: Teil) => RINGTEIL.test(t.slug) && !t.slug.startsWith('corner-table');
-  for (let mehr = 0; mehr < 8; mehr++) {
-    const sl = Math.max(nl * RASTER, noetig(oben.n), noetig(unten.n)) + Math.floor(mehr / 2) * RASTER;
-    const sb = Math.max(nb * RASTER, noetig(rechts.n), noetig(links.n)) + Math.ceil(mehr / 2) * RASTER;
-    const pfad: Schritt[] = [];
-    for (const [seite, laenge] of [[unten, sl], [rechts, sb], [oben, sl], [links, sb]] as [NasenSeite, number][]) {
-      const g = Math.floor((laenge - seite.n * nase) / RASTER + 0.05);
-      const rest = r3(laenge - seite.n * nase - g * RASTER);
-      const stuecke = seite.n + 1;
-      const seg: Schritt[] = [];
-      for (let i = 0; i < stuecke; i++) {
-        for (let j = Math.floor(g / stuecke) + (i < g % stuecke ? 1 : 0); j > 0; j--) seg.push(['G', 1]);
-        if (i < seite.n) {
-          const gl: Schritt[] = lang ? [['G', lang]] : [];
-          seg.push(...(seite.aussen ? [['A'], ...gl, ['I'], ['I'], ...gl, ['A']] : [['I'], ...gl, ['A'], ['A'], ...gl, ['I']]) as Schritt[]);
-        }
-      }
-      // B11: so wenige Passstücke wie möglich, jedes höchstens 30 cm
-      const np = passstuecke(rest);
-      for (let i = np; i > 0; i--) seg.splice(Math.round((i * seg.length) / (np + 1)), 0, ['P', r3(rest / np)]);
-      pfad.push(...seg);
-      pfad.push(['I']);
+// Coping-Linie eines Rings, abgelaufen wie ring(): Punkte mit Laufmeter s und Normale n zum Boden hin
+export interface LinienPunkt { p: V; n: V; s: number }
+export const copingLinie = (h: 98 | 150, pfad: Schritt[], ctx: Ctx): LinienPunkt[] => {
+  const rampe = `coping-ramp-${h}`;
+  const m = ctx.masse[rampe];
+  const mk = ctx.masse[KURVEN_HOEHEN[rampe].kegel];
+  const Rc = KURVE[KURVEN_HOEHEN[rampe].corner].R;
+  const tiefe = Math.abs(m.hoch!.x) > 0.5 ? m.l : m.b;
+  const o = mk.l - tiefe;
+  const out: LinienPunkt[] = [];
+  let k: Kurs = { p: { x: 0, z: 0 }, d: { x: 1, z: 0 }, n: { x: 0, z: 1 } };
+  let s = 0;
+  const gerade = (len: number) => {
+    const n = Math.max(1, Math.ceil(len / 0.25));
+    for (let i = 0; i < n; i++) out.push({ p: plus(k.p, mal(k.d, (len * i) / n)), n: mal(k.n, -1), s: s + (len * i) / n });
+    k = { ...k, p: plus(k.p, mal(k.d, len)) };
+    s += len;
+  };
+  // Bogen um mitte von k.p aus um 90° in Laufrichtung; innen: Boden liegt zur Mitte hin
+  const bogen = (mitte: V, r: number, innen: boolean) => {
+    const a = minus(k.p, mitte);
+    const a0 = Math.atan2(a.z, a.x);
+    const e = r > 0 ? plus(mitte, mal(k.d, r)) : mitte;
+    const b = minus(e, mitte);
+    let da = Math.atan2(b.z, b.x) - a0;
+    if (r === 0) { const n0 = Math.atan2(-k.n.z, -k.n.x), n1 = Math.atan2(k.d.z, k.d.x); da = n1 - n0; }
+    while (da > Math.PI) da -= 2 * Math.PI;
+    while (da < -Math.PI) da += 2 * Math.PI;
+    const start = r > 0 ? a0 : Math.atan2(-k.n.z, -k.n.x);
+    for (let i = 0; i < 8; i++) {
+      const w = start + (da * i) / 8;
+      const u = { x: Math.cos(w), z: Math.sin(w) };
+      out.push({ p: plus(mitte, mal(u, r)), n: innen ? mal(u, -1) : u, s: s + (Math.abs(da) * r * i) / 8 });
     }
-    const t = ring(h, pfad, ctx);
-    if (!t) return null;
-    const r = t.filter(ringteil).map((x) => umriss(x, ctx));
-    if (r.every((a, i) => r.every((b, j) => j <= i || !ueberlappt(a, b, 0.05)))) return t;
+    s += Math.abs(da) * r;
+  };
+  for (const st of pfad) {
+    if (st[0] === 'G') gerade(st[1] * RASTER);
+    else if (st[0] === 'P') gerade(st[1]);
+    else if (st[0] === 'I') {
+      const mitte = minus(k.p, mal(k.n, Rc));
+      bogen(mitte, Rc, true);
+      k = { p: plus(mitte, mal(k.d, Rc)), d: mal(k.n, -1), n: k.d };
+    } else {
+      const q = plus(k.p, mal(k.n, o));
+      bogen(q, o, false);
+      k = { p: plus(q, mal(k.d, o)), d: k.n, n: mal(k.d, -1) };
+    }
+  }
+  out.push({ p: k.p, n: mal(k.n, -1), s });
+  return out;
+};
+// B12: Wo sich zwei Wände gegenüberstehen, bleiben mindestens 2,50 m flacher Boden.
+// Gegenüber = Normalen zeigen aufeinander zu; Punkte derselben Rundung (Ecke, Tasche aus 2 Corner) zählen nicht.
+export const FLACH_MIN = 2.5;
+export const engstelle = (h: 98 | 150, linie: LinienPunkt[], ctx: Ctx): [LinienPunkt, LinienPunkt] | null => {
+  const rampe = `coping-ramp-${h}`;
+  const m = ctx.masse[rampe];
+  const tiefe = Math.abs(m.hoch!.x) > 0.5 ? m.l : m.b;
+  const Rc = KURVE[KURVEN_HOEHEN[rampe].corner].R;
+  const o = ctx.masse[KURVEN_HOEHEN[rampe].kegel].l - tiefe;
+  const U = linie.length ? linie[linie.length - 1].s : 0;
+  const bogenlaenge = Math.PI * Rc + Math.PI * o + 0.5;
+  const grenze = 2 * tiefe + FLACH_MIN - 0.01;
+  const sortiert = [...linie].sort((a, b) => a.p.x - b.p.x);
+  for (let i = 0; i < sortiert.length; i++) for (let j = i + 1; j < sortiert.length && sortiert[j].p.x - sortiert[i].p.x < grenze; j++) {
+    const a = sortiert[i], b = sortiert[j];
+    if (Math.abs(a.p.z - b.p.z) >= grenze) continue;
+    const ds = Math.abs(a.s - b.s);
+    if (Math.min(ds, U - ds) < bogenlaenge) continue;
+    const v = minus(b.p, a.p);
+    const d = laenge(v);
+    if (d >= grenze || d < 1e-6) continue;
+    const u = mal(v, 1 / d);
+    if (a.n.x * u.x + a.n.z * u.z > 0.7 && -(b.n.x * u.x + b.n.z * u.z) > 0.7) return [a, b];
   }
   return null;
 };
+export const zuEng = (h: 98 | 150, linie: LinienPunkt[], ctx: Ctx) => !!engstelle(h, linie, ctx);
+export interface BowlErgebnis { teile: Teil[]; linie: LinienPunkt[]; sl: number; sb: number }
+// Pfad eines Bowls mit Nasen; Taschen (nach außen) immer ohne Verlängerung, sonst entsteht ein Schlauch unter 2,50 m
+export const bowlPfad = (seiten: NasenSeite[], sl: number, sb: number, lang: number, nase: number): Schritt[] => {
+  const [oben, rechts, unten, links] = seiten;
+  const pfad: Schritt[] = [];
+  for (const [seite, laenge] of [[unten, sl], [rechts, sb], [oben, sl], [links, sb]] as [NasenSeite, number][]) {
+    const g = Math.floor((laenge - seite.n * nase) / RASTER + 0.05);
+    const rest = r3(laenge - seite.n * nase - g * RASTER);
+    const stuecke = seite.n + 1;
+    // Blöcke: jede gerade Coping Ramp ein Block, jede Nase ein Block; Passstücke nur zwischen Blöcke, nie in eine Nase
+    const seg: Schritt[][] = [];
+    for (let i = 0; i < stuecke; i++) {
+      for (let j = Math.floor(g / stuecke) + (i < g % stuecke ? 1 : 0); j > 0; j--) seg.push([['G', 1]]);
+      if (i < seite.n) {
+        const gl: Schritt[] = lang && !seite.aussen ? [['G', lang]] : [];
+        seg.push((seite.aussen ? [['A'], ['I'], ['I'], ['A']] : [['I'], ...gl, ['A'], ['A'], ...gl, ['I']]) as Schritt[]);
+      }
+    }
+    // B11: so wenige Passstücke wie möglich, jedes höchstens 30 cm
+    const np = passstuecke(rest);
+    for (let i = np; i > 0; i--) seg.splice(Math.round((i * seg.length) / (np + 1)), 0, [['P', r3(rest / np)]]);
+    pfad.push(...seg.flat());
+    pfad.push(['I']);
+  }
+  return pfad;
+};
+// Bowl nach Maß: wächst, bis nichts überlappt und B12 erfüllt ist. Gewachsen wird dort, wo es klemmt:
+// Engstelle quer zur Länge → breiter, längs → länger; Überlappung an Ober-/Unterseite → länger, an den Seiten → breiter.
+// B13: höchstens 4 Nasen je Bowl; mit mehr wechselt die Wand alle paar Meter die Richtung, es bleibt keine Fahrlinie
+export const MAX_NASEN = 4;
+export const bowlFormErgebnis = (h: 98 | 150, nl: number, nb: number, seiten: NasenSeite[], lang: number, ctx: Ctx): BowlErgebnis | null => {
+  if (seiten.reduce((a, x) => a + x.n, 0) > MAX_NASEN) return null;
+  if (!ctx.masse[`coping-ramp-${h}`]?.hoch || !ctx.masse[`kegel-${h}`]) return null;
+  const nase = bowlNase(h, ctx)!;
+  const noetig = (k: number) => (k ? k * nase + (k + 1) * RASTER : 0);
+  const [oben, rechts, unten, links] = seiten;
+  const ohneNase = !seiten.some((x) => x.n > 0);
+  const ringteil = (t: Teil) => RINGTEIL.test(t.slug) && !t.slug.startsWith('corner-table');
+  let dl = 0, db = 0;
+  for (let versuch = 0; versuch < 30; versuch++) {
+    const sl = Math.max(nl * RASTER, noetig(oben.n), noetig(unten.n)) + dl * RASTER;
+    const sb = Math.max(nb * RASTER, noetig(rechts.n), noetig(links.n)) + db * RASTER;
+    const pfad = bowlPfad(seiten, sl, sb, lang, nase);
+    const linie = copingLinie(h, pfad, ctx);
+    if (laenge(minus(linie[linie.length - 1].p, linie[0].p)) > 0.05) return null; // Passstücke sind auf mm gerundet
+    const eng = engstelle(h, linie, ctx);
+    if (eng) {
+      const ex = Math.abs(eng[1].p.x - eng[0].p.x), ez = Math.abs(eng[1].p.z - eng[0].p.z);
+      if (ez >= 0.5 * ex) db++;
+      if (ex >= 0.5 * ez) dl++;
+      continue;
+    }
+    const t = ohneNase ? bowl(h, Math.round(sl / RASTER), Math.round(sb / RASTER), ctx) : ring(h, pfad, ctx);
+    if (!t) return null;
+    // Überlappung: erst Ringteile untereinander, dann alles wie in pruefen (auch Tables)
+    const r = t.filter(ringteil);
+    let paar: Teil[] | null = null;
+    for (let i = 0; i < r.length && !paar; i++) for (let j = i + 1; j < r.length; j++) if (ueberlappt(umriss(r[i], ctx), umriss(r[j], ctx), 0.05)) { paar = [r[i], r[j]]; break; }
+    if (!paar) {
+      const u = pruefen({ flaeche: { l: 200, b: 200, angeboescht: false }, teile: t }, ctx).find((x) => x.id.startsWith('ueber-'));
+      if (u) paar = t.filter((x) => u.teile.includes(x.id));
+    }
+    if (!paar) return { teile: t, linie, sl, sb };
+    const b0 = box(t.flatMap((x) => umriss(x, ctx)));
+    const mx = paar.reduce((a, x) => a + x.x, 0) / paar.length, mz = paar.reduce((a, x) => a + x.z, 0) / paar.length;
+    const cx = (b0.x0 + b0.x1) / 2, cz = (b0.z0 + b0.z1) / 2;
+    if (Math.abs(mz - cz) / (b0.z1 - b0.z0) > Math.abs(mx - cx) / (b0.x1 - b0.x0)) dl++; else db++;
+  }
+  return null;
+};
+export const bowlForm = (h: 98 | 150, nl: number, nb: number, seiten: NasenSeite[], lang: number, ctx: Ctx): Teil[] | null =>
+  bowlFormErgebnis(h, nl, nb, seiten, lang, ctx)?.teile ?? null;
 // Außenkurve 90° an eine Coping Ramp: 1 Kegel, danach eine gerade Coping Ramp (mit Table, wenn die Reihe Tables hat)
 export const kegelAnhaengen = (id: string, r: Richtung, park: Park, ctx: Ctx): Park | null => {
   const t = park.teile.find((x) => x.id === id);

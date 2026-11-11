@@ -12,7 +12,7 @@ import { konfiguratorFrei, useKonfiguratorFrei } from '../components/katalog/use
 import CodeDialog, { useKonfiguratorCode } from '../components/katalog/CodeDialog';
 import { gruppenName, teilName } from '../localized';
 import {
-  BAUSTEINE, LEER, RASTER, gruppen, entgruppieren, eingraben, gruppeVerschieben, anbauMoeglich, bowlForm, drehenGruppe, geradeAnhaengen, kurveAnhaengen, kegelAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, beheben, csv, dekodieren, einrasten,
+  BAUSTEINE, LEER, RASTER, gruppen, entgruppieren, eingraben, gruppeVerschieben, anbauMoeglich, drehenGruppe, geradeAnhaengen, kurveAnhaengen, kegelAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, beheben, csv, dekodieren, einrasten,
   hinzufuegen, kodieren, kollidiert, neueId, pruefen, stueckliste, vorlageBauen, vorschlag as vorschlagFuer, waehlbar,
   type Ctx, type Hinweis, type Park, type Teil, type Vorschlag, ueberText,
 } from '../components/konfigurator/logik';
@@ -497,7 +497,7 @@ const KonfiguratorPage: React.FC = () => {
         {reiter === 'bausteine' ? (
           <>
             <p className="text-xs text-brand-muted px-1 pb-1">{t("Fertige Kombinationen aus dem A+-Katalog. Klicken oder auf die Fläche ziehen.", "Ready-made combinations from the A+ catalogue. Click, or drag onto the area.", "Combinaisons toutes faites du catalogue A+. Cliquez ou faites glisser sur la surface.")}</p>
-            <BowlNachMass ctx={ctx} onSetzen={(w) => { if (!ctx) return; const g = bowlForm(w.h, w.l, w.b, w.nasen, w.lang, ctx); if (!g) { melden(t("Diese Form passt nicht zusammen. Länge oder Breite erhöhen.", "This shape does not fit together. Increase length or width.", "Cette forme ne s'assemble pas. Augmentez la longueur ou la largeur.")); return; } teileHinzufuegen(g, t("Bowl gesetzt.", "Bowl placed.", "Bowl posé.")); setPanel(null); }} />
+            <BowlNachMass ctx={ctx} onSetzen={(g) => { teileHinzufuegen(g, t("Bowl gesetzt.", "Bowl placed.", "Bowl posé.")); setPanel(null); }} />
             {BAUSTEINE.map((b) => (
               <button
                 key={b.id}

@@ -4,6 +4,7 @@ import { Link, LOCALE, localizePath, tt, useLang, useT } from '../i18n';
 import PageShell from '../components/PageShell';
 import Buehne, { type BuehnenApi } from '../components/konfigurator/Buehne';
 import QRCode from 'qrcode';
+import BowlNachMass from '../components/konfigurator/BowlNachMass';
 import Druck, { Plan, pdfSpeichern, type DruckOptionen } from '../components/konfigurator/Druck';
 import { ladeNetz, type Netz } from '../components/konfigurator/plan2d';
 import { PARK_SPEICHER, leeren, warteschlange } from '../components/konfigurator/merkliste';
@@ -11,7 +12,7 @@ import { konfiguratorFrei, useKonfiguratorFrei } from '../components/katalog/use
 import CodeDialog, { useKonfiguratorCode } from '../components/katalog/CodeDialog';
 import { gruppenName, teilName } from '../localized';
 import {
-  BAUSTEINE, LEER, RASTER, gruppen, entgruppieren, eingraben, gruppeVerschieben, anbauMoeglich, bowlForm, type NasenSeite, drehenGruppe, geradeAnhaengen, kurveAnhaengen, kegelAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
+  BAUSTEINE, LEER, RASTER, gruppen, entgruppieren, eingraben, gruppeVerschieben, anbauMoeglich, bowlForm, drehenGruppe, geradeAnhaengen, kurveAnhaengen, kegelAnhaengen, gelaenderModus, gelaenderSetzen, type GelaenderModus, type Richtung, VORLAGEN, abgeleitet, allesBeheben, anordnen, beheben, csv, dekodieren, einrasten,
   hinzufuegen, kodieren, kollidiert, neueId, pruefen, stueckliste, vorlageBauen, vorschlag as vorschlagFuer, waehlbar,
   type Ctx, type Hinweis, type Park, type Teil, type Vorschlag, ueberText,
 } from '../components/konfigurator/logik';
@@ -360,7 +361,6 @@ const KonfiguratorPage: React.FC = () => {
   const inGruppe = useMemo(() => !!(ctx && park && auswahl && (gruppen(park, ctx).find((g) => g.some((x) => x.id === auswahl))?.length ?? 0) > 1), [ctx, park, auswahl]);
   const gelModus = useMemo(() => (ctx && park && auswahl ? gelaenderModus(auswahl, park, ctx) : null), [ctx, park, auswahl]);
   const gelSetzen = (m: GelaenderModus) => { if (ctx && park && auswahl) aendern(gelaenderSetzen(auswahl, m, park, ctx)); };
-  const [bowlMass, setBowlMass] = useState<{ h: 98 | 150; l: number; b: number; nasen: NasenSeite[]; lang: number }>({ h: 98, l: 3, b: 1, nasen: [0, 1, 2, 3].map(() => ({ n: 0, aussen: false })), lang: 0 });
   const hinweisBeheben = (h: Hinweis) => {
     if (!ctx || !park) return;
     const neu = beheben(h, park, ctx);
@@ -496,29 +496,7 @@ const KonfiguratorPage: React.FC = () => {
         {reiter === 'bausteine' ? (
           <>
             <p className="text-xs text-brand-muted px-1 pb-1">{t("Fertige Kombinationen aus dem A+-Katalog. Klicken oder auf die Fläche ziehen.", "Ready-made combinations from the A+ catalogue. Click, or drag onto the area.", "Combinaisons toutes faites du catalogue A+. Cliquez ou faites glisser sur la surface.")}</p>
-            <div className="p-3 rounded-lg bg-white border border-brand-dark/10">
-              <span className="block font-heading font-bold uppercase text-sm text-brand-dark">{t("Bowl nach Maß", "Custom-size bowl", "Bowl sur mesure")}</span>
-              <span className="block text-xs text-brand-muted mb-2">{t("Gerade Wände je Seite, Ecken rund aus Corners", "Straight walls on each side, rounded corners made of corner elements", "Parois droites de chaque côté, angles arrondis en éléments corner")}</span>
-              <div className="grid grid-cols-3 gap-1.5 text-xs">
-                <label>{t("Höhe", "Height", "Hauteur")}<select className={`${eingabe} !px-1.5 !py-1`} value={bowlMass.h} onChange={(e) => setBowlMass({ ...bowlMass, h: Number(e.target.value) as 98 | 150 })}><option value={98}>98</option><option value={150}>150</option></select></label>
-                <label>{t("Länge", "Length", "Longueur")}<input type="number" min={0} max={10} className={`${eingabe} !px-1.5 !py-1`} value={bowlMass.l} onChange={(e) => setBowlMass({ ...bowlMass, l: Math.max(0, Math.min(10, Number(e.target.value))) })} /></label>
-                <label>{t("Breite", "Width", "Largeur")}<input type="number" min={0} max={10} className={`${eingabe} !px-1.5 !py-1`} value={bowlMass.b} onChange={(e) => setBowlMass({ ...bowlMass, b: Math.max(0, Math.min(10, Number(e.target.value))) })} /></label>
-              </div>
-              <span className="block text-xs text-brand-muted mt-2 mb-1">{t("Nasen aus Kegeln je Seite", "Noses made of cones on each side", "Nez en cônes de chaque côté")}</span>
-              <div className="grid grid-cols-2 gap-1.5 text-xs">
-                {[t("Oben", "Top", "Haut"), t("Rechts", "Right", "Droite"), t("Unten", "Bottom", "Bas"), t("Links", "Left", "Gauche")].map((name, i) => (
-                  <label key={i}>{name}<select className={`${eingabe} !px-1.5 !py-1`} value={`${bowlMass.nasen[i].n}${bowlMass.nasen[i].aussen ? 'a' : 'i'}`} onChange={(e) => { const v = e.target.value; setBowlMass({ ...bowlMass, nasen: bowlMass.nasen.map((x, j) => (j === i ? { n: Number(v[0]), aussen: v[1] === 'a' } : x)) }); }}>
-                    <option value="0i">{t("keine", "none", "aucun")}</option>
-                    <option value="1i">{t("1 nach innen", "1 inwards", "1 vers l'intérieur")}</option>
-                    <option value="2i">{t("2 nach innen", "2 inwards", "2 vers l'intérieur")}</option>
-                    <option value="1a">{t("1 nach außen", "1 outwards", "1 vers l'extérieur")}</option>
-                    <option value="2a">{t("2 nach außen", "2 outwards", "2 vers l'extérieur")}</option>
-                  </select></label>
-                ))}
-                <label className="col-span-2">{t("Nasenlänge (gerade Elemente)", "Nose length (straight elements)", "Longueur du nez (éléments droits)")}<input type="number" min={0} max={4} className={`${eingabe} !px-1.5 !py-1`} value={bowlMass.lang} onChange={(e) => setBowlMass({ ...bowlMass, lang: Math.max(0, Math.min(4, Math.round(Number(e.target.value)))) })} /></label>
-              </div>
-              <button type="button" onClick={() => { if (!ctx) return; const g = bowlForm(bowlMass.h, bowlMass.l, bowlMass.b, bowlMass.nasen, bowlMass.lang, ctx); if (!g) { melden(t("Diese Form passt nicht zusammen. Länge oder Breite erhöhen.", "This shape does not fit together. Increase length or width.", "Cette forme ne s'assemble pas. Augmentez la longueur ou la largeur.")); return; } if (g) { teileHinzufuegen(g, t("Bowl gesetzt.", "Bowl placed.", "Bowl posé.")); setPanel(null); } }} className="mt-2 w-full py-1.5 rounded-lg bg-brand-dark text-white text-xs font-bold uppercase tracking-wider hover:bg-brand-orange">{t("Bowl setzen", "Place bowl", "Poser le bowl")}</button>
-            </div>
+            <BowlNachMass ctx={ctx} onSetzen={(w) => { if (!ctx) return; const g = bowlForm(w.h, w.l, w.b, w.nasen, w.lang, ctx); if (!g) { melden(t("Diese Form passt nicht zusammen. Länge oder Breite erhöhen.", "This shape does not fit together. Increase length or width.", "Cette forme ne s'assemble pas. Augmentez la longueur ou la largeur.")); return; } teileHinzufuegen(g, t("Bowl gesetzt.", "Bowl placed.", "Bowl posé.")); setPanel(null); }} />
             {BAUSTEINE.map((b) => (
               <button
                 key={b.id}

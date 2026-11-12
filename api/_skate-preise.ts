@@ -66,6 +66,7 @@ const SKATE_PREISE: Record<string, string> = {
   "ledge-lang-98-40": "2227 €",
   "ledge-lang-98l": "2671 €",
   "ledge-slg-98": "2385 €",
+  "pipe-flat-234": "1403 €",
   "manual-pad-250": "1654 €",
   "pipe-flat-292": "1403 €",
   "manual-pad-300": "1909 €",

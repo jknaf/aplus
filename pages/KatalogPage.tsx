@@ -336,13 +336,14 @@ const ParkKarte: React.FC<{ p: Beispiel; preis: string | null; onSperre: () => v
   );
 };
 
-// Titelbild des Katalogheftes (Park 20, 08_Preisliste/heft_renders/park-20_titel.png) mit Schildern an
-// einzelnen Elementen. x/y in Prozent des Bildes; links: Schild links vom Punkt (Punkte am rechten Rand).
+// Titelbild des Katalogheftes (Skatepark 21 seit 12.11.2026, druck/katalog-titel/render.html, gleiche Kamera wie
+// das gedruckte Titelblatt) mit Schildern an einzelnen Elementen. x/y in Prozent des Bildes, beim Rendern aus der
+// Oberkante jedes Teils projiziert; links: Schild links vom Punkt (Punkte am rechten Rand).
 const TITEL_SCHILDER = [
-  { slug: 'table-150', x: 19, y: 55 },
-  { slug: 'stairs-60-75', x: 73, y: 39, nurBreit: true, name: 'Stairs 75' },   // Joachim: auf dem Schild nur ein Wert
-  { slug: 'curb-300', x: 86, y: 54, links: true, nurBreit: true },
-  { slug: 'rail-300', x: 91, y: 28, links: true },
+  { slug: 'slide-bar-300', x: 43.9, y: 13.2 },
+  { slug: 'stairs-60-75', x: 26.8, y: 38.6, nurBreit: true, name: 'Stairs 75' },   // Joachim: auf dem Schild nur ein Wert
+  { slug: 'rail-300', x: 73.4, y: 35, links: true },
+  { slug: 'coping-ramp-125', x: 78.9, y: 53.9, links: true, nurBreit: true },
 ];
 
 const TitelPark: React.FC<{ park?: Beispiel; katalog: Katalog | null }> = ({ park, katalog }) => {
@@ -352,7 +353,7 @@ const TitelPark: React.FC<{ park?: Beispiel; katalog: Katalog | null }> = ({ par
     <div className="lg:[grid-area:bild] relative flex flex-col items-center justify-center">
       <div className="relative w-full max-w-[640px]">
         <div className="absolute inset-x-[4%] -bottom-[10%] h-[55%] rounded-[50%] bg-brand-orange/10" aria-hidden="true" />
-        <img src="/images/katalog/titel-park-20.webp" alt={t("Skatepark 20 aus Betonelementen in 3D", "Skatepark 20 made of concrete elements in 3D", "Skatepark 20 en éléments de béton en 3D")} width="1200" height="555" className="relative w-full h-auto" />
+        <img src="/images/katalog/titel-park-21.webp" alt={t("Skatepark 21 aus Betonelementen in 3D", "Skatepark 21 made of concrete elements in 3D", "Skatepark 21 en éléments de béton en 3D")} width="1200" height="706" className="relative w-full h-auto" />
         {katalog && TITEL_SCHILDER.map((s) => {
           const e = katalog.elemente.find((x) => x.slug === s.slug);
           if (!e) return null;
@@ -369,11 +370,11 @@ const TitelPark: React.FC<{ park?: Beispiel; katalog: Katalog | null }> = ({ par
         })}
       </div>
       <Link
-        to="/katalog/skatepark-20" onMouseEnter={() => park && vorladen(park)} onFocus={() => park && vorladen(park)} onTouchStart={() => park && vorladen(park)}
+        to="/katalog/skatepark-21" onMouseEnter={() => park && vorladen(park)} onFocus={() => park && vorladen(park)} onTouchStart={() => park && vorladen(park)}
         className="mt-8 inline-flex items-center gap-2.5 min-h-12 px-5 rounded-full bg-white shadow-[0_6px_20px_rgba(44,53,48,0.14)] font-bold text-[15px] text-brand-dark hover:text-brand-orange transition-colors"
       >
         <span className="material-symbols-outlined text-[22px] text-[#4F6E34]">3d_rotation</span>
-        {t("Park 20 in 3D ansehen", "View park 20 in 3D", "Voir le parc 20 en 3D")}
+        {t("Park 21 in 3D ansehen", "View park 21 in 3D", "Voir le parc 21 en 3D")}
       </Link>
     </div>
   );
@@ -455,7 +456,7 @@ const KatalogPage: React.FC = () => {
             </p>
           </div>
 
-          <TitelPark park={parks.find((p) => p.id === 'skatepark-20')} katalog={katalog} />
+          <TitelPark park={parks.find((p) => p.id === 'skatepark-21')} katalog={katalog} />
 
           {/* Große Schalter mit Bildern aus dem Katalog statt Symbolen */}
           <div className="lg:[grid-area:wahl] lg:self-end grid grid-cols-2 gap-3" role="tablist" aria-label={t("Ansicht", "View", "Vue")}>

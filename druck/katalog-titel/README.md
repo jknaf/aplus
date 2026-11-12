@@ -13,6 +13,14 @@ Auf der Website (nur Staging, Zweig `dev`) ist das schon erledigt: `public/image
    und die Schrift unten bleiben, wie sie sind.
 2. Die drei PDFs unter ihrem bisherigen Dateinamen wieder nach R2 hochladen. Dann zeigen die Links der Website sofort die neue Fassung.
 
+## Preise
+
+Wer den ganzen Katalog neu rechnet, nimmt die Preise aus diesem Repo, Zweig `dev`: `api/_skate-preise.ts` für die
+Elemente, `api/_park-preise.ts` für die Parks. Seit dem 12.11.2026 werden sie auf dem Mac des Inhabers direkt in diesen
+Dateien gepflegt (z. B. Flat 375:2 = 1214 €, Pipe Flat 292/234 = 1403 €; HIP 60L, Corner 75 und Pipe Flat 342 sind raus).
+`katalog_web.py` kennt diese Änderungen nicht. Ein neuer Lauf von dort würde sie überschreiben. Darum erst abgleichen,
+dann die Quelle nachziehen. Bei Abweichungen den Inhaber fragen, nicht raten.
+
 ## Dateien hier
 
 - `skatepark-21_titel_transparent.png`: Skatepark 21 freigestellt, 2262 × 1330 px. Gerechnet aus den

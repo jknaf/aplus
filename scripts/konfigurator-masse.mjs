@@ -55,7 +55,7 @@ export const vermessen = (v) => {
   };
 };
 
-// Für die Planung zählt das Rastermaß der Preisliste („H / L / B“ in cm), nicht überstehender Kantenschutz o. ä.
+// Für die Planung zählt das Maß im Katalog des Dashboards („H / L / B“ in cm, früher die Preisliste), nicht überstehender Kantenschutz o. ä.
 // Liegt das Modell höchstens 3 % daneben (Kantenschutz steht ca. 1,5 cm über), werden Länge und Breite auf das Katalogmaß gesetzt (passende Achse zuerst).
 export const aufKatalogmass = (m, preisliste) => {
   const t = String(preisliste ?? '').split('/').map((x) => Number(x.trim().replace(',', '.')));
@@ -69,7 +69,7 @@ export const aufKatalogmass = (m, preisliste) => {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const masse = {};
   for (const e of katalog.elemente) {
-    masse[e.slug] = aufKatalogmass(vermessen(punkte(join(root, 'public/konfigurator/modelle', `${e.slug}.gltf`))), e.preisliste_masse_cm);
+    masse[e.slug] = aufKatalogmass(vermessen(punkte(join(root, 'public/konfigurator/modelle', `${e.slug}.gltf`))), e.masse_cm ? `${e.masse_cm.hoehe} / ${e.masse_cm.laenge} / ${e.masse_cm.breite}` : e.preisliste_masse_cm); // Katalog im Dashboard
   }
   mkdirSync(join(root, 'public/konfigurator'), { recursive: true });
   writeFileSync(join(root, 'public/konfigurator/masse.json'), JSON.stringify(masse));

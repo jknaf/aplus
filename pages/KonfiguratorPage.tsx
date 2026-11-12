@@ -19,7 +19,7 @@ import {
 
 // Konzept: 08_CAD_Blender/12_Konfigurator/…_Konfigurator_Konzept_V01.md, Regeln: …_Regelwerk_V01.md
 
-interface KatalogElement { slug: string; name: string; gruppe: string; kuerzel: string; preisliste_code: string; preisliste_masse_cm?: string; modell: string; bild: string; gewicht: { kg: number } | null }
+interface KatalogElement { slug: string; name: string; gruppe: string; kuerzel: string; preisliste_code: string; preisliste_masse_cm?: string; masse_cm?: { laenge: number; breite: number; hoehe: number }; modell: string; bild: string; gewicht: { kg: number } | null }
 interface Katalog { gruppen: string[]; elemente: KatalogElement[] }
 
 const m = (x: number, loc: string) => x.toLocaleString(loc, { maximumFractionDigits: 2 });
@@ -203,7 +203,7 @@ const KonfiguratorPage: React.FC = () => {
   useEffect(() => {
     Promise.all([fetch('/katalog/katalog.json').then((r) => r.json()), fetch('/konfigurator/masse.json').then((r) => r.json())]).then(([k, masse]: [Katalog, Ctx['masse']]) => {
       const info: Ctx['info'] = {};
-      for (const e of k.elemente) info[e.slug] = { name: teilName(e.name, lang), code: e.preisliste_code || e.kuerzel, gruppe: e.gruppe, kg: e.gewicht?.kg, masse: e.preisliste_masse_cm };
+      for (const e of k.elemente) info[e.slug] = { name: teilName(e.name, lang), code: e.preisliste_code || e.kuerzel, gruppe: e.gruppe, kg: e.gewicht?.kg, masse: e.masse_cm ? `${e.masse_cm.hoehe} / ${e.masse_cm.laenge} / ${e.masse_cm.breite}` : undefined }; // Katalog im Dashboard
       const c = { masse, info };
       setKatalog(k);
       setCtx(c);

@@ -22,6 +22,7 @@ interface Element {
   slug: string; name: string; gruppe: string; element: string; kuerzel: string;
   preisliste_code: string; preisliste_produkt: string; preisliste_masse_cm: string;
   modell_masse_cm: { laenge: number; breite: number; hoehe: number };
+  masse_cm: { laenge: number; breite: number; hoehe: number }; // Single Source: Katalog im A+-OS-Dashboard
   kamera?: { ziel: [number, number, number]; abstand: number };
   gdl_standard_m: Record<string, number>; gdl_parameter: Parameter[];
   materialien: string[]; makros: string[];
@@ -83,12 +84,9 @@ const masseAusPreisliste = (s: string) => {
   return t.length >= 3 ? { h: t[0], l: t[1], b: t[2], w: t[3] } : null;
 };
 
-const kurzMasse = (e: Element, t: (de: string, en: string, fr: string) => string) => {
-  const p = masseAusPreisliste(e.preisliste_masse_cm);
-  if (p) return `H ${p.h} · L ${p.l} · ${t('B', 'W', 'l')} ${p.b} cm`;
-  const m = e.modell_masse_cm;
-  return `H ${m.hoehe} · L ${Math.max(m.laenge, m.breite)} · ${t('B', 'W', 'l')} ${Math.min(m.laenge, m.breite)} cm`;
-};
+// Maße nur aus dem Katalog im A+-OS-Dashboard (Single Source, Inhaber 12.11.2026)
+const kurzMasse = (e: Element, t: (de: string, en: string, fr: string) => string) =>
+  `H ${e.masse_cm.hoehe} · L ${e.masse_cm.laenge} · ${t('B', 'W', 'l')} ${e.masse_cm.breite} cm`;
 
 // Die CAD-Oberflächen (z. B. „Anstrich“, „Kiefer“) sind nur Archicad-Darstellung, nicht das Produktmaterial.
 const material = (e: Element, t: (de: string, en: string, fr: string) => string) => {
@@ -166,8 +164,8 @@ const Detail: React.FC<{
   const t = useT();
   const lang = useLang();
   const loc = LOCALE[lang];
-  const p = masseAusPreisliste(e.preisliste_masse_cm);
-  const m = e.modell_masse_cm;
+  const p = masseAusPreisliste(e.preisliste_masse_cm); // nur noch für den Winkel
+  const m = e.masse_cm;
   useEffect(() => {
     const esc = (ev: KeyboardEvent) => ev.key === 'Escape' && onClose();
     window.addEventListener('keydown', esc);
@@ -195,20 +193,10 @@ const Detail: React.FC<{
 
           <h3 className="font-mono text-xs uppercase tracking-widest text-brand-muted mb-1">{t("Bemaßung", "Dimensions", "Cotes")}</h3>
           <dl className="mb-8">
-            {p ? (
-              <>
-                <Zeile label={t("Höhe H", "Height H", "Hauteur H")}>{p.h} cm</Zeile>
-                <Zeile label={t("Länge L", "Length L", "Longueur L")}>{p.l} cm</Zeile>
-                <Zeile label={t("Breite B", "Width W", "Largeur l")}>{p.b} cm</Zeile>
-                {p.w && <Zeile label={t("Winkel W", "Angle A", "Angle A")}>{p.w}°</Zeile>}
-              </>
-            ) : null}
-            <Zeile label={t("Außenmaße 3D-Modell (L × B × H)", "Outer dimensions, 3D model (L × W × H)", "Dimensions extérieures du modèle 3D (L × l × H)")}>{Math.max(m.laenge, m.breite)} × {Math.min(m.laenge, m.breite)} × {m.hoehe} cm</Zeile>
-            {'standard_A_m' in e.gdl_standard_m && (
-              <Zeile label={t("Planungsmaße A × B × Höhe", "Planning dimensions A × B × height", "Cotes de planification A × B × hauteur")}>
-                {['standard_A_m', 'standard_B_m', 'standard_ZZYZX_m'].map((k) => Math.round((e.gdl_standard_m[k] ?? 0) * 1000).toLocaleString(loc)).join(' × ')} mm
-              </Zeile>
-            )}
+            <Zeile label={t("Höhe H", "Height H", "Hauteur H")}>{m.hoehe} cm</Zeile>
+            <Zeile label={t("Länge L", "Length L", "Longueur L")}>{m.laenge} cm</Zeile>
+            <Zeile label={t("Breite B", "Width W", "Largeur l")}>{m.breite} cm</Zeile>
+            {p?.w && <Zeile label={t("Winkel W", "Angle A", "Angle A")}>{p.w}°</Zeile>}
           </dl>
 
           <h3 className="font-mono text-xs uppercase tracking-widest text-brand-muted mb-1">{t("Daten", "Data", "Données")}</h3>

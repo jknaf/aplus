@@ -46,6 +46,7 @@ const SKATE_PREISE: Record<string, string> = {
   "gelaender-ende-links": "821 €",
   "gelaender-ende-rechts": "821 €",
   "gelaender-verbindung-90": "329 €",
+  "gelaender-125": "535 €",
   "gelaender-verbindung-gerade": "220 €",
   "hip-60": "2671 €",
   "hip-60l": "2940 €",

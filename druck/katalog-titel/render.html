@@ -1,0 +1,42 @@
+<!doctype html><html><head><style>html,body{margin:0;background:transparent}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"/three/build/three.module.js","three/addons/":"/three/examples/jsm/"}}</script></head><body>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+const q = new URLSearchParams(location.search), n = (k, d) => +(q.get(k) ?? d);
+const W = n('w', 1808), H = n('h', 1594);
+const C = new THREE.Matrix4().set(1,0,0,0, 0,0,1,0, 0,-1,0,0, 0,0,0,1), Ci = C.clone().invert();
+const park = (await (await fetch('/katalog/parks.json')).json()).parks.find(p => p.nr === n('nr', 21));
+const r = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+r.setPixelRatio(1); r.setSize(W, H); r.toneMapping = THREE.NoToneMapping; document.body.appendChild(r.domElement);
+const sc = new THREE.Scene(), L = new GLTFLoader(), cache = {};
+const laden = s => cache[s] ??= L.loadAsync(`/katalog/modelle/${s}.gltf`).then(g => g.scene);
+await Promise.all(park.teile.map(async t => {
+  const g = await laden(t.slug), w = new THREE.Group(); w.matrixAutoUpdate = false;
+  w.matrix.copy(C).multiply(new THREE.Matrix4().set(...t.m)).multiply(Ci);
+  const o = g.clone(true), amBoden = Math.abs(t.m[11]) < 0.02;
+  o.traverse(m => { if (m.name !== 'Schatten' || !m.isMesh) return; if (!amBoden) { m.visible = false; return; }
+    m.material.depthWrite = false; m.material.polygonOffset = true; m.material.polygonOffsetFactor = -2; m.material.polygonOffsetUnits = -2; m.renderOrder = 1; });
+  w.add(o); sc.add(w);
+}));
+const box = new THREE.Box3().setFromObject(sc);
+if (park.flaeche) { const [l, b, x0 = 0, y0 = 0] = park.flaeche;
+  const p = new THREE.Mesh(new THREE.PlaneGeometry(l, b), new THREE.MeshBasicMaterial({ color: q.get('boden') || '#D6D4CE' }));
+  p.rotation.x = -Math.PI/2; p.position.set(x0 + l/2, -0.03, -(y0 + b/2)); sc.add(p);
+  box.min.x = x0; box.max.x = x0 + l; box.min.z = -(y0 + b); box.max.z = -y0; }
+const mitte = box.getCenter(new THREE.Vector3()); mitte.y = box.min.y + n('ty', 0.6);
+mitte.x += n('tx', 0); mitte.z += n('tz', 0);
+const cam = new THREE.PerspectiveCamera(n('fov', 35), W/H, 0.5, 400);
+const az = THREE.MathUtils.degToRad(n('az', 38)), el = THREE.MathUtils.degToRad(n('el', 28)), d = n('d', 30);
+cam.position.copy(mitte).add(new THREE.Vector3(Math.sin(az)*Math.cos(el), Math.sin(el), Math.cos(az)*Math.cos(el)).multiplyScalar(d));
+cam.lookAt(mitte); cam.updateMatrixWorld();
+// Ausschnitt einpassen: Szene so verschieben und zoomen, dass sie mit Rand 'rand' mittig (Höhe 'cy') sitzt
+const ecken = []; for (const x of [box.min.x, box.max.x]) for (const y of [box.min.y, box.max.y]) for (const z of [box.min.z, box.max.z]) ecken.push(new THREE.Vector3(x, y, z).project(cam));
+const xs = ecken.map(p => p.x), ys = ecken.map(p => p.y);
+const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+const s = Math.min(2 * (1 - n('rand', 0.04)) / (x1 - x0), 2 * (1 - n('rand', 0.04)) / (y1 - y0));
+const vw = W / s, vh = H / s;
+const cx = ((x0 + x1) / 2 + 1) / 2 * W, cyy = (1 - (y0 + y1) / 2) / 2 * H;
+cam.setViewOffset(W, H, cx - vw / 2, cyy - vh * n('cy', 0.5), vw, vh);
+r.render(sc, cam); document.title = 'fertig';
+</script></body></html>

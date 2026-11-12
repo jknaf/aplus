@@ -15,11 +15,13 @@ Auf der Website (nur Staging, Zweig `dev`) ist das schon erledigt: `public/image
 
 ## Preise
 
-Wer den ganzen Katalog neu rechnet, nimmt die Preise aus diesem Repo, Zweig `dev`: `api/_skate-preise.ts` für die
-Elemente, `api/_park-preise.ts` für die Parks. Seit dem 12.11.2026 werden sie auf dem Mac des Inhabers direkt in diesen
-Dateien gepflegt (z. B. Flat 375:2 = 1214 €, Pipe Flat 292/234 = 1403 €; HIP 60L, Corner 75 und Pipe Flat 342 sind raus).
-`katalog_web.py` kennt diese Änderungen nicht. Ein neuer Lauf von dort würde sie überschreiben. Darum erst abgleichen,
-dann die Quelle nachziehen. Bei Abweichungen den Inhaber fragen, nicht raten.
+Die Preise kommen nur aus dem Katalog im A+-OS-Dashboard. Website und Druckkatalog richten sich danach, nie umgekehrt.
+Auf dem Entwicklungsrechner ist der Katalog-Stand des Dashboards `api/_skate-preise.ts` (Elemente) und
+`api/_park-preise.ts` (Parks) in diesem Repo, Zweig `dev`. Am 12.11.2026 waren alle 91 Element-Preise gleich dem
+Dashboard (z. B. Flat 375:2 = 1214 €, Pipe Flat 292/234 = 1403 €; HIP 60L, Corner 75 und Pipe Flat 342 sind raus).
+Die Preisquelle von `katalog_web.py` auf dem Entwicklungsrechner ist veraltet. Ein neuer Lauf von dort würde diese Preise
+überschreiben. Darum gelten für den Druck die beiden Dateien oben. Weicht etwas ab, den Inhaber fragen, nicht raten.
+Preise ändert der Inhaber im Dashboard, nicht hier.
 
 ## Dateien hier
 

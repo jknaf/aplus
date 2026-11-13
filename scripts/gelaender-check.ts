@@ -28,3 +28,21 @@ for (const n of [2, 3, 4]) for (const rot of [0, 90, 180, 270]) {
   }
 }
 console.log(fehler ? `FEHLER ${fehler}` : 'alle Pfosten außen');
+// G10: freie Enden gerundet. Quarterramp 200 frei: Plateau-Seiten enden in je einem Endstück, Bogen zum freien Ende (nach vorn)
+{
+  const ab = abgeleitet({ flaeche: { l: 40, b: 30, angeboescht: false }, teile: [{ id: 'q', slug: 'quarterramp-200', x: 10, z: 10, rot: 0 }] }, ctx);
+  const e = ab.gelaender.filter((g) => g.slug.startsWith('gelaender-ende'));
+  if (e.length !== 2) { fehler++; console.log('Endstücke an Quarterramp 200:', e.length); }
+  for (const g of e) {
+    const bogen = drehe({ x: g.slug === 'gelaender-ende-links' ? 1 : -1, z: 0 }, g.rot); // Richtung des Bogens
+    if (bogen.x >= 0) { fehler++; console.log('Bogen zeigt nicht zum freien Ende', g); } // Rückseite liegt bei +x, frei ist -x
+  }
+  if (ab.gelaender.some((g) => /^gelaender-(125|250|375|500)$/.test(g.slug) && Math.abs(g.z - 10) > 1)) { fehler++; console.log('offenes Feld an der Plateau-Seite'); }
+}
+// Tisch-Reihe rundum geschlossen: keine Endstücke
+{
+  const teile = [0, 1, 2].map((i) => ({ id: 't' + i, slug: 'table-150', x: 10 + i * 1.25, z: 10, rot: 0 }));
+  const ab = abgeleitet({ flaeche: { l: 40, b: 30, angeboescht: false }, teile }, ctx);
+  if (ab.gelaender.some((g) => /^gelaender-(ende|einzl)/.test(g.slug))) { fehler++; console.log('Endstück an geschlossenem Lauf'); }
+}
+console.log(fehler ? `FEHLER ${fehler}` : 'Enden gerundet');

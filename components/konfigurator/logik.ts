@@ -563,7 +563,10 @@ export interface Abgeleitet { gelaender: Zusatz[]; keile: Zusatz[] }
 const GELAENDER: [number, string][] = [[5, 'gelaender-500'], [3.75, 'gelaender-375'], [2.5, 'gelaender-250'], [1.25, 'gelaender-125']];
 // Seite der Pfosten mit Fußplatte im Modell (gemessen; das 250er ist gegenüber 375/500 gespiegelt).
 // Pfosten nach außen, die Stabfüllung zur Fahrfläche (Joachim, 10.11.2026).
-const PFOSTEN: Record<string, V> = { 'gelaender-125': { x: 0, z: -1 }, 'gelaender-250': { x: -1, z: 0 }, 'gelaender-375': { x: 1, z: 0 }, 'gelaender-500': { x: 1, z: 0 } };
+const PFOSTEN: Record<string, V> = {
+  'gelaender-125': { x: 0, z: -1 }, 'gelaender-250': { x: -1, z: 0 }, 'gelaender-375': { x: 1, z: 0 }, 'gelaender-500': { x: 1, z: 0 },
+  'gelaender-ende-links': { x: 0, z: -1 }, 'gelaender-ende-rechts': { x: 0, z: -1 }, 'gelaender-einzl': { x: 0, z: -1 },
+};
 const nachAussen = (slug: string, aussen: V) => norm360(winkel(aussen) - winkel(PFOSTEN[slug]));
 // Montage wie in den Archicad-Katalogparks (gemessen 13.11.2026): Geländer seitlich an der Außenwand verschraubt,
 // Handlauf genau über der Kante, Feldmitte 3,2 cm außerhalb, Fuß 13 cm (Tables) bzw. 15 cm (Rampen) unter der Oberkante.
@@ -677,7 +680,8 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
       pos += len;
     }
   }
-  return { gelaender: [...gelaender, ...rund, ...verbinder([...gelaender, ...rund], ctx)], keile };
+  const felder = [...rundeEnden(gelaender, rund, ctx), ...rund];
+  return { gelaender: [...felder, ...verbinder(felder, ctx)], keile };
 };
 
 // Die Geländerfelder sind kürzer als ihr Rastermaß (375er: 3,53 m), die Lücke schließt der Verbinder (22 cm).
@@ -696,7 +700,42 @@ const feldEnden = (z: Zusatz, ctx: Ctx): { p: V; r: V }[] => {
   const r = polar(w, 1);
   const halb = mal(r, Math.max(m.l, m.b) / 2);
   const achse = PFOSTEN[z.slug] ? minus(z, mal(drehe(PFOSTEN[z.slug], z.rot), HANDLAUF)) : z; // Handlauf liegt innen neben der Feldmitte
-  return [{ p: plus(achse, halb), r }, { p: minus(achse, halb), r }];
+  // Endstücke: nur das offene Ende zählt (Bogen bei „Ende links“ an +x, bei „Ende rechts“ an -x, „einzl“ beidseitig)
+  const offen = { 'gelaender-ende-links': [false, true], 'gelaender-ende-rechts': [true, false], 'gelaender-einzl': [false, false] }[z.slug] ?? [true, true];
+  return [{ p: plus(achse, halb), r }, { p: minus(achse, halb), r }].filter((_, k) => offen[k]);
+};
+// Regel G10 (Joachim, 13.11.2026): Wo ein Geländer aufhört, ist es gerundet. Das letzte 1,25-m-Raster eines freien Endes wird
+// zum Endstück (Bogen im Modell: „Ende links“ an +x, „Ende rechts“ an -x), ein einzelnes freies Feld zum beidseitig runden „einzl“.
+// Das offene Ende sitzt wie ein Feldende, der Bogen ragt 9,3 cm weiter (in den Katalogparks 7–8 cm über die Kante).
+// shortcut: Rundgeländer SGER-150 hat kein Endstück und bleibt offen, bis A+ eins liefert
+const FELD_RASTER: Record<string, number> = Object.fromEntries(GELAENDER.map(([l, sl]) => [sl, l]));
+const BOGEN = 0.608 - 0.515;
+const rundeEnden = (gerade: Zusatz[], rund: Zusatz[], ctx: Ctx): Zusatz[] => {
+  if (!ctx.masse['gelaender-ende-links'] || !ctx.masse['gelaender-ende-rechts'] || !ctx.masse['gelaender-einzl']) return gerade;
+  const alle = [...gerade, ...rund];
+  const enden = alle.flatMap((z, i) => feldEnden(z, ctx).map((e) => ({ ...e, i })));
+  const frei = (i: number, p: V) => !enden.some((e) => e.i !== i && laenge(minus(e.p, p)) < 0.4);
+  return gerade.flatMap((z, i) => {
+    const L = FELD_RASTER[z.slug];
+    if (!L) return [z];
+    const [a, b] = feldEnden(z, ctx); // a am +r-Ende, b am -r-Ende
+    const fa = frei(i, a.p), fb = frei(i, b.p);
+    if (!fa && !fb) return [z];
+    const r = a.r;
+    const aussen = drehe(PFOSTEN[z.slug], z.rot);
+    const teil = (slug: string, d: number): Zusatz => ({ ...z, slug, x: r3(z.x + r.x * d), z: r3(z.z + r.z * d), rot: nachAussen(slug, aussen) });
+    if (L < 1.3 && fa && fb) return [teil('gelaender-einzl', 0)];
+    const out: Zusatz[] = [];
+    for (const sg of [fa ? 1 : 0, fb ? -1 : 0].filter(Boolean)) {
+      const links = teil('gelaender-ende-links', 0);
+      const slug = skalar(drehe({ x: 1, z: 0 }, links.rot), mal(r, sg)) > 0 ? 'gelaender-ende-links' : 'gelaender-ende-rechts';
+      out.push(teil(slug, sg * (L / 2 - 0.625 + BOGEN)));
+    }
+    const rest = L - 1.25 * out.length;
+    const rs = GELAENDER.find(([g]) => Math.abs(g - rest) < 0.05)?.[1];
+    if (rs) out.push(teil(rs, ((fb ? 1 : 0) - (fa ? 1 : 0)) * 0.625));
+    return out;
+  });
 };
 const verbinder = (felder: Zusatz[], ctx: Ctx): Zusatz[] => {
   const enden = felder.flatMap((z, i) => feldEnden(z, ctx).map((e) => ({ ...e, i, y: z.y ?? 0 })));

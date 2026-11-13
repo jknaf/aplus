@@ -76,9 +76,21 @@ export const usePreise = () => {
     return ok ? daten.codes ?? [] : null;
   }, [betreiber]);
 
+  // Nur für /admin: Zahlen aus Google Analytics und Search Console
+  const analyse = useCallback(async (tage: number) => {
+    if (!betreiber) return { fehler: 'Nicht angemeldet.' };
+    try {
+      const res = await fetch('/api/analyse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code: betreiber, tage }) });
+      const daten = await res.json().catch(() => ({}));
+      return res.ok ? daten : { fehler: daten.fehler ?? 'Analyse gerade nicht abrufbar.' };
+    } catch {
+      return { fehler: 'Keine Verbindung.' };
+    }
+  }, [betreiber]);
+
   const abmelden = useCallback(() => { merken(null); setBetreiber(null); setKatalog(null); }, []);
 
-  return { katalog, freischalten, betreiber: !!betreiber, kundencode, codeliste, abmelden };
+  return { katalog, freischalten, betreiber: !!betreiber, kundencode, codeliste, analyse, abmelden };
 };
 
 // Konfigurator: ohne Freischaltung nur Vorlagen ansehen. Frei mit Betreiber-Code (dauerhaft) oder K-Code (FREI_TAGE im Browser).

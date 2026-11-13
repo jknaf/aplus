@@ -29,6 +29,22 @@ const safeStorage = {
     }
 };
 
+const GA_ID = 'G-RZLK1BN72G';
+
+// Google Analytics loads only after the visitor allowed "analytics" in this banner.
+const loadAnalytics = () => {
+    const w = window as any;
+    if (w.gtag) return;
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function () { w.dataLayer.push(arguments); };
+    w.gtag('js', new Date());
+    w.gtag('config', GA_ID);
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    document.head.appendChild(s);
+};
+
 const PrivacyBanner: React.FC = () => {
     const t = useT();
     const [isVisible, setIsVisible] = useState(false);
@@ -46,6 +62,8 @@ const PrivacyBanner: React.FC = () => {
             const consent = safeStorage.getItem(CONSENT_KEY);
             if (!consent) {
                 setIsVisible(true);
+            } else {
+                try { if (JSON.parse(consent).analytics) loadAnalytics(); } catch (e) { /* broken entry: no analytics */ }
             }
         }, 1000);
 
@@ -65,6 +83,7 @@ const PrivacyBanner: React.FC = () => {
     const saveConsent = (settings: typeof preferences) => {
         const consent = { ...settings, timestamp: new Date().toISOString() };
         safeStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+        if (settings.analytics) loadAnalytics();
         
         setIsVisible(false);
         setIsModalOpen(false);

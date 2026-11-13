@@ -154,12 +154,11 @@ const PrivacyBanner: React.FC = () => {
                                     <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">{t('Technisch notwendig', 'Strictly necessary', 'Strictement nécessaires')}</h3>
                                     <p className="text-xs text-brand-muted mt-1">{t('Essenziell für die Funktion der Website.', 'Required for the website to work.', 'Indispensables au fonctionnement du site.')}</p>
                                 </div>
-                                <div className="relative inline-block w-10 ml-2 align-middle select-none opacity-50">
-                                    <input type="checkbox" checked readOnly disabled className="appearance-none"/>
-                                    <div className="block overflow-hidden h-5 rounded-full bg-brand-orange w-9 relative">
-                                        <div className="absolute right-0 top-0 w-5 h-5 bg-white rounded-full border-2 border-brand-orange"></div>
-                                    </div>
-                                </div>
+                                {/* always on: same switch look as the others, but locked */}
+                                <span role="switch" aria-checked="true" aria-disabled="true" className="relative inline-block w-9 ml-2 align-middle select-none opacity-60 cursor-not-allowed">
+                                    <span className="block overflow-hidden h-5 rounded-full bg-brand-orange/50"></span>
+                                    <span className="absolute block w-5 h-5 rounded-full border-2 border-gray-900 top-0 right-0 bg-brand-orange"></span>
+                                </span>
                             </div>
                             
                             <div className="flex justify-between items-center p-4 rounded-lg bg-brand-surface/40 border border-brand-dark/5 hover:border-brand-dark/20 transition-colors">
@@ -201,7 +200,7 @@ const PrivacyBanner: React.FC = () => {
                             <button onClick={handleDeclineAll} className="px-4 py-3 sm:py-2 text-xs font-bold border border-brand-dark/10 hover:bg-brand-surface rounded transition-colors text-brand-muted uppercase tracking-widest w-full sm:w-auto">
                                 {t('Ablehnen', 'Reject', 'Refuser')}
                             </button>
-                            <button onClick={handleSavePreferences} className="px-6 py-3 sm:py-2 text-xs font-bold bg-white text-black rounded hover:bg-brand-orange hover:text-white transition-colors uppercase tracking-widest w-full sm:w-auto shadow-lg">
+                            <button onClick={handleSavePreferences} className="px-6 py-3 sm:py-2 text-xs font-bold bg-brand-orange text-black rounded hover:bg-brand-dark hover:text-white transition-colors uppercase tracking-widest w-full sm:w-auto">
                                 {t('Speichern', 'Save', 'Enregistrer')}
                             </button>
                         </div>

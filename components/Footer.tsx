@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border border-[rgba(242,240,235,0.22)] rounded-xl overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr] gap-px bg-[rgba(242,240,235,0.22)]">
+        <div className="border border-[rgba(242,240,235,0.22)] rounded-xl overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_0.8fr_1.4fr] xl:grid-cols-[1.2fr_1fr_1fr_1.2fr] gap-px bg-[rgba(242,240,235,0.22)]">
 
           <div className="bg-brand-dark p-7 flex flex-col justify-between gap-6">
             <Link to="/" className="block self-start">
@@ -97,14 +97,14 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="sm:col-span-2 lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr] gap-px font-mono text-[11px] tracking-[0.12em] uppercase text-[#C9CCC4]">
+          <div className="sm:col-span-2 lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_0.8fr_1.4fr] xl:grid-cols-[1.2fr_1fr_1fr_1.2fr] gap-px font-mono text-[11px] tracking-[0.12em] uppercase text-[#C9CCC4]">
             <p className="bg-brand-dark px-7 py-3.5">&copy; {new Date().getFullYear()} A+ Urban Design</p>
             <p className="bg-brand-dark px-5 py-3.5">{t('Made in Europe · aus Stuttgart', 'Made in Europe · from Stuttgart', 'Made in Europe · depuis Stuttgart')}</p>
             <p className="bg-brand-dark px-5 py-2.5 flex items-center gap-2.5">
               <img src="/images/details/tuev-gs.png" alt={t('GS-Zeichen von TÜV SÜD', 'GS mark from TÜV SÜD', 'Marque GS du TÜV SÜD')} width={22} height={22} loading="lazy" className="w-[22px] h-[22px] bg-white rounded-sm p-px" />
               <span>EN 14974</span>
             </p>
-            <div className="bg-brand-dark px-5 py-3.5 flex flex-wrap gap-5">
+            <div className="bg-brand-dark px-5 py-3.5 flex flex-wrap items-start content-start gap-x-5 gap-y-2">
               <Link to="/impressum" className="hover:text-[#A9C98A] transition-colors">{t('Impressum', 'Legal notice', 'Mentions légales')}</Link>
               <Link to="/datenschutz" className="hover:text-[#A9C98A] transition-colors">{t('Datenschutz', 'Privacy', 'Confidentialité')}</Link>
               <button onClick={handlePrivacySettingsClick} className="uppercase tracking-[0.12em] hover:text-[#A9C98A] transition-colors">Cookies</button>

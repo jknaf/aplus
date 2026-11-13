@@ -580,9 +580,8 @@ const braucht = (t: Teil, m: Masse, park: Park, tief = 0) => (t.gel !== undefine
 export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
   const tief = tiefen(park, ctx);
   const oben = (o: Teil) => ctx.masse[o.slug].h - (tief.get(o.id) ?? 0);
-  // G06: kein Geländer, wo ein Teil andockt, das höchstens 1,00 m tiefer liegt; liegt es mehr als 1 m tiefer, bleibt das Geländer.
-  // shortcut: Nachbarhöhe = seine Oberkante, nicht die Höhe genau an der Stoßkante; stimmt für Tables und Rampen, die mit der hohen Seite andocken
-  const zu = (s: Seite, t: Teil) => { const nb = anliegend(s, t.id, park, ctx); return !!nb && oben(t) - oben(nb) <= 1.0; };
+  // G06: wo ein Teil andockt, kein Geländer, auch wenn es mehr als 1 m tiefer liegt: sonst steht die Plattform im Käfig ohne Zugang (Joachim, 13.11.2026)
+  const zu = (s: Seite, t: Teil) => !!anliegend(s, t.id, park, ctx);
   const strecken: { a: V; b: V; n: V; y: number }[] = [];
   const keile: Zusatz[] = [];
   for (const t of park.teile) {

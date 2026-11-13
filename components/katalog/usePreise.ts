@@ -37,7 +37,6 @@ const meldung = (t: (de: string, en: string, fr: string) => string, m: string) =
 
 export const usePreise = () => {
   const t = useT();
-  const [preise, setPreise] = useState<Record<string, string> | null>(null);
   const [betreiber, setBetreiber] = useState<string | null>(null);
   const [katalogAlle, setKatalog] = useState<Record<'de' | 'en' | 'fr', { ansehen: string } | null> | null>(null);
   const lang = useLang();
@@ -48,7 +47,7 @@ export const usePreise = () => {
     try { code = localStorage.getItem(SPEICHER); } catch { /* kein Speicher */ }
     if (!code) return;
     abfragen({ code }).then(({ ok, daten }) => {
-      if (ok && daten.art === 'betreiber') { setPreise(daten.preise); setKatalog(daten.katalog ?? null); setBetreiber(code); } else merken(null);
+      if (ok && daten.art === 'betreiber') { setKatalog(daten.katalog ?? null); setBetreiber(code); } else merken(null);
     }, () => undefined);
   }, []);
 
@@ -56,7 +55,6 @@ export const usePreise = () => {
     try {
       const { ok, daten } = await abfragen({ code });
       if (!ok) return daten.fehler ? meldung(t, daten.fehler) : t('Freischaltung fehlgeschlagen.', 'Unlocking failed.', 'Le déblocage a échoué.');
-      setPreise(daten.preise);
       setKatalog(daten.katalog ?? null);
       if (daten.art === 'betreiber') { setBetreiber(code); merken(code); }
       return null;
@@ -78,9 +76,9 @@ export const usePreise = () => {
     return ok ? daten.codes ?? [] : null;
   }, [betreiber]);
 
-  const abmelden = useCallback(() => { merken(null); setBetreiber(null); setPreise(null); setKatalog(null); }, []);
+  const abmelden = useCallback(() => { merken(null); setBetreiber(null); setKatalog(null); }, []);
 
-  return { preise, katalog, freischalten, betreiber: !!betreiber, kundencode, codeliste, abmelden };
+  return { katalog, freischalten, betreiber: !!betreiber, kundencode, codeliste, abmelden };
 };
 
 // Konfigurator: ohne Freischaltung nur Vorlagen ansehen. Frei mit Betreiber-Code (dauerhaft) oder K-Code (FREI_TAGE im Browser).

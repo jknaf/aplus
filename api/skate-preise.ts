@@ -1,12 +1,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 import { list, put } from '@vercel/blob';
-import ELEMENT_PREISE from './_skate-preise.js';
-import PARK_PREISE from './_park-preise.js';
 import { katalogLinks } from './_r2.js';
 
-const SKATE_PREISE = { ...ELEMENT_PREISE, ...PARK_PREISE };
-
+// Keine Preise auf der Website (Inhaber 13.11.2026): Der Code schaltet nur noch den Blätter-Katalog frei.
 // Gibt die Nettopreise des Skate-Katalogs nur gegen einen gültigen Code heraus. Zwei Arten:
 // - Betreiber-Code (Umgebungsvariable SKATE_PREIS_CODE): beliebig oft; mit {neu: true} erzeugt er Kundencodes.
 // - Preis-Code (P-…): mit dem Betreiber-Code signiert, TAGE lang einlösbar, genau einmal.
@@ -87,7 +84,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
       return res.status(200).json({ kundencode: neu, tage: TAGE, bis: tag(ablauf(kern)) });
     }
-    return res.status(200).json({ preise: SKATE_PREISE, art: 'betreiber', katalog: katalogLinks() });
+    return res.status(200).json({ art: 'betreiber', katalog: katalogLinks() });
   }
 
   const m = /^([PK])-([2-9A-HJKMNP-Z]{15})-([0-9A-F]{8})$/.exec(code);
@@ -104,5 +101,5 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(503).json({ fehler: 'Die Freischaltung ist gerade nicht möglich. Bitte später erneut versuchen.' });
   }
   if (konfigurator) return res.status(200).json({ art: 'konfigurator', tage: FREI_TAGE });
-  return res.status(200).json({ preise: SKATE_PREISE, art: 'kunde', katalog: katalogLinks() });
+  return res.status(200).json({ art: 'kunde', katalog: katalogLinks() });
 }

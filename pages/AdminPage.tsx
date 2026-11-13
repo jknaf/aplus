@@ -147,7 +147,7 @@ const AdminPage: React.FC = () => {
               <label>
                 <span className="block font-mono text-xs uppercase tracking-widest text-brand-muted mb-2">Art</span>
                 <select value={art} onChange={(e) => setArt(e.target.value as 'preise' | 'konfigurator')} className={feld}>
-                  <option value="preise">Preise und Katalog</option>
+                  <option value="preise">Katalog</option>
                   <option value="konfigurator">Konfigurator</option>
                 </select>
               </label>
@@ -163,7 +163,7 @@ const AdminPage: React.FC = () => {
                     <p className="text-sm text-brand-muted basis-full">
                       Einlösbar einmal bis {neu.bis && datum(neu.bis)}. {neu.code.startsWith('K-')
                         ? 'Danach kann der Kunde 2 Tage lang im Konfigurator planen.'
-                        : 'Danach sieht der Kunde Preise und Katalog, bis er die Seite neu lädt.'}
+                        : 'Danach sieht der Kunde den Katalog, bis er die Seite neu lädt.'}
                     </p>
                   </div>
                 ) : <p className="text-sm text-red-700" role="alert">{neu.fehler}</p>}
@@ -182,7 +182,7 @@ const AdminPage: React.FC = () => {
                     <tr key={z.code} className="border-t border-brand-dark/5">
                       <td className="px-5 py-3 font-mono whitespace-nowrap select-all">{z.code}</td>
                       <td className="px-5 py-3">{z.fuer}</td>
-                      <td className="px-5 py-3">{z.art === 'konfigurator' ? 'Konfigurator' : 'Preise'}</td>
+                      <td className="px-5 py-3">{z.art === 'konfigurator' ? 'Konfigurator' : 'Katalog'}</td>
                       <td className="px-5 py-3 whitespace-nowrap">{datum(z.erstellt)}</td>
                       <td className="px-5 py-3 whitespace-nowrap">{datum(z.bis)}</td>
                       <td className="px-5 py-3 whitespace-nowrap"><Status z={z} /></td>

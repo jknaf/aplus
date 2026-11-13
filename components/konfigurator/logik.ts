@@ -565,6 +565,10 @@ const GELAENDER: [number, string][] = [[5, 'gelaender-500'], [3.75, 'gelaender-3
 // Pfosten nach außen, die Stabfüllung zur Fahrfläche (Joachim, 10.11.2026).
 const PFOSTEN: Record<string, V> = { 'gelaender-125': { x: 0, z: -1 }, 'gelaender-250': { x: -1, z: 0 }, 'gelaender-375': { x: 1, z: 0 }, 'gelaender-500': { x: 1, z: 0 } };
 const nachAussen = (slug: string, aussen: V) => norm360(winkel(aussen) - winkel(PFOSTEN[slug]));
+// Montage wie in den Archicad-Katalogparks (gemessen 13.11.2026): Geländer seitlich an der Außenwand verschraubt,
+// Handlauf genau über der Kante, Feldmitte 3,2 cm außerhalb, Fuß 13 cm (Tables) bzw. 15 cm (Rampen) unter der Oberkante.
+const HANDLAUF = 0.032;
+const SENKUNG = { plattform: 0.13, rampe: 0.15 } as const;
 // Tiefe der ebenen Plattform hinter dem Coping, ab Rückkante aus den Modellen gemessen. Ihre Seiten brauchen Geländer.
 const PLATEAU: Record<string, number> = { 'quarterramp-165': 1.33, 'quarterramp-165-p': 1.33, 'quarterramp-200': 1.33, 'quarterramp-255': 1.32, 'bigbank-165': 1.14, 'bigbank-200': 1.31 };
 
@@ -583,7 +587,7 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
       for (const s of kandidaten) {
         if (anliegend(s, t.id, park, ctx)) continue; // G06: wo etwas andockt, kein Geländer
         const h = mal(s.tangente, s.laenge / 2);
-        strecken.push({ a: minus(s.mitte, h), b: plus(s.mitte, h), n: s.normale, y: m.h - (tief.get(t.id) ?? 0) });
+        strecken.push({ a: minus(s.mitte, h), b: plus(s.mitte, h), n: s.normale, y: m.h - (tief.get(t.id) ?? 0) - SENKUNG[a] });
       }
       // Seitlich der Plattform einer Rampe, nur so tief wie die Plattform, ab der hohen Rückkante
       const plateau = a === 'rampe' ? PLATEAU[t.slug] : 0;
@@ -592,7 +596,7 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
         for (const s of seiten(t, m)) {
           if (Math.abs(skalar(s.normale, hw)) > 0.5 || anliegend(s, t.id, park, ctx)) continue;
           const ecke = plus(s.mitte, mal(hw, s.laenge / 2));
-          strecken.push({ a: ecke, b: minus(ecke, mal(hw, plateau)), n: s.normale, y: m.h });
+          strecken.push({ a: ecke, b: minus(ecke, mal(hw, plateau)), n: s.normale, y: m.h - (tief.get(t.id) ?? 0) - SENKUNG.rampe });
         }
       }
     }
@@ -619,21 +623,21 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
   const rund: Zusatz[] = [];
   for (const t of park.teile) {
     if (!t.slug.startsWith('corner-table') || !braucht(t, ctx.masse[t.slug], park, tief.get(t.id))) continue;
-    const y = ctx.masse[t.slug].h - (tief.get(t.id) ?? 0);
+    const y = ctx.masse[t.slug].h - (tief.get(t.id) ?? 0) - SENKUNG.plattform;
     const k = KURVE[t.slug];
     const halb = (k.von + k.bis) / 2;
     const aussen = drehe(polar(halb, 1), t.rot);
     const mitteAussen = plus(t, drehe(plus(k.c, polar(halb, k.R)), t.rot));
     if (park.teile.some((o) => o.id !== t.id && innen(plus(mitteAussen, mal(aussen, 0.1)), umriss(o, ctx)))) continue;
     if (t.slug === 'corner-table-150' && ctx.masse['gelaender-sger-150']) {
-      const rot = norm360(winkel(aussen) - 75.8);
-      const p = minus(plus(mitteAussen, mal(aussen, -0.08)), drehe({ x: 0, z: -0.13 }, rot));
-      rund.push({ slug: 'gelaender-sger-150', x: r3(p.x), z: r3(p.z), rot, y });
+      // Lage im Table-Corner-Modell ausgeglichen (13.11.2026): Handlauf ±2 cm auf der Außenkante, Enden je 11 cm vor dem Table-Ende
+      const p = plus(t, drehe({ x: 0.565, z: -0.014 }, t.rot));
+      rund.push({ slug: 'gelaender-sger-150', x: r3(p.x), z: r3(p.z), rot: norm360(t.rot + 300), y });
     } else if (ctx.masse['gelaender-125']) {
       // ponytail: für den Table Corner 98 gibt es im Katalog kein Rundgeländer; zwei gerade 125er entlang des Bogens, A+ prüft im Angebot
       for (const w of [k.von + (k.bis - k.von) / 4, k.von + (3 * (k.bis - k.von)) / 4]) {
         const r = drehe(polar(w, 1), t.rot);
-        const p = plus(plus(t, drehe(plus(k.c, polar(w, k.R)), t.rot)), mal(r, -0.06));
+        const p = plus(plus(t, drehe(plus(k.c, polar(w, k.R)), t.rot)), mal(r, HANDLAUF));
         rund.push({ slug: 'gelaender-125', x: r3(p.x), z: r3(p.z), rot: nachAussen('gelaender-125', r), y });
       }
     }
@@ -666,7 +670,7 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
       const [len, slug] = GELAENDER.find(([g]) => g <= frei + 0.05) ?? GELAENDER[GELAENDER.length - 1];
       const mg = ctx.masse[slug];
       if (mg) {
-        const mitte = plus(plus(l.a, mal(t, pos + Math.min(len, frei) / 2)), mal(l.n, -0.06)); // Reststück nicht über die Kante hinaus
+        const mitte = plus(plus(l.a, mal(t, pos + Math.min(len, frei) / 2)), mal(l.n, HANDLAUF));
         const rot = nachAussen(slug, l.n);
         gelaender.push({ slug, x: r3(mitte.x), z: r3(mitte.z), rot, y: l.y });
       }
@@ -679,13 +683,20 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
 // Die Geländerfelder sind kürzer als ihr Rastermaß (375er: 3,53 m), die Lücke schließt der Verbinder (22 cm).
 // Er sitzt an jedem Stoß zweier Felder, auch zwischen geraden und runden Geländern; knickt der Lauf, der 90°-Verbinder.
 // ponytail: Stoß = Feldenden näher als 40 cm, Verbinder mittig dazwischen; Endteile an freien Enden fehlen noch, A+ ergänzt im Angebot
-const SEHNE: Record<string, number> = { 'gelaender-sger-150': -14.2 }; // Rundgeländer: Lage der Sehne im Modell
+// Rundgeländer: Handlauf-Enden und Bogenmitte im Modell (gemessen 13.11.2026)
+const RUND: Record<string, { enden: V[]; mitte: V }> = { 'gelaender-sger-150': { enden: [{ x: 0.997, z: 0.264 }, { x: -0.982, z: -0.266 }], mitte: { x: -1.092, z: 4.103 } } };
 const feldEnden = (z: Zusatz, ctx: Ctx): { p: V; r: V }[] => {
+  const rund = RUND[z.slug];
+  if (rund) return rund.enden.map((e) => {
+    const radial = drehe(minus(e, rund.mitte), z.rot);
+    return { p: plus(z, drehe(e, z.rot)), r: mal({ x: -radial.z, z: radial.x }, 1 / laenge(radial)) }; // Tangente am Ende
+  });
   const m = ctx.masse[z.slug];
-  const w = z.rot + (SEHNE[z.slug] ?? (m.l >= m.b ? 0 : 90));
+  const w = z.rot + (m.l >= m.b ? 0 : 90);
   const r = polar(w, 1);
   const halb = mal(r, Math.max(m.l, m.b) / 2);
-  return [{ p: plus(z, halb), r }, { p: minus(z, halb), r }];
+  const achse = PFOSTEN[z.slug] ? minus(z, mal(drehe(PFOSTEN[z.slug], z.rot), HANDLAUF)) : z; // Handlauf liegt innen neben der Feldmitte
+  return [{ p: plus(achse, halb), r }, { p: minus(achse, halb), r }];
 };
 const verbinder = (felder: Zusatz[], ctx: Ctx): Zusatz[] => {
   const enden = felder.flatMap((z, i) => feldEnden(z, ctx).map((e) => ({ ...e, i, y: z.y ?? 0 })));
@@ -703,9 +714,20 @@ const verbinder = (felder: Zusatz[], ctx: Ctx): Zusatz[] => {
     const knick = Math.abs(skalar(ea.r, eb.r)) < 0.7;
     const slug = knick ? 'gelaender-verbindung-90' : 'gelaender-verbindung-gerade';
     if (!ctx.masse[slug]) continue;
-    const mitte = mal(plus(ea.p, eb.p), 0.5);
-    const rot = knick ? norm360(winkel(ea.r)) : norm360(winkel(skalar(ea.r, eb.r) > 0 ? plus(ea.r, eb.r) : minus(ea.r, eb.r)));
-    out.push({ slug, x: r3(mitte.x), z: r3(mitte.z), rot, y: Math.max(ea.y, eb.y) });
+    const y = Math.max(ea.y, eb.y);
+    if (!knick) {
+      const mitte = mal(plus(ea.p, eb.p), 0.5);
+      out.push({ slug, x: r3(mitte.x), z: r3(mitte.z), rot: norm360(winkel(skalar(ea.r, eb.r) > 0 ? plus(ea.r, eb.r) : minus(ea.r, eb.r))), y });
+      continue;
+    }
+    // 90°-Bogen: im Modell treffen sich die Handlaufachsen bei (4,6 | 4,6 cm), die Schenkel laufen nach -x und -z.
+    // Ecke = Schnitt der beiden Handläufe; das Modell so drehen, dass die Schenkel zu den Feldenden zeigen.
+    const ecke = plus(ea.p, mal(ea.r, skalar(minus(eb.p, ea.p), ea.r)));
+    const zuA = minus(ea.p, ecke), zuB = minus(eb.p, ecke);
+    let rot = norm360(winkel(zuB) - 180);
+    if (skalar(drehe({ x: 0, z: -1 }, rot), zuA) < 0) rot = norm360(winkel(zuA) - 180);
+    const p = minus(ecke, drehe({ x: 0.046, z: 0.046 }, rot));
+    out.push({ slug, x: r3(p.x), z: r3(p.z), rot, y });
   }
   return out;
 };

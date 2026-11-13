@@ -45,4 +45,9 @@ console.log(fehler ? `FEHLER ${fehler}` : 'alle Pfosten außen');
   const ab = abgeleitet({ flaeche: { l: 40, b: 30, angeboescht: false }, teile }, ctx);
   if (ab.gelaender.some((g) => /^gelaender-(ende|einzl)/.test(g.slug))) { fehler++; console.log('Endstück an geschlossenem Lauf'); }
 }
-console.log(fehler ? `FEHLER ${fehler}` : 'Enden gerundet');
+// G06: an der Stoßseite zum angedockten Table nie Geländer, auch 1,03 m tiefer (kein Käfig)
+const paar = (unten: string) => abgeleitet({ flaeche: { l: 40, b: 30, angeboescht: false }, teile: [{ id: 'a', slug: 'table-150', x: 10, z: 10, rot: 0 }, { id: 'b', slug: unten, x: 11.25, z: 10, rot: 0 }] }, ctx).gelaender;
+if (['table-45', 'table-60'].some((u) => paar(u).some((g) => Math.abs(g.x - 10.657) < 0.01 && Math.abs(g.z - 10) < 0.01))) { fehler++; console.log('G06: Geländer an der Stoßseite'); }
+// G08: Extension Table 150 + Table 98: Geländer läuft auf beiden freien Seiten 1,25 m über die untere Stufe
+if (paar('table-98').filter((g) => g.slug === 'gelaender-einzl' && Math.abs(g.x - 11.25) < 0.01).length !== 2) { fehler++; console.log('G08: keine Verlängerung über die untere Stufe'); }
+console.log(fehler ? `FEHLER ${fehler}` : 'Enden gerundet, G06 und G08 wie festgelegt');

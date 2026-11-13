@@ -35,16 +35,50 @@ const ga = async (token: string, tage: number) => {
   const post = (body: object) => fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${GA_PROPERTY}:runReport`, {
     method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body),
   }).then((r) => r.json());
-  const zeitraum = [{ startDate: `${tage}daysAgo`, endDate: 'today' }];
-  const [summe, quellen] = await Promise.all([
+  const zeitraum = [{ startDate: `${tage}daysAgo`, endDate: 'today' }, { startDate: `${2 * tage}daysAgo`, endDate: `${tage + 1}daysAgo` }];
+  const jetzt = [zeitraum[0]];
+  type R = { dimensionValues: { value: string }[]; metricValues: { value: string }[] };
+  const [summe, quellen, einstieg] = await Promise.all([
     post({ dateRanges: zeitraum, metrics: [{ name: 'activeUsers' }, { name: 'sessions' }, { name: 'averageSessionDuration' }] }),
-    post({ dateRanges: zeitraum, dimensions: [{ name: 'sessionSourceMedium' }], metrics: [{ name: 'activeUsers' }], orderBys: [{ metric: { metricName: 'activeUsers' }, desc: true }], limit: 10 }),
+    post({ dateRanges: jetzt, dimensions: [{ name: 'sessionSourceMedium' }], metrics: [{ name: 'activeUsers' }], orderBys: [{ metric: { metricName: 'activeUsers' }, desc: true }], limit: 10 }),
+    post({ dateRanges: jetzt, dimensions: [{ name: 'landingPage' }], metrics: [{ name: 'sessions' }, { name: 'bounceRate' }], orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 10 }),
   ]);
   if (summe.error) throw new Error(summe.error.message);
-  const w = summe.rows?.[0]?.metricValues?.map((m: { value: string }) => Number(m.value)) ?? [0, 0, 0];
+  // Mit zwei Zeiträumen liefert GA je Zeitraum eine Zeile (dateRange_0 = jetzt, dateRange_1 = vorher)
+  const werte = (i: number) => summe.rows?.find((r: R) => r.dimensionValues?.[0]?.value === `date_range_${i}`)?.metricValues?.map((m: { value: string }) => Number(m.value)) ?? [0, 0, 0];
+  const w = werte(0);
+  const v = werte(1);
   return {
     besucher: w[0], sitzungen: w[1], verweildauer: Math.round(w[2]),
-    quellen: (quellen.rows ?? []).map((r: { dimensionValues: { value: string }[]; metricValues: { value: string }[] }) => ({ quelle: r.dimensionValues[0].value, besucher: Number(r.metricValues[0].value) })),
+    vorher: { besucher: v[0], sitzungen: v[1], verweildauer: Math.round(v[2]) },
+    quellen: (quellen.rows ?? []).map((r: R) => ({ quelle: r.dimensionValues[0].value, besucher: Number(r.metricValues[0].value) })),
+    einstieg: (einstieg.rows ?? []).map((r: R) => ({ seite: r.dimensionValues[0].value, sitzungen: Number(r.metricValues[0].value), absprung: Number(r.metricValues[1].value) })),
+  };
+};
+
+// Begriffe, mit denen A+ gefunden werden will; je Begriff zählen alle Suchanfragen, die ihn enthalten.
+const KERNBEGRIFFE: [string, string][] = [
+  ['skate', 'Skate (alle Suchen)'], ['skatepark', 'Skatepark'], ['skateanlage', 'Skateanlage'], ['pumptrack', 'Pumptrack'], ['bowl', 'Bowl'],
+  ['miniramp', 'Mini-Ramp'], ['umkleide', 'Umkleidekabine'], ['eishockey', 'Eishockey-Bande'], ['grill', 'Grill'], ['pavillon', 'Pavillon'], ['beton', 'Beton'],
+];
+
+type Zeile = { keys?: string[]; clicks: number; impressions: number; ctr: number; position: number };
+const zeile = (r: Zeile) => ({ name: r.keys?.[0] ?? '', klicks: r.clicks, impressionen: r.impressions, ctr: r.ctr, position: r.position });
+
+export const auswerten = (begriffe: Zeile[], seiten: Zeile[]) => {
+  const q = begriffe.map(zeile);
+  return {
+    begriffe: q.filter((z) => z.klicks > 0).slice(0, 15),
+    // Fast auf Seite 1: Platz 4–20, oft gezeigt; hier bringt besserer Inhalt am meisten
+    chancen: q.filter((z) => z.position >= 4 && z.position <= 20 && z.impressionen >= 5).sort((a, b) => b.impressionen - a.impressionen).slice(0, 10),
+    kern: KERNBEGRIFFE.map(([k, name]) => {
+      const t = q.filter((z) => z.name.toLowerCase().includes(k));
+      const impr = t.reduce((n, z) => n + z.impressionen, 0);
+      return { name, anfragen: t.length, klicks: t.reduce((n, z) => n + z.klicks, 0), impressionen: impr, position: impr ? t.reduce((n, z) => n + z.position * z.impressionen, 0) / impr : 0 };
+    }).filter((k) => k.anfragen).sort((a, b) => b.impressionen - a.impressionen),
+    seiten: seiten.map(zeile).slice(0, 10),
+    // Gezeigt, aber nicht angeklickt: Titel und Beschreibung dieser Seiten prüfen
+    ohneKlick: seiten.map(zeile).filter((z) => z.klicks === 0 && z.impressionen >= 20).sort((a, b) => b.impressionen - a.impressionen).slice(0, 10),
   };
 };
 
@@ -53,16 +87,15 @@ const gsc = async (token: string, tage: number) => {
     method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body),
   }).then((r) => r.json());
   const zeitraum = { startDate: tag(tage), endDate: tag(0) };
-  const [summe, begriffe, seiten] = await Promise.all([
+  const [summe, vorher, begriffe, seiten] = await Promise.all([
     post(zeitraum),
-    post({ ...zeitraum, dimensions: ['query'], rowLimit: 15 }),
-    post({ ...zeitraum, dimensions: ['page'], rowLimit: 10 }),
+    post({ startDate: tag(2 * tage), endDate: tag(tage + 1) }),
+    post({ ...zeitraum, dimensions: ['query'], rowLimit: 1000 }),
+    post({ ...zeitraum, dimensions: ['page'], rowLimit: 200 }),
   ]);
   if (summe.error) throw new Error(summe.error.message);
-  type Zeile = { keys?: string[]; clicks: number; impressions: number; ctr: number; position: number };
-  const z = (r: Zeile) => ({ name: r.keys?.[0] ?? '', klicks: r.clicks, impressionen: r.impressions, ctr: r.ctr, position: r.position });
-  const s: Zeile = summe.rows?.[0] ?? { clicks: 0, impressions: 0, ctr: 0, position: 0 };
-  return { ...z(s), begriffe: (begriffe.rows ?? []).map(z), seiten: (seiten.rows ?? []).map(z) };
+  const leer: Zeile = { clicks: 0, impressions: 0, ctr: 0, position: 0 };
+  return { ...zeile(summe.rows?.[0] ?? leer), vorher: zeile(vorher.rows?.[0] ?? leer), ...auswerten(begriffe.rows ?? [], seiten.rows ?? []) };
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {

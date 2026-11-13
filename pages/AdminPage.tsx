@@ -18,47 +18,71 @@ const knopf = 'px-6 py-3 rounded-lg bg-brand-orange text-white font-bold upperca
 
 // Analyse: Google Analytics und Search Console kommen über /api/analyse (Dienstkonto „GSC Audit“, nur lesend);
 // Google Ads ist vorbereitet, noch nicht angebunden. Der Server gibt die Zugangsdaten nie an den Browser.
+// Für A+, nicht für Web-Experten: Alltagssprache, und zu jeder Tabelle ein Satz, was man damit tut.
 type Zeile = { name: string; klicks: number; impressionen: number; ctr: number; position: number };
-type GaDaten = { besucher: number; sitzungen: number; verweildauer: number; quellen: { quelle: string; besucher: number }[] };
-type GscDaten = Zeile & { begriffe: Zeile[]; seiten: Zeile[] };
+type Kern = { name: string; anfragen: number; klicks: number; impressionen: number; position: number };
+type GaWerte = { besucher: number; sitzungen: number; verweildauer: number };
+type GaDaten = GaWerte & { vorher: GaWerte; quellen: { quelle: string; besucher: number }[]; einstieg: { seite: string; sitzungen: number; absprung: number }[] };
+type GscDaten = Zeile & { vorher: Zeile; begriffe: Zeile[]; chancen: Zeile[]; kern: Kern[]; seiten: Zeile[]; ohneKlick: Zeile[] };
 export type AnalyseDaten = { ga: GaDaten | { fehler: string }; gsc: GscDaten | { fehler: string } };
 
-const zahl = (n: number) => n.toLocaleString('de-DE');
+const zahl = (n: number) => Math.round(n).toLocaleString('de-DE');
 const prozent = (n: number) => `${(n * 100).toLocaleString('de-DE', { maximumFractionDigits: 1 })} %`;
-const pos = (n: number) => n.toLocaleString('de-DE', { maximumFractionDigits: 1 });
+const platz = (n: number) => n ? `Platz ${Math.round(n)}` : '–';
+const seite = (n: number) => !n ? '–' : n <= 10 ? 'Seite 1' : n <= 20 ? 'Seite 2' : n <= 30 ? 'Seite 3' : 'weiter hinten';
 const dauer = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')} min`;
 const pfad = (url: string) => url.replace(/^https?:\/\/[^/]+/, '') || '/';
+const QUELLEN: Record<string, string> = { 'google / organic': 'Google-Suche', '(direct) / (none)': 'Direkt (Adresse eingetippt, Lesezeichen)', 'bing / organic': 'Bing-Suche' };
+const quelle = (q: string) => QUELLEN[q] ?? q.replace(' / referral', ' (Link)').replace(' / organic', ' (Suche)');
+// Vergleich mit dem gleich langen Zeitraum davor; bei Platz ist weniger besser
+const trend = (jetzt: number, vorher: number, kleinerBesser = false) => {
+  if (!vorher) return undefined;
+  const d = Math.round(((jetzt - vorher) / vorher) * 100);
+  if (Math.abs(d) < 3) return 'etwa gleich wie davor';
+  const besser = kleinerBesser ? d < 0 : d > 0;
+  return `${besser ? '▲ besser' : '▼ schlechter'} als davor (${zahl(vorher)})`;
+};
 
-type Kennzahl = { name: string; frage: string; wert?: string };
-type Tabelle = { titel: string; spalten: string[]; zeilen?: (string | number)[][] };
+type Kennzahl = { name: string; frage: string; wert?: string; trend?: string };
+type Tabelle = { titel: string; hinweis?: string; spalten: string[]; zeilen?: (string | number)[][] };
 type Bereich = { id: 'ga' | 'gsc' | 'ads'; titel: string; was: string; zahlen: Kennzahl[]; tabellen: Tabelle[]; braucht?: string[]; fehler?: string };
 
 const bereiche = (d: AnalyseDaten | null): Bereich[] => {
   const ga = d && !('fehler' in d.ga) ? d.ga : null;
   const gsc = d && !('fehler' in d.gsc) ? d.gsc : null;
   return [
-    { id: 'ga', titel: 'Google Analytics', was: 'Was passiert auf der Webseite: wer kommt, woher, und was tun die Besucher? Gezählt wird nur, wer im Cookie-Hinweis zugestimmt hat.',
+    { id: 'gsc', titel: 'Google-Suche', was: 'Wie gut wird A+ bei Google gefunden? Platz 1 steht ganz oben, ab Platz 11 ist man auf Seite 2, und dort klickt kaum noch jemand. Die letzten 2–3 Tage fehlen noch.',
+      fehler: d && 'fehler' in d.gsc ? d.gsc.fehler : undefined,
+      zahlen: [
+        { name: 'Besuche aus Google', frage: 'Wie oft hat jemand in der Google-Suche auf A+ geklickt?', wert: gsc ? zahl(gsc.klicks) : undefined, trend: gsc ? trend(gsc.klicks, gsc.vorher.klicks) : undefined },
+        { name: 'Bei Google gezeigt', frage: 'Wie oft stand A+ in den Suchergebnissen?', wert: gsc ? zahl(gsc.impressionen) : undefined, trend: gsc ? trend(gsc.impressionen, gsc.vorher.impressionen) : undefined },
+        { name: 'Platz im Schnitt', frage: 'Wo steht A+ im Schnitt in der Trefferliste?', wert: gsc ? platz(gsc.position) : undefined, trend: gsc ? trend(gsc.position, gsc.vorher.position, true) : undefined },
+        { name: 'Wer klickt', frage: 'Von 100, die A+ in der Suche sehen, klicken so viele.', wert: gsc ? prozent(gsc.ctr) : undefined },
+      ],
+      tabellen: [
+        { titel: 'Unsere Themen bei Google', hinweis: 'Wie A+ zu den eigenen Produkten gefunden wird. Steht ein Thema nicht auf Seite 1, fehlt dazu eine gute eigene Seite oder genug Text.',
+          spalten: ['Thema', 'Gezeigt', 'Besuche', 'Platz', 'Seite'], zeilen: gsc?.kern.map((k) => [k.name, zahl(k.impressionen), zahl(k.klicks), platz(k.position), seite(k.position)]) },
+        { titel: 'Fast oben: hier lohnt sich Arbeit', hinweis: 'Diese Suchen zeigen A+ schon, aber nicht ganz vorn. Ein Absatz Text, ein Bild oder eine Referenz zu genau diesem Begriff bringt hier am schnellsten mehr Besuche.',
+          spalten: ['Suche', 'Gezeigt', 'Platz', 'Seite'], zeilen: gsc?.chancen.map((z) => [z.name, zahl(z.impressionen), platz(z.position), seite(z.position)]) },
+        { titel: 'Oft gezeigt, nie angeklickt', hinweis: 'Diese Seiten erscheinen bei Google, aber niemand klickt. Meist passen Überschrift oder Kurzbeschreibung in der Trefferliste nicht zur Suche.',
+          spalten: ['Seite', 'Gezeigt', 'Platz'], zeilen: gsc?.ohneKlick.map((z) => [pfad(z.name), zahl(z.impressionen), platz(z.position)]) },
+        { titel: 'Womit die Besucher kommen', hinweis: 'Die Suchen, über die tatsächlich jemand auf die Webseite kam.',
+          spalten: ['Suche', 'Besuche', 'Gezeigt', 'Platz'], zeilen: gsc?.begriffe.map((z) => [z.name, zahl(z.klicks), zahl(z.impressionen), platz(z.position)]) },
+      ] },
+    { id: 'ga', titel: 'Google Analytics', was: 'Was passiert auf der Webseite: wer kommt, woher, und wo steigen die Besucher ein? Gezählt wird nur, wer im Cookie-Hinweis zugestimmt hat.',
       fehler: d && 'fehler' in d.ga ? d.ga.fehler : undefined,
       zahlen: [
-        { name: 'Besucher', frage: 'Wie viele verschiedene Personen waren da?', wert: ga ? zahl(ga.besucher) : undefined },
-        { name: 'Sitzungen', frage: 'Wie oft wurde die Seite besucht?', wert: ga ? zahl(ga.sitzungen) : undefined },
-        { name: 'Verweildauer', frage: 'Wie lange bleiben Besucher im Schnitt?', wert: ga ? dauer(ga.verweildauer) : undefined },
+        { name: 'Besucher', frage: 'Wie viele verschiedene Personen waren da?', wert: ga ? zahl(ga.besucher) : undefined, trend: ga ? trend(ga.besucher, ga.vorher.besucher) : undefined },
+        { name: 'Besuche', frage: 'Wie oft wurde die Seite insgesamt besucht?', wert: ga ? zahl(ga.sitzungen) : undefined, trend: ga ? trend(ga.sitzungen, ga.vorher.sitzungen) : undefined },
+        { name: 'Verweildauer', frage: 'Wie lange bleibt ein Besuch im Schnitt?', wert: ga ? dauer(ga.verweildauer) : undefined, trend: ga ? trend(ga.verweildauer, ga.vorher.verweildauer) : undefined },
         { name: 'Konfigurator gestartet', frage: 'Wie viele planen selbst? (wird noch nicht gemessen)' },
         { name: 'Preise freigeschaltet', frage: 'Wie oft wurde ein Preis-Code eingelöst? (wird noch nicht gemessen)' },
         { name: 'Anfragen per Mail', frage: 'Wie oft wurde „Anfrage senden“ geklickt? (wird noch nicht gemessen)' },
       ],
-      tabellen: [{ titel: 'Woher kommen die Besucher', spalten: ['Quelle / Medium', 'Besucher'], zeilen: ga?.quellen.map((q) => [q.quelle, zahl(q.besucher)]) }] },
-    { id: 'gsc', titel: 'Google-Suche', was: 'Wie wird die Webseite bei Google gefunden: wie oft gezeigt, wie oft angeklickt, mit welchen Suchbegriffen? Quelle: Search Console, die letzten 2–3 Tage fehlen noch.',
-      fehler: d && 'fehler' in d.gsc ? d.gsc.fehler : undefined,
-      zahlen: [
-        { name: 'Klicks', frage: 'Wie oft wurde die Seite aus der Google-Suche geöffnet?', wert: gsc ? zahl(gsc.klicks) : undefined },
-        { name: 'Impressionen', frage: 'Wie oft wurde die Seite in der Suche gezeigt?', wert: gsc ? zahl(gsc.impressionen) : undefined },
-        { name: 'Klickrate', frage: 'Welcher Anteil der Suchenden klickt?', wert: gsc ? prozent(gsc.ctr) : undefined },
-        { name: 'Ø Position', frage: 'Auf welchem Platz steht die Seite im Schnitt?', wert: gsc ? pos(gsc.position) : undefined },
-      ],
       tabellen: [
-        { titel: 'Suchbegriffe', spalten: ['Suchbegriff', 'Klicks', 'Impressionen', 'Position'], zeilen: gsc?.begriffe.map((z) => [z.name, zahl(z.klicks), zahl(z.impressionen), pos(z.position)]) },
-        { titel: 'Seiten', spalten: ['Seite', 'Klicks', 'Impressionen', 'Position'], zeilen: gsc?.seiten.map((z) => [pfad(z.name), zahl(z.klicks), zahl(z.impressionen), pos(z.position)]) },
+        { titel: 'Woher die Besucher kommen', spalten: ['Herkunft', 'Besucher'], zeilen: ga?.quellen.map((q) => [quelle(q.quelle), zahl(q.besucher)]) },
+        { titel: 'Wo die Besucher einsteigen', hinweis: 'Die erste Seite eines Besuchs. „Gleich wieder weg“ heißt: nach dieser einen Seite gegangen. Ist der Wert hoch, überzeugt die Seite nicht.',
+          spalten: ['Seite', 'Besuche', 'Gleich wieder weg'], zeilen: ga?.einstieg.map((e) => [e.seite || '/', zahl(e.sitzungen), prozent(e.absprung)]) },
       ] },
     { id: 'ads', titel: 'Google Ads', was: 'Was bringt die bezahlte Werbung: was kostet sie, und was kommt dabei heraus?',
       zahlen: [
@@ -113,6 +137,7 @@ const Analyse: React.FC<{ laden: (tage: number) => Promise<AnalyseDaten | { fehl
               <div key={z.name} className="rounded-xl border border-brand-dark/10 p-4">
                 <div className="font-mono text-xs uppercase tracking-widest text-brand-muted">{z.name}</div>
                 <div className="text-3xl font-extrabold text-brand-dark my-1">{z.wert ?? '–'}</div>
+                {z.trend && <div className={`text-xs font-semibold mb-1 ${z.trend.startsWith('▲') ? 'text-[#4E6F33]' : z.trend.startsWith('▼') ? 'text-red-700' : 'text-brand-muted'}`}>{z.trend}</div>}
                 <div className="text-xs text-brand-muted">{z.frage}</div>
               </div>
             ))}
@@ -120,7 +145,8 @@ const Analyse: React.FC<{ laden: (tage: number) => Promise<AnalyseDaten | { fehl
           {a.tabellen.map((t) => (
             <div key={t.titel} className="overflow-x-auto rounded-xl border border-brand-dark/10 mb-6">
               <table className="w-full text-sm text-left">
-                <caption className="text-left px-4 pt-3 font-mono text-xs uppercase tracking-widest text-brand-muted">{t.titel}</caption>
+                <caption className="text-left px-4 pt-3 font-mono text-xs uppercase tracking-widest text-brand-muted">{t.titel}
+                  {t.hinweis && <span className="block normal-case tracking-normal font-sans text-sm text-brand-dark/80 mt-1">{t.hinweis}</span>}</caption>
                 <thead className="font-mono text-xs uppercase tracking-widest text-brand-muted"><tr>{t.spalten.map((c) => <th key={c} className="px-4 py-3 font-medium whitespace-nowrap">{c}</th>)}</tr></thead>
                 <tbody>
                   {t.zeilen?.length ? t.zeilen.map((z, i) => (

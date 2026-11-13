@@ -15,7 +15,7 @@ const ParkAnsicht = lazy(() => import('../components/katalog/ParkAnsicht'));
 const Blaetterkatalog = lazy(() => import('../components/katalog/Blaetterkatalog'));
 
 // Daten: public/katalog/katalog.json, erzeugt aus der Archicad-Skate-Bibliothek
-// (08_CAD_Blender/10_Katalog/katalog_web.py). Preise kommen nur über /api/skate-preise.
+// (08_CAD_Blender/10_Katalog/katalog_web.py). Preise stehen nur im Blätter-Katalog (PDF), nie auf der Seite.
 
 interface Parameter { name: string; typ: string; wert: unknown; beschreibung: string }
 interface Element {
@@ -32,7 +32,6 @@ interface Element {
 interface Katalog { stand: string; quelle: string; gruppen: string[]; elemente: Element[] }
 
 // Skatepark-Beispiele: public/katalog/parks.json, erzeugt von 08_CAD_Blender/08_Preisliste/parks_web.py.
-// Preise je Park (id) und Elementgruppe (id:A…) kommen wie die Elementpreise nur über /api/skate-preise.
 interface Beispiel {
   id: string; nr: number; name: string; laenge_m: string; breite_m: string; hoehe_cm: [number, number]; anzahl: number;
   gruppen: { teil: string; h: string; l: number; b: number }[];
@@ -72,12 +71,6 @@ const hinweis = (h: string, t: (de: string, en: string, fr: string) => string) =
 
 const gruppenId = (g: string) => 'gruppe-' + g.toLowerCase().replace(/[^a-z0-9äöüß]+/g, '-');
 
-const preisText = (roh: string | undefined, loc: string) => {
-  if (!roh) return null;
-  const zahl = Number(roh.replace(/[^\d]/g, ''));
-  return zahl ? zahl.toLocaleString(loc) + ' €' : roh;
-};
-
 // Preisliste: „H / L / B / W“ in cm, W = Winkel in Grad
 const masseAusPreisliste = (s: string) => {
   const t = s.split(/\s\/\s/).map((x) => x.trim());
@@ -95,26 +88,6 @@ const material = (e: Element, t: (de: string, en: string, fr: string) => string)
   return e.materialien.some(metall)
     ? t('Stahlbeton C35/45, Stahl (verzinkt / Edelstahl)', 'Reinforced concrete C35/45, steel (galvanised / stainless)', 'Béton armé C35/45, acier (galvanisé / inox)')
     : t('Stahlbeton C35/45', 'Reinforced concrete C35/45', 'Béton armé C35/45');
-};
-
-const PreisBadge: React.FC<{ preis: string | null; gross?: boolean; onSperre: () => void }> = ({ preis, gross, onSperre }) => {
-  const t = useT();
-  return preis ? (
-    <span className={`font-heading font-extrabold text-brand-dark ${gross ? 'text-3xl' : 'text-base'}`}>
-      {preis}{preis.includes('€') && <span className="text-xs font-sans font-normal text-brand-muted"> {t('netto', 'net', 'HT')}</span>}
-      {gross && preis.includes('€') && <span className="block mt-1 text-xs font-sans font-normal text-brand-muted">{t('zzgl. MwSt., Transport und Montage', 'plus VAT, transport and installation', 'hors TVA, transport et montage')}</span>}
-    </span>
-  ) : (
-    <button
-      type="button"
-      onClick={(ev) => { ev.preventDefault(); ev.stopPropagation(); onSperre(); }}
-      className="inline-flex items-center gap-1.5 text-brand-muted hover:text-brand-orange transition-colors"
-      aria-label={t("Preise freischalten", "Unlock prices", "Débloquer les prix")}
-    >
-      <span className="material-symbols-outlined text-base">lock</span>
-      <span className={`select-none blur-[5px] font-heading font-extrabold ${gross ? 'text-3xl' : 'text-base'}`} aria-hidden="true">0.000 €</span>
-    </button>
-  );
 };
 
 // Element in den eigenen Park legen; der Konfigurator setzt es beim nächsten Öffnen an einen freien Platz
@@ -159,8 +132,8 @@ const Zeile: React.FC<{ label: string; children: React.ReactNode }> = ({ label, 
 );
 
 const Detail: React.FC<{
-  e: Element; preis: string | null; onSperre: () => void; onParkSperre: () => void; onClose: () => void; vor?: Element; zurueck?: Element;
-}> = ({ e, preis, onSperre, onParkSperre, onClose, vor, zurueck }) => {
+  e: Element; onParkSperre: () => void; onClose: () => void; vor?: Element; zurueck?: Element;
+}> = ({ e, onParkSperre, onClose, vor, zurueck }) => {
   const t = useT();
   const lang = useLang();
   const loc = LOCALE[lang];
@@ -188,7 +161,6 @@ const Detail: React.FC<{
           <span className="font-mono text-xs uppercase tracking-widest text-brand-orange mb-3">{gruppenName(e.gruppe, lang)}</span>
           <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-none mb-2">{teilName(e.name, lang)}</h2>
           <p className="font-mono text-sm text-brand-muted mb-6">{e.preisliste_code || e.kuerzel || t("ohne Code", "no code", "sans code")}{e.preisliste_produkt && ` · ${e.preisliste_produkt}`}</p>
-          <div className="mb-6"><PreisBadge preis={preis} gross onSperre={onSperre} /></div>
           <div className="mb-8"><ParkKnopf slug={e.slug} onSperre={onParkSperre} /></div>
 
           <h3 className="font-mono text-xs uppercase tracking-widest text-brand-muted mb-1">{t("Bemaßung", "Dimensions", "Cotes")}</h3>
@@ -220,12 +192,10 @@ const Detail: React.FC<{
 };
 
 const ParkDetail: React.FC<{
-  p: Beispiel; preise: Record<string, string> | null; onSperre: () => void; onClose: () => void; vor?: Beispiel; zurueck?: Beispiel;
-}> = ({ p, preise, onSperre, onClose, vor, zurueck }) => {
+  p: Beispiel; onClose: () => void; vor?: Beispiel; zurueck?: Beispiel;
+}> = ({ p, onClose, vor, zurueck }) => {
   const t = useT();
   const lang = useLang();
-  const loc = LOCALE[lang];
-  const preis = (k: string) => (preise ? preisText(preise[k], loc) ?? t("auf Anfrage", "on request", "sur demande") : null);
   useEffect(() => {
     const esc = (ev: KeyboardEvent) => ev.key === 'Escape' && onClose();
     window.addEventListener('keydown', esc);
@@ -251,7 +221,6 @@ const ParkDetail: React.FC<{
           <span className="font-mono text-xs uppercase tracking-widest text-brand-orange mb-3">{t("Skatepark-Beispiel", "Skatepark example", "Exemple de skatepark")}</span>
           <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-normal [word-spacing:0.12em] leading-none mb-2">{p.name}</h2>
           <p className="font-mono text-sm text-brand-muted mb-6">{t("Fläche", "Area", "Surface")} {dezimal(lang, p.laenge_m)} × {dezimal(lang, p.breite_m)} m · {p.anzahl} {t("Elemente", "elements", "éléments")}</p>
-          <div className="mb-8"><PreisBadge preis={preis(p.id)} gross onSperre={onSperre} /></div>
 
           <dl className="grid grid-cols-3 gap-3 mb-8">
             {[[t("Fläche", "Area", "Surface"), `${qm(p)} m²${sternchen(p) ? '*' : ''}`], [t("Elemente", "Elements", "Éléments"), String(p.anzahl)], [t("Höhen", "Heights", "Hauteurs"), hoehen(p)]].map(([k, v]) => (
@@ -265,10 +234,9 @@ const ParkDetail: React.FC<{
           <h3 className="font-mono text-xs uppercase tracking-widest text-brand-muted mb-1">{t("Elementgruppen", "Element groups", "Groupes d'éléments")}</h3>
           <dl className="mb-8">
             {p.gruppen.map((g) => (
-              <div key={g.teil} className="grid grid-cols-[auto_1fr_auto] items-baseline gap-4 py-2.5 border-b border-brand-dark/5 text-sm">
+              <div key={g.teil} className="grid grid-cols-[auto_1fr] items-baseline gap-4 py-2.5 border-b border-brand-dark/5 text-sm">
                 <dt className="font-mono font-bold text-brand-orange w-10">{g.teil}</dt>
                 <dd className="text-brand-muted">H {g.h} · L {g.l} · B {g.b} cm</dd>
-                <dd className="text-right"><PreisBadge preis={preis(`${p.id}:${g.teil}`)} onSperre={onSperre} /></dd>
               </div>
             ))}
           </dl>
@@ -284,7 +252,7 @@ const ParkDetail: React.FC<{
             ))}
           </ul>
           <p className="text-xs text-brand-muted mb-6">
-            {t("Die Elemente sind hier zusammengestellt, um Möglichkeiten und Preise zu zeigen. Jede Anlage lässt sich umstellen und erweitern.", "The elements are put together here to show possibilities and prices. Every park can be rearranged and extended.", "Les éléments sont assemblés ici pour montrer les possibilités et les prix. Chaque installation peut être réagencée et agrandie.")}
+            {t("Die Elemente sind hier zusammengestellt, um Möglichkeiten zu zeigen. Jede Anlage lässt sich umstellen und erweitern.", "The elements are put together here to show possibilities. Every park can be rearranged and extended.", "Les éléments sont assemblés ici pour montrer les possibilités. Chaque installation peut être réagencée et agrandie.")}
             {sternchen(p) && t(' * Maße der Fläche ohne angeböschte Bereiche.', ' * Area dimensions exclude banked-up areas.', ' * Dimensions de la surface hors zones talutées.')}
           </p>
 
@@ -301,7 +269,7 @@ const ParkDetail: React.FC<{
 
 const vorladen = (p: Beispiel) => import('../components/katalog/ParkAnsicht').then((m) => m.vorladen(p.teile, p.extra));
 
-const ParkKarte: React.FC<{ p: Beispiel; preis: string | null; onSperre: () => void }> = ({ p, preis, onSperre }) => {
+const ParkKarte: React.FC<{ p: Beispiel }> = ({ p }) => {
   const t = useT();
   const lang = useLang();
   return (
@@ -318,7 +286,6 @@ const ParkKarte: React.FC<{ p: Beispiel; preis: string | null; onSperre: () => v
         <h3 className="font-extrabold font-heading text-brand-dark uppercase tracking-tight leading-tight group-hover:text-brand-orange transition-colors">{p.name}</h3>
         <p className="text-xs text-brand-muted mt-1">{dezimal(lang, p.laenge_m)} × {dezimal(lang, p.breite_m)} m · {p.anzahl} {t('Elemente', 'elements', 'éléments')} · {hoehen(p)}</p>
       </div>
-      <div className="shrink-0 whitespace-nowrap"><PreisBadge preis={preis} onSperre={onSperre} /></div>
     </div>
   </Link>
   );
@@ -373,14 +340,14 @@ const KatalogPage: React.FC = () => {
   const lang = useLang();
   const loc = LOCALE[lang];
   const konfigCode = useKonfiguratorCode();
-  const anfrage = 'mailto:post@aplusurbandesign.com?subject=' + encodeURIComponent(t('Preiscode für den Skate-Katalog', 'Price code for the skate catalogue', 'Code de prix pour le catalogue de skate'))
-    + '&body=' + encodeURIComponent(t('Guten Tag,\n\nbitte senden Sie mir den Code zur Freischaltung der Preise im Skate-Katalog.\n\nName:\nFirma / Kommune:\nTelefon:\n', 'Hello,\n\nPlease send me the code to unlock the prices in the skate catalogue.\n\nName:\nCompany / municipality:\nPhone:\n', "Bonjour,\n\nmerci de m'envoyer le code de déblocage des prix du catalogue de skate.\n\nNom :\nEntreprise / commune :\nTéléphone :\n"));
+  const anfrage = 'mailto:post@aplusurbandesign.com?subject=' + encodeURIComponent(t('Code für den Skate-Katalog', 'Code for the skate catalogue', 'Code pour le catalogue de skate'))
+    + '&body=' + encodeURIComponent(t('Guten Tag,\n\nbitte senden Sie mir den Code für den Skate-Katalog zum Blättern.\n\nName:\nFirma / Kommune:\nTelefon:\n', 'Hello,\n\nPlease send me the code for the browsable skate catalogue.\n\nName:\nCompany / municipality:\nPhone:\n', "Bonjour,\n\nmerci de m'envoyer le code du catalogue de skate à feuilleter.\n\nNom :\nEntreprise / commune :\nTéléphone :\n"));
   const { slug } = useParams();
   const navigate = useNavigate();
   const [katalog, setKatalog] = useState<Katalog | null>(null);
   const [suche, setSuche] = useState('');
   const [dialog, setDialog] = useState(false);
-  const { preise, katalog: katalogLinks, freischalten } = usePreise();
+  const { katalog: katalogLinks, freischalten } = usePreise();
   const [blaettern, setBlaettern] = useState(false);
   const [konfigDialog, setKonfigDialog] = useState(false);
   const konfig = useKonfiguratorFrei();
@@ -449,7 +416,7 @@ const KatalogPage: React.FC = () => {
           {/* Große Schalter mit Bildern aus dem Katalog statt Symbolen */}
           <div className="lg:[grid-area:wahl] lg:self-end grid grid-cols-2 gap-3" role="tablist" aria-label={t("Ansicht", "View", "Vue")}>
             {([
-              ['parks', t("Beispielparks", "Example parks", "Parcs exemples"), t("Parks", "Parks", "Parcs"), `${parks.length || ''} ${t('fertige Anlagen mit Preis', 'ready-made parks with prices', 'parcs prêts avec prix')}`, `${parks.length || ''} ${t('Anlagen', 'parks', 'parcs')}`],
+              ['parks', t("Beispielparks", "Example parks", "Parcs exemples"), t("Parks", "Parks", "Parcs"), `${parks.length || ''} ${t('fertige Anlagen', 'ready-made parks', 'parcs prêts')}`, `${parks.length || ''} ${t('Anlagen', 'parks', 'parcs')}`],
               ['einzelteile', t("Einzelteile", "Individual parts", "Éléments individuels"), t("Einzelteile", "Individual parts", "Éléments individuels"), `${katalog?.elemente.length ?? ''} ${t('Elemente einzeln in 3D', 'elements individually in 3D', 'éléments individuels en 3D')}`, `${katalog?.elemente.length ?? ''} ${t('Elemente', 'elements', 'éléments')}`],
             ] as const).map(([id, text, kurz, unter, unterKurz]) => {
               const an = ansicht === id;
@@ -474,7 +441,7 @@ const KatalogPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Leiste: Suche, Filter, Planen, Preise. Codes für Kunden gibt es nur auf /admin. */}
+      {/* Leiste: Suche, Filter, Planen, Katalog. Codes für Kunden gibt es nur auf /admin. */}
       <div ref={leiste} className="sticky top-14 md:top-20 z-30 bg-brand-bg/95 backdrop-blur-md border-y border-brand-dark/5 scroll-mt-14 md:scroll-mt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap xl:flex-nowrap items-center gap-2 md:gap-3">
           <div className="relative flex-1 min-w-[10rem] xl:max-w-xs">
@@ -504,11 +471,11 @@ const KatalogPage: React.FC = () => {
           {!katalogLinks && (
             <button
               type="button" onClick={() => setDialog(true)}
-              aria-label={t("Preise und Katalog freischalten", "Unlock prices and catalogue", "Débloquer les prix et le catalogue")}
+              aria-label={t("Katalog freischalten", "Unlock catalogue", "Débloquer le catalogue")}
               className="shrink-0 h-12 inline-flex items-center gap-2 px-4 md:px-5 rounded-lg text-sm font-extrabold uppercase tracking-wider bg-brand-dark text-white shadow-[0_6px_18px_rgba(44,53,48,0.25)] hover:bg-brand-orange transition-colors"
             >
               <span className="material-symbols-outlined text-[22px]">lock</span>
-              <span className="hidden sm:inline">{t("Preise und Katalog", "Prices and catalogue", "Prix et catalogue")}</span>
+              <span className="hidden sm:inline">{t("Katalog", "Catalogue", "Catalogue")}</span>
             </button>
           )}
         </div>
@@ -520,7 +487,7 @@ const KatalogPage: React.FC = () => {
             <span className="material-symbols-outlined text-5xl text-brand-orange">menu_book</span>
             <div className="flex-1">
               <h2 className="text-2xl md:text-3xl font-extrabold font-heading uppercase tracking-tight">{t("Ihr Katalog 2026 ist freigeschaltet", "Your 2026 catalogue is unlocked", "Votre catalogue 2026 est débloqué")}</h2>
-              <p className="text-white/70 mt-1">{t("Alle Elemente mit Nettopreisen, zzgl. MwSt., Transport und Montage. Blättern Sie online im Heft.", "All elements with net prices, plus VAT, transport and installation. Browse the booklet online.", "Tous les éléments avec les prix nets, hors TVA, transport et montage. Feuilletez le catalogue en ligne.")}</p>
+              <p className="text-white/70 mt-1">{t("Blättern Sie online im Heft.", "Browse the booklet online.", "Feuilletez le catalogue en ligne.")}</p>
             </div>
             <div className="flex flex-wrap gap-3">
               <button type="button" onClick={() => setBlaettern(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-orange text-white font-bold uppercase tracking-wider text-sm hover:bg-white hover:text-brand-dark transition-colors">
@@ -535,11 +502,11 @@ const KatalogPage: React.FC = () => {
             <h2 className="sr-only">{t("Skatepark-Beispiele", "Skatepark examples", "Exemples de skateparks")}</h2>
             <Kopfleiste label={t("Skatepark-Beispiele", "Skatepark examples", "Exemples de skateparks")} rechts={<>{parkTreffer.length} {t("Parks", "parks", "parcs")}</>} className="mb-6" />
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-              {(suche.trim() ? parkTreffer : parkTreffer.slice(0, reihenParks * PARKS_JE_REIHE)).map((p) => <ParkKarte key={p.id} p={p} preis={preise ? preisText(preise[p.id], loc) ?? t("auf Anfrage", "on request", "sur demande") : null} onSperre={() => setDialog(true)} />)}
+              {(suche.trim() ? parkTreffer : parkTreffer.slice(0, reihenParks * PARKS_JE_REIHE)).map((p) => <ParkKarte key={p.id} p={p} />)}
             </div>
             {!parkTreffer.length && <p className="text-center text-brand-muted py-12">{t("Kein Park passt zu diesem Filter.", "No park matches this filter.", "Aucun parc ne correspond à ce filtre.")}</p>}
             {!suche.trim() && <MehrLaden rest={parkTreffer.length - reihenParks * PARKS_JE_REIHE} onClick={() => setReihenParks((n) => n + 1)} />}
-            <p className="text-xl leading-relaxed text-brand-dark/75 max-w-3xl mt-10">{t("Jeder Park ist aus unseren Einzelelementen zusammengestellt, mit Fläche, Stückliste und Gesamtpreis. Im Detail drehen Sie die Anlage in 3D.", "Every park is put together from our individual elements, with area, parts list and total price. In the detail view you can rotate the park in 3D.", "Chaque parc est composé de nos éléments individuels, avec surface, liste des pièces et prix total. Dans la vue détaillée, vous pouvez faire pivoter l'installation en 3D.")}</p>
+            <p className="text-xl leading-relaxed text-brand-dark/75 max-w-3xl mt-10">{t("Jeder Park ist aus unseren Einzelelementen zusammengestellt, mit Fläche und Stückliste. Im Detail drehen Sie die Anlage in 3D.", "Every park is put together from our individual elements, with area and parts list. In the detail view you can rotate the park in 3D.", "Chaque parc est composé de nos éléments individuels, avec surface et liste des pièces. Dans la vue détaillée, vous pouvez faire pivoter l'installation en 3D.")}</p>
           </div>
         )}
 
@@ -575,7 +542,6 @@ const KatalogPage: React.FC = () => {
                       <h3 className="font-extrabold font-heading text-brand-dark uppercase tracking-tight leading-tight group-hover:text-brand-orange transition-colors">{teilName(e.name, lang)}</h3>
                       <p className="font-mono text-[11px] text-brand-muted mt-1">{e.preisliste_code || e.kuerzel || '–'}</p>
                       <p className="text-xs text-brand-muted mt-2">{kurzMasse(e, t)}</p>
-                      <div className="mt-3"><PreisBadge preis={preise ? preisText(preise[e.slug], loc) ?? t("auf Anfrage", "on request", "sur demande") : null} onSperre={() => setDialog(true)} /></div>
                     </div>
                   </Link>
                 ))}
@@ -608,20 +574,20 @@ const KatalogPage: React.FC = () => {
         )}
         {katalog && (
           <p className="text-xs text-brand-muted text-center mt-8">
-            {t('Stand', 'As of', 'État au')} {new Date(katalog.stand).toLocaleDateString(loc)}. {t('Darstellung schematisch, maßgeblich sind Preisliste und Angebot. Nettopreise 2026 zzgl. MwSt., Transport und Montage.', 'Illustration is schematic; the price list and quote are what count. 2026 net prices, plus VAT, transport and installation.', 'Représentation schématique ; la liste de prix et l\'offre font foi. Prix nets 2026 hors TVA, transport et montage.')}
+            {t('Stand', 'As of', 'État au')} {new Date(katalog.stand).toLocaleDateString(loc)}. {t('Darstellung schematisch, maßgeblich ist das Angebot. Preise erhalten Sie mit dem Angebot.', 'Illustration is schematic; the quote is what counts. You receive prices with the quote.', 'Représentation schématique ; l\'offre fait foi. Les prix vous sont communiqués avec l\'offre.')}
           </p>
         )}
       </section>
 
       {aktivPark && (
         <ParkDetail
-          p={aktivPark} preise={preise} onSperre={() => setDialog(true)} onClose={schliessen}
+          p={aktivPark} onClose={schliessen}
           zurueck={parks[parkIndex - 1]} vor={parks[parkIndex + 1]}
         />
       )}
       {aktiv && (
         <Detail
-          e={aktiv} preis={preise ? preisText(preise[aktiv.slug], loc) ?? t("auf Anfrage", "on request", "sur demande") : null} onSperre={() => setDialog(true)} onParkSperre={() => setKonfigDialog(true)} onClose={schliessen}
+          e={aktiv} onParkSperre={() => setKonfigDialog(true)} onClose={schliessen}
           zurueck={katalog!.elemente[index - 1]} vor={katalog!.elemente[index + 1]}
         />
       )}
@@ -629,8 +595,8 @@ const KatalogPage: React.FC = () => {
         <Suspense fallback={null}><Blaetterkatalog links={katalogLinks} onClose={() => setBlaettern(false)} /></Suspense>
       )}
       <CodeDialog
-        offen={dialog} onClose={() => setDialog(false)} freischalten={freischalten} anfrage={anfrage} titel={t("Preise freischalten", "Unlock prices", "Débloquer les prix")}
-        text={t("Die Nettopreise 2026 (zzgl. MwSt., Transport und Montage) und den Katalog zum Blättern sehen Sie mit Ihrem persönlichen Code. Der Code gilt einmal: Nach dem Neuladen der Seite sind die Preise wieder ausgeblendet. Sie haben noch keinen? Wir senden ihn Ihnen gern zu.", "You see the 2026 net prices (plus VAT, transport and installation) and the browsable catalogue with your personal code. The code works once: after the page is reloaded, the prices are hidden again. Don't have one yet? We are happy to send you one.", "Vous voyez les prix nets 2026 (hors TVA, transport et montage) et le catalogue à feuilleter avec votre code personnel. Le code est à usage unique : une fois la page rechargée, les prix sont de nouveau masqués. Vous n'en avez pas encore ? Nous vous en envoyons volontiers un.")}
+        offen={dialog} onClose={() => setDialog(false)} freischalten={freischalten} anfrage={anfrage} titel={t("Katalog freischalten", "Unlock catalogue", "Débloquer le catalogue")}
+        text={t("Den Katalog zum Blättern sehen Sie mit Ihrem persönlichen Code. Der Code gilt einmal: Nach dem Neuladen der Seite ist der Katalog wieder gesperrt. Sie haben noch keinen? Wir senden ihn Ihnen gern zu.", "You can browse the catalogue with your personal code. The code works once: after the page is reloaded, the catalogue is locked again. Don't have one yet? We are happy to send you one.", "Vous feuilletez le catalogue avec votre code personnel. Le code est à usage unique : une fois la page rechargée, le catalogue est de nouveau verrouillé. Vous n'en avez pas encore ? Nous vous en envoyons volontiers un.")}
       />
       <CodeDialog offen={konfigDialog} onClose={() => setKonfigDialog(false)} freischalten={konfig.freischalten} anfrage={konfigCode.anfrage} titel={konfigCode.titel} text={konfigCode.text} />
     </PageShell>

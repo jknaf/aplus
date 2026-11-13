@@ -579,6 +579,10 @@ const PLATEAU: Record<string, number> = { 'quarterramp-165': 1.33, 'quarterramp-
 const braucht = (t: Teil, m: Masse, park: Park, tief = 0) => (t.gel !== undefined ? t.gel : !park.flaeche.angeboescht && !tief && m.h >= 1.0);
 export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
   const tief = tiefen(park, ctx);
+  const oben = (o: Teil) => ctx.masse[o.slug].h - (tief.get(o.id) ?? 0);
+  // G06: kein Geländer, wo ein Teil andockt, das höchstens 1,00 m tiefer liegt; liegt es mehr als 1 m tiefer, bleibt das Geländer.
+  // shortcut: Nachbarhöhe = seine Oberkante, nicht die Höhe genau an der Stoßkante; stimmt für Tables und Rampen, die mit der hohen Seite andocken
+  const zu = (s: Seite, t: Teil) => { const nb = anliegend(s, t.id, park, ctx); return !!nb && oben(t) - oben(nb) <= 1.0; };
   const strecken: { a: V; b: V; n: V; y: number }[] = [];
   const keile: Zusatz[] = [];
   for (const t of park.teile) {
@@ -588,16 +592,32 @@ export const abgeleitet = (park: Park, ctx: Ctx): Abgeleitet => {
     if (braucht(t, m, park, tief.get(t.id)) && !istKurve(t.slug) && (a === 'plattform' || (a === 'rampe' && m.hoch && hochAchsig(m)))) {
       const kandidaten = a === 'plattform' ? seiten(t, m) : [seiteIn(t, m, hochWelt(t, m)!)];
       for (const s of kandidaten) {
-        if (anliegend(s, t.id, park, ctx)) continue; // G06: wo etwas andockt, kein Geländer
+        if (zu(s, t)) continue;
         const h = mal(s.tangente, s.laenge / 2);
         strecken.push({ a: minus(s.mitte, h), b: plus(s.mitte, h), n: s.normale, y: m.h - (tief.get(t.id) ?? 0) - SENKUNG[a] });
+      }
+      // G08 (EN 6.2.6, Bild 5): Grenzt eine bis 1 m tiefere Plattform ohne eigenes Geländer an (Extension), läuft das Geländer
+      // der freien Nachbarseiten auf der unteren Stufe ein Raster (1,25 m, also mindestens 1 m) weiter
+      if (a === 'plattform') for (const s of seiten(t, m)) {
+        const nb = anliegend(s, t.id, park, ctx);
+        if (!nb || art(nb.slug, ctx) !== 'plattform') continue;
+        const d = oben(t) - oben(nb);
+        if (d <= 0.05 || d > 1.0 || braucht(nb, ctx.masse[nb.slug], park, tief.get(nb.id))) continue;
+        for (const q of seiten(t, m)) {
+          if (Math.abs(skalar(q.normale, s.normale)) > 0.5 || zu(q, t)) continue;
+          const ecke = plus(q.mitte, mal(s.normale, q.laenge / 2));
+          const mitte = plus(ecke, mal(s.normale, 0.625));
+          if (!innen(minus(mitte, mal(q.normale, 0.1)), umriss(nb, ctx))) continue; // untere Stufe geht dort weiter
+          if (park.teile.some((o) => innen(plus(mitte, mal(q.normale, 0.1)), umriss(o, ctx)))) continue; // außen frei
+          strecken.push({ a: ecke, b: plus(ecke, mal(s.normale, 1.25)), n: q.normale, y: oben(nb) - SENKUNG.plattform });
+        }
       }
       // Seitlich der Plattform einer Rampe, nur so tief wie die Plattform, ab der hohen Rückkante
       const plateau = a === 'rampe' ? PLATEAU[t.slug] : 0;
       if (plateau) {
         const hw = hochWelt(t, m)!;
         for (const s of seiten(t, m)) {
-          if (Math.abs(skalar(s.normale, hw)) > 0.5 || anliegend(s, t.id, park, ctx)) continue;
+          if (Math.abs(skalar(s.normale, hw)) > 0.5 || zu(s, t)) continue;
           const ecke = plus(s.mitte, mal(hw, s.laenge / 2));
           strecken.push({ a: ecke, b: minus(ecke, mal(hw, plateau)), n: s.normale, y: m.h - (tief.get(t.id) ?? 0) - SENKUNG.rampe });
         }
@@ -713,13 +733,13 @@ const BOGEN = 0.608 - 0.515;
 const rundeEnden = (gerade: Zusatz[], rund: Zusatz[], ctx: Ctx): Zusatz[] => {
   if (!ctx.masse['gelaender-ende-links'] || !ctx.masse['gelaender-ende-rechts'] || !ctx.masse['gelaender-einzl']) return gerade;
   const alle = [...gerade, ...rund];
-  const enden = alle.flatMap((z, i) => feldEnden(z, ctx).map((e) => ({ ...e, i })));
-  const frei = (i: number, p: V) => !enden.some((e) => e.i !== i && laenge(minus(e.p, p)) < 0.4);
+  const enden = alle.flatMap((z, i) => feldEnden(z, ctx).map((e) => ({ ...e, i, y: z.y ?? 0 })));
+  const frei = (i: number, p: V, y: number) => !enden.some((e) => e.i !== i && laenge(minus(e.p, p)) < 0.4 && Math.abs(e.y - y) < 0.05);
   return gerade.flatMap((z, i) => {
     const L = FELD_RASTER[z.slug];
     if (!L) return [z];
     const [a, b] = feldEnden(z, ctx); // a am +r-Ende, b am -r-Ende
-    const fa = frei(i, a.p), fb = frei(i, b.p);
+    const fa = frei(i, a.p, z.y ?? 0), fb = frei(i, b.p, z.y ?? 0);
     if (!fa && !fb) return [z];
     const r = a.r;
     const aussen = drehe(PFOSTEN[z.slug], z.rot);
@@ -742,7 +762,7 @@ const verbinder = (felder: Zusatz[], ctx: Ctx): Zusatz[] => {
   const paare: { a: number; b: number; d: number }[] = [];
   for (let a = 0; a < enden.length; a++) for (let b = a + 1; b < enden.length; b++) {
     const d = laenge(minus(enden[a].p, enden[b].p));
-    if (enden[a].i !== enden[b].i && d < 0.4) paare.push({ a, b, d });
+    if (enden[a].i !== enden[b].i && d < 0.4 && Math.abs(enden[a].y - enden[b].y) < 0.05) paare.push({ a, b, d }); // nur gleiche Höhe
   }
   const belegt = new Set<number>();
   const out: Zusatz[] = [];

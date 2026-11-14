@@ -1655,8 +1655,8 @@ export const anordnen = (park: Park, ctx: Ctx, flaecheBehalten = false): Park =>
 
 export interface Vorlage { id: string; name: string; text: string; bausteine: string[]; einzel: string[] }
 export const VORLAGEN: Vorlage[] = [
-  { id: 'klein', name: 'Klein · Starter', text: 'Für Schulhof oder Dorfplatz. Niedrige Höhen, eine Jump-Box und eine Street-Linie.', bausteine: ['jumpbox-45'], einzel: ['curb-250', 'rail-300'] },
-  { id: 'mittel', name: 'Mittel · Plaza', text: 'Für Jugendzentrum und Freizeitgelände. Zwei Jump-Boxen, Spine und Street-Linie.', bausteine: ['jumpbox-60', 'spine-98', 'jumpbox-75', 'ollybox'], einzel: ['rail-300'] },
+  { id: 'klein', name: 'Klein · Starter', text: 'Für Schulhof oder Dorfplatz. Zwei Jump-Boxen, Spine, Olly-Box und eine Street-Linie mit Ledge, Rail und Slide-Bar.', bausteine: ['jumpbox-60', 'jumpbox-75', 'spine-75', 'ollybox'], einzel: ['ledge-lang-98-40', 'rail-300', 'slide-bar-300'] },
+  { id: 'mittel', name: 'Mittel · Plaza', text: 'Für Jugendzentrum und Freizeitgelände. Pyramide, zwei Jump-Boxen, Spine, Olly-Box und eine lange Street-Linie.', bausteine: ['jumpbox-60', 'jumpbox-75', 'spine-75', 'pyramide-60', 'ollybox'], einzel: ['ledge-lang-98-40', 'ledge-kurz-98-40', 'rail-550', 'slide-bar-300'] },
   { id: 'gross', name: 'Groß · Park', text: 'Aufbau wie gebaute A+-Parks: Pyramide, Quarterramp, Spine, Wallride und eine lange Street-Linie.', bausteine: ['pyramide-75', 'quarter-125', 'spine-125', 'jumpbox-60', 'jumpbox-75', 'jumpbox-45', 'wallride', 'ollybox'], einzel: ['rail-300', 'rail-550', 'curb-300', 'slide-bar-300', 'manual-pad-250', 'ledge-lang-98-40'] },
 ];
 
@@ -1772,8 +1772,8 @@ const TEXTE: Record<string, [string, string]> = {
   'Klein · Starter': ['Small · Starter', 'Petit · Starter'],
   'Mittel · Plaza': ['Medium · Plaza', 'Moyen · Plaza'],
   'Groß · Park': ['Large · Park', 'Grand · Park'],
-  'Für Schulhof oder Dorfplatz. Niedrige Höhen, eine Jump-Box und eine Street-Linie.': ['For a school playground or village square. Low heights, one jump box and one street line.', "Pour une cour d'école ou une place de village. Faibles hauteurs, une jump box et une ligne street."],
-  'Für Jugendzentrum und Freizeitgelände. Zwei Jump-Boxen, Spine und Street-Linie.': ['For a youth centre and leisure grounds. Two jump boxes, a spine and a street line.', 'Pour un centre de jeunesse et un site de loisirs. Deux jump boxes, une spine et une ligne street.'],
+  'Für Schulhof oder Dorfplatz. Zwei Jump-Boxen, Spine, Olly-Box und eine Street-Linie mit Ledge, Rail und Slide-Bar.': ['For a school playground or village square. Two jump boxes, a spine, an olly box and a street line with ledge, rail and slide bar.', "Pour une cour d'école ou une place de village. Deux jump boxes, une spine, une olly box et une ligne street avec ledge, rail et slide bar."],
+  'Für Jugendzentrum und Freizeitgelände. Pyramide, zwei Jump-Boxen, Spine, Olly-Box und eine lange Street-Linie.': ['For a youth centre and leisure grounds. A pyramid, two jump boxes, a spine, an olly box and a long street line.', 'Pour un centre de jeunesse et un site de loisirs. Une pyramide, deux jump boxes, une spine, une olly box et une longue ligne street.'],
   'Aufbau wie gebaute A+-Parks: Pyramide, Quarterramp, Spine, Wallride und eine lange Street-Linie.': ['Layout like built A+ parks: pyramid, quarter ramp, spine, wallride and a long street line.', 'Composition comme les parcs A+ réalisés : pyramide, quarter, spine, wallride et une longue ligne street.'],
 };
 export const ueberText = (de: string, lang: Lang): string => (lang === 'de' ? de : TEXTE[de]?.[lang === 'en' ? 0 : 1] ?? de);

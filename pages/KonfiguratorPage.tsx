@@ -632,13 +632,6 @@ const KonfiguratorPage: React.FC = () => {
                     <input aria-label={t("Breite in Metern", "Width in metres", "Largeur en mètres")} type="number" step={RASTER} min={5} max={120} value={park.flaeche.b} onChange={(e) => flaecheSetzen(park.flaeche.l, Number(e.target.value))} style={{ width: `${String(park.flaeche.b).length + 0.8}ch` }} className={`bg-transparent text-center focus:outline-none focus:text-brand-orange ${ohnePfeile}`} />
                     <span className="text-brand-muted font-normal">m</span>
                   </label>
-                  <LKnopf
-                    icon={park.flaeche.angeboescht ? 'landscape' : 'view_in_ar'}
-                    label={park.flaeche.angeboescht ? t("Angeböscht", "Banked up", "Taluté") : t("Freistehend", "Free-standing", "Autoportant")}
-                    labelAb="2xl:inline"
-                    title={park.flaeche.angeboescht ? t("Angeböscht: Böschung statt Geländer (umschalten)", "Banked up: embankment instead of railing (toggle)", "Taluté : talus à la place du garde-corps (basculer)") : t("Freistehend: Geländer an hohen Podesten (umschalten)", "Free-standing: railing on high platforms (toggle)", "Autoportant : garde-corps sur les plateformes hautes (basculer)")}
-                    onClick={() => flaecheSetzen(park.flaeche.l, park.flaeche.b, !park.flaeche.angeboescht)}
-                  />
                 </Gruppe>
                 <Gruppe><LKnopf icon="delete_sweep" label={t("Alles löschen", "Clear all", "Tout effacer")} labelAb="2xl:inline" title={t("Alle Elemente von der Fläche löschen", "Remove all elements from the area", "Retirer tous les éléments de la surface")} onClick={allesLoeschen} disabled={!park.teile.length} /></Gruppe>
               </div>

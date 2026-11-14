@@ -183,7 +183,7 @@ for (const vo of VORLAGEN) {
   assert.ok(!h.some((x) => x.stufe === 'rot'), `${vo.id}: ${h.filter((x) => x.stufe === 'rot').map((x) => x.text).join(' | ')}`);
   console.log(`${vo.id}: ${p.teile.length} Elemente, ${p.flaeche.l} × ${p.flaeche.b} m, ${h.length} Hinweise${h.length ? ': ' + h.map((x) => x.text).join(' | ') : ''}`);
 }
-assert.equal(vorlageBauen(VORLAGEN[0], ctx).teile.length, 5);
+assert.equal(vorlageBauen(VORLAGEN[0], ctx).teile.length, 13);
 
 // Beheben verschiebt eine zu nahe Gruppe
 const eng: Park = { flaeche: feld, teile: [tisch, { id: 'c', slug: 'curb-300', x: 3, z: 0, rot: 0 }] };

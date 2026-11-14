@@ -468,10 +468,10 @@ type Slide =
 // das Poster ist ihr erster Frame. Kein Springen im Video nötig.
 const SLIDES: Slide[] = [
   { type: 'image', src: '/images/homepage/hero-banner.jpg', alt: ["A+ Urban Design Skatepark", "A+ Urban Design skatepark", "Skatepark A+ Urban Design"], duration: 5000 },
-  { type: 'video', src: '/videos/skateparks/hero-skateboard.mp4', poster: '/videos/skateparks/poster-hero-skateboard.jpg', duration: 10000 },
+  { type: 'video', src: 'https://aplus-medien.itamedia.de/videos/skateparks/hero-skateboard.mp4', poster: '/videos/skateparks/poster-hero-skateboard.jpg', duration: 10000 },
   { type: 'image', src: '/images/homepage/hero-anlage-01.jpg', alt: ["Beton-Skatepark, Totalaufnahme", "Concrete skatepark, wide shot", "Skatepark en béton, vue d'ensemble"], duration: 5000 },
   { type: 'image', src: '/images/homepage/hero-anlage-panorama.jpg', alt: ["Skatepark-Panorama mit Bowl und Street-Area", "Skatepark panorama with bowl and street area", "Panorama d'un skatepark avec bowl et zone street"], duration: 5000 },
-  { type: 'video', src: '/videos/skateparks/hero-bmx.mp4', poster: '/videos/skateparks/poster-hero-bmx.jpg', duration: 10000 },
+  { type: 'video', src: 'https://aplus-medien.itamedia.de/videos/skateparks/hero-bmx.mp4', poster: '/videos/skateparks/poster-hero-bmx.jpg', duration: 10000 },
 ];
 
 const KENNWERTE: { wert: [string, string, string]; label: [string, string, string] }[] = [

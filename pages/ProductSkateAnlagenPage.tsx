@@ -43,12 +43,12 @@ const GalleryImage: React.FC<{ src: string; alt: string; label: string }> = ({ s
 );
 
 const VIDEOS: { src: string; poster: string; title: [string, string, string] }[] = [
-  { src: '/videos/skateparks/contest-skate-bmx-inline-scooter.mp4', poster: '/videos/skateparks/poster-contest-skate-bmx.jpg', title: ['Contest: Skate / BMX / Inline / Scooter', 'Contest: Skate / BMX / Inline / Scooter', 'Contest : skate / BMX / roller / trottinette'] },
-  { src: '/videos/skateparks/session-skate-bmx-inline-scooter.mp4', poster: '/videos/skateparks/poster-session-skate-bmx.jpg', title: ['Session: Skate / BMX / Inline / Scooter', 'Session: Skate / BMX / Inline / Scooter', 'Session : skate / BMX / roller / trottinette'] },
-  { src: '/videos/skateparks/contest-skateboard.mp4', poster: '/videos/skateparks/poster-contest-skateboard.jpg', title: ['Contest: Skateboard', 'Contest: Skateboard', 'Contest : skateboard'] },
-  { src: '/videos/skateparks/contest-bmx.mp4', poster: '/videos/skateparks/poster-contest-bmx.jpg', title: ['Contest: BMX', 'Contest: BMX', 'Contest : BMX'] },
-  { src: '/videos/skateparks/contest-inliner.mp4', poster: '/videos/skateparks/poster-contest-inliner.jpg', title: ['Contest: Inliner', 'Contest: Inline', 'Contest : roller'] },
-  { src: '/videos/skateparks/contest-scooter.mp4', poster: '/videos/skateparks/poster-contest-scooter.jpg', title: ['Contest: Scooter', 'Contest: Scooter', 'Contest : trottinette'] },
+  { src: 'https://aplus-medien.itamedia.de/videos/skateparks/contest-skate-bmx-inline-scooter.mp4', poster: '/videos/skateparks/poster-contest-skate-bmx.jpg', title: ['Contest: Skate / BMX / Inline / Scooter', 'Contest: Skate / BMX / Inline / Scooter', 'Contest : skate / BMX / roller / trottinette'] },
+  { src: 'https://aplus-medien.itamedia.de/videos/skateparks/session-skate-bmx-inline-scooter.mp4', poster: '/videos/skateparks/poster-session-skate-bmx.jpg', title: ['Session: Skate / BMX / Inline / Scooter', 'Session: Skate / BMX / Inline / Scooter', 'Session : skate / BMX / roller / trottinette'] },
+  { src: 'https://aplus-medien.itamedia.de/videos/skateparks/contest-skateboard.mp4', poster: '/videos/skateparks/poster-contest-skateboard.jpg', title: ['Contest: Skateboard', 'Contest: Skateboard', 'Contest : skateboard'] },
+  { src: 'https://aplus-medien.itamedia.de/videos/skateparks/contest-bmx.mp4', poster: '/videos/skateparks/poster-contest-bmx.jpg', title: ['Contest: BMX', 'Contest: BMX', 'Contest : BMX'] },
+  { src: 'https://aplus-medien.itamedia.de/videos/skateparks/contest-inliner.mp4', poster: '/videos/skateparks/poster-contest-inliner.jpg', title: ['Contest: Inliner', 'Contest: Inline', 'Contest : roller'] },
+  { src: 'https://aplus-medien.itamedia.de/videos/skateparks/contest-scooter.mp4', poster: '/videos/skateparks/poster-contest-scooter.jpg', title: ['Contest: Scooter', 'Contest: Scooter', 'Contest : trottinette'] },
 ];
 
 const VideoCard: React.FC<{ video: typeof VIDEOS[0] }> = ({ video }) => {

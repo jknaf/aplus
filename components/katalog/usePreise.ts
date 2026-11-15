@@ -77,10 +77,10 @@ export const usePreise = () => {
   }, [betreiber]);
 
   // Nur für /admin: Zahlen aus Google Analytics und Search Console
-  const analyse = useCallback(async (tage: number) => {
+  const analyse = useCallback(async (tage: number, begriffe: string[] = []) => {
     if (!betreiber) return { fehler: 'Nicht angemeldet.' };
     try {
-      const res = await fetch('/api/analyse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code: betreiber, tage }) });
+      const res = await fetch('/api/analyse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code: betreiber, tage, begriffe }) });
       const daten = await res.json().catch(() => ({}));
       return res.ok ? daten : { fehler: daten.fehler ?? 'Analyse gerade nicht abrufbar.' };
     } catch {

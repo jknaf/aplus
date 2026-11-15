@@ -65,16 +65,30 @@ const KERNBEGRIFFE: [string, string][] = [
 type Zeile = { keys?: string[]; clicks: number; impressions: number; ctr: number; position: number };
 const zeile = (r: Zeile) => ({ name: r.keys?.[0] ?? '', klicks: r.clicks, impressionen: r.impressions, ctr: r.ctr, position: r.position });
 
-export const auswerten = (begriffe: Zeile[], seiten: Zeile[]) => {
+// Platz in Deutschland je fest gewählter Suche (genauer Wortlaut), dazu der Platz im Zeitraum davor
+const inDeutschland = (liste: string[], de: Zeile[], deVorher: Zeile[]) => {
+  const finde = (rows: Zeile[], b: string) => rows.map(zeile).find((z) => z.name.toLowerCase() === b);
+  return liste.map((b) => {
+    const z = finde(de, b);
+    return { name: b, klicks: z?.klicks ?? 0, impressionen: z?.impressionen ?? 0, ctr: z?.ctr ?? 0, position: z?.position ?? 0, vorher: finde(deVorher, b)?.position ?? 0 };
+  });
+};
+
+export const auswerten = (begriffe: Zeile[], seiten: Zeile[], de: Zeile[] = [], deVorher: Zeile[] = [], liste: string[] = []) => {
   const q = begriffe.map(zeile);
+  const qDe = de.map(zeile);
   return {
+    suchbegriffe: inDeutschland(liste, de, deVorher),
     begriffe: q.filter((z) => z.klicks > 0).slice(0, 15),
     // Fast auf Seite 1: Platz 4–20, oft gezeigt; hier bringt besserer Inhalt am meisten
     chancen: q.filter((z) => z.position >= 4 && z.position <= 20 && z.impressionen >= 5).sort((a, b) => b.impressionen - a.impressionen).slice(0, 10),
     kern: KERNBEGRIFFE.map(([k, name]) => {
       const t = q.filter((z) => z.name.toLowerCase().includes(k));
       const impr = t.reduce((n, z) => n + z.impressionen, 0);
-      return { name, anfragen: t.length, klicks: t.reduce((n, z) => n + z.klicks, 0), impressionen: impr, position: impr ? t.reduce((n, z) => n + z.position * z.impressionen, 0) / impr : 0 };
+      const tDe = qDe.filter((z) => z.name.toLowerCase().includes(k));
+      const imprDe = tDe.reduce((n, z) => n + z.impressionen, 0);
+      return { name, anfragen: t.length, klicks: t.reduce((n, z) => n + z.klicks, 0), impressionen: impr, position: impr ? t.reduce((n, z) => n + z.position * z.impressionen, 0) / impr : 0,
+        positionDe: imprDe ? tDe.reduce((n, z) => n + z.position * z.impressionen, 0) / imprDe : 0 };
     }).filter((k) => k.anfragen).sort((a, b) => b.impressionen - a.impressionen),
     seiten: seiten.map(zeile).slice(0, 10),
     // Gezeigt, aber nicht angeklickt: Titel und Beschreibung dieser Seiten prüfen
@@ -82,20 +96,24 @@ export const auswerten = (begriffe: Zeile[], seiten: Zeile[]) => {
   };
 };
 
-const gsc = async (token: string, tage: number) => {
+const gsc = async (token: string, tage: number, liste: string[]) => {
   const post = (body: object) => fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(GSC_SITE)}/searchAnalytics/query`, {
     method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body),
   }).then((r) => r.json());
   const zeitraum = { startDate: tag(tage), endDate: tag(0) };
-  const [summe, vorher, begriffe, seiten] = await Promise.all([
+  const zeitraumVorher = { startDate: tag(2 * tage), endDate: tag(tage + 1) };
+  const nurDe = { dimensions: ['query'], rowLimit: 1000, dimensionFilterGroups: [{ filters: [{ dimension: 'country', operator: 'equals', expression: 'deu' }] }] };
+  const [summe, vorher, begriffe, seiten, de, deVorher] = await Promise.all([
     post(zeitraum),
-    post({ startDate: tag(2 * tage), endDate: tag(tage + 1) }),
+    post(zeitraumVorher),
     post({ ...zeitraum, dimensions: ['query'], rowLimit: 1000 }),
     post({ ...zeitraum, dimensions: ['page'], rowLimit: 200 }),
+    post({ ...zeitraum, ...nurDe }),
+    post({ ...zeitraumVorher, ...nurDe }),
   ]);
   if (summe.error) throw new Error(summe.error.message);
   const leer: Zeile = { clicks: 0, impressions: 0, ctr: 0, position: 0 };
-  return { ...zeile(summe.rows?.[0] ?? leer), vorher: zeile(vorher.rows?.[0] ?? leer), ...auswerten(begriffe.rows ?? [], seiten.rows ?? []) };
+  return { ...zeile(summe.rows?.[0] ?? leer), vorher: zeile(vorher.rows?.[0] ?? leer), ...auswerten(begriffe.rows ?? [], seiten.rows ?? [], de.rows ?? [], deVorher.rows ?? [], liste) };
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -106,12 +124,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const code = String(body.code ?? '').trim().toUpperCase().replace(/\s+/g, '');
   if (!soll || !gleich(code, soll)) return res.status(401).json({ fehler: 'Nicht angemeldet.' });
   const tage = [7, 30, 90].includes(Number(body.tage)) ? Number(body.tage) : 30;
+  // Suchbegriffe kommen aus googleStichprobe.ts im Admin; nur kurze Texte, höchstens 30
+  const liste = (Array.isArray(body.begriffe) ? body.begriffe : []).filter((b: unknown) => typeof b === 'string' && b.length <= 60).slice(0, 30).map((b: string) => b.toLowerCase().trim());
 
   let key;
   try { key = JSON.parse(process.env.GOOGLE_SA_KEY ?? ''); } catch { return res.status(503).json({ fehler: 'Google-Zugang ist auf dem Server nicht hinterlegt.' }); }
   try {
     const token = await zugang(key);
-    const [g, s] = await Promise.allSettled([ga(token, tage), gsc(token, tage)]);
+    const [g, s] = await Promise.allSettled([ga(token, tage), gsc(token, tage, liste)]);
     return res.status(200).json({
       tage,
       ga: g.status === 'fulfilled' ? g.value : { fehler: String(g.reason?.message ?? g.reason) },

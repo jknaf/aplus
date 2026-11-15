@@ -198,6 +198,9 @@ assert.ok(sl.some((z) => z.slug?.startsWith('gelaender')));
 const zurueck = dekodieren(kodieren(gross), ctx)!;
 assert.equal(zurueck.teile.length, gross.teile.length);
 assert.equal(zurueck.flaeche.l, gross.flaeche.l);
+// Link in Mails: kein Stück über 100 Zeichen (Apple Mail kürzt sonst), alte Links ohne Punkte gehen weiter
+assert.ok(kodieren(gross).split('.').every((x) => x.length <= 100) && kodieren(gross).length > 600, 'Link-Stücke zu lang');
+assert.equal(dekodieren(kodieren(gross).replace(/\./g, ''), ctx)!.teile.length, gross.teile.length, 'alter Link ohne Punkte');
 // Bowl nach Maß mit Nasen je Seite (innen, außen, verlängert): geschlossener Ring, alles eingegraben, kein Hinweis, Passstücke je höchstens 30 cm
 {
   const S = (n: number, aussen = false) => ({ n, aussen });

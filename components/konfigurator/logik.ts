@@ -1724,8 +1724,9 @@ export const csv = (zeilen: Zeile[]) => {
 
 // ---------- Teilen-Link und Speichern ----------
 
-const b64 = (s: string) => btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-const unb64 = (s: string) => atob(s.replace(/-/g, '+').replace(/_/g, '/'));
+// Punkt alle 100 Zeichen: Apple Mail erkennt sonst nur „…/konfigurator#p“ als Link (ein Stück über ~600 Zeichen wird abgeschnitten)
+const b64 = (s: string) => btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '').replace(/(.{100})(?=.)/g, '$1.');
+const unb64 = (s: string) => atob(s.replace(/[.\s]/g, '').replace(/-/g, '+').replace(/_/g, '/'));
 
 export const kodieren = (park: Park) => b64(JSON.stringify({
   f: [park.flaeche.l, park.flaeche.b, park.flaeche.angeboescht ? 1 : 0],

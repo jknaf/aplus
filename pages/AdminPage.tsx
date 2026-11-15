@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PageShell from '../components/PageShell';
 import { usePreise, type CodeZeile } from '../components/katalog/usePreise';
+import { STICHPROBE, STICHPROBE_STAND } from '../googleStichprobe';
 
 // Nur für A+: Kundencodes erzeugen und sehen, wer welchen Code bekommen und eingelöst hat; dazu die Analyse (Google Analytics, Google Ads).
 // Nirgends verlinkt; ohne Betreiber-Code zeigt die Seite nur die Anmeldung.
@@ -20,10 +21,11 @@ const knopf = 'px-6 py-3 rounded-lg bg-brand-orange text-white font-bold upperca
 // Google Ads ist vorbereitet, noch nicht angebunden. Der Server gibt die Zugangsdaten nie an den Browser.
 // Für A+, nicht für Web-Experten: Alltagssprache, und zu jeder Tabelle ein Satz, was man damit tut.
 type Zeile = { name: string; klicks: number; impressionen: number; ctr: number; position: number };
-type Kern = { name: string; anfragen: number; klicks: number; impressionen: number; position: number };
+type Kern = { name: string; anfragen: number; klicks: number; impressionen: number; position: number; positionDe?: number };
+type Suchbegriff = Zeile & { vorher: number };
 type GaWerte = { besucher: number; sitzungen: number; verweildauer: number };
 type GaDaten = GaWerte & { vorher: GaWerte; quellen: { quelle: string; besucher: number }[]; einstieg: { seite: string; sitzungen: number; absprung: number }[] };
-type GscDaten = Zeile & { vorher: Zeile; begriffe: Zeile[]; chancen: Zeile[]; kern: Kern[]; seiten: Zeile[]; ohneKlick: Zeile[] };
+type GscDaten = Zeile & { vorher: Zeile; suchbegriffe?: Suchbegriff[]; begriffe: Zeile[]; chancen: Zeile[]; kern: Kern[]; seiten: Zeile[]; ohneKlick: Zeile[] };
 export type AnalyseDaten = { ga: GaDaten | { fehler: string }; gsc: GscDaten | { fehler: string } };
 
 const zahl = (n: number) => Math.round(n).toLocaleString('de-DE');
@@ -43,8 +45,19 @@ const trend = (jetzt: number, vorher: number, kleinerBesser = false) => {
   return `${besser ? '▲ besser' : '▼ schlechter'} als davor (${zahl(vorher)})`;
 };
 
+// Platz-Entwicklung einer Suche: halber Platz Unterschied gilt als gleich
+const entwicklung = (jetzt: number, vorher: number) => !jetzt || !vorher ? '–'
+  : jetzt < vorher - 0.5 ? `▲ besser (vorher ${platz(vorher)})` : jetzt > vorher + 0.5 ? `▼ schlechter (vorher ${platz(vorher)})` : 'gleich';
+const stand = new Date(STICHPROBE_STAND).toLocaleDateString('de-DE');
+const suchbegriffZeilen = (gsc: GscDaten | null) => gsc && STICHPROBE.map((s) => {
+  const z = gsc.suchbegriffe?.find((b) => b.name === s.begriff);
+  return [s.begriff, z?.position ? platz(z.position) : 'zu selten gesucht', seite(z?.position ?? 0), entwicklung(z?.position ?? 0, z?.vorher ?? 0),
+    s.platz ? `Platz ${s.platz}` : 'nicht auf Seite 1', s.davor.length ? s.davor.join(', ') : 'niemand, A+ steht ganz oben'];
+});
+
 type Kennzahl = { name: string; frage: string; wert?: string; trend?: string };
-type Tabelle = { titel: string; hinweis?: string; spalten: string[]; zeilen?: (string | number)[][] };
+// umbruch: Spalte mit langem Text, die umbrechen darf
+type Tabelle = { titel: string; hinweis?: string; spalten: string[]; zeilen?: (string | number)[][]; umbruch?: number };
 type Bereich = { id: 'ga' | 'gsc' | 'ads'; titel: string; was: string; zahlen: Kennzahl[]; tabellen: Tabelle[]; braucht?: string[]; fehler?: string };
 
 const bereiche = (d: AnalyseDaten | null): Bereich[] => {
@@ -60,8 +73,12 @@ const bereiche = (d: AnalyseDaten | null): Bereich[] => {
         { name: 'Wer klickt', frage: 'Von 100, die A+ in der Suche sehen, klicken so viele.', wert: gsc ? prozent(gsc.ctr) : undefined },
       ],
       tabellen: [
-        { titel: 'Unsere Themen bei Google', hinweis: 'Wie A+ zu den eigenen Produkten gefunden wird. Steht ein Thema nicht auf Seite 1, fehlt dazu eine gute eigene Seite oder genug Text.',
-          spalten: ['Thema', 'Gezeigt', 'Besuche', 'Platz', 'Seite'], zeilen: gsc?.kern.map((k) => [k.name, zahl(k.impressionen), zahl(k.klicks), platz(k.position), seite(k.position)]) },
+        { titel: 'Wo A+ bei Google steht (Deutschland)', umbruch: 5,
+          hinweis: `Die wichtigsten Suchbegriffe, genau so eingetippt. „Platz im Schnitt“ kommt von Google selbst: alle Suchen aus Deutschland im Zeitraum, gemittelt. „Stichprobe“ ist eine einzelne Suche bei google.de vom ${stand}, dazu, wer dort vor A+ stand. Weil Google je nach Ort und Gerät etwas anders sortiert, können beide Plätze voneinander abweichen.`,
+          spalten: ['Suchbegriff', 'Platz im Schnitt', 'Seite', 'Entwicklung', `Stichprobe ${stand}`, 'Wer davor steht'], zeilen: suchbegriffZeilen(gsc) ?? undefined },
+        { titel: 'Unsere Themen bei Google', hinweis: 'Alle Suchen, die das Wort enthalten. „Alle Länder“ zählt auch Suchen aus den Niederlanden, England oder der Schweiz mit; dort steht A+ meist weit hinten, das drückt den Schnitt. Für Kunden in Deutschland zählt die Spalte „Deutschland“.',
+          spalten: ['Thema', 'Gezeigt', 'Besuche', 'Platz alle Länder', 'Platz Deutschland', 'Seite (Deutschland)'],
+          zeilen: gsc?.kern.map((k) => [k.name, zahl(k.impressionen), zahl(k.klicks), platz(k.position), platz(k.positionDe ?? 0), seite(k.positionDe ?? 0)]) },
         { titel: 'Fast oben: hier lohnt sich Arbeit', hinweis: 'Diese Suchen zeigen A+ schon, aber nicht ganz vorn. Ein Absatz Text, ein Bild oder eine Referenz zu genau diesem Begriff bringt hier am schnellsten mehr Besuche.',
           spalten: ['Suche', 'Gezeigt', 'Platz', 'Seite'], zeilen: gsc?.chancen.map((z) => [z.name, zahl(z.impressionen), platz(z.position), seite(z.position)]) },
         { titel: 'Oft gezeigt, nie angeklickt', hinweis: 'Diese Seiten erscheinen bei Google, aber niemand klickt. Meist passen Überschrift oder Kurzbeschreibung in der Trefferliste nicht zur Suche.',
@@ -99,7 +116,8 @@ const bereiche = (d: AnalyseDaten | null): Bereich[] => {
 };
 const ZEITRAEUME = [7, 30, 90];
 
-const Analyse: React.FC<{ laden: (tage: number) => Promise<AnalyseDaten | { fehler: string }> }> = ({ laden }) => {
+const BEGRIFFE = STICHPROBE.map((s) => s.begriff);
+const Analyse: React.FC<{ laden: (tage: number, begriffe?: string[]) => Promise<AnalyseDaten | { fehler: string }> }> = ({ laden }) => {
   const [tage, setTage] = useState(30);
   const [daten, setDaten] = useState<AnalyseDaten | null>(null);
   const [fehler, setFehler] = useState<string | null>(null);
@@ -107,7 +125,7 @@ const Analyse: React.FC<{ laden: (tage: number) => Promise<AnalyseDaten | { fehl
   useEffect(() => {
     let aktiv = true;
     setLaeuft(true);
-    laden(tage).then((d) => {
+    laden(tage, BEGRIFFE).then((d) => {
       if (!aktiv) return;
       if ('fehler' in d) { setFehler(d.fehler); setDaten(null); } else { setFehler(null); setDaten(d); }
       setLaeuft(false);
@@ -150,7 +168,7 @@ const Analyse: React.FC<{ laden: (tage: number) => Promise<AnalyseDaten | { fehl
                 <thead className="font-mono text-xs uppercase tracking-widest text-brand-muted"><tr>{t.spalten.map((c) => <th key={c} className="px-4 py-3 font-medium whitespace-nowrap">{c}</th>)}</tr></thead>
                 <tbody>
                   {t.zeilen?.length ? t.zeilen.map((z, i) => (
-                    <tr key={i} className="border-t border-brand-dark/5">{z.map((c, j) => <td key={j} className={`px-4 py-2.5 ${j ? 'whitespace-nowrap' : 'break-all'}`}>{c}</td>)}</tr>
+                    <tr key={i} className="border-t border-brand-dark/5">{z.map((c, j) => <td key={j} className={`px-4 py-2.5 ${j === t.umbruch ? 'min-w-[16rem]' : j ? 'whitespace-nowrap' : 'break-all'}`}>{c}</td>)}</tr>
                   )) : <tr className="border-t border-brand-dark/5"><td colSpan={t.spalten.length} className="px-4 py-5 text-brand-muted">{a.braucht ? `Keine Daten, solange ${a.titel} nicht angebunden ist.` : laeuft ? 'Lädt …' : 'Keine Daten im Zeitraum.'}</td></tr>}
                 </tbody>
               </table>

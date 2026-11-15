@@ -110,13 +110,9 @@ const ImpressumPage: React.FC = () => {
 
         <div className="mt-[72px] flex flex-wrap gap-x-16 gap-y-12">
           <section className="basis-[420px] grow">
-            <h2 className={h2}>{t("EU-Streitschlichtung", "EU Dispute Resolution", "Règlement des litiges de l'UE")}</h2>
+            <h2 className={h2}>{t("Verbraucherstreitbeilegung", "Consumer dispute resolution", "Règlement des litiges de consommation")}</h2>
             <p>
-              {t("Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:", "The European Commission provides a platform for online dispute resolution (ODR):", "La Commission européenne met à disposition une plateforme de règlement en ligne des litiges (RLL) :")}<br />
-              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className={`${link} break-all font-semibold`}>
-                https://ec.europa.eu/consumers/odr/
-              </a>.<br />
-              {t("Unsere E-Mail-Adresse finden Sie oben im Impressum.", "You will find our email address above in this legal notice.", "Vous trouverez notre adresse e-mail plus haut dans ces mentions légales.")}
+              {t("Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.", "We are neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board.", "Nous ne sommes ni disposés ni tenus à participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation.")}
             </p>
           </section>
           <section className="basis-[420px] grow">

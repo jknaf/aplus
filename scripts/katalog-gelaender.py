@@ -129,6 +129,15 @@ def richten(parks):
 P=os.path.join(WEB,'public','katalog','parks.json'); H=os.path.join(WEB,'components','katalog','park-startseite.json')
 parks=json.load(open(P)); start=json.load(open(H)); start.setdefault('nr','Startseite')
 richten(parks['parks']); richten([start]); start.pop('nr')
+# Stückliste: Endstücke links/rechts so zählen, wie sie im Park stehen (Preis gleich, nur die Seite wechselt)
+NAME={'gelaender-ende-links':'GELÄNDER-ENDE LINKS','gelaender-ende-rechts':'GELÄNDER-ENDE RECHTS'}
+for p in parks['parks']:
+    n={k:sum(t['slug']==k for t in p['teile']) for k in NAME}; sl=p['stueckliste']
+    if not sum(n.values()) or n=={k:sum(x['anzahl'] for x in sl if x['slug']==k) for k in NAME}: continue
+    i=next(j for j,x in enumerate(sl) if x['slug'] in NAME)
+    neu=[{'slug':k,'name':NAME[k],'anzahl':n[k]} for k in ('gelaender-ende-rechts','gelaender-ende-links') if n[k]]
+    p['stueckliste']=[x for x in sl[:i] if x['slug'] not in NAME]+neu+[x for x in sl[i:] if x['slug'] not in NAME]
+    protokoll.append(f"Park {p['nr']:>2}: Stückliste Endstücke "+', '.join(f"{x['anzahl']}× {x['name']}" for x in neu))
 print('\n'.join(protokoll) or 'alles passt')
 if FIX:
     open(P,'w').write(json.dumps(parks,ensure_ascii=False,separators=(',',':')))

@@ -45,19 +45,82 @@ const trend = (jetzt: number, vorher: number, kleinerBesser = false) => {
   return `${besser ? '▲ besser' : '▼ schlechter'} als davor (${zahl(vorher)})`;
 };
 
-// Platz-Entwicklung einer Suche: halber Platz Unterschied gilt als gleich
-const entwicklung = (jetzt: number, vorher: number) => !jetzt || !vorher ? '–'
-  : jetzt < vorher - 0.5 ? `▲ besser (vorher ${platz(vorher)})` : jetzt > vorher + 0.5 ? `▼ schlechter (vorher ${platz(vorher)})` : 'gleich';
+// Platz-Entwicklung einer Suche: verglichen werden die angezeigten (gerundeten) Plätze, sonst stünde „schlechter“ bei gleichem Platz
+const entwicklung = (jetzt: number, vorher: number) => {
+  if (!jetzt || !vorher) return null;
+  const d = Math.round(vorher) - Math.round(jetzt);
+  if (!d) return { text: 'gleich wie davor', farbe: 'text-brand-muted' };
+  const n = Math.abs(d) === 1 ? '1 Platz' : `${Math.abs(d)} Plätze`;
+  return d > 0 ? { text: `▲ ${n} besser`, farbe: 'text-[#4E6F33]' } : { text: `▼ ${n} schlechter`, farbe: 'text-red-700' };
+};
 const stand = new Date(STICHPROBE_STAND).toLocaleDateString('de-DE');
-const suchbegriffZeilen = (gsc: GscDaten | null) => gsc && STICHPROBE.map((s) => {
-  const z = gsc.suchbegriffe?.find((b) => b.name === s.begriff);
-  return [s.begriff, z?.position ? platz(z.position) : 'zu selten gesucht', seite(z?.position ?? 0), entwicklung(z?.position ?? 0, z?.vorher ?? 0),
-    s.platz ? `Platz ${s.platz}` : 'nicht auf Seite 1', s.davor.length ? s.davor.join(', ') : 'niemand, A+ steht ganz oben'];
-});
+// Farbe nach Google-Seite: Seite 1 grün, Seite 2 ocker, dahinter rot
+const seitenFarbe = (p: number) => p <= 10 ? '#4E6F33' : p <= 20 ? '#B7791F' : '#B91C1C';
+const SKALA = 30;
+
+// Wo A+ bei den Kernbegriffen steht: je Begriff eine Zeile mit Platz, Leiste 1–30 und wer davor steht
+const Rangliste: React.FC<{ gsc: GscDaten | null; laeuft: boolean }> = ({ gsc, laeuft }) => (
+  <div className="rounded-xl border border-brand-dark/10 mb-6">
+    <div className="px-5 pt-5 pb-4">
+      <h3 className="font-heading text-lg font-extrabold text-brand-dark">Wo A+ bei Google steht</h3>
+      <p className="text-sm text-brand-muted mt-1 max-w-3xl">Die wichtigsten Suchbegriffe in Deutschland. Der Platz ist Googles eigener Schnitt im Zeitraum. Platz 1 bis 10 ist Seite 1.
+        Wer davor steht, stammt aus einer Suche bei google.de vom {stand}.</p>
+      <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3 text-xs text-brand-dark/80">
+        {[['#4E6F33', 'Seite 1'], ['#B7791F', 'Seite 2'], ['#B91C1C', 'Seite 3 und weiter']].map(([f, t]) => (
+          <span key={t} className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full" style={{ background: f }} />{t}</span>
+        ))}
+      </div>
+    </div>
+    <div className="hidden md:grid grid-cols-[minmax(10rem,1.1fr)_minmax(14rem,1.5fr)_minmax(14rem,1.6fr)] gap-6 px-5 py-2 border-t border-brand-dark/10 font-mono text-[11px] uppercase tracking-widest text-brand-muted">
+      <span>Suchbegriff</span><span>Platz von A+</span><span>Wer davor steht</span>
+    </div>
+    <ul>
+      {!gsc && <li className="border-t border-brand-dark/5 px-5 py-5 text-sm text-brand-muted">{laeuft ? 'Lädt …' : 'Keine Daten.'}</li>}
+      {gsc && STICHPROBE.map((s) => {
+        const z = gsc.suchbegriffe?.find((b) => b.name === s.begriff);
+        const p = z?.position ?? 0;
+        const e = entwicklung(p, z?.vorher ?? 0);
+        return (
+          <li key={s.begriff} className="border-t border-brand-dark/5 px-5 py-4 grid md:grid-cols-[minmax(10rem,1.1fr)_minmax(14rem,1.5fr)_minmax(14rem,1.6fr)] gap-x-6 gap-y-3 md:items-center">
+            <div>
+              <div className="font-semibold text-brand-dark">{s.begriff}</div>
+              {z?.impressionen ? <div className="text-xs text-brand-muted mt-0.5">{zahl(z.impressionen)}-mal bei Google gezeigt</div> : null}
+            </div>
+            <div className="flex items-center gap-4">
+              {p ? <>
+                <div className="w-16 shrink-0">
+                  <div className="text-3xl font-extrabold leading-none tabular-nums" style={{ color: seitenFarbe(p) }}>{Math.round(p)}</div>
+                  <div className="text-[11px] text-brand-muted mt-1">{seite(p)}</div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  {/* Leiste Platz 1–30, je Google-Seite ein Drittel; der Punkt zeigt den Platz von A+ */}
+                  <div className="relative h-2 rounded-full bg-brand-surface" aria-hidden="true">
+                    <div className="absolute inset-y-0 left-0 w-1/3 rounded-l-full bg-[#4E6F33]/15" />
+                    <div className="absolute inset-y-0 left-1/3 w-px bg-white" /><div className="absolute inset-y-0 left-2/3 w-px bg-white" />
+                    <span className="absolute top-1/2 w-3.5 h-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-white"
+                      style={{ left: `${(Math.min(p, SKALA) - 0.5) / SKALA * 100}%`, background: seitenFarbe(p) }} />
+                  </div>
+                  {e && <div className={`text-xs font-semibold mt-2 ${e.farbe}`}>{e.text}</div>}
+                </div>
+              </> : <div className="text-sm text-brand-muted">Zu selten gesucht, Google nennt keinen Platz.</div>}
+            </div>
+            <div>
+              {s.davor.length ? (
+                <div className="flex flex-wrap gap-1.5">
+                  {s.davor.map((d) => <span key={d} className="px-2 py-0.5 rounded-md bg-brand-bg text-xs text-brand-dark">{d}</span>)}
+                </div>
+              ) : <div className="text-sm font-semibold text-[#4E6F33]">Niemand, A+ steht ganz oben</div>}
+              <div className="text-[11px] text-brand-muted mt-1.5">{s.platz ? `In der Stichprobe Platz ${s.platz}` : 'In der Stichprobe nicht auf Seite 1'}</div>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+);
 
 type Kennzahl = { name: string; frage: string; wert?: string; trend?: string };
-// umbruch: Spalte mit langem Text, die umbrechen darf
-type Tabelle = { titel: string; hinweis?: string; spalten: string[]; zeilen?: (string | number)[][]; umbruch?: number };
+type Tabelle = { titel: string; hinweis?: string; spalten: string[]; zeilen?: (string | number)[][] };
 type Bereich = { id: 'ga' | 'gsc' | 'ads'; titel: string; was: string; zahlen: Kennzahl[]; tabellen: Tabelle[]; braucht?: string[]; fehler?: string };
 
 const bereiche = (d: AnalyseDaten | null): Bereich[] => {
@@ -73,9 +136,6 @@ const bereiche = (d: AnalyseDaten | null): Bereich[] => {
         { name: 'Wer klickt', frage: 'Von 100, die A+ in der Suche sehen, klicken so viele.', wert: gsc ? prozent(gsc.ctr) : undefined },
       ],
       tabellen: [
-        { titel: 'Wo A+ bei Google steht (Deutschland)', umbruch: 5,
-          hinweis: `Die wichtigsten Suchbegriffe, genau so eingetippt. „Platz im Schnitt“ kommt von Google selbst: alle Suchen aus Deutschland im Zeitraum, gemittelt. „Stichprobe“ ist eine einzelne Suche bei google.de vom ${stand}, dazu, wer dort vor A+ stand. Weil Google je nach Ort und Gerät etwas anders sortiert, können beide Plätze voneinander abweichen.`,
-          spalten: ['Suchbegriff', 'Platz im Schnitt', 'Seite', 'Entwicklung', `Stichprobe ${stand}`, 'Wer davor steht'], zeilen: suchbegriffZeilen(gsc) ?? undefined },
         { titel: 'Unsere Themen bei Google', hinweis: 'Alle Suchen, die das Wort enthalten. „Alle Länder“ zählt auch Suchen aus den Niederlanden, England oder der Schweiz mit; dort steht A+ meist weit hinten, das drückt den Schnitt. Für Kunden in Deutschland zählt die Spalte „Deutschland“.',
           spalten: ['Thema', 'Gezeigt', 'Besuche', 'Platz alle Länder', 'Platz Deutschland', 'Seite (Deutschland)'],
           zeilen: gsc?.kern.map((k) => [k.name, zahl(k.impressionen), zahl(k.klicks), platz(k.position), platz(k.positionDe ?? 0), seite(k.positionDe ?? 0)]) },
@@ -160,18 +220,30 @@ const Analyse: React.FC<{ laden: (tage: number, begriffe?: string[]) => Promise<
               </div>
             ))}
           </div>
+          {a.id === 'gsc' && <Rangliste gsc={daten && !('fehler' in daten.gsc) ? daten.gsc : null} laeuft={laeuft} />}
           {a.tabellen.map((t) => (
-            <div key={t.titel} className="overflow-x-auto rounded-xl border border-brand-dark/10 mb-6">
-              <table className="w-full text-sm text-left">
-                <caption className="text-left px-4 pt-3 font-mono text-xs uppercase tracking-widest text-brand-muted">{t.titel}
-                  {t.hinweis && <span className="block normal-case tracking-normal font-sans text-sm text-brand-dark/80 mt-1">{t.hinweis}</span>}</caption>
-                <thead className="font-mono text-xs uppercase tracking-widest text-brand-muted"><tr>{t.spalten.map((c) => <th key={c} className="px-4 py-3 font-medium whitespace-nowrap">{c}</th>)}</tr></thead>
-                <tbody>
-                  {t.zeilen?.length ? t.zeilen.map((z, i) => (
-                    <tr key={i} className="border-t border-brand-dark/5">{z.map((c, j) => <td key={j} className={`px-4 py-2.5 ${j === t.umbruch ? 'min-w-[16rem]' : j ? 'whitespace-nowrap' : 'break-all'}`}>{c}</td>)}</tr>
-                  )) : <tr className="border-t border-brand-dark/5"><td colSpan={t.spalten.length} className="px-4 py-5 text-brand-muted">{a.braucht ? `Keine Daten, solange ${a.titel} nicht angebunden ist.` : laeuft ? 'Lädt …' : 'Keine Daten im Zeitraum.'}</td></tr>}
-                </tbody>
-              </table>
+            <div key={t.titel} className="rounded-xl border border-brand-dark/10 mb-6">
+              <div className="px-5 pt-5 pb-3">
+                <h3 className="font-heading text-lg font-extrabold text-brand-dark">{t.titel}</h3>
+                {t.hinweis && <p className="text-sm text-brand-muted mt-1 max-w-3xl">{t.hinweis}</p>}
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="bg-brand-bg/70 font-mono text-[11px] uppercase tracking-widest text-brand-muted">
+                    <tr>{t.spalten.map((c, j) => <th key={c} className={`px-5 py-2.5 font-medium whitespace-nowrap ${j ? 'text-right' : ''}`}>{c}</th>)}</tr>
+                  </thead>
+                  <tbody>
+                    {t.zeilen?.length ? t.zeilen.map((z, i) => (
+                      <tr key={i} className="border-t border-brand-dark/5 hover:bg-brand-bg/40">{z.map((c, j) => {
+                        // „Platz 7“ und „Seite 1“ in der Farbe der Google-Seite
+                        const p = typeof c === 'string' ? Number(c.match(/^Platz (\d+)/)?.[1] ?? 0) || ({ 'Seite 1': 1, 'Seite 2': 11, 'Seite 3': 21, 'weiter hinten': 31 } as Record<string, number>)[c] || 0 : 0;
+                        return <td key={j} className={`px-5 py-3 ${j ? 'text-right whitespace-nowrap tabular-nums' : 'text-brand-dark font-medium break-words min-w-[10rem]'}`}
+                          style={p ? { color: seitenFarbe(p), fontWeight: 600 } : undefined}>{c}</td>;
+                      })}</tr>
+                    )) : <tr className="border-t border-brand-dark/5"><td colSpan={t.spalten.length} className="px-5 py-5 text-brand-muted">{a.braucht ? `Keine Daten, solange ${a.titel} nicht angebunden ist.` : laeuft ? 'Lädt …' : 'Keine Daten im Zeitraum.'}</td></tr>}
+                  </tbody>
+                </table>
+              </div>
             </div>
           ))}
           {a.braucht && (

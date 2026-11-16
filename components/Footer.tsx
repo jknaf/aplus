@@ -72,6 +72,7 @@ const Footer: React.FC = () => {
             <Liste links={[
               { name: name('/projekte'), href: '/projekte' },
               { name: name('/ueber-uns'), href: '/ueber-uns' },
+              { name: name('/ueber-uns/nachhaltigkeit'), href: '/ueber-uns/nachhaltigkeit' },
               { name: t('Presse', 'Press', 'Presse'), href: '/referenzen-presse' },
             ]} />
           </div>

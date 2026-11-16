@@ -23,6 +23,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.aplusurbandesign.com/ueber-uns/nachhaltigkeit</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.aplusurbandesign.com/kontakt</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

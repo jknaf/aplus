@@ -31,6 +31,7 @@ const BASE_STATIC_ROUTES = [
   '/',
   '/projekte',
   '/ueber-uns',
+  '/ueber-uns/nachhaltigkeit',
   '/kontakt',
   '/planung',
   '/katalog',

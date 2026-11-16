@@ -44,6 +44,16 @@ const Header: React.FC = () => {
       'Plan it yourself: start with a template and adapt it. The planner adds railings and mandatory parts.',
       "Planifiez vous-même : partez d'un modèle et adaptez-le. Le configurateur ajoute les garde-corps et les pièces obligatoires.",
     ),
+    '/ueber-uns': t(
+      'Skatepark-Hersteller und Planungsbüro aus Stuttgart, seit 1998 mit Skate-Elementen aus Beton.',
+      'Skatepark manufacturer and design office in Stuttgart, making concrete skate elements since 1998.',
+      'Fabricant de skateparks et bureau d’études à Stuttgart, éléments de skate en béton depuis 1998.',
+    ),
+    '/ueber-uns/nachhaltigkeit': t(
+      'Fertigteil oder Ortbeton: Fundament, Fläche, Umbau und Rückbau im Vergleich.',
+      'Precast or in-situ concrete: foundations, site, alteration and removal compared.',
+      'Préfabriqué ou coulé en place : fondations, site, transformation et démontage comparés.',
+    ),
   };
 
   // Handle scroll effect for floating navbar

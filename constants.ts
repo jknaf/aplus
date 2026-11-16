@@ -29,7 +29,14 @@ export const NAV_LINKS: NavLink[] = [
     ]
   },
   { name: 'Projekte', href: '/projekte' },
-  { name: 'Über uns', href: '/ueber-uns' },
+  {
+    name: 'Über uns',
+    href: '/ueber-uns',
+    subLinks: [
+      { name: 'Über A+', href: '/ueber-uns', bild: '/images/menue/ueber-uns-anlage-01.webp' },
+      { name: 'Nachhaltigkeit', href: '/ueber-uns/nachhaltigkeit', bild: '/images/menue/nachhaltigkeit-versetzen-01.webp' },
+    ]
+  },
   { name: 'Kontakt', href: '/kontakt' },
 ];
 

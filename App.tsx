@@ -11,6 +11,7 @@ import { LANGS, LangProvider, localizePath } from './i18n';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
+import SustainabilityPage from './pages/SustainabilityPage';
 import ContactPage from './pages/ContactPage';
 import ProductGrillPage from './pages/ProductGrillPage';
 import ProductGrillAssemblyPage from './pages/ProductGrillAssemblyPage';
@@ -50,6 +51,7 @@ const ROUTES: [string, React.ReactNode][] = [
   ['/', <HomePage />],
   ['/projekte', <ProjectsPage />],
   ['/ueber-uns', <AboutPage />],
+  ['/ueber-uns/nachhaltigkeit', <SustainabilityPage />],
   ['/kontakt', <ContactPage />],
   ['/planung', <PlanningPage />],
   ['/referenzen-presse', <PressePage />],

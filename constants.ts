@@ -35,7 +35,7 @@ export const NAV_LINKS: NavLink[] = [
 
 // Fachpublikationen, in denen A+ Urban Design erwähnt wird.
 // Teaser sind Kurzzusammenfassungen der jeweiligen Quelle (keine Volltextkopie).
-export const PRESS_ARTICLES: PressArticle[] = [
+const ALLE_PRESSEARTIKEL: PressArticle[] = [
   {
     id: 'kommunaldirekt-skatepark-friedrichsdorf',
     title: 'Skatepark Friedrichsdorf',
@@ -267,6 +267,11 @@ export const PRESS_ARTICLES: PressArticle[] = [
     year: 2021,
   },
 ];
+
+// shortcut: kommunaldirekt.de hat seit Oktober 2026 alle Beiträge auf privat gestellt (Mail Macke, 16.11.2026).
+// Auf false setzen, sobald die Links wieder gehen.
+const KOMMUNALDIREKT_OFFLINE = true;
+export const PRESS_ARTICLES = ALLE_PRESSEARTIKEL.filter((a) => !(KOMMUNALDIREKT_OFFLINE && a.publisher === 'kommunaldirekt.de'));
 
 export const PRODUCTS: Product[] = [
    {

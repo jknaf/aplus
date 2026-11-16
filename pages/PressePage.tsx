@@ -153,7 +153,8 @@ const PressePage: React.FC = () => {
     productArticles.forEach((a) => gruppen.set(a.year, [...(gruppen.get(a.year) ?? []), a]));
     return { jahre: [...gruppen.entries()] };
   }, []);
-  const [aufmacher, ...rest] = PRESS_PROJECTS;
+  // Projekte ohne erreichbaren Beitrag fallen weg
+  const [aufmacher, ...rest] = PRESS_PROJECTS.filter((p) => articlesOf(p).length > 0);
   const mitFoto = rest.filter((p) => p.bild);
   const ohneFoto = rest.filter((p) => !p.bild);
 

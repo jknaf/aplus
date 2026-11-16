@@ -171,7 +171,7 @@ const bereiche = (d: AnalyseDaten | null): Bereich[] => {
         { name: 'Kosten je Anfrage', frage: 'Was kostet eine Anfrage?' },
       ],
       tabellen: [{ titel: 'Kampagnen und Suchbegriffe', spalten: ['Kampagne / Suchbegriff', 'Klicks', 'Kosten', 'Anfragen'] }],
-      braucht: ['Google-Ads-Kundennummer', 'Developer-Token und Zugriff (OAuth) auf das Konto', 'Conversion-Ziel „Anfrage“ in Ads, verknüpft mit Analytics'] },
+      braucht: ['Google-Ads-Kundennummer', 'Ads-Konto mit Google Analytics verknüpft (Property 564281734)', 'Conversion-Ziel „Anfrage“ in Ads (Tag Manager GTM-K85ZS6XF ist eingebaut)'] },
   ];
 };
 const ZEITRAEUME = [7, 30, 90];

@@ -45,6 +45,20 @@ const loadAnalytics = () => {
     document.head.appendChild(s);
 };
 
+// Google Tag Manager der Ads-Agentur: lädt nur, wenn der Besucher "Werbung" erlaubt hat.
+const GTM_ID = 'GTM-K85ZS6XF';
+const loadAds = () => {
+    const w = window as any;
+    if (w.__aplusGtm) return;
+    w.__aplusGtm = true;
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+    document.head.appendChild(s);
+};
+
 const PrivacyBanner: React.FC = () => {
     const t = useT();
     const [isVisible, setIsVisible] = useState(false);
@@ -63,7 +77,11 @@ const PrivacyBanner: React.FC = () => {
             if (!consent) {
                 setIsVisible(true);
             } else {
-                try { if (JSON.parse(consent).analytics) loadAnalytics(); } catch (e) { /* broken entry: no analytics */ }
+                try {
+                    const c = JSON.parse(consent);
+                    if (c.analytics) loadAnalytics();
+                    if (c.marketing) loadAds();
+                } catch (e) { /* broken entry: no analytics */ }
             }
         }, 1000);
 
@@ -84,7 +102,8 @@ const PrivacyBanner: React.FC = () => {
         const consent = { ...settings, timestamp: new Date().toISOString() };
         safeStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
         if (settings.analytics) loadAnalytics();
-        
+        if (settings.marketing) loadAds();
+
         setIsVisible(false);
         setIsModalOpen(false);
     };
@@ -180,8 +199,8 @@ const PrivacyBanner: React.FC = () => {
 
                             <div className="flex justify-between items-center p-4 rounded-lg bg-brand-surface/40 border border-brand-dark/5 hover:border-brand-dark/20 transition-colors">
                                  <div>
-                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">{t('Externe Medien', 'External media', 'Médias externes')}</h3>
-                                    <p className="text-xs text-brand-muted mt-1">{t('Inhalte von Drittanbietern laden.', 'Load content from third parties.', 'Charger des contenus de tiers.')}</p>
+                                    <h3 className="font-bold text-brand-dark text-sm uppercase tracking-wider">{t('Werbung', 'Advertising', 'Publicité')}</h3>
+                                    <p className="text-xs text-brand-muted mt-1">{t('Erfolg unserer Google-Anzeigen messen (Google Tag Manager, Google Ads).', 'Measure the success of our Google ads (Google Tag Manager, Google Ads).', 'Mesurer le succès de nos annonces Google (Google Tag Manager, Google Ads).')}</p>
                                 </div>
                                  <button
                                     type="button"

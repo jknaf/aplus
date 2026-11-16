@@ -1,5 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createSign, timingSafeEqual } from 'node:crypto';
+import { get } from '@vercel/blob';
+import { PFAD } from './google-plaetze.js';
+
+// Letzte Wochenprüfung bei google.de; fehlt sie, nimmt das Admin die feste Liste aus googleStichprobe.ts
+const plaetze = async () => {
+  try {
+    const r = await get(PFAD, { access: 'private', useCache: false });
+    return r?.stream ? await new Response(r.stream).json() : null;
+  } catch { return null; }
+};
 
 // Nur für /admin: Zahlen aus Google Analytics (GA4) und der Search Console, gelesen mit dem Dienstkonto „GSC Audit“.
 // Der Schlüssel (GOOGLE_SA_KEY, JSON) bleibt auf dem Server; der Browser bekommt nur die Zahlen.
@@ -131,9 +141,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try { key = JSON.parse(process.env.GOOGLE_SA_KEY ?? ''); } catch { return res.status(503).json({ fehler: 'Google-Zugang ist auf dem Server nicht hinterlegt.' }); }
   try {
     const token = await zugang(key);
-    const [g, s] = await Promise.allSettled([ga(token, tage), gsc(token, tage, liste)]);
+    const [g, s, p] = await Promise.allSettled([ga(token, tage), gsc(token, tage, liste), plaetze()]);
     return res.status(200).json({
       tage,
+      plaetze: p.status === 'fulfilled' ? p.value : null,
       ga: g.status === 'fulfilled' ? g.value : { fehler: String(g.reason?.message ?? g.reason) },
       gsc: s.status === 'fulfilled' ? s.value : { fehler: String(s.reason?.message ?? s.reason) },
     });

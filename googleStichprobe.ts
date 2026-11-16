@@ -1,6 +1,7 @@
 // Stichprobe bei google.de (ohne persönliche Anpassung): wer steht bei den Kernbegriffen vor A+?
 // Die Search Console nennt nur den eigenen Platz, nie die Konkurrenz. Darum diese Liste von Hand.
-// Neu erheben: scripts/google-stichprobe.js in der Browser-Konsole auf google.de ausführen, Ergebnis hier eintragen.
+// Aktuell kommt die Liste jede Woche vom A+-Rechner (scripts/google-plaetze-agent.md, /api/google-plaetze).
+// Diese feste Liste gilt nur, solange noch keine Wochenprüfung gespeichert ist, und legt die Suchbegriffe für die Search Console fest.
 // Die Reihenfolge der Begriffe ist auch die Reihenfolge der Tabelle im Admin.
 export const STICHPROBE_STAND = '2026-11-15';
 

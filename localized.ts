@@ -26,11 +26,15 @@ const NAV: Record<string, Texte> = {
   '/projekte': { en: 'Projects', fr: 'Projets' },
   '/referenzen-presse': { en: 'Press', fr: 'Presse' },
   '/ueber-uns': { en: 'About us', fr: 'À propos' },
+  '/ueber-uns/nachhaltigkeit': { en: 'Sustainability', fr: 'Durabilité' },
   '/kontakt': { en: 'Contact', fr: 'Contact' },
 };
 
-// Die Unterpunkt-Bezeichnung "Planung durch A+" weicht von der Hauptnavigation ab
-const NAV_SUB_PLANUNG: Texte = { en: 'Design by A+', fr: 'Conception par A+' };
+// Die Unterpunkte "Planung durch A+" und "Über A+" weichen von der Hauptnavigation ab
+const NAV_SUB: Record<string, Texte> = {
+  'Planung durch A+': { en: 'Design by A+', fr: 'Conception par A+' },
+  'Über A+': { en: 'About A+', fr: "À propos d'A+" },
+};
 
 const PRODUKT: Record<string, { en: Partial<Product>; fr: Partial<Product> }> = {
   'skate-anlagen': {
@@ -351,10 +355,7 @@ export const useNavLinks = () => {
         name: pick(lang, NAV[link.href], link.name),
         subLinks: link.subLinks?.map((sub) => ({
           ...sub,
-          name:
-            sub.name === 'Planung durch A+'
-              ? pick(lang, NAV_SUB_PLANUNG, sub.name)
-              : pick(lang, NAV[sub.href], sub.name),
+          name: pick(lang, NAV_SUB[sub.name] ?? NAV[sub.href], sub.name),
         })),
       })),
     [lang],

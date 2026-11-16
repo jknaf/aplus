@@ -26,7 +26,9 @@ type Suchbegriff = Zeile & { vorher: number };
 type GaWerte = { besucher: number; sitzungen: number; verweildauer: number };
 type GaDaten = GaWerte & { vorher: GaWerte; quellen: { quelle: string; besucher: number }[]; einstieg: { seite: string; sitzungen: number; absprung: number }[] };
 type GscDaten = Zeile & { vorher: Zeile; suchbegriffe?: Suchbegriff[]; begriffe: Zeile[]; chancen: Zeile[]; kern: Kern[]; seiten: Zeile[]; ohneKlick: Zeile[] };
-export type AnalyseDaten = { ga: GaDaten | { fehler: string }; gsc: GscDaten | { fehler: string } };
+type Probe = { stand: string; liste: { begriff: string; platz: number | null; davor: string[] }[] };
+export type AnalyseDaten = { ga: GaDaten | { fehler: string }; gsc: GscDaten | { fehler: string }; plaetze?: Probe | null };
+const FEST: Probe = { stand: STICHPROBE_STAND, liste: STICHPROBE };
 
 const zahl = (n: number) => Math.round(n).toLocaleString('de-DE');
 const prozent = (n: number) => `${(n * 100).toLocaleString('de-DE', { maximumFractionDigits: 1 })} %`;
@@ -53,18 +55,17 @@ const entwicklung = (jetzt: number, vorher: number) => {
   const n = Math.abs(d) === 1 ? '1 Platz' : `${Math.abs(d)} Plätze`;
   return d > 0 ? { text: `▲ ${n} besser`, farbe: 'text-[#4E6F33]' } : { text: `▼ ${n} schlechter`, farbe: 'text-red-700' };
 };
-const stand = new Date(STICHPROBE_STAND).toLocaleDateString('de-DE');
 // Farbe nach Google-Seite: Seite 1 grün, Seite 2 ocker, dahinter rot
 const seitenFarbe = (p: number) => p <= 10 ? '#4E6F33' : p <= 20 ? '#B7791F' : '#B91C1C';
 const SKALA = 30;
 
 // Wo A+ bei den Kernbegriffen steht: je Begriff eine Zeile mit Platz, Leiste 1–30 und wer davor steht
-const Rangliste: React.FC<{ gsc: GscDaten | null; laeuft: boolean }> = ({ gsc, laeuft }) => (
+const Rangliste: React.FC<{ gsc: GscDaten | null; laeuft: boolean; probe: Probe }> = ({ gsc, laeuft, probe }) => (
   <div className="rounded-xl border border-brand-dark/10 mb-6">
     <div className="px-5 pt-5 pb-4">
       <h3 className="font-heading text-lg font-extrabold text-brand-dark">Wo A+ bei Google steht</h3>
       <p className="text-sm text-brand-muted mt-1 max-w-3xl">Die wichtigsten Suchbegriffe in Deutschland. Der Platz ist Googles eigener Schnitt im Zeitraum. Platz 1 bis 10 ist Seite 1.
-        Wer davor steht, stammt aus einer Suche bei google.de vom {stand}.</p>
+        Wer davor steht, stammt aus der Prüfung bei google.de vom {new Date(probe.stand).toLocaleDateString('de-DE')}. Sie läuft jede Woche auf dem A+-Rechner.</p>
       <div className="flex flex-wrap gap-x-5 gap-y-1 mt-3 text-xs text-brand-dark/80">
         {[['#4E6F33', 'Seite 1'], ['#B7791F', 'Seite 2'], ['#B91C1C', 'Seite 3 und weiter']].map(([f, t]) => (
           <span key={t} className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full" style={{ background: f }} />{t}</span>
@@ -76,7 +77,7 @@ const Rangliste: React.FC<{ gsc: GscDaten | null; laeuft: boolean }> = ({ gsc, l
     </div>
     <ul>
       {!gsc && <li className="border-t border-brand-dark/5 px-5 py-5 text-sm text-brand-muted">{laeuft ? 'Lädt …' : 'Keine Daten.'}</li>}
-      {gsc && STICHPROBE.map((s) => {
+      {gsc && probe.liste.map((s) => {
         const z = gsc.suchbegriffe?.find((b) => b.name === s.begriff);
         const p = z?.position ?? 0;
         const e = entwicklung(p, z?.vorher ?? 0);
@@ -110,7 +111,7 @@ const Rangliste: React.FC<{ gsc: GscDaten | null; laeuft: boolean }> = ({ gsc, l
                   {s.davor.map((d) => <span key={d} className="px-2 py-0.5 rounded-md bg-brand-bg text-xs text-brand-dark">{d}</span>)}
                 </div>
               ) : <div className="text-sm font-semibold text-[#4E6F33]">Niemand, A+ steht ganz oben</div>}
-              <div className="text-[11px] text-brand-muted mt-1.5">{s.platz ? `In der Stichprobe Platz ${s.platz}` : 'In der Stichprobe nicht auf Seite 1'}</div>
+              <div className="text-[11px] text-brand-muted mt-1.5">{s.platz ? `Bei google.de geprüft: Platz ${s.platz}` : 'Bei google.de geprüft: nicht auf Seite 1'}</div>
             </div>
           </li>
         );
@@ -220,7 +221,7 @@ const Analyse: React.FC<{ laden: (tage: number, begriffe?: string[]) => Promise<
               </div>
             ))}
           </div>
-          {a.id === 'gsc' && <Rangliste gsc={daten && !('fehler' in daten.gsc) ? daten.gsc : null} laeuft={laeuft} />}
+          {a.id === 'gsc' && <Rangliste gsc={daten && !('fehler' in daten.gsc) ? daten.gsc : null} laeuft={laeuft} probe={daten?.plaetze ?? FEST} />}
           {a.tabellen.map((t) => (
             <div key={t.titel} className="rounded-xl border border-brand-dark/10 mb-6">
               <div className="px-5 pt-5 pb-3">

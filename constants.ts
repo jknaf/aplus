@@ -155,14 +155,6 @@ const ALLE_PRESSEARTIKEL: PressArticle[] = [
       'Die Umkleide- und Duschkabine von A+ Urban Design besteht aus zwei aufeinandergesetzten Betonfertigteilen mit charakteristisch schneckenförmiger Sichtschutzwand auf Edelstahlfüßen. Sie ist wahlweise mit eingebauter Dusche oder nur mit Aussparungen für Gully und Wasserleitungen erhältlich und braucht kein Fundament.',
   },
   {
-    id: 'treffpunkt-kommune-nachhaltig-oekologisch-sport',
-    title: 'Auf nachhaltige und ökologische Weise Sport treiben',
-    publisher: 'treffpunkt-kommune.de',
-    url: 'https://www.treffpunkt-kommune.de/auf-nachhaltige-und-oekologische-weise-sport-treiben/',
-    teaser:
-      'Modular aufgebaute Skateanlagen aus Betonfertigteilen, Pumptracks und fundamentfreie Umkleidekabinen schaffen wohnortnahe Sportmöglichkeiten und vermeiden lange Anfahrten. Die wartungsarmen, recycelbaren Betonmodule lassen sich frei kombinieren und verbessern die Ökobilanz kommunaler Sportanlagen.',
-  },
-  {
     id: 'freiraum-gestalten-skatepark-friedrichsdorf',
     title: 'Skatepark Friedrichsdorf',
     publisher: 'freiraum-gestalten.info',

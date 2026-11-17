@@ -155,14 +155,6 @@ const ALLE_PRESSEARTIKEL: PressArticle[] = [
       'Die Umkleide- und Duschkabine von A+ Urban Design besteht aus zwei aufeinandergesetzten Betonfertigteilen mit charakteristisch schneckenförmiger Sichtschutzwand auf Edelstahlfüßen. Sie ist wahlweise mit eingebauter Dusche oder nur mit Aussparungen für Gully und Wasserleitungen erhältlich und braucht kein Fundament.',
   },
   {
-    id: 'treffpunkt-kommune-nachhaltig-oekologisch-sport',
-    title: 'Auf nachhaltige und ökologische Weise Sport treiben',
-    publisher: 'treffpunkt-kommune.de',
-    url: 'https://www.treffpunkt-kommune.de/auf-nachhaltige-und-oekologische-weise-sport-treiben/',
-    teaser:
-      'Modular aufgebaute Skateanlagen aus Betonfertigteilen, Pumptracks und fundamentfreie Umkleidekabinen schaffen wohnortnahe Sportmöglichkeiten und vermeiden lange Anfahrten. Die wartungsarmen, recycelbaren Betonmodule lassen sich frei kombinieren und verbessern die Ökobilanz kommunaler Sportanlagen.',
-  },
-  {
     id: 'freiraum-gestalten-skatepark-friedrichsdorf',
     title: 'Skatepark Friedrichsdorf',
     publisher: 'freiraum-gestalten.info',
@@ -175,6 +167,7 @@ const ALLE_PRESSEARTIKEL: PressArticle[] = [
     title: 'Nachhaltig Sport treiben',
     publisher: 'freiraum-gestalten.info',
     url: 'https://www.freiraum-gestalten.info/aktuelles/news/article-7759678-208085/nachhaltig-sport-treiben-.html',
+    year: 2023,
     teaser:
       'Pumptracks, mobile Umkleidekabinen und TÜV-zertifizierte Skateanlagen aus Betonfertigteilen ermöglichen Sport im Freien das ganze Jahr, ohne großen Pflegeaufwand. Die dezentralen, fundamentfreien Lösungen reduzieren den ökologischen Fußabdruck gegenüber Rasenpflege, Pistenpräparierung oder Hallenbadbetrieb erheblich.',
   },
@@ -207,6 +200,7 @@ const ALLE_PRESSEARTIKEL: PressArticle[] = [
     title: 'Wie man einen Skate-Park plant',
     publisher: 'freiraum-gestalten.info',
     url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-5192982-208098/wie-man-einen-skate-park-plant-.html',
+    year: 2016,
     teaser:
       'Bei der Skateparkplanung müssen Rampen und Hindernisse die DIN EN 14974 erfüllen. Nutzerbeteiligung ist wünschenswert, braucht aber fachliche Moderation, denn persönliche Vorlieben stehen oft im Konflikt mit normgerechter, langfristig tragfähiger Gestaltung.',
   },

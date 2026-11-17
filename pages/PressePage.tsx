@@ -185,7 +185,7 @@ const PressePage: React.FC = () => {
   return (
     <PageShell
       title={t("Referenzen & Presse", "Projects & Press", "Références et presse")}
-      description={t("Fachpublikationen über A+ Urban Design: Skateparks, Pumptracks, Umkleidekabinen und Beton-Fertigteile in kommunaldirekt.de, kommunalclick24.de, treffpunkt-kommune.de und freiraum-gestalten.info.", "Trade publications about A+ Urban Design: skateparks, pump tracks, changing cubicles and precast concrete units in kommunaldirekt.de, kommunalclick24.de, treffpunkt-kommune.de and freiraum-gestalten.info (in German).", "Publications spécialisées sur A+ Urban Design : skateparks, pumptracks, cabines de change et éléments préfabriqués en béton dans kommunaldirekt.de, kommunalclick24.de, treffpunkt-kommune.de et freiraum-gestalten.info (en allemand).")}
+      description={t("Fachpublikationen über A+ Urban Design: Skateparks, Pumptracks, Umkleidekabinen und Beton-Fertigteile in kommunaldirekt.de, kommunalclick24.de und freiraum-gestalten.info.", "Trade publications about A+ Urban Design: skateparks, pump tracks, changing cubicles and precast concrete units in kommunaldirekt.de, kommunalclick24.de and freiraum-gestalten.info (in German).", "Publications spécialisées sur A+ Urban Design : skateparks, pumptracks, cabines de change et éléments préfabriqués en béton dans kommunaldirekt.de, kommunalclick24.de et freiraum-gestalten.info (en allemand).")}
       schema={collectionSchema}
     >
       {/* Kopf mit Foto wie auf den Produktseiten */}

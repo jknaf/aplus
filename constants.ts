@@ -167,6 +167,7 @@ const ALLE_PRESSEARTIKEL: PressArticle[] = [
     title: 'Nachhaltig Sport treiben',
     publisher: 'freiraum-gestalten.info',
     url: 'https://www.freiraum-gestalten.info/aktuelles/news/article-7759678-208085/nachhaltig-sport-treiben-.html',
+    year: 2023,
     teaser:
       'Pumptracks, mobile Umkleidekabinen und TÜV-zertifizierte Skateanlagen aus Betonfertigteilen ermöglichen Sport im Freien das ganze Jahr, ohne großen Pflegeaufwand. Die dezentralen, fundamentfreien Lösungen reduzieren den ökologischen Fußabdruck gegenüber Rasenpflege, Pistenpräparierung oder Hallenbadbetrieb erheblich.',
   },

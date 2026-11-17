@@ -200,6 +200,7 @@ const ALLE_PRESSEARTIKEL: PressArticle[] = [
     title: 'Wie man einen Skate-Park plant',
     publisher: 'freiraum-gestalten.info',
     url: 'https://www.freiraum-gestalten.info/magazin/archiv/article-5192982-208098/wie-man-einen-skate-park-plant-.html',
+    year: 2016,
     teaser:
       'Bei der Skateparkplanung müssen Rampen und Hindernisse die DIN EN 14974 erfüllen. Nutzerbeteiligung ist wünschenswert, braucht aber fachliche Moderation, denn persönliche Vorlieben stehen oft im Konflikt mit normgerechter, langfristig tragfähiger Gestaltung.',
   },

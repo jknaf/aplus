@@ -5,7 +5,7 @@ import { Ablauf, Achtung, Bild, Chip, H2, Hinweis, Kicker, Kopf, Leiste, Liste, 
 
 // Inhalt 1:1 nach der Originalanleitung „Grillplatz, Montage- und Wartungsanleitung“ (01.04.2011) samt der dort
 // aufgeklebten Korrekturen (Aussparung mit Mörtel, Splitt oder Sand; Gabelstapler; Edelstahlreiniger).
-// Schrittbilder und 3D-Modell nach den Maßen der Originalzeichnung (Bodenplatte 16 cm, Bänke 35 cm, Mittelring Ø 1,40/0,95 m).
+// Schrittbilder und 3D-Modell aus dem Archicad-Modell Grillplatz 420-01 (08_CAD_Blender/07_Blender-Import/grillplatz_montage.py).
 const B = '/montage/grillplatz';
 
 const ProductGrillAssemblyPage: React.FC = () => {
@@ -55,21 +55,32 @@ const ProductGrillAssemblyPage: React.FC = () => {
     },
     {
       id: 's5', bild: `${B}/06-kette.webp`,
-      alt: t('Kette über der Rolle, Gegengewicht am kurzen Kettenende, Grillrost darunter', 'Chain over the pulley, counterweight on the short chain end, grill grate below', "Chaîne sur la poulie, contrepoids à l'extrémité courte, grille en dessous"),
-      kurz: t('Kette und Gegengewicht', 'Chain and counterweight', 'Chaîne et contrepoids'),
-      titel: t('Kette und Gegengewicht', 'Chain and counterweight', 'Chaîne et contrepoids'),
+      alt: t('Kette läuft über die Rolle und im Träger zwischen den beiden Wangen', 'Chain runs over the pulley and inside the support between the two side plates', 'La chaîne passe sur la poulie et dans le support, entre les deux flasques'),
+      kurz: t('Kette einhängen', 'Hang the chain', 'Accrocher la chaîne'),
+      titel: t('Kette einhängen', 'Hang the chain', 'Accrocher la chaîne'),
       inhalt: <>
         <Liste punkte={[
           t('Kette von außen nach innen über die Rolle ziehen.', 'Pull the chain over the pulley from the outside inwards.', "Passer la chaîne sur la poulie de l'extérieur vers l'intérieur."),
-          t('Das längere Ende liegt am Träger entlang und wird am Arretierungshaken eingehängt.', 'The longer end runs along the support and is hooked onto the locking hook.', "L'extrémité la plus longue longe le support et s'accroche au crochet d'arrêt."),
-          t('Am kürzeren, herabhängenden Ende das Gegengewicht mit dem Kettenverbinder befestigen.', 'Fix the counterweight to the shorter, hanging end with the chain connector.', "Fixer le contrepoids à l'extrémité courte pendante avec le raccord de chaîne."),
-          t('Das Gewinde des Kettenverbinders mit dem mitgelieferten Kleber sichern.', 'Secure the thread of the chain connector with the adhesive supplied.', 'Bloquer le filetage du raccord de chaîne avec la colle fournie.'),
+          t('Das längere Ende liegt im Träger zwischen den beiden Wangen und wird am Arretierungshaken eingehängt.', 'The longer end lies inside the support between the two side plates and is hooked onto the locking hook.', "L'extrémité la plus longue se loge dans le support, entre les deux flasques, et s'accroche au crochet d'arrêt."),
         ]} />
         <Hinweis label={t('Leiter', 'Ladder', 'Échelle')}>{t('Zum Aufhängen der Kette wird eine Leiter gebraucht.', 'A ladder is needed to hang the chain.', 'Une échelle est nécessaire pour accrocher la chaîne.')}</Hinweis>
       </>,
     },
     {
-      id: 's6', bild: `${B}/07-fertig.webp`,
+      id: 's6', bild: `${B}/07-gegengewicht.webp`,
+      alt: t('Gegengewicht hängt am kurzen Kettenende unter dem Trägerkopf', 'Counterweight hangs on the short chain end below the head of the support', "Le contrepoids pend à l'extrémité courte de la chaîne, sous la tête du support"),
+      kurz: t('Gegengewicht', 'Counterweight', 'Contrepoids'),
+      titel: t('Gegengewicht anhängen', 'Attach the counterweight', 'Accrocher le contrepoids'),
+      inhalt: <>
+        <Liste punkte={[
+          t('Am kürzeren, herabhängenden Ende das Gegengewicht mit dem Kettenverbinder befestigen.', 'Fix the counterweight to the shorter, hanging end with the chain connector.', "Fixer le contrepoids à l'extrémité courte pendante avec le raccord de chaîne."),
+          t('Das Gewinde des Kettenverbinders mit dem mitgelieferten Kleber sichern.', 'Secure the thread of the chain connector with the adhesive supplied.', 'Bloquer le filetage du raccord de chaîne avec la colle fournie.'),
+        ]} />
+        <Hinweis label={t('Lage', 'Position', 'Position')}>{t('Das Gegengewicht kann auch umgehängt werden, sodass es weiter weg von der Feuerstelle hängt.', 'The counterweight can also be rehung so that it hangs further away from the fire.', 'Le contrepoids peut aussi être accroché autrement, afin de pendre plus loin du foyer.')}</Hinweis>
+      </>,
+    },
+    {
+      id: 's7', bild: `${B}/08-fertig.webp`,
       alt: t('Fertig montierter Grillplatz', 'Fully installed barbecue area', 'Aire de barbecue entièrement montée'),
       kurz: t('Abschließen', 'Finishing', 'Finitions'),
       titel: t('Abschließen', 'Finishing', 'Finitions'),
@@ -91,7 +102,7 @@ const ProductGrillAssemblyPage: React.FC = () => {
     headline: t('Montageanleitung Grillplatz | A+ Urban Design', 'Installation Instructions: Barbecue Area | A+ Urban Design', 'Notice de montage : aire de barbecue | A+ Urban Design'),
     description: t('Montage des A+ Grillplatzes aus Beton: Kiesbett, Bodenplatte, Mittelteil, Träger mit Schnurlot, Kette und Gegengewicht, Wartung.', 'Installing the A+ concrete barbecue area: gravel bed, base slab, centre piece, support with plumb line, chain and counterweight, maintenance.', "Montage de l'aire de barbecue en béton A+ : lit de gravier, dalle de base, élément central, support au fil à plomb, chaîne et contrepoids, entretien."),
     inLanguage: t('de-DE', 'en-GB', 'fr-FR'),
-    image: 'https://www.aplusurbandesign.com/montage/grillplatz/07-fertig.webp',
+    image: 'https://www.aplusurbandesign.com/montage/grillplatz/08-fertig.webp',
     author: { '@type': 'Organization', name: 'A+ Urban Design', url: 'https://www.aplusurbandesign.com' },
     publisher: { '@type': 'Organization', name: 'A+ Urban Design', logo: { '@type': 'ImageObject', url: 'https://www.aplusurbandesign.com/aplus-logo.svg' } },
     about: { '@type': 'Product', name: t('Grillplatz aus Beton', 'Concrete barbecue area', 'Aire de barbecue en béton'), url: 'https://www.aplusurbandesign.com/produkte/grillstelle-beton' },
@@ -100,9 +111,9 @@ const ProductGrillAssemblyPage: React.FC = () => {
   return (
     <PageShell
       title={t('Montageanleitung Grillplatz', 'Installation instructions: barbecue area', 'Notice de montage : aire de barbecue')}
-      description={t('Montageanleitung für den A+ Grillplatz aus Beton: Unterbau, Teile und Gewichte, sechs Montageschritte mit Bildern, Wartung. Auch als PDF zum Blättern.', 'Installation instructions for the A+ concrete barbecue area: sub-base, parts and weights, six installation steps with images, maintenance. Also as a PDF to flip through.', "Notice de montage de l'aire de barbecue en béton A+ : support, éléments et poids, six étapes de montage illustrées, entretien. Également en PDF à feuilleter.")}
+      description={t('Montageanleitung für den A+ Grillplatz aus Beton: Unterbau, Teile und Gewichte, sieben Montageschritte mit Bildern, Wartung. Auch als PDF zum Blättern.', 'Installation instructions for the A+ concrete barbecue area: sub-base, parts and weights, seven installation steps with images, maintenance. Also as a PDF to flip through.', "Notice de montage de l'aire de barbecue en béton A+ : support, éléments et poids, sept étapes de montage illustrées, entretien. Également en PDF à feuilleter.")}
       schema={schema}
-      ogImage="/montage/grillplatz/07-fertig.webp"
+      ogImage="/montage/grillplatz/08-fertig.webp"
       fullWidth
     >
       <Rahmen kopfzeile={t('MONTAGEANLEITUNG GRILLPLATZ', 'INSTALLATION INSTRUCTIONS BARBECUE AREA', 'NOTICE DE MONTAGE AIRE DE BARBECUE')}>
@@ -113,10 +124,10 @@ const ProductGrillAssemblyPage: React.FC = () => {
           titel={t('Grillplatz montieren', 'Installing the barbecue area', "Monter l'aire de barbecue")}
           texte={[
             t('Der Grillplatz besteht aus der Bodenplatte (zwei halbrunde Hälften mit Bänken), dem runden Mittelteil und dem Träger mit Rolle, Kette, Gegengewicht und Grillrost. Er braucht kein Fundament und steht auf einem Kiesbett.', 'The barbecue area consists of the base slab (two semicircular halves with benches), the round centre piece and the support with pulley, chain, counterweight and grill grate. It needs no foundation and stands on a gravel bed.', "L'aire de barbecue se compose de la dalle de base (deux moitiés demi-circulaires avec bancs), de l'élément central rond et du support avec poulie, chaîne, contrepoids et grille. Elle ne nécessite pas de fondation et repose sur un lit de gravier."),
-            t('Die Schrittbilder sind nach den Maßen der Originalzeichnung gebaut. Grün ist das Teil, das im jeweiligen Schritt gesetzt wird.', 'The step images are built to the dimensions of the original drawing. Green marks the part placed in each step.', "Les images des étapes reprennent les cotes du plan d'origine. En vert : l'élément posé à chaque étape."),
+            t('Die Schrittbilder sind aus dem Archicad-Modell von A+ gebaut. Grün ist das Teil, das im jeweiligen Schritt gesetzt wird.', 'The step images are built from the A+ Archicad model. Green marks the part placed in each step.', "Les images des étapes sont issues du modèle Archicad d'A+. En vert : l'élément posé à chaque étape."),
           ]}
           modell={{ src: `${B}/grillplatz-montage.gltf`, poster: `${B}/grillplatz-montage.webp`, alt: t('3D-Modell des Grillplatzes', '3D model of the barbecue area', "Modèle 3D de l'aire de barbecue"), kamera: { ziel: [0, 0.95, 0], abstand: 8.6 } }}
-          titelbild={`${B}/07-fertig.webp`}
+          titelbild={`${B}/08-fertig.webp`}
           masse={t('Ø 4,20 m · Träger 2,70 m über Platte', 'Ø 4.20 m · support 2.70 m above slab', 'Ø 4,20 m · support à 2,70 m au-dessus de la dalle')}
         />
 
@@ -144,7 +155,7 @@ const ProductGrillAssemblyPage: React.FC = () => {
 
         <section className="max-w-[1160px] mx-auto px-4 md:px-8 pt-20 md:pt-[88px]">
           <div className="m-zwei grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-8 md:gap-12 items-start">
-            <Bild src={`${B}/07-fertig.webp`} alt={t('Grillplatz mit Bodenplatte, Mittelteil, Träger, Kette, Gegengewicht und Grillrost', 'Barbecue area with base slab, centre piece, support, chain, counterweight and grill grate', 'Aire de barbecue avec dalle, élément central, support, chaîne, contrepoids et grille')} className="order-2 md:order-1" />
+            <Bild src={`${B}/08-fertig.webp`} alt={t('Grillplatz mit Bodenplatte, Mittelteil, Träger, Kette, Gegengewicht und Grillrost', 'Barbecue area with base slab, centre piece, support, chain, counterweight and grill grate', 'Aire de barbecue avec dalle, élément central, support, chaîne, contrepoids et grille')} className="order-2 md:order-1" />
             <div className="flex flex-col gap-5 order-1 md:order-2">
               <Kicker>{t('Lieferung', 'Delivery', 'Livraison')}</Kicker>
               <H2>{t('Teile und Gewichte', 'Parts and weights', 'Éléments et poids')}</H2>

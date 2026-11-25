@@ -262,6 +262,30 @@ const PROJEKT: Record<string, { en: ProjektText; fr: ProjektText }> = {
       produkte: ['Aire de barbecue publique'],
     },
   },
+  'grillstellen-weinstadt-karlstein': {
+    en: {
+      title: 'Barbecue Areas Weinstadt-Karlstein',
+      description:
+        'Two A+ barbecue areas made of precast concrete units at the Karlstein in Weinstadt, overlooking the vineyards. The town of Weinstadt runs four A+ barbecue areas in total.',
+      longDescription: [
+        'At the Karlstein in Weinstadt, two A+ barbecue areas made of precast concrete units stand side by side, each with a seating ring, windbreak and stainless steel grate on its support. The town of Weinstadt runs four A+ barbecue areas in total.',
+        'Photo: Stadt Weinstadt, Max Strähle.',
+      ],
+      altText: 'Two A+ concrete barbecue areas at the Karlstein in Weinstadt in the evening sun above the vineyards.',
+      produkte: ['Public barbecue area'],
+    },
+    fr: {
+      title: 'Aires de barbecue Weinstadt-Karlstein',
+      description:
+        "Deux aires de barbecue A+ en éléments préfabriqués en béton au Karlstein à Weinstadt, avec vue sur les vignes. La ville de Weinstadt exploite au total quatre aires de barbecue A+.",
+      longDescription: [
+        "Au Karlstein à Weinstadt, deux aires de barbecue A+ en éléments préfabriqués en béton se trouvent côte à côte, chacune avec banc circulaire, pare-vent et grille en inox sur son pied. La ville de Weinstadt exploite au total quatre aires de barbecue A+.",
+        'Photo : Stadt Weinstadt, Max Strähle.',
+      ],
+      altText: 'Deux aires de barbecue A+ en béton au Karlstein à Weinstadt, au soleil du soir au-dessus des vignes.',
+      produkte: ['Aire de barbecue publique'],
+    },
+  },
   'hockey-bandensystem-outdoor': {
     en: {
       title: 'Foundation-Free Board System for Sports Courts',

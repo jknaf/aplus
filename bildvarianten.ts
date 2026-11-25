@@ -2,6 +2,7 @@
 export const SRCSET: Record<string, string> = {
   "/images/grill/grill-platz-01.jpg": "/images/grill/grill-platz-01-1280.jpg 1280w, /images/grill/grill-platz-01-1920.jpg 1920w, /images/grill/grill-platz-01.jpg 2752w",
   "/images/grill/grillstelle-background.jpg": "/images/grill/grillstelle-background-1280.jpg 1280w, /images/grill/grillstelle-background.jpg 1920w",
+  "/images/grill/grillstelle-weinstadt-karlstein.jpg": "/images/grill/grillstelle-weinstadt-karlstein.jpg 1273w",
   "/images/hockey/inline-hockey-bande-03.jpg": "/images/hockey/inline-hockey-bande-03-1280.jpg 1280w, /images/hockey/inline-hockey-bande-03-1920.jpg 1920w, /images/hockey/inline-hockey-bande-03.jpg 2752w",
   "/images/hockey/roll-hockey-bande.jpg": "/images/hockey/roll-hockey-bande-1280.jpg 1280w, /images/hockey/roll-hockey-bande-1920.jpg 1920w, /images/hockey/roll-hockey-bande.jpg 2752w",
   "/images/homepage/footer-banner.jpg": "/images/homepage/footer-banner-1280.jpg 1280w, /images/homepage/footer-banner-1920.jpg 1920w, /images/homepage/footer-banner.jpg 2600w",
@@ -28,6 +29,7 @@ export const SRCSET: Record<string, string> = {
 export const HOCH: Record<string, string> = {
   "/images/grill/grill-platz-01.jpg": "/images/grill/grill-platz-01-hoch.jpg",
   "/images/grill/grillstelle-background.jpg": "/images/grill/grillstelle-background-hoch.jpg",
+  "/images/grill/grillstelle-weinstadt-karlstein.jpg": "/images/grill/grillstelle-weinstadt-karlstein-hoch.jpg",
   "/images/hockey/inline-hockey-bande-03.jpg": "/images/hockey/inline-hockey-bande-03-hoch.jpg",
   "/images/hockey/roll-hockey-bande.jpg": "/images/hockey/roll-hockey-bande-hoch.jpg",
   "/images/homepage/footer-banner.jpg": "/images/homepage/footer-banner-hoch.jpg",

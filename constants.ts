@@ -427,6 +427,22 @@ export const PROJECTS: Project[] = [
         ]
     },
     {
+        id: "grillstellen-weinstadt-karlstein",
+        title: "Grillstellen Weinstadt-Karlstein",
+        category: "Grillstelle",
+        imageUrl: "/images/grill/grillstelle-weinstadt-karlstein.jpg",
+        images: [],
+        description: "Zwei A+-Grillstellen aus Betonfertigteilen am Karlstein in Weinstadt, mit Blick über die Weinberge. Die Stadt Weinstadt betreibt insgesamt vier A+-Grillstellen.",
+        longDescription: [
+            "Am Karlstein in Weinstadt stehen zwei A+-Grillstellen aus Betonfertigteilen nebeneinander, jede mit Sitzring, Windschutz und Edelstahlrost an der Stütze. Die Stadt Weinstadt betreibt insgesamt vier A+-Grillstellen.",
+            "Foto: Stadt Weinstadt, Max Strähle."
+        ],
+        altText: "Zwei A+-Grillstellen aus Beton am Karlstein in Weinstadt in der Abendsonne über den Weinbergen.",
+        productsUsed: [
+            { name: "Öffentliche Grillstelle", path: "/produkte/grillstelle-beton" },
+        ]
+    },
+    {
         id: "hockey-bandensystem-outdoor",
         title: "Fundamentfreies Bandensystem für Sportfelder",
         category: "Hockey-Bande",

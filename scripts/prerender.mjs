@@ -55,6 +55,7 @@ const PROJECT_IDS = [
   'skatepark-friedrichsdorf',
   'pumptrack-berlin-reinickendorf',
   'grillplatz-oeffentlicher-raum',
+  'grillstellen-weinstadt-karlstein',
   'hockey-bandensystem-outdoor',
   'schnecke-umkleidekabine',
   'bastion-skatepark-alba-iulia',

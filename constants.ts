@@ -430,6 +430,7 @@ export const PROJECTS: Project[] = [
         id: "grillstellen-weinstadt-karlstein",
         title: "Grillstellen Weinstadt-Karlstein",
         category: "Grillstelle",
+        year: 2018,
         imageUrl: "/images/grill/grillstelle-weinstadt-karlstein.jpg",
         images: [],
         description: "Zwei A+-Grillstellen aus Betonfertigteilen am Karlstein in Weinstadt, mit Blick über die Weinberge. Die Stadt Weinstadt betreibt insgesamt vier A+-Grillstellen.",

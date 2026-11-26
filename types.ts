@@ -24,6 +24,8 @@ export interface Project {
   altText: string;
   /** Unterschrift zum ersten Bild; ohne Angabe steht dort "Übersicht" */
   bildtitel?: string;
+  /** Urheber des Projektfotos, klein in der Bildecke */
+  bildnachweis?: string;
   productsUsed: {
     name: string;
     path: string;

@@ -180,6 +180,7 @@ type ProjektText = {
   description: string;
   longDescription: string[];
   altText: string;
+  bildtitel?: string;
   produkte: string[];
 };
 
@@ -272,6 +273,7 @@ const PROJEKT: Record<string, { en: ProjektText; fr: ProjektText }> = {
         'Photo: Stadt Weinstadt, Max Strähle.',
       ],
       altText: 'Two A+ concrete barbecue areas at the Karlstein in Weinstadt in the evening sun above the vineyards.',
+      bildtitel: 'View over the vineyards from the barbecue area',
       produkte: ['Public barbecue area'],
     },
     fr: {
@@ -283,6 +285,7 @@ const PROJEKT: Record<string, { en: ProjektText; fr: ProjektText }> = {
         'Photo : Stadt Weinstadt, Max Strähle.',
       ],
       altText: 'Deux aires de barbecue A+ en béton au Karlstein à Weinstadt, au soleil du soir au-dessus des vignes.',
+      bildtitel: "Vue sur les vignes depuis l'aire de barbecue",
       produkte: ['Aire de barbecue publique'],
     },
   },
@@ -406,6 +409,7 @@ export const useProjects = (): Project[] => {
         description: t.description,
         longDescription: t.longDescription,
         altText: t.altText,
+        bildtitel: t.bildtitel,
         productsUsed: p.productsUsed.map((u, i) => ({ ...u, name: t.produkte[i] ?? u.name })),
       };
     });

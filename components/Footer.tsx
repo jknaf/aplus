@@ -27,7 +27,8 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-brand-dark text-brand-bg relative z-10">
+    <footer className="bg-brand-dark text-brand-bg relative z-[35]">
+      {/* z-[35]: über dem Seiteninhalt (PageShell z-30, darin das fixe Projektbild), unter Menü (z-40) und Kopfzeile (z-50) */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-20 pb-10 flex flex-col gap-12">
 
         <div className="flex flex-wrap items-end justify-between gap-8">

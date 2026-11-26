@@ -107,7 +107,7 @@ const ProjectDetailPage: React.FC = () => {
         <div className="container mx-auto px-4 mb-24">
              <div className="border-l-4 border-brand-orange pl-6 md:pl-12 backdrop-blur-sm">
                  <Kopfleiste label={kategorie(project.category)} dunkel className="mb-8" />
-                 <h1 className="text-[42px] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] leading-none shadow-black drop-shadow-2xl">
+                 <h1 style={{ '--n': Math.max(...project.title.split(/[\s-]+/).map(w => w.length)) } as React.CSSProperties} className="titel-passend sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] leading-none shadow-black drop-shadow-2xl">
                     {project.title}
                  </h1>
              </div>

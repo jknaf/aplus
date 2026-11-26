@@ -315,6 +315,9 @@ html, body {
 /* Handy: lange deutsche Wörter in Überschriften trennen statt über den Rand laufen lassen */
 @media (max-width: 639px) {
   h1, h2, h3, h4 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+  /* Projekttitel: Größe nach dem längsten Wort (--n Zeichen), damit es ganz in eine Zeile passt.
+     60px = Container-Rand, Linie und Einzug; 0.7em = breitester Großbuchstabe im Mittel */
+  .titel-passend { font-size: clamp(28px, calc((100vw - 60px) / (var(--n) * 0.7)), 42px); }
 }
 
 /* Startseiten-Hero: der Plan wird freigelegt. Zeilen wischen von links herein,

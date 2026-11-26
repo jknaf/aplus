@@ -206,7 +206,7 @@ const ProjectDetailPage: React.FC = () => {
                                     decoding="async"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">{t("Abb. 1: Übersicht", "Fig. 1: Overview", "Fig. 1 : vue d'ensemble")}</div>
+                                <div className="absolute bottom-4 left-4 bg-black/80 px-2 py-1 text-[10px] font-mono text-white">{t("Abb. 1: ", "Fig. 1: ", "Fig. 1 : ")}{project.bildtitel ?? t("Übersicht", "Overview", "vue d'ensemble")}</div>
                              </div>
 
                              {/* Gallery Images */}

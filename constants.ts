@@ -439,6 +439,7 @@ export const PROJECTS: Project[] = [
             "Foto: Stadt Weinstadt, Max Strähle."
         ],
         altText: "Zwei A+-Grillstellen aus Beton am Karlstein in Weinstadt in der Abendsonne über den Weinbergen.",
+        bildtitel: "Blick über die Weinberge von der Grillstelle aus",
         productsUsed: [
             { name: "Öffentliche Grillstelle", path: "/produkte/grillstelle-beton" },
         ]

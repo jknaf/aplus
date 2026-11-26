@@ -22,6 +22,8 @@ export interface Project {
   description: string;
   longDescription?: string[];
   altText: string;
+  /** Unterschrift zum ersten Bild; ohne Angabe steht dort "Übersicht" */
+  bildtitel?: string;
   productsUsed: {
     name: string;
     path: string;

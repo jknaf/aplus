@@ -142,7 +142,7 @@ const PlanningPage: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-brand-dark/20"></div>
             <div className="relative z-10 container mx-auto px-4 pt-32 pb-16">
                 <Kopfleiste label={t("Im Produktpreis enthalten", "Included in the product price", "Comprise dans le prix du produit")} dunkel className="mb-8" />
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-7">
+                <h1 className="text-[52px] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-7">
                     {t(<>Skatepark<br/>
                     <span className="text-[#8DB562]">Planung</span></>, <>Skatepark<br/> <span className="text-[#8DB562]">design</span></>, <>Conception de<br/> <span className="text-[#8DB562]">skatepark</span></>)}
                 </h1>

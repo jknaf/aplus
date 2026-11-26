@@ -60,7 +60,7 @@ const AboutPage: React.FC = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/65 to-brand-dark/15"></div>
         <div className="relative z-10 container mx-auto px-4 pt-32 pb-10">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-6 animate-fade-in-up [animation-delay:200ms]">
+            <h1 className="text-[52px] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading uppercase tracking-normal [word-spacing:0.12em] text-white leading-none mb-6 animate-fade-in-up [animation-delay:200ms]">
                 {t(<>Beton<br/>
                 <span className="text-brand-orange">in Bestform</span></>, <>Concrete<br/> <span className="text-brand-orange">at its best</span></>, <>Le béton<br/> <span className="text-brand-orange">au meilleur de sa forme</span></>)}
             </h1>

@@ -107,7 +107,7 @@ const ProjectDetailPage: React.FC = () => {
         <div className="container mx-auto px-4 mb-24">
              <div className="border-l-4 border-brand-orange pl-6 md:pl-12 backdrop-blur-sm">
                  <Kopfleiste label={kategorie(project.category)} dunkel className="mb-8" />
-                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] leading-none shadow-black drop-shadow-2xl">
+                 <h1 className="text-[42px] sm:text-6xl md:text-8xl lg:text-9xl font-extrabold font-heading text-white uppercase tracking-normal [word-spacing:0.12em] leading-none shadow-black drop-shadow-2xl">
                     {project.title}
                  </h1>
              </div>
@@ -243,12 +243,12 @@ const ProjectDetailPage: React.FC = () => {
             </div>
 
             {/* 3. NEXT PROJECT NAV - Transparent BG */}
-            <div className="grid grid-cols-2 border-t border-brand-dark/10 bg-brand-surface/60">
-                <Link to={`/projekte/${prevProject.id}`} className="group block p-12 border-r border-brand-dark/10 hover:bg-brand-surface transition-colors text-right relative overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-2 border-t border-brand-dark/10 bg-brand-surface/60">
+                <Link to={`/projekte/${prevProject.id}`} className="group block p-6 sm:p-12 border-b sm:border-b-0 sm:border-r border-brand-dark/10 hover:bg-brand-surface transition-colors sm:text-right relative overflow-hidden">
                      <span className="block text-xs font-mono text-brand-muted uppercase tracking-widest mb-2 group-hover:text-brand-orange transition-colors">{t("Vorheriges", "Previous", "Précédent")}</span>
                      <span className="block text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter group-hover:translate-x-[-10px] transition-transform">{prevProject.title}</span>
                 </Link>
-                <Link to={`/projekte/${nextProject.id}`} className="group block p-12 hover:bg-brand-surface transition-colors relative overflow-hidden">
+                <Link to={`/projekte/${nextProject.id}`} className="group block p-6 sm:p-12 hover:bg-brand-surface transition-colors relative overflow-hidden">
                      <span className="block text-xs font-mono text-brand-muted uppercase tracking-widest mb-2 group-hover:text-brand-orange transition-colors">{t("Nächstes", "Next", "Suivant")}</span>
                      <span className="block text-2xl md:text-4xl font-extrabold font-heading text-brand-dark uppercase tracking-tighter group-hover:translate-x-[10px] transition-transform">{nextProject.title}</span>
                 </Link>

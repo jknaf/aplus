@@ -312,6 +312,10 @@ html, body {
       linear-gradient(90deg, rgba(20,26,22,.6) 0%, rgba(20,26,22,.3) 100%);
   }
 }
+/* Handy: lange deutsche Wörter in Überschriften trennen statt über den Rand laufen lassen */
+@media (max-width: 639px) {
+  h1, h2, h3, h4 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+}
 
 /* Startseiten-Hero: der Plan wird freigelegt. Zeilen wischen von links herein,
    die Linie über den Kennwerten zieht sich auf, dann setzen die Spalten ein. */

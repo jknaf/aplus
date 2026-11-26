@@ -435,11 +435,11 @@ export const PROJECTS: Project[] = [
         images: [],
         description: "Zwei A+-Grillstellen aus Betonfertigteilen am Karlstein in Weinstadt, mit Blick über die Weinberge. Die Stadt Weinstadt betreibt insgesamt vier A+-Grillstellen.",
         longDescription: [
-            "Am Karlstein in Weinstadt stehen zwei A+-Grillstellen aus Betonfertigteilen nebeneinander, jede mit Sitzring, Windschutz und Edelstahlrost an der Stütze. Die Stadt Weinstadt betreibt insgesamt vier A+-Grillstellen.",
-            "Foto: Stadt Weinstadt, Max Strähle."
+            "Am Karlstein in Weinstadt stehen zwei A+-Grillstellen aus Betonfertigteilen nebeneinander, jede mit Sitzring, Windschutz und Edelstahlrost an der Stütze. Die Stadt Weinstadt betreibt insgesamt vier A+-Grillstellen."
         ],
         altText: "Zwei A+-Grillstellen aus Beton am Karlstein in Weinstadt in der Abendsonne über den Weinbergen.",
         bildtitel: "Blick über die Weinberge von der Grillstelle aus",
+        bildnachweis: "Stadt Weinstadt, Max Strähle",
         productsUsed: [
             { name: "Öffentliche Grillstelle", path: "/produkte/grillstelle-beton" },
         ]

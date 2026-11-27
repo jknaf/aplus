@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, useT } from '../i18n';
+import { useLocation } from 'react-router-dom';
+import { Link, stripLang, useT } from '../i18n';
 import { useNavLinks } from '../localized';
 
 // Footer im Plankopf-Stil: Zellen mit Haarlinien (gap-px auf hellem Grund), Text in einer Größe.
@@ -21,10 +22,14 @@ const Footer: React.FC = () => {
   const unter = (href: string) => NAV_LINKS.find(link => link.href === href)?.subLinks || [];
   const name = (href: string) => NAV_LINKS.find(link => link.href === href)?.name || '';
   const planer = unter('/planung').find(l => l.href === '/konfigurator');
+  const { pathname } = useLocation();
 
   const handlePrivacySettingsClick = () => {
     window.dispatchEvent(new CustomEvent('showPrivacySettings'));
   };
+
+  // Konfigurator füllt den Bildschirm (PageShell z-30); der Footer (z-35) läge sonst darüber
+  if (stripLang(pathname) === '/konfigurator') return null;
 
   return (
     <footer className="bg-brand-dark text-brand-bg relative z-[35]">
